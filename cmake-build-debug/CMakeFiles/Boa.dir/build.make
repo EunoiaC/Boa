@@ -44,19 +44,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/492D0039-350B-4B79-AEB0-CFF8FEEE3314/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
+CMAKE_COMMAND = /private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/592A5681-A8E6-4B87-BB38-58B0971694B1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake
 
 # The command to remove a file.
-RM = /private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/492D0039-350B-4B79-AEB0-CFF8FEEE3314/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
+RM = /private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/592A5681-A8E6-4B87-BB38-58B0971694B1/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/preetithorat/CLionProjects/Boa
+CMAKE_SOURCE_DIR = /Users/preetithorat/Documents/GitHub/Boa
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/preetithorat/CLionProjects/Boa/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Boa.dir/depend.make
@@ -68,29 +68,29 @@ include CMakeFiles/Boa.dir/flags.make
 
 CMakeFiles/Boa.dir/main.cpp.o: CMakeFiles/Boa.dir/flags.make
 CMakeFiles/Boa.dir/main.cpp.o: ../main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Boa.dir/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/main.cpp.o -c /Users/preetithorat/CLionProjects/Boa/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Boa.dir/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/main.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/main.cpp
 
 CMakeFiles/Boa.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/CLionProjects/Boa/main.cpp > CMakeFiles/Boa.dir/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/main.cpp > CMakeFiles/Boa.dir/main.cpp.i
 
 CMakeFiles/Boa.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/CLionProjects/Boa/main.cpp -o CMakeFiles/Boa.dir/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/main.cpp -o CMakeFiles/Boa.dir/main.cpp.s
 
 CMakeFiles/Boa.dir/includes/Lexer.cpp.o: CMakeFiles/Boa.dir/flags.make
 CMakeFiles/Boa.dir/includes/Lexer.cpp.o: ../includes/Lexer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Boa.dir/includes/Lexer.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Lexer.cpp.o -c /Users/preetithorat/CLionProjects/Boa/includes/Lexer.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Boa.dir/includes/Lexer.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Lexer.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
 
 CMakeFiles/Boa.dir/includes/Lexer.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Lexer.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/CLionProjects/Boa/includes/Lexer.cpp > CMakeFiles/Boa.dir/includes/Lexer.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp > CMakeFiles/Boa.dir/includes/Lexer.cpp.i
 
 CMakeFiles/Boa.dir/includes/Lexer.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Lexer.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/CLionProjects/Boa/includes/Lexer.cpp -o CMakeFiles/Boa.dir/includes/Lexer.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp -o CMakeFiles/Boa.dir/includes/Lexer.cpp.s
 
 # Object files for target Boa
 Boa_OBJECTS = \
@@ -104,7 +104,7 @@ Boa: CMakeFiles/Boa.dir/main.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Lexer.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -116,6 +116,6 @@ CMakeFiles/Boa.dir/clean:
 .PHONY : CMakeFiles/Boa.dir/clean
 
 CMakeFiles/Boa.dir/depend:
-	cd /Users/preetithorat/CLionProjects/Boa/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/preetithorat/CLionProjects/Boa /Users/preetithorat/CLionProjects/Boa /Users/preetithorat/CLionProjects/Boa/cmake-build-debug /Users/preetithorat/CLionProjects/Boa/cmake-build-debug /Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles/Boa.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/preetithorat/Documents/GitHub/Boa /Users/preetithorat/Documents/GitHub/Boa /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Boa.dir/depend
 

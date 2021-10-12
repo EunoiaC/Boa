@@ -6,31 +6,27 @@
 
 #IncludeRegexTransform: 
 
-/Users/preetithorat/CLionProjects/Boa/includes/Lexer.cpp
-Lexer.h
-/Users/preetithorat/CLionProjects/Boa/includes/Lexer.h
-
-/Users/preetithorat/CLionProjects/Boa/includes/Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
 string
 -
 list
 -
 Token.h
-/Users/preetithorat/CLionProjects/Boa/includes/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
 
-/Users/preetithorat/CLionProjects/Boa/includes/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
 Value.h
-/Users/preetithorat/CLionProjects/Boa/includes/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Value.h
 string
 -
 
-/Users/preetithorat/CLionProjects/Boa/includes/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Value.h
 string
 -
 
-/Users/preetithorat/CLionProjects/Boa/main.cpp
+/Users/preetithorat/Documents/GitHub/Boa/main.cpp
 iostream
 -
 includes/Lexer.h
-/Users/preetithorat/CLionProjects/Boa/includes/Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
 

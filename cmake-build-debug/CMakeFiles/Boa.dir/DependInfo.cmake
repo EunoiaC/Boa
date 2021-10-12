@@ -8,8 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/preetithorat/CLionProjects/Boa/includes/Lexer.cpp" "/Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Lexer.cpp.o"
-  "/Users/preetithorat/CLionProjects/Boa/main.cpp" "/Users/preetithorat/CLionProjects/Boa/cmake-build-debug/CMakeFiles/Boa.dir/main.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Lexer.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/main.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 

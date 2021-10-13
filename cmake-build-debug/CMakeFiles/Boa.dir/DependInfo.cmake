@@ -8,10 +8,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "D:/GitHub/Boa/Includes/Value.cpp" "D:/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/Includes/Value.cpp.obj"
-  "D:/GitHub/Boa/main.cpp" "D:/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/main.cpp.obj"
+  "/Users/preetithorat/Documents/GitHub/Boa/Includes/Value.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/Includes/Value.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/main.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/main.cpp.o"
   )
-set(CMAKE_CXX_COMPILER_ID "MSVC")
+set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH

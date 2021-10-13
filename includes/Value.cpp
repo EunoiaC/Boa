@@ -4,10 +4,12 @@
 
 #include "Value.h"
 
+#include <utility>
+
 template<class valueType>
 Value<valueType>::Value(valueType v, string t) {
     val = v;
-    type = t;
+    type = std::move(t);
 }
 
 template<class valueType>

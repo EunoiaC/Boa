@@ -3,4 +3,4 @@ project(Boa)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Boa main.cpp includes/Lexer.cpp includes/Lexer.h)
+add_executable(Boa main.cpp Includes/Value.cpp Includes/Value.h)

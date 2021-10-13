@@ -1,5 +1,5 @@
 //
-// Created by Preeti Thorat on 10/6/21.
+// Created by Administrator on 10/12/2021.
 //
 
 #ifndef BOA_VALUE_H
@@ -9,20 +9,12 @@
 
 using namespace std;
 
-union Any{
-    string;
-    vector<Any>;
-    list<Any>;
-    int;
-};
-
-class Value {
-    Any val;
+template <class valueType> class Value {
     string type;
+    valueType val;
 public:
-    Value(Any value, string valType);
-    bool compare(Value v1, Value v2);
-    string toString();
+    Value(valueType v, string t);
+    bool compare(Value<valueType>* v);
 };
 
 

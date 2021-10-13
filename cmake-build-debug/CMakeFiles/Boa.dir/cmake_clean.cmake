@@ -1,8 +1,10 @@
 file(REMOVE_RECURSE
-  "Boa"
+  "Boa.exe"
+  "Boa.exe.manifest"
+  "Boa.lib"
   "Boa.pdb"
-  "CMakeFiles/Boa.dir/includes/Lexer.cpp.o"
-  "CMakeFiles/Boa.dir/main.cpp.o"
+  "CMakeFiles/Boa.dir/Includes/Value.cpp.obj"
+  "CMakeFiles/Boa.dir/main.cpp.obj"
 )
 
 # Per-language clean rules from dependency scanning.

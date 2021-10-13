@@ -6,27 +6,17 @@
 
 #IncludeRegexTransform: 
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
-string
--
-list
--
-Token.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
+D:/GitHub/Boa/Includes/Value.cpp
 Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Value.h
+D:/GitHub/Boa/Includes/Value.h
+
+D:/GitHub/Boa/Includes/Value.h
 string
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Value.h
-string
--
-
-/Users/preetithorat/Documents/GitHub/Boa/main.cpp
+D:/GitHub/Boa/main.cpp
 iostream
 -
-includes/Lexer.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
+Includes/Value.cpp
+D:/GitHub/Boa/Includes/Value.cpp
 

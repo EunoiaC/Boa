@@ -1,18 +1,16 @@
 //
-// Created by Preeti Thorat on 10/6/21.
+// Created by Administrator on 10/12/2021.
 //
 
 #include "Value.h"
 
-Value::Value(int val, string valType) {
-    val = value;
-    type = valType;
+template<class valueType>
+Value<valueType>::Value(valueType v, string t) {
+    val = v;
+    type = t;
 }
 
-bool Value::compare(Value v1, Value v2) {
-    return v1.val == v2.val;
-}
-
-string Value::toString() {
-    return to_string(val);
+template<class valueType>
+bool Value<valueType>::compare(Value<valueType>* v) {
+    return (val == v->val) && (type == v->type);
 }

@@ -9,7 +9,7 @@
 template<class valueType>
 Value<valueType>::Value(valueType v, string t) {
     val = v;
-    type = std::move(t);
+    type = move(t);
 }
 
 template<class valueType>

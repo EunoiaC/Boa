@@ -9,10 +9,15 @@
 template<class valueType>
 Value<valueType>::Value(valueType v, string t) {
     val = v;
-    type = move(t);
+    type = std::move(t);
 }
 
 template<class valueType>
 bool Value<valueType>::compare(Value<valueType>* v) {
     return (val == v->val) && (type == v->type);
+}
+
+template<class valueType>
+valueType Value<valueType>::getValue() {
+    return val;
 }

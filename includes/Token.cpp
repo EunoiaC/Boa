@@ -4,15 +4,13 @@
 
 #include "Token.h"
 
-template<class v>
-Value<v> val;
-
-Token::Token(string t) {
+template<class tokType>
+Token<tokType>::Token(string t, Value<tokType>* v) {
     type = t;
+    value = v;
 }
 
-template<class valueClass>
-Token::Token(string t, Value<valueClass>* v) {
-    type = t;
-    val<valueClass> = v;
+template<class tokType>
+Value<tokType>* Token<tokType>::getValueObject() {
+    return value;
 }

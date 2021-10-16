@@ -5,7 +5,7 @@
 #ifndef BOA_TOKEN_H
 #define BOA_TOKEN_H
 
-#include "Value.cpp"
+#include "Values/Value.cpp"
 #include <string>
 
 using namespace std;
@@ -25,7 +25,7 @@ private:
      */
     Value<valueClass> * value;
 public:
-    Token(string t, Value<valueClass> * v);
+    Token(string t, valueClass type);
 
     Token(string t);
     /**

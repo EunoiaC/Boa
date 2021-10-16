@@ -5,9 +5,9 @@
 #include "Token.h"
 
 template<class tokType>
-Token<tokType>::Token(string t, Value<tokType>* v) {
+Token<tokType>::Token(string t, tokType v) {
     type = t;
-    value = v;
+    value = new Value<tokType>(v, t);
 }
 
 template<class tokType>

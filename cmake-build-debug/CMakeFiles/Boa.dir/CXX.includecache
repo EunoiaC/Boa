@@ -6,3 +6,29 @@
 
 #IncludeRegexTransform: 
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
+String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
+Value.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.cpp
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.cpp
+Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.h
+utility
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/main.cpp
+iostream
+-
+includes/values/String.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
+string
+-
+

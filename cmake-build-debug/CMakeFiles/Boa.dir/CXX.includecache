@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
+Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
 String.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
@@ -29,6 +35,8 @@ iostream
 -
 includes/values/String.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
+includes/values/Number.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
 string
 -
 

@@ -21,7 +21,7 @@ public:
      * Constants
      */
     const string T_STRING = "STRING";
-    const string T_INT = "INT";
+    const string T_NUM = "NUM";
     /**
      * The object type of the value in a string form
      */

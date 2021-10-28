@@ -27,16 +27,16 @@ public:
      */
     string type;
 
-/**
- * @return The value of the valueType
- */
-valueType getValue();
+    /**
+     * @return The value of the valueType
+     */
+    valueType getValue();
 
-/**
- * @param v A value object to compare to the value of this object
- * @return Returns a boolean dependant on if both values match each other
- */
-bool compare(Value<valueType>* v);
+    /**
+     * @param v - A value object to compare to the value of this object
+     * @return Returns a boolean dependant on if both values match each other
+     */
+    bool compare(Value<valueType>* v);
 };
 
 

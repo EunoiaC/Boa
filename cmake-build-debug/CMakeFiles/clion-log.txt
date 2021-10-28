@@ -1,4 +1,4 @@
-/private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/03B6A310-1F46-4B5B-A867-6DE6F0FEF17F/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /Users/preetithorat/Documents/GitHub/Boa
+/private/var/folders/xc/52xf557s51sc9bz683gmbpl80000gn/T/AppTranslocation/B58B9549-CAC3-470E-B0AA-6D587AFD1DC6/d/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - Unix Makefiles" /Users/preetithorat/Documents/GitHub/Boa
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug

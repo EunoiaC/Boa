@@ -10,7 +10,8 @@
 
 using namespace std;
 
-template<class valueClass> class Token {
+template<class valueClass>
+class Token {
 private:
     /**
      * The type of the token, can be a supported object type, identifier, keyword, or a symbol

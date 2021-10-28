@@ -6,7 +6,7 @@
 #define BOA_NUMBER_H
 
 
-class Number : Value<double> {
+class Number : public Value<double> {
 public:
     double numValue;
     Number(double value);
@@ -15,11 +15,11 @@ public:
     /**
      * @return The value of this number rounded up
      */
-    Number ceiling();
+    Number* ceiling();
     /**
      * @return The value of this number rounded down
      */
-    Number floor();
+    Number* floor();
 };
 
 

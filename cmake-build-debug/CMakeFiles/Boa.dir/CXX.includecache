@@ -9,6 +9,8 @@
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.h
+math.h
+-
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.h
 
@@ -38,5 +40,7 @@ includes/values/String.cpp
 includes/values/Number.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
 string
+-
+vector
 -
 

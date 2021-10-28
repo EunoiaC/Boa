@@ -8,7 +8,7 @@
 #include "Value.cpp"
 
 
-class String : Value<string> {
+class String : public Value<string> {
 public:
     string strValue;
     String(string value);

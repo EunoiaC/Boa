@@ -6,6 +6,20 @@
 
 #IncludeRegexTransform: 
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
+Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
+Values/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
+string
+-
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.h
@@ -39,6 +53,8 @@ includes/values/String.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
 includes/values/Number.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/values/Number.cpp
+includes/Token.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
 string
 -
 vector

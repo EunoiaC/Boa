@@ -3,8 +3,10 @@
 //
 
 #include "Value.h"
-
 #include <utility>
+
+static const string T_STRING = "STRING";
+static const string T_NUM = "NUM";
 
 template<class valueType>
 Value<valueType>::Value(valueType v, string t) {

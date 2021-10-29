@@ -1,7 +1,7 @@
 //
 // Created by Administrator on 10/12/2021.
 //
-
+#pragma once
 #ifndef BOA_VALUE_H
 #define BOA_VALUE_H
 
@@ -20,8 +20,6 @@ public:
     /**
      * Constants
      */
-    const string T_STRING = "STRING";
-    const string T_NUM = "NUM";
     /**
      * The object type of the value in a string form
      */

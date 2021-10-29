@@ -1,17 +1,25 @@
 //
 // Created by Preeti Thorat on 10/13/21.
 //
-
+#pragma once
 #ifndef BOA_TOKEN_H
 #define BOA_TOKEN_H
 
-#include "Values/Value.cpp"
+#include "Values/Value.h"
 #include <string>
 
 using namespace std;
 
+class BaseToken{
+public:
+    string type;
+    BaseToken(string t){
+        type = t;
+    };
+};
+
 template<class valueClass>
-class Token {
+class Token : public BaseToken{
 private:
     /**
      * The type of the token, can be a supported object type, identifier, keyword, or a symbol

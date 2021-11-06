@@ -12,19 +12,36 @@ using namespace std;
 
 class BaseToken{
 public:
+    BaseToken(string t, int start_pos, int end_pos, int line_num);
+    /**
+     * The starting position of the token at a certain line
+     */
+    int pos_start;
+    /**
+     * The ending position of the token at a certain line
+     */
+    int pos_end;
+    /**
+     * The line the token is on
+     */
+    int line;
+    /**
+     * The type of the token, can be a supported object type, identifier, keyword, or a symbol
+     */
     string type;
-    BaseToken(string t){
-        type = t;
-    };
+    /**
+     * @return Type of the Token
+     */
+    string toString();
+    /**
+     * @return Position data of the Token
+     */
+    string posData();
 };
 
 template<class valueClass>
 class Token : public BaseToken{
 private:
-    /**
-     * The type of the token, can be a supported object type, identifier, keyword, or a symbol
-     */
-    string type;
     /**
      * @tparam valueClass can be any object type that is supported
      */
@@ -34,14 +51,21 @@ private:
      */
     Value<valueClass> * value;
 public:
-    Token(string t, valueClass type);
-
+    Token(string t, valueClass value, int start_pos, int end_pos, int line_num);
     Token(string t);
     /**
      * @tparam valueClass
      * @return Returns the value if the token has one
      */
     Value<valueClass>* getValueObject();
+    /**
+     * @return Returns the token in readable format
+     */
+    string toString();
+    /**
+     * @return Returns the token in readable format
+     */
+    string toStringNumber();
 };
 
 

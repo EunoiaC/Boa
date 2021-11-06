@@ -15,6 +15,10 @@ using namespace std;
 class Lexer {
 private:
     /**
+     * The index of the character relative to the line
+     */
+    int charLineIdx;
+    /**
      * The current line the lexer is on
      */
     int lineIdx;

@@ -52,7 +52,6 @@ private:
     Value<valueClass> * value;
 public:
     Token(string t, valueClass value, int start_pos, int end_pos, int line_num);
-    Token(string t);
     /**
      * @tparam valueClass
      * @return Returns the value if the token has one

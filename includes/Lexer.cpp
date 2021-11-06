@@ -34,9 +34,8 @@ void Lexer::advance() {
             {')',  new BaseToken(R_PAREN, charIdx, charIdx, lineIdx)},
             {'{',  new BaseToken(L_BRACKET, charIdx, charIdx, lineIdx)},
             {'}',  new BaseToken(R_BRACKET, charIdx, charIdx, lineIdx)},
-            {'"',  new BaseToken(DOUBLE_QUOTE, charIdx, charIdx, lineIdx)},
-            {'\'', new BaseToken(SINGLE_QUOTE, charIdx, charIdx, lineIdx)},
-            {'\n', new BaseToken(STOP_EXPR, charIdx, charIdx, lineIdx-1)}//-1 because the lineIdx is incremented after the newline
+            {'\n', new BaseToken(STOP_EXPR, charIdx, charIdx,
+                                 lineIdx - 1)}//-1 because the lineIdx is incremented after the newline
     };
 }
 
@@ -48,6 +47,19 @@ Token<string> *Lexer::makeIdentifier() {
         advance();
     }
     return new Token<string>(T_IDENTIFIER, identifier, start, charIdx - 1, lineIdx);
+}
+
+Token<string> *Lexer::makeString() {
+    char stopChar = currChar; //the char that ends the string (" or ')
+    string str = "";
+    int start = charIdx;
+    advance();
+    while(currChar != stopChar) {
+        str += currChar;
+        advance();
+    }
+    advance(); //advance past the stop char
+    return new Token<string>(T_STRING, str, start, charIdx - 1, lineIdx);
 }
 
 Token<double> *Lexer::makeNumber() {
@@ -66,6 +78,8 @@ vector<BaseToken *> Lexer::makeTokens() {
         if (charToToken.count(currChar) != 0) {
             toks.push_back(charToToken.find(currChar)->second);
             advance();
+        } else if (currChar == '"' || currChar == '\'') {
+            toks.push_back(makeString());
         } else if ((LETTERS + "_").find(currChar) != string::npos) {
             toks.push_back(makeIdentifier());
         } else if (NUMBERS.find(currChar) != string::npos) {

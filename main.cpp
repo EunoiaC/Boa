@@ -29,7 +29,9 @@ int main() {
             cout << ((Token<string> *) t)->toString() << endl;
         } else if (t->type == T_NUM) {
             cout << ((Token<double> *) t)->toStringNumber() << endl;
-        } else {
+        } else if (t->type == T_STRING) {
+            cout << ((Token<string> *) t)->toString() << endl;
+        }else {
             cout << t->toString() << endl;
         }
     }

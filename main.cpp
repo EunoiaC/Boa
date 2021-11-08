@@ -1,11 +1,10 @@
 #include <iostream>
 #include "includes/values/String.cpp"
-#include "includes/values/Number.cpp"
 #include "includes/Lexer.cpp"
-#include "includes/Token.cpp"
 #include <string>
 #include <fstream>
 #include <vector>
+#include "includes/Nodes/NumberNode.cpp"
 
 using namespace std;
 

@@ -13,6 +13,10 @@ BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
     line = line_num;
 }
 
+string BaseToken::getType() {
+    return type;
+}
+
 string BaseToken::posData(){
     return "[" + to_string(pos_start) + ", " + to_string(pos_end) + ", " + to_string(line) + "]";
 }

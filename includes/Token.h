@@ -30,6 +30,10 @@ public:
      */
     string type;
     /**
+     * @return The type of token
+     */
+     string getType();
+    /**
      * @return Type of the Token
      */
     string toString();

@@ -14,6 +14,7 @@ public:
      * Value of the node
      */
     Token<double> *token;
+    string toString();
 };
 
 

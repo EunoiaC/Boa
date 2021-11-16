@@ -1,10 +1,9 @@
 #include <iostream>
-#include "includes/values/String.cpp"
+#include "includes/Parser.cpp"
 #include "includes/Lexer.cpp"
 #include <string>
 #include <fstream>
 #include <vector>
-#include "includes/Nodes/NumberNode.cpp"
 
 using namespace std;
 
@@ -20,10 +19,10 @@ int main() {
             fileText += mychar;
         }
     }
+    file.close();
     Lexer *l = new Lexer(fileText);
     vector<BaseToken *> v = l->makeTokens();
-    for (int i = 0; i < v.size(); i++) {
-        BaseToken *t = v[i];
+    for (auto t : v) {
         if (t->type == T_IDENTIFIER) {
             cout << ((Token<string> *) t)->toString() << endl;
         } else if (t->type == T_NUM) {
@@ -34,5 +33,8 @@ int main() {
             cout << t->toString() << endl;
         }
     }
+    Parser *p = new Parser(v);
+    Node * n = p->parse();
+    cout << n->toString() << endl;
     return 0;
 }

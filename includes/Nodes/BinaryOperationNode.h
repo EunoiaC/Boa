@@ -4,20 +4,23 @@
 #pragma once
 #ifndef BOA_BINARYOPERATIONNODE_H
 #define BOA_BINARYOPERATIONNODE_H
-#include "Node.cpp"
+#include "NumberNode.cpp"
+//#include "Node.cpp"
 
 class BinaryOperationNode : public Node {
 public:
     Node *left, *right;
-    string op;
+    Token<string> * opTok;
 
-    BinaryOperationNode(Node *left, string op, Node *right);
+    BinaryOperationNode(Node *left, Token<string>* opTok1, Node *right);
 
     Node *getLeft();
 
     Node *getRight();
 
-    string getOp();
+    Token<string> * getOp();
+
+    string toString();
 };
 
 

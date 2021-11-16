@@ -7,3 +7,7 @@
 NumberNode::NumberNode(Token<double> *value) : token(value), Node(N_NUMBER) {
     token = value;
 }
+
+string NumberNode::toString() {
+    return token->toStringNumber();
+}

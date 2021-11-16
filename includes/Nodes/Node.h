@@ -13,6 +13,7 @@ public:
      * Type of the node
      */
      string type;
+     virtual string toString();
 };
 
 

@@ -4,16 +4,17 @@
 CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Parser.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Parser.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/main.cpp

@@ -20,6 +20,14 @@ Token.h
 TokenType.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
+BinaryOperationNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+NumberNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
@@ -36,6 +44,22 @@ Node.cpp
 ../Token.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.cpp
+Parser.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.h
+vector
+-
+TokenType.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+Values/Value.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
+Nodes/BinaryOperationNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
+vector
+-
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
 Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
@@ -50,33 +74,21 @@ string
 string
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
-string
--
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
-String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.h
-Value.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.cpp
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
 Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 utility
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 string
 -
 
 /Users/preetithorat/Documents/GitHub/Boa/main.cpp
 iostream
 -
-includes/values/String.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/values/String.cpp
+includes/Parser.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.cpp
 includes/Lexer.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
 string
@@ -85,6 +97,4 @@ fstream
 -
 vector
 -
-includes/Nodes/NumberNode.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
 

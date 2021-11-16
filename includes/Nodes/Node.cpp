@@ -11,3 +11,7 @@ Node::Node(string type) {
     this->type = type;
 }
 
+string Node::toString() {
+    return "";
+}
+

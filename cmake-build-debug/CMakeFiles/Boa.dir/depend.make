@@ -4,16 +4,17 @@
 CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Lexer.cpp \
  ../includes/Lexer.h \
+ ../includes/Nodes/BinaryOperationNode.cpp \
+ ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.cpp \
  ../includes/Nodes/NumberNode.h \
+ ../includes/Parser.cpp \
+ ../includes/Parser.h \
  ../includes/Token.cpp \
  ../includes/Token.h \
  ../includes/TokenType.h \
+ ../includes/Values/Value.cpp \
  ../includes/Values/Value.h \
- ../includes/values/String.cpp \
- ../includes/values/String.h \
- ../includes/values/Value.cpp \
- ../includes/values/Value.h \
  ../main.cpp

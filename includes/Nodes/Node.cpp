@@ -6,6 +6,7 @@
 
 static const string N_NUMBER = "NUMBER_NODE";
 static const string N_BINOP = "BINOP_NODE";
+static const string N_UNOP = "UNOP_NODE";
 
 Node::Node(string type) {
     this->type = type;

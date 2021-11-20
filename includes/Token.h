@@ -12,6 +12,7 @@ using namespace std;
 
 class BaseToken{
 public:
+    string fName, fTxt;
     BaseToken(string t, int start_pos, int end_pos, int line_num);
     /**
      * The starting position of the token at a certain line

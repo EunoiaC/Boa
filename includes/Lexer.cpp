@@ -4,9 +4,10 @@
 
 #include "Lexer.h"
 
-Lexer::Lexer(string fileText) {
+Lexer::Lexer(string fileText, string fileName) {
     currChar = '\0';
     fTxt = fileText;
+    this->fileName = fileName;
     charIdx = -1;
     charLineIdx = -1;
     lineIdx = 0; //0 is first line

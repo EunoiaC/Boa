@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
+Error.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
 Lexer.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
@@ -14,6 +20,8 @@ Lexer.h
 vector
 -
 map
+-
+fstream
 -
 Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
@@ -44,21 +52,41 @@ Node.cpp
 ../Token.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.cpp
-Parser.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
+UnaryOperationNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
+ParseResult.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+../Errors/Error.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
+Parser.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
 vector
 -
-TokenType.h
+../TokenType.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
-Values/Value.cpp
+../Values/Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
-Nodes/BinaryOperationNode.cpp
+../Nodes/BinaryOperationNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
+../Nodes/UnaryOperationNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
 vector
 -
+fstream
+-
+ParseResult.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
 Token.h
@@ -87,8 +115,8 @@ string
 /Users/preetithorat/Documents/GitHub/Boa/main.cpp
 iostream
 -
-includes/Parser.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser.cpp
+includes/Parser/Parser.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
 includes/Lexer.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
 string

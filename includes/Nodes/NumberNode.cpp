@@ -9,5 +9,5 @@ NumberNode::NumberNode(Token<double> *value) : token(value), Node(N_NUMBER) {
 }
 
 string NumberNode::toString() {
-    return token->toStringNumber();
+    return to_string(token->getValueObject()->getValue());
 }

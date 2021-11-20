@@ -7,6 +7,7 @@
 
 #include <vector>
 #include <map>
+#include <fstream>
 #include "Token.h"
 #include "TokenType.h"
 
@@ -14,6 +15,7 @@ using namespace std;
 
 class Lexer {
 private:
+    string currLine;
     /**
      * The index of the character relative to the line
      */
@@ -30,8 +32,10 @@ private:
      * Current character
      */
     char currChar;
+    string fileName;
+    ifstream file;
 public:
-    Lexer(string fileText);
+    Lexer(string fileText, string fileName);
 
     /**
      * Map assigning each possible character a token type

@@ -8,6 +8,8 @@ using namespace std;
 
 BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
     type = t;
+    this->fName = fName;
+    this->fTxt = fTxt;
     pos_start = start_pos;
     pos_end = end_pos;
     line = line_num;

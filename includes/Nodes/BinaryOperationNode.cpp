@@ -24,9 +24,7 @@ Token<string> * BinaryOperationNode::getOp() {
 
 string BinaryOperationNode::toString() {
     string leftval, rightval;
-    leftval = this->left->type == N_BINOP ? ((BinaryOperationNode *) left)->toString()
-                                          : to_string(((NumberNode *) left)->token->getValueObject()->getValue());
-    rightval = this->right->type == N_BINOP ? ((BinaryOperationNode *) right)->toString()
-                                            : to_string(((NumberNode *) right)->token->getValueObject()->getValue());
+    leftval = left->toString();
+    rightval = right->toString();
     return "(" + leftval + " " + this->opTok->type + " " + rightval + ")";
 }

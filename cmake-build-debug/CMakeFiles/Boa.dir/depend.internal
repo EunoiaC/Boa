@@ -4,6 +4,8 @@
 CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
@@ -21,6 +23,8 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/main.cpp

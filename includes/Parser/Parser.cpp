@@ -27,7 +27,7 @@ ParseResult *Parser::parse() {
     if (!res->error) {
         if (currentToken->getType() != END_OF_FILE && currentToken->getType() != STOP_EXPR) {
             return res->failure(
-                    new Error(currentToken->pos_start, currentToken->pos_end, currentToken->line, fName, currLine,
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                               "InvalidSyntaxError", "Expected an operation"));
         }
     }
@@ -41,7 +41,7 @@ ParseResult *Parser::factor() {
         advance();
         Node *f = res->reg(factor());
         if (res->error) return res;
-        return res->success(new UnaryOperationNode(tok->getType(), (NumberNode *) f));
+        return res->success(new UnaryOperationNode((Token<string>*) tok, (NumberNode *) f));
     } else if (tok->getType() == T_NUM) {
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
@@ -54,11 +54,11 @@ ParseResult *Parser::factor() {
             return res->success(exp);
         } else {
             return res->failure(
-                    new Error(currentToken->pos_start, currentToken->pos_end, currentToken->line, fName, currLine,
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                               "InvalidSyntaxError", "Expected a closing parenthesis"));
         }
     }
-    return res->failure(new Error(tok->pos_start, tok->pos_end, tok->line, fName, currLine, "InvalidSyntaxError",
+    return res->failure(new Error(tok->posStart, tok->posEnd, tok->line, fName, currLine, "InvalidSyntaxError",
                                   "Expected a number"));
 }
 

@@ -4,6 +4,8 @@
 CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Errors/Error.cpp \
  ../includes/Errors/Error.h \
+ ../includes/Interpreter.cpp \
+ ../includes/Interpreter.h \
  ../includes/Lexer.cpp \
  ../includes/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.cpp \
@@ -21,6 +23,8 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Token.cpp \
  ../includes/Token.h \
  ../includes/TokenType.h \
+ ../includes/Values/Number.cpp \
+ ../includes/Values/Number.h \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h \
  ../main.cpp

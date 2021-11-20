@@ -9,7 +9,16 @@
 
 using namespace std;
 
-template <class valueType> class Value {
+class BaseValue {
+public:
+    BaseValue(string t);
+    /**
+     * The object type of the value in a string form
+     */
+    string type;
+};
+
+template <class valueType> class Value : public BaseValue{
 private:
     /**
      * The value as an instance of the object type
@@ -17,14 +26,6 @@ private:
     valueType val;
 public:
     Value(valueType v, string t);
-    /**
-     * Constants
-     */
-    /**
-     * The object type of the value in a string form
-     */
-    string type;
-
     /**
      * @return The value of the valueType
      */

@@ -10,8 +10,8 @@ BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
     type = t;
     this->fName = fName;
     this->fTxt = fTxt;
-    pos_start = start_pos;
-    pos_end = end_pos;
+    posStart = start_pos;
+    posEnd = end_pos;
     line = line_num;
 }
 
@@ -20,7 +20,7 @@ string BaseToken::getType() {
 }
 
 string BaseToken::posData(){
-    return "[" + to_string(pos_start) + ", " + to_string(pos_end) + ", " + to_string(line) + "]";
+    return "[" + to_string(posStart) + ", " + to_string(posEnd) + ", " + to_string(line) + "]";
 }
 
 string BaseToken::toString() {

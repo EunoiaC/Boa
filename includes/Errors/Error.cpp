@@ -23,6 +23,7 @@ string Error::toString() {
 }
 
 string Error::getArrows() {
+    //TODO: detect \n
     string arrows;
     for (int i = 0; i < posStart; i++) {
         arrows += " ";

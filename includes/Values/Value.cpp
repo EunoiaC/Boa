@@ -8,8 +8,12 @@
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUM";
 
+BaseValue::BaseValue(string t) {
+    type = t;
+}
+
 template<class valueType>
-Value<valueType>::Value(valueType v, string t) {
+Value<valueType>::Value(valueType v, string t) : BaseValue(t) {
     val = v;
     type = std::move(t);
 }

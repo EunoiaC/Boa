@@ -12,6 +12,14 @@ Error.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.cpp
+Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.h
+Values/Number.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
 Lexer.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
@@ -102,6 +110,14 @@ string
 string
 -
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
+Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+math.h
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
 Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
@@ -125,4 +141,6 @@ fstream
 -
 vector
 -
+includes/Interpreter.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.cpp
 

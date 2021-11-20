@@ -9,11 +9,14 @@
 class Node {
 public:
     Node(string type);
+
     /**
      * Type of the node
      */
-     string type;
-     virtual string toString();
+    int posStart, posEnd;
+    string type;
+
+    virtual string toString();
 };
 
 

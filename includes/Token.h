@@ -17,11 +17,11 @@ public:
     /**
      * The starting position of the token at a certain line
      */
-    int pos_start;
+    int posStart;
     /**
      * The ending position of the token at a certain line
      */
-    int pos_end;
+    int posEnd;
     /**
      * The line the token is on
      */

@@ -4,11 +4,13 @@
 
 #include "UnaryOperationNode.h"
 
-UnaryOperationNode::UnaryOperationNode(string op, Node *node) : Node(N_UNOP){
+UnaryOperationNode::UnaryOperationNode(Token<string> * op, Node *node) : Node(N_UNOP){
     this->op = op;
     this->node = node;
+    posStart = op->posStart;
+    posEnd = node->posEnd;
 }
 
 string UnaryOperationNode::toString() {
-    return "(" + op + ", " + node->toString() + ")";
+    return "(" + op->type + ", " + node->toString() + ")";
 }

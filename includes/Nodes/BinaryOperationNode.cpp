@@ -8,6 +8,8 @@ BinaryOperationNode::BinaryOperationNode(Node *left, Token<string>* opTok1, Node
     this->left = left;
     this->right = right;
     this->opTok = opTok1;
+    posStart = left->posStart;
+    posEnd = right->posEnd;
 }
 
 Node *BinaryOperationNode::getLeft() {

@@ -24,3 +24,25 @@ Number* Number::floor() {
 double Number::getValue() {
     return numValue;
 }
+
+Number *Number::add(Number *s) {
+    return new Number(numValue + s->getValue());
+}
+
+Number *Number::divide(Number *s) {
+    return new Number(numValue / s->getValue());
+}
+
+Number *Number::subtract(Number *s) {
+    return new Number(numValue - s->getValue());
+}
+
+Number *Number::multiply(Number *s) {
+    return new Number(numValue * s->getValue());
+}
+
+Number *Number::setPos(int start, int end) {
+    posEnd = end;
+    posStart = start;
+    return this;
+}

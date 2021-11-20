@@ -7,9 +7,9 @@
 
 class UnaryOperationNode : public Node {
 public:
-    string op;
+    Token<string> *  op;
     Node * node;
-    UnaryOperationNode(string op, Node * node);
+    UnaryOperationNode(Token<string> * op, Node * node);
     string toString();
 };
 

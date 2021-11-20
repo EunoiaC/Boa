@@ -8,6 +8,7 @@
 
 class Number : public Value<double> {
 public:
+    int posStart, posEnd;
     double numValue;
     Number(double value);
     bool compare(Number* s);
@@ -20,6 +21,11 @@ public:
      * @return The value of this number rounded down
      */
     Number* floor();
+    Number* add(Number* s);
+    Number* subtract(Number* s);
+    Number* multiply(Number* s);
+    Number* divide(Number* s);
+    Number* setPos(int start, int end);
 };
 
 

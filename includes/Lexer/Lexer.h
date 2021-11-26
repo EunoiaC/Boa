@@ -8,8 +8,8 @@
 #include <vector>
 #include <map>
 #include <fstream>
-#include "Token.h"
-#include "TokenType.h"
+#include "../Token/Token.h"
+#include "../Token/TokenType.h"
 
 using namespace std;
 

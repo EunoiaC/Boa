@@ -6,7 +6,7 @@
 #define BOA_PARSER_H
 
 #include <vector>
-#include "../TokenType.h"
+#include "../Token/TokenType.h"
 #include "../Values/Value.cpp"
 #include "../Nodes/BinaryOperationNode.cpp"
 #include "../Nodes/UnaryOperationNode.cpp"

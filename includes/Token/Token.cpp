@@ -30,7 +30,7 @@ string BaseToken::toString() {
 template<class tokType>
 Token<tokType>::Token(string t, tokType v, int start_pos, int end_pos, int line_num) : BaseToken(t, start_pos, end_pos, line_num) {
     type = t;
-    value = new Value<tokType>(v, t);
+    value = new Value<tokType>(v, t, fName, fTxt);
 }
 
 template<class tokType>

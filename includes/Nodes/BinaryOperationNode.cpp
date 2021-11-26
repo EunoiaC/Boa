@@ -10,6 +10,7 @@ BinaryOperationNode::BinaryOperationNode(Node *left, Token<string>* opTok1, Node
     this->opTok = opTok1;
     posStart = left->posStart;
     posEnd = right->posEnd;
+    line = left->line;
 }
 
 Node *BinaryOperationNode::getLeft() {

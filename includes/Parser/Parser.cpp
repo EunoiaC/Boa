@@ -41,7 +41,7 @@ ParseResult *Parser::factor() {
         advance();
         Node *f = res->reg(factor());
         if (res->error) return res;
-        return res->success(new UnaryOperationNode((Token<string>*) tok, (NumberNode *) f));
+        return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
     } else if (tok->getType() == T_NUM) {
         advance();
         return res->success(new NumberNode((Token<double> *) tok));

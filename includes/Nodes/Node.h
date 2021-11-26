@@ -13,7 +13,7 @@ public:
     /**
      * Type of the node
      */
-    int posStart, posEnd;
+    int posStart, posEnd, line;
     string type;
 
     virtual string toString();

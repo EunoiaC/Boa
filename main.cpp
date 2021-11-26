@@ -1,10 +1,9 @@
 #include <iostream>
 #include "includes/Parser/Parser.cpp"
-#include "includes/Lexer.cpp"
+#include "includes/Lexer/Lexer.cpp"
 #include <string>
-#include <fstream>
 #include <vector>
-#include "includes/Interpreter.cpp"
+#include "includes/Interpreter/Interpreter.cpp"
 
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
@@ -16,10 +15,11 @@ int main() {
     Parser *p;
     ParseResult *res;
 
-    string fileName = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
+    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
+    string fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
 
     //File
-    ifstream file(fileName);
+    ifstream file(filePath);
 
     //Reading file
     string fileText;
@@ -31,18 +31,27 @@ int main() {
         fileText += line;
     }
 
+    file.close();
+
     l = new Lexer(fileText, fileName);
     vector<BaseToken *> v = l->makeTokens();
     p = new Parser(v, fileName, lines);
     res = p->parse();
     if (res->error) {
         cout << res->error->toString() << endl;
+        return 0;
     } else {
         //cout << "AST: " + res->node->toString() << endl;
     }
-    Interpreter *i = new Interpreter();
-    auto result = i->visit(res->node);
-    cout << ((Number*) result)->numValue << endl;
+    Interpreter *i = new Interpreter(fileName, lines);
+    Context *ctx = new Context("<program>");
+    RuntimeResult* result = i->visit(res->node, ctx);
+    if(result->error){
+        cout << result->error->toString() << endl;
+        return 0;
+    } else {
+        cout << ((Number *) result->value)->numValue << endl;
+    }
     return 0;
 }
 

@@ -11,11 +11,12 @@ using namespace std;
 
 class BaseValue {
 public:
-    BaseValue(string t);
+    BaseValue(string t, string f, string txt);
     /**
      * The object type of the value in a string form
      */
     string type;
+    string fName, fTxt;
 };
 
 template <class valueType> class Value : public BaseValue{
@@ -25,7 +26,7 @@ private:
      */
     valueType val;
 public:
-    Value(valueType v, string t);
+    Value(valueType v, string t, string f, string txt);
     /**
      * @return The value of the valueType
      */

@@ -4,10 +4,10 @@
 CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Errors/Error.cpp \
  ../includes/Errors/Error.h \
- ../includes/Interpreter.cpp \
- ../includes/Interpreter.h \
- ../includes/Lexer.cpp \
- ../includes/Lexer.h \
+ ../includes/Interpreter/Interpreter.cpp \
+ ../includes/Interpreter/Interpreter.h \
+ ../includes/Lexer/Lexer.cpp \
+ ../includes/Lexer/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.cpp \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/Node.cpp \
@@ -20,9 +20,11 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \
  ../includes/Parser/Parser.h \
- ../includes/Token.cpp \
- ../includes/Token.h \
- ../includes/TokenType.h \
+ ../includes/RuntimeResult/RuntimeResult.cpp \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/Token/Token.cpp \
+ ../includes/Token/Token.h \
+ ../includes/Token/TokenType.h \
  ../includes/Values/Number.cpp \
  ../includes/Values/Number.h \
  ../includes/Values/Value.cpp \

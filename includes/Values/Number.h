@@ -4,13 +4,16 @@
 #pragma once
 #ifndef BOA_NUMBER_H
 #define BOA_NUMBER_H
+#include "../Errors/RuntimeError.cpp"
 
 
 class Number : public Value<double> {
 public:
-    int posStart, posEnd;
+    Error *rtError;
+    Context *ctx;
+    int posStart, posEnd, line;
     double numValue;
-    Number(double value);
+    Number(double value, string f, string txt);
     bool compare(Number* s);
     double getValue();
     /**
@@ -25,7 +28,8 @@ public:
     Number* subtract(Number* s);
     Number* multiply(Number* s);
     Number* divide(Number* s);
-    Number* setPos(int start, int end);
+    Number* setPos(int start, int end, int line);
+    Number * setContext(Context *c);
 };
 
 

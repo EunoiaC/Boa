@@ -9,6 +9,7 @@ UnaryOperationNode::UnaryOperationNode(Token<string> * op, Node *node) : Node(N_
     this->node = node;
     posStart = op->posStart;
     posEnd = node->posEnd;
+    line = op->line;
 }
 
 string UnaryOperationNode::toString() {

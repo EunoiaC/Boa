@@ -12,29 +12,31 @@ Error.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
 Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.h
-Values/Number.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+../Values/Number.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
+../RuntimeResult/RuntimeResult.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.cpp
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
 Lexer.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 vector
 -
 map
 -
 fstream
 -
-Token.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
-TokenType.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Token/TokenType.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
 BinaryOperationNode.h
@@ -57,8 +59,8 @@ NumberNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
 Node.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
-../Token.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
+../Token/Token.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
 UnaryOperationNode.h
@@ -81,8 +83,8 @@ Parser.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
 vector
 -
-../TokenType.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+../Token/TokenType.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 ../Values/Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
 ../Nodes/BinaryOperationNode.cpp
@@ -96,17 +98,23 @@ fstream
 ParseResult.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.cpp
-Token.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.cpp
+RuntimeResult.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token.h
-Values/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
+Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Values/Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 string
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/TokenType.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 string
 -
 
@@ -133,14 +141,14 @@ iostream
 -
 includes/Parser/Parser.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
-includes/Lexer.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer.cpp
+includes/Lexer/Lexer.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
 string
 -
 fstream
 -
 vector
 -
-includes/Interpreter.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter.cpp
+includes/Interpreter/Interpreter.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
 

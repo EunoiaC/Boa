@@ -56,23 +56,25 @@ Token<string> *Lexer::makeString() {
     char stopChar = currChar; //the char that ends the string (" or ')
     string str = "";
     int start = charLineIdx;
+    int currLineIdx = lineIdx;
     advance();
     while(currChar != stopChar) {
         str += currChar;
         advance();
     }
     advance(); //advance past the stop char
-    return new Token<string>(T_STRING, str, start, charLineIdx - 1, lineIdx);
+    return new Token<string>(T_STRING, str, start, charLineIdx - 1, currLineIdx);
 }
 
 Token<double> *Lexer::makeNumber() {
     string number = "";
     int start = charLineIdx;
+    int currLineIdx = lineIdx;
     while ((NUMBERS + ".").find(currChar) != string::npos) {
         number += currChar;
         advance();
     }
-    return new Token<double>(T_NUM, stod(number), start, charLineIdx - 1, lineIdx);
+    return new Token<double>(T_NUM, stod(number), start, charLineIdx - 1, currLineIdx);
 }
 
 vector<BaseToken *> Lexer::makeTokens() {

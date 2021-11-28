@@ -10,12 +10,46 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_UNOP] = &Interpreter::visitUnaryOpNode;
     funcMap[N_BINOP] = &Interpreter::visitBinOpNode;
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
+    funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
+    funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
     string methodName = n->type;
     return (this->*funcMap[methodName])(n, c);
 }
+
+RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
+    RuntimeResult *result = new RuntimeResult();
+    VarAccessNode *node = (VarAccessNode *) n;
+    string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
+    BaseValue *value = c->symbolTable->get(varName);
+
+    if (!value) {
+        return result->failure(new RuntimeError(
+                node->posStart,
+                node->posEnd,
+                node->line,
+                fName,
+                lines[node->line],
+                varName + " is not defined",
+                c
+        ));
+    }
+    return result->success(value);
+}
+
+RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
+    auto *result = new RuntimeResult();
+    auto *node = (VarAssignNode *) n;
+    string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
+    BaseValue *value = result->reg(visit(node->valueNode, c));
+
+    if(result->error) return result;
+    c->symbolTable->set(varName, value);
+    return result->success(value);
+}
+
 
 RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     NumberNode *node = (NumberNode *) n;
@@ -39,13 +73,17 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     Number *result = new Number(0, fName, lines[node->opTok->line]);
 
     if (node->opTok->type == PLUS) {
-        result = ((Number *) left)->add((Number *) right);
+        result = ((Number *) left)->add(right);
     } else if (node->opTok->type == MINUS) {
-        result = ((Number *) left)->subtract((Number *) right);
+        result = ((Number *) left)->subtract(right);
     } else if (node->opTok->type == MULTIPLY) {
-        result = ((Number *) left)->multiply((Number *) right);
+        result = ((Number *) left)->multiply(right);
     } else if (node->opTok->type == DIVIDE) {
-        result = ((Number *) left)->divide((Number *) right);
+        result = ((Number *) left)->divide(right);
+    } else if (node->opTok->type == POWER) {
+        result = ((Number *) left)->power(right);
+    } else if (node->opTok->type == MOD) {
+        result = ((Number *) left)->mod(right);
     }
 
     if (result->rtError) return rtRes->failure(result->rtError);

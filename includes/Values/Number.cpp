@@ -11,18 +11,6 @@ Number::Number(double value, string f, string txt) : Value<double>(value, T_NUM,
     setContext(nullptr);
 }
 
-bool Number::compare(Number *n) {
-    return n->getValue() == numValue;
-}
-
-Number *Number::ceiling() {
-    return new Number(::ceil(numValue), fName, fTxt);
-}
-
-Number *Number::floor() {
-    return new Number(::floor(numValue), fName, fTxt);
-}
-
 double Number::getValue() {
     return numValue;
 }
@@ -32,35 +20,56 @@ Number *Number::setContext(Context *c) {
     return this;
 }
 
-Number *Number::add(Number *s) {
-    return (new Number(numValue + s->getValue(), fName, fTxt))->setContext(ctx);
-}
-
-Number *Number::divide(Number *s) {
+Number *Number::divide(BaseValue *s) {
     Number *output;
-    if (s->getValue() == 0) {
-        //cout << "Error: Division by zero" << endl;
-        rtError = new RuntimeError(
-                s->posStart,
-                s->posEnd,
-                s->line,
-                fName,
-                fTxt,
-                "Division by zero",
-                ctx
-        );
+    if(s->type == T_NUM){
+        auto *num = (Number *) s;
+        if (num->getValue() == 0) {
+            //cout << "Error: Division by zero" << endl;
+            rtError = new RuntimeError(
+                    num->posStart,
+                    num->posEnd,
+                    num->line,
+                    fName,
+                    fTxt,
+                    "Division by zero",
+                    ctx
+            );
+        }
+        output = (new Number(numValue / num->getValue(), fName, fTxt))->setContext(ctx);
+        output->rtError = rtError;
+        return output;
     }
-    output = (new Number(numValue / s->getValue(), fName, fTxt))->setContext(ctx);
-    output->rtError = rtError;
-    return output;
 }
 
-Number *Number::subtract(Number *s) {
-    return (new Number(numValue - s->getValue(), fName, fTxt))->setContext(ctx);
+Number *Number::multiply(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(numValue * ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
 }
 
-Number *Number::multiply(Number *s) {
-    return (new Number(numValue * s->getValue(), fName, fTxt))->setContext(ctx);
+Number *Number::add(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(numValue + ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+Number *Number::subtract(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(numValue - ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+Number *Number::power(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(pow(numValue, ((Number*) s)->getValue()), fName, fTxt))->setContext(ctx);
+    }
+}
+
+Number *Number::mod(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(fmod(numValue, ((Number*) s)->getValue()), fName, fTxt))->setContext(ctx);
+    }
 }
 
 Number *Number::setPos(int start, int end, int line) {

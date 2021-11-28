@@ -9,6 +9,7 @@ Context::Context(string displayName) {
     parentCtx = nullptr;
     parentEntry = -1;
     line = -1;
+    symbolTable = nullptr;
 }
 
 Context *Context::setParentEntry(int parentEntry, string fName, string fTxt, int line) {

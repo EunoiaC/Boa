@@ -14,20 +14,13 @@ public:
     int posStart, posEnd, line;
     double numValue;
     Number(double value, string f, string txt);
-    bool compare(Number* s);
     double getValue();
-    /**
-     * @return The value of this number rounded up
-     */
-    Number* ceiling();
-    /**
-     * @return The value of this number rounded down
-     */
-    Number* floor();
-    Number* add(Number* s);
-    Number* subtract(Number* s);
-    Number* multiply(Number* s);
-    Number* divide(Number* s);
+    Number* add(BaseValue* s);
+    Number* subtract(BaseValue* s);
+    Number* multiply(BaseValue* s);
+    Number* divide(BaseValue* s);
+    Number* power(BaseValue* s);
+    Number* mod(BaseValue* s);
     Number* setPos(int start, int end, int line);
     Number * setContext(Context *c);
 };

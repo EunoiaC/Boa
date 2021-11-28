@@ -34,22 +34,33 @@ ParseResult *Parser::parse() {
     return res;
 }
 
-ParseResult *Parser::factor() {
+ParseResult *Parser::atom() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     BaseToken *tok = currentToken;
-    if (tok->getType() == PLUS || tok->getType() == MINUS) {
-        advance();
-        Node *f = res->reg(factor());
-        if (res->error) return res;
-        return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
-    } else if (tok->getType() == T_NUM) {
+
+    if (tok->getType() == T_NUM) {
+        res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
-    } else if (tok->type == L_PAREN) {
+    } else if(tok->getType() == IDENTIFIER){
+        res->regAdvancement();
+        advance();
+        //If the token is equal, we assign a new variable to the node
+        if(currentToken->type == EQUAL){
+            res->regAdvancement();
+            advance();
+            Node* exp = res->reg(expr());
+            if(res->error) return res;
+            return res->success(new VarAssignNode((Token<string> *) tok, exp));
+        }
+        return res->success(new VarAccessNode((Token<string> *) tok));
+    }else if (tok->type == L_PAREN) {
+        res->regAdvancement();
         advance();
         Node *exp = res->reg(expr());
         if (res->error) return res;
         if (currentToken->getType() == R_PAREN) {
+            res->regAdvancement();
             advance();
             return res->success(exp);
         } else {
@@ -58,26 +69,47 @@ ParseResult *Parser::factor() {
                               "InvalidSyntaxError", "Expected a closing parenthesis"));
         }
     }
+
     return res->failure(new Error(tok->posStart, tok->posEnd, tok->line, fName, currLine, "InvalidSyntaxError",
-                                  "Expected a number"));
+                                  "Expected a number, variable, operation, or '('"));
+
+}
+
+ParseResult *Parser::factor() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    BaseToken *tok = currentToken;
+    if (tok->getType() == PLUS || tok->getType() == MINUS) {
+        res->regAdvancement();
+        advance();
+        Node *f = res->reg(factor());
+        if (res->error) return res;
+        return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
+    }
+    return power();
+}
+
+ParseResult *Parser::power() {
+    return binOp({POWER}, &Parser::atom, &Parser::factor);
 }
 
 ParseResult *Parser::term() {
-    return binOp(vector<string>{MULTIPLY, DIVIDE}, &Parser::factor);
+    return binOp({MULTIPLY, DIVIDE, MOD}, &Parser::factor, &Parser::factor);
 }
 
 ParseResult *Parser::expr() {
-    return binOp(vector<string>{PLUS, MINUS}, &Parser::term);
+    ParseResult * res = new ParseResult(nullptr, nullptr);
+    return binOp({PLUS, MINUS}, &Parser::term, &Parser::term);
 }
 
-ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*func)()) {
+ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)()) {
     ParseResult *res = new ParseResult(nullptr, nullptr);
-    Node *left = res->reg((this->*func)());
+    Node *left = res->reg((this->*funcA)());
     if (res->error) return res;
     while (find(ops.begin(), ops.end(), currentToken->getType()) != ops.end()) {
         BaseToken *opTok = currentToken;
+        res->regAdvancement();
         advance();
-        Node *right = res->reg((this->*func)());
+        Node *right = res->reg((this->*funcB)());
         if (res->error) return res;
         left = new BinaryOperationNode(left, (Token<string> *) opTok, right);
     }

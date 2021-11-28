@@ -24,7 +24,7 @@ string RuntimeError::generateTraceback() {
     string fileName = fName;
     while(context){
         //cout << "File: " << fileName << " Line: " << l << endl;
-        res = " File " + fileName + ", line " + to_string( l + 1) + ", in " + context->displayName + "\n";
+        res = "    File " + fileName + ", line " + to_string( l + 1) + ", in " + context->displayName + "\n";
         fileName = context->fName;
         l = context->line;
         context = context->parentCtx;

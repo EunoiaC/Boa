@@ -20,12 +20,18 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h

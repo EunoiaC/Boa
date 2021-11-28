@@ -11,6 +11,8 @@ Context.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+../SymbolTable/SymbolTable.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
 Error.h
@@ -82,6 +84,18 @@ UnaryOperationNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.cpp
+VarAccessNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.cpp
+VarAssignNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
@@ -105,6 +119,10 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
 ../Nodes/UnaryOperationNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
+../Nodes/VarAccessNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.cpp
+../Nodes/VarAssignNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.cpp
 vector
 -
 fstream
@@ -117,6 +135,14 @@ RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
+SymbolTable.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+map
+-
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
 Token.h

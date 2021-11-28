@@ -8,6 +8,7 @@
 
 class ParseResult {
 public:
+    int advanceCount;
     Node * node;
     Error * error;
     ParseResult(Node * node, Error * error);
@@ -15,6 +16,7 @@ public:
     Node * reg(Node * result);
     ParseResult * success(Node * node);
     ParseResult * failure(Error * error);
+    void regAdvancement();
 };
 
 

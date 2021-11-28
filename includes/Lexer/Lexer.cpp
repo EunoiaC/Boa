@@ -31,6 +31,8 @@ void Lexer::advance() {
             {'*',  new BaseToken(MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
             {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
             {'=',  new BaseToken(EQUAL, charLineIdx, charLineIdx, lineIdx)},
+            {'^',  new BaseToken(POWER, charLineIdx, charLineIdx, lineIdx)},
+            {'%',  new BaseToken(MOD, charLineIdx, charLineIdx, lineIdx)},
             {'<',  new BaseToken(LESS_THAN, charLineIdx, charLineIdx, lineIdx)},
             {'>',  new BaseToken(GREATER_THAN, charLineIdx, charLineIdx, lineIdx)},
             {'(',  new BaseToken(L_PAREN, charLineIdx, charLineIdx, lineIdx)},
@@ -43,13 +45,18 @@ void Lexer::advance() {
 }
 
 Token<string> *Lexer::makeIdentifier() {
-    string identifier = "";
+    string identifier;
     int start = charLineIdx;
+    int currLineIdx = lineIdx;
     while ((LETTERS + "_").find(currChar) != string::npos) {
         identifier += currChar;
         advance();
     }
-    return new Token<string>(T_IDENTIFIER, identifier, start, charLineIdx - 1, lineIdx);
+    string type = IDENTIFIER;
+    if(find(keyWords.begin(), keyWords.end(), identifier) != keyWords.end()) {
+        type = KEYWORD;
+    }
+    return new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::makeString() {

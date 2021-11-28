@@ -36,7 +36,9 @@ private:
     ifstream file;
 public:
     Lexer(string fileText, string fileName);
-
+    vector<string> keyWords = {
+            "var"
+    };
     /**
      * Map assigning each possible character a token type
      */

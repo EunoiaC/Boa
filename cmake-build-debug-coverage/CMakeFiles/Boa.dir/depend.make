@@ -20,12 +20,18 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/NumberNode.h \
  ../includes/Nodes/UnaryOperationNode.cpp \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/VarAccessNode.cpp \
+ ../includes/Nodes/VarAccessNode.h \
+ ../includes/Nodes/VarAssignNode.cpp \
+ ../includes/Nodes/VarAssignNode.h \
  ../includes/Parser/ParseResult.cpp \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \
  ../includes/Parser/Parser.h \
  ../includes/RuntimeResult/RuntimeResult.cpp \
  ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.cpp \
+ ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/Token.cpp \
  ../includes/Token/Token.h \
  ../includes/Token/TokenType.h \

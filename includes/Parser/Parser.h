@@ -10,6 +10,8 @@
 #include "../Values/Value.cpp"
 #include "../Nodes/BinaryOperationNode.cpp"
 #include "../Nodes/UnaryOperationNode.cpp"
+#include "../Nodes/VarAccessNode.cpp"
+#include "../Nodes/VarAssignNode.cpp"
 //#include "Nodes/NumberNode.cpp"
 #include <vector>
 #include <fstream>
@@ -29,8 +31,10 @@ public:
     ParseResult * factor();
     ParseResult * term();
     ParseResult * expr();
+    ParseResult * atom();
+    ParseResult * power();
     ParseResult * parse();
-    ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*func)());
+    ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 
 

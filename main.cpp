@@ -9,14 +9,17 @@
 #pragma ide diagnostic ignored "EndlessLoop"
 using namespace std;
 
-int main() {
-    vector<string> lines;
-    Lexer *l;
-    Parser *p;
-    ParseResult *res;
+vector<string> lines;
+Lexer *l;
+Parser *p;
+ParseResult *res;
+SymbolTable *globalSymbolTable = new SymbolTable();
+string fileName;
 
+int readFile(){
     string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
-    string fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
+    fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
+
 
     //File
     ifstream file(filePath);
@@ -45,6 +48,7 @@ int main() {
     }
     Interpreter *i = new Interpreter(fileName, lines);
     Context *ctx = new Context("<program>");
+    ctx->symbolTable = globalSymbolTable;
     RuntimeResult* result = i->visit(res->node, ctx);
     if(result->error){
         cout << result->error->toString() << endl;
@@ -53,6 +57,48 @@ int main() {
         cout << ((Number *) result->value)->numValue << endl;
     }
     return 0;
+}
+
+int shellInput(){
+    fileName = "<stdin>";
+    while (true){
+        lines = vector<string>();
+        string input;
+        cout << "Boa % ";
+        getline(cin, input);
+
+        input += "\n";
+
+        lines.push_back(input);
+
+        l = new Lexer(input, fileName);
+        vector<BaseToken *> v = l->makeTokens();
+        p = new Parser(v, fileName, lines);
+        res = p->parse();
+        if (res->error) {
+            cout << res->error->toString() << endl;
+            continue;
+        } else {
+            //cout << "AST: " + res->node->toString() << endl;
+        }
+        Interpreter *i = new Interpreter(fileName, lines);
+        Context *ctx = new Context("<program>");
+        ctx->symbolTable = globalSymbolTable;
+        RuntimeResult* result = i->visit(res->node, ctx);
+        if(result->error){
+            cout << result->error->toString() << endl;
+            continue;
+        } else {
+            cout << ((Number *) result->value)->numValue << endl;
+        }
+    }
+    return 0;
+}
+
+int main() {
+    globalSymbolTable->set("null", new Number(0, fileName, "Definition in default globalSymbolTable"));
+    globalSymbolTable->set("PI", new Number(M_PI, fileName, "Definition in default globalSymbolTable"));
+    return shellInput();
 }
 
 #pragma clang diagnostic pop

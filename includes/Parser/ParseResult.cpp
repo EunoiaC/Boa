@@ -7,9 +7,15 @@
 ParseResult::ParseResult(Node *node, Error *error) {
     this->node = node;
     this->error = error;
+    advanceCount = 0;
+}
+
+void ParseResult::regAdvancement() {
+    advanceCount++;
 }
 
 Node * ParseResult::reg(ParseResult *result) {
+    advanceCount += result->advanceCount;
     if (result->error) {
         error = result->error;
     }
@@ -26,6 +32,6 @@ ParseResult *ParseResult::success(Node *node) {
 }
 
 ParseResult *ParseResult::failure(Error *error) {
-    this->error = error;
+    if(!error || advanceCount == 0) this->error = error;
     return this;
 }

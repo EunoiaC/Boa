@@ -26,7 +26,7 @@ void Lexer::advance() {
         currChar = '\0';
     }
     charToToken = {
-            {'+',  new BaseToken(PLUS, charLineIdx, charLineIdx, lineIdx)},
+//            {'+',  new BaseToken(PLUS, charLineIdx, charLineIdx, lineIdx)},
             {'-',  new BaseToken(MINUS, charLineIdx, charLineIdx, lineIdx)},
             {'*',  new BaseToken(MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
             {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
@@ -53,7 +53,7 @@ Token<string> *Lexer::makeIdentifier() {
         advance();
     }
     string type = IDENTIFIER;
-    if(find(keyWords.begin(), keyWords.end(), identifier) != keyWords.end()) {
+    if (find(keyWords.begin(), keyWords.end(), identifier) != keyWords.end()) {
         type = KEYWORD;
     }
     return new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
@@ -65,7 +65,7 @@ Token<string> *Lexer::makeString() {
     int start = charLineIdx;
     int currLineIdx = lineIdx;
     advance();
-    while(currChar != stopChar) {
+    while (currChar != stopChar) {
         str += currChar;
         advance();
     }
@@ -84,15 +84,28 @@ Token<double> *Lexer::makeNumber() {
     return new Token<double>(T_NUM, stod(number), start, charLineIdx - 1, currLineIdx);
 }
 
+Token<string> *Lexer::plusOperation() {
+    int start = charLineIdx;
+    int currLineIdx = lineIdx;
+    advance();
+    if (currChar == '=') {
+        advance();
+        return new Token<string>(PLUS_EQUAL, "+=", start, charLineIdx, currLineIdx);
+    }
+    return new Token<string>(PLUS, "+", start, start, currLineIdx);
+}
+
 vector<BaseToken *> Lexer::makeTokens() {
     vector<BaseToken *> toks;
     while (currChar != '\0') {
         if (charToToken.count(currChar) != 0) {
-            if(currChar == '\n') {
+            if (currChar == '\n') {
                 charLineIdx = -1; //reset the charLineIdx
             }
             toks.push_back(charToToken.find(currChar)->second);
             advance();
+        } else if (currChar == '+') {
+            toks.push_back(plusOperation());
         } else if (currChar == '"' || currChar == '\'') {
             toks.push_back(makeString());
         } else if ((LETTERS + "_").find(currChar) != string::npos) {

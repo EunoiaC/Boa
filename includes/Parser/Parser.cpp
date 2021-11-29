@@ -42,19 +42,25 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
-    } else if(tok->getType() == IDENTIFIER){
+    } else if (tok->getType() == IDENTIFIER) {
         res->regAdvancement();
         advance();
         //If the token is equal, we assign a new variable to the node
-        if(currentToken->type == EQUAL){
+        if (currentToken->type == EQUAL) {
             res->regAdvancement();
             advance();
-            Node* exp = res->reg(expr());
-            if(res->error) return res;
+            Node *exp = res->reg(expr());
+            if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
+        } else if (currentToken->type == PLUS_EQUAL) {
+            res->regAdvancement();
+            advance();
+            Node *exp = res->reg(expr());
+            if (res->error) return res;
+            return res->success(new VarOperationNode((Token<string> *) tok, exp, PLUS_EQUAL));
         }
         return res->success(new VarAccessNode((Token<string> *) tok));
-    }else if (tok->type == L_PAREN) {
+    } else if (tok->type == L_PAREN) {
         res->regAdvancement();
         advance();
         Node *exp = res->reg(expr());
@@ -97,7 +103,7 @@ ParseResult *Parser::term() {
 }
 
 ParseResult *Parser::expr() {
-    ParseResult * res = new ParseResult(nullptr, nullptr);
+    ParseResult *res = new ParseResult(nullptr, nullptr);
     return binOp({PLUS, MINUS}, &Parser::term, &Parser::term);
 }
 

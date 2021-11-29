@@ -12,6 +12,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
     funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
+    funcMap[N_VAR_OPERATION] = &Interpreter::visitVarOperationNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -39,12 +40,42 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     return result->success(value);
 }
 
+RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
+    RuntimeResult *result = new RuntimeResult();
+    VarOperationNode *node = (VarOperationNode *) n;
+    string varName = ((Token<string> *) node->var)->getValueObject()->getValue();
+    BaseValue *value = c->symbolTable->get(varName);
+
+    if (!value) {
+        return result->failure(new RuntimeError(
+                node->posStart,
+                node->posEnd,
+                node->line,
+                fName,
+                lines[node->line],
+                varName + " is not defined",
+                c
+        ));
+    }
+
+    BaseValue *finValue = nullptr;
+
+    if(node->op == PLUS_EQUAL) {
+        if(value->type == T_NUM){
+            BaseValue * toAdd = result->reg(visit(node->value, c));
+            if(result->error) return result;
+            finValue = ((Number*) value)->add(toAdd);
+            c->symbolTable->set(varName, finValue);
+        }
+    }
+    return result->success(finValue);
+}
+
 RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     auto *result = new RuntimeResult();
     auto *node = (VarAssignNode *) n;
     string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
     BaseValue *value = result->reg(visit(node->valueNode, c));
-
     if(result->error) return result;
     c->symbolTable->set(varName, value);
     return result->success(value);

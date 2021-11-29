@@ -12,6 +12,7 @@
 #include "../Nodes/UnaryOperationNode.cpp"
 #include "../Nodes/VarAccessNode.cpp"
 #include "../Nodes/VarAssignNode.cpp"
+#include "../Nodes/VarOperationNode.cpp"
 //#include "Nodes/NumberNode.cpp"
 #include <vector>
 #include <fstream>

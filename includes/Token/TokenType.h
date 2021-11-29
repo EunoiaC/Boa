@@ -20,6 +20,7 @@ static const string DIVIDE = "DIVIDE";
 static const string POWER = "POWER";
 static const string MOD = "MOD";
 static const string EQUAL = "EQUAL";
+static const string PLUS_EQUAL = "PLUS_EQUAL";
 static const string LESS_THAN = "LESS_THAN";
 static const string GREATER_THAN = "GREATER_THAN";
 static const string L_PAREN = "L_PAREN";

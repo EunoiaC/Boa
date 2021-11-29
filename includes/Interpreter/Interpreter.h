@@ -21,6 +21,7 @@ public:
     RuntimeResult * visitUnaryOpNode(Node * n, Context* c);
     RuntimeResult * visitVarAssignNode(Node * n, Context* c);
     RuntimeResult * visitVarAccessNode(Node * n, Context* c);
+    RuntimeResult * visitVarOperationNode(Node * n, Context* c);
 };
 
 

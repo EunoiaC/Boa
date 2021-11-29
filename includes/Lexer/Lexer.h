@@ -63,6 +63,8 @@ public:
      */
     Token<string> *makeIdentifier();
 
+    Token<string> *plusOperation();
+
     /**
      * @return Makes a set of characters into a Number
      */

@@ -96,6 +96,12 @@ VarAssignNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp
+VarOperationNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
@@ -123,6 +129,8 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.cpp
 ../Nodes/VarAssignNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.cpp
+../Nodes/VarOperationNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp
 vector
 -
 fstream

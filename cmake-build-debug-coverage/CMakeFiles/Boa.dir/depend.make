@@ -24,6 +24,8 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.cpp \
  ../includes/Nodes/VarAssignNode.h \
+ ../includes/Nodes/VarOperationNode.cpp \
+ ../includes/Nodes/VarOperationNode.h \
  ../includes/Parser/ParseResult.cpp \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \

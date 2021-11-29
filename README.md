@@ -17,5 +17,5 @@ Variables have operations that can be used to modify their values
 c = 90
 c += 25         //Variable c is now 125
 d = 2
-45 + d += 30    //Variable d is now 32
+x = 45 + d += 20 //Variable d is now 32 and x is 67
 ```

@@ -4,7 +4,7 @@
 - [Variables](#Variables)
 
 ## Variables
-Variables are useful with many operations,
+Variables are useful with many operations. The store a value and can be called in expressions.
 
 ### Variable Declaration
 Variables are declared by creating an identifier and a following equal sign. The value you want goes after the equal sign.
@@ -16,7 +16,7 @@ x = y = z = 9   //Variables x, y, and z are assigned the value 9
 ```
 
 ### Variable operations
-Variables have operations that can be used to modify their values
+Variables have operations that can be used to modify their values, these operations can be used inside of expressions.
 ```
 c = 90
 c += 25         //Variable c is now 115

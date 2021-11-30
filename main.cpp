@@ -3,6 +3,7 @@
 #include "includes/Lexer/Lexer.cpp"
 #include <string>
 #include <vector>
+#include <time.h>
 #include "includes/Interpreter/Interpreter.cpp"
 
 #pragma clang diagnostic push
@@ -71,6 +72,7 @@ int shellInput(){
 
         lines.push_back(input);
 
+        clock_t start = clock();
         l = new Lexer(input, fileName);
         vector<BaseToken *> v = l->makeTokens();
         p = new Parser(v, fileName, lines);
@@ -85,11 +87,13 @@ int shellInput(){
         Context *ctx = new Context("<program>");
         ctx->symbolTable = globalSymbolTable;
         RuntimeResult* result = i->visit(res->node, ctx);
+        clock_t stop = clock();
         if(result->error){
             cout << result->error->toString() << endl;
             continue;
         } else {
             cout << ((Number *) result->value)->numValue << endl;
+            cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
         }
     }
     return 0;

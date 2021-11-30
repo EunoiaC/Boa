@@ -64,6 +64,7 @@ public:
     Token<string> *makeIdentifier();
 
     Token<string> *plusOperation();
+    Token<string> *minusOperation();
 
     /**
      * @return Makes a set of characters into a Number

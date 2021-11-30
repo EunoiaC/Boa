@@ -45,22 +45,27 @@ ParseResult *Parser::atom() {
     } else if (tok->getType() == IDENTIFIER) {
         res->regAdvancement();
         advance();
+        string type = currentToken->getType();
         //If the token is equal, we assign a new variable to the node
-        if (currentToken->type == EQUAL) {
+        if (type == EQUAL) {
             res->regAdvancement();
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
-        } else if (currentToken->type == PLUS_EQUAL) {
+        } else if (type == PLUS_EQUAL || type == MINUS_EQUAL) {
             res->regAdvancement();
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
-            return res->success(new VarOperationNode((Token<string> *) tok, exp, PLUS_EQUAL));
+            return res->success(new VarOperationNode((Token<string> *) tok, exp, type));
+        } else if (type == PLUS_PLUS || type == MINUS_MINUS) {
+            res->regAdvancement();
+            advance();
+            return res->success(new VarOperationNode((Token<string> *) tok, nullptr, type));
         }
         return res->success(new VarAccessNode((Token<string> *) tok));
-    } else if (tok->type == L_PAREN) {
+    } else if (tok->getType() == L_PAREN) {
         res->regAdvancement();
         advance();
         Node *exp = res->reg(expr());

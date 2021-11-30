@@ -22,4 +22,7 @@ c = 90
 c += 25         //Variable c is now 115
 d = 2
 x = 45 + d += 20 //Variable d is now 22 and x is 67
+y = 3
+y--             //Variable y is now 2
+y-=2            //Variable y is now 0
 ```

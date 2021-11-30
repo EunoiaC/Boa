@@ -60,11 +60,23 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
 
     BaseValue *finValue = nullptr;
 
-    if(node->op == PLUS_EQUAL) {
-        if(value->type == T_NUM){
-            BaseValue * toAdd = result->reg(visit(node->value, c));
-            if(result->error) return result;
-            finValue = ((Number*) value)->add(toAdd);
+    if (node->op == PLUS_EQUAL || node->op == MINUS_EQUAL) {
+        if (value->type == T_NUM) {
+            Number *toAdd = (Number *) result->reg(visit(node->value, c));
+            if (result->error) return result;
+            if (node->op == MINUS_EQUAL) {
+                toAdd = toAdd->multiply(new Number(-1, fName, ""));
+            }
+            finValue = ((Number *) value)->add(toAdd);
+            c->symbolTable->set(varName, finValue);
+        }
+    } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
+        if (value->type == T_NUM) {
+            BaseValue *toAdd = new Number(1, fName, "");
+            if (node->op == MINUS_MINUS) {
+                toAdd = ((Number *) toAdd)->multiply(new Number(-1, fName, ""));
+            }
+            finValue = ((Number *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
         }
     }
@@ -76,7 +88,7 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     auto *node = (VarAssignNode *) n;
     string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
     BaseValue *value = result->reg(visit(node->valueNode, c));
-    if(result->error) return result;
+    if (result->error) return result;
     c->symbolTable->set(varName, value);
     return result->success(value);
 }

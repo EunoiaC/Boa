@@ -11,7 +11,6 @@ class Number : public Value<double> {
 public:
     Error *rtError;
     Context *ctx;
-    int posStart, posEnd, line;
     double numValue;
     Number(double value, string f, string txt);
     double getValue();
@@ -21,7 +20,6 @@ public:
     Number* divide(BaseValue* s);
     Number* power(BaseValue* s);
     Number* mod(BaseValue* s);
-    Number* setPos(int start, int end, int line);
     Number * setContext(Context *c);
 };
 

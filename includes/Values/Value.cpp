@@ -8,6 +8,13 @@
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUM";
 
+BaseValue *BaseValue::setPos(int start, int end, int line) {
+    this->posStart = start;
+    this->posEnd = end;
+    this->line = line;
+    return this;
+}
+
 BaseValue::BaseValue(string t, string f, string txt) {
     type = std::move(t);
     fName = std::move(f);

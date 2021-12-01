@@ -71,10 +71,3 @@ Number *Number::mod(BaseValue *s) {
         return (new Number(fmod(numValue, ((Number*) s)->getValue()), fName, fTxt))->setContext(ctx);
     }
 }
-
-Number *Number::setPos(int start, int end, int line) {
-    posEnd = end;
-    posStart = start;
-    this->line = line;
-    return this;
-}

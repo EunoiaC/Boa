@@ -17,6 +17,8 @@ public:
      */
     string type;
     string fName, fTxt;
+    int posStart, posEnd, line;
+    BaseValue * setPos(int start, int end, int line);
 };
 
 template <class valueType> class Value : public BaseValue{

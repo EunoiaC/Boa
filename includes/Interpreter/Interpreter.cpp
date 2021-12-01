@@ -37,6 +37,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                 c
         ));
     }
+    value = value->setPos(node->posStart, node->posEnd, node->line);
     return result->success(value);
 }
 
@@ -96,7 +97,7 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     NumberNode *node = (NumberNode *) n;
-    Number *num = (new Number(node->token->getValueObject()->getValue(), fName,
+    Number *num = (Number*) (new Number(node->token->getValueObject()->getValue(), fName,
                               lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,

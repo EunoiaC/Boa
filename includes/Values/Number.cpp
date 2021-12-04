@@ -42,10 +42,66 @@ Number *Number::divide(BaseValue *s) {
     }
 }
 
+BaseValue *Number::compGreaterThanEquals(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue >= ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::compLessThanEquals(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue <= ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::compGreaterThan(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue > ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::compLessThan(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue < ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::compEquals(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue == ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::compNotEquals(BaseValue *val) {
+    if(val->type == T_NUM) {
+        return (new Number(numValue != ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::andedBy(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(numValue and ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::oredBy(BaseValue *s) {
+    if(s->type == T_NUM) {
+        return (new Number(numValue or ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *Number::notted() {
+    return (new Number(numValue == 0 ? 1 : 0, fName, fTxt))->setContext(ctx);
+}
+
 Number *Number::multiply(BaseValue *s) {
     if(s->type == T_NUM) {
         return (new Number(numValue * ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
     }
+}
+
+string Number::toString() {
+    return to_string(numValue);
 }
 
 Number *Number::add(BaseValue *s) {

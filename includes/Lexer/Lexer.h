@@ -36,8 +36,11 @@ private:
     ifstream file;
 public:
     Lexer(string fileText, string fileName);
-    vector<string> keyWords = {
-            "var"
+
+    map<string, string> keyWords = {
+            {"and", AND},
+            {"or", OR},
+            {"not", NOT}
     };
     /**
      * Map assigning each possible character a token type
@@ -64,7 +67,16 @@ public:
     Token<string> *makeIdentifier();
 
     Token<string> *plusOperation();
+
     Token<string> *minusOperation();
+
+    Token<string> *makeEquals();
+
+    Token<string> *makeNotEquals();
+
+    Token<string> *makeGreaterThan();
+
+    Token<string> *makeLessThan();
 
     /**
      * @return Makes a set of characters into a Number

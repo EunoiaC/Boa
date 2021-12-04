@@ -30,11 +30,8 @@ void Lexer::advance() {
 //            {'-',  new BaseToken(MINUS, charLineIdx, charLineIdx, lineIdx)},
             {'*',  new BaseToken(MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
             {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
-            {'=',  new BaseToken(EQUAL, charLineIdx, charLineIdx, lineIdx)},
             {'^',  new BaseToken(POWER, charLineIdx, charLineIdx, lineIdx)},
             {'%',  new BaseToken(MOD, charLineIdx, charLineIdx, lineIdx)},
-            {'<',  new BaseToken(LESS_THAN, charLineIdx, charLineIdx, lineIdx)},
-            {'>',  new BaseToken(GREATER_THAN, charLineIdx, charLineIdx, lineIdx)},
             {'(',  new BaseToken(L_PAREN, charLineIdx, charLineIdx, lineIdx)},
             {')',  new BaseToken(R_PAREN, charLineIdx, charLineIdx, lineIdx)},
             {'{',  new BaseToken(L_BRACKET, charLineIdx, charLineIdx, lineIdx)},
@@ -53,15 +50,15 @@ Token<string> *Lexer::makeIdentifier() {
         advance();
     }
     string type = IDENTIFIER;
-    if (find(keyWords.begin(), keyWords.end(), identifier) != keyWords.end()) {
-        type = KEYWORD;
+    if (keyWords.find(identifier) != keyWords.end()) {
+        type = keyWords.at(identifier);
     }
     return new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::makeString() {
     char stopChar = currChar; //the char that ends the string (" or ')
-    string str = "";
+    string str;
     int start = charLineIdx;
     int currLineIdx = lineIdx;
     advance();
@@ -74,7 +71,7 @@ Token<string> *Lexer::makeString() {
 }
 
 Token<double> *Lexer::makeNumber() {
-    string number = "";
+    string number;
     int start = charLineIdx;
     int currLineIdx = lineIdx;
     while ((NUMBERS + ".").find(currChar) != string::npos) {
@@ -90,12 +87,59 @@ Token<string> *Lexer::minusOperation() {
     advance();
     if (currChar == '=') {
         advance();
-        return new Token<string>(MINUS_EQUAL, "-=", start, charLineIdx-1, currLineIdx);
+        return new Token<string>(MINUS_EQUAL, "-=", start, charLineIdx - 1, currLineIdx);
     } else if (currChar == '-') {
         advance();
-        return new Token<string>(MINUS_MINUS, "--", start, charLineIdx-1, currLineIdx);
+        return new Token<string>(MINUS_MINUS, "--", start, charLineIdx - 1, currLineIdx);
     }
     return new Token<string>(MINUS, "-", start, start, currLineIdx);
+}
+
+Token<string> *Lexer::makeNotEquals() {
+    int start = charLineIdx;
+    int currLineIdx = lineIdx;
+    advance();
+    if (currChar == '=') {
+        advance();
+        return new Token<string>(NOT_EQUAL, "!=", start, charLineIdx - 1, currLineIdx);
+    }
+    //TODO: return error
+}
+
+Token<string> *Lexer::makeEquals() {
+    int start = charLineIdx;
+    int currLineIdx = lineIdx;
+    string type = EQUAL;
+    advance();
+    if (currChar == '=') {
+        advance();
+        type = EQUAL_EQUAL;
+    }
+    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
+}
+
+Token<string> *Lexer::makeLessThan() {
+    int start = charLineIdx;
+    int currLineIdx = lineIdx;
+    string type = LESS_THAN;
+    advance();
+    if (currChar == '=') {
+        advance();
+        type = LESS_THAN_EQUAL;
+    }
+    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
+}
+
+Token<string> *Lexer::makeGreaterThan() {
+    int start = charLineIdx;
+    int currLineIdx = lineIdx;
+    string type = GREATER_THAN;
+    advance();
+    if (currChar == '=') {
+        advance();
+        type = GREATER_THAN_EQUAL;
+    }
+    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::plusOperation() {
@@ -104,10 +148,10 @@ Token<string> *Lexer::plusOperation() {
     advance();
     if (currChar == '=') {
         advance();
-        return new Token<string>(PLUS_EQUAL, "+=", start, charLineIdx-1, currLineIdx);
+        return new Token<string>(PLUS_EQUAL, "+=", start, charLineIdx - 1, currLineIdx);
     } else if (currChar == '+') {
         advance();
-        return new Token<string>(PLUS_PLUS, "++", start, charLineIdx-1, currLineIdx);
+        return new Token<string>(PLUS_PLUS, "++", start, charLineIdx - 1, currLineIdx);
     }
     return new Token<string>(PLUS, "+", start, start, currLineIdx);
 }
@@ -121,6 +165,14 @@ vector<BaseToken *> Lexer::makeTokens() {
             }
             toks.push_back(charToToken.find(currChar)->second);
             advance();
+        } else if (currChar == '!') {
+            toks.push_back(makeNotEquals());
+        } else if (currChar == '<') {
+            toks.push_back(makeLessThan());
+        } else if (currChar == '>') {
+            toks.push_back(makeGreaterThan());
+        } else if (currChar == '=') {
+            toks.push_back(makeEquals());
         } else if (currChar == '+') {
             toks.push_back(plusOperation());
         } else if (currChar == '-') {

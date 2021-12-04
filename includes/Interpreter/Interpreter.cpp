@@ -97,8 +97,8 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     NumberNode *node = (NumberNode *) n;
-    Number *num = (Number*) (new Number(node->token->getValueObject()->getValue(), fName,
-                              lines[node->token->line]))->setContext(c)->setPos(
+    Number *num = (Number *) (new Number(node->token->getValueObject()->getValue(), fName,
+                                         lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,
             node->token->line
@@ -114,23 +114,40 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     if (rtRes->error) return rtRes;
     BaseValue *right = rtRes->reg(visit(node->getRight(), c));
     if (rtRes->error) return rtRes;
-    Number *result = new Number(0, fName, lines[node->opTok->line]);
+    BaseValue *result = new BaseValue(left->type, fName, lines[node->opTok->line]);
 
+    //TODO: Make operations virtual funcs in (Base)Value.h
     if (node->opTok->type == PLUS) {
-        result = ((Number *) left)->add(right);
+        result = left->add(right);
     } else if (node->opTok->type == MINUS) {
-        result = ((Number *) left)->subtract(right);
+        result = left->subtract(right);
     } else if (node->opTok->type == MULTIPLY) {
-        result = ((Number *) left)->multiply(right);
+        result = left->multiply(right);
     } else if (node->opTok->type == DIVIDE) {
-        result = ((Number *) left)->divide(right);
+        result = left->divide(right);
     } else if (node->opTok->type == POWER) {
-        result = ((Number *) left)->power(right);
+        result = left->power(right);
     } else if (node->opTok->type == MOD) {
-        result = ((Number *) left)->mod(right);
+        result = left->mod(right);
+    } else if (node->opTok->getType() == GREATER_THAN) {
+        result = left->compGreaterThan(right);
+    } else if (node->opTok->getType() == GREATER_THAN_EQUAL) {
+        result = left->compGreaterThanEquals(right);
+    } else if (node->opTok->getType() == LESS_THAN) {
+        result = left->compLessThan(right);
+    } else if (node->opTok->getType() == LESS_THAN_EQUAL) {
+        result = left->compLessThanEquals(right);
+    } else if (node->opTok->getType() == NOT_EQUAL) {
+        result = left->compNotEquals(right);
+    } else if (node->opTok->getType() == EQUAL_EQUAL) {
+        result = left->compEquals(right);
+    } else if (node->opTok->getType() == AND) {
+        result = left->andedBy(right);
+    } else if (node->opTok->getType() == OR) {
+        result = left->oredBy(right);
     }
 
-    if (result->rtError) return rtRes->failure(result->rtError);
+    if (((Number *) result)->rtError) return rtRes->failure(((Number *) result)->rtError);
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 
 }
@@ -145,6 +162,8 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
 
     if (opNode->op->type == MINUS) {
         num = num->multiply(new Number(-1, num->fName, num->fTxt));
+    } else if (opNode->op->type == NOT) {
+        num = dynamic_cast<Number *>(num->notted());
     }
 
     if (num->rtError) return rtRes->failure(num->rtError);

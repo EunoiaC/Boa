@@ -107,9 +107,42 @@ ParseResult *Parser::term() {
     return binOp({MULTIPLY, DIVIDE, MOD}, &Parser::factor, &Parser::factor);
 }
 
+ParseResult *Parser::compExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    Node *node;
+
+    if (currentToken->getType() == NOT) {
+        auto opTok = currentToken;
+        res->regAdvancement();
+        advance();
+        node = res->reg(compExpr());
+        if (res->error) return res;
+        return res->success(new UnaryOperationNode((Token<string> *) opTok, node));
+    }
+
+    node = res->reg(
+            binOp({EQUAL_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN_EQUAL}, &Parser::arithExpr,
+                  &Parser::arithExpr));
+    if (res->error)
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected a number, identifier, operation, '(', 'NOT' "));
+    return res->success(node);
+
+}
+
+ParseResult *Parser::arithExpr() {
+    return binOp({PLUS, MINUS}, &Parser::term, &Parser::term);
+}
+
 ParseResult *Parser::expr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
-    return binOp({PLUS, MINUS}, &Parser::term, &Parser::term);
+    Node *node = res->reg(binOp({AND, OR}, &Parser::compExpr, &Parser::compExpr));
+    if (res->error)
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected an operation, identifier, number, or '('"));
+    return res->success(node);
 }
 
 ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)()) {

@@ -75,6 +75,9 @@ int shellInput(){
         clock_t start = clock();
         l = new Lexer(input, fileName);
         vector<BaseToken *> v = l->makeTokens();
+//        for(BaseToken *t : v){
+//            cout << t->toString() << endl;
+//        }
         p = new Parser(v, fileName, lines);
         res = p->parse();
         if (res->error) {

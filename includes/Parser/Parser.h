@@ -32,6 +32,8 @@ public:
     ParseResult * factor();
     ParseResult * term();
     ParseResult * expr();
+    ParseResult * compExpr();
+    ParseResult * arithExpr();
     ParseResult * atom();
     ParseResult * power();
     ParseResult * parse();

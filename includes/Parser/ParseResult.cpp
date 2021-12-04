@@ -32,6 +32,6 @@ ParseResult *ParseResult::success(Node *node) {
 }
 
 ParseResult *ParseResult::failure(Error *error) {
-    if(!error || advanceCount == 0) this->error = error;
+    if(not this->error || advanceCount == 0) this->error = error;
     return this;
 }

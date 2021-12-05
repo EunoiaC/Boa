@@ -104,6 +104,10 @@ string Number::toString() {
     return to_string(numValue);
 }
 
+bool Number::isTrue() {
+    return numValue != 0;
+}
+
 Number *Number::add(BaseValue *s) {
     if(s->type == T_NUM) {
         return (new Number(numValue + ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);

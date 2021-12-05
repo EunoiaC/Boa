@@ -33,14 +33,21 @@ private:
      */
     char currChar;
     string fileName;
-    ifstream file;
 public:
     Lexer(string fileText, string fileName);
 
     map<string, string> keyWords = {
             {"and", AND},
             {"or", OR},
-            {"not", NOT}
+            {"not", NOT},
+            {"if", IF},
+            {"else", ELSE},
+            {"do", DO},
+            {"elif", ELIF},
+            {"for", FOR},
+            {"until", UNTIL},
+            {"chgby", CHGBY},
+            {"while", WHILE}
     };
     /**
      * Map assigning each possible character a token type

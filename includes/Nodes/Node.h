@@ -5,6 +5,7 @@
 #ifndef BOA_NODE_H
 #define BOA_NODE_H
 
+using namespace std;
 
 class Node {
 public:

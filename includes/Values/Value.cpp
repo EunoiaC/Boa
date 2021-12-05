@@ -75,6 +75,10 @@ BaseValue *BaseValue::notted(BaseValue *s) {
     return nullptr;
 }
 
+bool BaseValue::isTrue() {
+    return false;
+}
+
 string BaseValue::toString() {
     return type;
 }

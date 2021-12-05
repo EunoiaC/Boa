@@ -22,6 +22,10 @@ public:
     RuntimeResult * visitVarAssignNode(Node * n, Context* c);
     RuntimeResult * visitVarAccessNode(Node * n, Context* c);
     RuntimeResult * visitVarOperationNode(Node * n, Context* c);
+
+    RuntimeResult * visitIfNode(Node * n, Context* c);
+    RuntimeResult * visitForNode(Node * n, Context* c);
+    RuntimeResult * visitWhileNode(Node * n, Context* c);
 };
 
 

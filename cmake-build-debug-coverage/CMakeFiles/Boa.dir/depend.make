@@ -14,6 +14,10 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Lexer/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.cpp \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/ForNode.cpp \
+ ../includes/Nodes/ForNode.h \
+ ../includes/Nodes/IfNode.cpp \
+ ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.cpp \
@@ -26,6 +30,8 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/VarAssignNode.h \
  ../includes/Nodes/VarOperationNode.cpp \
  ../includes/Nodes/VarOperationNode.h \
+ ../includes/Nodes/WhileNode.cpp \
+ ../includes/Nodes/WhileNode.h \
  ../includes/Parser/ParseResult.cpp \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \

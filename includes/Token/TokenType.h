@@ -11,6 +11,15 @@
 using namespace std;
 
 //All token types
+static const string IF = "IF";
+static const string DO = "DO";
+static const string ELSE = "ELSE";
+static const string FOR = "FOR";
+static const string WHILE = "WHILE";
+static const string CHGBY = "CHANGE_BY";
+static const string UNTIL = "UNTIL";
+
+static const string ELIF = "ELIF";
 static const string IDENTIFIER = "IDENTIFIER";
 static const string KEYWORD = "KEYWORD";
 static const string PLUS = "PLUS";

@@ -6,9 +6,12 @@
 #define BOA_PARSER_H
 
 #include <vector>
+#include "../Nodes/ForNode.cpp"
+#include "../Nodes/WhileNode.cpp"
 #include "../Token/TokenType.h"
 #include "../Values/Value.cpp"
 #include "../Nodes/BinaryOperationNode.cpp"
+#include "../Nodes/IfNode.cpp"
 #include "../Nodes/UnaryOperationNode.cpp"
 #include "../Nodes/VarAccessNode.cpp"
 #include "../Nodes/VarAssignNode.cpp"
@@ -25,6 +28,7 @@ public:
     vector<string> lines;
     ifstream file;
     Parser(vector<BaseToken *> tokens, string fName, vector<string> lines);
+    ~Parser();
     vector<BaseToken *> tokens;
     int tokIdx;
     BaseToken * currentToken;
@@ -37,6 +41,9 @@ public:
     ParseResult * atom();
     ParseResult * power();
     ParseResult * parse();
+    ParseResult * ifExpr();
+    ParseResult * forExpr();
+    ParseResult * whileExpr();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 

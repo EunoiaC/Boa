@@ -13,6 +13,12 @@ Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
     advance();
 }
 
+Parser::~Parser() {
+    for (auto &token: tokens) {
+        delete token;
+    }
+}
+
 BaseToken *Parser::advance() {
     tokIdx++;
     if (tokIdx < tokens.size()) {
@@ -34,6 +40,156 @@ ParseResult *Parser::parse() {
     return res;
 }
 
+ParseResult *Parser::ifExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    Node *elseCase = nullptr;
+    vector<tuple<Node *, Node *>> cases;
+    if (currentToken->getType() != IF) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'if'"));
+    }
+    res->regAdvancement();
+    advance();
+    Node *condition = res->reg(expr());
+    if (res->error) return res;
+    if (currentToken->getType() != DO) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+    res->regAdvancement();
+    advance();
+    Node *exp = res->reg(expr());
+    if (res->error) return res;
+    cases.push_back(make_tuple(condition, exp));
+
+    while (currentToken->getType() == ELIF) {
+        res->regAdvancement();
+        advance();
+
+        condition = res->reg(expr());
+        if (res->error) return res;
+
+        if (currentToken->getType() != DO) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected 'do'"));
+        }
+
+        res->regAdvancement();
+        advance();
+        exp = res->reg(expr());
+
+        if (res->error) return res;
+        cases.push_back(make_tuple(condition, exp));
+    }
+    if (currentToken->getType() == ELSE) {
+        res->regAdvancement();
+        advance();
+        elseCase = res->reg(expr());
+        if (res->error) return res;
+    }
+    return res->success(new IfNode(cases, elseCase));
+}
+
+ParseResult *Parser::forExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+
+    if (currentToken->getType() != FOR) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'for'"));
+    }
+    res->regAdvancement();
+    advance();
+    if (currentToken->getType() != IDENTIFIER) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected identifier"));
+    }
+
+    Token<string> *identifier = (Token<string> *) currentToken;
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != EQUAL) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected '='"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *startVal = res->reg(expr());
+    if (res->error) return res;
+
+    if (currentToken->getType() != UNTIL) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'until'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *endVal = res->reg(expr());
+    if (res->error) return res;
+
+    Node *changeVal = nullptr;
+
+    if(currentToken->getType() == CHGBY) {
+        res->regAdvancement();
+        advance();
+        changeVal = res->reg(expr());
+        if (res->error) return res;
+    }
+
+    if(currentToken->getType() != DO) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *body = res->reg(expr());
+    if(res->error) return res;
+
+    return res->success(new ForNode(identifier, startVal, endVal, changeVal, body));
+}
+
+ParseResult *Parser::whileExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    if(currentToken->getType() != WHILE) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'while'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *condition = res->reg(expr());
+    if(res->error) return res;
+
+    if(currentToken->getType() != DO) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *body = res->reg(expr());
+    if(res->error) return res;
+
+    return res->success(new WhileNode(condition, body));
+}
+
 ParseResult *Parser::atom() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     BaseToken *tok = currentToken;
@@ -42,6 +198,20 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
+    } else if (tok->getType() == IF) {
+        Node *expr = res->reg(ifExpr());
+        if (res->error) return res;
+        return res->success(expr);
+    } else if (tok->getType() == FOR) {
+        Node *forExp = res->reg(forExpr());
+        if (res->error) return res;
+
+        return res->success(forExp);
+    } else if (tok->getType() == WHILE) {
+        Node *whileExp = res->reg(whileExpr());
+        if (res->error) return res;
+
+        return res->success(whileExp);
     } else if (tok->getType() == IDENTIFIER) {
         res->regAdvancement();
         advance();
@@ -121,7 +291,8 @@ ParseResult *Parser::compExpr() {
     }
 
     node = res->reg(
-            binOp({EQUAL_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN_EQUAL, NOT_EQUAL}, &Parser::arithExpr,
+            binOp({EQUAL_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN_EQUAL, NOT_EQUAL},
+                  &Parser::arithExpr,
                   &Parser::arithExpr));
     if (res->error)
         return res->failure(

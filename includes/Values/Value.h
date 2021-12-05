@@ -35,6 +35,8 @@ public:
     virtual BaseValue* oredBy(BaseValue* s);
     virtual BaseValue *notted(BaseValue *s);
 
+    virtual bool isTrue();
+
     virtual BaseValue* add(BaseValue* s);
     virtual BaseValue* subtract(BaseValue* s);
     virtual BaseValue* multiply(BaseValue* s);

@@ -32,6 +32,8 @@ public:
 
     BaseValue *notted();
 
+    bool isTrue();
+
     BaseValue *compGreaterThan(BaseValue *val);
 
     BaseValue *compLessThan(BaseValue *val);

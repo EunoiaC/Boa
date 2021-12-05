@@ -54,8 +54,8 @@ int readFile(){
     if(result->error){
         cout << result->error->toString() << endl;
         return 0;
-    } else {
-        cout << ((Number *) result->value)->numValue << endl;
+    } else if(result->value){
+        cout << result->value->toString() << endl;
     }
     return 0;
 }
@@ -94,12 +94,11 @@ int shellInput(){
         if(result->error){
             cout << result->error->toString() << endl;
             continue;
-        } else {
-            cout << ((Number *) result->value)->numValue << endl;
-            cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
+        } else if(result->value){
+            cout << result->value->toString() << endl;
         }
+        cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
     }
-    return 0;
 }
 
 int main() {

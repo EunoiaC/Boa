@@ -13,11 +13,93 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
     funcMap[N_VAR_OPERATION] = &Interpreter::visitVarOperationNode;
+    funcMap[N_IF] = &Interpreter::visitIfNode;
+    funcMap[N_FOR] = &Interpreter::visitForNode;
+    funcMap[N_WHILE] = &Interpreter::visitWhileNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
     string methodName = n->type;
     return (this->*funcMap[methodName])(n, c);
+}
+
+RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    ForNode *forNode = (ForNode *) n;
+
+    Number *startVal = (Number*) res->reg(visit(forNode->startVal, c));
+    if (res->error) return res;
+
+    Number *endVal = (Number*) res->reg(visit(forNode->endVal, c));
+    if (res->error) return res;
+
+    Number *stepVal = new Number(1, fName, lines[n->line]);
+
+    if (forNode->stepVal) {
+        stepVal = (Number*) res->reg(visit(forNode->stepVal, c));
+        if (res->error) return res;
+    }
+
+    double i = stepVal->getValue();
+
+    function<bool()> condition;
+
+    if(stepVal->getValue() >= 0) {
+        condition = [&]{
+            return i <= endVal->getValue();
+        };
+    } else{
+        condition = [&]() {
+            return i >= endVal->getValue();
+        };
+    }
+
+    while(condition()) {
+        c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number(i, fName, lines[n->line]));
+        i += stepVal->getValue();
+
+        res->reg(visit(forNode->body, c));
+        if(res->error) return res;
+    }
+    return res->success(nullptr);
+}
+
+RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    WhileNode *whileNode = (WhileNode *) n;
+
+    while(true){
+        BaseValue * condition = res->reg(visit(whileNode->condition, c));
+        if(res->error) return res;
+
+        if(not condition->isTrue()) break;
+
+        res->reg(visit(whileNode->body, c));
+        if(res->error) return res;
+    }
+    return res->success(nullptr);
+}
+
+RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    IfNode *node = (IfNode *) n;
+    for (auto &ifCase: node->cases) {
+        BaseValue *condValue = res->reg(visit(get<0>(ifCase), c));
+        Node *expr = get<1>(ifCase);
+        if (res->error) return res;
+
+        if (condValue->isTrue()) {
+            BaseValue *exprValue = res->reg(visit(expr, c));
+            if (res->error) return res;
+            return res->success(exprValue);
+        }
+    }
+    if (node->elseCase) {
+        BaseValue *elseValue = res->reg(visit(node->elseCase, c));
+        if (res->error) return res;
+        return res->success(elseValue);
+    }
+    return res->success(nullptr);
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {

@@ -62,6 +62,22 @@ BinaryOperationNode.h
 NumberNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
+ForNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
+Node.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
+../Token/Token.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.cpp
+IfNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
@@ -73,10 +89,6 @@ NumberNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
-Node.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
-../Token/Token.cpp
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
 UnaryOperationNode.h
@@ -102,6 +114,12 @@ VarOperationNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp
+WhileNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
@@ -117,12 +135,18 @@ Parser.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
 vector
 -
+../Nodes/ForNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
+../Nodes/WhileNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp
 ../Token/TokenType.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 ../Values/Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
 ../Nodes/BinaryOperationNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
+../Nodes/IfNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.cpp
 ../Nodes/UnaryOperationNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
 ../Nodes/VarAccessNode.cpp

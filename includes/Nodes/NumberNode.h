@@ -4,8 +4,7 @@
 #pragma once
 #ifndef BOA_NUMBERNODE_H
 #define BOA_NUMBERNODE_H
-#include "Node.cpp"
-#include "../Token/Token.cpp"
+
 
 class NumberNode : public Node {
 public:

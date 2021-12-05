@@ -14,6 +14,10 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
@@ -26,6 +30,8 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp

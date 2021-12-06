@@ -40,17 +40,17 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         if (res->error) return res;
     }
 
-    double i = stepVal->getValue();
+    double i = startVal->getValue();
 
     function<bool()> condition;
 
     if(stepVal->getValue() >= 0) {
         condition = [&]{
-            return i <= endVal->getValue();
+            return i < endVal->getValue();
         };
     } else{
         condition = [&]() {
-            return i >= endVal->getValue();
+            return i > endVal->getValue();
         };
     }
 

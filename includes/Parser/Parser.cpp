@@ -13,12 +13,6 @@ Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
     advance();
 }
 
-Parser::~Parser() {
-    for (auto &token: tokens) {
-        delete token;
-    }
-}
-
 BaseToken *Parser::advance() {
     tokIdx++;
     if (tokIdx < tokens.size()) {
@@ -139,31 +133,31 @@ ParseResult *Parser::forExpr() {
 
     Node *changeVal = nullptr;
 
-    if(currentToken->getType() == CHGBY) {
+    if (currentToken->getType() == CHGBY) {
         res->regAdvancement();
         advance();
         changeVal = res->reg(expr());
         if (res->error) return res;
     }
 
-    if(currentToken->getType() != DO) {
+    if (currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected 'do'"));
+                          "InvalidSyntaxError", "Expected 'do' or 'chgby'"));
     }
 
     res->regAdvancement();
     advance();
 
     Node *body = res->reg(expr());
-    if(res->error) return res;
+    if (res->error) return res;
 
     return res->success(new ForNode(identifier, startVal, endVal, changeVal, body));
 }
 
 ParseResult *Parser::whileExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
-    if(currentToken->getType() != WHILE) {
+    if (currentToken->getType() != WHILE) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'while'"));
@@ -173,21 +167,52 @@ ParseResult *Parser::whileExpr() {
     advance();
 
     Node *condition = res->reg(expr());
-    if(res->error) return res;
+    if (res->error) return res;
 
-    if(currentToken->getType() != DO) {
+    if (currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected 'do'"));
+                          "InvalidSyntaxError", "Expected 'do' or 'chgby'"));
     }
 
     res->regAdvancement();
     advance();
 
     Node *body = res->reg(expr());
-    if(res->error) return res;
+    if (res->error) return res;
 
     return res->success(new WhileNode(condition, body));
+}
+
+ParseResult *Parser::funcDef() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    if (currentToken->getType() != OP) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'op'"));
+    }
+
+    res->regAdvancement();
+    advance();
+    Token<string> *varNameTok = nullptr;
+    if (currentToken->getType() == IDENTIFIER) {
+        varNameTok = (Token<string> *) currentToken;
+        res->regAdvancement();
+        advance();
+    }
+    if (currentToken->getType() != L_PAREN) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected '('"));
+    }
+    res->regAdvancement();
+    advance();
+    vector<Token<string> *> argNames;
+    if (currentToken->getType() == IDENTIFIER) {
+        argNames.push_back((Token<string> *) currentToken);
+        res->regAdvancement();
+        advance();
+    }
 }
 
 ParseResult *Parser::atom() {
@@ -205,13 +230,15 @@ ParseResult *Parser::atom() {
     } else if (tok->getType() == FOR) {
         Node *forExp = res->reg(forExpr());
         if (res->error) return res;
-
         return res->success(forExp);
     } else if (tok->getType() == WHILE) {
         Node *whileExp = res->reg(whileExpr());
         if (res->error) return res;
-
         return res->success(whileExp);
+    } else if (tok->getType() == OP) {
+        Node *funcDefin = res->reg(funcDef());
+        if (res->error) return res;
+        return res->success(funcDefin);
     } else if (tok->getType() == IDENTIFIER) {
         res->regAdvancement();
         advance();

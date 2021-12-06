@@ -18,6 +18,7 @@ static const string FOR = "FOR";
 static const string WHILE = "WHILE";
 static const string CHGBY = "CHANGE_BY";
 static const string UNTIL = "UNTIL";
+static const string OP = "OP";
 
 static const string ELIF = "ELIF";
 static const string IDENTIFIER = "IDENTIFIER";
@@ -46,6 +47,7 @@ static const string L_PAREN = "L_PAREN";
 static const string R_PAREN = "R_PAREN";
 static const string L_BRACKET = "L_BRACKET";
 static const string R_BRACKET = "R_BRACKET";
+static const string COMMA = "COMMA";
 static const string END_OF_FILE = "END_OF_FILE";
 static const string STOP_EXPR = "STOP_EXPR";
 static const string NUMBERS = "1234567890";

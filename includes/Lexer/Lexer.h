@@ -47,7 +47,8 @@ public:
             {"for", FOR},
             {"until", UNTIL},
             {"chgby", CHGBY},
-            {"while", WHILE}
+            {"while", WHILE},
+            {"op", OP}
     };
     /**
      * Map assigning each possible character a token type

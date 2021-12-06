@@ -8,6 +8,8 @@
 #include <vector>
 #include "../Nodes/ForNode.cpp"
 #include "../Nodes/WhileNode.cpp"
+#include "../Nodes/FuncDefNode.cpp"
+#include "../Nodes/CallNode.cpp"
 #include "../Token/TokenType.h"
 #include "../Values/Value.cpp"
 #include "../Nodes/BinaryOperationNode.cpp"
@@ -16,7 +18,6 @@
 #include "../Nodes/VarAccessNode.cpp"
 #include "../Nodes/VarAssignNode.cpp"
 #include "../Nodes/VarOperationNode.cpp"
-//#include "Nodes/NumberNode.cpp"
 #include <vector>
 #include <fstream>
 #include "ParseResult.cpp"
@@ -28,7 +29,6 @@ public:
     vector<string> lines;
     ifstream file;
     Parser(vector<BaseToken *> tokens, string fName, vector<string> lines);
-    ~Parser();
     vector<BaseToken *> tokens;
     int tokIdx;
     BaseToken * currentToken;
@@ -44,6 +44,7 @@ public:
     ParseResult * ifExpr();
     ParseResult * forExpr();
     ParseResult * whileExpr();
+    ParseResult * funcDef();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 

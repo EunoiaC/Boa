@@ -14,8 +14,12 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp

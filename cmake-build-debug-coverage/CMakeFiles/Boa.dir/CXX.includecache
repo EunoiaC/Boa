@@ -62,6 +62,12 @@ BinaryOperationNode.h
 NumberNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.cpp
+CallNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
 ForNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
@@ -71,6 +77,14 @@ Node.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
 ../Token/Token.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.cpp
+FuncDefNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
+utility
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.cpp
 IfNode.h
@@ -139,6 +153,10 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
 ../Nodes/WhileNode.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp
+../Nodes/FuncDefNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.cpp
+../Nodes/CallNode.cpp
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.cpp
 ../Token/TokenType.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 ../Values/Value.cpp

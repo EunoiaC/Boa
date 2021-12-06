@@ -14,8 +14,12 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Lexer/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.cpp \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/CallNode.cpp \
+ ../includes/Nodes/CallNode.h \
  ../includes/Nodes/ForNode.cpp \
  ../includes/Nodes/ForNode.h \
+ ../includes/Nodes/FuncDefNode.cpp \
+ ../includes/Nodes/FuncDefNode.h \
  ../includes/Nodes/IfNode.cpp \
  ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.cpp \

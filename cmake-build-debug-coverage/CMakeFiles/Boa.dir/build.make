@@ -391,6 +391,32 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp -o CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.s
 
+CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o: ../includes/Token/BaseToken.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.cpp
+
+CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.cpp > CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.i
+
+CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.cpp -o CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.s
+
+CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o: ../includes/Values/BaseValue.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.cpp
+
+CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.cpp > CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.i
+
+CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.cpp -o CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -417,7 +443,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o"
+"CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -447,9 +475,11 @@ Boa: CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

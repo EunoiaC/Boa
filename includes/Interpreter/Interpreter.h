@@ -16,7 +16,6 @@
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/NumberNode.h"
 #include "../Nodes/UnaryOperationNode.h"
-#include "../Token/TokenType.h"
 #include <string>
 #include <vector>
 

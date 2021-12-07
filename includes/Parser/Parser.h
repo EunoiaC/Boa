@@ -10,7 +10,6 @@
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/FuncDefNode.h"
 #include "../Nodes/CallNode.h"
-#include "../Token/TokenType.h"
 #include "../Values/Value.h"
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/IfNode.h"

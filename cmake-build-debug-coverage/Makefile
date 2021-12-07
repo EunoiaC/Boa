@@ -633,6 +633,30 @@ includes/SymbolTable/SymbolTable.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.s
 .PHONY : includes/SymbolTable/SymbolTable.cpp.s
 
+includes/Token/BaseToken.o: includes/Token/BaseToken.cpp.o
+.PHONY : includes/Token/BaseToken.o
+
+# target to build an object file
+includes/Token/BaseToken.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o
+.PHONY : includes/Token/BaseToken.cpp.o
+
+includes/Token/BaseToken.i: includes/Token/BaseToken.cpp.i
+.PHONY : includes/Token/BaseToken.i
+
+# target to preprocess a source file
+includes/Token/BaseToken.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.i
+.PHONY : includes/Token/BaseToken.cpp.i
+
+includes/Token/BaseToken.s: includes/Token/BaseToken.cpp.s
+.PHONY : includes/Token/BaseToken.s
+
+# target to generate assembly for a file
+includes/Token/BaseToken.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.s
+.PHONY : includes/Token/BaseToken.cpp.s
+
 includes/Token/Token.o: includes/Token/Token.cpp.o
 .PHONY : includes/Token/Token.o
 
@@ -656,6 +680,30 @@ includes/Token/Token.s: includes/Token/Token.cpp.s
 includes/Token/Token.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/Token.cpp.s
 .PHONY : includes/Token/Token.cpp.s
+
+includes/Values/BaseValue.o: includes/Values/BaseValue.cpp.o
+.PHONY : includes/Values/BaseValue.o
+
+# target to build an object file
+includes/Values/BaseValue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o
+.PHONY : includes/Values/BaseValue.cpp.o
+
+includes/Values/BaseValue.i: includes/Values/BaseValue.cpp.i
+.PHONY : includes/Values/BaseValue.i
+
+# target to preprocess a source file
+includes/Values/BaseValue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.i
+.PHONY : includes/Values/BaseValue.cpp.i
+
+includes/Values/BaseValue.s: includes/Values/BaseValue.cpp.s
+.PHONY : includes/Values/BaseValue.s
+
+# target to generate assembly for a file
+includes/Values/BaseValue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.s
+.PHONY : includes/Values/BaseValue.cpp.s
 
 includes/Values/Number.o: includes/Values/Number.cpp.o
 .PHONY : includes/Values/Number.o
@@ -801,9 +849,15 @@ help:
 	@echo "... includes/SymbolTable/SymbolTable.o"
 	@echo "... includes/SymbolTable/SymbolTable.i"
 	@echo "... includes/SymbolTable/SymbolTable.s"
+	@echo "... includes/Token/BaseToken.o"
+	@echo "... includes/Token/BaseToken.i"
+	@echo "... includes/Token/BaseToken.s"
 	@echo "... includes/Token/Token.o"
 	@echo "... includes/Token/Token.i"
 	@echo "... includes/Token/Token.s"
+	@echo "... includes/Values/BaseValue.o"
+	@echo "... includes/Values/BaseValue.i"
+	@echo "... includes/Values/BaseValue.s"
 	@echo "... includes/Values/Number.o"
 	@echo "... includes/Values/Number.i"
 	@echo "... includes/Values/Number.s"

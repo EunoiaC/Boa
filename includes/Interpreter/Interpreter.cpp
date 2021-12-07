@@ -198,7 +198,6 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     if (rtRes->error) return rtRes;
     BaseValue *result = new BaseValue(left->type, fName, lines[node->opTok->line]);
 
-    //TODO: Make operations virtual funcs in (Base)Value.h
     if (node->opTok->type == PLUS) {
         result = left->add(right);
     } else if (node->opTok->type == MINUS) {

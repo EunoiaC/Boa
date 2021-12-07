@@ -6,19 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.cpp
-Context.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
 ../SymbolTable/SymbolTable.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
-string
--
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
-Error.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 string
 -
 
@@ -27,10 +17,6 @@ string
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
 string
 -
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.cpp
-RuntimeError.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 Error.h
@@ -65,16 +51,10 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
 ../Nodes/UnaryOperationNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
-../Token/TokenType.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 string
 -
 vector
 -
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
-Lexer.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 vector
@@ -85,12 +65,6 @@ fstream
 -
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
-../Token/TokenType.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp
-BinaryOperationNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
 NumberNode.h
@@ -106,21 +80,11 @@ Node.h
 vector
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.cpp
-ForNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.cpp
-FuncDefNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
-utility
--
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
 string
@@ -144,19 +108,11 @@ tuple
 string
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.cpp
-NumberNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp
-UnaryOperationNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 Node.h
@@ -164,29 +120,17 @@ Node.h
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.cpp
-VarAccessNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.cpp
-VarAssignNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp
-VarOperationNode.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
 ../Token/Token.h
@@ -198,19 +142,11 @@ Node.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
-ParseResult.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 ../Errors/Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 ../Nodes/Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
-Parser.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
 vector
@@ -223,8 +159,6 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
 ../Nodes/CallNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
-../Token/TokenType.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
 ../Values/Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 ../Nodes/BinaryOperationNode.h
@@ -251,14 +185,10 @@ RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
-../Values/Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
+../Values/BaseValue.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
 ../Errors/Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
-SymbolTable.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 map
@@ -266,22 +196,18 @@ map
 ../Values/Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.cpp
-Token.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+string
+-
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 ../Values/Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
+BaseToken.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Token/TokenType.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
 string
--
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
-Number.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
-math.h
 -
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
@@ -290,13 +216,11 @@ math.h
 Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
-Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 string
 -
+BaseValue.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
 
 /Users/preetithorat/Documents/GitHub/Boa/main.cpp
 iostream

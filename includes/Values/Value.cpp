@@ -91,11 +91,6 @@ Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue
 }
 
 template<class valueType>
-bool Value<valueType>::compare(Value<valueType>* v) {
-    return (val == v->val) && (type == v->type);
-}
-
-template<class valueType>
 valueType Value<valueType>::getValue() {
     return val;
 }

@@ -37,18 +37,18 @@ public:
     Lexer(string fileText, string fileName);
 
     map<string, string> keyWords = {
-            {"and", AND},
-            {"or", OR},
-            {"not", NOT},
-            {"if", IF},
-            {"else", ELSE},
-            {"do", DO},
-            {"elif", ELIF},
-            {"for", FOR},
-            {"until", UNTIL},
+            {"and",   AND},
+            {"or",    OR},
+            {"not",   NOT},
+            {"if",    IF},
+            {"else",  ELSE},
+            {"do",    DO},
+            {"elif",  ELIF},
+            {"for",   FOR},
+            {"to",    TO},
             {"chgby", CHGBY},
             {"while", WHILE},
-            {"op", OP}
+            {"op",    OP}
     };
     /**
      * Map assigning each possible character a token type

@@ -119,10 +119,10 @@ ParseResult *Parser::forExpr() {
     Node *startVal = res->reg(expr());
     if (res->error) return res;
 
-    if (currentToken->getType() != UNTIL) {
+    if (currentToken->getType() != TO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected 'until'"));
+                          "InvalidSyntaxError", "Expected 'to'"));
     }
 
     res->regAdvancement();

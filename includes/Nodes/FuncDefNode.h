@@ -4,7 +4,10 @@
 
 #ifndef BOA_FUNCDEFNODE_H
 #define BOA_FUNCDEFNODE_H
-
+#include <string>
+#include "../Token/Token.h"
+#include "Node.h"
+#include <vector>
 
 class FuncDefNode : public Node {
 public:

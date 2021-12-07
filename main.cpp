@@ -1,13 +1,15 @@
-#include <iostream>
-#include "includes/Parser/Parser.cpp"
-#include "includes/Lexer/Lexer.cpp"
-#include <string>
-#include <vector>
-#include <time.h>
-#include "includes/Interpreter/Interpreter.cpp"
-
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "EndlessLoop"
+
+#include <iostream>
+#include "includes/Parser/Parser.h"
+#include "includes/Lexer/Lexer.h"
+#include <string>
+#include <vector>
+#include <ctime>
+#include <cmath>
+#include "includes/Interpreter/Interpreter.h"
+
 using namespace std;
 
 vector<string> lines;

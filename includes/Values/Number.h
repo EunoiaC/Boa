@@ -1,12 +1,12 @@
 //
 // Created by Aadi Yadav on 10/20/21.
 //
-#pragma once
+
 #ifndef BOA_NUMBER_H
 #define BOA_NUMBER_H
 
-#include "../Errors/RuntimeError.cpp"
-
+#include "../Errors/RuntimeError.h"
+#include "Value.h"
 
 class Number : public Value<double> {
 public:

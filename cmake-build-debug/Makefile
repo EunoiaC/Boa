@@ -129,6 +129,582 @@ Boa/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/build
 .PHONY : Boa/fast
 
+includes/Context/Context.o: includes/Context/Context.cpp.o
+.PHONY : includes/Context/Context.o
+
+# target to build an object file
+includes/Context/Context.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Context/Context.cpp.o
+.PHONY : includes/Context/Context.cpp.o
+
+includes/Context/Context.i: includes/Context/Context.cpp.i
+.PHONY : includes/Context/Context.i
+
+# target to preprocess a source file
+includes/Context/Context.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Context/Context.cpp.i
+.PHONY : includes/Context/Context.cpp.i
+
+includes/Context/Context.s: includes/Context/Context.cpp.s
+.PHONY : includes/Context/Context.s
+
+# target to generate assembly for a file
+includes/Context/Context.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Context/Context.cpp.s
+.PHONY : includes/Context/Context.cpp.s
+
+includes/Errors/Error.o: includes/Errors/Error.cpp.o
+.PHONY : includes/Errors/Error.o
+
+# target to build an object file
+includes/Errors/Error.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/Error.cpp.o
+.PHONY : includes/Errors/Error.cpp.o
+
+includes/Errors/Error.i: includes/Errors/Error.cpp.i
+.PHONY : includes/Errors/Error.i
+
+# target to preprocess a source file
+includes/Errors/Error.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/Error.cpp.i
+.PHONY : includes/Errors/Error.cpp.i
+
+includes/Errors/Error.s: includes/Errors/Error.cpp.s
+.PHONY : includes/Errors/Error.s
+
+# target to generate assembly for a file
+includes/Errors/Error.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/Error.cpp.s
+.PHONY : includes/Errors/Error.cpp.s
+
+includes/Errors/RuntimeError.o: includes/Errors/RuntimeError.cpp.o
+.PHONY : includes/Errors/RuntimeError.o
+
+# target to build an object file
+includes/Errors/RuntimeError.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.o
+.PHONY : includes/Errors/RuntimeError.cpp.o
+
+includes/Errors/RuntimeError.i: includes/Errors/RuntimeError.cpp.i
+.PHONY : includes/Errors/RuntimeError.i
+
+# target to preprocess a source file
+includes/Errors/RuntimeError.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.i
+.PHONY : includes/Errors/RuntimeError.cpp.i
+
+includes/Errors/RuntimeError.s: includes/Errors/RuntimeError.cpp.s
+.PHONY : includes/Errors/RuntimeError.s
+
+# target to generate assembly for a file
+includes/Errors/RuntimeError.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.s
+.PHONY : includes/Errors/RuntimeError.cpp.s
+
+includes/Interpreter/Interpreter.o: includes/Interpreter/Interpreter.cpp.o
+.PHONY : includes/Interpreter/Interpreter.o
+
+# target to build an object file
+includes/Interpreter/Interpreter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
+.PHONY : includes/Interpreter/Interpreter.cpp.o
+
+includes/Interpreter/Interpreter.i: includes/Interpreter/Interpreter.cpp.i
+.PHONY : includes/Interpreter/Interpreter.i
+
+# target to preprocess a source file
+includes/Interpreter/Interpreter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.i
+.PHONY : includes/Interpreter/Interpreter.cpp.i
+
+includes/Interpreter/Interpreter.s: includes/Interpreter/Interpreter.cpp.s
+.PHONY : includes/Interpreter/Interpreter.s
+
+# target to generate assembly for a file
+includes/Interpreter/Interpreter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.s
+.PHONY : includes/Interpreter/Interpreter.cpp.s
+
+includes/Lexer/Lexer.o: includes/Lexer/Lexer.cpp.o
+.PHONY : includes/Lexer/Lexer.o
+
+# target to build an object file
+includes/Lexer/Lexer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o
+.PHONY : includes/Lexer/Lexer.cpp.o
+
+includes/Lexer/Lexer.i: includes/Lexer/Lexer.cpp.i
+.PHONY : includes/Lexer/Lexer.i
+
+# target to preprocess a source file
+includes/Lexer/Lexer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.i
+.PHONY : includes/Lexer/Lexer.cpp.i
+
+includes/Lexer/Lexer.s: includes/Lexer/Lexer.cpp.s
+.PHONY : includes/Lexer/Lexer.s
+
+# target to generate assembly for a file
+includes/Lexer/Lexer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.s
+.PHONY : includes/Lexer/Lexer.cpp.s
+
+includes/Nodes/BinaryOperationNode.o: includes/Nodes/BinaryOperationNode.cpp.o
+.PHONY : includes/Nodes/BinaryOperationNode.o
+
+# target to build an object file
+includes/Nodes/BinaryOperationNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o
+.PHONY : includes/Nodes/BinaryOperationNode.cpp.o
+
+includes/Nodes/BinaryOperationNode.i: includes/Nodes/BinaryOperationNode.cpp.i
+.PHONY : includes/Nodes/BinaryOperationNode.i
+
+# target to preprocess a source file
+includes/Nodes/BinaryOperationNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.i
+.PHONY : includes/Nodes/BinaryOperationNode.cpp.i
+
+includes/Nodes/BinaryOperationNode.s: includes/Nodes/BinaryOperationNode.cpp.s
+.PHONY : includes/Nodes/BinaryOperationNode.s
+
+# target to generate assembly for a file
+includes/Nodes/BinaryOperationNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.s
+.PHONY : includes/Nodes/BinaryOperationNode.cpp.s
+
+includes/Nodes/CallNode.o: includes/Nodes/CallNode.cpp.o
+.PHONY : includes/Nodes/CallNode.o
+
+# target to build an object file
+includes/Nodes/CallNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o
+.PHONY : includes/Nodes/CallNode.cpp.o
+
+includes/Nodes/CallNode.i: includes/Nodes/CallNode.cpp.i
+.PHONY : includes/Nodes/CallNode.i
+
+# target to preprocess a source file
+includes/Nodes/CallNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.i
+.PHONY : includes/Nodes/CallNode.cpp.i
+
+includes/Nodes/CallNode.s: includes/Nodes/CallNode.cpp.s
+.PHONY : includes/Nodes/CallNode.s
+
+# target to generate assembly for a file
+includes/Nodes/CallNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.s
+.PHONY : includes/Nodes/CallNode.cpp.s
+
+includes/Nodes/ForNode.o: includes/Nodes/ForNode.cpp.o
+.PHONY : includes/Nodes/ForNode.o
+
+# target to build an object file
+includes/Nodes/ForNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o
+.PHONY : includes/Nodes/ForNode.cpp.o
+
+includes/Nodes/ForNode.i: includes/Nodes/ForNode.cpp.i
+.PHONY : includes/Nodes/ForNode.i
+
+# target to preprocess a source file
+includes/Nodes/ForNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.i
+.PHONY : includes/Nodes/ForNode.cpp.i
+
+includes/Nodes/ForNode.s: includes/Nodes/ForNode.cpp.s
+.PHONY : includes/Nodes/ForNode.s
+
+# target to generate assembly for a file
+includes/Nodes/ForNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.s
+.PHONY : includes/Nodes/ForNode.cpp.s
+
+includes/Nodes/FuncDefNode.o: includes/Nodes/FuncDefNode.cpp.o
+.PHONY : includes/Nodes/FuncDefNode.o
+
+# target to build an object file
+includes/Nodes/FuncDefNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o
+.PHONY : includes/Nodes/FuncDefNode.cpp.o
+
+includes/Nodes/FuncDefNode.i: includes/Nodes/FuncDefNode.cpp.i
+.PHONY : includes/Nodes/FuncDefNode.i
+
+# target to preprocess a source file
+includes/Nodes/FuncDefNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.i
+.PHONY : includes/Nodes/FuncDefNode.cpp.i
+
+includes/Nodes/FuncDefNode.s: includes/Nodes/FuncDefNode.cpp.s
+.PHONY : includes/Nodes/FuncDefNode.s
+
+# target to generate assembly for a file
+includes/Nodes/FuncDefNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.s
+.PHONY : includes/Nodes/FuncDefNode.cpp.s
+
+includes/Nodes/IfNode.o: includes/Nodes/IfNode.cpp.o
+.PHONY : includes/Nodes/IfNode.o
+
+# target to build an object file
+includes/Nodes/IfNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o
+.PHONY : includes/Nodes/IfNode.cpp.o
+
+includes/Nodes/IfNode.i: includes/Nodes/IfNode.cpp.i
+.PHONY : includes/Nodes/IfNode.i
+
+# target to preprocess a source file
+includes/Nodes/IfNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.i
+.PHONY : includes/Nodes/IfNode.cpp.i
+
+includes/Nodes/IfNode.s: includes/Nodes/IfNode.cpp.s
+.PHONY : includes/Nodes/IfNode.s
+
+# target to generate assembly for a file
+includes/Nodes/IfNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.s
+.PHONY : includes/Nodes/IfNode.cpp.s
+
+includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
+.PHONY : includes/Nodes/Node.o
+
+# target to build an object file
+includes/Nodes/Node.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o
+.PHONY : includes/Nodes/Node.cpp.o
+
+includes/Nodes/Node.i: includes/Nodes/Node.cpp.i
+.PHONY : includes/Nodes/Node.i
+
+# target to preprocess a source file
+includes/Nodes/Node.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.i
+.PHONY : includes/Nodes/Node.cpp.i
+
+includes/Nodes/Node.s: includes/Nodes/Node.cpp.s
+.PHONY : includes/Nodes/Node.s
+
+# target to generate assembly for a file
+includes/Nodes/Node.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.s
+.PHONY : includes/Nodes/Node.cpp.s
+
+includes/Nodes/NumberNode.o: includes/Nodes/NumberNode.cpp.o
+.PHONY : includes/Nodes/NumberNode.o
+
+# target to build an object file
+includes/Nodes/NumberNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o
+.PHONY : includes/Nodes/NumberNode.cpp.o
+
+includes/Nodes/NumberNode.i: includes/Nodes/NumberNode.cpp.i
+.PHONY : includes/Nodes/NumberNode.i
+
+# target to preprocess a source file
+includes/Nodes/NumberNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.i
+.PHONY : includes/Nodes/NumberNode.cpp.i
+
+includes/Nodes/NumberNode.s: includes/Nodes/NumberNode.cpp.s
+.PHONY : includes/Nodes/NumberNode.s
+
+# target to generate assembly for a file
+includes/Nodes/NumberNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.s
+.PHONY : includes/Nodes/NumberNode.cpp.s
+
+includes/Nodes/UnaryOperationNode.o: includes/Nodes/UnaryOperationNode.cpp.o
+.PHONY : includes/Nodes/UnaryOperationNode.o
+
+# target to build an object file
+includes/Nodes/UnaryOperationNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o
+.PHONY : includes/Nodes/UnaryOperationNode.cpp.o
+
+includes/Nodes/UnaryOperationNode.i: includes/Nodes/UnaryOperationNode.cpp.i
+.PHONY : includes/Nodes/UnaryOperationNode.i
+
+# target to preprocess a source file
+includes/Nodes/UnaryOperationNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.i
+.PHONY : includes/Nodes/UnaryOperationNode.cpp.i
+
+includes/Nodes/UnaryOperationNode.s: includes/Nodes/UnaryOperationNode.cpp.s
+.PHONY : includes/Nodes/UnaryOperationNode.s
+
+# target to generate assembly for a file
+includes/Nodes/UnaryOperationNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.s
+.PHONY : includes/Nodes/UnaryOperationNode.cpp.s
+
+includes/Nodes/VarAccessNode.o: includes/Nodes/VarAccessNode.cpp.o
+.PHONY : includes/Nodes/VarAccessNode.o
+
+# target to build an object file
+includes/Nodes/VarAccessNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAccessNode.cpp.o
+.PHONY : includes/Nodes/VarAccessNode.cpp.o
+
+includes/Nodes/VarAccessNode.i: includes/Nodes/VarAccessNode.cpp.i
+.PHONY : includes/Nodes/VarAccessNode.i
+
+# target to preprocess a source file
+includes/Nodes/VarAccessNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAccessNode.cpp.i
+.PHONY : includes/Nodes/VarAccessNode.cpp.i
+
+includes/Nodes/VarAccessNode.s: includes/Nodes/VarAccessNode.cpp.s
+.PHONY : includes/Nodes/VarAccessNode.s
+
+# target to generate assembly for a file
+includes/Nodes/VarAccessNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAccessNode.cpp.s
+.PHONY : includes/Nodes/VarAccessNode.cpp.s
+
+includes/Nodes/VarAssignNode.o: includes/Nodes/VarAssignNode.cpp.o
+.PHONY : includes/Nodes/VarAssignNode.o
+
+# target to build an object file
+includes/Nodes/VarAssignNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.o
+.PHONY : includes/Nodes/VarAssignNode.cpp.o
+
+includes/Nodes/VarAssignNode.i: includes/Nodes/VarAssignNode.cpp.i
+.PHONY : includes/Nodes/VarAssignNode.i
+
+# target to preprocess a source file
+includes/Nodes/VarAssignNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.i
+.PHONY : includes/Nodes/VarAssignNode.cpp.i
+
+includes/Nodes/VarAssignNode.s: includes/Nodes/VarAssignNode.cpp.s
+.PHONY : includes/Nodes/VarAssignNode.s
+
+# target to generate assembly for a file
+includes/Nodes/VarAssignNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.s
+.PHONY : includes/Nodes/VarAssignNode.cpp.s
+
+includes/Nodes/VarOperationNode.o: includes/Nodes/VarOperationNode.cpp.o
+.PHONY : includes/Nodes/VarOperationNode.o
+
+# target to build an object file
+includes/Nodes/VarOperationNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.o
+.PHONY : includes/Nodes/VarOperationNode.cpp.o
+
+includes/Nodes/VarOperationNode.i: includes/Nodes/VarOperationNode.cpp.i
+.PHONY : includes/Nodes/VarOperationNode.i
+
+# target to preprocess a source file
+includes/Nodes/VarOperationNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.i
+.PHONY : includes/Nodes/VarOperationNode.cpp.i
+
+includes/Nodes/VarOperationNode.s: includes/Nodes/VarOperationNode.cpp.s
+.PHONY : includes/Nodes/VarOperationNode.s
+
+# target to generate assembly for a file
+includes/Nodes/VarOperationNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.s
+.PHONY : includes/Nodes/VarOperationNode.cpp.s
+
+includes/Nodes/WhileNode.o: includes/Nodes/WhileNode.cpp.o
+.PHONY : includes/Nodes/WhileNode.o
+
+# target to build an object file
+includes/Nodes/WhileNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.o
+.PHONY : includes/Nodes/WhileNode.cpp.o
+
+includes/Nodes/WhileNode.i: includes/Nodes/WhileNode.cpp.i
+.PHONY : includes/Nodes/WhileNode.i
+
+# target to preprocess a source file
+includes/Nodes/WhileNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.i
+.PHONY : includes/Nodes/WhileNode.cpp.i
+
+includes/Nodes/WhileNode.s: includes/Nodes/WhileNode.cpp.s
+.PHONY : includes/Nodes/WhileNode.s
+
+# target to generate assembly for a file
+includes/Nodes/WhileNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.s
+.PHONY : includes/Nodes/WhileNode.cpp.s
+
+includes/Parser/ParseResult.o: includes/Parser/ParseResult.cpp.o
+.PHONY : includes/Parser/ParseResult.o
+
+# target to build an object file
+includes/Parser/ParseResult.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/ParseResult.cpp.o
+.PHONY : includes/Parser/ParseResult.cpp.o
+
+includes/Parser/ParseResult.i: includes/Parser/ParseResult.cpp.i
+.PHONY : includes/Parser/ParseResult.i
+
+# target to preprocess a source file
+includes/Parser/ParseResult.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/ParseResult.cpp.i
+.PHONY : includes/Parser/ParseResult.cpp.i
+
+includes/Parser/ParseResult.s: includes/Parser/ParseResult.cpp.s
+.PHONY : includes/Parser/ParseResult.s
+
+# target to generate assembly for a file
+includes/Parser/ParseResult.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/ParseResult.cpp.s
+.PHONY : includes/Parser/ParseResult.cpp.s
+
+includes/Parser/Parser.o: includes/Parser/Parser.cpp.o
+.PHONY : includes/Parser/Parser.o
+
+# target to build an object file
+includes/Parser/Parser.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o
+.PHONY : includes/Parser/Parser.cpp.o
+
+includes/Parser/Parser.i: includes/Parser/Parser.cpp.i
+.PHONY : includes/Parser/Parser.i
+
+# target to preprocess a source file
+includes/Parser/Parser.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.i
+.PHONY : includes/Parser/Parser.cpp.i
+
+includes/Parser/Parser.s: includes/Parser/Parser.cpp.s
+.PHONY : includes/Parser/Parser.s
+
+# target to generate assembly for a file
+includes/Parser/Parser.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.s
+.PHONY : includes/Parser/Parser.cpp.s
+
+includes/RuntimeResult/RuntimeResult.o: includes/RuntimeResult/RuntimeResult.cpp.o
+.PHONY : includes/RuntimeResult/RuntimeResult.o
+
+# target to build an object file
+includes/RuntimeResult/RuntimeResult.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RuntimeResult/RuntimeResult.cpp.o
+.PHONY : includes/RuntimeResult/RuntimeResult.cpp.o
+
+includes/RuntimeResult/RuntimeResult.i: includes/RuntimeResult/RuntimeResult.cpp.i
+.PHONY : includes/RuntimeResult/RuntimeResult.i
+
+# target to preprocess a source file
+includes/RuntimeResult/RuntimeResult.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RuntimeResult/RuntimeResult.cpp.i
+.PHONY : includes/RuntimeResult/RuntimeResult.cpp.i
+
+includes/RuntimeResult/RuntimeResult.s: includes/RuntimeResult/RuntimeResult.cpp.s
+.PHONY : includes/RuntimeResult/RuntimeResult.s
+
+# target to generate assembly for a file
+includes/RuntimeResult/RuntimeResult.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RuntimeResult/RuntimeResult.cpp.s
+.PHONY : includes/RuntimeResult/RuntimeResult.cpp.s
+
+includes/SymbolTable/SymbolTable.o: includes/SymbolTable/SymbolTable.cpp.o
+.PHONY : includes/SymbolTable/SymbolTable.o
+
+# target to build an object file
+includes/SymbolTable/SymbolTable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.o
+.PHONY : includes/SymbolTable/SymbolTable.cpp.o
+
+includes/SymbolTable/SymbolTable.i: includes/SymbolTable/SymbolTable.cpp.i
+.PHONY : includes/SymbolTable/SymbolTable.i
+
+# target to preprocess a source file
+includes/SymbolTable/SymbolTable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.i
+.PHONY : includes/SymbolTable/SymbolTable.cpp.i
+
+includes/SymbolTable/SymbolTable.s: includes/SymbolTable/SymbolTable.cpp.s
+.PHONY : includes/SymbolTable/SymbolTable.s
+
+# target to generate assembly for a file
+includes/SymbolTable/SymbolTable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.s
+.PHONY : includes/SymbolTable/SymbolTable.cpp.s
+
+includes/Token/Token.o: includes/Token/Token.cpp.o
+.PHONY : includes/Token/Token.o
+
+# target to build an object file
+includes/Token/Token.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/Token.cpp.o
+.PHONY : includes/Token/Token.cpp.o
+
+includes/Token/Token.i: includes/Token/Token.cpp.i
+.PHONY : includes/Token/Token.i
+
+# target to preprocess a source file
+includes/Token/Token.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/Token.cpp.i
+.PHONY : includes/Token/Token.cpp.i
+
+includes/Token/Token.s: includes/Token/Token.cpp.s
+.PHONY : includes/Token/Token.s
+
+# target to generate assembly for a file
+includes/Token/Token.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/Token.cpp.s
+.PHONY : includes/Token/Token.cpp.s
+
+includes/Values/Number.o: includes/Values/Number.cpp.o
+.PHONY : includes/Values/Number.o
+
+# target to build an object file
+includes/Values/Number.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.o
+.PHONY : includes/Values/Number.cpp.o
+
+includes/Values/Number.i: includes/Values/Number.cpp.i
+.PHONY : includes/Values/Number.i
+
+# target to preprocess a source file
+includes/Values/Number.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.i
+.PHONY : includes/Values/Number.cpp.i
+
+includes/Values/Number.s: includes/Values/Number.cpp.s
+.PHONY : includes/Values/Number.s
+
+# target to generate assembly for a file
+includes/Values/Number.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.s
+.PHONY : includes/Values/Number.cpp.s
+
+includes/Values/Value.o: includes/Values/Value.cpp.o
+.PHONY : includes/Values/Value.o
+
+# target to build an object file
+includes/Values/Value.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.o
+.PHONY : includes/Values/Value.cpp.o
+
+includes/Values/Value.i: includes/Values/Value.cpp.i
+.PHONY : includes/Values/Value.i
+
+# target to preprocess a source file
+includes/Values/Value.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.i
+.PHONY : includes/Values/Value.cpp.i
+
+includes/Values/Value.s: includes/Values/Value.cpp.s
+.PHONY : includes/Values/Value.s
+
+# target to generate assembly for a file
+includes/Values/Value.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.s
+.PHONY : includes/Values/Value.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -162,6 +738,78 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Boa"
+	@echo "... includes/Context/Context.o"
+	@echo "... includes/Context/Context.i"
+	@echo "... includes/Context/Context.s"
+	@echo "... includes/Errors/Error.o"
+	@echo "... includes/Errors/Error.i"
+	@echo "... includes/Errors/Error.s"
+	@echo "... includes/Errors/RuntimeError.o"
+	@echo "... includes/Errors/RuntimeError.i"
+	@echo "... includes/Errors/RuntimeError.s"
+	@echo "... includes/Interpreter/Interpreter.o"
+	@echo "... includes/Interpreter/Interpreter.i"
+	@echo "... includes/Interpreter/Interpreter.s"
+	@echo "... includes/Lexer/Lexer.o"
+	@echo "... includes/Lexer/Lexer.i"
+	@echo "... includes/Lexer/Lexer.s"
+	@echo "... includes/Nodes/BinaryOperationNode.o"
+	@echo "... includes/Nodes/BinaryOperationNode.i"
+	@echo "... includes/Nodes/BinaryOperationNode.s"
+	@echo "... includes/Nodes/CallNode.o"
+	@echo "... includes/Nodes/CallNode.i"
+	@echo "... includes/Nodes/CallNode.s"
+	@echo "... includes/Nodes/ForNode.o"
+	@echo "... includes/Nodes/ForNode.i"
+	@echo "... includes/Nodes/ForNode.s"
+	@echo "... includes/Nodes/FuncDefNode.o"
+	@echo "... includes/Nodes/FuncDefNode.i"
+	@echo "... includes/Nodes/FuncDefNode.s"
+	@echo "... includes/Nodes/IfNode.o"
+	@echo "... includes/Nodes/IfNode.i"
+	@echo "... includes/Nodes/IfNode.s"
+	@echo "... includes/Nodes/Node.o"
+	@echo "... includes/Nodes/Node.i"
+	@echo "... includes/Nodes/Node.s"
+	@echo "... includes/Nodes/NumberNode.o"
+	@echo "... includes/Nodes/NumberNode.i"
+	@echo "... includes/Nodes/NumberNode.s"
+	@echo "... includes/Nodes/UnaryOperationNode.o"
+	@echo "... includes/Nodes/UnaryOperationNode.i"
+	@echo "... includes/Nodes/UnaryOperationNode.s"
+	@echo "... includes/Nodes/VarAccessNode.o"
+	@echo "... includes/Nodes/VarAccessNode.i"
+	@echo "... includes/Nodes/VarAccessNode.s"
+	@echo "... includes/Nodes/VarAssignNode.o"
+	@echo "... includes/Nodes/VarAssignNode.i"
+	@echo "... includes/Nodes/VarAssignNode.s"
+	@echo "... includes/Nodes/VarOperationNode.o"
+	@echo "... includes/Nodes/VarOperationNode.i"
+	@echo "... includes/Nodes/VarOperationNode.s"
+	@echo "... includes/Nodes/WhileNode.o"
+	@echo "... includes/Nodes/WhileNode.i"
+	@echo "... includes/Nodes/WhileNode.s"
+	@echo "... includes/Parser/ParseResult.o"
+	@echo "... includes/Parser/ParseResult.i"
+	@echo "... includes/Parser/ParseResult.s"
+	@echo "... includes/Parser/Parser.o"
+	@echo "... includes/Parser/Parser.i"
+	@echo "... includes/Parser/Parser.s"
+	@echo "... includes/RuntimeResult/RuntimeResult.o"
+	@echo "... includes/RuntimeResult/RuntimeResult.i"
+	@echo "... includes/RuntimeResult/RuntimeResult.s"
+	@echo "... includes/SymbolTable/SymbolTable.o"
+	@echo "... includes/SymbolTable/SymbolTable.i"
+	@echo "... includes/SymbolTable/SymbolTable.s"
+	@echo "... includes/Token/Token.o"
+	@echo "... includes/Token/Token.i"
+	@echo "... includes/Token/Token.s"
+	@echo "... includes/Values/Number.o"
+	@echo "... includes/Values/Number.i"
+	@echo "... includes/Values/Number.s"
+	@echo "... includes/Values/Value.o"
+	@echo "... includes/Values/Value.i"
+	@echo "... includes/Values/Value.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

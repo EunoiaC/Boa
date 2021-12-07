@@ -4,7 +4,8 @@
 
 #ifndef BOA_VAROPERATIONNODE_H
 #define BOA_VAROPERATIONNODE_H
-
+#include "../Token/Token.h"
+#include "Node.h"
 
 class VarOperationNode : public Node {
 public:

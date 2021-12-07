@@ -4,7 +4,6 @@
 
 #include "Token.h"
 
-using namespace std;
 
 BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
     type = t;
@@ -33,8 +32,8 @@ Token<tokType>::Token(string t, tokType v, int start_pos, int end_pos, int line_
     value = new Value<tokType>(v, t, fName, fTxt);
 }
 
-template<class tokType>
-Value<tokType>* Token<tokType>::getValueObject() {
+template<class valueClass>
+Value<valueClass> *Token<valueClass>::getValueObject() {
     return value;
 }
 

@@ -4,7 +4,8 @@
 
 #ifndef BOA_CALLNODE_H
 #define BOA_CALLNODE_H
-
+#include "Node.h"
+#include <vector>
 
 class CallNode : public Node {
 public:

@@ -1,13 +1,16 @@
 //
 // Created by Administrator on 10/12/2021.
 //
-#pragma once
+
 #ifndef BOA_VALUE_H
 #define BOA_VALUE_H
 
 #include <string>
 
 using namespace std;
+
+static const string T_STRING = "STRING";
+static const string T_NUM = "NUM";
 
 class BaseValue {
 public:

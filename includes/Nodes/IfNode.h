@@ -4,7 +4,9 @@
 
 #ifndef BOA_IFNODE_H
 #define BOA_IFNODE_H
-
+#include "Node.h"
+#include <vector>
+#include <tuple>
 
 class IfNode : public Node {
 public:

@@ -1,10 +1,11 @@
 //
 // Created by Aadi Yadav on 11/17/21.
 //
-#pragma once
+
 #ifndef BOA_PARSERESULT_H
 #define BOA_PARSERESULT_H
-#include "../Errors/Error.cpp"
+#include "../Errors/Error.h"
+#include "../Nodes/Node.h"
 
 class ParseResult {
 public:

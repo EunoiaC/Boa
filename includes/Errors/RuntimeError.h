@@ -5,6 +5,7 @@
 #ifndef BOA_RUNTIMEERROR_H
 #define BOA_RUNTIMEERROR_H
 
+#include "Error.h"
 
 class RuntimeError : public Error {
 public:

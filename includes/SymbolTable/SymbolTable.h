@@ -5,6 +5,7 @@
 #ifndef BOA_SYMBOLTABLE_H
 #define BOA_SYMBOLTABLE_H
 #include <map>
+#include "../Values/Value.h"
 
 class SymbolTable {
 public:

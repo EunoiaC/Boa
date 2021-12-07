@@ -4,8 +4,23 @@
 
 #ifndef BOA_INTERPRETER_H
 #define BOA_INTERPRETER_H
-#include "../Values/Number.cpp"
-#include "../RuntimeResult/RuntimeResult.cpp"
+#include "../Values/Number.h"
+#include "../RuntimeResult/RuntimeResult.h"
+#include "../Nodes/ForNode.h"
+#include "../Nodes/WhileNode.h"
+#include "../Nodes/IfNode.h"
+#include "../Nodes/FuncDefNode.h"
+#include "../Nodes/VarOperationNode.h"
+#include "../Nodes/VarAccessNode.h"
+#include "../Nodes/VarAssignNode.h"
+#include "../Nodes/BinaryOperationNode.h"
+#include "../Nodes/NumberNode.h"
+#include "../Nodes/UnaryOperationNode.h"
+#include "../Token/TokenType.h"
+#include <string>
+#include <vector>
+
+using namespace std;
 
 class Interpreter {
 public:

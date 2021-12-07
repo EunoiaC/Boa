@@ -1,26 +1,26 @@
 //
 // Created by Aadi Yadav on 11/15/21.
 //
-#pragma once
+
 #ifndef BOA_PARSER_H
 #define BOA_PARSER_H
 
 #include <vector>
-#include "../Nodes/ForNode.cpp"
-#include "../Nodes/WhileNode.cpp"
-#include "../Nodes/FuncDefNode.cpp"
-#include "../Nodes/CallNode.cpp"
+#include "../Nodes/ForNode.h"
+#include "../Nodes/WhileNode.h"
+#include "../Nodes/FuncDefNode.h"
+#include "../Nodes/CallNode.h"
 #include "../Token/TokenType.h"
-#include "../Values/Value.cpp"
-#include "../Nodes/BinaryOperationNode.cpp"
-#include "../Nodes/IfNode.cpp"
-#include "../Nodes/UnaryOperationNode.cpp"
-#include "../Nodes/VarAccessNode.cpp"
-#include "../Nodes/VarAssignNode.cpp"
-#include "../Nodes/VarOperationNode.cpp"
+#include "../Values/Value.h"
+#include "../Nodes/BinaryOperationNode.h"
+#include "../Nodes/IfNode.h"
+#include "../Nodes/UnaryOperationNode.h"
+#include "../Nodes/VarAccessNode.h"
+#include "../Nodes/VarAssignNode.h"
+#include "../Nodes/VarOperationNode.h"
 #include <vector>
 #include <fstream>
-#include "ParseResult.cpp"
+#include "ParseResult.h"
 
 class Parser {
 public:

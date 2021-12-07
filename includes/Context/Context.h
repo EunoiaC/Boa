@@ -4,8 +4,10 @@
 
 #ifndef BOA_CONTEXT_H
 #define BOA_CONTEXT_H
-#include "../SymbolTable/SymbolTable.cpp"
+#include "../SymbolTable/SymbolTable.h"
+#include <string>
 
+using namespace std;
 
 class Context {
 public:

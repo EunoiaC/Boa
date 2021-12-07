@@ -3,10 +3,6 @@
 //
 
 #include "Value.h"
-#include <utility>
-
-static const string T_STRING = "STRING";
-static const string T_NUM = "NUM";
 
 BaseValue *BaseValue::setPos(int start, int end, int line) {
     this->posStart = start;

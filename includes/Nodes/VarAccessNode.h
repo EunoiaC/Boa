@@ -4,7 +4,8 @@
 
 #ifndef BOA_VARACCESSNODE_H
 #define BOA_VARACCESSNODE_H
-
+#include "../Token/Token.h"
+#include "Node.h"
 
 class VarAccessNode : public Node{
 public:

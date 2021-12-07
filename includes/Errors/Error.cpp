@@ -3,6 +3,9 @@
 //
 
 #include "Error.h"
+#include <string>
+using namespace std;
+
 Error::Error(int posStart, int posEnd, int line, string fName, string fTxt, string errorName, string msg) {
     this->posStart = posStart;
     this->posEnd = posEnd;

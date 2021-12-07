@@ -6,7 +6,10 @@
 #define BOA_ERROR_H
 
 
-#include "../Context/Context.cpp"
+#include "../Context/Context.h"
+
+#include <string>
+using namespace std;
 
 class Error {
 public:

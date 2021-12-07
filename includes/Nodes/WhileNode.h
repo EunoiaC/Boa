@@ -4,6 +4,7 @@
 
 #ifndef BOA_WHILENODE_H
 #define BOA_WHILENODE_H
+#include "Node.h"
 
 class WhileNode : public Node {
 public:

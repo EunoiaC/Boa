@@ -1,10 +1,12 @@
 //
 // Created by Aadi Yadav on 11/7/21.
 //
-#pragma once
+
 #ifndef BOA_BINARYOPERATIONNODE_H
 #define BOA_BINARYOPERATIONNODE_H
-#include "NumberNode.cpp"
+#include "NumberNode.h"
+#include "Node.h"
+#include "../Token/Token.h"
 //#include "Node.cpp"
 
 class BinaryOperationNode : public Node {

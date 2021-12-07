@@ -4,7 +4,8 @@
 
 #ifndef BOA_VARASSIGNNODE_H
 #define BOA_VARASSIGNNODE_H
-
+#include "../Token/Token.h"
+#include "Node.h"
 
 class VarAssignNode : public Node{
 public:

@@ -2,7 +2,7 @@
 // Created by Aadi Yadav on 11/1/21.
 //
 
-#pragma once
+
 #ifndef BOA_TOKENTYPE_H
 #define BOA_TOKENTYPE_H
 

@@ -4,7 +4,8 @@
 
 #ifndef BOA_RUNTIMERESULT_H
 #define BOA_RUNTIMERESULT_H
-
+#include "../Values/Value.h"
+#include "../Errors/Error.h"
 
 class RuntimeResult {
 public:

@@ -4,6 +4,8 @@
 
 #ifndef BOA_UNARYOPERATIONNODE_H
 #define BOA_UNARYOPERATIONNODE_H
+#include "Node.h"
+#include "../Token/Token.h"
 
 class UnaryOperationNode : public Node {
 public:

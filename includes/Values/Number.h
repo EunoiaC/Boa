@@ -18,37 +18,37 @@ public:
 
     double getValue();
 
-    Number *add(BaseValue *s);
+    Number *add(BaseValue *s) override;
 
-    Number *subtract(BaseValue *s);
+    Number *subtract(BaseValue *s) override;
 
-    Number *multiply(BaseValue *s);
+    Number *multiply(BaseValue *s) override;
 
-    Number *divide(BaseValue *s);
+    Number *divide(BaseValue *s) override;
 
-    Number *power(BaseValue *s);
+    Number *power(BaseValue *s) override;
 
-    Number *mod(BaseValue *s);
+    Number *mod(BaseValue *s) override;
 
     BaseValue *notted();
 
-    bool isTrue();
+    bool isTrue() override;
 
-    BaseValue *compGreaterThan(BaseValue *val);
+    BaseValue *compGreaterThan(BaseValue *val) override;
 
-    BaseValue *compLessThan(BaseValue *val);
+    BaseValue *compLessThan(BaseValue *val) override;
 
-    BaseValue *compGreaterThanEquals(BaseValue *val);
+    BaseValue *compGreaterThanEquals(BaseValue *val) override;
 
-    BaseValue *compLessThanEquals(BaseValue *val);
+    BaseValue *compLessThanEquals(BaseValue *val) override;
 
-    BaseValue *compNotEquals(BaseValue *val);
+    BaseValue *compNotEquals(BaseValue *val) override;
 
-    BaseValue *compEquals(BaseValue *val);
+    BaseValue *compEquals(BaseValue *val) override;
 
-    BaseValue *andedBy(BaseValue *s);
+    BaseValue *andedBy(BaseValue *s) override;
 
-    BaseValue *oredBy(BaseValue *s);
+    BaseValue *oredBy(BaseValue *s) override;
 
     string toString() override;
 

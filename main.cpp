@@ -12,6 +12,12 @@
 
 using namespace std;
 
+/**
+ * Run the program:
+    g++ main.cpp includes/Token/Token.cpp includes/Token/Token.h includes/Values/Value.cpp includes/Values/Value.h includes/Nodes/Node.cpp includes/Nodes/Node.h includes/Context/Context.cpp includes/Context/Context.h includes/Errors/Error.cpp includes/Errors/Error.h includes/Errors/RuntimeError.cpp includes/Errors/RuntimeError.h includes/Values/Number.cpp includes/Values/Number.h includes/Nodes/CallNode.cpp includes/Nodes/CallNode.h includes/Nodes/ForNode.cpp includes/Nodes/ForNode.h includes/Nodes/FuncDefNode.cpp includes/Nodes/FuncDefNode.h includes/Nodes/IfNode.cpp includes/Nodes/IfNode.h includes/Nodes/NumberNode.cpp includes/Nodes/NumberNode.h includes/Nodes/UnaryOperationNode.cpp includes/Nodes/UnaryOperationNode.h includes/Nodes/VarAccessNode.cpp includes/Nodes/VarAccessNode.h includes/Nodes/VarAssignNode.cpp includes/Nodes/VarAssignNode.h includes/Nodes/VarOperationNode.cpp includes/Nodes/VarOperationNode.h includes/Nodes/WhileNode.cpp includes/Nodes/WhileNode.h includes/Nodes/BinaryOperationNode.cpp includes/Nodes/BinaryOperationNode.h includes/Parser/ParseResult.cpp includes/Parser/ParseResult.h includes/RuntimeResult/RuntimeResult.cpp includes/RuntimeResult/RuntimeResult.h includes/SymbolTable/SymbolTable.cpp includes/SymbolTable/SymbolTable.h includes/Parser/Parser.cpp includes/Parser/Parser.h includes/Lexer/Lexer.cpp includes/Lexer/Lexer.h includes/Interpreter/Interpreter.cpp includes/Interpreter/Interpreter.h includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h
+**/
+
+
 vector<string> lines;
 Lexer *l;
 Parser *p;
@@ -19,7 +25,7 @@ ParseResult *res;
 SymbolTable *globalSymbolTable = new SymbolTable();
 string fileName;
 
-int readFile(){
+int readFile() {
     string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
     fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
 
@@ -52,19 +58,19 @@ int readFile(){
     Interpreter *i = new Interpreter(fileName, lines);
     Context *ctx = new Context("<program>");
     ctx->symbolTable = globalSymbolTable;
-    RuntimeResult* result = i->visit(res->node, ctx);
-    if(result->error){
+    RuntimeResult *result = i->visit(res->node, ctx);
+    if (result->error) {
         cout << result->error->toString() << endl;
         return 0;
-    } else if(result->value){
+    } else if (result->value) {
         cout << result->value->toString() << endl;
     }
     return 0;
 }
 
-int shellInput(){
+int shellInput() {
     fileName = "<stdin>";
-    while (true){
+    while (true) {
         lines = vector<string>();
         string input;
         cout << "Boa % ";
@@ -91,12 +97,12 @@ int shellInput(){
         Interpreter *i = new Interpreter(fileName, lines);
         Context *ctx = new Context("<program>");
         ctx->symbolTable = globalSymbolTable;
-        RuntimeResult* result = i->visit(res->node, ctx);
+        RuntimeResult *result = i->visit(res->node, ctx);
         clock_t stop = clock();
-        if(result->error){
+        if (result->error) {
             cout << result->error->toString() << endl;
             continue;
-        } else if(result->value){
+        } else if (result->value) {
             cout << result->value->toString() << endl;
         }
         cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;

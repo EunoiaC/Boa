@@ -26,6 +26,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Token/Token.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Number.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/String.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Value.cpp.o"
   "CMakeFiles/Boa.dir/main.cpp.o"
 )

@@ -230,6 +230,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp">
 			<Option target="Boa"/>
 		</Unit>

@@ -28,7 +28,7 @@ set(
         includes/Parser/Parser.cpp includes/Parser/Parser.h
         includes/Lexer/Lexer.cpp includes/Lexer/Lexer.h
         includes/Interpreter/Interpreter.cpp includes/Interpreter/Interpreter.h
-        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h)
+        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h includes/Values/String.cpp includes/Values/String.h)
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}

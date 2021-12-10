@@ -17,6 +17,7 @@
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/NumberNode.h"
 #include "../Nodes/UnaryOperationNode.h"
+#include "../Nodes/CallNode.h"
 #include <string>
 #include <vector>
 
@@ -41,6 +42,9 @@ public:
     RuntimeResult * visitIfNode(Node * n, Context* c);
     RuntimeResult * visitForNode(Node * n, Context* c);
     RuntimeResult * visitWhileNode(Node * n, Context* c);
+
+    RuntimeResult * visitFuncDefNode(Node * n, Context* c);
+    RuntimeResult * visitCallNode(Node * n, Context* c);
 };
 
 

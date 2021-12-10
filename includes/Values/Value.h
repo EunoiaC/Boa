@@ -6,12 +6,12 @@
 #define BOA_VALUE_H
 
 #include <string>
+#include "../Errors/RuntimeError.h"
 #include "BaseValue.h"
-
-using namespace std;
 
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUM";
+static const string T_FUNC = "FUNCTION";
 
 template<class valueType>
 class Value : public BaseValue {
@@ -21,12 +21,20 @@ private:
      */
     valueType val;
 public:
+    Context *ctx;
+    Error *rtError;
+
     Value(valueType v, string t, string f, string txt);
 
     /**
      * @return The value of the valueType
      */
     valueType getValue();
+
+
+    virtual BaseValue *setContext(Context *c);
+
+    void illegalOperation(BaseValue *other);
 };
 
 

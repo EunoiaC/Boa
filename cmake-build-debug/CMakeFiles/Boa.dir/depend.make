@@ -5,23 +5,20 @@ CMakeFiles/Boa.dir/includes/Context/Context.cpp.o: \
  ../includes/Context/Context.cpp \
  ../includes/Context/Context.h \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/Errors/Error.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.cpp \
  ../includes/Errors/Error.h \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.cpp \
  ../includes/Errors/RuntimeError.h \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -29,6 +26,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Interpreter/Interpreter.cpp \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/CallNode.h \
  ../includes/Nodes/ForNode.h \
  ../includes/Nodes/FuncDefNode.h \
  ../includes/Nodes/IfNode.h \
@@ -44,6 +42,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
  ../includes/Values/BaseValue.h \
+ ../includes/Values/Function.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \
@@ -205,8 +204,7 @@ CMakeFiles/Boa.dir/includes/Parser/ParseResult.cpp.o: \
  ../includes/Parser/ParseResult.cpp \
  ../includes/Parser/ParseResult.h \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -240,13 +238,11 @@ CMakeFiles/Boa.dir/includes/RuntimeResult/RuntimeResult.cpp.o: \
  ../includes/RuntimeResult/RuntimeResult.cpp \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.o: \
  ../includes/SymbolTable/SymbolTable.cpp \
  ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Value.h
+ ../includes/Values/BaseValue.h
 CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o: \
  ../includes/Token/BaseToken.cpp \
  ../includes/Token/BaseToken.h
@@ -266,6 +262,34 @@ CMakeFiles/Boa.dir/includes/Token/Token.cpp.o: \
 CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o: \
  ../includes/Values/BaseValue.cpp \
  ../includes/Values/BaseValue.h
+CMakeFiles/Boa.dir/includes/Values/Function.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Interpreter/Interpreter.h \
+ ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/CallNode.h \
+ ../includes/Nodes/ForNode.h \
+ ../includes/Nodes/FuncDefNode.h \
+ ../includes/Nodes/IfNode.h \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/VarAccessNode.h \
+ ../includes/Nodes/VarAssignNode.h \
+ ../includes/Nodes/VarOperationNode.h \
+ ../includes/Nodes/WhileNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValue.h \
+ ../includes/Values/Function.cpp \
+ ../includes/Values/Function.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h \
+ ../includes/Values/Value.cpp \
+ ../includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/Number.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -278,12 +302,20 @@ CMakeFiles/Boa.dir/includes/Values/Number.cpp.o: \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/String.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/String.cpp \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/Value.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h

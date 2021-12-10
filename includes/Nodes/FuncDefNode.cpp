@@ -21,3 +21,7 @@ FuncDefNode::FuncDefNode(Token<string>* funcNameTok, vector<Token<string>*> argN
 
     posEnd = body->posEnd;
 }
+
+string FuncDefNode::toString() {
+    return "(FuncDefNode: " + funcNameTok->toString() + ")";
+}

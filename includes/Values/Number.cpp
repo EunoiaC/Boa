@@ -9,16 +9,10 @@
 Number::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {
     numValue = value;
     rtError = nullptr;
-    setContext(nullptr);
 }
 
 double Number::getValue() {
     return numValue;
-}
-
-Number *Number::setContext(Context *c) {
-    ctx = c;
-    return this;
 }
 
 Number *Number::divide(BaseValue *s) {
@@ -37,58 +31,67 @@ Number *Number::divide(BaseValue *s) {
                     ctx
             );
         }
-        output = (new Number(numValue / num->getValue(), fName, fTxt))->setContext(ctx);
+        output = dynamic_cast<Number *>((new Number(numValue / num->getValue(), fName, fTxt))->setContext(ctx));
         output->rtError = rtError;
         return output;
     }
+    illegalOperation(s);
 }
 
 BaseValue *Number::compGreaterThanEquals(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue >= ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::compLessThanEquals(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue <= ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::compGreaterThan(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue > ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::compLessThan(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue < ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::compEquals(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue == ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::compNotEquals(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number(numValue != ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(val);
 }
 
 BaseValue *Number::andedBy(BaseValue *s) {
     if(s->type == T_NUM) {
         return (new Number(numValue and ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(s);
 }
 
 BaseValue *Number::oredBy(BaseValue *s) {
     if(s->type == T_NUM) {
         return (new Number(numValue or ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
     }
+    illegalOperation(s);
 }
 
 BaseValue *Number::notted() {
@@ -97,8 +100,10 @@ BaseValue *Number::notted() {
 
 Number *Number::multiply(BaseValue *s) {
     if(s->type == T_NUM) {
-        return (new Number(numValue * ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+        return dynamic_cast<Number *>((new Number(numValue * ((Number *) s)->getValue(), fName, fTxt))->setContext(
+                ctx));
     }
+    illegalOperation(s);
 }
 
 string Number::toString() {
@@ -111,24 +116,32 @@ bool Number::isTrue() {
 
 Number *Number::add(BaseValue *s) {
     if(s->type == T_NUM) {
-        return (new Number(numValue + ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+        return dynamic_cast<Number *>((new Number(numValue + ((Number *) s)->getValue(), fName, fTxt))->setContext(
+                ctx));
     }
+    illegalOperation(s);
 }
 
 Number *Number::subtract(BaseValue *s) {
     if(s->type == T_NUM) {
-        return (new Number(numValue - ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+        return dynamic_cast<Number *>((new Number(numValue - ((Number *) s)->getValue(), fName, fTxt))->setContext(
+                ctx));
     }
+    illegalOperation(s);
 }
 
 Number *Number::power(BaseValue *s) {
     if(s->type == T_NUM) {
-        return (new Number(pow(numValue, ((Number*) s)->getValue()), fName, fTxt))->setContext(ctx);
+        return dynamic_cast<Number *>((new Number(pow(numValue, ((Number *) s)->getValue()), fName, fTxt))->setContext(
+                ctx));
     }
+    illegalOperation(s);
 }
 
 Number *Number::mod(BaseValue *s) {
     if(s->type == T_NUM) {
-        return (new Number(fmod(numValue, ((Number*) s)->getValue()), fName, fTxt))->setContext(ctx);
+        return dynamic_cast<Number *>((new Number(fmod(numValue, ((Number *) s)->getValue()), fName, fTxt))->setContext(
+                ctx));
     }
+    illegalOperation(s);
 }

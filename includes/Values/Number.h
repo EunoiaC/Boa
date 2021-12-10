@@ -10,7 +10,6 @@
 
 class Number : public Value<double> {
 public:
-    Error *rtError;
     Context *ctx;
     double numValue;
 
@@ -51,8 +50,6 @@ public:
     BaseValue *oredBy(BaseValue *s) override;
 
     string toString() override;
-
-    Number *setContext(Context *c);
 };
 
 

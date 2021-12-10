@@ -17,3 +17,7 @@ CallNode::CallNode(Node *nodeToCall, vector<Node *> args) : Node(N_CALL){
         posEnd = nodeToCall->posEnd;
     }
 }
+
+string CallNode::toString() {
+    return "(CallNode: " + nodeToCall->toString() + ")";
+}

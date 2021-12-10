@@ -8,8 +8,13 @@ SymbolTable::SymbolTable() {
     parent = nullptr;
 }
 
+SymbolTable *SymbolTable::setParent(SymbolTable *parent) {
+    this->parent = parent;
+    return this;
+}
+
 BaseValue *SymbolTable::get(string key) {
-    BaseValue * val;
+    BaseValue * val = nullptr;
     if(symbols.count(key)){
         val = symbols[key];
     }

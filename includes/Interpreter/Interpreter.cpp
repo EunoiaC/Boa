@@ -3,6 +3,7 @@
 //
 
 #include "Interpreter.h"
+#include "../Values/Function.h"
 
 Interpreter::Interpreter(string name, vector<string> l) {
     fName = name;
@@ -16,6 +17,8 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_IF] = &Interpreter::visitIfNode;
     funcMap[N_FOR] = &Interpreter::visitForNode;
     funcMap[N_WHILE] = &Interpreter::visitWhileNode;
+    funcMap[N_CALL] = &Interpreter::visitCallNode;
+    funcMap[N_FUNC_DEF] = &Interpreter::visitFuncDefNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -123,6 +126,51 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     return result->success(value);
 }
 
+RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    CallNode *callNode = (CallNode *) n;
+    vector<BaseValue*> args;
+
+    Function * valToCall = dynamic_cast<Function *>(res->reg(visit(callNode->nodeToCall, c)));
+    if(res->error) return res;
+
+    valToCall = dynamic_cast<Function *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line));
+
+    for(auto argNode : callNode->args){
+        args.push_back(res->reg(visit(argNode, c)));
+        if(res->error) return res;
+    }
+
+    BaseValue * returnVal = res->reg(valToCall->execute(args));
+    if(res->error) return res;
+    return res->success(returnVal);
+}
+
+RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    FuncDefNode *node = (FuncDefNode *) n;
+
+    string funcName = node->funcNameTok->getValueObject()->getValue();
+    Node * bodyNode = node->body;
+
+    vector<string> argNames;
+    for(auto &argName: node->argNameToks) {
+        argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
+    }
+
+    Function * funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->line], funcName, bodyNode,
+                                                                  argNames, lines))->setContext(c)->setPos(
+            node->posStart, node->posEnd, node->line));
+
+    if(node->funcNameTok){
+        c->symbolTable->set(funcName, funcValue);
+    }
+
+    return res->success(funcValue);
+}
+
+
+
 RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
     RuntimeResult *result = new RuntimeResult();
     VarOperationNode *node = (VarOperationNode *) n;
@@ -227,8 +275,11 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     } else if (node->opTok->getType() == OR) {
         result = left->oredBy(right);
     }
+    //TODO: Update this area for any errors
+    if(result->type == T_NUM){
+        if (((Number *) result)->rtError) return rtRes->failure(((Number *) result)->rtError);
+    }
 
-    if (((Number *) result)->rtError) return rtRes->failure(((Number *) result)->rtError);
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 
 }

@@ -39,6 +39,7 @@ public:
     ParseResult * arithExpr();
     ParseResult * atom();
     ParseResult * power();
+    ParseResult * call();
     ParseResult * parse();
     ParseResult * ifExpr();
     ParseResult * forExpr();

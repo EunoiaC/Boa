@@ -5,13 +5,16 @@
 #ifndef BOA_SYMBOLTABLE_H
 #define BOA_SYMBOLTABLE_H
 #include <map>
-#include "../Values/Value.h"
+#include "../Values/BaseValue.h"
+#include <string>
+using namespace std;
 
 class SymbolTable {
 public:
     SymbolTable();
     map<string, BaseValue *> symbols;
     SymbolTable *parent;
+    SymbolTable *setParent(SymbolTable *parent);
     BaseValue *get(string key);
     void set(string key, BaseValue *value);
     void remove(string key);

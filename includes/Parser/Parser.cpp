@@ -2,6 +2,7 @@
 // Created by Aadi Yadav on 11/15/21.
 //
 
+#include <iostream>
 #include "Parser.h"
 
 Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
@@ -199,11 +200,17 @@ ParseResult *Parser::funcDef() {
         varNameTok = (Token<string> *) currentToken;
         res->regAdvancement();
         advance();
-    }
-    if (currentToken->getType() != L_PAREN) {
-        return res->failure(
-                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected '('"));
+        if (currentToken->getType() != L_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '('"));
+        }
+    } else {
+        if (currentToken->getType() != L_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '(' or an identifer"));
+        }
     }
     res->regAdvancement();
     advance();
@@ -212,7 +219,49 @@ ParseResult *Parser::funcDef() {
         argNames.push_back((Token<string> *) currentToken);
         res->regAdvancement();
         advance();
+
+        while (currentToken->getType() == COMMA) {
+            res->regAdvancement();
+            advance();
+
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
+            }
+
+            argNames.push_back((Token<string> *) currentToken);
+            res->regAdvancement();
+            advance();
+        }
+        if (currentToken->getType() != R_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected ',' or ')'"));
+        }
+    } else {
+        if (currentToken->getType() != R_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected ',' or ')'"));
+        }
     }
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != DO) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *returnNode = res->reg(expr());
+    if (res->error) return res;
+
+    return res->success(new FuncDefNode(varNameTok, argNames, returnNode));
 }
 
 ParseResult *Parser::atom() {
@@ -296,8 +345,49 @@ ParseResult *Parser::factor() {
     return power();
 }
 
+ParseResult *Parser::call() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    Node *_atom = res->reg(atom());
+    if (res->error) return res;
+
+    if (currentToken->getType() == L_PAREN) {
+        res->regAdvancement();
+        advance();
+        vector<Node *> args;
+
+        if (currentToken->getType() == R_PAREN) {
+            res->regAdvancement();
+            advance();
+        } else {
+            args.push_back(res->reg(expr()));
+            if (res->error) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError",
+                                  "Expected a closing parenthesis, identifier, conditional keyword, 'op', or number."));
+            }
+            while (currentToken->getType() == COMMA) {
+                res->regAdvancement();
+                advance();
+                args.push_back(res->reg(expr()));
+                if (res->error) return res;
+            }
+            if (currentToken->getType() != R_PAREN) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError",
+                                  "Expected ',' or ')'"));
+            }
+            res->regAdvancement();
+            advance();
+        }
+        return res->success(new CallNode(_atom, args));
+    }
+    return res->success(_atom);
+}
+
 ParseResult *Parser::power() {
-    return binOp({POWER}, &Parser::atom, &Parser::factor);
+    return binOp({POWER}, &Parser::call, &Parser::factor);
 }
 
 ParseResult *Parser::term() {

@@ -18,6 +18,24 @@ public:
     BaseValue * multiply(BaseValue * s) override;
     bool isTrue() override;
     string toString() override;
+
+    BaseValue *notted() override;
+
+    BaseValue *compGreaterThan(BaseValue *val) override;
+
+    BaseValue *compLessThan(BaseValue *val) override;
+
+    BaseValue *compGreaterThanEquals(BaseValue *val) override;
+
+    BaseValue *compLessThanEquals(BaseValue *val) override;
+
+    BaseValue *compNotEquals(BaseValue *val) override;
+
+    BaseValue *compEquals(BaseValue *val) override;
+
+    BaseValue *andedBy(BaseValue *s) override;
+
+    BaseValue *oredBy(BaseValue *s) override;
 };
 
 

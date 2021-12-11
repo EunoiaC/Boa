@@ -17,6 +17,68 @@ BaseValue * String::add(BaseValue *s) {
     illegalOperation(s);
 }
 
+BaseValue *String::compGreaterThanEquals(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue >= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::compLessThanEquals(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue <= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::compGreaterThan(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue > ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::compLessThan(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue < ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::compEquals(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue == ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::compNotEquals(BaseValue *val) {
+    if(val->type == T_STRING) {
+        return (new Number(strValue != ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+    illegalOperation(val);
+}
+
+BaseValue *String::andedBy(BaseValue *s) {
+    if(s->type == T_STRING) {
+        return (new Number(!strValue.empty() and !((String*) s)->getValue().empty(), fName, fTxt))->setContext(ctx);
+    } else if(s->type == T_NUM){
+        return (new Number(!strValue.empty() and ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *String::oredBy(BaseValue *s) {
+    if(s->type == T_STRING) {
+        return (new Number(!strValue.empty() or !((String*) s)->getValue().empty(), fName, fTxt))->setContext(ctx);
+    } else if(s->type == T_NUM){
+        return (new Number(!strValue.empty() or ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
+    }
+}
+
+BaseValue *String::notted() {
+    return (new Number(strValue.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
+}
+
 BaseValue * String::multiply(BaseValue *s) {
     if (s->type == T_NUM) {
         Number *num = (Number *) s;

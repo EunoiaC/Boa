@@ -55,7 +55,7 @@ public:
 
     BaseValue* andedBy(BaseValue* s) override;
     BaseValue* oredBy(BaseValue* s) override;
-    BaseValue *notted(BaseValue *s) override;
+    BaseValue *notted() override;
 
     void illegalOperation(BaseValue *other);
     void illegalOperation(BaseValue *other, string type);

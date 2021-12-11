@@ -67,7 +67,7 @@ BaseValue *BaseValue::oredBy(BaseValue *s) {
     return nullptr;
 }
 
-BaseValue *BaseValue::notted(BaseValue *s) {
+BaseValue *BaseValue::notted() {
     return nullptr;
 }
 

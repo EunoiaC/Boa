@@ -167,7 +167,7 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     FuncDefNode *node = (FuncDefNode *) n;
 
-    string funcName = node->funcNameTok->getValueObject()->getValue();
+    string funcName = node->funcNameTok ? node->funcNameTok->getValueObject()->getValue() : "anonymous";
     Node *bodyNode = node->body;
 
     vector<string> argNames;

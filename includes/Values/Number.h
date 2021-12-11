@@ -29,9 +29,9 @@ public:
 
     Number *mod(BaseValue *s) override;
 
-    BaseValue *notted();
-
     bool isTrue() override;
+
+    BaseValue *notted() override;
 
     BaseValue *compGreaterThan(BaseValue *val) override;
 

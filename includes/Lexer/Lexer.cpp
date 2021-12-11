@@ -103,7 +103,8 @@ Token<string> *Lexer::makeNotEquals() {
         advance();
         return new Token<string>(NOT_EQUAL, "!=", start, charLineIdx - 1, currLineIdx);
     }
-    //TODO: return error
+    return new Token<string>(NOT, "!", start, charLineIdx - 1, currLineIdx);
+
 }
 
 Token<string> *Lexer::makeEquals() {

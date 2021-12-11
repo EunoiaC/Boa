@@ -89,7 +89,7 @@ BaseValue *Value<valueType>::oredBy(BaseValue *s) {
 }
 
 template<class valueType>
-BaseValue *Value<valueType>::notted(BaseValue *s) {
+BaseValue *Value<valueType>::notted() {
     unsupportedOperation(this);
 }
 

@@ -53,6 +53,7 @@ CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Lexer/Lexer.cpp \
  ../includes/Lexer/Lexer.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -69,6 +70,7 @@ CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o: \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -88,6 +90,7 @@ CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o: \
  ../includes/Nodes/ForNode.cpp \
  ../includes/Nodes/ForNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -103,6 +106,7 @@ CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o: \
  ../includes/Nodes/FuncDefNode.cpp \
  ../includes/Nodes/FuncDefNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -125,6 +129,7 @@ CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.cpp \
  ../includes/Nodes/NumberNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -140,6 +145,7 @@ CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/UnaryOperationNode.cpp \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -155,6 +161,7 @@ CMakeFiles/Boa.dir/includes/Nodes/VarAccessNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/VarAccessNode.cpp \
  ../includes/Nodes/VarAccessNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -170,6 +177,7 @@ CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/VarAssignNode.cpp \
  ../includes/Nodes/VarAssignNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -185,6 +193,7 @@ CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/VarOperationNode.cpp \
  ../includes/Nodes/VarOperationNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -224,6 +233,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \
  ../includes/Parser/Parser.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
@@ -250,6 +260,7 @@ CMakeFiles/Boa.dir/includes/Token/Token.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.cpp \
@@ -294,6 +305,7 @@ CMakeFiles/Boa.dir/includes/Values/Number.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Number.cpp \
@@ -305,6 +317,7 @@ CMakeFiles/Boa.dir/includes/Values/String.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/String.cpp \
@@ -315,6 +328,7 @@ CMakeFiles/Boa.dir/includes/Values/Value.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Value.cpp \

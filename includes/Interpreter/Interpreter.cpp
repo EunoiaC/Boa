@@ -2,6 +2,7 @@
 // Created by Aadi Yadav on 11/20/21.
 //
 
+#include <iostream>
 #include "Interpreter.h"
 #include "../Values/Function.h"
 
@@ -30,16 +31,16 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ForNode *forNode = (ForNode *) n;
 
-    Number *startVal = (Number*) res->reg(visit(forNode->startVal, c));
+    Number *startVal = (Number *) res->reg(visit(forNode->startVal, c));
     if (res->error) return res;
 
-    Number *endVal = (Number*) res->reg(visit(forNode->endVal, c));
+    Number *endVal = (Number *) res->reg(visit(forNode->endVal, c));
     if (res->error) return res;
 
     Number *stepVal = new Number(1, fName, lines[n->line]);
 
     if (forNode->stepVal) {
-        stepVal = (Number*) res->reg(visit(forNode->stepVal, c));
+        stepVal = (Number *) res->reg(visit(forNode->stepVal, c));
         if (res->error) return res;
     }
 
@@ -47,22 +48,22 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
 
     function<bool()> condition;
 
-    if(stepVal->getValue() >= 0) {
-        condition = [&]{
+    if (stepVal->getValue() >= 0) {
+        condition = [&] {
             return i < endVal->getValue();
         };
-    } else{
+    } else {
         condition = [&]() {
             return i > endVal->getValue();
         };
     }
 
-    while(condition()) {
+    while (condition()) {
         c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number(i, fName, lines[n->line]));
         i += stepVal->getValue();
 
         res->reg(visit(forNode->body, c));
-        if(res->error) return res;
+        if (res->error) return res;
     }
     return res->success(nullptr);
 }
@@ -71,14 +72,14 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     WhileNode *whileNode = (WhileNode *) n;
 
-    while(true){
-        BaseValue * condition = res->reg(visit(whileNode->condition, c));
-        if(res->error) return res;
+    while (true) {
+        BaseValue *condition = res->reg(visit(whileNode->condition, c));
+        if (res->error) return res;
 
-        if(not condition->isTrue()) break;
+        if (not condition->isTrue()) break;
 
         res->reg(visit(whileNode->body, c));
-        if(res->error) return res;
+        if (res->error) return res;
     }
     return res->success(nullptr);
 }
@@ -129,20 +130,35 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     CallNode *callNode = (CallNode *) n;
-    vector<BaseValue*> args;
+    vector<BaseValue *> args;
 
-    Function * valToCall = dynamic_cast<Function *>(res->reg(visit(callNode->nodeToCall, c)));
-    if(res->error) return res;
-
-    valToCall = dynamic_cast<Function *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line));
-
-    for(auto argNode : callNode->args){
-        args.push_back(res->reg(visit(argNode, c)));
-        if(res->error) return res;
+    Function *valToCall;
+    BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
+    if (res->error) return res;
+    if(b->type != T_FUNC){
+        return res->failure(new RuntimeError(
+                callNode->posStart,
+                callNode->posEnd,
+                callNode->line,
+                fName,
+                lines[callNode->line],
+                "Can't call non-function",
+                c
+        ));
     }
 
-    BaseValue * returnVal = res->reg(valToCall->execute(args));
-    if(res->error) return res;
+    valToCall = dynamic_cast<Function *>(b);
+
+    valToCall = dynamic_cast<Function *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
+                                                                   callNode->line));
+
+    for (auto argNode: callNode->args) {
+        args.push_back(res->reg(visit(argNode, c)));
+        if (res->error) return res;
+    }
+
+    BaseValue *returnVal = res->reg(valToCall->execute(args));
+    if (res->error) return res;
     return res->success(returnVal);
 }
 
@@ -151,24 +167,23 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
     FuncDefNode *node = (FuncDefNode *) n;
 
     string funcName = node->funcNameTok->getValueObject()->getValue();
-    Node * bodyNode = node->body;
+    Node *bodyNode = node->body;
 
     vector<string> argNames;
-    for(auto &argName: node->argNameToks) {
+    for (auto &argName: node->argNameToks) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    Function * funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->line], funcName, bodyNode,
-                                                                  argNames, lines))->setContext(c)->setPos(
+    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->line], funcName, bodyNode,
+                                                                 argNames, lines))->setContext(c)->setPos(
             node->posStart, node->posEnd, node->line));
 
-    if(node->funcNameTok){
+    if (node->funcNameTok) {
         c->symbolTable->set(funcName, funcValue);
     }
 
     return res->success(funcValue);
 }
-
 
 
 RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
@@ -276,7 +291,7 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->oredBy(right);
     }
     //TODO: Update this area for any errors
-    if(result->type == T_NUM){
+    if (result->type == T_NUM) {
         if (((Number *) result)->rtError) return rtRes->failure(((Number *) result)->rtError);
     }
 

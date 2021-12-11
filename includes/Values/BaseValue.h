@@ -10,9 +10,7 @@ using namespace std;
 class BaseValue {
 public:
     BaseValue(string t, string f, string txt);
-    /**
-     * The object type of the value in a string form
-     */
+
     string type;
     string fName, fTxt;
     int posStart, posEnd, line;
@@ -41,7 +39,6 @@ public:
     virtual BaseValue* divide(BaseValue* s);
     virtual BaseValue* power(BaseValue* s);
     virtual BaseValue* mod(BaseValue* s);
-
 };
 
 

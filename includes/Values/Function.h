@@ -17,7 +17,7 @@ public:
 
     Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
 
-    RuntimeResult *execute(vector<BaseValue *> args);
+    RuntimeResult *execute(vector<BaseValue *> args) override;
 
     Function *copy();
 

@@ -6,6 +6,8 @@
 #define BOA_VALUE_H
 
 #include <string>
+#include <vector>
+#include "../RuntimeResult//RuntimeResult.h"
 #include "../Errors/RuntimeError.h"
 #include "BaseValue.h"
 
@@ -33,6 +35,7 @@ public:
 
 
     virtual BaseValue *setContext(Context *c);
+    virtual RuntimeResult *execute(vector<BaseValue *> args);
 
     void illegalOperation(BaseValue *other);
 };

@@ -16,6 +16,7 @@
 #include "../Nodes/VarAssignNode.h"
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/NumberNode.h"
+#include "../Nodes/StringNode.h"
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/CallNode.h"
 #include <string>
@@ -32,7 +33,10 @@ public:
     map<string, FnPtr> funcMap;
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);
+
     RuntimeResult * visitNumberNode(Node * n, Context* c);
+    RuntimeResult * visitStringNode(Node * n, Context* c);
+
     RuntimeResult * visitBinOpNode(Node * n, Context* c);
     RuntimeResult * visitUnaryOpNode(Node * n, Context* c);
     RuntimeResult * visitVarAssignNode(Node * n, Context* c);

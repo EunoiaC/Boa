@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "../Nodes/ForNode.h"
+#include "../Nodes/StringNode.h"
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/FuncDefNode.h"
 #include "../Nodes/CallNode.h"

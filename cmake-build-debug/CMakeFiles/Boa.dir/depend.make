@@ -32,6 +32,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
@@ -138,6 +139,22 @@ CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o: \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h
+CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/StringNode.cpp \
+ ../includes/Nodes/StringNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValue.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h \
+ ../includes/Values/Value.cpp \
+ ../includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -225,6 +242,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
@@ -285,6 +303,7 @@ CMakeFiles/Boa.dir/includes/Values/Function.cpp.o: \
  ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
@@ -346,6 +365,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/IfNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \

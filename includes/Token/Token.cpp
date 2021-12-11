@@ -2,6 +2,7 @@
 // Created by Aadi Yadav on 10/13/21.
 //
 
+#include <iostream>
 #include "Token.h"
 
 template<class tokType>

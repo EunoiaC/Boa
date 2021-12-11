@@ -2,6 +2,7 @@
 // Created by Aadi Yadav on 10/29/21.
 //
 
+#include <iostream>
 #include "Lexer.h"
 
 Lexer::Lexer(string fileText, string fileName) {
@@ -44,7 +45,7 @@ Token<string> *Lexer::makeIdentifier() {
     string identifier;
     int start = charLineIdx;
     int currLineIdx = lineIdx;
-    while ((LETTERS + "_").find(currChar) != string::npos) {
+    while ((LETTERS + "_" + NUMBERS).find(currChar) != string::npos) {
         identifier += currChar;
         advance();
     }

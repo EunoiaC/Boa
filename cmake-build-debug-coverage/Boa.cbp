@@ -152,6 +152,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

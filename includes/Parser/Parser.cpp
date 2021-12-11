@@ -272,6 +272,10 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
+    } else if (tok->getType() == T_STRING) {
+        res->regAdvancement();
+        advance();
+        return res->success(new StringNode((Token<string> *) tok));
     } else if (tok->getType() == IF) {
         Node *expr = res->reg(ifExpr());
         if (res->error) return res;

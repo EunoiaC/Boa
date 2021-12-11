@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/VarAccessNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.o"

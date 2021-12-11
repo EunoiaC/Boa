@@ -417,6 +417,30 @@ includes/Nodes/NumberNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.s
 .PHONY : includes/Nodes/NumberNode.cpp.s
 
+includes/Nodes/StringNode.o: includes/Nodes/StringNode.cpp.o
+.PHONY : includes/Nodes/StringNode.o
+
+# target to build an object file
+includes/Nodes/StringNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.o
+.PHONY : includes/Nodes/StringNode.cpp.o
+
+includes/Nodes/StringNode.i: includes/Nodes/StringNode.cpp.i
+.PHONY : includes/Nodes/StringNode.i
+
+# target to preprocess a source file
+includes/Nodes/StringNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.i
+.PHONY : includes/Nodes/StringNode.cpp.i
+
+includes/Nodes/StringNode.s: includes/Nodes/StringNode.cpp.s
+.PHONY : includes/Nodes/StringNode.s
+
+# target to generate assembly for a file
+includes/Nodes/StringNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.s
+.PHONY : includes/Nodes/StringNode.cpp.s
+
 includes/Nodes/UnaryOperationNode.o: includes/Nodes/UnaryOperationNode.cpp.o
 .PHONY : includes/Nodes/UnaryOperationNode.o
 
@@ -870,6 +894,9 @@ help:
 	@echo "... includes/Nodes/NumberNode.o"
 	@echo "... includes/Nodes/NumberNode.i"
 	@echo "... includes/Nodes/NumberNode.s"
+	@echo "... includes/Nodes/StringNode.o"
+	@echo "... includes/Nodes/StringNode.i"
+	@echo "... includes/Nodes/StringNode.s"
 	@echo "... includes/Nodes/UnaryOperationNode.o"
 	@echo "... includes/Nodes/UnaryOperationNode.i"
 	@echo "... includes/Nodes/UnaryOperationNode.s"

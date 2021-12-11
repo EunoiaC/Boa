@@ -12,6 +12,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_UNOP] = &Interpreter::visitUnaryOpNode;
     funcMap[N_BINOP] = &Interpreter::visitBinOpNode;
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
+    funcMap[N_STRING] = &Interpreter::visitStringNode;
     funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
     funcMap[N_VAR_OPERATION] = &Interpreter::visitVarOperationNode;
@@ -252,6 +253,17 @@ RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     return (new RuntimeResult())->success(num);
 }
 
+RuntimeResult *Interpreter::visitStringNode(Node *n, Context *c) {
+    StringNode *node = (StringNode *) n;
+    String *str = (String *) (new String(node->token->getValueObject()->getValue(), fName,
+                                         lines[node->token->line]))->setContext(c)->setPos(
+            node->token->posStart,
+            node->token->posEnd,
+            node->token->line
+    );
+    return (new RuntimeResult())->success(str);
+}
+
 RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     RuntimeResult *rtRes = new RuntimeResult();
     BinaryOperationNode *node = (BinaryOperationNode *) n;
@@ -291,9 +303,6 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->oredBy(right);
     }
     //TODO: Update this area for any errors
-    if (result->type == T_NUM) {
-        if (((Number *) result)->rtError) return rtRes->failure(((Number *) result)->rtError);
-    }
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 

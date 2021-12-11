@@ -11,8 +11,12 @@ class String : public Value<string> {
 public:
     string strValue;
     String(string value, string f, string txt);
-    bool compare(String* s);
     string getValue();
+
+    BaseValue * add(BaseValue * s) override;
+    BaseValue * subtract(BaseValue * s) override;
+    bool isTrue() override;
+    string toString() override;
 };
 
 

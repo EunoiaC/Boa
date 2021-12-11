@@ -17,12 +17,11 @@ static const string T_FUNC = "FUNCTION";
 
 template<class valueType>
 class Value : public BaseValue {
-private:
+public:
     /**
      * The value as an instance of the object type
      */
     valueType val;
-public:
     Context *ctx;
     Error *rtError;
 

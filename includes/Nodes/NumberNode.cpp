@@ -5,7 +5,6 @@
 #include "NumberNode.h"
 
 NumberNode::NumberNode(Token<double> *value) : token(value), Node(N_NUMBER) {
-    token = value;
     posStart = value->posStart;
     posEnd = value->posEnd;
     line = token->line;

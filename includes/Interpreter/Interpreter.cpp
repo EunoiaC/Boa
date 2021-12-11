@@ -303,10 +303,14 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->oredBy(right);
     }
     //TODO: Update this area for any errors
-    if(((Number*) left)->rtError){
-        return rtRes->failure(((Number*) left)->rtError);
-    } else if(((String*) left)->rtError){
-        return rtRes->failure(((String*) left)->rtError);
+    if(left->type == T_NUM) {
+        if (((Number *) left)->rtError) {
+            return rtRes->failure(((Number *) left)->rtError);
+        }
+    } else if(left->type == T_STRING) {
+        if (((String *) left)->rtError) {
+            return rtRes->failure(((String *) left)->rtError);
+        }
     }
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));

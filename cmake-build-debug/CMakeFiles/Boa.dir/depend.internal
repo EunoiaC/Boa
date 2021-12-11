@@ -339,6 +339,7 @@ CMakeFiles/Boa.dir/includes/Values/String.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp

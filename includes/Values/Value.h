@@ -12,7 +12,7 @@
 #include "BaseValue.h"
 
 static const string T_STRING = "STRING";
-static const string T_NUM = "NUM";
+static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
 
 template<class valueType>
@@ -36,7 +36,30 @@ public:
     virtual BaseValue *setContext(Context *c);
     virtual RuntimeResult *execute(vector<BaseValue *> args);
 
+    //Overrides methods to give unsupportedOperation RTError
+    BaseValue *subtract(BaseValue * other) override;
+    BaseValue *add(BaseValue * other) override;
+    BaseValue *multiply(BaseValue * other) override;
+    BaseValue *divide(BaseValue * other) override;
+    BaseValue* power(BaseValue* s) override;
+    BaseValue* mod(BaseValue* s) override;
+
+    bool isTrue() override;
+
+    BaseValue *compGreaterThan(BaseValue *val) override;
+    BaseValue *compLessThan(BaseValue *val) override;
+    BaseValue *compGreaterThanEquals(BaseValue *val) override;
+    BaseValue *compLessThanEquals(BaseValue *val) override;
+    BaseValue *compNotEquals(BaseValue *val) override;
+    BaseValue *compEquals(BaseValue *val) override;
+
+    BaseValue* andedBy(BaseValue* s) override;
+    BaseValue* oredBy(BaseValue* s) override;
+    BaseValue *notted(BaseValue *s) override;
+
     void illegalOperation(BaseValue *other);
+    void illegalOperation(BaseValue *other, string type);
+    void unsupportedOperation(BaseValue *other);
 };
 
 

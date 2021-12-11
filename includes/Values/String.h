@@ -5,6 +5,7 @@
 #define BOA_STRING_H
 
 #include "Value.cpp"
+#include "Number.h"
 
 
 class String : public Value<string> {
@@ -14,7 +15,7 @@ public:
     string getValue();
 
     BaseValue * add(BaseValue * s) override;
-    BaseValue * subtract(BaseValue * s) override;
+    BaseValue * multiply(BaseValue * s) override;
     bool isTrue() override;
     string toString() override;
 };

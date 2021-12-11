@@ -339,6 +339,7 @@ CMakeFiles/Boa.dir/includes/Values/String.cpp.o: \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValue.h \
+ ../includes/Values/Number.h \
  ../includes/Values/String.cpp \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \

@@ -151,7 +151,8 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     valToCall = dynamic_cast<Function *>(b);
 
     valToCall = dynamic_cast<Function *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
-                                                                   callNode->line));
+                                                                   callNode->nodeToCall->line));
+    valToCall->callTxt = lines[callNode->nodeToCall->line]; //Update the line func is called on
 
     for (auto argNode: callNode->args) {
         args.push_back(res->reg(visit(argNode, c)));
@@ -175,9 +176,9 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->line], funcName, bodyNode,
+    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->funcNameTok->line], funcName, bodyNode,
                                                                  argNames, lines))->setContext(c)->setPos(
-            node->posStart, node->posEnd, node->line));
+            node->posStart, node->posEnd, node->funcNameTok->line));
 
     if (node->funcNameTok) {
         c->symbolTable->set(funcName, funcValue);

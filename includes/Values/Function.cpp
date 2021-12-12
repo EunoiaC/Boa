@@ -27,7 +27,7 @@ RuntimeResult *Function::execute(vector<BaseValue *> args) {
                 posEnd,
                 line,
                 fName,
-                fTxt,
+                callTxt,
                 to_string(args.size() - this->argNames.size()) + " too many args passed into " + name,
                 ctx
         ));
@@ -39,7 +39,7 @@ RuntimeResult *Function::execute(vector<BaseValue *> args) {
                 posEnd,
                 line,
                 fName,
-                fTxt,
+                callTxt,
                 to_string(this->argNames.size() - args.size()) + " too few args passed into " + name,
                 ctx
         ));

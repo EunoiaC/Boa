@@ -1,0 +1,5 @@
+op add(x, y) do x+y
+add(9,10)
+add(9,10, 11)
+add(9)
+add(9, "sds")

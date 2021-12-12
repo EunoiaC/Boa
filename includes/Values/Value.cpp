@@ -1,6 +1,7 @@
 //
 // Created by Administrator on 10/12/2021.
 //
+#include <iostream>
 #include "Value.h"
 
 template<class valueType>

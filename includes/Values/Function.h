@@ -10,7 +10,7 @@
 
 class Function : public Value<int> {
 public:
-    string name;
+    string name, callTxt;
     vector<string> argNames;
     Node *body;
     vector<string> lines;

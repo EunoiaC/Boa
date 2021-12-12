@@ -1,0 +1,32 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Boa",
+	"patterns": [
+		{
+			"include": "#keywords"
+		},
+		{
+			"include": "#strings"
+		}
+	],
+	"repository": {
+		"keywords": {
+			"patterns": [{
+				"name": "keyword.control.boa",
+				"match": "\\b(if|while|for|do)\\b"
+			}]
+		},
+		"strings": {
+			"name": "string.quoted.double.boa",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.boa",
+					"match": "\\\\."
+				}
+			]
+		}
+	},
+	"scopeName": "source.boa"
+}

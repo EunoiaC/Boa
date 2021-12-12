@@ -1,7 +1,0 @@
-op add(x, y) do x+y
-add(9,10)
-add(9,10, 11)
-add(9)
-add(9, "sds")
-op fib(n) do if n == 0 or n == 1 do n else fib(n-1) + fib(n-2)
-op maturityFinder(age) do if age > 10 do "mature" else "go bacc to ur mum baby"

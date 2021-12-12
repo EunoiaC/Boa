@@ -217,6 +217,22 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
             }
             finValue = ((Number *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
+        } else if(value->type == T_STRING){
+            String *toAdd = (String *) result->reg(visit(node->value, c));
+            if (result->error) return result;
+            if (node->op == MINUS_EQUAL) {
+                return result->failure(new RuntimeError(
+                        node->posStart,
+                        node->posEnd,
+                        node->line,
+                        fName,
+                        lines[node->line],
+                        "Can't subtract from string",
+                        c
+                ));
+            }
+            finValue = ((String *) value)->add(toAdd);
+            c->symbolTable->set(varName, finValue);
         }
     } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
         if (value->type == T_NUM) {

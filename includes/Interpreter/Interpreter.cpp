@@ -328,6 +328,10 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         if (((String *) left)->rtError) {
             return rtRes->failure(((String *) left)->rtError);
         }
+    } else if(left->type == T_FUNC) {
+        if (((Function *) left)->rtError) {
+            return rtRes->failure(((Function *) left)->rtError);
+        }
     }
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));

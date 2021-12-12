@@ -22,6 +22,14 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
+iostream
+-
+Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+../Values/Function.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h

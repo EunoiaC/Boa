@@ -9,7 +9,6 @@
 Interpreter::Interpreter(string name, vector<string> l) {
     fName = name;
     lines = l;
-    funcMap[N_LIST] = &Interpreter::visitListNode;
     funcMap[N_UNOP] = &Interpreter::visitUnaryOpNode;
     funcMap[N_BINOP] = &Interpreter::visitBinOpNode;
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
@@ -31,7 +30,6 @@ RuntimeResult *Interpreter::visit(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
-    vector<BaseValue *> elements;
     ForNode *forNode = (ForNode *) n;
 
     Number *startVal = (Number *) res->reg(visit(forNode->startVal, c));
@@ -65,17 +63,14 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number(i, fName, lines[n->line]));
         i += stepVal->getValue();
 
-        elements.push_back(res->reg(visit(forNode->body, c)));
+        res->reg(visit(forNode->body, c));
         if (res->error) return res;
     }
-    return res->success(
-            (new List(elements, fName, lines[n->line]))->setContext(c)->setPos(forNode->posStart, forNode->posEnd,
-                                                                               forNode->line));
+    return res->success(nullptr);
 }
 
 RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
-    vector<BaseValue*> elements;
     WhileNode *whileNode = (WhileNode *) n;
 
     while (true) {
@@ -84,12 +79,10 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
 
         if (not condition->isTrue()) break;
 
-        elements.push_back(res->reg(visit(whileNode->body, c)));
+        res->reg(visit(whileNode->body, c));
         if (res->error) return res;
     }
-    return res->success(
-            (new List(elements, fName, lines[n->line]))->setContext(c)->setPos(whileNode->posStart, whileNode->posEnd,
-                                                                               whileNode->line));
+    return res->success(nullptr);
 }
 
 RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
@@ -135,19 +128,6 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     return result->success(value);
 }
 
-RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
-    ListNode *node = (ListNode *) n;
-    vector<BaseValue *> elements;
-    for (auto element: node->elements) {
-        elements.push_back(res->reg(visit(element, c)));
-        if (res->error) return res;
-    }
-    return res->success(
-            (new List(elements, fName, lines[node->line]))->setContext(c)->setPos(node->posStart, node->posEnd,
-                                                                                  node->line));
-}
-
 RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     CallNode *callNode = (CallNode *) n;
@@ -156,7 +136,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     Function *valToCall;
     BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
     if (res->error) return res;
-    if (b->type != T_FUNC) {
+    if(b->type != T_FUNC){
         return res->failure(new RuntimeError(
                 callNode->posStart,
                 callNode->posEnd,
@@ -196,8 +176,7 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->funcNameTok->line], funcName,
-                                                                 bodyNode,
+    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->funcNameTok->line], funcName, bodyNode,
                                                                  argNames, lines))->setContext(c)->setPos(
             node->posStart, node->posEnd, node->funcNameTok->line));
 
@@ -238,7 +217,7 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
             }
             finValue = ((Number *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
-        } else if (value->type == T_STRING) {
+        } else if(value->type == T_STRING){
             String *toAdd = (String *) result->reg(visit(node->value, c));
             if (result->error) return result;
             if (node->op == MINUS_EQUAL) {
@@ -309,7 +288,7 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     if (rtRes->error) return rtRes;
     BaseValue *right = rtRes->reg(visit(node->getRight(), c));
     if (rtRes->error) return rtRes;
-    BaseValue *result = nullptr;
+    BaseValue *result = new BaseValue(left->type, fName, lines[node->opTok->line]);
 
     if (node->opTok->type == PLUS) {
         result = left->add(right);
@@ -341,15 +320,15 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->oredBy(right);
     }
     //TODO: Update this area for any errors
-    if (left->type == T_NUM) {
+    if(left->type == T_NUM) {
         if (((Number *) left)->rtError) {
             return rtRes->failure(((Number *) left)->rtError);
         }
-    } else if (left->type == T_STRING) {
+    } else if(left->type == T_STRING) {
         if (((String *) left)->rtError) {
             return rtRes->failure(((String *) left)->rtError);
         }
-    } else if (left->type == T_FUNC) {
+    } else if(left->type == T_FUNC) {
         if (((Function *) left)->rtError) {
             return rtRes->failure(((Function *) left)->rtError);
         }

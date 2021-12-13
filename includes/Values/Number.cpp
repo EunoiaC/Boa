@@ -81,17 +81,11 @@ BaseValue *Number::compNotEquals(BaseValue *val) {
 }
 
 BaseValue *Number::andedBy(BaseValue *s) {
-    if(s->type == T_NUM) {
-        return (new Number(numValue and ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
-    }
-    illegalOperation(s);
+    return (new Number(numValue or s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 BaseValue *Number::oredBy(BaseValue *s) {
-    if(s->type == T_NUM) {
-        return (new Number(numValue or ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
-    }
-    illegalOperation(s);
+    return (new Number(numValue or s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 BaseValue *Number::notted() {

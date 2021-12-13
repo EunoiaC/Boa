@@ -60,19 +60,11 @@ BaseValue *String::compNotEquals(BaseValue *val) {
 }
 
 BaseValue *String::andedBy(BaseValue *s) {
-    if(s->type == T_STRING) {
-        return (new Number(!strValue.empty() and !((String*) s)->getValue().empty(), fName, fTxt))->setContext(ctx);
-    } else if(s->type == T_NUM){
-        return (new Number(!strValue.empty() and ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
-    }
+    return (new Number(!strValue.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 BaseValue *String::oredBy(BaseValue *s) {
-    if(s->type == T_STRING) {
-        return (new Number(!strValue.empty() or !((String*) s)->getValue().empty(), fName, fTxt))->setContext(ctx);
-    } else if(s->type == T_NUM){
-        return (new Number(!strValue.empty() or ((Number*) s)->getValue(), fName, fTxt))->setContext(ctx);
-    }
+    return (new Number(!strValue.empty() or s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 BaseValue *String::notted() {

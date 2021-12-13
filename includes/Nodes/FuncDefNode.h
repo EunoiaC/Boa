@@ -16,7 +16,7 @@ public:
     Token<string> *funcNameTok;
     int posStart, posEnd;
 
-    string toString() override;
+    string toString() ;
 
     FuncDefNode(Token<string> *funcNameTok, vector<Token<string> *> argNameToks, Node *body);
 };

@@ -6,6 +6,7 @@
 #define BOA_PARSER_H
 
 #include <vector>
+#include "../Nodes/ListNode.h"
 #include "../Nodes/ForNode.h"
 #include "../Nodes/StringNode.h"
 #include "../Nodes/WhileNode.h"
@@ -45,6 +46,7 @@ public:
     ParseResult * ifExpr();
     ParseResult * forExpr();
     ParseResult * whileExpr();
+    ParseResult * listExpr();
     ParseResult * funcDef();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };

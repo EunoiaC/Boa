@@ -5,6 +5,7 @@
 #ifndef BOA_INTERPRETER_H
 #define BOA_INTERPRETER_H
 #include "../Values/Number.h"
+#include "../Values/List.h"
 #include "../Values/String.h"
 #include "../RuntimeResult/RuntimeResult.h"
 #include "../Nodes/ForNode.h"
@@ -19,6 +20,7 @@
 #include "../Nodes/StringNode.h"
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/CallNode.h"
+#include "../Nodes/ListNode.h"
 #include <string>
 #include <vector>
 
@@ -36,6 +38,7 @@ public:
 
     RuntimeResult * visitNumberNode(Node * n, Context* c);
     RuntimeResult * visitStringNode(Node * n, Context* c);
+    RuntimeResult * visitListNode(Node * n, Context* c);
 
     RuntimeResult * visitBinOpNode(Node * n, Context* c);
     RuntimeResult * visitUnaryOpNode(Node * n, Context* c);

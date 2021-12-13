@@ -369,6 +369,30 @@ includes/Nodes/IfNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.s
 .PHONY : includes/Nodes/IfNode.cpp.s
 
+includes/Nodes/ListNode.o: includes/Nodes/ListNode.cpp.o
+.PHONY : includes/Nodes/ListNode.o
+
+# target to build an object file
+includes/Nodes/ListNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.o
+.PHONY : includes/Nodes/ListNode.cpp.o
+
+includes/Nodes/ListNode.i: includes/Nodes/ListNode.cpp.i
+.PHONY : includes/Nodes/ListNode.i
+
+# target to preprocess a source file
+includes/Nodes/ListNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.i
+.PHONY : includes/Nodes/ListNode.cpp.i
+
+includes/Nodes/ListNode.s: includes/Nodes/ListNode.cpp.s
+.PHONY : includes/Nodes/ListNode.s
+
+# target to generate assembly for a file
+includes/Nodes/ListNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.s
+.PHONY : includes/Nodes/ListNode.cpp.s
+
 includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
 .PHONY : includes/Nodes/Node.o
 
@@ -753,6 +777,30 @@ includes/Values/Function.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Function.cpp.s
 .PHONY : includes/Values/Function.cpp.s
 
+includes/Values/List.o: includes/Values/List.cpp.o
+.PHONY : includes/Values/List.o
+
+# target to build an object file
+includes/Values/List.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/List.cpp.o
+.PHONY : includes/Values/List.cpp.o
+
+includes/Values/List.i: includes/Values/List.cpp.i
+.PHONY : includes/Values/List.i
+
+# target to preprocess a source file
+includes/Values/List.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/List.cpp.i
+.PHONY : includes/Values/List.cpp.i
+
+includes/Values/List.s: includes/Values/List.cpp.s
+.PHONY : includes/Values/List.s
+
+# target to generate assembly for a file
+includes/Values/List.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/List.cpp.s
+.PHONY : includes/Values/List.cpp.s
+
 includes/Values/Number.o: includes/Values/Number.cpp.o
 .PHONY : includes/Values/Number.o
 
@@ -888,6 +936,9 @@ help:
 	@echo "... includes/Nodes/IfNode.o"
 	@echo "... includes/Nodes/IfNode.i"
 	@echo "... includes/Nodes/IfNode.s"
+	@echo "... includes/Nodes/ListNode.o"
+	@echo "... includes/Nodes/ListNode.i"
+	@echo "... includes/Nodes/ListNode.s"
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"
@@ -936,6 +987,9 @@ help:
 	@echo "... includes/Values/Function.o"
 	@echo "... includes/Values/Function.i"
 	@echo "... includes/Values/Function.s"
+	@echo "... includes/Values/List.o"
+	@echo "... includes/Values/List.i"
+	@echo "... includes/Values/List.s"
 	@echo "... includes/Values/Number.o"
 	@echo "... includes/Values/Number.i"
 	@echo "... includes/Values/Number.s"

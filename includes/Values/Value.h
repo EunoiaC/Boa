@@ -14,11 +14,14 @@
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
+static const string T_LIST = "LIST";
 
 template<class valueType>
 class Value : public BaseValue {
 public:
-    /**
+    Value(const vector<BaseValue *> &elems, string f, string txt);
+
+/**
      * The value as an instance of the object type
      */
     valueType val;

@@ -114,8 +114,6 @@ int main() {
     globalSymbolTable->set("PI", new Number(M_PI, fileName, "Definition in default globalSymbolTable"));
     globalSymbolTable->set("true", new Number(1, fileName, "Definition in default globalSymbolTable"));
     globalSymbolTable->set("false", new Number(0, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("gay", new String("aaroosh", fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("overpowered", new String("aadi", fileName, "Definition in default globalSymbolTable"));
     return shellInput();
 }
 

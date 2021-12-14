@@ -218,7 +218,7 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
             finValue = ((Number *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
         } else if(value->type == T_STRING){
-            String *toAdd = (String *) result->reg(visit(node->value, c));
+            String<string> *toAdd = (String<string> *) result->reg(visit(node->value, c));
             if (result->error) return result;
             if (node->op == MINUS_EQUAL) {
                 return result->failure(new RuntimeError(
@@ -231,7 +231,7 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
                         c
                 ));
             }
-            finValue = ((String *) value)->add(toAdd);
+            finValue = ((String<string> *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
         }
     } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
@@ -272,7 +272,7 @@ RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitStringNode(Node *n, Context *c) {
     StringNode *node = (StringNode *) n;
-    String *str = (String *) (new String(node->token->getValueObject()->getValue(), fName,
+    String<string> *str = (String<string> *) (new String<string>(node->token->getValueObject()->getValue(), fName,
                                          lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,
@@ -325,8 +325,8 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
             return rtRes->failure(((Number *) left)->rtError);
         }
     } else if(left->type == T_STRING) {
-        if (((String *) left)->rtError) {
-            return rtRes->failure(((String *) left)->rtError);
+        if (((String<string> *) left)->rtError) {
+            return rtRes->failure(((String<string> *) left)->rtError);
         }
     } else if(left->type == T_FUNC) {
         if (((Function *) left)->rtError) {

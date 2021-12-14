@@ -13,7 +13,7 @@ Token<tokType>::Token(string t, tokType v, int start_pos, int end_pos, int line_
 
 template<> Token<string>::Token(string t, string v, int start_pos, int end_pos, int line_num) : BaseToken(t, start_pos, end_pos, line_num) {
     type = t;
-    value = new String(v, fName, fTxt);
+    value = new String<string>(v, fName, fTxt);
 }
 
 template<> Token<double>::Token(string t, double v, int start_pos, int end_pos, int line_num) : BaseToken(t, start_pos, end_pos, line_num) {

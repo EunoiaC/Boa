@@ -4,6 +4,7 @@
 
 #include "Number.h"
 #include "String.h"
+//#include "List.h"
 #include <math.h>
 
 Number::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {

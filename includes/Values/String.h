@@ -8,10 +8,10 @@
 #include "Number.h"
 
 
-class String : public Value<string> {
+template<typename T> class String : public Value<T> {
 public:
-    string strValue;
-    String(string value, string f, string txt);
+    T strValue;
+    String<T>(string value, string f, string txt);
     string getValue();
 
     BaseValue * add(BaseValue * s) override;

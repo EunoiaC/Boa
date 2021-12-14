@@ -8,14 +8,14 @@
 #include "../Errors/RuntimeError.h"
 #include "Value.h"
 
-class Number : public Value<double> {
+template<typename T> class Number : public Value<T> {
 public:
     Context *ctx;
     double numValue;
 
-    Number(double value, string f, string txt);
+    Number<T>(double value, string f, string txt);
 
-    double getValue();
+    double getValue() override;
 
     Number *add(BaseValue *s) override;
 

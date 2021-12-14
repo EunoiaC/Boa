@@ -6,20 +6,24 @@
 #define BOA_FUNCTION_H
 
 #include <vector>
-#include "../Interpreter/Interpreter.h"
+#include "../Nodes/Node.h"
+#include "../Values/Value.h"
+#include "../RuntimeResult/RuntimeResult.h"
 
-class Function : public Value<int> {
+using namespace std;
+
+template<typename T> class Function : public Value<T> {
 public:
     string name, callTxt;
     vector<string> argNames;
     Node *body;
     vector<string> lines;
 
-    Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
+    Function<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
 
     RuntimeResult *execute(vector<BaseValue *> args) override;
 
-    Function *copy();
+    Function<int> *copy();
 
     string toString() override;
 };

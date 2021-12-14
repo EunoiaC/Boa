@@ -19,61 +19,61 @@ template<> BaseValue * String<string>::add(BaseValue *s) {
 
 template<> BaseValue * String<string>::compGreaterThanEquals(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue >= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue >= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::compLessThanEquals(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue <= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue <= ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::compGreaterThan(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue > ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue > ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::compLessThan(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue < ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue < ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::compEquals(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue == ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue == ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::compNotEquals(BaseValue *val) {
     if(val->type == T_STRING) {
-        return (new Number(strValue != ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(strValue != ((String*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     illegalOperation(val);
 }
 
 template<> BaseValue * String<string>::andedBy(BaseValue *s) {
-    return (new Number(!strValue.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
+    return (new Number<double>(!strValue.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 template<> BaseValue * String<string>::oredBy(BaseValue *s) {
-    return (new Number(!strValue.empty() or s->isTrue(), fName, fTxt))->setContext(ctx);
+    return (new Number<double>(!strValue.empty() or s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 template<> BaseValue * String<string>::notted() {
-    return (new Number(strValue.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
+    return (new Number<double>(strValue.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
 }
 
 template<> BaseValue * String<string>::multiply(BaseValue *s) {
     if (s->type == T_NUM) {
-        Number *num = (Number *) s;
+        Number<double> *num = (Number<double> *) s;
         string res = "";
         for(int i = 0; i < num->getValue(); i++) {
             res += strValue;

@@ -18,7 +18,7 @@ template<> Token<string>::Token(string t, string v, int start_pos, int end_pos, 
 
 template<> Token<double>::Token(string t, double v, int start_pos, int end_pos, int line_num) : BaseToken(t, start_pos, end_pos, line_num) {
     type = t;
-    value = new Number(v, fName, fTxt);
+    value = new Number<double>(v, fName, fTxt);
 }
 
 

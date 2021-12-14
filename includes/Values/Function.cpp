@@ -4,7 +4,10 @@
 
 #include "Function.h"
 
-Function::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)
+#include "../Interpreter/Interpreter.h"
+
+
+template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)
         : Value<int>(0, T_FUNC, fName, fTxt) {
     this->name = name;
     this->body = body;
@@ -12,7 +15,7 @@ Function::Function(string fName, string fTxt, string name, Node *body, vector<st
     this->lines = lines;
 }
 
-RuntimeResult *Function::execute(vector<BaseValue *> args) {
+template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
     RuntimeResult *res = new RuntimeResult();
     Interpreter *interpreter = new Interpreter(fName, lines);
 
@@ -49,7 +52,7 @@ RuntimeResult *Function::execute(vector<BaseValue *> args) {
         string argName = argNames[i];
         BaseValue *argValue = args[i];
         if (argValue->type == T_NUM) {
-            ((Number *) argValue)->setContext(newContext);
+            ((Number<double> *) argValue)->setContext(newContext);
         }
         newContext->symbolTable->set(argName, argValue);
     }
@@ -58,13 +61,13 @@ RuntimeResult *Function::execute(vector<BaseValue *> args) {
     return res->success(value);
 }
 
-Function *Function::copy() {
-    Function * func = new Function(fName, fTxt, name, body, argNames, lines);
+template<> Function<int> *Function<int>::copy() {
+    Function<int> * func = new Function<int>(fName, fTxt, name, body, argNames, lines);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;
 }
 
-string Function::toString() {
+template<typename T> string Function<T>::toString() {
     return "{Func: " + name + "}";
 }

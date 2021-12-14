@@ -27,7 +27,7 @@ public:
 
     Value(valueType v, string t, string f, string txt);
 
-    /**
+    virtual /**
      * @return The value of the valueType
      */
     valueType getValue();

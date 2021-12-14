@@ -379,6 +379,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
  ../includes/Values/BaseValue.h \
+ ../includes/Values/Function.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \

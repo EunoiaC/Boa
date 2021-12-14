@@ -12,7 +12,7 @@ template<typename T> class String : public Value<T> {
 public:
     T strValue;
     String<T>(string value, string f, string txt);
-    string getValue();
+    string getValue() override;
 
     BaseValue * add(BaseValue * s) override;
     BaseValue * multiply(BaseValue * s) override;

@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include "Interpreter.h"
-#include "../Values/Function.h"
 
 Interpreter::Interpreter(string name, vector<string> l) {
     fName = name;
@@ -32,16 +31,16 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ForNode *forNode = (ForNode *) n;
 
-    Number *startVal = (Number *) res->reg(visit(forNode->startVal, c));
+    Number<double> *startVal = (Number<double> *) res->reg(visit(forNode->startVal, c));
     if (res->error) return res;
 
-    Number *endVal = (Number *) res->reg(visit(forNode->endVal, c));
+    Number<double> *endVal = (Number<double> *) res->reg(visit(forNode->endVal, c));
     if (res->error) return res;
 
-    Number *stepVal = new Number(1, fName, lines[n->line]);
+    Number<double> *stepVal = new Number<double>(1, fName, lines[n->line]);
 
     if (forNode->stepVal) {
-        stepVal = (Number *) res->reg(visit(forNode->stepVal, c));
+        stepVal = (Number<double> *) res->reg(visit(forNode->stepVal, c));
         if (res->error) return res;
     }
 
@@ -60,7 +59,7 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     }
 
     while (condition()) {
-        c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number(i, fName, lines[n->line]));
+        c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number<double>(i, fName, lines[n->line]));
         i += stepVal->getValue();
 
         res->reg(visit(forNode->body, c));
@@ -133,7 +132,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     CallNode *callNode = (CallNode *) n;
     vector<BaseValue *> args;
 
-    Function *valToCall;
+    Function<int> *valToCall;
     BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
     if (res->error) return res;
     if(b->type != T_FUNC){
@@ -148,9 +147,9 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         ));
     }
 
-    valToCall = dynamic_cast<Function *>(b);
+    valToCall = dynamic_cast<Function<int> *>(b);
 
-    valToCall = dynamic_cast<Function *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
+    valToCall = dynamic_cast<Function<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
                                                                    callNode->nodeToCall->line));
     valToCall->callTxt = lines[callNode->nodeToCall->line]; //Update the line func is called on
 
@@ -176,8 +175,10 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    Function *funcValue = dynamic_cast<Function *>((new Function(fName, lines[node->funcNameTok->line], funcName, bodyNode,
-                                                                 argNames, lines))->setContext(c)->setPos(
+    Function<int> *funcValue = dynamic_cast<Function<int> *>((new Function<int>(fName, lines[node->funcNameTok->line],
+                                                                                funcName, bodyNode,
+                                                                                argNames, lines))->setContext(
+            c)->setPos(
             node->posStart, node->posEnd, node->funcNameTok->line));
 
     if (node->funcNameTok) {
@@ -210,12 +211,12 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
 
     if (node->op == PLUS_EQUAL || node->op == MINUS_EQUAL) {
         if (value->type == T_NUM) {
-            Number *toAdd = (Number *) result->reg(visit(node->value, c));
+            Number<double> *toAdd = (Number<double> *) result->reg(visit(node->value, c));
             if (result->error) return result;
             if (node->op == MINUS_EQUAL) {
-                toAdd = toAdd->multiply(new Number(-1, fName, ""));
+                toAdd = toAdd->multiply(new Number<double>(-1, fName, ""));
             }
-            finValue = ((Number *) value)->add(toAdd);
+            finValue = ((Number<double> *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
         } else if(value->type == T_STRING){
             String<string> *toAdd = (String<string> *) result->reg(visit(node->value, c));
@@ -236,11 +237,11 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
         }
     } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
         if (value->type == T_NUM) {
-            BaseValue *toAdd = new Number(1, fName, "");
+            BaseValue *toAdd = new Number<double>(1, fName, "");
             if (node->op == MINUS_MINUS) {
-                toAdd = ((Number *) toAdd)->multiply(new Number(-1, fName, ""));
+                toAdd = ((Number<double> *) toAdd)->multiply(new Number<double>(-1, fName, ""));
             }
-            finValue = ((Number *) value)->add(toAdd);
+            finValue = ((Number<double> *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
         }
     }
@@ -260,7 +261,7 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     NumberNode *node = (NumberNode *) n;
-    Number *num = (Number *) (new Number(node->token->getValueObject()->getValue(), fName,
+    Number<double> *num = (Number<double> *) (new Number<double>(node->token->getValueObject()->getValue(), fName,
                                          lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,
@@ -321,16 +322,16 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     }
     //TODO: Update this area for any errors
     if(left->type == T_NUM) {
-        if (((Number *) left)->rtError) {
-            return rtRes->failure(((Number *) left)->rtError);
+        if (((Number<double> *) left)->rtError) {
+            return rtRes->failure(((Number<double> *) left)->rtError);
         }
     } else if(left->type == T_STRING) {
         if (((String<string> *) left)->rtError) {
             return rtRes->failure(((String<string> *) left)->rtError);
         }
     } else if(left->type == T_FUNC) {
-        if (((Function *) left)->rtError) {
-            return rtRes->failure(((Function *) left)->rtError);
+        if (((Function<int> *) left)->rtError) {
+            return rtRes->failure(((Function<int> *) left)->rtError);
         }
     }
 
@@ -341,15 +342,15 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
     RuntimeResult *rtRes = new RuntimeResult();
     UnaryOperationNode *opNode = (UnaryOperationNode *) n;
-    Number *num = (Number *) rtRes->reg(visit(opNode->node, c));
+    Number<double> *num = (Number<double> *) rtRes->reg(visit(opNode->node, c));
 
     if (rtRes->error) return rtRes;
 
 
     if (opNode->op->type == MINUS) {
-        num = num->multiply(new Number(-1, num->fName, num->fTxt));
+        num = num->multiply(new Number<double>(-1, num->fName, num->fTxt));
     } else if (opNode->op->type == NOT) {
-        num = dynamic_cast<Number *>(num->notted());
+        num = dynamic_cast<Number<double> *>(num->notted());
     }
 
     if (num->rtError) return rtRes->failure(num->rtError);

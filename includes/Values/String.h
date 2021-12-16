@@ -4,7 +4,6 @@
 #ifndef BOA_STRING_H
 #define BOA_STRING_H
 
-#include "Value.cpp"
 #include "Number.h"
 
 

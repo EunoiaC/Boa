@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "../Nodes/ForNode.h"
+#include "../Nodes/ListNode.h"
 #include "../Nodes/StringNode.h"
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/FuncDefNode.h"
@@ -42,6 +43,7 @@ public:
     ParseResult * power();
     ParseResult * call();
     ParseResult * parse();
+    ParseResult * listExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();
     ParseResult * whileExpr();

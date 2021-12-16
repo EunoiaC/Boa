@@ -12,6 +12,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_BINOP] = &Interpreter::visitBinOpNode;
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
     funcMap[N_STRING] = &Interpreter::visitStringNode;
+    funcMap[N_LIST] = &Interpreter::visitListNode;
     funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
     funcMap[N_VAR_OPERATION] = &Interpreter::visitVarOperationNode;
@@ -30,6 +31,7 @@ RuntimeResult *Interpreter::visit(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ForNode *forNode = (ForNode *) n;
+    vector<BaseValue*> elements;
 
     Number<double> *startVal = (Number<double> *) res->reg(visit(forNode->startVal, c));
     if (res->error) return res;
@@ -62,15 +64,16 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number<double>(i, fName, lines[n->line]));
         i += stepVal->getValue();
 
-        res->reg(visit(forNode->body, c));
+        elements.push_back(res->reg(visit(forNode->body, c)));
         if (res->error) return res;
     }
-    return res->success(nullptr);
+    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     WhileNode *whileNode = (WhileNode *) n;
+    vector<BaseValue*> elements;
 
     while (true) {
         BaseValue *condition = res->reg(visit(whileNode->condition, c));
@@ -78,10 +81,10 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
 
         if (not condition->isTrue()) break;
 
-        res->reg(visit(whileNode->body, c));
+        elements.push_back(res->reg(visit(whileNode->body, c)));
         if (res->error) return res;
     }
-    return res->success(nullptr);
+    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
@@ -104,6 +107,18 @@ RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
         return res->success(elseValue);
     }
     return res->success(nullptr);
+}
+
+RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    vector<BaseValue*> elements;
+    ListNode *listNode = (ListNode *) n;
+
+    for(auto element: listNode->elements) {
+        elements.push_back(res->reg(visit(element, c)));
+        if (res->error) return res;
+    }
+    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {

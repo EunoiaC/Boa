@@ -264,6 +264,50 @@ ParseResult *Parser::funcDef() {
     return res->success(new FuncDefNode(varNameTok, argNames, returnNode));
 }
 
+ParseResult *Parser::listExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    vector<Node*> elements;
+    int posStart = currentToken->posStart;
+
+    if (currentToken->getType() != L_BRACKET) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected '['"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() == R_BRACKET) {
+        res->regAdvancement();
+        advance();
+    } else{
+        elements.push_back(res->reg(expr()));
+        if (res->error) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError",
+                              "Expected a ']', identifier, conditional keyword, 'op', or number."));
+        }
+        while (currentToken->getType() == COMMA) {
+            res->regAdvancement();
+            advance();
+            elements.push_back(res->reg(expr()));
+            if (res->error) return res;
+        }
+        if (currentToken->getType() != R_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError",
+                              "Expected ',' or ']'"));
+        }
+        res->regAdvancement();
+        advance();
+    }
+
+    return res->success(new ListNode(elements, posStart, currentToken->posEnd,currentToken->line));
+}
+
 ParseResult *Parser::atom() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     BaseToken *tok = currentToken;
@@ -271,6 +315,11 @@ ParseResult *Parser::atom() {
     if (tok->getType() == T_NUM) {
         res->regAdvancement();
         advance();
+        return res->success(new NumberNode((Token<double> *) tok));
+    } else if (tok->getType() == L_BRACKET) {
+        Node *_listExpr = res->reg(listExpr());
+        if (res->error) return res;
+        return res->success(_listExpr);
         return res->success(new NumberNode((Token<double> *) tok));
     } else if (tok->getType() == T_STRING) {
         res->regAdvancement();

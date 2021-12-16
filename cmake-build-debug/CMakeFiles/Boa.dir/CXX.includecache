@@ -22,12 +22,6 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
-iostream
--
-Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
@@ -35,6 +29,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 ../Values/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
+../Values/List.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
 ../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 ../Nodes/ForNode.h
@@ -57,6 +53,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
 ../Nodes/StringNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
+../Nodes/ListNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
 ../Nodes/UnaryOperationNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 ../Nodes/CallNode.h
@@ -114,6 +112,12 @@ vector
 tuple
 -
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+vector
+-
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 string
 -
@@ -169,6 +173,8 @@ vector
 -
 ../Nodes/ForNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ForNode.h
+../Nodes/ListNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
 ../Nodes/StringNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
 ../Nodes/WhileNode.h
@@ -230,12 +236,6 @@ BaseToken.h
 string
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.cpp
-Function.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
-../Interpreter/Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
 vector
 -
@@ -246,15 +246,17 @@ vector
 ../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
+Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 ../Errors/RuntimeError.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
-Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 

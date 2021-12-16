@@ -14,6 +14,7 @@
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
+static const string T_LIST = "LIST";
 
 template<class valueType>
 class Value : public BaseValue {

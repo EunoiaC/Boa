@@ -118,7 +118,8 @@ RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
         elements.push_back(res->reg(visit(element, c)));
         if (res->error) return res;
     }
-    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
+
+    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[listNode->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
@@ -249,6 +250,22 @@ RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
             }
             finValue = ((String<string> *) value)->add(toAdd);
             c->symbolTable->set(varName, finValue);
+        } else if(value->type == T_LIST){
+            List<vector<BaseValue*>> *toAdd = (List<vector<BaseValue*>> *) result->reg(visit(node->value, c));
+            if (result->error) return result;
+            if (node->op == MINUS_EQUAL) {
+                return result->failure(new RuntimeError(
+                        node->posStart,
+                        node->posEnd,
+                        node->line,
+                        fName,
+                        lines[node->line],
+                        "Can't subtract from list",
+                        c
+                ));
+            }
+            finValue = ((List<vector<BaseValue*>> *) value)->add(toAdd);
+            c->symbolTable->set(varName, finValue);
         }
     } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
         if (value->type == T_NUM) {
@@ -347,6 +364,10 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     } else if(left->type == T_FUNC) {
         if (((Function<int> *) left)->rtError) {
             return rtRes->failure(((Function<int> *) left)->rtError);
+        }
+    } else if(left->type == T_LIST) {
+        if (((List<vector<BaseValue*>> *) left)->rtError) {
+            return rtRes->failure(((List<vector<BaseValue*>> *) left)->rtError);
         }
     }
 

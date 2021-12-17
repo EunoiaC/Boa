@@ -43,7 +43,8 @@ BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
     if (other->type == T_LIST) {
         List<vector<BaseValue *>> *otherList = (List<vector<BaseValue *>> *) other;
         List<vector<BaseValue *>> *newList = copy();
-        newList->elements.insert(elements.end(), otherList->elements.begin(), otherList->elements.end());
+        newList->elements = elements;
+        newList->elements.insert(newList->elements.end(), otherList->elements.begin(), otherList->elements.end());
         return newList;
     }
     illegalOperation(other);

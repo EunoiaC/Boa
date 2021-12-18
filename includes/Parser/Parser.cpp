@@ -320,7 +320,6 @@ ParseResult *Parser::atom() {
         Node *_listExpr = res->reg(listExpr());
         if (res->error) return res;
         return res->success(_listExpr);
-        return res->success(new NumberNode((Token<double> *) tok));
     } else if (tok->getType() == T_STRING) {
         res->regAdvancement();
         advance();
@@ -444,7 +443,7 @@ ParseResult *Parser::power() {
 }
 
 ParseResult *Parser::term() {
-    return binOp({MULTIPLY, DIVIDE, MOD}, &Parser::factor, &Parser::factor);
+    return binOp({MULTIPLY, DIVIDE, MOD, GET}, &Parser::factor, &Parser::factor);
 }
 
 ParseResult *Parser::compExpr() {

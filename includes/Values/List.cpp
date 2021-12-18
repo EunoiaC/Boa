@@ -39,6 +39,29 @@ BaseValue *List<vector<BaseValue *>>::add(BaseValue *other) {
 }
 
 template<>
+BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
+    if (s->type == T_NUM) {
+        Number<double> *num = (Number<double> *) s;
+        if(num->numValue > elements.size() - 1){
+            rtError = new RuntimeError(
+                    num->posStart,
+                    num->posEnd,
+                    num->line,
+                    num->fName,
+                    num->fTxt,
+                    "Index out of range",
+                    ctx
+            );
+        } else {
+            BaseValue * val = elements[(int) num->numValue];
+            return val;
+        }
+    } else {
+        illegalOperation(s);
+    }
+}
+
+template<>
 BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
     if (other->type == T_LIST) {
         List<vector<BaseValue *>> *otherList = (List<vector<BaseValue *>> *) other;

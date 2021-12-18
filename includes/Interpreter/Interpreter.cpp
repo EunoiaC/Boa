@@ -351,6 +351,8 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->andedBy(right);
     } else if (node->opTok->getType() == OR) {
         result = left->oredBy(right);
+    } else if (node->opTok->getType() == GET) {
+        result = left->get(right);
     }
     //TODO: Update this area for any errors
     if(left->type == T_NUM) {

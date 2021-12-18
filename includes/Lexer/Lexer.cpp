@@ -32,6 +32,7 @@ void Lexer::advance() {
             {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
             {'^',  new BaseToken(POWER, charLineIdx, charLineIdx, lineIdx)},
             {'%',  new BaseToken(MOD, charLineIdx, charLineIdx, lineIdx)},
+            {'?',  new BaseToken(GET, charLineIdx, charLineIdx, lineIdx)},
             {'(',  new BaseToken(L_PAREN, charLineIdx, charLineIdx, lineIdx)},
             {')',  new BaseToken(R_PAREN, charLineIdx, charLineIdx, lineIdx)},
             {'[',  new BaseToken(L_BRACKET, charLineIdx, charLineIdx, lineIdx)},

@@ -15,6 +15,7 @@ public:
     BaseValue * multiply(BaseValue * other) override;
     List<T> * copy();
     string toString() override;
+    BaseValue *get(BaseValue *s) override;
 };
 
 

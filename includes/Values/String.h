@@ -35,6 +35,8 @@ public:
     BaseValue *andedBy(BaseValue *s) override;
 
     BaseValue *oredBy(BaseValue *s) override;
+
+    BaseValue *get(BaseValue *s) override;
 };
 
 

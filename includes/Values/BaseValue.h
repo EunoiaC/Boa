@@ -39,6 +39,8 @@ public:
     virtual BaseValue* divide(BaseValue* s);
     virtual BaseValue* power(BaseValue* s);
     virtual BaseValue* mod(BaseValue* s);
+
+    virtual BaseValue* get(BaseValue* s);
 };
 
 

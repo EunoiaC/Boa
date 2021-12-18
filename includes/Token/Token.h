@@ -24,7 +24,7 @@ static const string OP = "OP";
 
 static const string ELIF = "ELIF";
 static const string IDENTIFIER = "IDENTIFIER";
-static const string KEYWORD = "KEYWORD";
+static const string GET = "GET";
 static const string PLUS = "PLUS";
 static const string MINUS = "MINUS";
 static const string MULTIPLY = "MULTIPLY";

@@ -11,6 +11,10 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+BaseValue *BaseValue::get(BaseValue *val) {
+    return nullptr;
+}
+
 BaseValue *BaseValue::compGreaterThan(BaseValue *val) {
     return nullptr;
 }

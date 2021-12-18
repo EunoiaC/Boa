@@ -7,6 +7,7 @@
 
 Lexer::Lexer(string fileText, string fileName) {
     currChar = '\0';
+    error = nullptr;
     fTxt = fileText;
     this->fileName = fileName;
     charIdx = -1;
@@ -186,7 +187,21 @@ vector<BaseToken *> Lexer::makeTokens() {
         } else if (NUMBERS.find(currChar) != string::npos) {
             toks.push_back(makeNumber());
         } else {
-            advance();
+            if(isspace(currChar)) {
+                advance();
+            } else {
+                error = new Error(
+                        charLineIdx,
+                        charLineIdx,
+                        lineIdx,
+                        fileName,
+                        fTxt,
+                        "UnknownCharacterError",
+                        "Character can't be used"
+                );
+                return {};
+            }
+
         }
     }
     toks.push_back(new BaseToken(END_OF_FILE, charIdx, charIdx, lineIdx));

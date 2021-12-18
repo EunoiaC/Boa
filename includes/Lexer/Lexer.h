@@ -33,6 +33,7 @@ private:
     char currChar;
     string fileName;
 public:
+    Error * error;
     Lexer(string fileText, string fileName);
 
     map<string, string> keyWords = {

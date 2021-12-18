@@ -47,6 +47,10 @@ int readFile() {
 
     l = new Lexer(fileText, fileName);
     vector<BaseToken *> v = l->makeTokens();
+    if(v.empty()){
+        cout << l->error->toString() << endl;
+        return 0;
+    }
     p = new Parser(v, fileName, lines);
     res = p->parse();
     if (res->error) {
@@ -83,6 +87,10 @@ int shellInput() {
         clock_t start = clock();
         l = new Lexer(input, fileName);
         vector<BaseToken *> v = l->makeTokens();
+        if(v.empty()){
+            cout << l->error->toString() << endl;
+            continue;
+        }
 //        for(BaseToken *t : v){
 //            cout << t->toString() << endl;
 //        }

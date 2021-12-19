@@ -42,6 +42,18 @@ BaseValue *String<string>::add(BaseValue *s) {
 }
 
 template<>
+BaseValue *String<string>::plusEquals(BaseValue *s) {
+    if (s->type == T_STRING) {
+        String *str = (String *) s;
+        fName = s->fName;
+        fTxt = s->fTxt;
+        strValue += str->getValue();
+        return this;
+    }
+    illegalOperation(s);
+}
+
+template<>
 BaseValue *String<string>::compGreaterThanEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue >= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);

@@ -13,6 +13,9 @@ public:
     List<T>(vector<BaseValue *> elements, string fName, string fTxt);
     BaseValue * add(BaseValue * other) override;
     BaseValue * multiply(BaseValue * other) override;
+    BaseValue * subtract(BaseValue * other) override;
+    BaseValue * plusEquals(BaseValue * other) override;
+    BaseValue * minusEquals(BaseValue * other) override;
     List<T> * copy();
     string toString() override;
     BaseValue *get(BaseValue *s) override;

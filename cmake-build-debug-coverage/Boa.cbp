@@ -146,6 +146,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp">
 			<Option target="Boa"/>
 		</Unit>
@@ -180,12 +186,6 @@
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h">
-			<Option target="Boa"/>
-		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp">
-			<Option target="Boa"/>
-		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp">
@@ -246,6 +246,12 @@
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp">

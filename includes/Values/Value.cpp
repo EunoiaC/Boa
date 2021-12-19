@@ -4,6 +4,13 @@
 #include <iostream>
 #include "Value.h"
 
+struct CompareByValue {
+    template<class T>
+    bool operator()(const Value<T> *lhs, const Value<T> *rhs) const {
+        return lhs->getValue() == rhs->getValue();
+    }
+};
+
 template<class valueType>
 Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue(t, f, txt) {
     val = v;
@@ -14,6 +21,16 @@ template<class valueType>
 BaseValue *Value<valueType>::setContext(Context *c) {
     ctx = c;
     return this;
+}
+
+template<class valueType>
+BaseValue *Value<valueType>::plusEquals(BaseValue *other) {
+    unsupportedOperation(other);
+}
+
+template<class valueType>
+BaseValue *Value<valueType>::minusEquals(BaseValue *other) {
+    unsupportedOperation(other);
 }
 
 template<class valueType>
@@ -29,13 +46,13 @@ RuntimeResult *Value<valueType>::execute(vector<BaseValue *> args) {
 template<class valueType>
 void Value<valueType>::illegalOperation(BaseValue *other) {
     if (!other) other = this;
-    rtError = new RuntimeError(other->posStart, other->posEnd, line, fName, fTxt, "Illegal operation, expected type " + type, ctx);
+    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt, "Illegal operation, expected type " + type, ctx);
 }
 
 template<class valueType>
 void Value<valueType>::illegalOperation(BaseValue *other, string type) {
     if (!other) other = this;
-    rtError = new RuntimeError(other->posStart, other->posEnd, line, fName, fTxt, "Illegal operation, expected type " + type, ctx);
+    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt, "Illegal operation, expected type " + type, ctx);
 }
 
 template<class valueType>

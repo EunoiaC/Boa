@@ -38,6 +38,9 @@ void Lexer::advance() {
             {')',  new BaseToken(R_PAREN, charLineIdx, charLineIdx, lineIdx)},
             {'[',  new BaseToken(L_BRACKET, charLineIdx, charLineIdx, lineIdx)},
             {']',  new BaseToken(R_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {'{',  new BaseToken(L_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {'}',  new BaseToken(R_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {':',  new BaseToken(COLON, charLineIdx, charLineIdx, lineIdx)},
             {'\n', new BaseToken(STOP_EXPR, charLineIdx, charLineIdx,
                                  lineIdx - 1)}//-1 because the lineIdx is incremented after the newline
     };

@@ -19,6 +19,9 @@ public:
 
     Number *add(BaseValue *s) override;
 
+    Number *plusEquals(BaseValue *s) override;
+    Number *minusEquals(BaseValue *s) override;
+
     Number *subtract(BaseValue *s) override;
 
     Number *multiply(BaseValue *s) override;

@@ -117,6 +117,22 @@ template<> Number<double> *Number<double>::add(BaseValue *s) {
     illegalOperation(s);
 }
 
+template<> Number<double> *Number<double>::plusEquals(BaseValue *s) {
+    if(s->type == T_NUM) {
+        numValue += ((Number *) s)->getValue();
+        return this;
+    }
+    illegalOperation(s);
+}
+
+template<> Number<double> *Number<double>::minusEquals(BaseValue *s) {
+    if(s->type == T_NUM) {
+        numValue -= ((Number *) s)->getValue();
+        return this;
+    }
+    illegalOperation(s);
+}
+
 template<> Number<double> *Number<double>::subtract(BaseValue *s) {
     if(s->type == T_NUM) {
         return dynamic_cast<Number *>((new Number<double>(numValue - ((Number *) s)->getValue(), fName, fTxt))->setContext(

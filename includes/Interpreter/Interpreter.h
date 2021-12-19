@@ -8,18 +8,19 @@
 #include "../Values/String.h"
 #include "../Values/Function.h"
 #include "../Values/List.h"
+#include "../Values/Map.h"
 #include "../RuntimeResult/RuntimeResult.h"
 #include "../Nodes/ForNode.h"
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/IfNode.h"
 #include "../Nodes/FuncDefNode.h"
-#include "../Nodes/VarOperationNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/NumberNode.h"
 #include "../Nodes/StringNode.h"
 #include "../Nodes/ListNode.h"
+#include "../Nodes/MapNode.h"
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/CallNode.h"
 #include <string>
@@ -40,12 +41,12 @@ public:
     RuntimeResult * visitNumberNode(Node * n, Context* c);
     RuntimeResult * visitStringNode(Node * n, Context* c);
     RuntimeResult * visitListNode(Node * n, Context* c);
+    RuntimeResult * visitMapNode(Node * n, Context* c);
 
     RuntimeResult * visitBinOpNode(Node * n, Context* c);
     RuntimeResult * visitUnaryOpNode(Node * n, Context* c);
     RuntimeResult * visitVarAssignNode(Node * n, Context* c);
     RuntimeResult * visitVarAccessNode(Node * n, Context* c);
-    RuntimeResult * visitVarOperationNode(Node * n, Context* c);
 
     RuntimeResult * visitIfNode(Node * n, Context* c);
     RuntimeResult * visitForNode(Node * n, Context* c);

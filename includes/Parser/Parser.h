@@ -18,7 +18,7 @@
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
-#include "../Nodes/VarOperationNode.h"
+#include "../Nodes/MapNode.h"
 #include <vector>
 #include <fstream>
 #include "ParseResult.h"
@@ -44,6 +44,7 @@ public:
     ParseResult * call();
     ParseResult * parse();
     ParseResult * listExpr();
+    ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();
     ParseResult * whileExpr();

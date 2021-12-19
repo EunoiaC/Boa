@@ -264,6 +264,79 @@ ParseResult *Parser::funcDef() {
     return res->success(new FuncDefNode(varNameTok, argNames, returnNode));
 }
 
+ParseResult *Parser::mapExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    map<Node*, Node*> map;
+    int posStart = currentToken->posStart;
+
+    if (currentToken->getType() != L_CURLY_BRACKET) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected '{'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() == R_CURLY_BRACKET) {
+        res->regAdvancement();
+        advance();
+    } else{
+        Node * key = res->reg(expr());
+        if (res->error) return res;
+
+        if(currentToken->getType() != COLON){
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError",
+                              "Expected a ':'"));
+        }
+        res->regAdvancement();
+        advance();
+        Node* value = res->reg(expr());
+        if (res->error) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError",
+                              "Expected a '}', identifier, conditional keyword, 'op', or number"));
+        }
+
+        map[key] = value;
+
+        while (currentToken->getType() == COMMA) {
+            res->regAdvancement();
+            advance();
+            key = res->reg(expr());
+            if (res->error) return res;
+
+            if(currentToken->getType() != COLON){
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError",
+                                  "Expected a ':'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+            value = res->reg(expr());
+            if (res->error) return res;
+
+            map[key] = value;
+        }
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError",
+                              "Expected ',' or '}'"));
+        }
+        res->regAdvancement();
+        advance();
+    }
+
+    return res->success(new MapNode(map, posStart, currentToken->posEnd, currentToken->line));
+}
+
 ParseResult *Parser::listExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node*> elements;
@@ -320,6 +393,10 @@ ParseResult *Parser::atom() {
         Node *_listExpr = res->reg(listExpr());
         if (res->error) return res;
         return res->success(_listExpr);
+    } else if (tok->getType() == L_CURLY_BRACKET) {
+        Node *_mapExpr = res->reg(mapExpr());
+        if (res->error) return res;
+        return res->success(_mapExpr);
     } else if (tok->getType() == T_STRING) {
         res->regAdvancement();
         advance();
@@ -351,16 +428,6 @@ ParseResult *Parser::atom() {
             Node *exp = res->reg(expr());
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
-        } else if (type == PLUS_EQUAL || type == MINUS_EQUAL) {
-            res->regAdvancement();
-            advance();
-            Node *exp = res->reg(expr());
-            if (res->error) return res;
-            return res->success(new VarOperationNode((Token<string> *) tok, exp, type));
-        } else if (type == PLUS_PLUS || type == MINUS_MINUS) {
-            res->regAdvancement();
-            advance();
-            return res->success(new VarOperationNode((Token<string> *) tok, nullptr, type));
         }
         return res->success(new VarAccessNode((Token<string> *) tok));
     } else if (tok->getType() == L_PAREN) {
@@ -472,7 +539,7 @@ ParseResult *Parser::compExpr() {
 }
 
 ParseResult *Parser::arithExpr() {
-    return binOp({PLUS, MINUS}, &Parser::term, &Parser::term);
+    return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL}, &Parser::term, &Parser::term);
 }
 
 ParseResult *Parser::expr() {

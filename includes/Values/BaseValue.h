@@ -33,6 +33,9 @@ public:
 
     virtual bool isTrue();
 
+    virtual BaseValue *plusEquals(BaseValue * other);
+    virtual BaseValue *minusEquals(BaseValue * other);
+
     virtual BaseValue* add(BaseValue* s);
     virtual BaseValue* subtract(BaseValue* s);
     virtual BaseValue* multiply(BaseValue* s);

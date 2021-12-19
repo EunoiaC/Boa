@@ -14,6 +14,7 @@ public:
     string getValue() override;
 
     BaseValue * add(BaseValue * s) override;
+    BaseValue * plusEquals(BaseValue * s) override;
     BaseValue * multiply(BaseValue * s) override;
     bool isTrue() override;
     string toString() override;

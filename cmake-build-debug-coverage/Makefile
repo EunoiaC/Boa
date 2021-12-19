@@ -393,6 +393,30 @@ includes/Nodes/ListNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.s
 .PHONY : includes/Nodes/ListNode.cpp.s
 
+includes/Nodes/MapNode.o: includes/Nodes/MapNode.cpp.o
+.PHONY : includes/Nodes/MapNode.o
+
+# target to build an object file
+includes/Nodes/MapNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.o
+.PHONY : includes/Nodes/MapNode.cpp.o
+
+includes/Nodes/MapNode.i: includes/Nodes/MapNode.cpp.i
+.PHONY : includes/Nodes/MapNode.i
+
+# target to preprocess a source file
+includes/Nodes/MapNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.i
+.PHONY : includes/Nodes/MapNode.cpp.i
+
+includes/Nodes/MapNode.s: includes/Nodes/MapNode.cpp.s
+.PHONY : includes/Nodes/MapNode.s
+
+# target to generate assembly for a file
+includes/Nodes/MapNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.s
+.PHONY : includes/Nodes/MapNode.cpp.s
+
 includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
 .PHONY : includes/Nodes/Node.o
 
@@ -536,30 +560,6 @@ includes/Nodes/VarAssignNode.s: includes/Nodes/VarAssignNode.cpp.s
 includes/Nodes/VarAssignNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.s
 .PHONY : includes/Nodes/VarAssignNode.cpp.s
-
-includes/Nodes/VarOperationNode.o: includes/Nodes/VarOperationNode.cpp.o
-.PHONY : includes/Nodes/VarOperationNode.o
-
-# target to build an object file
-includes/Nodes/VarOperationNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.o
-.PHONY : includes/Nodes/VarOperationNode.cpp.o
-
-includes/Nodes/VarOperationNode.i: includes/Nodes/VarOperationNode.cpp.i
-.PHONY : includes/Nodes/VarOperationNode.i
-
-# target to preprocess a source file
-includes/Nodes/VarOperationNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.i
-.PHONY : includes/Nodes/VarOperationNode.cpp.i
-
-includes/Nodes/VarOperationNode.s: includes/Nodes/VarOperationNode.cpp.s
-.PHONY : includes/Nodes/VarOperationNode.s
-
-# target to generate assembly for a file
-includes/Nodes/VarOperationNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.s
-.PHONY : includes/Nodes/VarOperationNode.cpp.s
 
 includes/Nodes/WhileNode.o: includes/Nodes/WhileNode.cpp.o
 .PHONY : includes/Nodes/WhileNode.o
@@ -801,6 +801,30 @@ includes/Values/List.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/List.cpp.s
 .PHONY : includes/Values/List.cpp.s
 
+includes/Values/Map.o: includes/Values/Map.cpp.o
+.PHONY : includes/Values/Map.o
+
+# target to build an object file
+includes/Values/Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.o
+.PHONY : includes/Values/Map.cpp.o
+
+includes/Values/Map.i: includes/Values/Map.cpp.i
+.PHONY : includes/Values/Map.i
+
+# target to preprocess a source file
+includes/Values/Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.i
+.PHONY : includes/Values/Map.cpp.i
+
+includes/Values/Map.s: includes/Values/Map.cpp.s
+.PHONY : includes/Values/Map.s
+
+# target to generate assembly for a file
+includes/Values/Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.s
+.PHONY : includes/Values/Map.cpp.s
+
 includes/Values/Number.o: includes/Values/Number.cpp.o
 .PHONY : includes/Values/Number.o
 
@@ -939,6 +963,9 @@ help:
 	@echo "... includes/Nodes/ListNode.o"
 	@echo "... includes/Nodes/ListNode.i"
 	@echo "... includes/Nodes/ListNode.s"
+	@echo "... includes/Nodes/MapNode.o"
+	@echo "... includes/Nodes/MapNode.i"
+	@echo "... includes/Nodes/MapNode.s"
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"
@@ -957,9 +984,6 @@ help:
 	@echo "... includes/Nodes/VarAssignNode.o"
 	@echo "... includes/Nodes/VarAssignNode.i"
 	@echo "... includes/Nodes/VarAssignNode.s"
-	@echo "... includes/Nodes/VarOperationNode.o"
-	@echo "... includes/Nodes/VarOperationNode.i"
-	@echo "... includes/Nodes/VarOperationNode.s"
 	@echo "... includes/Nodes/WhileNode.o"
 	@echo "... includes/Nodes/WhileNode.i"
 	@echo "... includes/Nodes/WhileNode.s"
@@ -990,6 +1014,9 @@ help:
 	@echo "... includes/Values/List.o"
 	@echo "... includes/Values/List.i"
 	@echo "... includes/Values/List.s"
+	@echo "... includes/Values/Map.o"
+	@echo "... includes/Values/Map.i"
+	@echo "... includes/Values/Map.s"
 	@echo "... includes/Values/Number.o"
 	@echo "... includes/Values/Number.i"
 	@echo "... includes/Values/Number.s"

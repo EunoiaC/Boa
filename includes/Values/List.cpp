@@ -39,6 +39,30 @@ BaseValue *List<vector<BaseValue *>>::add(BaseValue *other) {
 }
 
 template<>
+BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
+    if(other->type == T_NUM) {
+        Number<double> *num = (Number<double> *) other;
+        if(num->getValue() > elements.size() - 1) {
+            rtError = new RuntimeError(
+                    num->posStart,
+                    num->posEnd,
+                    num->line,
+                    num->fName,
+                    num->fTxt,
+                    "Index out of range",
+                    ctx
+            );
+        } else{
+            List<vector<BaseValue *>> *newList = copy();
+            newList->elements.erase(newList->elements.begin() + (int) num->numValue);
+            return newList;
+        }
+    } else {
+        illegalOperation(other, T_NUM);
+    }
+}
+
+template<>
 BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
     if (s->type == T_NUM) {
         Number<double> *num = (Number<double> *) s;
@@ -71,4 +95,34 @@ BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
         return newList;
     }
     illegalOperation(other);
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
+    elements.push_back(other);
+    return this;
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
+    if(other->type == T_NUM) {
+        Number<double> *num = (Number<double> *) other;
+        if(num->getValue() > elements.size() - 1) {
+            rtError = new RuntimeError(
+                    num->posStart,
+                    num->posEnd,
+                    num->line,
+                    num->fName,
+                    num->fTxt,
+                    "Index out of range",
+                    ctx
+            );
+        } else{
+            elements.erase(elements.begin() + (int) num->numValue);
+            return this;
+        }
+    } else {
+        illegalOperation(other, T_NUM);
+    }
+    return this;
 }

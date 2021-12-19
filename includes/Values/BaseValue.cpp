@@ -11,6 +11,14 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+BaseValue *BaseValue::plusEquals(BaseValue *other) {
+    return nullptr;
+}
+
+BaseValue *BaseValue::minusEquals(BaseValue *other) {
+    return nullptr;
+}
+
 BaseValue *BaseValue::get(BaseValue *val) {
     return nullptr;
 }

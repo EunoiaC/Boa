@@ -31,13 +31,13 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
@@ -46,6 +46,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
@@ -125,6 +126,10 @@ CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o
 CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
@@ -209,22 +214,6 @@ CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
-CMakeFiles/Boa.dir/includes/Nodes/VarOperationNode.cpp.o
- /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.cpp
@@ -247,13 +236,13 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
@@ -309,13 +298,13 @@ CMakeFiles/Boa.dir/includes/Values/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
@@ -325,6 +314,7 @@ CMakeFiles/Boa.dir/includes/Values/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
@@ -339,6 +329,22 @@ CMakeFiles/Boa.dir/includes/Values/List.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
+CMakeFiles/Boa.dir/includes/Values/Map.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/Number.cpp.o
@@ -386,13 +392,13 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/ListNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/MapNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NumberNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/StringNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
@@ -403,6 +409,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp

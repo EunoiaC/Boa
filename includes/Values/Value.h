@@ -15,6 +15,7 @@ static const string T_STRING = "STRING";
 static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
 static const string T_LIST = "LIST";
+static const string T_MAP = "MAP";
 
 template<class valueType>
 class Value : public BaseValue {
@@ -42,6 +43,8 @@ public:
     BaseValue *add(BaseValue * other) override;
     BaseValue *multiply(BaseValue * other) override;
     BaseValue *divide(BaseValue * other) override;
+    BaseValue *plusEquals(BaseValue * other) override;
+    BaseValue *minusEquals(BaseValue * other) override;
     BaseValue* power(BaseValue* s) override;
     BaseValue* mod(BaseValue* s) override;
 

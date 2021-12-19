@@ -13,9 +13,9 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_NUMBER] = &Interpreter::visitNumberNode;
     funcMap[N_STRING] = &Interpreter::visitStringNode;
     funcMap[N_LIST] = &Interpreter::visitListNode;
+    funcMap[N_MAP] = &Interpreter::visitMapNode;
     funcMap[N_VAR_ACCESS] = &Interpreter::visitVarAccessNode;
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
-    funcMap[N_VAR_OPERATION] = &Interpreter::visitVarOperationNode;
     funcMap[N_IF] = &Interpreter::visitIfNode;
     funcMap[N_FOR] = &Interpreter::visitForNode;
     funcMap[N_WHILE] = &Interpreter::visitWhileNode;
@@ -122,6 +122,22 @@ RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
     return res->success((new List<vector<BaseValue*>>(elements, fName, lines[listNode->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
+RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    map<BaseValue*, BaseValue*> dict;
+    MapNode *mapNode = (MapNode *) n;
+
+    for(auto element: mapNode->dict) {
+        BaseValue * key = res->reg(visit(element.first, c));
+        if (res->error) return res;
+        BaseValue * value = res->reg(visit(element.second, c));
+        if (res->error) return res;
+        dict[key] = value;
+    }
+
+    return res->success((new Map<map<BaseValue*, BaseValue*>>(dict, fName, lines[mapNode->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
+}
+
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     RuntimeResult *result = new RuntimeResult();
     VarAccessNode *node = (VarAccessNode *) n;
@@ -204,82 +220,6 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
     return res->success(funcValue);
 }
 
-
-RuntimeResult *Interpreter::visitVarOperationNode(Node *n, Context *c) {
-    RuntimeResult *result = new RuntimeResult();
-    VarOperationNode *node = (VarOperationNode *) n;
-    string varName = ((Token<string> *) node->var)->getValueObject()->getValue();
-    BaseValue *value = c->symbolTable->get(varName);
-
-    if (!value) {
-        return result->failure(new RuntimeError(
-                node->posStart,
-                node->posEnd,
-                node->line,
-                fName,
-                lines[node->line],
-                varName + " is not defined",
-                c
-        ));
-    }
-
-    BaseValue *finValue = nullptr;
-
-    if (node->op == PLUS_EQUAL || node->op == MINUS_EQUAL) {
-        if (value->type == T_NUM) {
-            Number<double> *toAdd = (Number<double> *) result->reg(visit(node->value, c));
-            if (result->error) return result;
-            if (node->op == MINUS_EQUAL) {
-                toAdd = toAdd->multiply(new Number<double>(-1, fName, ""));
-            }
-            finValue = ((Number<double> *) value)->add(toAdd);
-            c->symbolTable->set(varName, finValue);
-        } else if(value->type == T_STRING){
-            String<string> *toAdd = (String<string> *) result->reg(visit(node->value, c));
-            if (result->error) return result;
-            if (node->op == MINUS_EQUAL) {
-                return result->failure(new RuntimeError(
-                        node->posStart,
-                        node->posEnd,
-                        node->line,
-                        fName,
-                        lines[node->line],
-                        "Can't subtract from string",
-                        c
-                ));
-            }
-            finValue = ((String<string> *) value)->add(toAdd);
-            c->symbolTable->set(varName, finValue);
-        } else if(value->type == T_LIST){
-            List<vector<BaseValue*>> *toAdd = (List<vector<BaseValue*>> *) result->reg(visit(node->value, c));
-            if (result->error) return result;
-            if (node->op == MINUS_EQUAL) {
-                return result->failure(new RuntimeError(
-                        node->posStart,
-                        node->posEnd,
-                        node->line,
-                        fName,
-                        lines[node->line],
-                        "Can't subtract from list",
-                        c
-                ));
-            }
-            finValue = ((List<vector<BaseValue*>> *) value)->add(toAdd);
-            c->symbolTable->set(varName, finValue);
-        }
-    } else if (node->op == PLUS_PLUS || node->op == MINUS_MINUS) {
-        if (value->type == T_NUM) {
-            BaseValue *toAdd = new Number<double>(1, fName, "");
-            if (node->op == MINUS_MINUS) {
-                toAdd = ((Number<double> *) toAdd)->multiply(new Number<double>(-1, fName, ""));
-            }
-            finValue = ((Number<double> *) value)->add(toAdd);
-            c->symbolTable->set(varName, finValue);
-        }
-    }
-    return result->success(finValue);
-}
-
 RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     auto *result = new RuntimeResult();
     auto *node = (VarAssignNode *) n;
@@ -347,7 +287,11 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->compNotEquals(right);
     } else if (node->opTok->getType() == EQUAL_EQUAL) {
         result = left->compEquals(right);
-    } else if (node->opTok->getType() == AND) {
+    }else if (node->opTok->getType() == PLUS_EQUAL) {
+        result = left->plusEquals(right);
+    } else if (node->opTok->getType() == MINUS_EQUAL) {
+        result = left->minusEquals(right);
+    }else if (node->opTok->getType() == AND) {
         result = left->andedBy(right);
     } else if (node->opTok->getType() == OR) {
         result = left->oredBy(right);
@@ -357,21 +301,37 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     //TODO: Update this area for any errors
     if(left->type == T_NUM) {
         if (((Number<double> *) left)->rtError) {
-            return rtRes->failure(((Number<double> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((Number<double> *) left)->rtError);
+            ((Number<double> *) left)->rtError = nullptr;
+            return r;
         }
     } else if(left->type == T_STRING) {
         if (((String<string> *) left)->rtError) {
-            return rtRes->failure(((String<string> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((String<string> *) left)->rtError);
+            ((String<string> *) left)->rtError = nullptr;
+            return r;
         }
     } else if(left->type == T_FUNC) {
         if (((Function<int> *) left)->rtError) {
-            return rtRes->failure(((Function<int> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((Function<int> *) left)->rtError);
+            ((Function<int> *) left)->rtError = nullptr;
+            return r;
         }
     } else if(left->type == T_LIST) {
         if (((List<vector<BaseValue*>> *) left)->rtError) {
-            return rtRes->failure(((List<vector<BaseValue*>> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((List<vector<BaseValue*>> *) left)->rtError);
+            ((Map<map<BaseValue*, BaseValue*>> *) left)->rtError = nullptr;
+            return r;
+        }
+    } else if(left->type == T_MAP) {
+        if (((Map<map<BaseValue*, BaseValue*>> *) left)->rtError) {
+            RuntimeResult * r = rtRes->failure(((Map<map<BaseValue*, BaseValue*>> *) left)->rtError);
+            ((Map<map<BaseValue*, BaseValue*>> *) left)->rtError = nullptr;
+            return r;
         }
     }
+
+    //cout << result->toString() << endl;
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 

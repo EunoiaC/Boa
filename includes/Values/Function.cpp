@@ -8,8 +8,7 @@
 
 
 template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)
-        : Value<int>(0, T_FUNC, fName, fTxt) {
-    this->name = name;
+        : BaseFunction<int>(T_FUNC, fName, fTxt, name) {
     this->body = body;
     this->argNames = argNames;
     this->lines = lines;
@@ -19,43 +18,10 @@ template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
     RuntimeResult *res = new RuntimeResult();
     Interpreter *interpreter = new Interpreter(fName, lines);
 
-    Context *newContext = new Context(name);
-    newContext->setParentEntry(posStart, fName, fTxt, line);
-    newContext->setParentCtx(ctx);
-    newContext->symbolTable = (new SymbolTable())->setParent(newContext->parentCtx->symbolTable);
+    Context *newContext = generateNewContext();
 
-    if (args.size() > this->argNames.size()) {
-        return res->failure(new RuntimeError(
-                posStart,
-                posEnd,
-                line,
-                fName,
-                callTxt,
-                to_string(args.size() - this->argNames.size()) + " too many args passed into " + name,
-                ctx
-        ));
-    }
-
-    if (args.size() < this->argNames.size()) {
-        return res->failure(new RuntimeError(
-                posStart,
-                posEnd,
-                line,
-                fName,
-                callTxt,
-                to_string(this->argNames.size() - args.size()) + " too few args passed into " + name,
-                ctx
-        ));
-    }
-
-    for (int i = 0; i < args.size(); i++) {
-        string argName = argNames[i];
-        BaseValue *argValue = args[i];
-        if (argValue->type == T_NUM) {
-            ((Number<double> *) argValue)->setContext(newContext);
-        }
-        newContext->symbolTable->set(argName, argValue);
-    }
+    res->reg(checkAndPopulateArgs(args, argNames, newContext));
+    if(res->error) return res;
 
     BaseValue *value = res->reg(interpreter->visit(body, newContext));
     return res->success(value);
@@ -68,6 +34,6 @@ template<> Function<int> *Function<int>::copy() {
     return func;
 }
 
-template<typename T> string Function<T>::toString() {
+template<> string Function<int>::toString() {
     return "{Func: " + name + "}";
 }

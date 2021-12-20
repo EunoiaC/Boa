@@ -43,6 +43,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
+ ../includes/Values/BaseFunction.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Function.h \
  ../includes/Values/List.h \
@@ -322,6 +323,7 @@ CMakeFiles/Boa.dir/includes/Values/Function.cpp.o: \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
+ ../includes/Values/BaseFunction.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Function.cpp \
  ../includes/Values/Function.h \
@@ -350,6 +352,7 @@ CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseFunction.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Function.h \
  ../includes/Values/List.h \
@@ -418,6 +421,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
  ../includes/Token/Token.h \
+ ../includes/Values/BaseFunction.h \
  ../includes/Values/BaseValue.h \
  ../includes/Values/Function.h \
  ../includes/Values/List.h \

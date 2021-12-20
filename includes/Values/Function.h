@@ -7,14 +7,13 @@
 
 #include <vector>
 #include "../Nodes/Node.h"
-#include "../Values/Value.h"
+#include "../Values/BaseFunction.h"
 #include "../RuntimeResult/RuntimeResult.h"
 
 using namespace std;
 
-template<typename T> class Function : public Value<T> {
+template<typename T> class Function : public BaseFunction<T> {
 public:
-    string name, callTxt;
     vector<string> argNames;
     Node *body;
     vector<string> lines;

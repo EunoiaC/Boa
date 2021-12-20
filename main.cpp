@@ -122,10 +122,10 @@ int shellInput() {
 }
 
 int main() {
-    globalSymbolTable->set("null", new Number<double>(0, fileName, "Definition in default globalSymbolTable"));
+    globalSymbolTable->set("null", new Number<double>(Null, fileName, "Definition in default globalSymbolTable"));
     globalSymbolTable->set("PI", new Number<double>(M_PI, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("true", new Number<double>(1, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("false", new Number<double>(0, fileName, "Definition in default globalSymbolTable"));
+    globalSymbolTable->set("true", new Number<double>(True, fileName, "Definition in default globalSymbolTable"));
+    globalSymbolTable->set("false", new Number<double>(False, fileName, "Definition in default globalSymbolTable"));
     return shellInput();
 }
 

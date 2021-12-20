@@ -26,6 +26,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/SymbolTable/SymbolTable.cpp.o"
   "CMakeFiles/Boa.dir/includes/Token/BaseToken.cpp.o"
   "CMakeFiles/Boa.dir/includes/Token/Token.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/BaseFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Function.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/List.cpp.o"

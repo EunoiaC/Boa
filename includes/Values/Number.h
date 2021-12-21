@@ -8,10 +8,6 @@
 #include "../Errors/RuntimeError.h"
 #include "Value.cpp"
 
-const int False = 0;
-const int True = 1;
-const int Null = 0;
-
 template<typename T> class Number : public Value<T> {
 public:
     Context *ctx;

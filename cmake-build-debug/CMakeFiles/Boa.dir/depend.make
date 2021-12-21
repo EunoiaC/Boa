@@ -284,18 +284,6 @@ CMakeFiles/Boa.dir/includes/Token/Token.cpp.o: \
  ../includes/Values/String.h \
  ../includes/Values/Value.cpp \
  ../includes/Values/Value.h
-CMakeFiles/Boa.dir/includes/Values/BaseFunction.cpp.o: \
- ../includes/Context/Context.h \
- ../includes/Errors/Error.h \
- ../includes/Errors/RuntimeError.h \
- ../includes/RuntimeResult/RuntimeResult.h \
- ../includes/SymbolTable/SymbolTable.h \
- ../includes/Values/BaseFunction.cpp \
- ../includes/Values/BaseFunction.h \
- ../includes/Values/BaseValue.h \
- ../includes/Values/Number.h \
- ../includes/Values/Value.cpp \
- ../includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o: \
  ../includes/Values/BaseValue.cpp \
  ../includes/Values/BaseValue.h

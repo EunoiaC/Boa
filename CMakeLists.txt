@@ -27,7 +27,7 @@ set(
         includes/Parser/Parser.cpp includes/Parser/Parser.h
         includes/Lexer/Lexer.cpp includes/Lexer/Lexer.h
         includes/Interpreter/Interpreter.cpp includes/Interpreter/Interpreter.h
-        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Function.cpp includes/Values/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h includes/Nodes/MapNode.cpp includes/Nodes/MapNode.h includes/Values/Map.cpp includes/Values/Map.h includes/Values/BaseFunction.cpp includes/Values/BaseFunction.h)
+        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Function.cpp includes/Values/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h includes/Nodes/MapNode.cpp includes/Nodes/MapNode.h includes/Values/Map.cpp includes/Values/Map.h)
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}

@@ -284,18 +284,6 @@ CMakeFiles/Boa.dir/includes/Token/Token.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
-CMakeFiles/Boa.dir/includes/Values/BaseFunction.cpp.o
- /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseFunction.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseFunction.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h
 CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h

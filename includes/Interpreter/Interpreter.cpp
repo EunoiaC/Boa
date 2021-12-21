@@ -207,11 +207,11 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    Function<int> *funcValue = dynamic_cast<Function<int> *>((new Function<int>(fName, lines[node->funcNameTok->line],
+    BaseValue *funcValue = (new Function<int>(fName, lines[node->line],
                                                                                 funcName, bodyNode,
                                                                                 argNames, lines))->setContext(
             c)->setPos(
-            node->posStart, node->posEnd, node->funcNameTok->line));
+            node->posStart, node->posEnd, node->line);
 
     if (node->funcNameTok) {
         c->symbolTable->set(funcName, funcValue);

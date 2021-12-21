@@ -105,19 +105,15 @@ int shellInput() {
         Interpreter *i = new Interpreter(fileName, lines);
         Context *ctx = new Context("<program>");
         ctx->symbolTable = globalSymbolTable;
-        try{
-            RuntimeResult *result = i->visit(res->node, ctx);
-            clock_t stop = clock();
-            if (result->error) {
-                cout << result->error->toString() << endl;
-                continue;
-            } else if (result->value) {
-                cout << result->value->toString() << endl;
-            }
-            cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
-        } catch (const std::bad_alloc &e) {
-            cout << "MemoryError: Can't allocate region" << endl;
+        RuntimeResult *result = i->visit(res->node, ctx);
+        clock_t stop = clock();
+        if (result->error) {
+            cout << result->error->toString() << endl;
+            continue;
+        } else if (result->value) {
+            cout << result->value->toString() << endl;
         }
+        cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
     }
 }
 

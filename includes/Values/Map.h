@@ -8,7 +8,7 @@
 #include "Number.h"
 #include "List.h"
 #include "String.h"
-#include "Function.h"
+#include "Functions/Function.h"
 
 template<typename T> class Map : public Value<T> {
 public:

@@ -7,8 +7,8 @@
 
 #include <string>
 #include <vector>
-#include "../RuntimeResult//RuntimeResult.h"
-#include "../Errors/RuntimeError.h"
+#include "../../RuntimeResult/RuntimeResult.h"
+#include "../../Errors/RuntimeError.h"
 #include "BaseValue.h"
 
 static const string T_STRING = "STRING";

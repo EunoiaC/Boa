@@ -230,19 +230,31 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.cpp">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.cpp">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValue.h">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.cpp">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.cpp">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Function.h">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.cpp">
@@ -267,12 +279,6 @@
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h">
-			<Option target="Boa"/>
-		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.cpp">
-			<Option target="Boa"/>
-		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Value.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/main.cpp">

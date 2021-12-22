@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(
         SOURCE_FILES
         includes/Token/Token.cpp includes/Token/Token.h
-        includes/Values/Value.cpp includes/Values/Value.h
+        includes/Values/BaseValues/Value.cpp includes/Values/BaseValues/Value.h
         includes/Nodes/Node.cpp includes/Nodes/Node.h
         includes/Context/Context.cpp includes/Context/Context.h
         includes/Errors/Error.cpp includes/Errors/Error.h
@@ -27,7 +27,7 @@ set(
         includes/Parser/Parser.cpp includes/Parser/Parser.h
         includes/Lexer/Lexer.cpp includes/Lexer/Lexer.h
         includes/Interpreter/Interpreter.cpp includes/Interpreter/Interpreter.h
-        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Function.cpp includes/Values/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h includes/Nodes/MapNode.cpp includes/Nodes/MapNode.h includes/Values/Map.cpp includes/Values/Map.h includes/Values/Constants.h)
+        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValues/BaseValue.cpp includes/Values/BaseValues/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Functions/Function.cpp includes/Values/Functions/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h includes/Nodes/MapNode.cpp includes/Nodes/MapNode.h includes/Values/Map.cpp includes/Values/Map.h includes/Values/Constants.h includes/Values/Functions/BaseFunction.cpp includes/Values/Functions/BaseFunction.h)
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}

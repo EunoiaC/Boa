@@ -5,7 +5,7 @@
 #ifndef BOA_TOKEN_H
 #define BOA_TOKEN_H
 
-#include "../Values/Value.h"
+#include "../Values/BaseValues/Value.h"
 #include "../Values/String.h"
 #include "../Values/Number.h"
 #include "BaseToken.h"

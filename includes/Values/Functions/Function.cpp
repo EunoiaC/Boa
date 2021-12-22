@@ -4,7 +4,7 @@
 
 #include "Function.h"
 
-#include "../Interpreter/Interpreter.h"
+#include "../../Interpreter/Interpreter.h"
 
 
 template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)

@@ -6,9 +6,9 @@
 #define BOA_FUNCTION_H
 
 #include <vector>
-#include "../Nodes/Node.h"
-#include "../Values/Value.h"
-#include "../RuntimeResult/RuntimeResult.h"
+#include "../../Nodes/Node.h"
+#include "../BaseValues/Value.h"
+#include "../../RuntimeResult/RuntimeResult.h"
 
 using namespace std;
 

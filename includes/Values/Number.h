@@ -6,7 +6,7 @@
 #define BOA_NUMBER_H
 
 #include "../Errors/RuntimeError.h"
-#include "Value.cpp"
+#include "BaseValues/Value.cpp"
 
 template<typename T> class Number : public Value<T> {
 public:

@@ -729,53 +729,101 @@ includes/Token/Token.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Token/Token.cpp.s
 .PHONY : includes/Token/Token.cpp.s
 
-includes/Values/BaseValue.o: includes/Values/BaseValue.cpp.o
-.PHONY : includes/Values/BaseValue.o
+includes/Values/BaseValues/BaseValue.o: includes/Values/BaseValues/BaseValue.cpp.o
+.PHONY : includes/Values/BaseValues/BaseValue.o
 
 # target to build an object file
-includes/Values/BaseValue.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.o
-.PHONY : includes/Values/BaseValue.cpp.o
+includes/Values/BaseValues/BaseValue.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/BaseValue.cpp.o
+.PHONY : includes/Values/BaseValues/BaseValue.cpp.o
 
-includes/Values/BaseValue.i: includes/Values/BaseValue.cpp.i
-.PHONY : includes/Values/BaseValue.i
+includes/Values/BaseValues/BaseValue.i: includes/Values/BaseValues/BaseValue.cpp.i
+.PHONY : includes/Values/BaseValues/BaseValue.i
 
 # target to preprocess a source file
-includes/Values/BaseValue.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.i
-.PHONY : includes/Values/BaseValue.cpp.i
+includes/Values/BaseValues/BaseValue.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/BaseValue.cpp.i
+.PHONY : includes/Values/BaseValues/BaseValue.cpp.i
 
-includes/Values/BaseValue.s: includes/Values/BaseValue.cpp.s
-.PHONY : includes/Values/BaseValue.s
+includes/Values/BaseValues/BaseValue.s: includes/Values/BaseValues/BaseValue.cpp.s
+.PHONY : includes/Values/BaseValues/BaseValue.s
 
 # target to generate assembly for a file
-includes/Values/BaseValue.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValue.cpp.s
-.PHONY : includes/Values/BaseValue.cpp.s
+includes/Values/BaseValues/BaseValue.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/BaseValue.cpp.s
+.PHONY : includes/Values/BaseValues/BaseValue.cpp.s
 
-includes/Values/Function.o: includes/Values/Function.cpp.o
-.PHONY : includes/Values/Function.o
+includes/Values/BaseValues/Value.o: includes/Values/BaseValues/Value.cpp.o
+.PHONY : includes/Values/BaseValues/Value.o
 
 # target to build an object file
-includes/Values/Function.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Function.cpp.o
-.PHONY : includes/Values/Function.cpp.o
+includes/Values/BaseValues/Value.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.o
+.PHONY : includes/Values/BaseValues/Value.cpp.o
 
-includes/Values/Function.i: includes/Values/Function.cpp.i
-.PHONY : includes/Values/Function.i
+includes/Values/BaseValues/Value.i: includes/Values/BaseValues/Value.cpp.i
+.PHONY : includes/Values/BaseValues/Value.i
 
 # target to preprocess a source file
-includes/Values/Function.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Function.cpp.i
-.PHONY : includes/Values/Function.cpp.i
+includes/Values/BaseValues/Value.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.i
+.PHONY : includes/Values/BaseValues/Value.cpp.i
 
-includes/Values/Function.s: includes/Values/Function.cpp.s
-.PHONY : includes/Values/Function.s
+includes/Values/BaseValues/Value.s: includes/Values/BaseValues/Value.cpp.s
+.PHONY : includes/Values/BaseValues/Value.s
 
 # target to generate assembly for a file
-includes/Values/Function.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Function.cpp.s
-.PHONY : includes/Values/Function.cpp.s
+includes/Values/BaseValues/Value.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.s
+.PHONY : includes/Values/BaseValues/Value.cpp.s
+
+includes/Values/Functions/BaseFunction.o: includes/Values/Functions/BaseFunction.cpp.o
+.PHONY : includes/Values/Functions/BaseFunction.o
+
+# target to build an object file
+includes/Values/Functions/BaseFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o
+.PHONY : includes/Values/Functions/BaseFunction.cpp.o
+
+includes/Values/Functions/BaseFunction.i: includes/Values/Functions/BaseFunction.cpp.i
+.PHONY : includes/Values/Functions/BaseFunction.i
+
+# target to preprocess a source file
+includes/Values/Functions/BaseFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.i
+.PHONY : includes/Values/Functions/BaseFunction.cpp.i
+
+includes/Values/Functions/BaseFunction.s: includes/Values/Functions/BaseFunction.cpp.s
+.PHONY : includes/Values/Functions/BaseFunction.s
+
+# target to generate assembly for a file
+includes/Values/Functions/BaseFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.s
+.PHONY : includes/Values/Functions/BaseFunction.cpp.s
+
+includes/Values/Functions/Function.o: includes/Values/Functions/Function.cpp.o
+.PHONY : includes/Values/Functions/Function.o
+
+# target to build an object file
+includes/Values/Functions/Function.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
+.PHONY : includes/Values/Functions/Function.cpp.o
+
+includes/Values/Functions/Function.i: includes/Values/Functions/Function.cpp.i
+.PHONY : includes/Values/Functions/Function.i
+
+# target to preprocess a source file
+includes/Values/Functions/Function.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.i
+.PHONY : includes/Values/Functions/Function.cpp.i
+
+includes/Values/Functions/Function.s: includes/Values/Functions/Function.cpp.s
+.PHONY : includes/Values/Functions/Function.s
+
+# target to generate assembly for a file
+includes/Values/Functions/Function.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.s
+.PHONY : includes/Values/Functions/Function.cpp.s
 
 includes/Values/List.o: includes/Values/List.cpp.o
 .PHONY : includes/Values/List.o
@@ -872,30 +920,6 @@ includes/Values/String.s: includes/Values/String.cpp.s
 includes/Values/String.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String.cpp.s
 .PHONY : includes/Values/String.cpp.s
-
-includes/Values/Value.o: includes/Values/Value.cpp.o
-.PHONY : includes/Values/Value.o
-
-# target to build an object file
-includes/Values/Value.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.o
-.PHONY : includes/Values/Value.cpp.o
-
-includes/Values/Value.i: includes/Values/Value.cpp.i
-.PHONY : includes/Values/Value.i
-
-# target to preprocess a source file
-includes/Values/Value.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.i
-.PHONY : includes/Values/Value.cpp.i
-
-includes/Values/Value.s: includes/Values/Value.cpp.s
-.PHONY : includes/Values/Value.s
-
-# target to generate assembly for a file
-includes/Values/Value.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Value.cpp.s
-.PHONY : includes/Values/Value.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -1005,12 +1029,18 @@ help:
 	@echo "... includes/Token/Token.o"
 	@echo "... includes/Token/Token.i"
 	@echo "... includes/Token/Token.s"
-	@echo "... includes/Values/BaseValue.o"
-	@echo "... includes/Values/BaseValue.i"
-	@echo "... includes/Values/BaseValue.s"
-	@echo "... includes/Values/Function.o"
-	@echo "... includes/Values/Function.i"
-	@echo "... includes/Values/Function.s"
+	@echo "... includes/Values/BaseValues/BaseValue.o"
+	@echo "... includes/Values/BaseValues/BaseValue.i"
+	@echo "... includes/Values/BaseValues/BaseValue.s"
+	@echo "... includes/Values/BaseValues/Value.o"
+	@echo "... includes/Values/BaseValues/Value.i"
+	@echo "... includes/Values/BaseValues/Value.s"
+	@echo "... includes/Values/Functions/BaseFunction.o"
+	@echo "... includes/Values/Functions/BaseFunction.i"
+	@echo "... includes/Values/Functions/BaseFunction.s"
+	@echo "... includes/Values/Functions/Function.o"
+	@echo "... includes/Values/Functions/Function.i"
+	@echo "... includes/Values/Functions/Function.s"
 	@echo "... includes/Values/List.o"
 	@echo "... includes/Values/List.i"
 	@echo "... includes/Values/List.s"
@@ -1023,9 +1053,6 @@ help:
 	@echo "... includes/Values/String.o"
 	@echo "... includes/Values/String.i"
 	@echo "... includes/Values/String.s"
-	@echo "... includes/Values/Value.o"
-	@echo "... includes/Values/Value.i"
-	@echo "... includes/Values/Value.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

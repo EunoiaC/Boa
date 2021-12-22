@@ -5,7 +5,7 @@
 #ifndef BOA_SYMBOLTABLE_H
 #define BOA_SYMBOLTABLE_H
 #include <map>
-#include "../Values/BaseValue.h"
+#include "../Values/BaseValues/BaseValue.h"
 #include <string>
 using namespace std;
 

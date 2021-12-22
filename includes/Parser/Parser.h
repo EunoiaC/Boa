@@ -12,7 +12,7 @@
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/FuncDefNode.h"
 #include "../Nodes/CallNode.h"
-#include "../Values/Value.h"
+#include "../Values/BaseValues/Value.h"
 #include "../Nodes/BinaryOperationNode.h"
 #include "../Nodes/IfNode.h"
 #include "../Nodes/UnaryOperationNode.h"

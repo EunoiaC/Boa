@@ -4,7 +4,7 @@
 
 #ifndef BOA_RUNTIMERESULT_H
 #define BOA_RUNTIMERESULT_H
-#include "../Values/BaseValue.h"
+#include "../Values/BaseValues/BaseValue.h"
 #include "../Errors/Error.h"
 
 class RuntimeResult {

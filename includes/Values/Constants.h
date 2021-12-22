@@ -1,0 +1,21 @@
+//
+// Created by Preeti Thorat on 12/21/21.
+//
+
+#ifndef BOA_CONSTANTS_H
+#define BOA_CONSTANTS_H
+
+#include "Number.h"
+#include <string>
+#include <cmath>
+
+string fName = "<standard inclusion>";
+string fTxt = "Defined in " + fName;
+
+Number<double> * Null = new Number<double>(0, fName, fTxt);
+Number<double> * False = new Number<double>(0, fName, fTxt);
+Number<double> * True = new Number<double>(1, fName, fTxt);
+Number<double> * Pi = new Number<double>(M_PI, fName, fTxt);
+
+
+#endif //BOA_CONSTANTS_H

@@ -4,6 +4,7 @@
 #include <iostream>
 #include "includes/Parser/Parser.h"
 #include "includes/Lexer/Lexer.h"
+#include "includes/Values/Constants.h"
 #include <string>
 #include <vector>
 #include <ctime>
@@ -122,10 +123,10 @@ int shellInput() {
 }
 
 int main() {
-    globalSymbolTable->set("null", new Number<double>(0, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("PI", new Number<double>(M_PI, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("true", new Number<double>(1, fileName, "Definition in default globalSymbolTable"));
-    globalSymbolTable->set("false", new Number<double>(0, fileName, "Definition in default globalSymbolTable"));
+    globalSymbolTable->set("null", Null);
+    globalSymbolTable->set("PI", Pi);
+    globalSymbolTable->set("true", True);
+    globalSymbolTable->set("false", False);
     return shellInput();
 }
 

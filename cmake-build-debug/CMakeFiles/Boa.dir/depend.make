@@ -46,6 +46,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List.h \
  ../includes/Values/Map.h \
@@ -297,8 +298,17 @@ CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.o: \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.cpp \
- ../includes/Values/Functions/BaseFunction.h
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number.h
 CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -325,6 +335,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.cpp \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List.h \
@@ -353,6 +364,7 @@ CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List.h \
  ../includes/Values/Map.cpp \
@@ -413,6 +425,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Constants.h \
+ ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List.h \
  ../includes/Values/Map.h \

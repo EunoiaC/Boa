@@ -16,7 +16,7 @@ public:
     BaseValue * subtract(BaseValue * other) override;
     BaseValue * plusEquals(BaseValue * other) override;
     BaseValue * minusEquals(BaseValue * other) override;
-    List<T> * copy();
+    List<T> * copy() override;
     string toString() override;
     BaseValue *get(BaseValue *s) override;
 };

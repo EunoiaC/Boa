@@ -15,12 +15,13 @@ using namespace std;
 template<typename T> class Function : public BaseFunction<T> {
 public:
     Node *body;
+    vector<string> lines;
 
     Function<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
 
     RuntimeResult *execute(vector<BaseValue *> args) override;
 
-    Function<int> *copy();
+    Function<int> *copy() override;
 
     string toString() override;
 };

@@ -22,12 +22,6 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
-iostream
--
-Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
@@ -265,6 +259,8 @@ BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+Functions/BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 string
 -
 cmath
@@ -274,11 +270,9 @@ cmath
 ../Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp
-Function.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
-../../Interpreter/Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+BaseFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
 vector
@@ -293,10 +287,6 @@ BaseFunction.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp
-Map.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
 Number.h

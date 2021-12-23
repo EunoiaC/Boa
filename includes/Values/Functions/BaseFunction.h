@@ -11,8 +11,8 @@ template<typename T> class BaseFunction : public Value<T> {
 public:
     string name, callTxt;
     vector<string> argNames;
-    vector<string> lines;
-    BaseFunction<T>(string name, vector<string> argNames, vector<string> lines, string fName, string fTxt);
+    BaseFunction<T>(string name, vector<string> argNames, string fName, string fTxt);
+    BaseFunction<T> * copy() override;
     Context * generateNewContext();
     RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames);
     void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);

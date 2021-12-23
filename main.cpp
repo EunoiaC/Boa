@@ -67,8 +67,6 @@ int readFile() {
     if (result->error) {
         cout << result->error->toString() << endl;
         return 0;
-    } else if (result->value) {
-        cout << result->value->toString() << endl;
     }
     return 0;
 }
@@ -112,8 +110,6 @@ int shellInput() {
             if (result->error) {
                 cout << result->error->toString() << endl;
                 continue;
-            } else if (result->value) {
-                cout << result->value->toString() << endl;
             }
             cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
         } catch (const std::bad_alloc &e) {
@@ -127,6 +123,7 @@ int main() {
     globalSymbolTable->set("PI", Pi);
     globalSymbolTable->set("true", True);
     globalSymbolTable->set("false", False);
+    globalSymbolTable->set("print", print);
     return shellInput();
 }
 

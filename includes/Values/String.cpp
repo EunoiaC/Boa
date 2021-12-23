@@ -42,6 +42,13 @@ BaseValue *String<string>::add(BaseValue *s) {
 }
 
 template<>
+String<string> *String<string>::copy() {
+    String<string> *str = new String<string>(strValue, fName, fTxt);
+    str->setPos(posStart, posEnd, line);
+    str->setContext(ctx);
+}
+
+template<>
 BaseValue *String<string>::plusEquals(BaseValue *s) {
     if (s->type == T_STRING) {
         String *str = (String *) s;

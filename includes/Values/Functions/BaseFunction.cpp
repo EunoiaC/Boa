@@ -4,12 +4,11 @@
 
 #include "BaseFunction.h"
 
-template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, vector<string> lines, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
+template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
     this->fTxt = fTxt;
     this->name = name;
     this->argNames = argNames;
-    this->lines = lines;
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {
@@ -46,6 +45,13 @@ template<> RuntimeResult *BaseFunction<int>::checkArgs(vector<BaseValue *> args,
         ));
     }
     return res->success(nullptr);
+}
+
+template<> BaseFunction<int> *BaseFunction<int>::copy() {
+    BaseFunction<int> * func = new BaseFunction<int>(name, argNames, fName, fTxt);
+    func->setPos(posStart, posEnd, line);
+    func->setContext(ctx);
+    return func;
 }
 
 template<> void BaseFunction<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,

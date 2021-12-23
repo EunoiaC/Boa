@@ -53,6 +53,8 @@ public:
     BaseValue *oredBy(BaseValue *s) override;
 
     string toString() override;
+
+    Number<double> * copy() override;
 };
 
 

@@ -20,6 +20,8 @@ public:
 
     BaseValue *setPos(int start, int end, int line);
 
+    virtual BaseValue *copy();
+
     virtual BaseValue *compGreaterThan(BaseValue *val);
     virtual BaseValue *compLessThan(BaseValue *val);
     virtual BaseValue *compGreaterThanEquals(BaseValue *val);

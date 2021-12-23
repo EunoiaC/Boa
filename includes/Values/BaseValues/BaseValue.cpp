@@ -11,6 +11,12 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+BaseValue *BaseValue::copy() {
+    BaseValue *newValue = new BaseValue(type, fName, fTxt);
+    newValue->setPos(posStart, posEnd, line);
+    return newValue;
+}
+
 BaseValue *BaseValue::plusEquals(BaseValue *other) {
     return nullptr;
 }

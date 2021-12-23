@@ -7,8 +7,8 @@
 #include "../../Interpreter/Interpreter.h"
 
 
-template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)
-        : BaseFunction<int>(name, argNames, lines, fName, fTxt) {
+template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines) : BaseFunction<int>(name, argNames, fName, fTxt){
+    this->lines = lines;
     this->body = body;
 }
 

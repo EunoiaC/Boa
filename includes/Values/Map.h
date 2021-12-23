@@ -20,7 +20,7 @@ public:
     BaseValue* plusEquals(BaseValue* key) override;
     BaseValue* minusEquals(BaseValue* key) override;
     string toString() override;
-    Map<T> * copy();
+    Map<T> * copy() override;
 };
 
 

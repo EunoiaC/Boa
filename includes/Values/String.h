@@ -16,6 +16,7 @@ public:
     BaseValue * add(BaseValue * s) override;
     BaseValue * plusEquals(BaseValue * s) override;
     BaseValue * multiply(BaseValue * s) override;
+    String<string> * copy() override;
     bool isTrue() override;
     string toString() override;
 

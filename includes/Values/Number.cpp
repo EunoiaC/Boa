@@ -16,6 +16,13 @@ template<> double Number<double>::getValue() {
     return numValue;
 }
 
+template<> Number<double> * Number<double>::copy() {
+    Number<double> * val = new Number<double>(numValue, fName, fTxt);
+    val->setPos(posStart, posEnd, line);
+    val->setContext(ctx);
+    return val;
+}
+
 template<> Number<double> *Number<double>::divide(BaseValue *s) {
     Number<double> *output;
     if(s->type == T_NUM){

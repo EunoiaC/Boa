@@ -110,6 +110,8 @@ int shellInput() {
             if (result->error) {
                 cout << result->error->toString() << endl;
                 continue;
+            } else{
+                //cout << result->value->toString() << endl;
             }
             cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
         } catch (const std::bad_alloc &e) {
@@ -124,6 +126,7 @@ int main() {
     globalSymbolTable->set("true", True);
     globalSymbolTable->set("false", False);
     globalSymbolTable->set("print", print);
+    globalSymbolTable->set("input", input);
     return shellInput();
 }
 

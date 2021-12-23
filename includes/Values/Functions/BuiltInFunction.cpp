@@ -9,10 +9,34 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) 
     return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
 }
 
+template<> RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
+    string input;
+    BaseValue * val = execCtx->symbolTable->get("value");
+    if(val->type != T_STRING){
+        return (new RuntimeResult())->failure(
+                rtError = new RuntimeError(
+                        val->posStart,
+                        val->posEnd,
+                        val->line,
+                        val->fName,
+                        val->fTxt,
+                        "Expected a string",
+                        execCtx
+                )
+                );
+    }
+    cout << val->toString();
+    cin >> input;
+    String<string> * str = new String<string>(input, fName, fTxt);
+    //cout << str->toString() << endl;
+    return (new RuntimeResult())->success(str);
+}
+
 template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, string fName, string fTxt) : BaseFunction<int>(name, argNames, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;
+    funcMap["execute_input"] = &BuiltInFunction<int>::execute_input;
 }
 
 template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args) {

@@ -43,9 +43,10 @@ BaseValue *String<string>::add(BaseValue *s) {
 
 template<>
 String<string> *String<string>::copy() {
-    String<string> *str = new String<string>(strValue, fName, fTxt);
+    String<string> *str = new String<string>(val, fName, fTxt);
     str->setPos(posStart, posEnd, line);
     str->setContext(ctx);
+    return str;
 }
 
 template<>

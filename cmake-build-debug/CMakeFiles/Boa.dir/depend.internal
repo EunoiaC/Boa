@@ -322,6 +322,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h

@@ -321,7 +321,8 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.cpp \
  ../includes/Values/Functions/BuiltInFunction.h \
- ../includes/Values/Number.h
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

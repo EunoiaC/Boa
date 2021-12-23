@@ -19,5 +19,7 @@ Number<double> * True = new Number<double>(1, fName, fTxt);
 Number<double> * Pi = new Number<double>(M_PI, fName, fTxt);
 
 BuiltInFunction<int> * print = new BuiltInFunction<int>("print", {"value"}, fName, fTxt);
+BuiltInFunction<int> * input = new BuiltInFunction<int>("input", {"value"}, fName, fTxt);
+
 
 #endif //BOA_CONSTANTS_H

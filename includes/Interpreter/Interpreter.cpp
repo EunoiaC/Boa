@@ -161,7 +161,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     } else if(value->type == T_STRING) {
         ((String<string> *) value)->setContext(c);
     } else if(value->type == T_FUNC) {
-        ((Function<int> *) value)->setContext(c);
+        ((BaseFunction<int> *) value)->setContext(c);
     } else if(value->type == T_LIST) {
         ((List<vector<BaseValue*>> *) value)->setContext(c);
     } else if(value->type == T_MAP) {
@@ -209,7 +209,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     } else if(returnVal->type == T_STRING) {
         ((String<string> *) returnVal)->setContext(c);
     } else if(returnVal->type == T_FUNC) {
-        ((Function<int> *) returnVal)->setContext(c);
+        ((BaseFunction<int> *) returnVal)->setContext(c);
     } else if(returnVal->type == T_LIST) {
         ((List<vector<BaseValue*>> *) returnVal)->setContext(c);
     } else if(returnVal->type == T_MAP) {
@@ -335,9 +335,9 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
             return r;
         }
     } else if(left->type == T_FUNC) {
-        if (((Function<int> *) left)->rtError) {
-            RuntimeResult * r = rtRes->failure(((Function<int> *) left)->rtError);
-            ((Function<int> *) left)->rtError = nullptr;
+        if (((BaseFunction<int> *) left)->rtError) {
+            RuntimeResult * r = rtRes->failure(((BaseFunction<int> *) left)->rtError);
+            ((BaseFunction<int> *) left)->rtError = nullptr;
             return r;
         }
     } else if(left->type == T_LIST) {

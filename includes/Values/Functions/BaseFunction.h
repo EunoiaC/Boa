@@ -10,7 +10,9 @@
 template<typename T> class BaseFunction : public Value<T> {
 public:
     string name, callTxt;
-    BaseFunction<T>(string fName, string fTxt, string name);
+    vector<string> argNames;
+    vector<string> lines;
+    BaseFunction<T>(string name, vector<string> argNames, vector<string> lines, string fName, string fTxt);
     Context * generateNewContext();
     RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames);
     void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);

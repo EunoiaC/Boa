@@ -4,10 +4,12 @@
 
 #include "BaseFunction.h"
 
-template<> BaseFunction<int>::BaseFunction(string fName, string fTxt, string name) : Value<int>(0, T_FUNC, fName, fTxt) {
+template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, vector<string> lines, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
     this->fTxt = fTxt;
     this->name = name;
+    this->argNames = argNames;
+    this->lines = lines;
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {

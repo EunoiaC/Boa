@@ -8,10 +8,8 @@
 
 
 template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines)
-        : BaseFunction<int>(fName, fTxt, name) {
+        : BaseFunction<int>(name, argNames, lines, fName, fTxt) {
     this->body = body;
-    this->argNames = argNames;
-    this->lines = lines;
 }
 
 template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {

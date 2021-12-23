@@ -801,6 +801,30 @@ includes/Values/Functions/BaseFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.s
 .PHONY : includes/Values/Functions/BaseFunction.cpp.s
 
+includes/Values/Functions/BuiltInFunction.o: includes/Values/Functions/BuiltInFunction.cpp.o
+.PHONY : includes/Values/Functions/BuiltInFunction.o
+
+# target to build an object file
+includes/Values/Functions/BuiltInFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
+.PHONY : includes/Values/Functions/BuiltInFunction.cpp.o
+
+includes/Values/Functions/BuiltInFunction.i: includes/Values/Functions/BuiltInFunction.cpp.i
+.PHONY : includes/Values/Functions/BuiltInFunction.i
+
+# target to preprocess a source file
+includes/Values/Functions/BuiltInFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.i
+.PHONY : includes/Values/Functions/BuiltInFunction.cpp.i
+
+includes/Values/Functions/BuiltInFunction.s: includes/Values/Functions/BuiltInFunction.cpp.s
+.PHONY : includes/Values/Functions/BuiltInFunction.s
+
+# target to generate assembly for a file
+includes/Values/Functions/BuiltInFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.s
+.PHONY : includes/Values/Functions/BuiltInFunction.cpp.s
+
 includes/Values/Functions/Function.o: includes/Values/Functions/Function.cpp.o
 .PHONY : includes/Values/Functions/Function.o
 
@@ -1038,6 +1062,9 @@ help:
 	@echo "... includes/Values/Functions/BaseFunction.o"
 	@echo "... includes/Values/Functions/BaseFunction.i"
 	@echo "... includes/Values/Functions/BaseFunction.s"
+	@echo "... includes/Values/Functions/BuiltInFunction.o"
+	@echo "... includes/Values/Functions/BuiltInFunction.i"
+	@echo "... includes/Values/Functions/BuiltInFunction.s"
 	@echo "... includes/Values/Functions/Function.o"
 	@echo "... includes/Values/Functions/Function.i"
 	@echo "... includes/Values/Functions/Function.s"

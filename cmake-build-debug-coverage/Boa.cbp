@@ -251,6 +251,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp">
 			<Option target="Boa"/>
 		</Unit>

@@ -14,9 +14,7 @@ using namespace std;
 
 template<typename T> class Function : public BaseFunction<T> {
 public:
-    vector<string> argNames;
     Node *body;
-    vector<string> lines;
 
     Function<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
 

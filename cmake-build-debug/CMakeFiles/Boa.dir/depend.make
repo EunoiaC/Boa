@@ -309,6 +309,19 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Values/Functions/BaseFunction.cpp \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Number.h
+CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/BuiltInFunction.cpp \
+ ../includes/Values/Functions/BuiltInFunction.h \
+ ../includes/Values/Number.h
 CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

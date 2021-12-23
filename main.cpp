@@ -127,7 +127,7 @@ int main() {
     globalSymbolTable->set("false", False);
     globalSymbolTable->set("print", print);
     globalSymbolTable->set("input", input);
-    return shellInput();
+    return readFile();
 }
 
 #pragma clang diagnostic pop

@@ -9,11 +9,12 @@
 
 class ParseResult {
 public:
-    int advanceCount;
+    int advanceCount, toReverseCount, lastRegAdvanceCount;
     Node * node;
     Error * error;
     ParseResult(Node * node, Error * error);
     Node * reg(ParseResult * result);
+    Node * tryReg(ParseResult * result);
     Node * reg(Node * result);
     ParseResult * success(Node * node);
     ParseResult * failure(Error * error);

@@ -32,10 +32,15 @@ public:
     Parser(vector<BaseToken *> tokens, string fName, vector<string> lines);
     vector<BaseToken *> tokens;
     int tokIdx;
+
     BaseToken * currentToken;
     BaseToken * advance();
+    BaseToken * reverse(int amnt);
+    void updateCurrentTok();
+
     ParseResult * factor();
     ParseResult * term();
+    ParseResult * statements();
     ParseResult * expr();
     ParseResult * compExpr();
     ParseResult * arithExpr();

@@ -7,6 +7,7 @@
 
 #include "BaseFunction.h"
 #include "../String.h"
+#include <iostream>
 
 template<typename T> class BuiltInFunction : public BaseFunction<T> {
 public:

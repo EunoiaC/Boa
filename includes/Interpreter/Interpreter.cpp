@@ -67,7 +67,11 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         elements.push_back(res->reg(visit(forNode->body, c)));
         if (res->error) return res;
     }
-    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
+    BaseValue * val = (new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line);
+    if(forNode->shouldReturnNull){
+        val = new Number<double>(0, fName, lines[n->line]);
+    }
+    return res->success(val);
 }
 
 RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
@@ -84,7 +88,11 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
         elements.push_back(res->reg(visit(whileNode->body, c)));
         if (res->error) return res;
     }
-    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
+    BaseValue * val = (new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line);
+    if(whileNode->shouldReturnNull){
+        val = val = new Number<double>(0, fName, lines[n->line]);
+    }
+    return res->success(val);
 }
 
 RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
@@ -106,7 +114,7 @@ RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
         if (res->error) return res;
         return res->success(elseValue);
     }
-    return res->success(nullptr);
+    return res->success(new Number<double>(0, fName, lines[n->line]));
 }
 
 RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
@@ -230,11 +238,9 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    BaseValue *funcValue = (new Function<int>(fName, lines[node->line],
-                                                                                funcName, bodyNode,
-                                                                                argNames, lines))->setContext(
-            c)->setPos(
-            node->posStart, node->posEnd, node->line);
+    BaseValue *funcValue = (new Function<int>(fName, lines[node->line], funcName, bodyNode, argNames, lines, node->shouldReturnNull))
+            ->setContext(c)
+            ->setPos(node->posStart, node->posEnd, node->line);
 
     if (node->funcNameTok) {
         c->symbolTable->set(funcName, funcValue);

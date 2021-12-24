@@ -12,7 +12,8 @@ public:
     int posStart, posEnd;
     Token<string> *varNameTok;
     Node *startVal, *endVal, *body, *stepVal;
-    ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *stepVal, Node *body);
+    bool shouldReturnNull;
+    ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *stepVal, Node *body, bool shouldReturnNull);
 };
 
 

@@ -7,7 +7,8 @@
 #include "../../Interpreter/Interpreter.h"
 
 
-template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines) : BaseFunction<int>(name, argNames, fName, fTxt){
+template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines, bool shouldReturnNull) : BaseFunction<int>(name, argNames, fName, fTxt){
+    this->shouldReturnNull = shouldReturnNull;
     this->lines = lines;
     this->body = body;
 }
@@ -22,11 +23,14 @@ template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
     if(res->error) return res;
 
     BaseValue *value = res->reg(interpreter->visit(body, newContext));
+    if(shouldReturnNull){
+        value = new Number<double>(0, fName, lines[line]);
+    }
     return res->success(value);
 }
 
 template<> Function<int> *Function<int>::copy() {
-    Function<int> * func = new Function<int>(fName, fTxt, name, body, argNames, lines);
+    Function<int> * func = new Function<int>(fName, fTxt, name, body, argNames, lines, shouldReturnNull);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;

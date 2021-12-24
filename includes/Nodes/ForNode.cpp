@@ -4,12 +4,13 @@
 
 #include "ForNode.h"
 
-ForNode::ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *stepVal, Node *body) : Node(N_FOR) {
+ForNode::ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *stepVal, Node *body, bool shouldReturnNull) : Node(N_FOR) {
     this->varNameTok = varNameTok;
     this->startVal = startVal;
     this->endVal = endVal;
     this->stepVal = stepVal;
     this->body = body;
+    this->shouldReturnNull = shouldReturnNull;
 
     posStart = varNameTok->posStart;
     posEnd = body->posEnd;

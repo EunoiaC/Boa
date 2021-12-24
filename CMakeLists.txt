@@ -5,7 +5,8 @@ set(CMAKE_CXX_STANDARD 14)
 set(
         SOURCE_FILES
         includes/Token/Token.cpp includes/Token/Token.h
-        includes/Values/BaseValues/Value.cpp includes/Values/BaseValues/Value.h
+        includes/Values/BaseValues/Value.cpp
+        includes/Values/BaseValues/Value.h
         includes/Nodes/Node.cpp includes/Nodes/Node.h
         includes/Context/Context.cpp includes/Context/Context.h
         includes/Errors/Error.cpp includes/Errors/Error.h

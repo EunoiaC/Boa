@@ -15,10 +15,11 @@ public:
     Node *body;
     Token<string> *funcNameTok;
     int posStart, posEnd;
+    bool shouldReturnNull;
 
     string toString() override;
 
-    FuncDefNode(Token<string> *funcNameTok, vector<Token<string> *> argNameToks, Node *body);
+    FuncDefNode(Token<string> *funcNameTok, vector<Token<string> *> argNameToks, Node *body, bool shouldReturnNull);
 };
 
 

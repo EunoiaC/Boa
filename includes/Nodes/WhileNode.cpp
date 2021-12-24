@@ -4,9 +4,10 @@
 
 #include "WhileNode.h"
 
-WhileNode::WhileNode(Node *condition, Node *body) : Node(N_WHILE){
+WhileNode::WhileNode(Node *condition, Node *body, bool shouldReturnNull) : Node(N_WHILE){
     this->condition = condition;
     this->body = body;
+    this->shouldReturnNull = shouldReturnNull;
 
     posStart = condition->posStart;
     posEnd = body->posEnd;

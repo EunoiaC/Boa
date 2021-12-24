@@ -160,10 +160,31 @@ ParseResult *Parser::forExpr() {
     res->regAdvancement();
     advance();
 
+    if(currentToken->getType() == L_CURLY_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        if(currentToken->getType() == STOP_EXPR) {
+            Node *body = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+            return res->success(new ForNode(identifier, startVal, endVal, changeVal, body, true));
+        }
+    }
+
     Node *body = res->reg(expr());
     if (res->error) return res;
 
-    return res->success(new ForNode(identifier, startVal, endVal, changeVal, body));
+    return res->success(new ForNode(identifier, startVal, endVal, changeVal, body, false));
 }
 
 ParseResult *Parser::whileExpr() {
@@ -189,10 +210,31 @@ ParseResult *Parser::whileExpr() {
     res->regAdvancement();
     advance();
 
+    if(currentToken->getType() == L_CURLY_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        if(currentToken->getType() == STOP_EXPR) {
+            Node *body = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+            return res->success(new WhileNode(condition, body, true));
+        }
+    }
+
     Node *body = res->reg(expr());
     if (res->error) return res;
 
-    return res->success(new WhileNode(condition, body));
+    return res->success(new WhileNode(condition, body, false));
 }
 
 ParseResult *Parser::funcDef() {
@@ -259,19 +301,40 @@ ParseResult *Parser::funcDef() {
     res->regAdvancement();
     advance();
 
-    if (currentToken->getType() != DO) {
+    if (currentToken->getType() == DO) {
+        res->regAdvancement();
+        advance();
+        if(currentToken->getType() == L_CURLY_BRACKET){
+            res->regAdvancement();
+            advance();
+            if(currentToken->getType() == STOP_EXPR){
+                res->regAdvancement();
+                advance();
+
+                Node* body = res->reg(statements());
+                if(res->error) return res;
+
+                if(currentToken->getType() != R_CURLY_BRACKET){
+                    return res->failure(
+                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected '}'"));
+                }
+                res->regAdvancement();
+                advance();
+
+                return res->success(new FuncDefNode(varNameTok, argNames, body, true));
+            }
+        }
+
+        Node *returnNode = res->reg(expr());
+        if (res->error) return res;
+
+        return res->success(new FuncDefNode(varNameTok, argNames, returnNode, false));
+    } else{
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'do'"));
     }
-
-    res->regAdvancement();
-    advance();
-
-    Node *returnNode = res->reg(expr());
-    if (res->error) return res;
-
-    return res->success(new FuncDefNode(varNameTok, argNames, returnNode));
 }
 
 ParseResult *Parser::mapExpr() {

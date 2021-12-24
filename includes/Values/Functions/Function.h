@@ -16,8 +16,9 @@ template<typename T> class Function : public BaseFunction<T> {
 public:
     Node *body;
     vector<string> lines;
+    bool shouldReturnNull;
 
-    Function<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines);
+    Function<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines, bool shouldReturnNull);
 
     RuntimeResult *execute(vector<BaseValue *> args) override;
 

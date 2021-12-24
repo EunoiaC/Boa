@@ -19,6 +19,7 @@ public:
     BaseValue* subtract(BaseValue* key) override;
     BaseValue* plusEquals(BaseValue* key) override;
     BaseValue* minusEquals(BaseValue* key) override;
+    int getLength() override;
     string toString() override;
     Map<T> * copy() override;
 };

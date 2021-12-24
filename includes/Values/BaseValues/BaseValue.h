@@ -15,6 +15,7 @@ public:
     string fName, fTxt;
     int posStart, posEnd, line;
 
+    virtual int getLength();
 
     virtual string toString();
 

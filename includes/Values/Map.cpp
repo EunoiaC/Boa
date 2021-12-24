@@ -18,6 +18,10 @@ Map<map<BaseValue *, BaseValue *>> * Map<map<BaseValue *, BaseValue *>>::copy() 
     return copy;
 }
 
+template<> int Map<map<BaseValue *, BaseValue *>>::getLength() {
+    return dict.size();
+}
+
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) {
     if(keyAndVal->type == T_LIST) {

@@ -20,6 +20,8 @@ Number<double> * Pi = new Number<double>(M_PI, fName, fTxt);
 
 BuiltInFunction<int> * print = new BuiltInFunction<int>("print", {"value"}, fName, fTxt);
 BuiltInFunction<int> * input = new BuiltInFunction<int>("input", {"value"}, fName, fTxt);
-
+BuiltInFunction<int> * toNum = new BuiltInFunction<int>("toNum", {"value"}, fName, fTxt);
+BuiltInFunction<int> * lenOf = new BuiltInFunction<int>("lenOf", {"value"}, fName, fTxt);
+BuiltInFunction<int> * toStr = new BuiltInFunction<int>("toStr", {"value"}, fName, fTxt);
 
 #endif //BOA_CONSTANTS_H

@@ -27,9 +27,9 @@ SymbolTable *globalSymbolTable = new SymbolTable();
 string fileName;
 
 int readFile() {
+    clock_t start = clock();
     string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
     fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
-
 
     //File
     ifstream file(filePath);
@@ -68,6 +68,8 @@ int readFile() {
         cout << result->error->toString() << endl;
         return 0;
     }
+    clock_t stop = clock();
+    cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
     return 0;
 }
 
@@ -127,6 +129,9 @@ int main() {
     globalSymbolTable->set("false", False);
     globalSymbolTable->set("print", print);
     globalSymbolTable->set("input", input);
+    globalSymbolTable->set("toNum", toNum);
+    globalSymbolTable->set("lenOf", lenOf);
+    globalSymbolTable->set("toStr", toStr);
     return readFile();
 }
 

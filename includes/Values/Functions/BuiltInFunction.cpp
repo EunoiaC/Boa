@@ -9,12 +9,74 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) 
     return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
 }
 
+template<> RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
+    string str = execCtx->symbolTable->get("value")->toString();
+    return (new RuntimeResult())->success(new String<string>(str, fName, fTxt));
+}
+
+template<> RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
+    BaseValue * val = execCtx->symbolTable->get("value");
+
+    if(val->type == T_NUM){
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        val->posStart,
+                        val->posEnd,
+                        val->line,
+                        val->fName,
+                        val->fTxt,
+                        "Can't get length of type NUMBER",
+                        execCtx
+                )
+        );
+    }
+
+    return (new RuntimeResult())->success(new Number<double>(val->getLength(), fName, fTxt));
+
+}
+
+
+template<> RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
+    BaseValue * val = execCtx->symbolTable->get("value");
+    if(val->type != T_STRING){
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        val->posStart,
+                        val->posEnd,
+                        val->line,
+                        val->fName,
+                        val->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+    String<string> * strVal = (String<string>*) val;
+    double v;
+    try{
+        v = stod(strVal->getValue());
+    } catch (invalid_argument e){
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        val->posStart,
+                        val->posEnd,
+                        val->line,
+                        val->fName,
+                        val->fTxt,
+                        "String has invalid characters can't be converted to type NUMBER",
+                        execCtx
+                )
+        );
+    }
+    return (new RuntimeResult())->success(new Number<double>(v, fName, fTxt));
+}
+
 template<> RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
     string input;
     BaseValue * val = execCtx->symbolTable->get("value");
     if(val->type != T_STRING){
         return (new RuntimeResult())->failure(
-                rtError = new RuntimeError(
+                new RuntimeError(
                         val->posStart,
                         val->posEnd,
                         val->line,
@@ -37,6 +99,9 @@ template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> arg
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;
     funcMap["execute_input"] = &BuiltInFunction<int>::execute_input;
+    funcMap["execute_toNum"] = &BuiltInFunction<int>::execute_toNum;
+    funcMap["execute_toStr"] = &BuiltInFunction<int>::execute_toStr;
+    funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
 }
 
 template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args) {

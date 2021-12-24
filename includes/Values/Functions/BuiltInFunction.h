@@ -7,6 +7,8 @@
 
 #include "BaseFunction.h"
 #include "../String.h"
+#include "../List.h"
+#include "../Map.h"
 #include <iostream>
 
 template<typename T> class BuiltInFunction : public BaseFunction<T> {
@@ -19,6 +21,9 @@ public:
 
     RuntimeResult * execute_print(Context * execCtx);
     RuntimeResult * execute_input(Context * execCtx);
+    RuntimeResult * execute_toNum(Context * execCtx);
+    RuntimeResult * execute_toStr(Context * execCtx);
+    RuntimeResult * execute_lenOf(Context * execCtx);
 
     string toString() override;
 };

@@ -18,6 +18,7 @@ public:
     BaseValue * multiply(BaseValue * s) override;
     String<string> * copy() override;
     bool isTrue() override;
+    int getLength() override;
     string toString() override;
 
     BaseValue *notted() override;

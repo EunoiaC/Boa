@@ -49,6 +49,10 @@ String<string> *String<string>::copy() {
     return str;
 }
 
+template<> int String<string>::getLength() {
+    return val.length();
+}
+
 template<>
 BaseValue *String<string>::plusEquals(BaseValue *s) {
     if (s->type == T_STRING) {

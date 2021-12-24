@@ -97,6 +97,10 @@ BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
     illegalOperation(other);
 }
 
+template<> int List<vector<BaseValue*>>::getLength() {
+    return elements.size();
+}
+
 template<>
 BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
     elements.push_back(other);

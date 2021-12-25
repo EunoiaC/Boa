@@ -308,8 +308,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.cpp \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/Number.h \
- ../includes/Values/String.h
+ ../includes/Values/Number.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -372,8 +371,7 @@ CMakeFiles/Boa.dir/includes/Values/List.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/List.cpp \
  ../includes/Values/List.h \
- ../includes/Values/Number.h \
- ../includes/Values/String.h
+ ../includes/Values/Number.h
 CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -407,17 +405,11 @@ CMakeFiles/Boa.dir/includes/Values/String.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
- ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/Functions/BuiltInFunction.h \
- ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
- ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.cpp \
  ../includes/Values/String.h

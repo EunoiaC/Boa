@@ -6,9 +6,19 @@
 
 #IncludeRegexTransform: 
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.cpp
+Context.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
 ../SymbolTable/SymbolTable.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.cpp
+Error.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 string
 -
 
@@ -17,6 +27,10 @@ string
 /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
 string
 -
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.cpp
+RuntimeError.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 Error.h
@@ -212,6 +226,10 @@ Node.h
 Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.cpp
+ParseResult.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 ../Errors/Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
@@ -260,11 +278,19 @@ fstream
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.cpp
+RuntimeResult.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 ../Values/BaseValues/BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 ../Errors/Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
+SymbolTable.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 map
@@ -294,6 +320,10 @@ Token.h
 BaseToken.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.cpp
+BaseValue.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 string
 -
@@ -315,8 +345,6 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
-../../SymbolTable/SymbolTable.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 Number.h
@@ -393,6 +421,8 @@ Functions/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 math.h
 -
 
@@ -401,16 +431,12 @@ math.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 BaseValues/Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
-String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.cpp
 iostream
 -
 String.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
-Functions/BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
 Number.h

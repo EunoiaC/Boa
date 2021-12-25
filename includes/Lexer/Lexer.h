@@ -14,7 +14,6 @@ using namespace std;
 
 class Lexer {
 private:
-    bool madeArrow;
     string currLine;
     /**
      * The index of the character relative to the line

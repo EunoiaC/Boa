@@ -31,7 +31,7 @@ RuntimeResult *Interpreter::visit(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ForNode *forNode = (ForNode *) n;
-    vector<BaseValue *> elements;
+    vector<BaseValue*> elements;
 
     Number<double> *startVal = (Number<double> *) res->reg(visit(forNode->startVal, c));
     if (res->error) return res;
@@ -61,16 +61,14 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     }
 
     while (condition()) {
-        c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(),
-                            new Number<double>(i, fName, lines[n->line]));
+        c->symbolTable->set(forNode->varNameTok->getValueObject()->getValue(), new Number<double>(i, fName, lines[n->line]));
         i += stepVal->getValue();
 
         elements.push_back(res->reg(visit(forNode->body, c)));
         if (res->error) return res;
     }
-    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[n->line]))->setContext(c)->setPos(
-            n->posStart, n->posEnd, n->line);
-    if (forNode->shouldReturnNull) {
+    BaseValue * val = (new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line);
+    if(forNode->shouldReturnNull){
         val = new Number<double>(0, fName, lines[n->line]);
     }
     return res->success(val);
@@ -79,7 +77,7 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     WhileNode *whileNode = (WhileNode *) n;
-    vector<BaseValue *> elements;
+    vector<BaseValue*> elements;
 
     while (true) {
         BaseValue *condition = res->reg(visit(whileNode->condition, c));
@@ -90,9 +88,8 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
         elements.push_back(res->reg(visit(whileNode->body, c)));
         if (res->error) return res;
     }
-    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[n->line]))->setContext(c)->setPos(
-            n->posStart, n->posEnd, n->line);
-    if (whileNode->shouldReturnNull) {
+    BaseValue * val = (new List<vector<BaseValue*>>(elements, fName, lines[n->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line);
+    if(whileNode->shouldReturnNull){
         val = val = new Number<double>(0, fName, lines[n->line]);
     }
     return res->success(val);
@@ -122,36 +119,31 @@ RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
 
 RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
-    vector<BaseValue *> elements;
+    vector<BaseValue*> elements;
     ListNode *listNode = (ListNode *) n;
 
-    for (auto element: listNode->elements) {
+    for(auto element: listNode->elements) {
         elements.push_back(res->reg(visit(element, c)));
         if (res->error) return res;
     }
 
-    return res->success(
-            (new List<vector<BaseValue *>>(elements, fName, lines[listNode->line]))->setContext(c)->setPos(n->posStart,
-                                                                                                           n->posEnd,
-                                                                                                           n->line));
+    return res->success((new List<vector<BaseValue*>>(elements, fName, lines[listNode->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
-    map<BaseValue *, BaseValue *> dict;
+    map<BaseValue*, BaseValue*> dict;
     MapNode *mapNode = (MapNode *) n;
 
-    for (auto element: mapNode->dict) {
-        BaseValue *key = res->reg(visit(element.first, c));
+    for(auto element: mapNode->dict) {
+        BaseValue * key = res->reg(visit(element.first, c));
         if (res->error) return res;
-        BaseValue *value = res->reg(visit(element.second, c));
+        BaseValue * value = res->reg(visit(element.second, c));
         if (res->error) return res;
         dict[key] = value;
     }
 
-    return res->success(
-            (new Map<map<BaseValue *, BaseValue *>>(dict, fName, lines[mapNode->line]))->setContext(c)->setPos(
-                    n->posStart, n->posEnd, n->line));
+    return res->success((new Map<map<BaseValue*, BaseValue*>>(dict, fName, lines[mapNode->line]))->setContext(c)->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
@@ -172,16 +164,16 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         ));
     }
     value = value->setPos(node->posStart, node->posEnd, node->line);
-    if (value->type == T_NUM) {
+    if(value->type == T_NUM) {
         ((Number<double> *) value)->setContext(c);
-    } else if (value->type == T_STRING) {
+    } else if(value->type == T_STRING) {
         ((String<string> *) value)->setContext(c);
-    } else if (value->type == T_FUNC) {
+    } else if(value->type == T_FUNC) {
         ((BaseFunction<int> *) value)->setContext(c);
-    } else if (value->type == T_LIST) {
-        ((List<vector<BaseValue *>> *) value)->setContext(c);
-    } else if (value->type == T_MAP) {
-        ((Map<map<BaseValue *, BaseValue *>> *) value)->setContext(c);
+    } else if(value->type == T_LIST) {
+        ((List<vector<BaseValue*>> *) value)->setContext(c);
+    } else if(value->type == T_MAP) {
+        ((Map<map<BaseValue*, BaseValue*>> *) value)->setContext(c);
     }
     return result->success(value);
 }
@@ -194,7 +186,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     BaseFunction<int> *valToCall;
     BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
     if (res->error) return res;
-    if (b->type != T_FUNC) {
+    if(b->type != T_FUNC){
         return res->failure(new RuntimeError(
                 callNode->posStart,
                 callNode->posEnd,
@@ -209,7 +201,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     valToCall = dynamic_cast<BaseFunction<int> *>(b);
 
     valToCall = dynamic_cast<BaseFunction<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
-                                                                            callNode->nodeToCall->line));
+                                                                   callNode->nodeToCall->line));
     valToCall->callTxt = lines[callNode->nodeToCall->line]; //Update the line func is called on
 
     for (auto argNode: callNode->args) {
@@ -220,16 +212,16 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     BaseValue *returnVal = res->reg(valToCall->execute(args));
     if (res->error) return res;
     returnVal = returnVal->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line);
-    if (returnVal->type == T_NUM) {
+    if(returnVal->type == T_NUM) {
         ((Number<double> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_STRING) {
+    } else if(returnVal->type == T_STRING) {
         ((String<string> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_FUNC) {
+    } else if(returnVal->type == T_FUNC) {
         ((BaseFunction<int> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_LIST) {
-        ((List<vector<BaseValue *>> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_MAP) {
-        ((Map<map<BaseValue *, BaseValue *>> *) returnVal)->setContext(c);
+    } else if(returnVal->type == T_LIST) {
+        ((List<vector<BaseValue*>> *) returnVal)->setContext(c);
+    } else if(returnVal->type == T_MAP) {
+        ((Map<map<BaseValue*, BaseValue*>> *) returnVal)->setContext(c);
     }
     return res->success(returnVal);
 }
@@ -246,8 +238,7 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    BaseValue *funcValue = (new Function<int>(fName, lines[node->line], funcName, bodyNode, argNames, lines,
-                                              node->shouldReturnNull))
+    BaseValue *funcValue = (new Function<int>(fName, lines[node->line], funcName, bodyNode, argNames, lines, node->shouldReturnNull))
             ->setContext(c)
             ->setPos(node->posStart, node->posEnd, node->line);
 
@@ -272,7 +263,7 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
     NumberNode *node = (NumberNode *) n;
     Number<double> *num = (Number<double> *) (new Number<double>(node->token->getValueObject()->getValue(), fName,
-                                                                 lines[node->token->line]))->setContext(c)->setPos(
+                                         lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,
             node->token->line
@@ -284,7 +275,7 @@ RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitStringNode(Node *n, Context *c) {
     StringNode *node = (StringNode *) n;
     String<string> *str = (String<string> *) (new String<string>(node->token->getValueObject()->getValue(), fName,
-                                                                 lines[node->token->line]))->setContext(c)->setPos(
+                                         lines[node->token->line]))->setContext(c)->setPos(
             node->token->posStart,
             node->token->posEnd,
             node->token->line
@@ -325,13 +316,11 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->compNotEquals(right);
     } else if (node->opTok->getType() == EQUAL_EQUAL) {
         result = left->compEquals(right);
-    } else if (node->opTok->getType() == PLUS_EQUAL) {
+    }else if (node->opTok->getType() == PLUS_EQUAL) {
         result = left->plusEquals(right);
     } else if (node->opTok->getType() == MINUS_EQUAL) {
         result = left->minusEquals(right);
-    } else if (node->opTok->getType() == ARROW) {
-        result = left->getIdentifier(right);
-    } else if (node->opTok->getType() == AND) {
+    }else if (node->opTok->getType() == AND) {
         result = left->andedBy(right);
     } else if (node->opTok->getType() == OR) {
         result = left->oredBy(right);
@@ -339,34 +328,34 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->get(right);
     }
     //TODO: Update this area for any errors
-    if (left->type == T_NUM) {
+    if(left->type == T_NUM) {
         if (((Number<double> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((Number<double> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((Number<double> *) left)->rtError);
             ((Number<double> *) left)->rtError = nullptr;
             return r;
         }
-    } else if (left->type == T_STRING) {
+    } else if(left->type == T_STRING) {
         if (((String<string> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((String<string> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((String<string> *) left)->rtError);
             ((String<string> *) left)->rtError = nullptr;
             return r;
         }
-    } else if (left->type == T_FUNC) {
+    } else if(left->type == T_FUNC) {
         if (((BaseFunction<int> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((BaseFunction<int> *) left)->rtError);
+            RuntimeResult * r = rtRes->failure(((BaseFunction<int> *) left)->rtError);
             ((BaseFunction<int> *) left)->rtError = nullptr;
             return r;
         }
-    } else if (left->type == T_LIST) {
-        if (((List<vector<BaseValue *>> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((List<vector<BaseValue *>> *) left)->rtError);
-            ((List<vector<BaseValue *>> *) left)->rtError = nullptr;
+    } else if(left->type == T_LIST) {
+        if (((List<vector<BaseValue*>> *) left)->rtError) {
+            RuntimeResult * r = rtRes->failure(((List<vector<BaseValue*>> *) left)->rtError);
+            ((List<vector<BaseValue*>> *) left)->rtError = nullptr;
             return r;
         }
-    } else if (left->type == T_MAP) {
-        if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
-            ((Map<map<BaseValue *, BaseValue *>> *) left)->rtError = nullptr;
+    } else if(left->type == T_MAP) {
+        if (((Map<map<BaseValue*, BaseValue*>> *) left)->rtError) {
+            RuntimeResult * r = rtRes->failure(((Map<map<BaseValue*, BaseValue*>> *) left)->rtError);
+            ((Map<map<BaseValue*, BaseValue*>> *) left)->rtError = nullptr;
             return r;
         }
     }

@@ -9,7 +9,6 @@ template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames,
     this->fTxt = fTxt;
     this->name = name;
     this->argNames = argNames;
-    symbolTable->set("type", new String<string>("FUNCTION", "", ""));
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {

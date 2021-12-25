@@ -23,8 +23,6 @@ public:
 
     virtual BaseValue *copy();
 
-    virtual BaseValue *getIdentifier(BaseValue *val);
-
     virtual BaseValue *compGreaterThan(BaseValue *val);
     virtual BaseValue *compLessThan(BaseValue *val);
     virtual BaseValue *compGreaterThanEquals(BaseValue *val);

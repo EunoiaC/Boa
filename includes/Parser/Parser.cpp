@@ -583,7 +583,7 @@ ParseResult *Parser::power() {
 }
 
 ParseResult *Parser::term() {
-    return binOp({MULTIPLY, DIVIDE, MOD, GET, ARROW}, &Parser::factor, &Parser::factor);
+    return binOp({MULTIPLY, DIVIDE, MOD, GET}, &Parser::factor, &Parser::factor);
 }
 
 ParseResult *Parser::compExpr() {

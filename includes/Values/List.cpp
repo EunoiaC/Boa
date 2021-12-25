@@ -8,7 +8,6 @@ template<>
 List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string txt) : Value<vector<BaseValue *>>(
         elements, T_LIST, f, txt) {
     this->elements = elements;
-    symbolTable->set("type", new String<string>(type, "", ""));
 }
 
 template<>

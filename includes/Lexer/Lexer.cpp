@@ -10,7 +10,6 @@ Lexer::Lexer(string fileText, string fileName) {
     error = nullptr;
     fTxt = fileText;
     this->fileName = fileName;
-    madeArrow = false;
     charIdx = -1;
     charLineIdx = -1;
     lineIdx = 0; //0 is first line
@@ -50,17 +49,13 @@ void Lexer::advance() {
 
 Token<string> *Lexer::makeIdentifier() {
     string identifier;
-    string type = IDENTIFIER;
-    if(madeArrow){
-        madeArrow = false;
-        type = T_STRING;
-    }
     int start = charLineIdx;
     int currLineIdx = lineIdx;
     while ((LETTERS + "_" + NUMBERS).find(currChar) != string::npos) {
         identifier += currChar;
         advance();
     }
+    string type = IDENTIFIER;
     if (keyWords.find(identifier) != keyWords.end()) {
         type = keyWords.at(identifier);
     }
@@ -104,7 +99,6 @@ Token<string> *Lexer::minusOperation() {
         return new Token<string>(MINUS_MINUS, "--", start, charLineIdx - 1, currLineIdx);
     } else if (currChar == '>') {
         advance();
-        madeArrow = true;
         return new Token<string>(ARROW, "->", start, charLineIdx - 1, currLineIdx);
     }
     return new Token<string>(MINUS, "-", start, start, currLineIdx);

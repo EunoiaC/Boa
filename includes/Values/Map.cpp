@@ -8,7 +8,6 @@ template<>
 Map<map<BaseValue *, BaseValue *>>::Map(map<BaseValue *, BaseValue *> dict, string fName, string fTxt)
         : Value<map<BaseValue *, BaseValue *>>(dict, T_MAP, fName, fTxt) {
     this->dict = dict;
-    symbolTable->set("type", new String<string>(type, "", ""));
 }
 
 template<>

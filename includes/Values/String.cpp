@@ -4,12 +4,10 @@
 
 #include <iostream>
 #include "String.h"
-#include "Functions/BuiltInFunction.h"
 
 template<>
 String<string>::String(string value, string f, string txt) : Value<string>(value, T_STRING, f, txt) {
     strValue = value;
-    symbolTable->set("type", new Value<string>(type, type, "", ""));
 }
 
 template<>

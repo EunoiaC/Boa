@@ -53,7 +53,6 @@ static const string L_CURLY_BRACKET = "L_CURLY_BRACKET";
 static const string R_CURLY_BRACKET = "R_CURLY_BRACKET";
 static const string COLON = "COLON";
 static const string COMMA = "COMMA";
-static const string ARROW = "ARROW";
 static const string END_OF_FILE = "END_OF_FILE";
 static const string STOP_EXPR = "STOP_EXPR";
 static const string NUMBERS = "1234567890";

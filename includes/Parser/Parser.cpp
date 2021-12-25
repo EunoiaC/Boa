@@ -618,6 +618,7 @@ ParseResult *Parser::arithExpr() {
 ParseResult *Parser::statements() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node *> statements;
+    int start = currentToken->posStart;
 
     while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
@@ -650,7 +651,7 @@ ParseResult *Parser::statements() {
     }
 
     return res->success(
-            new ListNode(statements, currentToken->posStart, currentToken->posEnd, currentToken->line)
+            new ListNode(statements, start, currentToken->posEnd, currentToken->line)
     );
 }
 

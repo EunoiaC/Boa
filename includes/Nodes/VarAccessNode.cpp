@@ -12,3 +12,7 @@ VarAccessNode::VarAccessNode(BaseToken *varNameTok) : Node(N_VAR_ACCESS){
     fTxt = varNameTok->fTxt;
     line = varNameTok->line;
 }
+
+string VarAccessNode::toString() {
+    return varNameTok->posData();
+}

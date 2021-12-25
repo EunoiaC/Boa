@@ -202,7 +202,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
 
     valToCall = dynamic_cast<BaseFunction<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
                                                                    callNode->nodeToCall->line));
-    valToCall->callTxt = lines[callNode->nodeToCall->line]; //Update the line func is called on
+    valToCall->callTxt = lines[callNode->line]; //Update the line func is called on
 
     for (auto argNode: callNode->args) {
         args.push_back(res->reg(visit(argNode, c)));

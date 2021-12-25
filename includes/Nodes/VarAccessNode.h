@@ -10,6 +10,7 @@
 class VarAccessNode : public Node{
 public:
     int posStart, posEnd, line;
+    string toString() override;
     string fName, fTxt;
     BaseToken * varNameTok;
     VarAccessNode(BaseToken * varNameTok);

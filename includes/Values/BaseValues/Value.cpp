@@ -15,6 +15,22 @@ template<class valueType>
 Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue(t, f, txt) {
     val = v;
     setContext(nullptr);
+    symbolTable = new SymbolTable();
+}
+
+template<class valueType>
+BaseValue *Value<valueType>::getIdentifier(BaseValue *name) {
+    if (name->type != T_STRING) {
+        rtError = rtError = new RuntimeError(name->posStart, name->posEnd, name->line, name->fName, name->fTxt,
+                                             "Expected an IDENTIFIER", ctx);
+    } else{
+        BaseValue * val = symbolTable->get(((Value<string> *) name)->val);
+        if(val){
+            return val;
+        }
+        rtError = new RuntimeError(name->posStart, name->posEnd, name->line, name->fName, name->fTxt,
+                                   "Variable not found", ctx);
+    }
 }
 
 template<class valueType>
@@ -40,25 +56,29 @@ valueType Value<valueType>::getValue() {
 
 template<class valueType>
 RuntimeResult *Value<valueType>::execute(vector<BaseValue *> args) {
-    rtError = new RuntimeError(posStart, args.size() > 0 ? args[args.size() - 1]->posEnd : posEnd, line, fName, fTxt, "Cannot call this identifier", ctx);
+    rtError = new RuntimeError(posStart, args.size() > 0 ? args[args.size() - 1]->posEnd : posEnd, line, fName, fTxt,
+                               "Cannot call this identifier", ctx);
 }
 
 template<class valueType>
 void Value<valueType>::illegalOperation(BaseValue *other) {
     if (!other) other = this;
-    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt, "Illegal operation, expected type " + type, ctx);
+    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt,
+                               "Illegal operation, expected type " + type, ctx);
 }
 
 template<class valueType>
 void Value<valueType>::illegalOperation(BaseValue *other, string type) {
     if (!other) other = this;
-    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt, "Illegal operation, expected type " + type, ctx);
+    rtError = new RuntimeError(other->posStart, other->posEnd, other->line, other->fName, other->fTxt,
+                               "Illegal operation, expected type " + type, ctx);
 }
 
 template<class valueType>
 void Value<valueType>::unsupportedOperation(BaseValue *other) {
     if (!other) other = this;
-    rtError = new RuntimeError(posStart, other->posEnd, line, other->fName, other->fTxt, "Type " + type + " does not allow this operation.", ctx);
+    rtError = new RuntimeError(posStart, other->posEnd, line, other->fName, other->fTxt,
+                               "Type " + type + " does not allow this operation.", ctx);
 }
 
 template<class valueType>
@@ -67,7 +87,7 @@ BaseValue *Value<valueType>::add(BaseValue *other) {
 }
 
 template<class valueType>
-BaseValue *Value<valueType>::subtract(BaseValue * other) {
+BaseValue *Value<valueType>::subtract(BaseValue *other) {
     unsupportedOperation(other);
 }
 

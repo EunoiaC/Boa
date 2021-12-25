@@ -7,6 +7,7 @@
 
 #include "../Errors/RuntimeError.h"
 #include "BaseValues/Value.cpp"
+#include "String.h"
 
 template<typename T> class Number : public Value<T> {
 public:

@@ -9,6 +9,19 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) 
     return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
 }
 
+
+template<> RuntimeResult *BuiltInFunction<int>::execute_set(Context *execCtx) {
+    BaseValue * val = execCtx->symbolTable->get("value")->copy();
+    BaseValue * index = execCtx->symbolTable->get("index");
+    BaseValue * newVal = execCtx->symbolTable->get("newValue");
+
+    if(val->type == T_LIST){
+
+    }
+
+    return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
+}
+
 template<> RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
     string str = execCtx->symbolTable->get("value")->toString();
     return (new RuntimeResult())->success(new String<string>(str, fName, fTxt));
@@ -102,6 +115,7 @@ template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> arg
     funcMap["execute_toNum"] = &BuiltInFunction<int>::execute_toNum;
     funcMap["execute_toStr"] = &BuiltInFunction<int>::execute_toStr;
     funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
+    funcMap["execute_set"] = &BuiltInFunction<int>::execute_set;
 }
 
 template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args) {

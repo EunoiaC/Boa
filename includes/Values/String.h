@@ -6,7 +6,6 @@
 
 #include "Number.h"
 
-
 template<typename T> class String : public Value<T> {
 public:
     T strValue;

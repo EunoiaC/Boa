@@ -3,13 +3,13 @@
 //
 
 #include "Number.h"
-#include "String.h"
 //#include "List.h"
 #include <math.h>
 
 template<> Number<double>::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {
     numValue = value;
     rtError = nullptr;
+    symbolTable->set("type", new String<string>(type, "", ""));
 }
 
 template<> double Number<double>::getValue() {

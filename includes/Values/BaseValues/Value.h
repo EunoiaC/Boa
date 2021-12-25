@@ -10,6 +10,7 @@
 #include "../../RuntimeResult/RuntimeResult.h"
 #include "../../Errors/RuntimeError.h"
 #include "BaseValue.h"
+#include "../../SymbolTable/SymbolTable.h"
 
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUMBER";
@@ -23,6 +24,7 @@ public:
     /**
      * The value as an instance of the object type
      */
+    SymbolTable * symbolTable;
     valueType val;
     Context *ctx;
     Error *rtError;
@@ -37,6 +39,8 @@ public:
 
     virtual BaseValue *setContext(Context *c);
     virtual RuntimeResult *execute(vector<BaseValue *> args);
+
+    BaseValue * getIdentifier(BaseValue * name) override;
 
     //Overrides methods to give unsupportedOperation RTError
     BaseValue *subtract(BaseValue * other) override;

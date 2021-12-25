@@ -11,6 +11,10 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+BaseValue *BaseValue::getIdentifier(BaseValue *val) {
+    return nullptr;
+}
+
 int BaseValue::getLength() {
     return 0;
 }

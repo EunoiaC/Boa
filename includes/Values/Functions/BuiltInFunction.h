@@ -24,6 +24,7 @@ public:
     RuntimeResult * execute_toNum(Context * execCtx);
     RuntimeResult * execute_toStr(Context * execCtx);
     RuntimeResult * execute_lenOf(Context * execCtx);
+    RuntimeResult * execute_set(Context * execCtx);
 
     string toString() override;
 };

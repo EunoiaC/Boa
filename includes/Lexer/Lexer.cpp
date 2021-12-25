@@ -97,6 +97,9 @@ Token<string> *Lexer::minusOperation() {
     } else if (currChar == '-') {
         advance();
         return new Token<string>(MINUS_MINUS, "--", start, charLineIdx - 1, currLineIdx);
+    } else if (currChar == '>') {
+        advance();
+        return new Token<string>(ARROW, "->", start, charLineIdx - 1, currLineIdx);
     }
     return new Token<string>(MINUS, "-", start, start, currLineIdx);
 }

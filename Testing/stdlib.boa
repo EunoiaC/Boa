@@ -1,0 +1,11 @@
+op split(str) do {
+    result = []
+    for i = 0 to lenOf(str) do {
+        result += str ? i
+    }
+    print(result)
+    print(lenOf(result))
+}
+
+print('\n\tTabbed String\n')
+split("hello")

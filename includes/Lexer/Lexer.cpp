@@ -5,11 +5,12 @@
 #include <iostream>
 #include "Lexer.h"
 
-Lexer::Lexer(string fileText, string fileName) {
+Lexer::Lexer(string fileText, string fileName, vector<string> lines) {
     currChar = '\0';
     error = nullptr;
     fTxt = fileText;
     this->fileName = fileName;
+    this->lines = lines;
     charIdx = -1;
     charLineIdx = -1;
     lineIdx = 0; //0 is first line
@@ -64,12 +65,43 @@ Token<string> *Lexer::makeIdentifier() {
 
 Token<string> *Lexer::makeString() {
     char stopChar = currChar; //the char that ends the string (" or ')
+    string oppositeStopChar = "\0";
+    if (stopChar == '\'') {
+        oppositeStopChar = "\"";
+    } else {
+        oppositeStopChar = "\'";
+    }
     string str;
     int start = charLineIdx;
     int currLineIdx = lineIdx;
     advance();
     while (currChar != stopChar) {
-        str += currChar;
+        char toAdd = currChar;
+        if (toAdd == '\\') {
+            advance();
+            // \n
+            if (currChar == 'n') {
+                toAdd = '\n';
+            }
+                // \t
+            else if (currChar == 't') {
+                toAdd = '\t';
+            }
+        }
+        if (currChar == '\n') {
+            error = new Error(
+                    start,
+                    start,
+                    currLineIdx,
+                    fileName,
+                    lines[currLineIdx],
+                    "SyntaxError",
+                    "Could not find closing " + oppositeStopChar + string(1, stopChar) + oppositeStopChar +
+                    " for this " + oppositeStopChar + string(1, stopChar) + oppositeStopChar
+            );
+            return nullptr;
+        }
+        str += toAdd;
         advance();
     }
     advance(); //advance past the stop char
@@ -185,13 +217,17 @@ vector<BaseToken *> Lexer::makeTokens() {
         } else if (currChar == '-') {
             toks.push_back(minusOperation());
         } else if (currChar == '"' || currChar == '\'') {
-            toks.push_back(makeString());
+            Token<string> *tok = makeString();
+            if (tok == nullptr) {
+                return {};
+            }
+            toks.push_back(tok);
         } else if ((LETTERS + "_").find(currChar) != string::npos) {
             toks.push_back(makeIdentifier());
         } else if (NUMBERS.find(currChar) != string::npos) {
             toks.push_back(makeNumber());
         } else {
-            if(isspace(currChar)) {
+            if (isspace(currChar)) {
                 advance();
             } else {
                 error = new Error(
@@ -199,7 +235,7 @@ vector<BaseToken *> Lexer::makeTokens() {
                         charLineIdx,
                         lineIdx,
                         fileName,
-                        fTxt,
+                        lines[lineIdx],
                         "UnknownCharacterError",
                         "Character can't be used"
                 );

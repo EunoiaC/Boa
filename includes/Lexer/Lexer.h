@@ -32,9 +32,10 @@ private:
      */
     char currChar;
     string fileName;
+    vector<string> lines;
 public:
     Error * error;
-    Lexer(string fileText, string fileName);
+    Lexer(string fileText, string fileName, vector<string> lines);
 
     map<string, string> keyWords = {
             {"and",   AND},

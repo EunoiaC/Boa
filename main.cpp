@@ -28,7 +28,7 @@ string fileName;
 
 int readFile() {
     clock_t start = clock();
-    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
+    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/stdlib.boa";
     fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
 
     //File
@@ -46,7 +46,7 @@ int readFile() {
 
     file.close();
 
-    l = new Lexer(fileText, fileName);
+    l = new Lexer(fileText, fileName, lines);
     vector<BaseToken *> v = l->makeTokens();
     if(v.empty()){
         cout << l->error->toString() << endl;
@@ -86,7 +86,7 @@ int shellInput() {
         lines.push_back(input);
 
         clock_t start = clock();
-        l = new Lexer(input, fileName);
+        l = new Lexer(input, fileName, lines);
         vector<BaseToken *> v = l->makeTokens();
         if(v.empty()){
             cout << l->error->toString() << endl;

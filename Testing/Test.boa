@@ -1,6 +1,0 @@
-op main() do {
-print("sa")
-print("x")
-}
-
-main()

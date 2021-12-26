@@ -14,6 +14,7 @@ public:
     int posStart, posEnd, line;
     string fName, fTxt;
     VarAssignNode(BaseToken *varNameTok, Node *valueNode);
+    string toString() override;
 };
 
 

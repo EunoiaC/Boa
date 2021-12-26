@@ -12,8 +12,8 @@ public:
     int posStart, posEnd, line;
     string toString() override;
     string fName, fTxt;
-    BaseToken * varNameTok;
-    VarAccessNode(BaseToken * varNameTok);
+    Token<string> * varNameTok;
+    VarAccessNode(Token<string> * varNameTok);
 };
 
 

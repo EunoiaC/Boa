@@ -60,6 +60,7 @@ BaseValue *String<string>::plusEquals(BaseValue *s) {
         fName = s->fName;
         fTxt = s->fTxt;
         strValue += str->getValue();
+        val += str->getValue();
         return this;
     }
     illegalOperation(s);

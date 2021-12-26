@@ -15,3 +15,12 @@ ForNode::ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *
     posStart = varNameTok->posStart;
     posEnd = body->posEnd;
 }
+
+string ForNode::toString() {
+    string str = "for " + varNameTok->getValueObject()->getValue() + " in " + startVal->toString() + " to " + endVal->toString();
+    if (stepVal != nullptr) {
+        str += " step " + stepVal->toString();
+    }
+    str += " do " + body->toString();
+    return str;
+}

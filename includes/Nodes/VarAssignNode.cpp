@@ -13,3 +13,7 @@ VarAssignNode::VarAssignNode(BaseToken *varNameTok, Node *valueNode) : Node(N_VA
     fTxt = varNameTok->fTxt;
     line = valueNode->line;
 }
+
+string VarAssignNode::toString() {
+    return "Assign: " + varNameTok->toString() + " = " + valueNode->toString();
+}

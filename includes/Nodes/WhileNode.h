@@ -12,6 +12,7 @@ public:
     Node *condition, *body;
     bool shouldReturnNull;
     WhileNode(Node *condition, Node *body, bool shouldReturnNull);
+    string toString() override;
 };
 
 

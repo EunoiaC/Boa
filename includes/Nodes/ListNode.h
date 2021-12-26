@@ -12,6 +12,7 @@ class ListNode : public Node {
 public:
     int posStart, posEnd, line;
     vector<Node *> elements;
+    string toString() override;
     ListNode(vector<Node *> elements, int posStart, int posEnd, int line);
 };
 

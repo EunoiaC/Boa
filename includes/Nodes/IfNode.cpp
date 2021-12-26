@@ -15,3 +15,17 @@ IfNode::IfNode(vector<tuple<Node *, Node *>> cases, Node *elseCase) : Node(N_IF)
         posEnd = get<1>(cases[cases.size()-1])->posEnd;
     }
 }
+
+string IfNode::toString() {
+    string str = "(if: ";
+    for(int i = 0; i < cases.size(); i++){
+        str += get<0>(cases[i])->toString();
+        str += " ";
+        str += get<1>(cases[i])->toString();
+        if(i != cases.size()-1){
+            str += " else ";
+        }
+    }
+    str += ")";
+    return str;
+}

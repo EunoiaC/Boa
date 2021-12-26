@@ -4,7 +4,7 @@
 
 #include "VarAccessNode.h"
 
-VarAccessNode::VarAccessNode(BaseToken *varNameTok) : Node(N_VAR_ACCESS){
+VarAccessNode::VarAccessNode(Token<string> *varNameTok) : Node(N_VAR_ACCESS){
     this->varNameTok = varNameTok;
     posStart = varNameTok->posStart;
     posEnd = varNameTok->posEnd;
@@ -14,5 +14,5 @@ VarAccessNode::VarAccessNode(BaseToken *varNameTok) : Node(N_VAR_ACCESS){
 }
 
 string VarAccessNode::toString() {
-    return varNameTok->posData();
+    return "(VarAccessNode: " + varNameTok->getValueObject()->getValue() + ")";
 }

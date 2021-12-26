@@ -6,6 +6,5 @@ op split(str) do {
     print(result)
     print(lenOf(result))
 }
-
 print('\n\tTabbed String\n')
 split("hello")

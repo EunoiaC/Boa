@@ -1,9 +1,12 @@
-op countOccurrences(str, char) do {
-    count = 0
+op reverse(str) do {
+    res = ""
 
-    for i = 0 to lenOf(str) do if str ? i == char do count+=1
-    print (count)
+    for i = lenOf(str) - 1 to 0 chgby -1 do {
+        res += str ? i
+    }
+
+    print(res)
 }
-str = input("String: ")
-char = input("Char: ")
-countOccurrences(str, char)
+
+str = input("String to reverse: ")
+reverse(str)

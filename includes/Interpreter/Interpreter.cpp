@@ -52,11 +52,11 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
 
     if (stepVal->getValue() >= 0) {
         condition = [&] {
-            return i < endVal->getValue();
+            return i <= endVal->getValue();
         };
     } else {
         condition = [&]() {
-            return i > endVal->getValue();
+            return i >= endVal->getValue();
         };
     }
 

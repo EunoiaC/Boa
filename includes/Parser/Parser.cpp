@@ -573,7 +573,9 @@ ParseResult *Parser::call() {
             res->regAdvancement();
             advance();
         }
-        return res->success(new CallNode(_atom, args));
+        CallNode *call = new CallNode(_atom, args);
+        call->line = currentToken->line;
+        return res->success(call);
     }
     return res->success(_atom);
 }

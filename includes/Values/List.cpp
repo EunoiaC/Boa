@@ -76,7 +76,7 @@ template<>
 BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
     if (s->type == T_NUM) {
         Number<double> *num = (Number<double> *) s;
-        if(num->numValue > elements.size() - 1){
+        if(num->numValue > elements.size() - 1 or num->numValue < 0) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,

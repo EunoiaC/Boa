@@ -1,12 +1,6 @@
-op reverse(str) do {
-    res = ""
 
-    for i = lenOf(str) - 1 to 0 chgby -1 do {
-        res += str ? i
-    }
 
-    print(res)
-}
+print(["list", 213])
 
-str = input("String to reverse: ")
-reverse(str)
+
+

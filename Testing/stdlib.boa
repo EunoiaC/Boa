@@ -1,4 +1,9 @@
-key = input("Input a value")
-val = [1,2,3,4,5,6,7,8,9,10]
+op countOccurrences(str, char) do {
+    count = 0
 
-if val contains key do print("Found") else print("Not found")
+    for i = 0 to lenOf(str) do if str ? i == char do count+=1
+    print (count)
+}
+str = input("String: ")
+char = input("Char: ")
+countOccurrences(str, char)

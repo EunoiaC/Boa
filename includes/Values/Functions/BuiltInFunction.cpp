@@ -88,7 +88,7 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) 
                 );
     }
     cout << val->toString();
-    cin >> input;
+    getline(cin, input);
     String<string> * str = new String<string>(input, fName, fTxt);
     //cout << str->toString() << endl;
     return (new RuntimeResult())->success(str);

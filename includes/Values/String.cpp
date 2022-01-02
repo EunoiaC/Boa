@@ -168,5 +168,5 @@ string String<T>::getValue() {
 
 template<>
 string String<string>::toString() {
-    return '"' + strValue + '"';
+    return strValue;
 }

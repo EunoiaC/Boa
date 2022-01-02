@@ -41,6 +41,7 @@ public:
             {"and",   AND},
             {"or",    OR},
             {"not",   NOT},
+            {"contains",    CONTAINS},
             {"if",    IF},
             {"else",  ELSE},
             {"do",    DO},

@@ -32,7 +32,8 @@ public:
 
     virtual BaseValue* andedBy(BaseValue* s);
     virtual BaseValue* oredBy(BaseValue* s);
-    virtual BaseValue *notted();
+    virtual BaseValue* contains(BaseValue* s);
+    virtual BaseValue* notted();
 
     virtual bool isTrue();
 

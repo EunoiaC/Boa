@@ -22,6 +22,7 @@ public:
     string toString() override;
 
     BaseValue *notted() override;
+    BaseValue *contains(BaseValue *val) override;
 
     BaseValue *compGreaterThan(BaseValue *val) override;
 

@@ -34,6 +34,11 @@ BaseValue *Value<valueType>::minusEquals(BaseValue *other) {
 }
 
 template<class valueType>
+BaseValue * Value<valueType>::contains(BaseValue *s) {
+    unsupportedOperation(s);
+}
+
+template<class valueType>
 valueType Value<valueType>::getValue() {
     return val;
 }

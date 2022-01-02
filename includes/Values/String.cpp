@@ -33,6 +33,19 @@ BaseValue *String<string>::get(BaseValue *s) {
 }
 
 template<>
+BaseValue *String<string>::contains(BaseValue *val) {
+    if (val->type == T_STRING) {
+        if(strValue.find(((String<string> *) val)->strValue) != string::npos){
+            return new Number<double>(1, fName, fTxt);
+        } else {
+            return new Number<double>(0, fName, fTxt);
+        }
+    } else {
+        illegalOperation(val);
+    }
+}
+
+template<>
 BaseValue *String<string>::add(BaseValue *s) {
     if (s->type == T_STRING) {
         String *str = (String *) s;

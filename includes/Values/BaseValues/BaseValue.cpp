@@ -93,6 +93,10 @@ BaseValue *BaseValue::notted() {
     return nullptr;
 }
 
+BaseValue *BaseValue::contains(BaseValue *s) {
+    return nullptr;
+}
+
 bool BaseValue::isTrue() {
     return false;
 }

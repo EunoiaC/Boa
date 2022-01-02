@@ -600,7 +600,7 @@ ParseResult *Parser::compExpr() {
     }
 
     node = res->reg(
-            binOp({EQUAL_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN_EQUAL, NOT_EQUAL},
+            binOp({EQUAL_EQUAL, GREATER_THAN, LESS_THAN, LESS_THAN_EQUAL, GREATER_THAN_EQUAL, NOT_EQUAL, CONTAINS},
                   &Parser::arithExpr,
                   &Parser::arithExpr));
     if (res->error)

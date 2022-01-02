@@ -20,6 +20,7 @@ public:
     List<T> * copy() override;
     string toString() override;
     BaseValue *get(BaseValue *s) override;
+    BaseValue *contains(BaseValue *s) override;
 };
 
 

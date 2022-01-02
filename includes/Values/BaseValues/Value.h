@@ -59,6 +59,7 @@ public:
 
     BaseValue* andedBy(BaseValue* s) override;
     BaseValue* oredBy(BaseValue* s) override;
+    BaseValue* contains(BaseValue* s) override;
     BaseValue *notted() override;
 
     void illegalOperation(BaseValue *other);

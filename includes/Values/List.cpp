@@ -39,6 +39,16 @@ BaseValue *List<vector<BaseValue *>>::add(BaseValue *other) {
 }
 
 template<>
+BaseValue *List<vector<BaseValue *>>::contains(BaseValue *other) {
+    for (auto it: elements) {
+        if(((Number<double>*) it->compEquals(other))->getValue() == 1) {
+            return new Number<double>(1, fName, fTxt);;
+        }
+    }
+    return new Number<double>(0, fName, fTxt);;
+}
+
+template<>
 BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
     if(other->type == T_NUM) {
         Number<double> *num = (Number<double> *) other;

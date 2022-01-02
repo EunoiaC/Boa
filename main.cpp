@@ -58,7 +58,7 @@ int readFile() {
         cout << res->error->toString() << endl;
         return 0;
     } else {
-        cout << "AST: " + res->node->toString() << endl;
+        //cout << "AST: " + res->node->toString() << endl;
     }
     Interpreter *i = new Interpreter(fileName, lines);
     Context *ctx = new Context("<program>");

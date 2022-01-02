@@ -244,6 +244,6 @@ vector<BaseToken *> Lexer::makeTokens() {
 
         }
     }
-    toks.push_back(new BaseToken(END_OF_FILE, charIdx, charIdx, lineIdx));
+    toks.push_back(new BaseToken(END_OF_FILE, charIdx, charIdx, lineIdx - 1)); //-1 since the last line is empty
     return toks;
 }

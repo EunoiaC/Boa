@@ -66,22 +66,6 @@ BaseValue.h
 ../Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
-BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-BaseFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
-../String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
-../List.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
-../Map.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
-iostream
--
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
 vector
 -
@@ -95,6 +79,10 @@ BaseFunction.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
 Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp
+Map.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
 Number.h

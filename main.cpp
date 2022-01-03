@@ -132,6 +132,7 @@ int main() {
     globalSymbolTable->set("toNum", toNum);
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
+    globalSymbolTable->set("typeOf", instanceOf);
     return readFile();
 }
 

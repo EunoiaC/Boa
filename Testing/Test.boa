@@ -1,0 +1,18 @@
+op a() do "a"
+op b() do "b"
+op c() do "c"
+op d() do "d"
+op e() do "e"
+op f() do "f"
+
+funcMap = {
+    "a": a,
+    "b": b,
+    "c": c,
+    "d": d,
+    "e": e, "f": f
+}
+
+toCall = input("Function to call (a to f): ")
+
+print((funcMap ? toCall)())

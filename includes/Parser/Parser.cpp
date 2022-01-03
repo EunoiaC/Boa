@@ -428,6 +428,10 @@ ParseResult *Parser::mapExpr() {
         res->regAdvancement();
         advance();
     } else {
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
+        }
         Node *key = res->reg(expr());
         if (res->error) return res;
 
@@ -452,6 +456,10 @@ ParseResult *Parser::mapExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
+            while (currentToken->getType() == STOP_EXPR){
+                res->regAdvancement();
+                advance();
+            }
             key = res->reg(expr());
             if (res->error) return res;
 
@@ -469,6 +477,10 @@ ParseResult *Parser::mapExpr() {
             if (res->error) return res;
 
             map[key] = value;
+        }
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
         }
         if (currentToken->getType() != R_CURLY_BRACKET) {
             return res->failure(

@@ -9,6 +9,10 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) 
     return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
 }
 
+template<> RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
+    return (new RuntimeResult())->success(new String<string>(execCtx->symbolTable->get("value")->type, fName, fTxt));
+}
+
 template<> RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
     string str = execCtx->symbolTable->get("value")->toString();
     return (new RuntimeResult())->success(new String<string>(str, fName, fTxt));
@@ -102,6 +106,7 @@ template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> arg
     funcMap["execute_toNum"] = &BuiltInFunction<int>::execute_toNum;
     funcMap["execute_toStr"] = &BuiltInFunction<int>::execute_toStr;
     funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
+    funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
 }
 
 template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args) {

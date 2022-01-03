@@ -47,6 +47,7 @@ public:
             {"do",    DO},
             {"elif",  ELIF},
             {"for",   FOR},
+            {"iter",   ITER},
             {"to",    TO},
             {"chgby", CHGBY},
             {"while", WHILE},

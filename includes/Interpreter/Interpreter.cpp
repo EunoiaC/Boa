@@ -18,6 +18,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_VAR_ASSIGN] = &Interpreter::visitVarAssignNode;
     funcMap[N_IF] = &Interpreter::visitIfNode;
     funcMap[N_FOR] = &Interpreter::visitForNode;
+    funcMap[N_ITER] = &Interpreter::visitIterateNode;
     funcMap[N_WHILE] = &Interpreter::visitWhileNode;
     funcMap[N_CALL] = &Interpreter::visitCallNode;
     funcMap[N_FUNC_DEF] = &Interpreter::visitFuncDefNode;
@@ -26,6 +27,57 @@ Interpreter::Interpreter(string name, vector<string> l) {
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
     string methodName = n->type;
     return (this->*funcMap[methodName])(n, c);
+}
+
+RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
+    IterateNode *node = (IterateNode *) n;
+    RuntimeResult *res = new RuntimeResult();
+    vector<BaseValue *> elements;
+
+    BaseValue *toIterateThrough = res->reg(visit(node->toIterateThrough, c));
+    if(res->error) return res;
+
+    if(toIterateThrough->type == T_LIST) {
+        for(auto *val : ((List<vector<BaseValue*>> *) toIterateThrough)->elements) {
+            c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
+                                val);
+            elements.push_back(res->reg(visit(node->body, c)));
+            if (res->error) return res;
+        }
+    } else if(toIterateThrough->type == T_STRING) {
+        for(char ch : ((String<string> *) toIterateThrough)->getValue()) {
+            c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
+                                new String<string>(string(1, ch), "", ""));
+            elements.push_back(res->reg(visit(node->body, c)));
+            if (res->error) return res;
+        }
+    } else if(toIterateThrough->type == T_MAP) {
+        Map<map<BaseValue*, BaseValue*>> *dict = (Map<map<BaseValue*, BaseValue*>> *) toIterateThrough;
+        for(auto it : dict->dict) {
+            List<vector<BaseValue*>> *kv = new List<vector<BaseValue*>>({it.first, it.second}, "", "");
+            c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
+                                kv);
+            elements.push_back(res->reg(visit(node->body, c)));
+            if (res->error) return res;
+        }
+    } else{
+        return res->failure(new RuntimeError(
+                toIterateThrough->posStart,
+                toIterateThrough->posEnd,
+                toIterateThrough->line,
+                fName,
+                lines[node->line],
+                "Can't iterate type " + toIterateThrough->type,
+                c
+        ));
+    }
+
+    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[node->line]))->setContext(c)->setPos(
+            node->posStart, node->posEnd, node->line);
+    if (node->shouldReturnNull) {
+        val = new Number<double>(0, fName, lines[node->line]);
+    }
+    return res->success(val);
 }
 
 RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
@@ -306,6 +358,8 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->add(right);
     } else if (node->opTok->type == MINUS) {
         result = left->subtract(right);
+    } else if (node->opTok->type == EQUAL) {
+        result = left->set(right);
     } else if (node->opTok->type == MULTIPLY) {
         result = left->multiply(right);
     } else if (node->opTok->type == DIVIDE) {

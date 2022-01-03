@@ -42,6 +42,7 @@ public:
 
     virtual BaseValue* add(BaseValue* s);
     virtual BaseValue* subtract(BaseValue* s);
+    virtual BaseValue* set(BaseValue* s);
     virtual BaseValue* multiply(BaseValue* s);
     virtual BaseValue* divide(BaseValue* s);
     virtual BaseValue* power(BaseValue* s);

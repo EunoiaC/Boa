@@ -28,7 +28,7 @@ string fileName;
 
 int readFile() {
     clock_t start = clock();
-    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/stdlib.boa";
+    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
     fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
 
     //File

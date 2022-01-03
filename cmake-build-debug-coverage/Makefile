@@ -369,6 +369,30 @@ includes/Nodes/IfNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.s
 .PHONY : includes/Nodes/IfNode.cpp.s
 
+includes/Nodes/IterateNode.o: includes/Nodes/IterateNode.cpp.o
+.PHONY : includes/Nodes/IterateNode.o
+
+# target to build an object file
+includes/Nodes/IterateNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.o
+.PHONY : includes/Nodes/IterateNode.cpp.o
+
+includes/Nodes/IterateNode.i: includes/Nodes/IterateNode.cpp.i
+.PHONY : includes/Nodes/IterateNode.i
+
+# target to preprocess a source file
+includes/Nodes/IterateNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.i
+.PHONY : includes/Nodes/IterateNode.cpp.i
+
+includes/Nodes/IterateNode.s: includes/Nodes/IterateNode.cpp.s
+.PHONY : includes/Nodes/IterateNode.s
+
+# target to generate assembly for a file
+includes/Nodes/IterateNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.s
+.PHONY : includes/Nodes/IterateNode.cpp.s
+
 includes/Nodes/ListNode.o: includes/Nodes/ListNode.cpp.o
 .PHONY : includes/Nodes/ListNode.o
 
@@ -1008,6 +1032,9 @@ help:
 	@echo "... includes/Nodes/IfNode.o"
 	@echo "... includes/Nodes/IfNode.i"
 	@echo "... includes/Nodes/IfNode.s"
+	@echo "... includes/Nodes/IterateNode.o"
+	@echo "... includes/Nodes/IterateNode.i"
+	@echo "... includes/Nodes/IterateNode.s"
 	@echo "... includes/Nodes/ListNode.o"
 	@echo "... includes/Nodes/ListNode.i"
 	@echo "... includes/Nodes/ListNode.s"

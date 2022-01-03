@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "../Nodes/ForNode.h"
+#include "../Nodes/IterateNode.h"
 #include "../Nodes/ListNode.h"
 #include "../Nodes/StringNode.h"
 #include "../Nodes/WhileNode.h"
@@ -52,6 +53,7 @@ public:
     ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();
+    ParseResult * iterExpr();
     ParseResult * whileExpr();
     ParseResult * funcDef();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());

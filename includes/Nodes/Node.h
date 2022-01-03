@@ -20,6 +20,7 @@ static const string N_VAR_ASSIGN = "VAR_ASSIGN_NODE";
 static const string N_VAR_OPERATION = "N_VAR_OPERATION";
 static const string N_IF = "IF_NODE";
 static const string N_FOR = "FOR_NODE";
+static const string N_ITER = "ITER_NODE";
 static const string N_WHILE = "WHILE_NODE";
 static const string N_FUNC_DEF = "FUNC_DEF_NODE";
 static const string N_CALL = "CALL_NODE";

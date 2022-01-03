@@ -17,6 +17,7 @@ static const string IF = "IF";
 static const string DO = "DO";
 static const string ELSE = "ELSE";
 static const string FOR = "FOR";
+static const string ITER = "ITER";
 static const string WHILE = "WHILE";
 static const string CHGBY = "CHANGE_BY";
 static const string TO = "TO";

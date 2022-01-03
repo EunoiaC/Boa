@@ -63,7 +63,7 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) 
                         val->line,
                         val->fName,
                         val->fTxt,
-                        "String has invalid characters can't be converted to type NUMBER",
+                        "String has characters that can't be converted to type NUMBER",
                         execCtx
                 )
         );
@@ -89,7 +89,7 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) 
     }
     cout << val->toString();
     getline(cin, input);
-    String<string> * str = new String<string>(input, fName, fTxt);
+    String<string> * str = new String<string>(input, val->fName, val->fTxt);
     //cout << str->toString() << endl;
     return (new RuntimeResult())->success(str);
 }

@@ -98,6 +98,79 @@ ParseResult *Parser::ifExpr() {
     return res->success(new IfNode(cases, elseCase));
 }
 
+ParseResult *Parser::iterExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+
+    if(currentToken->getType() != ITER){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'iter'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() != IDENTIFIER){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected an identifier"));
+    }
+
+    Token<string> *iterName = dynamic_cast<Token<string> *>(currentToken);
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() != COLON){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected ':'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    Node *toIter = res->reg(expr());
+    if(res->error) return res;
+
+    if(currentToken->getType() != DO){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() == L_CURLY_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        if(currentToken->getType() == STOP_EXPR) {
+            Node *body = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+            IterateNode *iterNode = new IterateNode(iterName, toIter, body, true);
+            iterNode->line = iterName->line;
+
+            return res->success(iterNode);
+        }
+    }
+
+    Node *body = res->reg(expr());
+    if (res->error) return res;
+
+    return res->success(new IterateNode(iterName, toIter, body, false));
+}
+
 ParseResult *Parser::forExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
@@ -482,7 +555,11 @@ ParseResult *Parser::atom() {
         Node *forExp = res->reg(forExpr());
         if (res->error) return res;
         return res->success(forExp);
-    } else if (tok->getType() == WHILE) {
+    } else if (tok->getType() == ITER) {
+        Node *iterExp = res->reg(iterExpr());
+        if (res->error) return res;
+        return res->success(iterExp);
+    }else if (tok->getType() == WHILE) {
         Node *whileExp = res->reg(whileExpr());
         if (res->error) return res;
         return res->success(whileExp);
@@ -614,7 +691,7 @@ ParseResult *Parser::compExpr() {
 }
 
 ParseResult *Parser::arithExpr() {
-    return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL}, &Parser::term, &Parser::term);
+    return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL, EQUAL}, &Parser::term, &Parser::term);
 }
 
 ParseResult *Parser::statements() {

@@ -11,6 +11,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"

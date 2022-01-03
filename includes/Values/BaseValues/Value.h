@@ -40,6 +40,7 @@ public:
 
     //Overrides methods to give unsupportedOperation RTError
     BaseValue *subtract(BaseValue * other) override;
+    BaseValue *set(BaseValue * other) override;
     BaseValue *add(BaseValue * other) override;
     BaseValue *multiply(BaseValue * other) override;
     BaseValue *divide(BaseValue * other) override;

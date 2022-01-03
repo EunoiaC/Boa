@@ -11,6 +11,7 @@
 #include "../Values/Map.h"
 #include "../RuntimeResult/RuntimeResult.h"
 #include "../Nodes/ForNode.h"
+#include "../Nodes/IterateNode.h"
 #include "../Nodes/WhileNode.h"
 #include "../Nodes/IfNode.h"
 #include "../Nodes/FuncDefNode.h"
@@ -50,6 +51,7 @@ public:
 
     RuntimeResult * visitIfNode(Node * n, Context* c);
     RuntimeResult * visitForNode(Node * n, Context* c);
+    RuntimeResult * visitIterateNode(Node * n, Context* c);
     RuntimeResult * visitWhileNode(Node * n, Context* c);
 
     RuntimeResult * visitFuncDefNode(Node * n, Context* c);

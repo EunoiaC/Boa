@@ -124,6 +124,11 @@ template<> Number<double> *Number<double>::add(BaseValue *s) {
     illegalOperation(s);
 }
 
+template<> BaseValue *Number<double>::set(BaseValue *s) {
+    numValue = ((Number *) s)->getValue();
+    return this;
+}
+
 template<> Number<double> *Number<double>::plusEquals(BaseValue *s) {
     if(s->type == T_NUM) {
         numValue += ((Number *) s)->getValue();

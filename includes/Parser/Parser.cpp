@@ -513,6 +513,11 @@ ParseResult *Parser::listExpr() {
     res->regAdvancement();
     advance();
 
+    while (currentToken->getType() == STOP_EXPR){
+        res->regAdvancement();
+        advance();
+    }
+
     if (currentToken->getType() == R_BRACKET) {
         res->regAdvancement();
         advance();
@@ -527,8 +532,16 @@ ParseResult *Parser::listExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
+            while (currentToken->getType() == STOP_EXPR){
+                res->regAdvancement();
+                advance();
+            }
             elements.push_back(res->reg(expr()));
             if (res->error) return res;
+        }
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
         }
         if (currentToken->getType() != R_BRACKET) {
             return res->failure(

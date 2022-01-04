@@ -1,24 +1,10 @@
-op main() do {
-    op a() do "a"
-    op b() do "b"
-    op c() do "c"
-    op d() do "d"
-    op e() do "e"
-    op f() do "f"
+"Hangman in Boa"
 
-    funcMap = {
-        "a": a,
-        "b": b,
-        "c": c,
-        "d": d,
-        "e": e,
-        "f": f
-    }
+words = [
+    "python",
+    "java",
+    "kotlin",
+    "javascript"
+]
 
-    toCall = input("Function to call (a to f): ")
-
-    print((funcMap ? toCall)())
-}
-
-main()
-
+print(words)

@@ -254,7 +254,7 @@ ParseResult *Parser::forExpr() {
         }
     }
 
-    Node *body = res->reg(expr());
+    Node *body = res->reg(statement());
     if (res->error) return res;
 
     return res->success(new ForNode(identifier, startVal, endVal, changeVal, body, false));
@@ -304,7 +304,7 @@ ParseResult *Parser::whileExpr() {
         }
     }
 
-    Node *body = res->reg(expr());
+    Node *body = res->reg(statement());
     if (res->error) return res;
 
     return res->success(new WhileNode(condition, body, false));
@@ -377,6 +377,10 @@ ParseResult *Parser::funcDef() {
     if (currentToken->getType() == DO) {
         res->regAdvancement();
         advance();
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
+        }
         if(currentToken->getType() == L_CURLY_BRACKET){
             res->regAdvancement();
             advance();
@@ -706,6 +710,18 @@ ParseResult *Parser::arithExpr() {
     return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL, EQUAL}, &Parser::term, &Parser::term);
 }
 
+ParseResult *Parser::statement() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    int posStart = currentToken->posStart;
+
+    Node * _expr = res->reg(expr());
+    if (res->error) return res->failure(
+            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                      "InvalidSyntaxError", "Expected a number, identifier, operation, '(', or 'NOT' "));
+
+    return res->success(_expr);
+}
+
 ParseResult *Parser::statements() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node *> statements;
@@ -716,9 +732,9 @@ ParseResult *Parser::statements() {
         advance();
     }
 
-    Node *statement = res->reg(expr());
+    Node *statement_ = res->reg(statement());
     if (res->error) return res;
-    statements.push_back(statement);
+    statements.push_back(statement_);
 
     bool moreStatements = true;
 
@@ -732,13 +748,13 @@ ParseResult *Parser::statements() {
         if (newLineCount == 0) moreStatements = false;
 
         if (!moreStatements) break;
-        statement = res->tryReg(expr());
-        if (!statement) {
+        statement_ = res->tryReg(expr());
+        if (!statement_) {
             reverse(res->toReverseCount);
             moreStatements = false;
             continue;
         }
-        statements.push_back(statement);
+        statements.push_back(statement_);
     }
 
     return res->success(

@@ -41,6 +41,7 @@ public:
 
     ParseResult * factor();
     ParseResult * term();
+    ParseResult * statement();
     ParseResult * statements();
     ParseResult * expr();
     ParseResult * compExpr();

@@ -23,6 +23,10 @@ static const string CHGBY = "CHANGE_BY";
 static const string TO = "TO";
 static const string OP = "OP";
 
+static const string RETURN = "RETURN";
+static const string BREAK = "BREAK";
+static const string CONTINUE = "CONTINUE";
+
 static const string ELIF = "ELIF";
 static const string IDENTIFIER = "IDENTIFIER";
 static const string GET = "GET";

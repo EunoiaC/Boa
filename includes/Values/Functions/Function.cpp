@@ -24,7 +24,7 @@ template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
 
     BaseValue *value = res->reg(interpreter->visit(body, newContext));
     if(shouldReturnNull){
-        value = new Number<double>(0, fName, lines[line]);
+        value = new Number<double>(0, fName, "");
     }
     return res->success(value);
 }

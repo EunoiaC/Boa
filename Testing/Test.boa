@@ -1,10 +1,9 @@
-"Hangman in Boa"
-
 words = [
-    "python",
+    "1sadsadsa",
     "java",
-    "kotlin",
-    "javascript"
+    "c++"
 ]
 
-print(words)
+word = words ? 0
+
+print(word contains "s")

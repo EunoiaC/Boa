@@ -428,14 +428,15 @@ ParseResult *Parser::mapExpr() {
     res->regAdvancement();
     advance();
 
+    while (currentToken->getType() == STOP_EXPR){
+        res->regAdvancement();
+        advance();
+    }
+
     if (currentToken->getType() == R_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
     } else {
-        while (currentToken->getType() == STOP_EXPR){
-            res->regAdvancement();
-            advance();
-        }
         Node *key = res->reg(expr());
         if (res->error) return res;
 

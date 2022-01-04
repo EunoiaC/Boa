@@ -390,7 +390,8 @@ CMakeFiles/Boa.dir/includes/Values/List.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/List.cpp \
  ../includes/Values/List.h \
- ../includes/Values/Number.h
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h
 CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

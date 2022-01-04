@@ -42,10 +42,10 @@ template<>
 BaseValue *List<vector<BaseValue *>>::contains(BaseValue *other) {
     for (auto it: elements) {
         if(((Number<double>*) it->compEquals(other))->getValue() == 1) {
-            return new Number<double>(1, fName, fTxt);;
+            return new Number<double>(1, fName, fTxt);
         }
     }
-    return new Number<double>(0, fName, fTxt);;
+    return new Number<double>(0, fName, fTxt);
 }
 
 template<>
@@ -88,6 +88,11 @@ BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
             );
         } else {
             BaseValue * val = elements[(int) num->numValue];
+            // String is SOOOOOOOO special it just HAS TO HAVE something WEIRD ABOUT IT and have a custom return value
+            if(val->type == T_STRING){
+                auto *str = (String<string> *) val;
+                return str;
+            }
             return val;
         }
     } else {

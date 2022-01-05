@@ -54,7 +54,8 @@ public:
     ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();
-    ParseResult * iterExpr();
+    ParseResult * iterExprA();
+    ParseResult * iterExprB(Token<string> * varName);
     ParseResult * whileExpr();
     ParseResult * funcDef();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());

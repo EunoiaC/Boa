@@ -12,6 +12,7 @@ ForNode::ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *
     this->body = body;
     this->shouldReturnNull = shouldReturnNull;
 
+    line = varNameTok->line;
     posStart = varNameTok->posStart;
     posEnd = body->posEnd;
 }

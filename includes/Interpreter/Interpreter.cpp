@@ -91,7 +91,7 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     Number<double> *endVal = (Number<double> *) res->reg(visit(forNode->endVal, c));
     if (res->error) return res;
 
-    Number<double> *stepVal = new Number<double>(1, fName, lines[n->line]);
+    Number<double> *stepVal = new Number<double>(1, fName, "");
 
     if (forNode->stepVal) {
         stepVal = (Number<double> *) res->reg(visit(forNode->stepVal, c));

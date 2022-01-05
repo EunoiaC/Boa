@@ -1,9 +1,4 @@
-words = [
-    "1sadsadsa",
-    "java",
-    "c++"
-]
+"Create a list of numbers with a for loop"
+x = for i = 0 to 1000 do i
 
-word = words ? 0
-
-print(word contains "s")
+print(x)

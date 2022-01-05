@@ -98,7 +98,7 @@ ParseResult *Parser::ifExpr() {
     return res->success(new IfNode(cases, elseCase));
 }
 
-ParseResult *Parser::iterExpr() {
+ParseResult *Parser::iterExprA() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
     if(currentToken->getType() != ITER){
@@ -125,9 +125,14 @@ ParseResult *Parser::iterExpr() {
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected ':'"));
     }
-
     res->regAdvancement();
     advance();
+
+    return iterExprB(iterName);
+}
+
+ParseResult *Parser::iterExprB(Token<string> *iterName) {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
 
     Node *toIter = res->reg(expr());
     if(res->error) return res;
@@ -192,9 +197,14 @@ ParseResult *Parser::forExpr() {
     advance();
 
     if (currentToken->getType() != EQUAL) {
+        if (currentToken->getType() == COLON){
+            res->regAdvancement();
+            advance();
+            return iterExprB(identifier);
+        }
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected '='"));
+                          "InvalidSyntaxError", "Expected '=' or ':'"));
     }
 
     res->regAdvancement();
@@ -586,7 +596,7 @@ ParseResult *Parser::atom() {
         if (res->error) return res;
         return res->success(forExp);
     } else if (tok->getType() == ITER) {
-        Node *iterExp = res->reg(iterExpr());
+        Node *iterExp = res->reg(iterExprA());
         if (res->error) return res;
         return res->success(iterExp);
     }else if (tok->getType() == WHILE) {

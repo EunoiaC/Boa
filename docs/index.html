@@ -2,9 +2,164 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>The Boa programming language</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+<div class="Title">
 
+</div>
+<div class="center">
+    <h1>A tutorial to Boa</h1>
+    <div>
+        <h2>Types</h2>
+        <p>
+            Boa has a variety of types to use in your code.
+            These different types are utilized for varying tasks
+            that may be needed in your code.
+        </p>
+        <p>
+            The following types are available:
+        </p>
+        <div id="TypesTOC">
+            <ul class="TypesList">
+                <li><a href="#Number">NUMBER</a></li>
+                <li><a href="#String">STRING</a></li>
+                <li><a href="#List">LIST</a></li>
+                <li><a href="#Map">MAP</a></li>
+            </ul>
+        </div>
+        <h3 id="Number">NUMBER</h3>
+        <div>
+            <p>
+                The NUMBER type is just literally a double.
+                The NUMBER type has access to all operators
+                except for the 'get' (alias '?') operator.
+                Please note that the NUMBER type is the only type
+                to use the '^' operator.
+            </p>
+            <code>
+                <span class="blue">>>></span> <span class="number">1</span>
+                <br>
+                1.000000
+            </code>
+        </div>
+        <h3 id="String">STRING</h3>
+        <div>
+            <p>
+                The STRING type is a string of characters.
+                The STRING type has access to all operators
+                except for the '-' and '/' operators.
+            </p>
+            <code>
+                <span class="blue">>>></span> <span class="string">"Hello World!"</span>
+                <br>
+                Hello World!
+            </code>
+        </div>
+        <h3 id="List">LIST</h3>
+        <div>
+            <p>
+                The LIST type is a list of any type of values.
+                The LIST type has access to all operators
+                except the '/' operator.
+            </p>
+            <code>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, [<span
+                    class="string">"Nested List!"</span>, <span class="number">1</span>], {}]
+                <br>
+                [1.000000, 2.000000, [Nested List!, 1.000000], {}]
+            </code>
+            <h3 id="Map">MAP</h3>
+            <div>
+                <p>
+                    MAPs store multiple key value pairs of any type.
+                    The MAP type has access to all operators
+                    except the '/' and '*' operator.
+                </p>
+                <code>
+                    <span class="blue">>>></span> {<span class="string">"key1"</span>: <span class="number">1</span>,
+                    <span class="number">2</span>: <span class="string">"key2"</span>,
+                    <span class="string">"key3"</span>: [<span class="string">"Nested List!"</span>, <span
+                        class="number">1</span>]
+                    <br>
+                    {key1: 1.000000, 2.000000: key2, key3: [Nested List!, 1.000000]}                </code>
+            </div>
+        </div>
+        <div>
+            <h2>Operators</h2>
+            <p>
+                Boa has a variety of operators to use in your code.
+            </p>
+        </div>
+        <div>
+            <h2>Expressions</h2>
+            <p>
+                Boa allows you to perform many forms of expressions.
+                An expression is a combination of values and operators.
+            </p>
+            <h3>A simple math expression</h3>
+
+            <code>
+                <span class="blue">>>></span> <span class="number">1</span> + <span class="number">2</span>
+                <br>
+                3.000000
+                <br>
+                <span class="blue">>>></span> <span class="number">40</span> - <span class="number">3</span> * <span
+                    class="number">2</span>
+                <br>
+                34.000000
+                <br>
+                <span class="blue">>>></span> (<span class="number">40</span> - <span class="number">3</span>) * <span
+                    class="number">2</span>
+                <br>
+                74.000000
+            </code>
+            <p>
+                Please note that this language is stupid and a NUMBER is just a double, no ints or floats :(
+                Also note that I'm too lazy to show examples but there's the '^' operator,
+                '/' operator, and '%' operator.
+            </p>
+
+            <h3>Expressions with strings and lists</h3>
+            <code>
+                <span class="blue">>>></span> <span class="string">"string1"</span> + <span
+                    class="string">"string2"</span>
+                <br>
+                string1string2
+                <br>
+                <span class="blue">>>></span> <span class="string">"word"</span> * <span class="number">3</span>
+                <br>
+                wordwordword
+                <br>
+                <span class="blue">>>></span> <span class="string">"hello"</span> ? <span class="number">0</span> <span
+                    class="comment">// Returns the 0th index of the string</span>
+                <br>
+                h
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="string">"2"</span>, <span
+                    class="number">3</span>] + <span class="number">4</span> <span class="comment">// Pushes back the value 4 to the list</span>
+                <br>
+                [1.000000, 2, 3.000000, 4.000000]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, <span
+                    class="number">3</span>] - <span class="number">2</span> <span class="comment">// Removes the 2nd index of the list</span>
+                <br>
+                [1.000000, 2.000000]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, <span
+                    class="number">3</span>] * [<span class="number">4</span>, <span class="string">"fifth"</span>,
+                <span class="number">6</span>] <span class="comment">// Combines two lists</span>
+                <br>
+                [1.000000, 2.000000, 3.000000, 4.000000, fifth, 6.000000]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, <span
+                    class="number">3</span>] ? <span class="number">1</span> <span class="comment">// Returns the 1st index of the list</span>
+                <br>
+                2.000000
+            </code>
+        </div>
+    </div>
+</div>
 </body>
 </html>

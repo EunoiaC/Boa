@@ -78,7 +78,7 @@ int shellInput() {
     while (true) {
         lines = vector<string>();
         string input;
-        cout << "Boa % ";
+        cout << ">>> ";
         getline(cin, input);
 
         input += "\n";
@@ -113,7 +113,12 @@ int shellInput() {
                 cout << result->error->toString() << endl;
                 continue;
             } else{
-                //cout << result->value->toString() << endl;
+                auto *list = (List<vector<BaseValue *>> *) result->value;
+                if(list->elements.size() == 1){
+                    cout << list->elements[0]->toString() << endl;
+                } else {
+                    cout << list->toString() << endl;
+                }
             }
             cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
         } catch (const std::bad_alloc &e) {
@@ -133,7 +138,7 @@ int main() {
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
-    return readFile();
+    return shellInput();
 }
 
 #pragma clang diagnostic pop

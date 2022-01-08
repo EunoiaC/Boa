@@ -5,6 +5,16 @@ const observer = new IntersectionObserver(entries => {
         if (entry.isIntersecting) {
             // Add the animation class
             entry.target.classList.add('slide-up-animation');
+        }
+    });
+});
+
+const docObserver = new IntersectionObserver(entries => {
+    // Loop over the entries
+    entries.forEach(entry => {
+        // If the element is visible
+        if (entry.isIntersecting) {
+            // Add the animation class
             setTimeout(function(){
                 document.getElementById("docs").classList.add("fade-in-animation");
                 document.getElementById("docs").style.opacity = 1;
@@ -12,6 +22,8 @@ const observer = new IntersectionObserver(entries => {
         }
     });
 });
+
+docObserver.observe(document.getElementById("docs"));
 
 observer.observe(document.querySelector('.slide-up'));
 

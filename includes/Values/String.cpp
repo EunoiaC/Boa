@@ -84,7 +84,7 @@ BaseValue *String<string>::compGreaterThanEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue >= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -92,7 +92,7 @@ BaseValue *String<string>::compLessThanEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue <= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -100,7 +100,7 @@ BaseValue *String<string>::compGreaterThan(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue > ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -108,7 +108,7 @@ BaseValue *String<string>::compLessThan(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue < ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -116,7 +116,7 @@ BaseValue *String<string>::compEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue == ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -124,7 +124,7 @@ BaseValue *String<string>::compNotEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue != ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    illegalOperation(val);
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
 template<>

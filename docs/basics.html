@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Basics</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<div class="center">
+    <h1>The Basics</h1>
+    <div>
+        <h2 id="types">Types</h2>
+        <p>
+            Boa has a variety of types to use in your code.
+            These different types are utilized for varying tasks
+            that may be needed in your code.
+        </p>
+        <p>
+            The following types are available:
+        </p>
+        <div>
+            <ul class="TypesList">
+                <li><a href="#Number">NUMBER</a></li>
+                <li><a href="#String">STRING</a></li>
+                <li><a href="#List">LIST</a></li>
+                <li><a href="#Map">MAP</a></li>
+            </ul>
+        </div>
+        <h3 id="Number">NUMBER</h3>
+        <div>
+            <p>
+                The NUMBER type is just literally a double.
+                Please note that the NUMBER type is the only type
+                to use the '^' operator.
+            </p>
+            <code>
+                <span class="blue">>>></span> <span class="number">1</span>
+                <br>
+                1.000000
+                <br>
+                <span class="blue">>>></span> <span class="number">1.5</span>
+                <br>
+                1.500000
+                <br>
+                <span class="blue">>>></span> <span class="number">1</span> + <span class="number">1.5</span> <span
+                    class="comment">// Addition operator</span>
+                <br>
+                2.500000
+                <br>
+                <span class="blue">>>></span> <span class="number">1</span> - <span class="number">1.5</span> <span
+                    class="comment">// Subtraction operator</span>
+                <br>
+                -0.500000
+                <br>
+                <span class="blue">>>></span> <span class="number">12</span> * <span class="number">5</span> <span
+                    class="comment">// Multiplication operator</span>
+                <br>
+                60.000000
+                <br>
+                <span class="blue">>>></span> <span class="number">12</span> / <span class="number">6</span> <span
+                    class="comment">// Division operator</span>
+                <br>
+                2.000000
+                <br>
+                <span class="blue">>>></span> <span class="number">5</span> ^ <span class="number">2</span> <span
+                    class="comment">// Exponent operator</span>
+                <br>
+                25.000000
+            </code>
+        </div>
+        <h3 id="String">STRING</h3>
+        <div>
+            <p>
+                The STRING type is a string of characters.
+            </p>
+            <code>
+                <span class="blue">>>></span> <span class="string">"Hello World!"</span>
+                <br>
+                Hello World!
+                <br>
+                <span class="blue">>>></span> <span class="string">"Hello World"</span> + <span
+                    class="string">"!"</span> <span class="comment">// Addition operator</span>
+                <br>
+                Hello World!
+                <br>
+                <span class="blue">>>></span> <span class="string">"Hiya"</span> * <span class="number">3</span> <span
+                    class="comment">// Multiplication operator</span>
+                <br>
+                HiyaHiyaHiya
+                <br>
+                <span class="blue">>>></span> <span class="string">"Hello World!"</span> ? <span class="number">6</span>
+                <span class="comment">// Get the nth character</span>
+                <br>
+                W
+            </code>
+        </div>
+        <h3 id="List">LIST</h3>
+        <div>
+            <p>
+                The LIST type is a list of any type of values.
+            </p>
+            <code>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, [<span
+                    class="string">"Nested List!"</span>, <span class="number">1</span>], {}]
+                <br>
+                [1.000000, 2.000000, [Nested List!, 1.000000], {}]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, [<span
+                    class="string">"Nested List!"</span>, <span class="number">1</span>], {}] + <span class="string">"hello"</span>
+                <span class="comment">// Push back a value</span>
+                <br>
+                [1.000000, 2.000000, [Nested List!, 1.000000], {}, hello]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>, [<span
+                    class="string">"Nested List!"</span>, <span class="number">1</span>], {}] - <span
+                    class="number">2</span> <span class="comment">// Remove value by index</span>
+                <br>
+                [1.000000, 2.000000, {}]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>] * [<span
+                    class="number">3</span>, <span class="string">"four"</span>] <span class="comment">// Extend the list by another</span>
+                <br>
+                [1.000000, 2.000000, 3.000000, four]
+                <br>
+                <span class="blue">>>></span> [<span class="number">1</span>, <span class="number">2</span>] ? <span
+                    class="number">1</span> </span> <span class="comment">// Get the nth index</span>
+                <br>
+                2.000000
+            </code>
+            <h3 id="Map">MAP</h3>
+            <div>
+                <p>
+                    MAPs store multiple key value pairs of any type.
+                </p>
+                <code>
+                    <span class="blue">>>></span> {<span class="string">"key1"</span>: <span class="number">1</span>,
+                    <span class="number">2</span>: <span class="string">"key2"</span>,
+                    <span class="string">"key3"</span>: [<span class="string">"Nested List!"</span>, <span
+                        class="number">1</span>]
+                    <br>
+                    {key1: 1.000000, 2.000000: key2, key3: [Nested List!, 1.000000]}
+                    <br>
+                    <span class="blue">>>></span> {<span class="string">"key1"</span>: <span class="number">1</span>} +
+                    [<span class="string">"key"</span>, <span class="string">"value"</span>]
+                    <span class="comment">// Adding a key value pair to the map</span>
+                    <br>
+                    {key1: 1.000000, key: value}
+                    <br>
+                    <span class="blue">>>></span> {<span class="string">"key1"</span>: <span class="number">1</span>} -
+                    <span class="string">"key1"</span>
+                    <span class="comment">// Removing a pair using the key</span>
+                    <br>
+                    {}
+                    <br>
+                    <span class="blue">>>></span> {<span class="string">"key1"</span>: <span class="number">1</span>} ?
+                    <span class="string">"key1"</span>
+                    <span class="comment">// Get a value by key</span>
+                    <br>
+                    1.000000
+                </code>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h2 id="variables">Variables</h2>
+        <div>
+            <p>
+                Variables are used to store values.
+                Variables are not type specific and are dynamically typed.
+                Variables are defined by a name, followed by an equal sign and then an expression.
+                <code>
+                    name = expression
+                </code>
+            </p>
+            <code>
+                <span class="blue">>>></span> x = <span class="string">"Hello"</span> <span
+                    class="comment">// String</span>
+                <br>
+                Hello
+                <br>
+                <span class="blue">>>></span> x = <span class="number">1</span> <span class="comment">// Number</span>
+                <br>
+                1.000000
+                <br>
+                <span class="blue">>>></span> x = true <span class="comment">// true: 1, false: 0</span>
+                <br>
+                0.000000
+                <br>
+                <span class="blue">>>></span> x = null <span class="comment">// Null is just 0</span>
+                <br>
+                0.000000
+                <br>
+                <span class="blue">>>></span> x = <span class="list">[]</span> <span class="comment">// List</span>
+                <br>
+                []
+                <br>
+                <span class="blue">>>></span> x = <span class="map">{}</span> <span class="comment">// Map</span>
+                <br>
+                {}
+            </code>
+        </div>
+        <h3>Accessing variables</h3>
+        <p>
+            Variables can be accessed by using the name you set for them.
+            They can be accessed in expressions.
+        </p>
+        <code>
+            <span class="blue">>>></span> x = <span class="string">"Hello"</span> <span class="comment">// Initializing the variable</span>
+            <br>
+            Hello
+            <br>
+            <span class="blue">>>></span> x <span class="comment">// Accessing the variable</span>
+            <br>
+            Hello
+            <br>
+            <span class="blue">>>></span> y <span
+                class="comment">// Accessing a variable that hasn't been defined</span>
+            <br>
+            <p>
+                Traceback (most recent call last):
+                <br>
+                &emsp;&emsp;File &lt;stdin&gt;, line 1, in &lt;program&gt;
+                <br>
+                RuntimeError: y is not defined
+                <br>
+                <br>
+                y
+                <br>
+                ^
+            </p>
+        </code>
+    </div>
+</div>
+</body>
+</html>

@@ -142,10 +142,10 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
         elements.push_back(res->reg(visit(whileNode->body, c)));
         if (res->error) return res;
     }
-    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[n->line]))->setContext(c)->setPos(
+    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, ""))->setContext(c)->setPos(
             n->posStart, n->posEnd, n->line);
     if (whileNode->shouldReturnNull) {
-        val = val = new Number<double>(0, fName, lines[n->line]);
+        val = new Number<double>(0, fName, "");
     }
     return res->success(val);
 }

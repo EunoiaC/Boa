@@ -17,6 +17,8 @@ public:
     BaseValue * subtract(BaseValue * other) override;
     BaseValue * plusEquals(BaseValue * other) override;
     BaseValue * minusEquals(BaseValue * other) override;
+    BaseValue * compEquals(BaseValue * other) override;
+    BaseValue * compNotEquals(BaseValue * other) override;
     int getLength() override;
     List<T> * copy() override;
     string toString() override;

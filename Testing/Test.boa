@@ -1,1 +1,20 @@
-(40 - 3) * 2
+truth = 'this is the worst code demo ever'
+print('Why would anyone look at this demo, ' + truth)
+print('I am not even sure if this is a joke')
+strToIter = "lol"
+
+for char : strToIter do {
+    print(char)
+}
+
+for i = 0 to 5 do {
+    print(i)
+}
+
+i = 0
+while i < lenOf(strToIter) do {
+    print(strToIter ? i)
+    i += 1
+}
+
+print("somehow this all compiled without a memory error in my test interpreter")

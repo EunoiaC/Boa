@@ -41,7 +41,7 @@ BaseValue *List<vector<BaseValue *>>::add(BaseValue *other) {
 template<>
 BaseValue *List<vector<BaseValue *>>::contains(BaseValue *other) {
     for (auto it: elements) {
-        if(((Number<double>*) it->compEquals(other))->getValue() == 1) {
+        if (((Number<double> *) it->compEquals(other))->getValue() == 1) {
             return new Number<double>(1, fName, fTxt);
         }
     }
@@ -50,33 +50,9 @@ BaseValue *List<vector<BaseValue *>>::contains(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
-    if(other->type == T_NUM) {
+    if (other->type == T_NUM) {
         Number<double> *num = (Number<double> *) other;
-        if(num->getValue() > elements.size() - 1) {
-            rtError = new RuntimeError(
-                    num->posStart,
-                    num->posEnd,
-                    num->line,
-                    num->fName,
-                    num->fTxt,
-                    "Index out of range",
-                    ctx
-            );
-        } else{
-            List<vector<BaseValue *>> *newList = copy();
-            newList->elements.erase(newList->elements.begin() + (int) num->numValue);
-            return newList;
-        }
-    } else {
-        illegalOperation(other, T_NUM);
-    }
-}
-
-template<>
-BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
-    if (s->type == T_NUM) {
-        Number<double> *num = (Number<double> *) s;
-        if(num->numValue > elements.size() - 1 or num->numValue < 0) {
+        if (num->getValue() > elements.size() - 1) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -87,9 +63,33 @@ BaseValue *List<vector<BaseValue*>>::get(BaseValue *s) {
                     ctx
             );
         } else {
-            BaseValue * val = elements[(int) num->numValue];
+            List<vector<BaseValue *>> *newList = copy();
+            newList->elements.erase(newList->elements.begin() + (int) num->numValue);
+            return newList;
+        }
+    } else {
+        illegalOperation(other, T_NUM);
+    }
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
+    if (s->type == T_NUM) {
+        Number<double> *num = (Number<double> *) s;
+        if (num->numValue > elements.size() - 1 or num->numValue < 0) {
+            rtError = new RuntimeError(
+                    num->posStart,
+                    num->posEnd,
+                    num->line,
+                    num->fName,
+                    num->fTxt,
+                    "Index out of range",
+                    ctx
+            );
+        } else {
+            BaseValue *val = elements[(int) num->numValue];
             // String is SOOOOOOOO special it just HAS TO HAVE something WEIRD ABOUT IT and have a custom return value
-            if(val->type == T_STRING){
+            if (val->type == T_STRING) {
                 auto *str = (String<string> *) val;
                 return str;
             }
@@ -112,7 +112,8 @@ BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
     illegalOperation(other);
 }
 
-template<> int List<vector<BaseValue*>>::getLength() {
+template<>
+int List<vector<BaseValue *>>::getLength() {
     return elements.size();
 }
 
@@ -123,10 +124,44 @@ BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
 }
 
 template<>
+BaseValue *List<vector<BaseValue *>>::compEquals(BaseValue *other) {
+    if (other->type == T_LIST) {
+        auto *otherList = (List<vector<BaseValue *>> *) other;
+        if (elements.size() == otherList->elements.size()) {
+            for (int i = 0; i < elements.size(); i++) {
+                if (((Number<double> *) elements[i]->compEquals(otherList->elements[i]))->getValue() == 0) {
+                    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+                }
+            }
+            return (new Number<double>(1, fName, fTxt))->setContext(ctx);
+        }
+        return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+    }
+    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::compNotEquals(BaseValue *other) {
+    if (other->type == T_LIST) {
+        auto *otherList = (List<vector<BaseValue *>> *) other;
+        if (elements.size() == otherList->elements.size()) {
+            for (int i = 0; i < elements.size(); i++) {
+                if (((Number<double> *) elements[i]->compNotEquals(otherList->elements[i]))->getValue() == 1) {
+                    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
+                }
+            }
+            return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+        }
+        return (new Number<double>(1, fName, fTxt))->setContext(ctx);
+    }
+    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
+}
+
+template<>
 BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
-    if(other->type == T_NUM) {
+    if (other->type == T_NUM) {
         Number<double> *num = (Number<double> *) other;
-        if(num->getValue() > elements.size() - 1) {
+        if (num->getValue() > elements.size() - 1) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -136,7 +171,7 @@ BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
                     "Index out of range",
                     ctx
             );
-        } else{
+        } else {
             elements.erase(elements.begin() + (int) num->numValue);
             return this;
         }

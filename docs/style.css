@@ -88,6 +88,10 @@ button {
     justify-content: center;
 }
 
+a {
+    color: #d9e2ff;
+}
+
 .toc {
     width: fit-content;
     padding: 10px;

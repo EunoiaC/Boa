@@ -124,7 +124,7 @@ BaseValue *String<string>::compNotEquals(BaseValue *val) {
     if (val->type == T_STRING) {
         return (new Number<double>(strValue != ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
 }
 
 template<>

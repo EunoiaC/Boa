@@ -142,19 +142,7 @@ BaseValue *List<vector<BaseValue *>>::compEquals(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::compNotEquals(BaseValue *other) {
-    if (other->type == T_LIST) {
-        auto *otherList = (List<vector<BaseValue *>> *) other;
-        if (elements.size() == otherList->elements.size()) {
-            for (int i = 0; i < elements.size(); i++) {
-                if (((Number<double> *) elements[i]->compNotEquals(otherList->elements[i]))->getValue() == 1) {
-                    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
-                }
-            }
-            return (new Number<double>(0, fName, fTxt))->setContext(ctx);
-        }
-        return (new Number<double>(1, fName, fTxt))->setContext(ctx);
-    }
-    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
+    return new Number<double>(((Number<double> *) compEquals(other))->getValue() != 1, "", "");
 }
 
 template<>

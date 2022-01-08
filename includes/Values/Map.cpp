@@ -140,6 +140,41 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::get(BaseValue *key) {
     );
 }
 
+template<>
+Number<double> *Map<map<BaseValue *, BaseValue *>>::keyExists(BaseValue *key) {
+    for (auto it: dict) {
+        if(((Number<double>*) it.first->compEquals(key))->getValue() == 1) {
+            return new Number<double>(1, "", "");
+        }
+    }
+    return new Number<double>(0, "", "");
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::compEquals(BaseValue *other) {
+    if(other->type == T_MAP){
+        Map<map<BaseValue *, BaseValue *>> *otherMap = (Map<map<BaseValue *, BaseValue *>> *) other;
+        if(dict.size() != otherMap->dict.size()) {
+            return new Number<double>(0, "", "");
+        }
+        for(auto it: dict) {
+            if(otherMap->keyExists(it.first)->getValue() == 0) {
+                return new Number<double>(0, "", "");
+            }
+            if(((Number<double> *) it.second->compNotEquals(otherMap->get(it.first)))->getValue() == 1) {
+                return new Number<double>(0, "", "");
+            }
+        }
+        return new Number<double>(1, "", "");
+    }
+    return new Number<double>(0, "", "");
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::compNotEquals(BaseValue *other) {
+    return new Number<double>(((Number<double> *) compEquals(other))->getValue() != 1, "", "");
+}
+
 template<typename T>
 string Map<T>::toString() {
     string str = "{";

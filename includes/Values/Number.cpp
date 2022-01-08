@@ -85,7 +85,7 @@ template<> BaseValue *Number<double>::compNotEquals(BaseValue *val) {
     if(val->type == T_NUM) {
         return (new Number<double>(numValue != ((Number*) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
-    return (new Number<double>(0, fName, fTxt))->setContext(ctx);
+    return (new Number<double>(1, fName, fTxt))->setContext(ctx);
 }
 
 template<> BaseValue *Number<double>::andedBy(BaseValue *s) {

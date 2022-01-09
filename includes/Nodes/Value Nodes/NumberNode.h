@@ -5,8 +5,8 @@
 #ifndef BOA_NUMBERNODE_H
 #define BOA_NUMBERNODE_H
 
-#include "Node.h"
-#include "../Token/Token.h"
+#include "../Node.h"
+#include "../../Token/Token.h"
 
 class NumberNode : public Node {
 public:

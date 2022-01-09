@@ -273,6 +273,78 @@ includes/Nodes/BinaryOperationNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.s
 .PHONY : includes/Nodes/BinaryOperationNode.cpp.s
 
+includes/Nodes/Branching_Statements/BreakNode.o: includes/Nodes/Branching_Statements/BreakNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.o
+
+# target to build an object file
+includes/Nodes/Branching_Statements/BreakNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.o
+
+includes/Nodes/Branching_Statements/BreakNode.i: includes/Nodes/Branching_Statements/BreakNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.i
+
+# target to preprocess a source file
+includes/Nodes/Branching_Statements/BreakNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.i
+
+includes/Nodes/Branching_Statements/BreakNode.s: includes/Nodes/Branching_Statements/BreakNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Branching_Statements/BreakNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.s
+
+includes/Nodes/Branching_Statements/ContinueNode.o: includes/Nodes/Branching_Statements/ContinueNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.o
+
+# target to build an object file
+includes/Nodes/Branching_Statements/ContinueNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.o
+
+includes/Nodes/Branching_Statements/ContinueNode.i: includes/Nodes/Branching_Statements/ContinueNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.i
+
+# target to preprocess a source file
+includes/Nodes/Branching_Statements/ContinueNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.i
+
+includes/Nodes/Branching_Statements/ContinueNode.s: includes/Nodes/Branching_Statements/ContinueNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Branching_Statements/ContinueNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.s
+
+includes/Nodes/Branching_Statements/ReturnNode.o: includes/Nodes/Branching_Statements/ReturnNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.o
+
+# target to build an object file
+includes/Nodes/Branching_Statements/ReturnNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.o
+
+includes/Nodes/Branching_Statements/ReturnNode.i: includes/Nodes/Branching_Statements/ReturnNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.i
+
+# target to preprocess a source file
+includes/Nodes/Branching_Statements/ReturnNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.i
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.i
+
+includes/Nodes/Branching_Statements/ReturnNode.s: includes/Nodes/Branching_Statements/ReturnNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Branching_Statements/ReturnNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.s
+.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.s
+
 includes/Nodes/CallNode.o: includes/Nodes/CallNode.cpp.o
 .PHONY : includes/Nodes/CallNode.o
 
@@ -297,149 +369,125 @@ includes/Nodes/CallNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.s
 .PHONY : includes/Nodes/CallNode.cpp.s
 
-includes/Nodes/ForNode.o: includes/Nodes/ForNode.cpp.o
-.PHONY : includes/Nodes/ForNode.o
+includes/Nodes/Control_Flow/ForNode.o: includes/Nodes/Control_Flow/ForNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/ForNode.o
 
 # target to build an object file
-includes/Nodes/ForNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o
-.PHONY : includes/Nodes/ForNode.cpp.o
+includes/Nodes/Control_Flow/ForNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/ForNode.cpp.o
 
-includes/Nodes/ForNode.i: includes/Nodes/ForNode.cpp.i
-.PHONY : includes/Nodes/ForNode.i
+includes/Nodes/Control_Flow/ForNode.i: includes/Nodes/Control_Flow/ForNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/ForNode.i
 
 # target to preprocess a source file
-includes/Nodes/ForNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.i
-.PHONY : includes/Nodes/ForNode.cpp.i
+includes/Nodes/Control_Flow/ForNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/ForNode.cpp.i
 
-includes/Nodes/ForNode.s: includes/Nodes/ForNode.cpp.s
-.PHONY : includes/Nodes/ForNode.s
+includes/Nodes/Control_Flow/ForNode.s: includes/Nodes/Control_Flow/ForNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/ForNode.s
 
 # target to generate assembly for a file
-includes/Nodes/ForNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.s
-.PHONY : includes/Nodes/ForNode.cpp.s
+includes/Nodes/Control_Flow/ForNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/ForNode.cpp.s
 
-includes/Nodes/FuncDefNode.o: includes/Nodes/FuncDefNode.cpp.o
-.PHONY : includes/Nodes/FuncDefNode.o
+includes/Nodes/Control_Flow/FuncDefNode.o: includes/Nodes/Control_Flow/FuncDefNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.o
 
 # target to build an object file
-includes/Nodes/FuncDefNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o
-.PHONY : includes/Nodes/FuncDefNode.cpp.o
+includes/Nodes/Control_Flow/FuncDefNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.cpp.o
 
-includes/Nodes/FuncDefNode.i: includes/Nodes/FuncDefNode.cpp.i
-.PHONY : includes/Nodes/FuncDefNode.i
+includes/Nodes/Control_Flow/FuncDefNode.i: includes/Nodes/Control_Flow/FuncDefNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.i
 
 # target to preprocess a source file
-includes/Nodes/FuncDefNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.i
-.PHONY : includes/Nodes/FuncDefNode.cpp.i
+includes/Nodes/Control_Flow/FuncDefNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.cpp.i
 
-includes/Nodes/FuncDefNode.s: includes/Nodes/FuncDefNode.cpp.s
-.PHONY : includes/Nodes/FuncDefNode.s
+includes/Nodes/Control_Flow/FuncDefNode.s: includes/Nodes/Control_Flow/FuncDefNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.s
 
 # target to generate assembly for a file
-includes/Nodes/FuncDefNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.s
-.PHONY : includes/Nodes/FuncDefNode.cpp.s
+includes/Nodes/Control_Flow/FuncDefNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/FuncDefNode.cpp.s
 
-includes/Nodes/IfNode.o: includes/Nodes/IfNode.cpp.o
-.PHONY : includes/Nodes/IfNode.o
+includes/Nodes/Control_Flow/IfNode.o: includes/Nodes/Control_Flow/IfNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/IfNode.o
 
 # target to build an object file
-includes/Nodes/IfNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o
-.PHONY : includes/Nodes/IfNode.cpp.o
+includes/Nodes/Control_Flow/IfNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/IfNode.cpp.o
 
-includes/Nodes/IfNode.i: includes/Nodes/IfNode.cpp.i
-.PHONY : includes/Nodes/IfNode.i
+includes/Nodes/Control_Flow/IfNode.i: includes/Nodes/Control_Flow/IfNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/IfNode.i
 
 # target to preprocess a source file
-includes/Nodes/IfNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.i
-.PHONY : includes/Nodes/IfNode.cpp.i
+includes/Nodes/Control_Flow/IfNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/IfNode.cpp.i
 
-includes/Nodes/IfNode.s: includes/Nodes/IfNode.cpp.s
-.PHONY : includes/Nodes/IfNode.s
+includes/Nodes/Control_Flow/IfNode.s: includes/Nodes/Control_Flow/IfNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/IfNode.s
 
 # target to generate assembly for a file
-includes/Nodes/IfNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.s
-.PHONY : includes/Nodes/IfNode.cpp.s
+includes/Nodes/Control_Flow/IfNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/IfNode.cpp.s
 
-includes/Nodes/IterateNode.o: includes/Nodes/IterateNode.cpp.o
-.PHONY : includes/Nodes/IterateNode.o
+includes/Nodes/Control_Flow/IterateNode.o: includes/Nodes/Control_Flow/IterateNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/IterateNode.o
 
 # target to build an object file
-includes/Nodes/IterateNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.o
-.PHONY : includes/Nodes/IterateNode.cpp.o
+includes/Nodes/Control_Flow/IterateNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/IterateNode.cpp.o
 
-includes/Nodes/IterateNode.i: includes/Nodes/IterateNode.cpp.i
-.PHONY : includes/Nodes/IterateNode.i
+includes/Nodes/Control_Flow/IterateNode.i: includes/Nodes/Control_Flow/IterateNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/IterateNode.i
 
 # target to preprocess a source file
-includes/Nodes/IterateNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.i
-.PHONY : includes/Nodes/IterateNode.cpp.i
+includes/Nodes/Control_Flow/IterateNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/IterateNode.cpp.i
 
-includes/Nodes/IterateNode.s: includes/Nodes/IterateNode.cpp.s
-.PHONY : includes/Nodes/IterateNode.s
+includes/Nodes/Control_Flow/IterateNode.s: includes/Nodes/Control_Flow/IterateNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/IterateNode.s
 
 # target to generate assembly for a file
-includes/Nodes/IterateNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.s
-.PHONY : includes/Nodes/IterateNode.cpp.s
+includes/Nodes/Control_Flow/IterateNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/IterateNode.cpp.s
 
-includes/Nodes/ListNode.o: includes/Nodes/ListNode.cpp.o
-.PHONY : includes/Nodes/ListNode.o
+includes/Nodes/Control_Flow/WhileNode.o: includes/Nodes/Control_Flow/WhileNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/WhileNode.o
 
 # target to build an object file
-includes/Nodes/ListNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.o
-.PHONY : includes/Nodes/ListNode.cpp.o
+includes/Nodes/Control_Flow/WhileNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/WhileNode.cpp.o
 
-includes/Nodes/ListNode.i: includes/Nodes/ListNode.cpp.i
-.PHONY : includes/Nodes/ListNode.i
-
-# target to preprocess a source file
-includes/Nodes/ListNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.i
-.PHONY : includes/Nodes/ListNode.cpp.i
-
-includes/Nodes/ListNode.s: includes/Nodes/ListNode.cpp.s
-.PHONY : includes/Nodes/ListNode.s
-
-# target to generate assembly for a file
-includes/Nodes/ListNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.s
-.PHONY : includes/Nodes/ListNode.cpp.s
-
-includes/Nodes/MapNode.o: includes/Nodes/MapNode.cpp.o
-.PHONY : includes/Nodes/MapNode.o
-
-# target to build an object file
-includes/Nodes/MapNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.o
-.PHONY : includes/Nodes/MapNode.cpp.o
-
-includes/Nodes/MapNode.i: includes/Nodes/MapNode.cpp.i
-.PHONY : includes/Nodes/MapNode.i
+includes/Nodes/Control_Flow/WhileNode.i: includes/Nodes/Control_Flow/WhileNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/WhileNode.i
 
 # target to preprocess a source file
-includes/Nodes/MapNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.i
-.PHONY : includes/Nodes/MapNode.cpp.i
+includes/Nodes/Control_Flow/WhileNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/WhileNode.cpp.i
 
-includes/Nodes/MapNode.s: includes/Nodes/MapNode.cpp.s
-.PHONY : includes/Nodes/MapNode.s
+includes/Nodes/Control_Flow/WhileNode.s: includes/Nodes/Control_Flow/WhileNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/WhileNode.s
 
 # target to generate assembly for a file
-includes/Nodes/MapNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.s
-.PHONY : includes/Nodes/MapNode.cpp.s
+includes/Nodes/Control_Flow/WhileNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/WhileNode.cpp.s
 
 includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
 .PHONY : includes/Nodes/Node.o
@@ -465,54 +513,6 @@ includes/Nodes/Node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.s
 .PHONY : includes/Nodes/Node.cpp.s
 
-includes/Nodes/NumberNode.o: includes/Nodes/NumberNode.cpp.o
-.PHONY : includes/Nodes/NumberNode.o
-
-# target to build an object file
-includes/Nodes/NumberNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o
-.PHONY : includes/Nodes/NumberNode.cpp.o
-
-includes/Nodes/NumberNode.i: includes/Nodes/NumberNode.cpp.i
-.PHONY : includes/Nodes/NumberNode.i
-
-# target to preprocess a source file
-includes/Nodes/NumberNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.i
-.PHONY : includes/Nodes/NumberNode.cpp.i
-
-includes/Nodes/NumberNode.s: includes/Nodes/NumberNode.cpp.s
-.PHONY : includes/Nodes/NumberNode.s
-
-# target to generate assembly for a file
-includes/Nodes/NumberNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.s
-.PHONY : includes/Nodes/NumberNode.cpp.s
-
-includes/Nodes/StringNode.o: includes/Nodes/StringNode.cpp.o
-.PHONY : includes/Nodes/StringNode.o
-
-# target to build an object file
-includes/Nodes/StringNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.o
-.PHONY : includes/Nodes/StringNode.cpp.o
-
-includes/Nodes/StringNode.i: includes/Nodes/StringNode.cpp.i
-.PHONY : includes/Nodes/StringNode.i
-
-# target to preprocess a source file
-includes/Nodes/StringNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.i
-.PHONY : includes/Nodes/StringNode.cpp.i
-
-includes/Nodes/StringNode.s: includes/Nodes/StringNode.cpp.s
-.PHONY : includes/Nodes/StringNode.s
-
-# target to generate assembly for a file
-includes/Nodes/StringNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.s
-.PHONY : includes/Nodes/StringNode.cpp.s
-
 includes/Nodes/UnaryOperationNode.o: includes/Nodes/UnaryOperationNode.cpp.o
 .PHONY : includes/Nodes/UnaryOperationNode.o
 
@@ -536,6 +536,102 @@ includes/Nodes/UnaryOperationNode.s: includes/Nodes/UnaryOperationNode.cpp.s
 includes/Nodes/UnaryOperationNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.s
 .PHONY : includes/Nodes/UnaryOperationNode.cpp.s
+
+includes/Nodes/Value_Nodes/ListNode.o: includes/Nodes/Value_Nodes/ListNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/ListNode.o
+
+# target to build an object file
+includes/Nodes/Value_Nodes/ListNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/ListNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/ListNode.cpp.o
+
+includes/Nodes/Value_Nodes/ListNode.i: includes/Nodes/Value_Nodes/ListNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/ListNode.i
+
+# target to preprocess a source file
+includes/Nodes/Value_Nodes/ListNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/ListNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/ListNode.cpp.i
+
+includes/Nodes/Value_Nodes/ListNode.s: includes/Nodes/Value_Nodes/ListNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/ListNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Value_Nodes/ListNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/ListNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/ListNode.cpp.s
+
+includes/Nodes/Value_Nodes/MapNode.o: includes/Nodes/Value_Nodes/MapNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/MapNode.o
+
+# target to build an object file
+includes/Nodes/Value_Nodes/MapNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/MapNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/MapNode.cpp.o
+
+includes/Nodes/Value_Nodes/MapNode.i: includes/Nodes/Value_Nodes/MapNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/MapNode.i
+
+# target to preprocess a source file
+includes/Nodes/Value_Nodes/MapNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/MapNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/MapNode.cpp.i
+
+includes/Nodes/Value_Nodes/MapNode.s: includes/Nodes/Value_Nodes/MapNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/MapNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Value_Nodes/MapNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/MapNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/MapNode.cpp.s
+
+includes/Nodes/Value_Nodes/NumberNode.o: includes/Nodes/Value_Nodes/NumberNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.o
+
+# target to build an object file
+includes/Nodes/Value_Nodes/NumberNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/NumberNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.cpp.o
+
+includes/Nodes/Value_Nodes/NumberNode.i: includes/Nodes/Value_Nodes/NumberNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.i
+
+# target to preprocess a source file
+includes/Nodes/Value_Nodes/NumberNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/NumberNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.cpp.i
+
+includes/Nodes/Value_Nodes/NumberNode.s: includes/Nodes/Value_Nodes/NumberNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Value_Nodes/NumberNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/NumberNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/NumberNode.cpp.s
+
+includes/Nodes/Value_Nodes/StringNode.o: includes/Nodes/Value_Nodes/StringNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/StringNode.o
+
+# target to build an object file
+includes/Nodes/Value_Nodes/StringNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/StringNode.cpp.o
+.PHONY : includes/Nodes/Value_Nodes/StringNode.cpp.o
+
+includes/Nodes/Value_Nodes/StringNode.i: includes/Nodes/Value_Nodes/StringNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/StringNode.i
+
+# target to preprocess a source file
+includes/Nodes/Value_Nodes/StringNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/StringNode.cpp.i
+.PHONY : includes/Nodes/Value_Nodes/StringNode.cpp.i
+
+includes/Nodes/Value_Nodes/StringNode.s: includes/Nodes/Value_Nodes/StringNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/StringNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Value_Nodes/StringNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/StringNode.cpp.s
+.PHONY : includes/Nodes/Value_Nodes/StringNode.cpp.s
 
 includes/Nodes/VarAccessNode.o: includes/Nodes/VarAccessNode.cpp.o
 .PHONY : includes/Nodes/VarAccessNode.o
@@ -584,30 +680,6 @@ includes/Nodes/VarAssignNode.s: includes/Nodes/VarAssignNode.cpp.s
 includes/Nodes/VarAssignNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.s
 .PHONY : includes/Nodes/VarAssignNode.cpp.s
-
-includes/Nodes/WhileNode.o: includes/Nodes/WhileNode.cpp.o
-.PHONY : includes/Nodes/WhileNode.o
-
-# target to build an object file
-includes/Nodes/WhileNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.o
-.PHONY : includes/Nodes/WhileNode.cpp.o
-
-includes/Nodes/WhileNode.i: includes/Nodes/WhileNode.cpp.i
-.PHONY : includes/Nodes/WhileNode.i
-
-# target to preprocess a source file
-includes/Nodes/WhileNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.i
-.PHONY : includes/Nodes/WhileNode.cpp.i
-
-includes/Nodes/WhileNode.s: includes/Nodes/WhileNode.cpp.s
-.PHONY : includes/Nodes/WhileNode.s
-
-# target to generate assembly for a file
-includes/Nodes/WhileNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.s
-.PHONY : includes/Nodes/WhileNode.cpp.s
 
 includes/Parser/ParseResult.o: includes/Parser/ParseResult.cpp.o
 .PHONY : includes/Parser/ParseResult.o
@@ -1020,48 +1092,57 @@ help:
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"
+	@echo "... includes/Nodes/Branching_Statements/BreakNode.o"
+	@echo "... includes/Nodes/Branching_Statements/BreakNode.i"
+	@echo "... includes/Nodes/Branching_Statements/BreakNode.s"
+	@echo "... includes/Nodes/Branching_Statements/ContinueNode.o"
+	@echo "... includes/Nodes/Branching_Statements/ContinueNode.i"
+	@echo "... includes/Nodes/Branching_Statements/ContinueNode.s"
+	@echo "... includes/Nodes/Branching_Statements/ReturnNode.o"
+	@echo "... includes/Nodes/Branching_Statements/ReturnNode.i"
+	@echo "... includes/Nodes/Branching_Statements/ReturnNode.s"
 	@echo "... includes/Nodes/CallNode.o"
 	@echo "... includes/Nodes/CallNode.i"
 	@echo "... includes/Nodes/CallNode.s"
-	@echo "... includes/Nodes/ForNode.o"
-	@echo "... includes/Nodes/ForNode.i"
-	@echo "... includes/Nodes/ForNode.s"
-	@echo "... includes/Nodes/FuncDefNode.o"
-	@echo "... includes/Nodes/FuncDefNode.i"
-	@echo "... includes/Nodes/FuncDefNode.s"
-	@echo "... includes/Nodes/IfNode.o"
-	@echo "... includes/Nodes/IfNode.i"
-	@echo "... includes/Nodes/IfNode.s"
-	@echo "... includes/Nodes/IterateNode.o"
-	@echo "... includes/Nodes/IterateNode.i"
-	@echo "... includes/Nodes/IterateNode.s"
-	@echo "... includes/Nodes/ListNode.o"
-	@echo "... includes/Nodes/ListNode.i"
-	@echo "... includes/Nodes/ListNode.s"
-	@echo "... includes/Nodes/MapNode.o"
-	@echo "... includes/Nodes/MapNode.i"
-	@echo "... includes/Nodes/MapNode.s"
+	@echo "... includes/Nodes/Control_Flow/ForNode.o"
+	@echo "... includes/Nodes/Control_Flow/ForNode.i"
+	@echo "... includes/Nodes/Control_Flow/ForNode.s"
+	@echo "... includes/Nodes/Control_Flow/FuncDefNode.o"
+	@echo "... includes/Nodes/Control_Flow/FuncDefNode.i"
+	@echo "... includes/Nodes/Control_Flow/FuncDefNode.s"
+	@echo "... includes/Nodes/Control_Flow/IfNode.o"
+	@echo "... includes/Nodes/Control_Flow/IfNode.i"
+	@echo "... includes/Nodes/Control_Flow/IfNode.s"
+	@echo "... includes/Nodes/Control_Flow/IterateNode.o"
+	@echo "... includes/Nodes/Control_Flow/IterateNode.i"
+	@echo "... includes/Nodes/Control_Flow/IterateNode.s"
+	@echo "... includes/Nodes/Control_Flow/WhileNode.o"
+	@echo "... includes/Nodes/Control_Flow/WhileNode.i"
+	@echo "... includes/Nodes/Control_Flow/WhileNode.s"
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"
-	@echo "... includes/Nodes/NumberNode.o"
-	@echo "... includes/Nodes/NumberNode.i"
-	@echo "... includes/Nodes/NumberNode.s"
-	@echo "... includes/Nodes/StringNode.o"
-	@echo "... includes/Nodes/StringNode.i"
-	@echo "... includes/Nodes/StringNode.s"
 	@echo "... includes/Nodes/UnaryOperationNode.o"
 	@echo "... includes/Nodes/UnaryOperationNode.i"
 	@echo "... includes/Nodes/UnaryOperationNode.s"
+	@echo "... includes/Nodes/Value_Nodes/ListNode.o"
+	@echo "... includes/Nodes/Value_Nodes/ListNode.i"
+	@echo "... includes/Nodes/Value_Nodes/ListNode.s"
+	@echo "... includes/Nodes/Value_Nodes/MapNode.o"
+	@echo "... includes/Nodes/Value_Nodes/MapNode.i"
+	@echo "... includes/Nodes/Value_Nodes/MapNode.s"
+	@echo "... includes/Nodes/Value_Nodes/NumberNode.o"
+	@echo "... includes/Nodes/Value_Nodes/NumberNode.i"
+	@echo "... includes/Nodes/Value_Nodes/NumberNode.s"
+	@echo "... includes/Nodes/Value_Nodes/StringNode.o"
+	@echo "... includes/Nodes/Value_Nodes/StringNode.i"
+	@echo "... includes/Nodes/Value_Nodes/StringNode.s"
 	@echo "... includes/Nodes/VarAccessNode.o"
 	@echo "... includes/Nodes/VarAccessNode.i"
 	@echo "... includes/Nodes/VarAccessNode.s"
 	@echo "... includes/Nodes/VarAssignNode.o"
 	@echo "... includes/Nodes/VarAssignNode.i"
 	@echo "... includes/Nodes/VarAssignNode.s"
-	@echo "... includes/Nodes/WhileNode.o"
-	@echo "... includes/Nodes/WhileNode.i"
-	@echo "... includes/Nodes/WhileNode.s"
 	@echo "... includes/Parser/ParseResult.o"
 	@echo "... includes/Parser/ParseResult.i"
 	@echo "... includes/Parser/ParseResult.s"

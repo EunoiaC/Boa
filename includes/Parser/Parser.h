@@ -6,20 +6,20 @@
 #define BOA_PARSER_H
 
 #include <vector>
-#include "../Nodes/ForNode.h"
-#include "../Nodes/IterateNode.h"
-#include "../Nodes/ListNode.h"
-#include "../Nodes/StringNode.h"
-#include "../Nodes/WhileNode.h"
-#include "../Nodes/FuncDefNode.h"
+#include "../Nodes/Control Flow/ForNode.h"
+#include "../Nodes/Control Flow/IterateNode.h"
+#include "../Nodes/Value Nodes/ListNode.h"
+#include "../Nodes/Value Nodes/StringNode.h"
+#include "../Nodes/Control Flow/WhileNode.h"
+#include "../Nodes/Control Flow/FuncDefNode.h"
 #include "../Nodes/CallNode.h"
 #include "../Values/BaseValues/Value.h"
 #include "../Nodes/BinaryOperationNode.h"
-#include "../Nodes/IfNode.h"
+#include "../Nodes/Control Flow/IfNode.h"
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
-#include "../Nodes/MapNode.h"
+#include "../Nodes/Value Nodes/MapNode.h"
 #include <vector>
 #include <fstream>
 #include "ParseResult.h"

@@ -127,7 +127,21 @@ Number<double> *Number<double>::multiply(BaseValue *s) {
 
 template<>
 string Number<double>::toString() {
-    return to_string(numValue);
+    string s = to_string(numValue);
+    int dotpos = s.find_first_of('.');
+    int zeroCount = 0;
+    if (dotpos != string::npos) {
+        int ipos = s.size() - 1;
+        while (s[ipos] == '0' && ipos > dotpos) {
+            --ipos;
+            zeroCount++;
+        }
+        s.erase(ipos + 1, string::npos);
+    }
+    if (zeroCount == 6) {
+        s.erase(dotpos, string::npos);
+    }
+    return s;
 }
 
 template<>

@@ -13,14 +13,14 @@ set(
         includes/Errors/RuntimeError.cpp includes/Errors/RuntimeError.h
         includes/Values/Number.cpp includes/Values/Number.h
         includes/Nodes/CallNode.cpp includes/Nodes/CallNode.h
-        includes/Nodes/ForNode.cpp includes/Nodes/ForNode.h
-        includes/Nodes/FuncDefNode.cpp includes/Nodes/FuncDefNode.h
-        includes/Nodes/IfNode.cpp includes/Nodes/IfNode.h
-        includes/Nodes/NumberNode.cpp includes/Nodes/NumberNode.h
+        "includes/Nodes/Control Flow/ForNode.cpp" "includes/Nodes/Control Flow/ForNode.h"
+        "includes/Nodes/Control Flow/FuncDefNode.cpp" "includes/Nodes/Control Flow/FuncDefNode.h"
+        "includes/Nodes/Control Flow/IfNode.cpp" "includes/Nodes/Control Flow/IfNode.h"
+        "includes/Nodes/Value Nodes/NumberNode.cpp" "includes/Nodes/Value Nodes/NumberNode.h"
         includes/Nodes/UnaryOperationNode.cpp includes/Nodes/UnaryOperationNode.h
         includes/Nodes/VarAccessNode.cpp includes/Nodes/VarAccessNode.h
         includes/Nodes/VarAssignNode.cpp includes/Nodes/VarAssignNode.h
-        includes/Nodes/WhileNode.cpp includes/Nodes/WhileNode.h
+        "includes/Nodes/Control Flow/WhileNode.cpp" "includes/Nodes/Control Flow/WhileNode.h"
         includes/Nodes/BinaryOperationNode.cpp includes/Nodes/BinaryOperationNode.h
         includes/Parser/ParseResult.cpp includes/Parser/ParseResult.h
         includes/RuntimeResult/RuntimeResult.cpp includes/RuntimeResult/RuntimeResult.h
@@ -28,7 +28,7 @@ set(
         includes/Parser/Parser.cpp includes/Parser/Parser.h
         includes/Lexer/Lexer.cpp includes/Lexer/Lexer.h
         includes/Interpreter/Interpreter.cpp includes/Interpreter/Interpreter.h
-        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValues/BaseValue.cpp includes/Values/BaseValues/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Functions/Function.cpp includes/Values/Functions/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h includes/Nodes/MapNode.cpp includes/Nodes/MapNode.h includes/Values/Map.cpp includes/Values/Map.h includes/Values/Constants.h includes/Values/Functions/BaseFunction.cpp includes/Values/Functions/BaseFunction.h includes/Values/Functions/BuiltInFunction.cpp includes/Values/Functions/BuiltInFunction.h includes/Nodes/IterateNode.cpp includes/Nodes/IterateNode.h)
+        includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValues/BaseValue.cpp includes/Values/BaseValues/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Functions/Function.cpp includes/Values/Functions/Function.h "includes/Nodes/Value Nodes/StringNode.cpp" "includes/Nodes/Value Nodes/StringNode.h" "includes/Nodes/Value Nodes/ListNode.cpp" "includes/Nodes/Value Nodes/ListNode.h" includes/Values/List.cpp includes/Values/List.h "includes/Nodes/Value Nodes/MapNode.cpp" "includes/Nodes/Value Nodes/MapNode.h" includes/Values/Map.cpp includes/Values/Map.h includes/Values/Constants.h includes/Values/Functions/BaseFunction.cpp includes/Values/Functions/BaseFunction.h includes/Values/Functions/BuiltInFunction.cpp includes/Values/Functions/BuiltInFunction.h "includes/Nodes/Control Flow/IterateNode.cpp" "includes/Nodes/Control Flow/IterateNode.h" "includes/Nodes/Branching Statements/ReturnNode.cpp" "includes/Nodes/Branching Statements/ReturnNode.h" "includes/Nodes/Branching Statements/ContinueNode.cpp" "includes/Nodes/Branching Statements/ContinueNode.h" "includes/Nodes/Branching Statements/BreakNode.cpp" "includes/Nodes/Branching Statements/BreakNode.h")
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}

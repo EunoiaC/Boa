@@ -5,8 +5,8 @@
 #ifndef BOA_ITERATENODE_H
 #define BOA_ITERATENODE_H
 
-#include "Node.h"
-#include "../Token/Token.h"
+#include "../Node.h"
+#include "../../Token/Token.h"
 
 class IterateNode : public Node {
 public:

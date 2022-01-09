@@ -6,7 +6,7 @@
 #define BOA_LISTNODE_H
 
 #include <vector>
-#include "Node.h"
+#include "../Node.h"
 
 class ListNode : public Node {
 public:

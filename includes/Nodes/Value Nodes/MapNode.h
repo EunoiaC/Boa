@@ -5,7 +5,7 @@
 #ifndef BOA_MAPNODE_H
 #define BOA_MAPNODE_H
 
-#include "Node.h"
+#include "../Node.h"
 #include <map>
 
 using namespace std;

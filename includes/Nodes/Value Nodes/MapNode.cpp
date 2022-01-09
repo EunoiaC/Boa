@@ -12,7 +12,7 @@ MapNode::MapNode(map<Node *, Node *> dict, int posStart, int posEnd, int line) :
 }
 
 string MapNode::toString() {
-    string str = "";
+    string str;
     str += "MapNode: ";
     str += "{";
     for (auto it = dict.begin(); it != dict.end(); it++) {

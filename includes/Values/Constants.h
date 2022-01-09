@@ -13,10 +13,6 @@
 string fName = "<standard inclusion>";
 string fTxt = "Defined in " + fName;
 
-Number<double> * Null = new Number<double>(0, fName, fTxt);
-Number<double> * False = new Number<double>(0, fName, fTxt);
-Number<double> * True = new Number<double>(1, fName, fTxt);
-Number<double> * Pi = new Number<double>(M_PI, fName, fTxt);
 
 BuiltInFunction<int> * print = new BuiltInFunction<int>("print", {"value"}, fName, fTxt);
 BuiltInFunction<int> * input = new BuiltInFunction<int>("input", {"value"}, fName, fTxt);

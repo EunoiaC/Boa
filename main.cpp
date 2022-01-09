@@ -128,17 +128,17 @@ int shellInput() {
 }
 
 int main() {
-    globalSymbolTable->set("null", Null);
-    globalSymbolTable->set("PI", Pi);
-    globalSymbolTable->set("true", True);
-    globalSymbolTable->set("false", False);
+    globalSymbolTable->set("null", new Number<double>(0, "", ""));
+    globalSymbolTable->set("PI", new Number<double>(M_PI, "", ""));
+    globalSymbolTable->set("true", new Number<double>(1, "", ""));
+    globalSymbolTable->set("false", new Number<double>(0, "", ""));
     globalSymbolTable->set("print", print);
     globalSymbolTable->set("input", input);
     globalSymbolTable->set("toNum", toNum);
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
-    return readFile();
+    return shellInput();
 }
 
 #pragma clang diagnostic pop

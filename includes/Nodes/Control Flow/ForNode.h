@@ -4,8 +4,8 @@
 #ifndef BOA_FORNODE_H
 #define BOA_FORNODE_H
 
-#include "Node.h"
-#include "../Token/Token.h"
+#include "../Node.h"
+#include "../../Token/Token.h"
 
 class ForNode : public Node {
 public:

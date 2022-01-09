@@ -27,19 +27,19 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
- ../includes/Nodes/ForNode.h \
- ../includes/Nodes/FuncDefNode.h \
- ../includes/Nodes/IfNode.h \
- ../includes/Nodes/IterateNode.h \
- ../includes/Nodes/ListNode.h \
- ../includes/Nodes/MapNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.h \
- ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
- ../includes/Nodes/WhileNode.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
@@ -75,7 +75,7 @@ CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o: \
  ../includes/Nodes/BinaryOperationNode.cpp \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
@@ -85,16 +85,28 @@ CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h
+CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o: \
+ ../includes/Nodes/Branching\ Statements/BreakNode.cpp \
+ ../includes/Nodes/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o: \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.cpp \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o: \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.cpp \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.h \
+ ../includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o: \
  ../includes/Nodes/CallNode.cpp \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Node.h
-CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o: \
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/ForNode.cpp \
- ../includes/Nodes/ForNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.cpp \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
@@ -105,12 +117,12 @@ CMakeFiles/Boa.dir/includes/Nodes/ForNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h
-CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o: \
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/FuncDefNode.cpp \
- ../includes/Nodes/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.cpp \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
@@ -121,16 +133,16 @@ CMakeFiles/Boa.dir/includes/Nodes/FuncDefNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h
-CMakeFiles/Boa.dir/includes/Nodes/IfNode.cpp.o: \
- ../includes/Nodes/IfNode.cpp \
- ../includes/Nodes/IfNode.h \
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.o: \
+ ../includes/Nodes/Control\ Flow/IfNode.cpp \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Node.h
-CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.o: \
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/IterateNode.cpp \
- ../includes/Nodes/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.cpp \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
@@ -141,49 +153,13 @@ CMakeFiles/Boa.dir/includes/Nodes/IterateNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h
-CMakeFiles/Boa.dir/includes/Nodes/ListNode.cpp.o: \
- ../includes/Nodes/ListNode.cpp \
- ../includes/Nodes/ListNode.h \
- ../includes/Nodes/Node.h
-CMakeFiles/Boa.dir/includes/Nodes/MapNode.cpp.o: \
- ../includes/Nodes/MapNode.cpp \
- ../includes/Nodes/MapNode.h \
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o: \
+ ../includes/Nodes/Control\ Flow/WhileNode.cpp \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o: \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h
-CMakeFiles/Boa.dir/includes/Nodes/NumberNode.cpp.o: \
- ../includes/Context/Context.h \
- ../includes/Errors/Error.h \
- ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.cpp \
- ../includes/Nodes/NumberNode.h \
- ../includes/RuntimeResult/RuntimeResult.h \
- ../includes/SymbolTable/SymbolTable.h \
- ../includes/Token/BaseToken.h \
- ../includes/Token/Token.h \
- ../includes/Values/BaseValues/BaseValue.h \
- ../includes/Values/BaseValues/Value.cpp \
- ../includes/Values/BaseValues/Value.h \
- ../includes/Values/Number.h \
- ../includes/Values/String.h
-CMakeFiles/Boa.dir/includes/Nodes/StringNode.cpp.o: \
- ../includes/Context/Context.h \
- ../includes/Errors/Error.h \
- ../includes/Errors/RuntimeError.h \
- ../includes/Nodes/Node.h \
- ../includes/Nodes/StringNode.cpp \
- ../includes/Nodes/StringNode.h \
- ../includes/RuntimeResult/RuntimeResult.h \
- ../includes/SymbolTable/SymbolTable.h \
- ../includes/Token/BaseToken.h \
- ../includes/Token/Token.h \
- ../includes/Values/BaseValues/BaseValue.h \
- ../includes/Values/BaseValues/Value.cpp \
- ../includes/Values/BaseValues/Value.h \
- ../includes/Values/Number.h \
- ../includes/Values/String.h
 CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -191,6 +167,46 @@ CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/UnaryOperationNode.cpp \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h
+CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/ListNode.cpp.o: \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.cpp \
+ ../includes/Nodes/Value\ Nodes/ListNode.h
+CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/MapNode.cpp.o: \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.cpp \
+ ../includes/Nodes/Value\ Nodes/MapNode.h
+CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/NumberNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.cpp \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h
+CMakeFiles/Boa.dir/includes/Nodes/Value_Nodes/StringNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.cpp \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
@@ -232,10 +248,6 @@ CMakeFiles/Boa.dir/includes/Nodes/VarAssignNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number.h \
  ../includes/Values/String.h
-CMakeFiles/Boa.dir/includes/Nodes/WhileNode.cpp.o: \
- ../includes/Nodes/Node.h \
- ../includes/Nodes/WhileNode.cpp \
- ../includes/Nodes/WhileNode.h
 CMakeFiles/Boa.dir/includes/Parser/ParseResult.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -250,19 +262,19 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
- ../includes/Nodes/ForNode.h \
- ../includes/Nodes/FuncDefNode.h \
- ../includes/Nodes/IfNode.h \
- ../includes/Nodes/IterateNode.h \
- ../includes/Nodes/ListNode.h \
- ../includes/Nodes/MapNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.h \
- ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
- ../includes/Nodes/WhileNode.h \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.cpp \
  ../includes/Parser/Parser.h \
@@ -352,19 +364,19 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
- ../includes/Nodes/ForNode.h \
- ../includes/Nodes/FuncDefNode.h \
- ../includes/Nodes/IfNode.h \
- ../includes/Nodes/IterateNode.h \
- ../includes/Nodes/ListNode.h \
- ../includes/Nodes/MapNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.h \
- ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
- ../includes/Nodes/WhileNode.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Token/BaseToken.h \
@@ -441,19 +453,19 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Lexer/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
- ../includes/Nodes/ForNode.h \
- ../includes/Nodes/FuncDefNode.h \
- ../includes/Nodes/IfNode.h \
- ../includes/Nodes/IterateNode.h \
- ../includes/Nodes/ListNode.h \
- ../includes/Nodes/MapNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
- ../includes/Nodes/NumberNode.h \
- ../includes/Nodes/StringNode.h \
  ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
  ../includes/Nodes/VarAccessNode.h \
  ../includes/Nodes/VarAssignNode.h \
- ../includes/Nodes/WhileNode.h \
  ../includes/Parser/ParseResult.h \
  ../includes/Parser/Parser.h \
  ../includes/RuntimeResult/RuntimeResult.h \

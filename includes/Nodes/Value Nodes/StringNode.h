@@ -6,8 +6,8 @@
 #define BOA_STRINGNODE_H
 
 
-#include "Node.h"
-#include "../Token/Token.h"
+#include "../Node.h"
+#include "../../Token/Token.h"
 
 class StringNode : public Node {
 public:

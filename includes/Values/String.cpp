@@ -47,11 +47,7 @@ BaseValue *String<string>::contains(BaseValue *val) {
 
 template<>
 BaseValue *String<string>::add(BaseValue *s) {
-    if (s->type == T_STRING) {
-        String *str = (String *) s;
-        return (new String<string>(strValue + str->getValue(), s->fName, s->fTxt))->setContext(ctx);
-    }
-    illegalOperation(s);
+    return (new String<string>(strValue + s->toString(), s->fName, s->fTxt))->setContext(ctx);
 }
 
 template<>

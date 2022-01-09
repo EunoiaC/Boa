@@ -65,35 +65,38 @@ ParseResult *Parser::ifExpr() {
     }
     res->regAdvancement();
     advance();
-    while (currentToken->getType() == STOP_EXPR){
+    while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
         advance();
     }
-    Node * exp;
-    if(currentToken->getType() == L_CURLY_BRACKET){
+    Node *exp;
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        if(currentToken->getType() == STOP_EXPR) {
-            exp = res->reg(statements());
-            if (res->error) return res;
-
-            if (currentToken->getType() != R_CURLY_BRACKET) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected '}'"));
-            }
-
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
-    } else{
+
+        exp = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        res->regAdvancement();
+        advance();
+    } else {
         exp = res->reg(expr());
         if (res->error) return res;
     }
     cases.push_back(make_tuple(condition, exp));
 
-    while (currentToken->getType() == STOP_EXPR){
+    while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
         advance();
     }
@@ -114,36 +117,39 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR){
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
 
-        if(currentToken->getType() == L_CURLY_BRACKET){
+        if (currentToken->getType() == L_CURLY_BRACKET) {
             res->regAdvancement();
             advance();
 
-            if(currentToken->getType() == STOP_EXPR) {
-                exp = res->reg(statements());
-                if (res->error) return res;
-
-                if (currentToken->getType() != R_CURLY_BRACKET) {
-                    return res->failure(
-                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected '}'"));
-                }
-
+            while (currentToken->getType() == STOP_EXPR) {
                 res->regAdvancement();
                 advance();
-
             }
-        } else{
+
+            exp = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+        } else {
             exp = res->reg(expr());
             if (res->error) return res;
         }
         cases.push_back(make_tuple(condition, exp));
     }
-    while (currentToken->getType() == STOP_EXPR){
+    while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
         advance();
     }
@@ -160,30 +166,34 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR){
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
 
-        if(currentToken->getType() == L_CURLY_BRACKET){
+        if (currentToken->getType() == L_CURLY_BRACKET) {
             res->regAdvancement();
             advance();
 
-            if(currentToken->getType() == STOP_EXPR) {
-                elseCase = res->reg(statements());
-                if (res->error) return res;
-
-                if (currentToken->getType() != R_CURLY_BRACKET) {
-                    return res->failure(
-                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected '}'"));
-                }
-
+            while (currentToken->getType() == STOP_EXPR) {
                 res->regAdvancement();
                 advance();
-
             }
-        } else{
+
+            elseCase = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+
+
+        } else {
             elseCase = res->reg(expr());
             if (res->error) return res;
         }
@@ -194,7 +204,7 @@ ParseResult *Parser::ifExpr() {
 ParseResult *Parser::iterExprA() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
-    if(currentToken->getType() != ITER){
+    if (currentToken->getType() != ITER) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'iter'"));
@@ -203,7 +213,7 @@ ParseResult *Parser::iterExprA() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() != IDENTIFIER){
+    if (currentToken->getType() != IDENTIFIER) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected an identifier"));
@@ -213,7 +223,7 @@ ParseResult *Parser::iterExprA() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() != COLON){
+    if (currentToken->getType() != COLON) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected ':'"));
@@ -228,9 +238,9 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
     Node *toIter = res->reg(expr());
-    if(res->error) return res;
+    if (res->error) return res;
 
-    if(currentToken->getType() != DO){
+    if (currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'do'"));
@@ -239,28 +249,37 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() == L_CURLY_BRACKET){
+    while (currentToken->getType() == STOP_EXPR) {
+        res->regAdvancement();
+        advance();
+    }
+
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        if(currentToken->getType() == STOP_EXPR) {
-            Node *body = res->reg(statements());
-            if (res->error) return res;
-
-            if (currentToken->getType() != R_CURLY_BRACKET) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected '}'"));
-            }
-
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
-
-            IterateNode *iterNode = new IterateNode(iterName, toIter, body, true);
-            iterNode->line = iterName->line;
-
-            return res->success(iterNode);
         }
+
+        Node *body = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        res->regAdvancement();
+        advance();
+
+        IterateNode *iterNode = new IterateNode(iterName, toIter, body, true);
+        iterNode->line = iterName->line;
+
+        return res->success(iterNode);
+
     }
 
     Node *body = res->reg(expr());
@@ -290,7 +309,7 @@ ParseResult *Parser::forExpr() {
     advance();
 
     if (currentToken->getType() != EQUAL) {
-        if (currentToken->getType() == COLON){
+        if (currentToken->getType() == COLON) {
             res->regAdvancement();
             advance();
             return iterExprB(identifier);
@@ -336,25 +355,33 @@ ParseResult *Parser::forExpr() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() == L_CURLY_BRACKET){
+    while (currentToken->getType() == STOP_EXPR) {
+        res->regAdvancement();
+        advance();
+    }
+
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        if(currentToken->getType() == STOP_EXPR) {
-            Node *body = res->reg(statements());
-            if (res->error) return res;
-
-            if (currentToken->getType() != R_CURLY_BRACKET) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected '}'"));
-            }
-
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
-
-            return res->success(new ForNode(identifier, startVal, endVal, changeVal, body, true));
         }
+
+        Node *body = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        res->regAdvancement();
+        advance();
+
+        return res->success(new ForNode(identifier, startVal, endVal, changeVal, body, true));
     }
 
     Node *body = res->reg(statement());
@@ -386,25 +413,33 @@ ParseResult *Parser::whileExpr() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() == L_CURLY_BRACKET){
+    while (currentToken->getType() == STOP_EXPR) {
+        res->regAdvancement();
+        advance();
+    }
+
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        if(currentToken->getType() == STOP_EXPR) {
-            Node *body = res->reg(statements());
-            if (res->error) return res;
-
-            if (currentToken->getType() != R_CURLY_BRACKET) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected '}'"));
-            }
-
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
-
-            return res->success(new WhileNode(condition, body, true));
         }
+
+        Node *body = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        res->regAdvancement();
+        advance();
+
+        return res->success(new WhileNode(condition, body, true));
     }
 
     Node *body = res->reg(statement());
@@ -480,21 +515,21 @@ ParseResult *Parser::funcDef() {
     if (currentToken->getType() == DO) {
         res->regAdvancement();
         advance();
-        while (currentToken->getType() == STOP_EXPR){
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
-        if(currentToken->getType() == L_CURLY_BRACKET){
+        if (currentToken->getType() == L_CURLY_BRACKET) {
             res->regAdvancement();
             advance();
-            if(currentToken->getType() == STOP_EXPR){
+            if (currentToken->getType() == STOP_EXPR) {
                 res->regAdvancement();
                 advance();
 
-                Node* body = res->reg(statements());
-                if(res->error) return res;
+                Node *body = res->reg(statements());
+                if (res->error) return res;
 
-                if(currentToken->getType() != R_CURLY_BRACKET){
+                if (currentToken->getType() != R_CURLY_BRACKET) {
                     return res->failure(
                             new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                       "InvalidSyntaxError", "Expected '}'"));
@@ -510,7 +545,7 @@ ParseResult *Parser::funcDef() {
         if (res->error) return res;
 
         return res->success(new FuncDefNode(varNameTok, argNames, returnNode, false));
-    } else{
+    } else {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'do'"));
@@ -531,7 +566,7 @@ ParseResult *Parser::mapExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR){
+    while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
         advance();
     }
@@ -564,7 +599,7 @@ ParseResult *Parser::mapExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
-            while (currentToken->getType() == STOP_EXPR){
+            while (currentToken->getType() == STOP_EXPR) {
                 res->regAdvancement();
                 advance();
             }
@@ -586,7 +621,7 @@ ParseResult *Parser::mapExpr() {
 
             map[key] = value;
         }
-        while (currentToken->getType() == STOP_EXPR){
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
@@ -617,7 +652,7 @@ ParseResult *Parser::listExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR){
+    while (currentToken->getType() == STOP_EXPR) {
         res->regAdvancement();
         advance();
     }
@@ -636,14 +671,14 @@ ParseResult *Parser::listExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
-            while (currentToken->getType() == STOP_EXPR){
+            while (currentToken->getType() == STOP_EXPR) {
                 res->regAdvancement();
                 advance();
             }
             elements.push_back(res->reg(expr()));
             if (res->error) return res;
         }
-        while (currentToken->getType() == STOP_EXPR){
+        while (currentToken->getType() == STOP_EXPR) {
             res->regAdvancement();
             advance();
         }
@@ -692,7 +727,7 @@ ParseResult *Parser::atom() {
         Node *iterExp = res->reg(iterExprA());
         if (res->error) return res;
         return res->success(iterExp);
-    }else if (tok->getType() == WHILE) {
+    } else if (tok->getType() == WHILE) {
         Node *whileExp = res->reg(whileExpr());
         if (res->error) return res;
         return res->success(whileExp);
@@ -831,10 +866,11 @@ ParseResult *Parser::statement() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     int posStart = currentToken->posStart;
 
-    Node * _expr = res->reg(expr());
-    if (res->error) return res->failure(
-            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                      "InvalidSyntaxError", "Expected a number, identifier, operation, '(', or 'NOT' "));
+    Node *_expr = res->reg(expr());
+    if (res->error)
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected a number, identifier, operation, '(', or 'NOT' "));
 
     return res->success(_expr);
 }

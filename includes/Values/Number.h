@@ -17,7 +17,7 @@ public:
 
     double getValue() override;
 
-    Number *add(BaseValue *s) override;
+    BaseValue *add(BaseValue *s) override;
     BaseValue *set(BaseValue *s) override;
 
     Number *plusEquals(BaseValue *s) override;

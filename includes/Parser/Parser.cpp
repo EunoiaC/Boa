@@ -65,9 +65,38 @@ ParseResult *Parser::ifExpr() {
     }
     res->regAdvancement();
     advance();
-    Node *exp = res->reg(expr());
-    if (res->error) return res;
+    while (currentToken->getType() == STOP_EXPR){
+        res->regAdvancement();
+        advance();
+    }
+    Node * exp;
+    if(currentToken->getType() == L_CURLY_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        if(currentToken->getType() == STOP_EXPR) {
+            exp = res->reg(statements());
+            if (res->error) return res;
+
+            if (currentToken->getType() != R_CURLY_BRACKET) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected '}'"));
+            }
+
+            res->regAdvancement();
+            advance();
+        }
+    } else{
+        exp = res->reg(expr());
+        if (res->error) return res;
+    }
     cases.push_back(make_tuple(condition, exp));
+
+    while (currentToken->getType() == STOP_EXPR){
+        res->regAdvancement();
+        advance();
+    }
 
     while (currentToken->getType() == ELIF) {
         res->regAdvancement();
@@ -84,16 +113,80 @@ ParseResult *Parser::ifExpr() {
 
         res->regAdvancement();
         advance();
-        exp = res->reg(expr());
 
-        if (res->error) return res;
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
+        }
+
+        if(currentToken->getType() == L_CURLY_BRACKET){
+            res->regAdvancement();
+            advance();
+
+            if(currentToken->getType() == STOP_EXPR) {
+                exp = res->reg(statements());
+                if (res->error) return res;
+
+                if (currentToken->getType() != R_CURLY_BRACKET) {
+                    return res->failure(
+                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected '}'"));
+                }
+
+                res->regAdvancement();
+                advance();
+
+            }
+        } else{
+            exp = res->reg(expr());
+            if (res->error) return res;
+        }
         cases.push_back(make_tuple(condition, exp));
+    }
+    while (currentToken->getType() == STOP_EXPR){
+        res->regAdvancement();
+        advance();
     }
     if (currentToken->getType() == ELSE) {
         res->regAdvancement();
         advance();
-        elseCase = res->reg(expr());
-        if (res->error) return res;
+
+        if (currentToken->getType() != DO) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected 'do'"));
+        }
+
+        res->regAdvancement();
+        advance();
+
+        while (currentToken->getType() == STOP_EXPR){
+            res->regAdvancement();
+            advance();
+        }
+
+        if(currentToken->getType() == L_CURLY_BRACKET){
+            res->regAdvancement();
+            advance();
+
+            if(currentToken->getType() == STOP_EXPR) {
+                elseCase = res->reg(statements());
+                if (res->error) return res;
+
+                if (currentToken->getType() != R_CURLY_BRACKET) {
+                    return res->failure(
+                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected '}'"));
+                }
+
+                res->regAdvancement();
+                advance();
+
+            }
+        } else{
+            elseCase = res->reg(expr());
+            if (res->error) return res;
+        }
     }
     return res->success(new IfNode(cases, elseCase));
 }

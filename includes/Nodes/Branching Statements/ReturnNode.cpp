@@ -10,3 +10,9 @@ ReturnNode::ReturnNode(Node *toReturn, int posStart, int posEnd, int line)  : No
     this->posEnd = posEnd;
     this->line = line;
 }
+
+string ReturnNode::toString() {
+    string result = "ReturnNode: ";
+    result += toReturn->toString();
+    return result;
+}

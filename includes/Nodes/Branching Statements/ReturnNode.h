@@ -12,6 +12,8 @@ public:
     Node * toReturn;
     int posStart, posEnd, line;
     ReturnNode(Node *toReturn, int posStart, int posEnd, int line);
+
+    string toString() override;
 };
 
 

@@ -116,10 +116,10 @@ template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args)
     string methodName = "execute_" + name;
 
     res->reg(checkAndPopulateArgs(args, argNames, execCtx));
-    if(res->error) return res;
+    if(res->shouldReturn()) return res;
 
     BaseValue * returnVal = res->reg((this->*funcMap[methodName])(execCtx));
-    if(res->error) return res;
+    if(res->shouldReturn()) return res;
 
     return res->success(returnVal);
 }

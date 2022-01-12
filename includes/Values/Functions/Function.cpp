@@ -7,35 +7,47 @@
 #include "../../Interpreter/Interpreter.h"
 
 
-template<> Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, vector<string> lines, bool shouldReturnNull) : BaseFunction<int>(name, argNames, fName, fTxt){
-    this->shouldReturnNull = shouldReturnNull;
+template<>
+Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames,
+                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, fName, fTxt) {
+    this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;
 }
 
-template<> RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
-    RuntimeResult *res = new RuntimeResult();
-    Interpreter *interpreter = new Interpreter(fName, lines);
+template<>
+RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
+    auto *res = new RuntimeResult();
+    auto *interpreter = new Interpreter(fName, lines);
 
-    Context *newContext = generateNewContext();
+    Context *execCtx = generateNewContext();
 
-    res->reg(checkAndPopulateArgs(args, argNames, newContext));
-    if(res->error) return res;
+    res->reg(checkAndPopulateArgs(args, argNames, execCtx));
+    if (res->shouldReturn()) return res;
 
-    BaseValue *value = res->reg(interpreter->visit(body, newContext));
-    if(shouldReturnNull){
-        value = new Number<double>(0, fName, "");
+    BaseValue *value = res->reg(interpreter->visit(body, execCtx));
+    if (res->shouldReturn() && res->funcReturnValue == nullptr) {
+        res->error->fTxt = lines[res->error->line];
+        return res;
     }
-    return res->success(value);
+    // If auto returning with a oneliner, return the value
+    BaseValue * retVal = (autoReturn ? value : nullptr);
+    if(retVal == nullptr) {
+        // Look for a return statement, otherwise return null
+        retVal = res->funcReturnValue ? res->funcReturnValue : new Number<double>(0, "", "");
+    }
+    return res->success(retVal);
 }
 
-template<> Function<int> *Function<int>::copy() {
-    Function<int> * func = new Function<int>(fName, fTxt, name, body, argNames, lines, shouldReturnNull);
+template<>
+Function<int> *Function<int>::copy() {
+    Function<int> *func = new Function<int>(fName, fTxt, name, body, argNames, lines, autoReturn);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;
 }
 
-template<> string Function<int>::toString() {
+template<>
+string Function<int>::toString() {
     return "{Func: " + name + "}";
 }

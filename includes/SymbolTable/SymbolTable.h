@@ -12,9 +12,9 @@ using namespace std;
 class SymbolTable {
 public:
     SymbolTable();
+    SymbolTable(SymbolTable *parent);
     map<string, BaseValue *> symbols;
     SymbolTable *parent;
-    SymbolTable *setParent(SymbolTable *parent);
     BaseValue *get(string key);
     void set(string key, BaseValue *value);
     void remove(string key);

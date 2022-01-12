@@ -15,6 +15,9 @@
 #include "../Nodes/Control Flow/WhileNode.h"
 #include "../Nodes/Control Flow/IfNode.h"
 #include "../Nodes/Control Flow/FuncDefNode.h"
+#include "../Nodes/Branching Statements/ReturnNode.h"
+#include "../Nodes/Branching Statements/BreakNode.h"
+#include "../Nodes/Branching Statements/ContinueNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
 #include "../Nodes/BinaryOperationNode.h"
@@ -38,6 +41,10 @@ public:
     map<string, FnPtr> funcMap;
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);
+
+    RuntimeResult * visitReturnNode(Node * n, Context* c);
+    RuntimeResult * visitBreakNode(Node * n, Context* c);
+    RuntimeResult * visitContinueNode(Node * n, Context* c);
 
     RuntimeResult * visitNumberNode(Node * n, Context* c);
     RuntimeResult * visitStringNode(Node * n, Context* c);

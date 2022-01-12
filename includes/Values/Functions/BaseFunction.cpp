@@ -3,6 +3,9 @@
 //
 
 #include "BaseFunction.h"
+#include "../String.h"
+#include "../List.h"
+#include "../Map.h"
 
 template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
@@ -13,9 +16,9 @@ template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames,
 
 template<> Context *BaseFunction<int>::generateNewContext() {
     Context *newContext = new Context(name);
-    newContext->setParentEntry(posStart, fName, fTxt, line);
     newContext->setParentCtx(ctx);
-    newContext->symbolTable = (new SymbolTable())->setParent(newContext->parentCtx->symbolTable);
+    newContext->setParentEntry(posStart, fName, fTxt, line);
+    newContext->symbolTable = new SymbolTable(newContext->parentCtx->symbolTable);
     return newContext;
 }
 
@@ -61,6 +64,12 @@ template<> void BaseFunction<int>::populateArgs(vector<BaseValue *> args, vector
         BaseValue *argValue = args[i];
         if (argValue->type == T_NUM) {
             ((Number<double> *) argValue)->setContext(context);
+        } else if (argValue->type == T_STRING) {
+            ((String<string> *) argValue)->setContext(context);
+        } else if (argValue->type == T_LIST) {
+            ((List<vector<BaseValue *>> *) argValue)->setContext(context);
+        } if (argValue->type == T_MAP) {
+            ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
         }
         context->symbolTable->set(argName, argValue);
     }
@@ -70,7 +79,7 @@ template<> RuntimeResult *BaseFunction<int>::checkAndPopulateArgs(vector<BaseVal
                                                                   Context *context) {
     RuntimeResult *res = new RuntimeResult();
     res->reg(checkArgs(args, argNames));
-    if(res->error) return res;
+    if(res->shouldReturn()) return res;
     populateArgs(args, argNames, context);
     return res->success(nullptr);
 }

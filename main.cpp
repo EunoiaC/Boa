@@ -138,7 +138,7 @@ int main() {
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
-    return shellInput();
+    return readFile();
 }
 
 #pragma clang diagnostic pop

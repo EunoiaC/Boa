@@ -26,6 +26,9 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Interpreter/Interpreter.cpp \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ForNode.h \
  ../includes/Nodes/Control\ Flow/FuncDefNode.h \
@@ -261,6 +264,9 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ForNode.h \
  ../includes/Nodes/Control\ Flow/FuncDefNode.h \
@@ -331,6 +337,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
@@ -338,7 +345,11 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.cpp \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/Number.h
+ ../includes/Values/Functions/Function.h \
+ ../includes/Values/List.h \
+ ../includes/Values/Map.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -363,6 +374,9 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ForNode.h \
  ../includes/Nodes/Control\ Flow/FuncDefNode.h \
@@ -452,6 +466,9 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
  ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Branching\ Statements/ReturnNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ForNode.h \
  ../includes/Nodes/Control\ Flow/FuncDefNode.h \

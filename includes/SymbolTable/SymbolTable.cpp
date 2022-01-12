@@ -5,12 +5,13 @@
 #include "SymbolTable.h"
 
 SymbolTable::SymbolTable() {
+    symbols = {};
     parent = nullptr;
 }
 
-SymbolTable *SymbolTable::setParent(SymbolTable *parent) {
+SymbolTable::SymbolTable(SymbolTable *parent) {
+    symbols = {};
     this->parent = parent;
-    return this;
 }
 
 BaseValue *SymbolTable::get(string key) {

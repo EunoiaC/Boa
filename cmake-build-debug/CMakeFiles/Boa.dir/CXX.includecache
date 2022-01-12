@@ -22,6 +22,168 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+Value Nodes/NumberNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/NumberNode.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/BreakNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ContinueNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ReturnNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+vector
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
+string
+-
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+vector
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+vector
+-
+tuple
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/ListNode.h
+vector
+-
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/MapNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+map
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/NumberNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/StringNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+../Errors/Error.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+../Nodes/Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.cpp
+iostream
+-
+Parser.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/Parser.h
+vector
+-
+../Nodes/Control Flow/ForNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
+../Nodes/Control Flow/IterateNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
+../Nodes/Value Nodes/ListNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/ListNode.h
+../Nodes/Value Nodes/StringNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/StringNode.h
+../Nodes/Control Flow/WhileNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+../Nodes/Control Flow/FuncDefNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
+../Nodes/CallNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
+../Values/BaseValues/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+../Nodes/BinaryOperationNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
+../Nodes/Control Flow/IfNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
+../Nodes/UnaryOperationNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
+../Nodes/VarAccessNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
+../Nodes/VarAssignNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAssignNode.h
+../Nodes/Branching Statements/ReturnNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ReturnNode.h
+../Nodes/Branching Statements/ContinueNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ContinueNode.h
+../Nodes/Branching Statements/BreakNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/BreakNode.h
+../Nodes/Value Nodes/MapNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/MapNode.h
+vector
+-
+fstream
+-
+ParseResult.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 ../Values/BaseValues/BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
@@ -35,6 +197,20 @@ map
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 string
 -
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Values/BaseValues/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+../Values/String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
+../Values/Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
+BaseToken.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 string
@@ -57,16 +233,6 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
-Number.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
-String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
-String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.h
-math.h
--
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 ../Errors/RuntimeError.h

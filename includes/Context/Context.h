@@ -19,7 +19,7 @@ public:
     Context *setParentCtx(Context *parentCtx), *setParentEntry(int parentEntry, string fName, string fTxt, int line);
 
 
-    explicit Context(string displayName);
+    Context(string displayName);
 };
 
 

@@ -14,6 +14,24 @@ Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
     advance();
 }
 
+void Parser::checkNewLines() {
+    while (currentToken->getType() == STOP_EXPR) {
+        advance();
+    }
+}
+
+// Check new lines till a certain token is found, if not found, it reverses
+void Parser::checkNewLinesTo(string type) {
+    int rev = 0;
+    while (currentToken->getType() == STOP_EXPR) {
+        advance();
+        rev++;
+    }
+    if(currentToken->getType() != type) {
+        reverse(rev);
+    }
+}
+
 BaseToken *Parser::advance() {
     tokIdx++;
     updateCurrentTok();
@@ -56,8 +74,10 @@ ParseResult *Parser::ifExpr() {
     }
     res->regAdvancement();
     advance();
+
     Node *condition = res->reg(expr());
     if (res->error) return res;
+
     if (currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
@@ -65,19 +85,15 @@ ParseResult *Parser::ifExpr() {
     }
     res->regAdvancement();
     advance();
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+
+    checkNewLines();
+
     Node *exp;
     if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
+        checkNewLines();
 
         exp = res->reg(statements());
         if (res->error) return res;
@@ -90,16 +106,13 @@ ParseResult *Parser::ifExpr() {
 
         res->regAdvancement();
         advance();
+
+        checkNewLinesTo(ELIF);
     } else {
         exp = res->reg(expr());
         if (res->error) return res;
     }
     cases.push_back(make_tuple(condition, exp));
-
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
 
     while (currentToken->getType() == ELIF) {
         res->regAdvancement();
@@ -117,19 +130,13 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
+        checkNewLines();
 
         if (currentToken->getType() == L_CURLY_BRACKET) {
             res->regAdvancement();
             advance();
 
-            while (currentToken->getType() == STOP_EXPR) {
-                res->regAdvancement();
-                advance();
-            }
+            checkNewLines();
 
             exp = res->reg(statements());
             if (res->error) return res;
@@ -143,16 +150,14 @@ ParseResult *Parser::ifExpr() {
             res->regAdvancement();
             advance();
 
+            checkNewLinesTo(ELSE);
         } else {
             exp = res->reg(expr());
             if (res->error) return res;
         }
         cases.push_back(make_tuple(condition, exp));
     }
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+
     if (currentToken->getType() == ELSE) {
         res->regAdvancement();
         advance();
@@ -166,19 +171,13 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
+        checkNewLines();
 
         if (currentToken->getType() == L_CURLY_BRACKET) {
             res->regAdvancement();
             advance();
 
-            while (currentToken->getType() == STOP_EXPR) {
-                res->regAdvancement();
-                advance();
-            }
+            checkNewLines();
 
             elseCase = res->reg(statements());
             if (res->error) return res;
@@ -191,8 +190,6 @@ ParseResult *Parser::ifExpr() {
 
             res->regAdvancement();
             advance();
-
-
         } else {
             elseCase = res->reg(expr());
             if (res->error) return res;
@@ -249,10 +246,7 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+    checkNewLines();
 
     if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
@@ -355,10 +349,7 @@ ParseResult *Parser::forExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+    checkNewLines();
 
     if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
@@ -413,19 +404,13 @@ ParseResult *Parser::whileExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+    checkNewLines();
 
     if (currentToken->getType() == L_CURLY_BRACKET) {
         res->regAdvancement();
         advance();
 
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
+        checkNewLines();
 
         Node *body = res->reg(statements());
         if (res->error) return res;
@@ -536,15 +521,15 @@ ParseResult *Parser::funcDef() {
                 }
                 res->regAdvancement();
                 advance();
-
-                return res->success(new FuncDefNode(varNameTok, argNames, body, true));
+                // Multiple statements
+                return res->success(new FuncDefNode(varNameTok, argNames, body, false));
             }
         }
 
         Node *returnNode = res->reg(expr());
         if (res->error) return res;
-
-        return res->success(new FuncDefNode(varNameTok, argNames, returnNode, false));
+        // Single line function
+        return res->success(new FuncDefNode(varNameTok, argNames, returnNode, true));
     } else {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
@@ -566,10 +551,7 @@ ParseResult *Parser::mapExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+    checkNewLines();
 
     if (currentToken->getType() == R_CURLY_BRACKET) {
         res->regAdvancement();
@@ -599,10 +581,9 @@ ParseResult *Parser::mapExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
-            while (currentToken->getType() == STOP_EXPR) {
-                res->regAdvancement();
-                advance();
-            }
+
+            checkNewLines();
+
             key = res->reg(expr());
             if (res->error) return res;
 
@@ -652,10 +633,7 @@ ParseResult *Parser::listExpr() {
     res->regAdvancement();
     advance();
 
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
+    checkNewLines();
 
     if (currentToken->getType() == R_BRACKET) {
         res->regAdvancement();
@@ -671,10 +649,9 @@ ParseResult *Parser::listExpr() {
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
             advance();
-            while (currentToken->getType() == STOP_EXPR) {
-                res->regAdvancement();
-                advance();
-            }
+
+            checkNewLines();
+
             elements.push_back(res->reg(expr()));
             if (res->error) return res;
         }
@@ -866,11 +843,39 @@ ParseResult *Parser::statement() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     int posStart = currentToken->posStart;
 
-    Node *_expr = res->reg(expr());
+    Node * _expr = nullptr;
+
+    if(currentToken->getType() == RETURN){
+        res->regAdvancement();
+        advance();
+
+        _expr = res->tryReg(expr());
+        if(!_expr){
+            reverse(res->toReverseCount);
+        }
+
+        return res->success(new ReturnNode(_expr, posStart, currentToken->posEnd, currentToken->line));
+    }
+
+    if(currentToken->getType() == CONTINUE){
+        res->regAdvancement();
+        advance();
+
+        return res->success(new ContinueNode(posStart, currentToken->posEnd, currentToken->line));
+    }
+
+    if(currentToken->getType() == BREAK){
+        res->regAdvancement();
+        advance();
+
+        return res->success(new BreakNode(posStart, currentToken->posEnd, currentToken->line));
+    }
+
+    _expr = res->reg(expr());
     if (res->error)
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                          "InvalidSyntaxError", "Expected a number, identifier, operation, '(', or 'NOT' "));
+                          "InvalidSyntaxError", "Expected return, continue, break, a value type, identifier, operation, '(', or 'NOT' "));
 
     return res->success(_expr);
 }
@@ -879,11 +884,6 @@ ParseResult *Parser::statements() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node *> statements;
     int start = currentToken->posStart;
-
-    while (currentToken->getType() == STOP_EXPR) {
-        res->regAdvancement();
-        advance();
-    }
 
     Node *statement_ = res->reg(statement());
     if (res->error) return res;
@@ -901,7 +901,8 @@ ParseResult *Parser::statements() {
         if (newLineCount == 0) moreStatements = false;
 
         if (!moreStatements) break;
-        statement_ = res->tryReg(expr());
+
+        statement_ = res->tryReg(statement());
         if (!statement_) {
             reverse(res->toReverseCount);
             moreStatements = false;

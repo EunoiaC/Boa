@@ -486,7 +486,6 @@ RuntimeResult *Interpreter::visitReturnNode(Node *n, Context *c) {
     } else {
         value = (new Number<double>(0, "", ""))->setContext(c);
     }
-    cout << "Returning: " << value->toString() << endl;
     return res->successReturn(value);
 }
 

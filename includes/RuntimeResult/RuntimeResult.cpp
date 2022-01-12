@@ -32,7 +32,7 @@ RuntimeResult *RuntimeResult::success(BaseValue *value) {
 
 RuntimeResult *RuntimeResult::successReturn(BaseValue *value) {
     reset();
-    this->value = value;
+    this->funcReturnValue = value;
     return this;
 }
 

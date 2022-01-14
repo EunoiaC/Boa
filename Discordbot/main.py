@@ -58,7 +58,7 @@ async def on_message(message):
                 embed = discord.Embed(
                     title="Error here:",
                     description = error + "\n" + errorUnderline,
-                    color=discord.Color.blue()
+                    color=discord.Color.red()
                 )
                 embed.add_field(
                     name="Output",
@@ -69,7 +69,7 @@ async def on_message(message):
                 embed = discord.Embed(
                     title="Finished Executing",
                     description = execTime,
-                    color=discord.Color.blue()
+                    color=discord.Color.green()
                 )
                 embed.add_field(
                     name="Output",

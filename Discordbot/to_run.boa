@@ -1,2 +1,3 @@
 running = true
- print(“hello world”)
+
+print("is there anything fun to do in this lang")

@@ -46,6 +46,7 @@ public:
             {"return",    RETURN},
             {"continue",   CONTINUE},
             {"break",    BREAK},
+            {"import",    IMPORT},
             {"if",    IF},
             {"else",  ELSE},
             {"do",    DO},

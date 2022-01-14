@@ -26,9 +26,9 @@ ParseResult *res;
 SymbolTable *globalSymbolTable = new SymbolTable();
 string fileName;
 
-int readFile() {
+int readFile(string filePath) {
     clock_t start = clock();
-    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
+
     fileName = filePath.substr(filePath.find_last_of("/\\") + 1);
 
     //File
@@ -66,7 +66,6 @@ int readFile() {
     RuntimeResult *result = i->visit(res->node, ctx);
     if (result->error) {
         cout << result->error->toString() << endl;
-        return 0;
     }
     clock_t stop = clock();
     cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
@@ -127,7 +126,11 @@ int shellInput() {
     }
 }
 
-int main() {
+int main(int argc, char** argv) {
+    string filePath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Test.boa";
+    if(argc > 1){
+        filePath = argv[1];
+    }
     globalSymbolTable->set("null", new Number<double>(0, "", ""));
     globalSymbolTable->set("PI", new Number<double>(M_PI, "", ""));
     globalSymbolTable->set("true", new Number<double>(1, "", ""));
@@ -138,7 +141,7 @@ int main() {
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
-    return readFile();
+    return readFile(filePath);
 }
 
 #pragma clang diagnostic pop

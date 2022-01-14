@@ -25,6 +25,7 @@ static const string OP = "OP";
 
 static const string RETURN = "RETURN";
 static const string BREAK = "BREAK";
+static const string IMPORT = "IMPORT";
 static const string CONTINUE = "CONTINUE";
 
 static const string ELIF = "ELIF";

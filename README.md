@@ -1,7 +1,7 @@
 # Boa
 [The Boa Programming Language](https://cyber-cp.github.io/Boa/)
 ## Download
-Go to the latest tag and download the file named Boa
+Go to the latest release and download the asset named Boa
 
 If it is a text file, run the following command in the terminal:
 ```

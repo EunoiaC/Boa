@@ -5,7 +5,7 @@ Go to the latest release and download the asset named Boa
 
 If it downloads as a text file, run the following command in the terminal:
 ```
-terminal % chmod +x
+terminal % chmod +x executablePath 
 ```
 
 ## Usage

@@ -109,7 +109,7 @@ ParseResult *Parser::ifExpr() {
 
         checkNewLinesTo(ELIF);
     } else {
-        exp = res->reg(expr());
+        exp = res->reg(statement());
         if (res->error) return res;
     }
     cases.push_back(make_tuple(condition, exp));
@@ -152,7 +152,7 @@ ParseResult *Parser::ifExpr() {
 
             checkNewLinesTo(ELSE);
         } else {
-            exp = res->reg(expr());
+            exp = res->reg(statement());
             if (res->error) return res;
         }
         cases.push_back(make_tuple(condition, exp));
@@ -191,7 +191,7 @@ ParseResult *Parser::ifExpr() {
             res->regAdvancement();
             advance();
         } else {
-            elseCase = res->reg(expr());
+            elseCase = res->reg(statement());
             if (res->error) return res;
         }
     }
@@ -276,7 +276,7 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
 
     }
 
-    Node *body = res->reg(expr());
+    Node *body = res->reg(statement());
     if (res->error) return res;
 
     return res->success(new IterateNode(iterName, toIter, body, false));
@@ -526,7 +526,7 @@ ParseResult *Parser::funcDef() {
             }
         }
 
-        Node *returnNode = res->reg(expr());
+        Node *returnNode = res->reg(statement());
         if (res->error) return res;
         // Single line function
         return res->success(new FuncDefNode(varNameTok, argNames, returnNode, true));

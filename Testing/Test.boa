@@ -1,7 +1,7 @@
 import "Boa Libraries/math.boa"
 
-op areaOfCircle(r) do {
-    return PI * r^2
+op add(a, b) do {
+    return a + b
 }
 
-print (areaOfCircle(2))
+print(add(1, 2))

@@ -4,7 +4,7 @@
 
 #ifndef BOA_CONTINUENODE_H
 #define BOA_CONTINUENODE_H
-#include "../Node.h"
+#include "../../Node.h"
 
 class ContinueNode : public Node {
 public:

@@ -273,78 +273,6 @@ includes/Nodes/BinaryOperationNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.s
 .PHONY : includes/Nodes/BinaryOperationNode.cpp.s
 
-includes/Nodes/Branching_Statements/BreakNode.o: includes/Nodes/Branching_Statements/BreakNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.o
-
-# target to build an object file
-includes/Nodes/Branching_Statements/BreakNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.o
-
-includes/Nodes/Branching_Statements/BreakNode.i: includes/Nodes/Branching_Statements/BreakNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.i
-
-# target to preprocess a source file
-includes/Nodes/Branching_Statements/BreakNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.i
-
-includes/Nodes/Branching_Statements/BreakNode.s: includes/Nodes/Branching_Statements/BreakNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.s
-
-# target to generate assembly for a file
-includes/Nodes/Branching_Statements/BreakNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/BreakNode.cpp.s
-
-includes/Nodes/Branching_Statements/ContinueNode.o: includes/Nodes/Branching_Statements/ContinueNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.o
-
-# target to build an object file
-includes/Nodes/Branching_Statements/ContinueNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.o
-
-includes/Nodes/Branching_Statements/ContinueNode.i: includes/Nodes/Branching_Statements/ContinueNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.i
-
-# target to preprocess a source file
-includes/Nodes/Branching_Statements/ContinueNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.i
-
-includes/Nodes/Branching_Statements/ContinueNode.s: includes/Nodes/Branching_Statements/ContinueNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.s
-
-# target to generate assembly for a file
-includes/Nodes/Branching_Statements/ContinueNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/ContinueNode.cpp.s
-
-includes/Nodes/Branching_Statements/ReturnNode.o: includes/Nodes/Branching_Statements/ReturnNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.o
-
-# target to build an object file
-includes/Nodes/Branching_Statements/ReturnNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.o
-
-includes/Nodes/Branching_Statements/ReturnNode.i: includes/Nodes/Branching_Statements/ReturnNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.i
-
-# target to preprocess a source file
-includes/Nodes/Branching_Statements/ReturnNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.i
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.i
-
-includes/Nodes/Branching_Statements/ReturnNode.s: includes/Nodes/Branching_Statements/ReturnNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.s
-
-# target to generate assembly for a file
-includes/Nodes/Branching_Statements/ReturnNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.s
-.PHONY : includes/Nodes/Branching_Statements/ReturnNode.cpp.s
-
 includes/Nodes/CallNode.o: includes/Nodes/CallNode.cpp.o
 .PHONY : includes/Nodes/CallNode.o
 
@@ -512,6 +440,102 @@ includes/Nodes/Node.s: includes/Nodes/Node.cpp.s
 includes/Nodes/Node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.s
 .PHONY : includes/Nodes/Node.cpp.s
+
+includes/Nodes/Statements/Branching_Statements/BreakNode.o: includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.o
+
+# target to build an object file
+includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o
+
+includes/Nodes/Statements/Branching_Statements/BreakNode.i: includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.i
+
+# target to preprocess a source file
+includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i
+
+includes/Nodes/Statements/Branching_Statements/BreakNode.s: includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s
+
+includes/Nodes/Statements/Branching_Statements/ContinueNode.o: includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.o
+
+# target to build an object file
+includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o
+
+includes/Nodes/Statements/Branching_Statements/ContinueNode.i: includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.i
+
+# target to preprocess a source file
+includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i
+
+includes/Nodes/Statements/Branching_Statements/ContinueNode.s: includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s
+
+includes/Nodes/Statements/Branching_Statements/ReturnNode.o: includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.o
+
+# target to build an object file
+includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o
+
+includes/Nodes/Statements/Branching_Statements/ReturnNode.i: includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.i
+
+# target to preprocess a source file
+includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i
+
+includes/Nodes/Statements/Branching_Statements/ReturnNode.s: includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s
+.PHONY : includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s
+
+includes/Nodes/Statements/ImportNode.o: includes/Nodes/Statements/ImportNode.cpp.o
+.PHONY : includes/Nodes/Statements/ImportNode.o
+
+# target to build an object file
+includes/Nodes/Statements/ImportNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o
+.PHONY : includes/Nodes/Statements/ImportNode.cpp.o
+
+includes/Nodes/Statements/ImportNode.i: includes/Nodes/Statements/ImportNode.cpp.i
+.PHONY : includes/Nodes/Statements/ImportNode.i
+
+# target to preprocess a source file
+includes/Nodes/Statements/ImportNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.i
+.PHONY : includes/Nodes/Statements/ImportNode.cpp.i
+
+includes/Nodes/Statements/ImportNode.s: includes/Nodes/Statements/ImportNode.cpp.s
+.PHONY : includes/Nodes/Statements/ImportNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Statements/ImportNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.s
+.PHONY : includes/Nodes/Statements/ImportNode.cpp.s
 
 includes/Nodes/UnaryOperationNode.o: includes/Nodes/UnaryOperationNode.cpp.o
 .PHONY : includes/Nodes/UnaryOperationNode.o
@@ -728,6 +752,30 @@ includes/Parser/Parser.s: includes/Parser/Parser.cpp.s
 includes/Parser/Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.s
 .PHONY : includes/Parser/Parser.cpp.s
+
+includes/RunInterface.o: includes/RunInterface.cpp.o
+.PHONY : includes/RunInterface.o
+
+# target to build an object file
+includes/RunInterface.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
+.PHONY : includes/RunInterface.cpp.o
+
+includes/RunInterface.i: includes/RunInterface.cpp.i
+.PHONY : includes/RunInterface.i
+
+# target to preprocess a source file
+includes/RunInterface.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RunInterface.cpp.i
+.PHONY : includes/RunInterface.cpp.i
+
+includes/RunInterface.s: includes/RunInterface.cpp.s
+.PHONY : includes/RunInterface.s
+
+# target to generate assembly for a file
+includes/RunInterface.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/RunInterface.cpp.s
+.PHONY : includes/RunInterface.cpp.s
 
 includes/RuntimeResult/RuntimeResult.o: includes/RuntimeResult/RuntimeResult.cpp.o
 .PHONY : includes/RuntimeResult/RuntimeResult.o
@@ -1092,15 +1140,6 @@ help:
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"
-	@echo "... includes/Nodes/Branching_Statements/BreakNode.o"
-	@echo "... includes/Nodes/Branching_Statements/BreakNode.i"
-	@echo "... includes/Nodes/Branching_Statements/BreakNode.s"
-	@echo "... includes/Nodes/Branching_Statements/ContinueNode.o"
-	@echo "... includes/Nodes/Branching_Statements/ContinueNode.i"
-	@echo "... includes/Nodes/Branching_Statements/ContinueNode.s"
-	@echo "... includes/Nodes/Branching_Statements/ReturnNode.o"
-	@echo "... includes/Nodes/Branching_Statements/ReturnNode.i"
-	@echo "... includes/Nodes/Branching_Statements/ReturnNode.s"
 	@echo "... includes/Nodes/CallNode.o"
 	@echo "... includes/Nodes/CallNode.i"
 	@echo "... includes/Nodes/CallNode.s"
@@ -1122,6 +1161,18 @@ help:
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"
+	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.o"
+	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.i"
+	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.s"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ContinueNode.o"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ContinueNode.i"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ContinueNode.s"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ReturnNode.o"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ReturnNode.i"
+	@echo "... includes/Nodes/Statements/Branching_Statements/ReturnNode.s"
+	@echo "... includes/Nodes/Statements/ImportNode.o"
+	@echo "... includes/Nodes/Statements/ImportNode.i"
+	@echo "... includes/Nodes/Statements/ImportNode.s"
 	@echo "... includes/Nodes/UnaryOperationNode.o"
 	@echo "... includes/Nodes/UnaryOperationNode.i"
 	@echo "... includes/Nodes/UnaryOperationNode.s"
@@ -1149,6 +1200,9 @@ help:
 	@echo "... includes/Parser/Parser.o"
 	@echo "... includes/Parser/Parser.i"
 	@echo "... includes/Parser/Parser.s"
+	@echo "... includes/RunInterface.o"
+	@echo "... includes/RunInterface.i"
+	@echo "... includes/RunInterface.s"
 	@echo "... includes/RuntimeResult/RuntimeResult.o"
 	@echo "... includes/RuntimeResult/RuntimeResult.i"
 	@echo "... includes/RuntimeResult/RuntimeResult.s"

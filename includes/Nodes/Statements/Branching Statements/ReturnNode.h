@@ -5,7 +5,7 @@
 #ifndef BOA_RETURNNODE_H
 #define BOA_RETURNNODE_H
 
-#include "../Node.h"
+#include "../../Node.h"
 
 class ReturnNode : public Node {
 public:

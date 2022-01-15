@@ -47,7 +47,7 @@ BaseToken *Parser::reverse(int amnt) {
 void Parser::updateCurrentTok() {
     if (tokIdx >= 0 && tokIdx < tokens.size()) {
         currentToken = tokens[tokIdx];
-        currLine = lines[currentToken->line];
+        currLine = currentToken->fTxt;
     }
 }
 
@@ -844,6 +844,16 @@ ParseResult *Parser::statement() {
     int posStart = currentToken->posStart;
 
     Node * _expr = nullptr;
+
+    if(currentToken->type == IMPORT){
+        res->regAdvancement();
+        advance();
+
+        _expr = res->reg(expr());
+        if(res->error) return res;
+
+        return res->success(new ImportNode(_expr, posStart, currentToken->posEnd, currentToken->line));
+    }
 
     if(currentToken->getType() == RETURN){
         res->regAdvancement();

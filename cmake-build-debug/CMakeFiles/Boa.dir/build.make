@@ -534,44 +534,70 @@ CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.s
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o: CMakeFiles/Boa.dir/flags.make
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o: ../includes/Nodes/Branching\ Statements/ReturnNode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ReturnNode.cpp"
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o: ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.cpp"
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ReturnNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.i
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.i
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ReturnNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.s
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.s
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o: CMakeFiles/Boa.dir/flags.make
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o: ../includes/Nodes/Branching\ Statements/ContinueNode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ContinueNode.cpp"
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o: ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.cpp"
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ContinueNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.i
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.i
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/ContinueNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.s
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.s
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o: CMakeFiles/Boa.dir/flags.make
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o: ../includes/Nodes/Branching\ Statements/BreakNode.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/BreakNode.cpp"
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o: ../includes/Nodes/Statements/Branching\ Statements/BreakNode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o -c "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.cpp"
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/BreakNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.i
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.cpp" > CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.i
 
-CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Branching Statements/BreakNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.s
+CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.cpp" -o CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.s
+
+CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o: ../includes/Nodes/Statements/ImportNode.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.cpp
+
+CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.cpp > CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.i
+
+CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.cpp -o CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.s
+
+CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: ../includes/RunInterface.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/Boa.dir/includes/RunInterface.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/RunInterface.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp
+
+CMakeFiles/Boa.dir/includes/RunInterface.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/RunInterface.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp > CMakeFiles/Boa.dir/includes/RunInterface.cpp.i
+
+CMakeFiles/Boa.dir/includes/RunInterface.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/RunInterface.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp -o CMakeFiles/Boa.dir/includes/RunInterface.cpp.s
 
 # Object files for target Boa
 Boa_OBJECTS = \
@@ -611,9 +637,11 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o"
+"CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o" \
+"CMakeFiles/Boa.dir/includes/RunInterface.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -654,12 +682,14 @@ Boa: CMakeFiles/Boa.dir/includes/Values/Map.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o
-Boa: CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ReturnNode.cpp.o
-Boa: CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/ContinueNode.cpp.o
-Boa: CMakeFiles/Boa.dir/includes/Nodes/Branching_Statements/BreakNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

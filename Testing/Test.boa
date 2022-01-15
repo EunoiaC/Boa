@@ -1,8 +1,7 @@
-op fib(n) do {
-    if n <= 1 do {
-        return n
-    }
-    return fib(n - 1) + fib(n - 2)
+import "Boa Libraries/math.boa"
+
+op areaOfCircle(r) do {
+    return PI * r^2
 }
 
-print(fib(10))
+print (areaOfCircle(2))

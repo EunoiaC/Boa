@@ -1,3 +1,0 @@
-num = toNum(input("Input 1 or 0: "))
-
-if num == 0 do print(num) elif num == 1 do while true do print(num) else print("Invalid input")

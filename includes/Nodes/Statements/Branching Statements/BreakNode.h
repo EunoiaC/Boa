@@ -4,7 +4,7 @@
 
 #ifndef BOA_BREAKNODE_H
 #define BOA_BREAKNODE_H
-#include "../Node.h"
+#include "../../Node.h"
 
 class BreakNode : public Node {
 public:

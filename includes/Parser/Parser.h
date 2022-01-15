@@ -19,9 +19,10 @@
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
-#include "../Nodes/Branching Statements/ReturnNode.h"
-#include "../Nodes/Branching Statements/ContinueNode.h"
-#include "../Nodes/Branching Statements/BreakNode.h"
+#include "../Nodes/Statements/Branching Statements/ReturnNode.h"
+#include "../Nodes/Statements/Branching Statements/ContinueNode.h"
+#include "../Nodes/Statements/Branching Statements/BreakNode.h"
+#include "../Nodes/Statements/ImportNode.h"
 #include "../Nodes/Value Nodes/MapNode.h"
 #include <vector>
 #include <fstream>

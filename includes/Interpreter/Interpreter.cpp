@@ -4,6 +4,7 @@
 
 #include <iostream>
 #include "Interpreter.h"
+#include "../RunInterface.h"
 
 Interpreter::Interpreter(string name, vector<string> l) {
     fName = name;
@@ -25,6 +26,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_RETURN] = &Interpreter::visitReturnNode;
     funcMap[N_CONTINUE] = &Interpreter::visitContinueNode;
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
+    funcMap[N_IMPORT] = &Interpreter::visitImportNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -472,6 +474,37 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
     if (num->rtError) return rtRes->failure(num->rtError);
 
     return rtRes->success(num->setPos(n->posStart, n->posEnd, n->line));
+}
+
+RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
+    RuntimeResult * res = new RuntimeResult();
+    ImportNode *node = (ImportNode *) n;
+
+    BaseValue * toImport = res->reg(visit(node->toImport, c));
+    if(res->shouldReturn()) return res;
+
+    if(toImport->type != T_STRING){
+        return res->failure(new RuntimeError(
+                toImport->posStart,
+                toImport->posEnd,
+                toImport->line,
+                toImport->fName,
+                toImport->fTxt,
+                "Expected a string",
+                c
+        ));
+    }
+
+    auto * moduleName = (String<string> *) toImport;
+
+    RunInterface * ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
+    RunResult r = ri->readFile(moduleName->getValue());
+
+    if(r.second){
+        return res->failure(r.second);
+    }
+
+    return res->success(new Number<double>(0, "", ""));
 }
 
 RuntimeResult *Interpreter::visitReturnNode(Node *n, Context *c) {

@@ -3,7 +3,7 @@
 ## Download
 Go to the latest release and download the asset named Boa
 
-If it is a text file, run the following command in the terminal:
+If it downloads as a text file, run the following command in the terminal:
 ```
 terminal % chmod +x
 ```
@@ -11,5 +11,5 @@ terminal % chmod +x
 ## Usage
 ```
 terminal % cd path/with/boa/executable
-terminal/path/with/boa/executable % ./Boa filePath
+terminal/path/with/boa/executable % ./Boa absoluteFileToRunPath
 ```

@@ -1,4 +1,4 @@
-import "/Users/preetithorat/Documents/GitHub/Boa/Testing/Boa Libs/math.boa"
+import "/Boa Libs/math.boa"
 
 op areaOfCircle(r) do return PI * r * r
 

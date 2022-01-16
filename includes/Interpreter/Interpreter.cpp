@@ -498,11 +498,13 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
 
     auto *moduleName = (String<string> *) toImport;
 
-    if (moduleName->getValue().find(pathRef) != std::string::npos) {
-        pathRef = "";
+    string tempPathRef = pathRef;
+
+    if (moduleName->getValue().find(tempPathRef) != std::string::npos) {
+        tempPathRef = "";
     }
 
-    string fullFilePath = pathRef + moduleName->getValue();
+    string fullFilePath = tempPathRef + moduleName->getValue();
     // Check if file exists on computer
     ifstream infile(fullFilePath);
     if(!infile.good()) {
@@ -512,13 +514,13 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
                 toImport->line,
                 toImport->fName,
                 toImport->fTxt,
-                "File not found",
+                "File not found, make sure to use an absolute or relative path",
                 c
         ));
     }
     infile.close();
 
-    auto *ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
+    auto *ri = new RunInterface(c->symbolTable, tempPathRef); //Set a pathref if known
     RunResult r;
     r = ri->readFile(moduleName->getValue());
 

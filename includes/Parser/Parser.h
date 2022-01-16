@@ -37,6 +37,7 @@ public:
     Parser(vector<BaseToken *> tokens, string fName, vector<string> lines);
     vector<BaseToken *> tokens;
     int tokIdx;
+    int line;
 
     BaseToken * currentToken;
     BaseToken * advance();

@@ -40,32 +40,32 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
     vector<BaseValue *> elements;
 
     BaseValue *toIterateThrough = res->reg(visit(node->toIterateThrough, c));
-    if(res->shouldReturn()) return res;
+    if (res->shouldReturn()) return res;
 
-    if(toIterateThrough->type == T_LIST) {
-        for(auto *val : ((List<vector<BaseValue*>> *) toIterateThrough)->elements) {
+    if (toIterateThrough->type == T_LIST) {
+        for (auto *val: ((List<vector<BaseValue *>> *) toIterateThrough)->elements) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 val);
             elements.push_back(res->reg(visit(node->body, c)));
             if (res->shouldReturn()) return res;
         }
-    } else if(toIterateThrough->type == T_STRING) {
-        for(char ch : ((String<string> *) toIterateThrough)->getValue()) {
+    } else if (toIterateThrough->type == T_STRING) {
+        for (char ch: ((String<string> *) toIterateThrough)->getValue()) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 new String<string>(string(1, ch), "", ""));
             elements.push_back(res->reg(visit(node->body, c)));
             if (res->shouldReturn()) return res;
         }
-    } else if(toIterateThrough->type == T_MAP) {
-        Map<map<BaseValue*, BaseValue*>> *dict = (Map<map<BaseValue*, BaseValue*>> *) toIterateThrough;
-        for(auto it : dict->dict) {
-            List<vector<BaseValue*>> *kv = new List<vector<BaseValue*>>({it.first, it.second}, "", "");
+    } else if (toIterateThrough->type == T_MAP) {
+        Map<map<BaseValue *, BaseValue *>> *dict = (Map<map<BaseValue *, BaseValue *>> *) toIterateThrough;
+        for (auto it: dict->dict) {
+            List<vector<BaseValue *>> *kv = new List<vector<BaseValue *>>({it.first, it.second}, "", "");
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 kv);
             elements.push_back(res->reg(visit(node->body, c)));
             if (res->shouldReturn()) return res;
         }
-    } else{
+    } else {
         return res->failure(new RuntimeError(
                 toIterateThrough->posStart,
                 toIterateThrough->posEnd,
@@ -127,10 +127,10 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         val = res->reg(visit(forNode->body, c));
         if (res->shouldReturn() && !res->loopContinue && !res->loopBreak) return res;
 
-        if(res->loopContinue){
+        if (res->loopContinue) {
             continue;
         }
-        if(res->loopBreak){
+        if (res->loopBreak) {
             break;
         }
 
@@ -149,7 +149,7 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     WhileNode *whileNode = (WhileNode *) n;
     vector<BaseValue *> elements;
 
-    BaseValue * val;
+    BaseValue *val;
 
     while (true) {
         BaseValue *condition = res->reg(visit(whileNode->condition, c));
@@ -325,7 +325,8 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
-    BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames, lines,
+    BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
+                                              lines,
                                               node->autoReturn))
             ->setContext(c)
             ->setPos(node->posStart, node->posEnd, node->line);
@@ -477,13 +478,13 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
-    RuntimeResult * res = new RuntimeResult();
+    RuntimeResult *res = new RuntimeResult();
     ImportNode *node = (ImportNode *) n;
 
-    BaseValue * toImport = res->reg(visit(node->toImport, c));
-    if(res->shouldReturn()) return res;
+    BaseValue *toImport = res->reg(visit(node->toImport, c));
+    if (res->shouldReturn()) return res;
 
-    if(toImport->type != T_STRING){
+    if (toImport->type != T_STRING) {
         return res->failure(new RuntimeError(
                 toImport->posStart,
                 toImport->posEnd,
@@ -495,12 +496,13 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         ));
     }
 
-    auto * moduleName = (String<string> *) toImport;
+    auto *moduleName = (String<string> *) toImport;
 
-    RunInterface * ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
-    RunResult r = ri->readFile(moduleName->getValue());
+    RunInterface *ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
+    RunResult r;
+    r = ri->readFile(moduleName->getValue());
 
-    if(r.second){
+    if (r.second) {
         return res->failure(r.second);
     }
 
@@ -508,14 +510,14 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitReturnNode(Node *n, Context *c) {
-    RuntimeResult * res = new RuntimeResult();
+    RuntimeResult *res = new RuntimeResult();
     ReturnNode *node = (ReturnNode *) n;
 
-    BaseValue * value;
+    BaseValue *value;
 
-    if(node->toReturn) {
+    if (node->toReturn) {
         value = res->reg(visit(node->toReturn, c));
-        if(res->shouldReturn()) return res;
+        if (res->shouldReturn()) return res;
     } else {
         value = (new Number<double>(0, "", ""))->setContext(c);
     }

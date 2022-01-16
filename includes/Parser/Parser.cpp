@@ -11,6 +11,7 @@ Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
     this->tokens = tokens;
     file.open(fName);
     this->tokIdx = -1;
+    line = 0;
     advance();
 }
 
@@ -47,7 +48,8 @@ BaseToken *Parser::reverse(int amnt) {
 void Parser::updateCurrentTok() {
     if (tokIdx >= 0 && tokIdx < tokens.size()) {
         currentToken = tokens[tokIdx];
-        currLine = currentToken->fTxt;
+        if (currentToken->getType() == STOP_EXPR) line++;
+        currLine = line < lines.size() ? lines[line] : lines[currentToken->line];
     }
 }
 
@@ -947,6 +949,7 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
         Node *right = res->reg((this->*funcB)());
         if (res->error) return res;
         left = new BinaryOperationNode(left, (Token<string> *) opTok, right);
+        left->line = opTok->line;
     }
     return res->success(left);
 }

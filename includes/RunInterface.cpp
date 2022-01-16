@@ -30,7 +30,7 @@ RunResult RunInterface::readFile(string filePath) {
 
     l = new Lexer(fileText, fileName, lines);
     vector<BaseToken *> v = l->makeTokens();
-    if(v.empty()){
+    if (v.empty()) {
         return make_pair(nullptr, l->error);
     }
     p = new Parser(v, fileName, lines);
@@ -54,7 +54,7 @@ RunResult RunInterface::readFile(string filePath) {
 void RunInterface::run(string fileName) {
     clock_t start = clock();
     RunResult res = readFile(fileName);
-    if(res.first){
+    if (res.first) {
         clock_t stop = clock();
         cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
     } else {

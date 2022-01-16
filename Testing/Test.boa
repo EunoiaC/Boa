@@ -1,7 +1,2 @@
-import "Boa Libraries/math.boa"
-
-op add(a, b) do {
-    return a + b
-}
-
-print(add(1, 2))
+import "/Users/preetithorat/Documents/GitHub/Boa/Testing/Boa Libs/math.boa"
+print(PI)

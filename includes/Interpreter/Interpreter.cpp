@@ -502,7 +502,23 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         pathRef = "";
     }
 
-    RunInterface *ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
+    string fullFilePath = pathRef + moduleName->getValue();
+    // Check if file exists on computer
+    ifstream infile(fullFilePath);
+    if(!infile.good()) {
+        return res->failure(new RuntimeError(
+                toImport->posStart,
+                toImport->posEnd,
+                toImport->line,
+                toImport->fName,
+                toImport->fTxt,
+                "File not found",
+                c
+        ));
+    }
+    infile.close();
+
+    auto *ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
     RunResult r;
     r = ri->readFile(moduleName->getValue());
 

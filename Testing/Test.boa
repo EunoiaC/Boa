@@ -1,2 +1,5 @@
 import "/Users/preetithorat/Documents/GitHub/Boa/Testing/Boa Libs/math.boa"
-print(PI)
+
+op areaOfCircle(r) do return PI * r * r
+
+print(areaOfCircle(2))

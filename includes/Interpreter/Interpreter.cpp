@@ -498,6 +498,10 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
 
     auto *moduleName = (String<string> *) toImport;
 
+    if (moduleName->getValue().find(pathRef) != std::string::npos) {
+        pathRef = "";
+    }
+
     RunInterface *ri = new RunInterface(c->symbolTable, pathRef); //Set a pathref if known
     RunResult r;
     r = ri->readFile(moduleName->getValue());

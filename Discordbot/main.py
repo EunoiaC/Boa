@@ -68,7 +68,7 @@ async def on_message(message):
             else:
                 embed = discord.Embed(
                     title="Finished Executing",
-                    description = execTime,
+                    description=execTime,
                     color=discord.Color.green()
                 )
                 embed.add_field(

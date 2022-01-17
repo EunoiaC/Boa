@@ -15,6 +15,7 @@ template<typename T> class BuiltInFunction : public BaseFunction<T> {
 public:
     typedef RuntimeResult * (BuiltInFunction<int>::*FnPtr)(Context * execCtx);
     map<string, FnPtr> funcMap;
+    vector<BaseValue *> args;
     BuiltInFunction<T>(string name, vector<string> argNames, string fName, string fTxt);
     RuntimeResult * execute(vector<BaseValue*> args) override;
     BuiltInFunction<int> *copy() override;

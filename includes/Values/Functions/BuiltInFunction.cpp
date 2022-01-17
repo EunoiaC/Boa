@@ -4,24 +4,44 @@
 
 #include "BuiltInFunction.h"
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
-    cout << execCtx->symbolTable->get("value")->toString() << endl;
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
+    string output;
+    for (auto &arg : args) {
+        output += arg->toString() + " ";
+    }
+    cout << output << endl;
     return (new RuntimeResult())->success(new Number<double>(0, fName, fTxt));
 }
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
     return (new RuntimeResult())->success(new String<string>(execCtx->symbolTable->get("value")->type, fName, fTxt));
 }
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
     string str = execCtx->symbolTable->get("value")->toString();
     return (new RuntimeResult())->success(new String<string>(str, fName, fTxt));
 }
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
-    BaseValue * val = execCtx->symbolTable->get("value");
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
 
-    if(val->type == T_NUM){
+    BaseValue *val = execCtx->symbolTable->get("value");
+
+    if (val->type == T_NUM) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -40,9 +60,14 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) 
 }
 
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
-    BaseValue * val = execCtx->symbolTable->get("value");
-    if(val->type != T_STRING){
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    BaseValue *val = execCtx->symbolTable->get("value");
+    if (val->type != T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -55,11 +80,11 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) 
                 )
         );
     }
-    String<string> * strVal = (String<string>*) val;
+    auto *strVal = (String<string> *) val;
     double v;
-    try{
+    try {
         v = stod(strVal->getValue());
-    } catch (invalid_argument e){
+    } catch (invalid_argument e) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -75,30 +100,24 @@ template<> RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) 
     return (new RuntimeResult())->success(new Number<double>(v, fName, fTxt));
 }
 
-template<> RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
-    string input;
-    BaseValue * val = execCtx->symbolTable->get("value");
-    if(val->type != T_STRING){
-        return (new RuntimeResult())->failure(
-                new RuntimeError(
-                        val->posStart,
-                        val->posEnd,
-                        val->line,
-                        val->fName,
-                        val->fTxt,
-                        "Expected a string",
-                        execCtx
-                )
-                );
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
+    string output;
+    for (auto &arg : args) {
+        output += arg->toString() + " ";
     }
-    cout << val->toString();
+
+    string input;
+    cout << output;
     getline(cin, input);
-    String<string> * str = new String<string>(input, val->fName, val->fTxt);
+    auto *str = new String<string>(input, "", "");
     //cout << str->toString() << endl;
     return (new RuntimeResult())->success(str);
 }
 
-template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, string fName, string fTxt) : BaseFunction<int>(name, argNames, fName, fTxt) {
+template<>
+BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, string fName, string fTxt)
+        : BaseFunction<int>(name, argNames, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;
@@ -109,28 +128,31 @@ template<> BuiltInFunction<int>::BuiltInFunction(string name, vector<string> arg
     funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
 }
 
-template<> RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue*> args) {
-    RuntimeResult * res = new RuntimeResult();
-    Context * execCtx = generateNewContext();
+template<>
+RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args) {
+    RuntimeResult *res = new RuntimeResult();
+    Context *execCtx = generateNewContext();
 
     string methodName = "execute_" + name;
 
-    res->reg(checkAndPopulateArgs(args, argNames, execCtx));
-    if(res->shouldReturn()) return res;
+    populateArgs(args, argNames, execCtx);
+    this->args = args;
 
-    BaseValue * returnVal = res->reg((this->*funcMap[methodName])(execCtx));
-    if(res->shouldReturn()) return res;
+    BaseValue *returnVal = res->reg((this->*funcMap[methodName])(execCtx));
+    if (res->shouldReturn()) return res;
 
     return res->success(returnVal);
 }
 
-template<> BuiltInFunction<int> *BuiltInFunction<int>::copy() {
-    BuiltInFunction<int> * func = new BuiltInFunction<int>(name, argNames, fName, fTxt);
+template<>
+BuiltInFunction<int> *BuiltInFunction<int>::copy() {
+    BuiltInFunction<int> *func = new BuiltInFunction<int>(name, argNames, fName, fTxt);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;
 }
 
-template<> string BuiltInFunction<int>::toString() {
+template<>
+string BuiltInFunction<int>::toString() {
     return "<BuiltinFunction: " + name + ">";
 }

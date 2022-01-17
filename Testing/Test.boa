@@ -1,6 +1,3 @@
 import "Boa Libs/math.boa"
 import "Boa Libs/random.boa"
 
-op areaOfCircle(r) do return PI * r * r
-
-print(areaOfCircle(2))

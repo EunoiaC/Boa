@@ -116,8 +116,8 @@ RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
 }
 
 template<>
-BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, string fName, string fTxt)
-        : BaseFunction<int>(name, argNames, fName, fTxt) {
+BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
+        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;
@@ -146,7 +146,7 @@ RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args) {
 
 template<>
 BuiltInFunction<int> *BuiltInFunction<int>::copy() {
-    BuiltInFunction<int> *func = new BuiltInFunction<int>(name, argNames, fName, fTxt);
+    BuiltInFunction<int> *func = new BuiltInFunction<int>(name, argNames, defaultArgs, fName, fTxt);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;

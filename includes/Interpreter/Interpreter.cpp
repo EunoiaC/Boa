@@ -314,8 +314,8 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
-    FuncDefNode *node = (FuncDefNode *) n;
+    auto *res = new RuntimeResult();
+    auto *node = (FuncDefNode *) n;
 
     string funcName = node->funcNameTok ? node->funcNameTok->getValueObject()->getValue() : "anonymous";
     Node *bodyNode = node->body;
@@ -325,7 +325,15 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         argNames.push_back(((Token<string> *) argName)->getValueObject()->getValue());
     }
 
+    map<string, BaseValue *> defaultArgs;
+    for (auto &arg: node->defaultArgs) {
+        BaseValue *val = res->reg(visit(arg.second, c));
+        if (res->shouldReturn()) return res;
+        defaultArgs[arg.first] = val;
+    }
+
     BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
+                                              defaultArgs,
                                               lines,
                                               node->autoReturn))
             ->setContext(c)
@@ -507,7 +515,7 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
     string fullFilePath = tempPathRef + moduleName->getValue();
     // Check if file exists on computer
     ifstream infile(fullFilePath);
-    if(!infile.good()) {
+    if (!infile.good()) {
         return res->failure(new RuntimeError(
                 toImport->posStart,
                 toImport->posEnd,

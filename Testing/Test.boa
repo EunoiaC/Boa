@@ -1,3 +1,4 @@
 import "Boa Libs/math.boa"
-import "Boa Libs/random.boa"
 
+num = toNum(input("Number to find square root of: "))
+print("The sqrt of", num, "is", sqrt(num))

@@ -8,8 +8,8 @@
 
 
 template<>
-Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames,
-                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, fName, fTxt) {
+Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
+                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;
@@ -41,7 +41,7 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
 
 template<>
 Function<int> *Function<int>::copy() {
-    Function<int> *func = new Function<int>(fName, fTxt, name, body, argNames, lines, autoReturn);
+    Function<int> *func = new Function<int>(fName, fTxt, name, body, argNames, defaultArgs, lines, autoReturn);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;

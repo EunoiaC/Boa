@@ -38,6 +38,7 @@ public:
     vector<BaseToken *> tokens;
     int tokIdx;
     int line;
+    Error * priorityError;
 
     BaseToken * currentToken;
     BaseToken * advance();

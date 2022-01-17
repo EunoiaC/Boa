@@ -16,7 +16,8 @@ public:
     typedef RuntimeResult * (BuiltInFunction<int>::*FnPtr)(Context * execCtx);
     map<string, FnPtr> funcMap;
     vector<BaseValue *> args;
-    BuiltInFunction<T>(string name, vector<string> argNames, string fName, string fTxt);
+    map<string, BaseValue *> defaultArgs;
+    BuiltInFunction<T>(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
     RuntimeResult * execute(vector<BaseValue*> args) override;
     BuiltInFunction<int> *copy() override;
 

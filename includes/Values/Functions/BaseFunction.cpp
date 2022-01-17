@@ -7,11 +7,12 @@
 #include "../List.h"
 #include "../Map.h"
 
-template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
+template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
     this->fTxt = fTxt;
     this->name = name;
     this->argNames = argNames;
+    this->defaultArgs = defaultArgs;
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {
@@ -36,14 +37,16 @@ template<> RuntimeResult *BaseFunction<int>::checkArgs(vector<BaseValue *> args,
         ));
     }
 
-    if (args.size() < argNames.size()) {
+    int normalArgCount = argNames.size() - defaultArgs.size();
+
+    if (args.size() < normalArgCount) {
         return res->failure(new RuntimeError(
                 posStart,
                 posEnd,
                 line,
                 fName,
                 callTxt,
-                to_string(argNames.size() - args.size()) + " too few args passed into " + name,
+                to_string(normalArgCount - args.size()) + " too few args passed into " + name,
                 ctx
         ));
     }
@@ -51,7 +54,7 @@ template<> RuntimeResult *BaseFunction<int>::checkArgs(vector<BaseValue *> args,
 }
 
 template<> BaseFunction<int> *BaseFunction<int>::copy() {
-    BaseFunction<int> * func = new BaseFunction<int>(name, argNames, fName, fTxt);
+    BaseFunction<int> * func = new BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt);
     func->setPos(posStart, posEnd, line);
     func->setContext(ctx);
     return func;
@@ -59,6 +62,21 @@ template<> BaseFunction<int> *BaseFunction<int>::copy() {
 
 template<> void BaseFunction<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
                                                 Context *context) {
+    for (auto &it : defaultArgs) {
+        string argName = it.first;
+        BaseValue *argValue = it.second;
+        if (argValue->type == T_NUM) {
+            ((Number<double> *) argValue)->setContext(context);
+        } else if (argValue->type == T_STRING) {
+            ((String<string> *) argValue)->setContext(context);
+        } else if (argValue->type == T_LIST) {
+            ((List<vector<BaseValue *>> *) argValue)->setContext(context);
+        } if (argValue->type == T_MAP) {
+            ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
+        }
+        context->symbolTable->set(argName, argValue);
+    }
+
     for (int i = 0; i < args.size(); i++) {
         string argName = argNames[i];
         BaseValue *argValue = args[i];

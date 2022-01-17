@@ -6,11 +6,12 @@
 
 #include <utility>
 
-FuncDefNode::FuncDefNode(Token<string>* funcNameTok, vector<Token<string>*> argNameToks, Node *body, bool autoReturn) : Node(N_FUNC_DEF) {
+FuncDefNode::FuncDefNode(Token<string>* funcNameTok, vector<Token<string>*> argNameToks, map<string, Node*> defaultArgs, Node *body, bool autoReturn) : Node(N_FUNC_DEF) {
     this->funcNameTok = funcNameTok;
     this->argNameToks = std::move(argNameToks);
     this->body = body;
     this->autoReturn = autoReturn;
+    this->defaultArgs = std::move(defaultArgs);
 
     if(funcNameTok){
         posStart = funcNameTok->posStart;

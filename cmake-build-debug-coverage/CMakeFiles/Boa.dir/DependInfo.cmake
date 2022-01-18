@@ -47,7 +47,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/List.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/Map.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/Number.cpp.o"
-  "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/String.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/String/String.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/StringFunction.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/main.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles/Boa.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")

@@ -1,2 +1,5 @@
-x = "hi"
-print(x.print("ur mom"))
+import "Boa Libs/math.boa"
+
+num = toNum(input("Number to find square root of: "))
+toSplit = "lmao"
+print(toSplit.split())

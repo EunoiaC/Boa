@@ -3,16 +3,18 @@
 //
 
 #include "BaseFunction.h"
-#include "../String.h"
+
+#include <utility>
+#include "../String/String.h"
 #include "../List.h"
 #include "../Map.h"
 
 template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
     this->fTxt = fTxt;
-    this->name = name;
-    this->argNames = argNames;
-    this->defaultArgs = defaultArgs;
+    this->name = move(name);
+    this->argNames = move(argNames);
+    this->defaultArgs = move(defaultArgs);
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {

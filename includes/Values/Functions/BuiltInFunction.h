@@ -6,7 +6,7 @@
 #define BOA_BUILTINFUNCTION_H
 
 #include "BaseFunction.h"
-#include "../String.h"
+#include "../String/String.h"
 #include "../List.h"
 #include "../Map.h"
 #include <iostream>

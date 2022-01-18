@@ -1065,29 +1065,53 @@ includes/Values/Number.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.s
 .PHONY : includes/Values/Number.cpp.s
 
-includes/Values/String.o: includes/Values/String.cpp.o
-.PHONY : includes/Values/String.o
+includes/Values/String/String.o: includes/Values/String/String.cpp.o
+.PHONY : includes/Values/String/String.o
 
 # target to build an object file
-includes/Values/String.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String.cpp.o
-.PHONY : includes/Values/String.cpp.o
+includes/Values/String/String.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/String.cpp.o
+.PHONY : includes/Values/String/String.cpp.o
 
-includes/Values/String.i: includes/Values/String.cpp.i
-.PHONY : includes/Values/String.i
+includes/Values/String/String.i: includes/Values/String/String.cpp.i
+.PHONY : includes/Values/String/String.i
 
 # target to preprocess a source file
-includes/Values/String.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String.cpp.i
-.PHONY : includes/Values/String.cpp.i
+includes/Values/String/String.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/String.cpp.i
+.PHONY : includes/Values/String/String.cpp.i
 
-includes/Values/String.s: includes/Values/String.cpp.s
-.PHONY : includes/Values/String.s
+includes/Values/String/String.s: includes/Values/String/String.cpp.s
+.PHONY : includes/Values/String/String.s
 
 # target to generate assembly for a file
-includes/Values/String.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String.cpp.s
-.PHONY : includes/Values/String.cpp.s
+includes/Values/String/String.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/String.cpp.s
+.PHONY : includes/Values/String/String.cpp.s
+
+includes/Values/String/StringFunction.o: includes/Values/String/StringFunction.cpp.o
+.PHONY : includes/Values/String/StringFunction.o
+
+# target to build an object file
+includes/Values/String/StringFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o
+.PHONY : includes/Values/String/StringFunction.cpp.o
+
+includes/Values/String/StringFunction.i: includes/Values/String/StringFunction.cpp.i
+.PHONY : includes/Values/String/StringFunction.i
+
+# target to preprocess a source file
+includes/Values/String/StringFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.i
+.PHONY : includes/Values/String/StringFunction.cpp.i
+
+includes/Values/String/StringFunction.s: includes/Values/String/StringFunction.cpp.s
+.PHONY : includes/Values/String/StringFunction.s
+
+# target to generate assembly for a file
+includes/Values/String/StringFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.s
+.PHONY : includes/Values/String/StringFunction.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -1239,9 +1263,12 @@ help:
 	@echo "... includes/Values/Number.o"
 	@echo "... includes/Values/Number.i"
 	@echo "... includes/Values/Number.s"
-	@echo "... includes/Values/String.o"
-	@echo "... includes/Values/String.i"
-	@echo "... includes/Values/String.s"
+	@echo "... includes/Values/String/String.o"
+	@echo "... includes/Values/String/String.i"
+	@echo "... includes/Values/String/String.s"
+	@echo "... includes/Values/String/StringFunction.o"
+	@echo "... includes/Values/String/StringFunction.i"
+	@echo "... includes/Values/String/StringFunction.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

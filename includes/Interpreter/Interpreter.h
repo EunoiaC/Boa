@@ -5,7 +5,7 @@
 #ifndef BOA_INTERPRETER_H
 #define BOA_INTERPRETER_H
 #include "../Values/Number.h"
-#include "../Values/String.h"
+#include "../Values/String/String.h"
 #include "../Values/Functions/Function.h"
 #include "../Values/List.h"
 #include "../Values/Map.h"

@@ -40,7 +40,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Values/List.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Map.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Number.cpp.o"
-  "CMakeFiles/Boa.dir/includes/Values/String.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/String/String.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o"
   "CMakeFiles/Boa.dir/main.cpp.o"
 )
 

@@ -4,14 +4,18 @@
 
 #include <iostream>
 #include "String.h"
-#include "Functions/BuiltInFunction.h"
+#include "StringFunction.h"
 
 template<>
 String<string>::String(string value, string f, string txt) : Value<string>(value, T_STRING, f, txt) {
     strValue = value;
-//    symbolTable->set("split", new BuiltInFunction<int>("split", {"separator"},
-//                                                      {{"separator", new Value<string>("", T_STRING, fName, fTxt)}}, "",
-//                                                      ""));
+    map<string, BaseValue *> defaultArgs;
+
+    defaultArgs["separator"] = new Value<string>("", T_STRING, fName, fTxt);
+    symbolTable->set("split", new StringFunction<int>(strValue, "split", {"separator"},
+                                                      defaultArgs, "",
+                                                      ""));
+    defaultArgs.clear();
 }
 
 template<>

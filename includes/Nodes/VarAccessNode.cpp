@@ -4,8 +4,11 @@
 
 #include "VarAccessNode.h"
 
-VarAccessNode::VarAccessNode(Token<string> *varNameTok) : Node(N_VAR_ACCESS){
+#include <utility>
+
+VarAccessNode::VarAccessNode(Token<string> *varNameTok, vector<BaseToken*> identifiers) : Node(N_VAR_ACCESS){
     this->varNameTok = varNameTok;
+    this->identifiers = move(identifiers);
     posStart = varNameTok->posStart;
     posEnd = varNameTok->posEnd;
     fName = varNameTok->fName;

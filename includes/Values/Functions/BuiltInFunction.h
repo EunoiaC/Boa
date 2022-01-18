@@ -32,4 +32,4 @@ public:
 };
 
 
-#endif //BOA_BUILTINFUNCTION_H
+#endif //BOA_BUILTINFUNC

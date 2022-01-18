@@ -4,17 +4,16 @@
 #include <iostream>
 #include "Value.h"
 
-struct CompareByValue {
-    template<class T>
-    bool operator()(const Value<T> *lhs, const Value<T> *rhs) const {
-        return lhs->getValue() == rhs->getValue();
-    }
-};
-
 template<class valueType>
 Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue(t, f, txt) {
     val = v;
     setContext(nullptr);
+    symbolTable = new SymbolTable();
+}
+
+template<class valueType>
+BaseValue *Value<valueType>::getFromSymbolTable(string name) {
+    return symbolTable->get(name);
 }
 
 template<class valueType>

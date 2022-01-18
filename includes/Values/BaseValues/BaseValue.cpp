@@ -11,6 +11,10 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+BaseValue *BaseValue::getFromSymbolTable(string key) {
+    return nullptr;
+}
+
 int BaseValue::getLength() {
     return 0;
 }

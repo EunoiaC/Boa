@@ -4,17 +4,21 @@
 
 #include <iostream>
 #include "String.h"
+#include "Functions/BuiltInFunction.h"
 
 template<>
 String<string>::String(string value, string f, string txt) : Value<string>(value, T_STRING, f, txt) {
     strValue = value;
+//    symbolTable->set("split", new BuiltInFunction<int>("split", {"separator"},
+//                                                      {{"separator", new Value<string>("", T_STRING, fName, fTxt)}}, "",
+//                                                      ""));
 }
 
 template<>
 BaseValue *String<string>::get(BaseValue *s) {
     if (s->type == T_NUM) {
         Number<double> *num = (Number<double> *) s;
-        if(num->numValue > strValue.length() - 1){
+        if (num->numValue > strValue.length() - 1) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -35,7 +39,7 @@ BaseValue *String<string>::get(BaseValue *s) {
 template<>
 BaseValue *String<string>::contains(BaseValue *val) {
     if (val->type == T_STRING) {
-        if(strValue.find(((String<string> *) val)->strValue) != string::npos){
+        if (strValue.find(((String<string> *) val)->strValue) != string::npos) {
             return new Number<double>(1, fName, fTxt);
         } else {
             return new Number<double>(0, fName, fTxt);
@@ -58,7 +62,8 @@ String<string> *String<string>::copy() {
     return str;
 }
 
-template<> int String<string>::getLength() {
+template<>
+int String<string>::getLength() {
     return val.length();
 }
 

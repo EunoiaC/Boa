@@ -233,8 +233,8 @@ RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
-    RuntimeResult *result = new RuntimeResult();
-    VarAccessNode *node = (VarAccessNode *) n;
+    auto *result = new RuntimeResult();
+    auto *node = (VarAccessNode *) n;
     string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
     BaseValue *value = c->symbolTable->get(varName);
 
@@ -249,6 +249,24 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                 c
         ));
     }
+    string prevType = value->type;
+    for (auto &id : node->identifiers){
+        string idName = ((Token<string> *) id)->getValueObject()->getValue();
+        value = value->getFromSymbolTable(idName);
+        if (!value) {
+            return result->failure(new RuntimeError(
+                    id->posStart,
+                    id->posEnd,
+                    id->line,
+                    fName,
+                    lines[id->line],
+                    idName + " is not a member of class " + prevType,
+                    c
+            ));
+        }
+        prevType = value->type;
+    }
+
     value = value->setPos(node->posStart, node->posEnd, node->line);
     if (value->type == T_NUM) {
         ((Number<double> *) value)->setContext(c);

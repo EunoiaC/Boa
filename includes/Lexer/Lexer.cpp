@@ -31,6 +31,7 @@ void Lexer::advance() {
     charToToken = {
             {';',  new BaseToken(STOP_EXPR, charLineIdx, charLineIdx, lineIdx)},
             {',',  new BaseToken(COMMA, charLineIdx, charLineIdx, lineIdx)},
+            {'.',  new BaseToken(DOT, charLineIdx, charLineIdx, lineIdx)},
             {'*',  new BaseToken(MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
             {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
             {'^',  new BaseToken(POWER, charLineIdx, charLineIdx, lineIdx)},

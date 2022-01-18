@@ -40,7 +40,7 @@ async def on_message(message):
             tmp.write("running = true")
             tmp.write(fTxt)
             tmp.close()
-            output = os.popen("cd ../cmake-build-debug && ./Boa " + path).read().split('\n')
+            output = os.popen("boa " + path).read().split('\n')
             execTime = output[len(output)-2]
 
             if output[0].startswith("Traceback"):

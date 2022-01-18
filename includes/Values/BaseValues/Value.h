@@ -26,8 +26,11 @@ public:
     valueType val;
     Context *ctx;
     Error *rtError;
+    SymbolTable *symbolTable;
 
     Value(valueType v, string t, string f, string txt);
+
+    BaseValue * getFromSymbolTable(string name) override;
 
     virtual /**
      * @return The value of the valueType

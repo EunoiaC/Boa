@@ -758,14 +758,36 @@ ParseResult *Parser::atom() {
         advance();
         string type = currentToken->getType();
         //If the token is equal, we assign a new variable to the node
+        vector<BaseToken*> identifiers;
         if (type == EQUAL) {
             res->regAdvancement();
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
+        } else if(type == DOT){
+            res->regAdvancement();
+            advance();
+            if(currentToken->getType() != IDENTIFIER){
+                return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                              "InvalidSyntaxError", "Expected an identifier"));
+            }
+            identifiers.push_back(currentToken);
+            res->regAdvancement();
+            advance();
+            while(currentToken->getType() == DOT){
+                res->regAdvancement();
+                advance();
+                if(currentToken->getType() != IDENTIFIER){
+                    return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                                  "InvalidSyntaxError", "Expected an identifier"));
+                }
+                identifiers.push_back(currentToken);
+                res->regAdvancement();
+                advance();
+            }
         }
-        return res->success(new VarAccessNode((Token<string> *) tok));
+        return res->success(new VarAccessNode((Token<string> *) tok, identifiers));
     } else if (tok->getType() == L_PAREN) {
         res->regAdvancement();
         advance();

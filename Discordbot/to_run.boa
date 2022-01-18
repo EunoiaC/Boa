@@ -1,3 +1,5 @@
 running = true
 
-print("is there anything fun to do in this lang")
+import "Boa Libs/math.boa"
+"The second argument is optional, and is accuracy"
+print(sqrt(100000000, 200))

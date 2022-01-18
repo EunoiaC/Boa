@@ -11,6 +11,8 @@ class BaseValue {
 public:
     BaseValue(string t, string f, string txt);
 
+    virtual BaseValue * getFromSymbolTable(string key);
+
     string type;
     string fName, fTxt;
     int posStart, posEnd, line;

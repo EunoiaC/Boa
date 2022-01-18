@@ -6,7 +6,6 @@
 
 #include "Number.h"
 
-
 template<typename T> class String : public Value<T> {
 public:
     T strValue;
@@ -46,4 +45,4 @@ public:
 };
 
 
-#endif //BOA_STRING_H
+#endif //BOA_STRIN

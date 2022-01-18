@@ -1,4 +1,2 @@
-import "Boa Libs/math.boa"
-
-num = toNum(input("Number to find square root of: "))
-print("The sqrt of", num, "is", sqrt(num))
+x = "hi"
+print(x.print("ur mom"))

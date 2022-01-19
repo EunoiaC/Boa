@@ -15,9 +15,11 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
                                                       defaultArgs, "",
                                                       ""));
 
-    symbolTable->set("append", new ListFunction<int>(this, "append", {"value"},
+    defaultArgs["pos"] = new Number<double>(-1, "", "");
+    symbolTable->set("append", new ListFunction<int>(this, "append", {"value", "pos"},
                                                       defaultArgs, "",
                                                       ""));
+    defaultArgs.clear();
 
     defaultArgs["endIdx"] = new Value<double>(-1, T_NUM, fName, fTxt);
     symbolTable->set("slice", new ListFunction<int>(this, "slice", {"startIdx", "endIdx"},

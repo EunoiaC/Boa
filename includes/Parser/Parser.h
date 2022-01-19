@@ -9,6 +9,7 @@
 #include "../Nodes/Control Flow/ForNode.h"
 #include "../Nodes/Control Flow/IterateNode.h"
 #include "../Nodes/Value Nodes/ListNode.h"
+#include "../Nodes/NestedIdentifierAccessNode.h"
 #include "../Nodes/Value Nodes/StringNode.h"
 #include "../Nodes/Control Flow/WhileNode.h"
 #include "../Nodes/Control Flow/FuncDefNode.h"

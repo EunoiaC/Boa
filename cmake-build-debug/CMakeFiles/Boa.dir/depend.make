@@ -33,6 +33,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -153,6 +154,22 @@ CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.cpp \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/NestedIdentifierAccessNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.cpp \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
+ ../includes/Nodes/Node.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o: \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h
@@ -279,6 +296,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -316,6 +334,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -432,6 +451,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -560,6 +580,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/NestedIdentifierAccessNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \

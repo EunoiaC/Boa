@@ -27,6 +27,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_CONTINUE] = &Interpreter::visitContinueNode;
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
+    funcMap[N_NEST_ID_ACC] = &Interpreter::visitNestedIdAccessNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -280,6 +281,45 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         ((Map<map<BaseValue *, BaseValue *>> *) value)->setContext(c);
     }
     return result->success(value);
+}
+
+RuntimeResult *Interpreter::visitNestedIdAccessNode(Node *n, Context *c) {
+    auto *res = new RuntimeResult();
+    auto *node = (NestedIdentifierAccessNode *) n;
+    BaseValue *value = res->reg(visit(node->mainVal, c));
+    if (res->shouldReturn()) return res;
+
+    string prevType = value->type;
+    for (auto &id : node->identifiers){
+        string idName = ((Token<string> *) id)->getValueObject()->getValue();
+        value = value->getFromSymbolTable(idName);
+        if (!value) {
+            return res->failure(new RuntimeError(
+                    id->posStart,
+                    id->posEnd,
+                    id->line,
+                    fName,
+                    lines[id->line],
+                    idName + " is not a member of class " + prevType,
+                    c
+            ));
+        }
+        prevType = value->type;
+    }
+
+    value = value->setPos(node->posStart, node->posEnd, node->line);
+    if (value->type == T_NUM) {
+        ((Number<double> *) value)->setContext(c);
+    } else if (value->type == T_STRING) {
+        ((String<string> *) value)->setContext(c);
+    } else if (value->type == T_FUNC) {
+        ((BaseFunction<int> *) value)->setContext(c);
+    } else if (value->type == T_LIST) {
+        ((List<vector<BaseValue *>> *) value)->setContext(c);
+    } else if (value->type == T_MAP) {
+        ((Map<map<BaseValue *, BaseValue *>> *) value)->setContext(c);
+    }
+    return res->success(value);
 }
 
 RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {

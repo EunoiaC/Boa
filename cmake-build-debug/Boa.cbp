@@ -152,6 +152,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NestedIdentifierAccessNode.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/NestedIdentifierAccessNode.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp">
 			<Option target="Boa"/>
 		</Unit>

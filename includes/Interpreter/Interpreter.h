@@ -7,6 +7,7 @@
 #include "../Values/Number.h"
 #include "../Values/String/String.h"
 #include "../Values/Functions/Function.h"
+#include "../Nodes/NestedIdentifierAccessNode.h"
 #include "../Values/List/List.h"
 #include "../Values/Map.h"
 #include "../RuntimeResult/RuntimeResult.h"
@@ -57,6 +58,7 @@ public:
     RuntimeResult * visitUnaryOpNode(Node * n, Context* c);
     RuntimeResult * visitVarAssignNode(Node * n, Context* c);
     RuntimeResult * visitVarAccessNode(Node * n, Context* c);
+    RuntimeResult * visitNestedIdAccessNode(Node * n, Context* c);
 
     RuntimeResult * visitIfNode(Node * n, Context* c);
     RuntimeResult * visitForNode(Node * n, Context* c);

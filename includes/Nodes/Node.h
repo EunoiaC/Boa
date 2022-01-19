@@ -28,6 +28,7 @@ static const string N_RETURN = "RETURN_NODE";
 static const string N_BREAK = "BREAK_NODE";
 static const string N_CONTINUE = "CONTINUE_NODE";
 static const string N_IMPORT = "IMPORT_NODE";
+static const string N_NEST_ID_ACC = "NESTED_IDENTIFIER_ACCESS_NODE";
 
 class Node {
 public:

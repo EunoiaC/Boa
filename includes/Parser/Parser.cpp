@@ -866,7 +866,7 @@ ParseResult *Parser::call() {
 }
 
 ParseResult *Parser::power() {
-    return binOp({POWER}, &Parser::call, &Parser::factor);
+    return binOp({POWER, DOT}, &Parser::call, &Parser::factor);
 }
 
 ParseResult *Parser::term() {
@@ -1008,6 +1008,32 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
 
     while (find(ops.begin(), ops.end(), currentToken->getType()) != ops.end()) {
         BaseToken *opTok = currentToken;
+        if(opTok->getType() == DOT){
+            vector<BaseToken*> identifiers;
+            res->regAdvancement();
+            advance();
+            if(currentToken->getType() != IDENTIFIER){
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                          "InvalidSyntaxError", "Expected an identifier");
+                return res->failure(priorityError);
+            }
+            identifiers.push_back(currentToken);
+            res->regAdvancement();
+            advance();
+            while(currentToken->getType() == DOT){
+                res->regAdvancement();
+                advance();
+                if(currentToken->getType() != IDENTIFIER){
+                    priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                              "InvalidSyntaxError", "Expected an identifier");
+                    return res->failure(priorityError);
+                }
+                identifiers.push_back(currentToken);
+                res->regAdvancement();
+                advance();
+            }
+            return res->success(new NestedIdentifierAccessNode(left, identifiers));
+        }
 
         res->regAdvancement();
         advance();

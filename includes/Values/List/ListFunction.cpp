@@ -8,8 +8,6 @@ template <>
 RuntimeResult *ListFunction<int>::execute_slice(Context *execCtx) {
     auto *res = new RuntimeResult();
 
-    //END INDEX IS NON INCLUSIVE
-
     BaseValue * start = execCtx->symbolTable->get("startIdx");
     BaseValue * end = execCtx->symbolTable->get("endIdx");
 
@@ -66,8 +64,10 @@ RuntimeResult *ListFunction<int>::execute_slice(Context *execCtx) {
         ));
     }
 
-    if(endIndex == -1) {
+    if(endIndex == -1){
         endIndex = toSlice.size();
+    } else {
+        endIndex = endIndex + 1;
     }
 
     return res->success(new List<vector<BaseValue *>>(vector<BaseValue *>(toSlice.begin() + startIndex, toSlice.begin() + endIndex), "", ""));
@@ -112,7 +112,39 @@ template <>
 RuntimeResult *ListFunction<int>::execute_append(Context *execCtx) {
     auto *res = new RuntimeResult();
 
-    value->elements.push_back(execCtx->symbolTable->get("value"));
+    BaseValue * pos = execCtx->symbolTable->get("pos");
+
+    if(pos->type != T_NUM) {
+        return res->failure(new RuntimeError(
+                pos->posStart,
+                pos->posEnd,
+                pos->line,
+                pos->fName,
+                pos->fTxt,
+                "Expected a NUMBER",
+                execCtx
+        ));
+    }
+
+    int posIdx = ((Number<double>*) pos)->getValue();
+    if((posIdx < 0 || posIdx >= value->elements.size()) && posIdx != -1){
+        return res->failure(new RuntimeError(
+                pos->posStart,
+                pos->posEnd,
+                pos->line,
+                pos->fName,
+                pos->fTxt,
+                "Index out of range",
+                execCtx
+        ));
+    }
+
+    if(posIdx == -1){
+        value->elements.push_back(execCtx->symbolTable->get("value"));
+    } else {
+        value->elements.insert(value->elements.begin() + posIdx, execCtx->symbolTable->get("value"));
+    }
+
     return res->success(value);
 }
 

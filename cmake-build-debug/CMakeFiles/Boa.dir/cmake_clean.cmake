@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Nodes/NestedIdentifierAccessNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o"

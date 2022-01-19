@@ -62,11 +62,23 @@ BaseValue.h
 ../Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
-Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
+../Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
-String/String.h
+../String/String.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.cpp
+ListFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
+../Functions/BaseFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+../String/String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+../List/List.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
 ../Errors/RuntimeError.h
@@ -77,16 +89,4 @@ BaseValues/Value.cpp
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 ../Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/StringFunction.cpp
-StringFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/StringFunction.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/StringFunction.h
-../Functions/BaseFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
-../String/String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-../List.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h
 

@@ -57,7 +57,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
@@ -341,7 +341,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
@@ -398,7 +398,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Values/Functions/BaseFunction.cpp \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
@@ -416,7 +416,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Values/Functions/BuiltInFunction.cpp \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
@@ -454,11 +454,11 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.cpp \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
-CMakeFiles/Boa.dir/includes/Values/List.cpp.o: \
+CMakeFiles/Boa.dir/includes/Values/List/List.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
@@ -467,8 +467,25 @@ CMakeFiles/Boa.dir/includes/Values/List.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
- ../includes/Values/List.cpp \
- ../includes/Values/List.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/List/List.cpp \
+ ../includes/Values/List/List.h \
+ ../includes/Values/List/ListFunction.h \
+ ../includes/Values/Number.h \
+ ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/List/ListFunction.cpp \
+ ../includes/Values/List/ListFunction.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
@@ -483,7 +500,7 @@ CMakeFiles/Boa.dir/includes/Values/Map.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.cpp \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
@@ -510,7 +527,7 @@ CMakeFiles/Boa.dir/includes/Values/String/String.cpp.o: \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.cpp \
  ../includes/Values/String/String.h \
@@ -525,7 +542,7 @@ CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o: \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h \
  ../includes/Values/String/StringFunction.cpp \
@@ -569,7 +586,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
- ../includes/Values/List.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number.h \
  ../includes/Values/String/String.h \

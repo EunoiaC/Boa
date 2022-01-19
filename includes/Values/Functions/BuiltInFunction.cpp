@@ -20,7 +20,9 @@ RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    return (new RuntimeResult())->success(new String<string>(execCtx->symbolTable->get("value")->type, fName, fTxt));
+    BaseValue * val = execCtx->symbolTable->get("value");
+
+    return (new RuntimeResult())->success(new String<string>(val->type, val->fName, val->fTxt));
 }
 
 template<>
@@ -29,8 +31,9 @@ RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    string str = execCtx->symbolTable->get("value")->toString();
-    return (new RuntimeResult())->success(new String<string>(str, fName, fTxt));
+    BaseValue * str = execCtx->symbolTable->get("value");
+    string toStr = str->toString();
+    return (new RuntimeResult())->success(new String<string>(toStr, str->fName, str->fTxt));
 }
 
 template<>
@@ -55,7 +58,7 @@ RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
         );
     }
 
-    return (new RuntimeResult())->success(new Number<double>(val->getLength(), fName, fTxt));
+    return (new RuntimeResult())->success(new Number<double>(val->getLength(), val->fName, val->fTxt));
 
 }
 
@@ -97,7 +100,7 @@ RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
                 )
         );
     }
-    return (new RuntimeResult())->success(new Number<double>(v, fName, fTxt));
+    return (new RuntimeResult())->success(new Number<double>(v, strVal->fName, strVal->fTxt));
 }
 
 template<>

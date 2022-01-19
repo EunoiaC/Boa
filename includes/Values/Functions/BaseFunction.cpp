@@ -6,7 +6,7 @@
 
 #include <utility>
 #include "../String/String.h"
-#include "../List.h"
+#include "../List/List.h"
 #include "../Map.h"
 
 template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {

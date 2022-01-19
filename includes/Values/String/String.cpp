@@ -12,10 +12,17 @@ String<string>::String(string value, string f, string txt) : Value<string>(value
     map<string, BaseValue *> defaultArgs;
 
     defaultArgs["separator"] = new Value<string>("", T_STRING, fName, fTxt);
-    symbolTable->set("split", new StringFunction<int>(strValue, "split", {"separator"},
+    symbolTable->set("split", new StringFunction<int>(this, "split", {"separator"},
                                                       defaultArgs, "",
                                                       ""));
     defaultArgs.clear();
+
+    defaultArgs["endIdx"] = new Value<double>(-1, T_NUM, fName, fTxt);
+    symbolTable->set("slice", new StringFunction<int>(this, "slice", {"startIdx", "endIdx"},
+                                                      defaultArgs, "",
+                                                      ""));
+    defaultArgs.clear();
+
 }
 
 template<>

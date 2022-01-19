@@ -8,7 +8,7 @@
 
 #include "../Functions/BaseFunction.h"
 #include "../String/String.h"
-#include "../List.h"
+#include "../List/List.h"
 
 template<typename T> class StringFunction : public BaseFunction<T> {
 public:
@@ -16,12 +16,13 @@ public:
     map<string, FnPtr> funcMap;
     vector<BaseValue *> args;
     map<string, BaseValue *> defaultArgs;
-    string value;
-    StringFunction<T>(string value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
+    String<string>* value;
+    StringFunction<T>(String<string>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
     RuntimeResult * execute(vector<BaseValue*> args) override;
     StringFunction<int> *copy() override;
 
     RuntimeResult * execute_split(Context * execCtx);
+    RuntimeResult * execute_slice(Context * execCtx);
 
     string toString() override;
 };

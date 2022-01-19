@@ -3,11 +3,27 @@
 //
 
 #include "List.h"
+#include "ListFunction.h"
 
 template<>
 List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string txt) : Value<vector<BaseValue *>>(
         elements, T_LIST, f, txt) {
     this->elements = elements;
+    map<string, BaseValue *> defaultArgs;
+
+    symbolTable->set("pop", new ListFunction<int>(this, "pop", {"index"},
+                                                      defaultArgs, "",
+                                                      ""));
+
+    symbolTable->set("append", new ListFunction<int>(this, "append", {"value"},
+                                                      defaultArgs, "",
+                                                      ""));
+
+    defaultArgs["endIdx"] = new Value<double>(-1, T_NUM, fName, fTxt);
+    symbolTable->set("slice", new ListFunction<int>(this, "slice", {"startIdx", "endIdx"},
+                                                      defaultArgs, "",
+                                                      ""));
+    defaultArgs.clear();
 }
 
 template<>

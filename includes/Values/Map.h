@@ -6,7 +6,7 @@
 #define BOA_MAP_H
 
 #include "Number.h"
-#include "List.h"
+#include "List/List.h"
 #include "String/String.h"
 #include "Functions/Function.h"
 

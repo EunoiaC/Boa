@@ -299,10 +299,16 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.cpp">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.cpp">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List.h">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp">

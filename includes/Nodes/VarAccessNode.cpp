@@ -6,14 +6,15 @@
 
 #include <utility>
 
-VarAccessNode::VarAccessNode(Token<string> *varNameTok, vector<BaseToken*> identifiers) : Node(N_VAR_ACCESS){
+VarAccessNode::VarAccessNode(Token<string> *varNameTok, vector<BaseToken*> identifiers, Node * toGetIdentifierFrom) : Node(N_VAR_ACCESS){
     this->varNameTok = varNameTok;
     this->identifiers = move(identifiers);
-    posStart = varNameTok->posStart;
-    posEnd = varNameTok->posEnd;
-    fName = varNameTok->fName;
-    fTxt = varNameTok->fTxt;
-    line = varNameTok->line;
+    this->toGetIdentifierFrom = toGetIdentifierFrom;
+    posStart = varNameTok ? varNameTok->posStart : toGetIdentifierFrom->posStart;
+    posEnd = varNameTok ?varNameTok->posEnd : toGetIdentifierFrom->posEnd;
+    fName = varNameTok ? varNameTok->fName : toGetIdentifierFrom->fName;
+    fTxt = varNameTok? varNameTok->fTxt : toGetIdentifierFrom->fTxt;
+    line = varNameTok ? varNameTok->line : toGetIdentifierFrom->line;
 }
 
 string VarAccessNode::toString() {

@@ -787,7 +787,7 @@ ParseResult *Parser::atom() {
                 advance();
             }
         }
-        return res->success(new VarAccessNode((Token<string> *) tok, identifiers));
+        return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == L_PAREN) {
         res->regAdvancement();
         advance();
@@ -824,8 +824,15 @@ ParseResult *Parser::factor() {
 
 ParseResult *Parser::call() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
-    Node *_atom = res->reg(atom());
-    if (res->error) return res;
+
+    Node *_atom;
+    if(!toCall) {
+        _atom = res->reg(atom());
+        if (res->error) return res;
+    } else {
+        _atom = toCall;
+        toCall = nullptr;
+    }
 
     if (currentToken->getType() == L_PAREN) {
         res->regAdvancement();
@@ -1013,9 +1020,8 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
             res->regAdvancement();
             advance();
             if(currentToken->getType() != IDENTIFIER){
-                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                          "InvalidSyntaxError", "Expected an identifier");
-                return res->failure(priorityError);
+                return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                              "InvalidSyntaxError", "Expected an identifier"));
             }
             identifiers.push_back(currentToken);
             res->regAdvancement();
@@ -1024,15 +1030,18 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
                 res->regAdvancement();
                 advance();
                 if(currentToken->getType() != IDENTIFIER){
-                    priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                              "InvalidSyntaxError", "Expected an identifier");
-                    return res->failure(priorityError);
+                    return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                                  "InvalidSyntaxError", "Expected an identifier"));
                 }
                 identifiers.push_back(currentToken);
                 res->regAdvancement();
                 advance();
             }
-            return res->success(new NestedIdentifierAccessNode(left, identifiers));
+            if(currentToken->getType() == L_PAREN){
+                toCall = new VarAccessNode(nullptr, identifiers, left);
+                return call();
+            }
+            return res->success(new VarAccessNode(nullptr, identifiers, left));
         }
 
         res->regAdvancement();

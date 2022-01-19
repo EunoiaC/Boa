@@ -417,30 +417,6 @@ includes/Nodes/Control_Flow/WhileNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.s
 .PHONY : includes/Nodes/Control_Flow/WhileNode.cpp.s
 
-includes/Nodes/NestedIdentifierAccessNode.o: includes/Nodes/NestedIdentifierAccessNode.cpp.o
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.o
-
-# target to build an object file
-includes/Nodes/NestedIdentifierAccessNode.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NestedIdentifierAccessNode.cpp.o
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.cpp.o
-
-includes/Nodes/NestedIdentifierAccessNode.i: includes/Nodes/NestedIdentifierAccessNode.cpp.i
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.i
-
-# target to preprocess a source file
-includes/Nodes/NestedIdentifierAccessNode.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NestedIdentifierAccessNode.cpp.i
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.cpp.i
-
-includes/Nodes/NestedIdentifierAccessNode.s: includes/Nodes/NestedIdentifierAccessNode.cpp.s
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.s
-
-# target to generate assembly for a file
-includes/Nodes/NestedIdentifierAccessNode.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/NestedIdentifierAccessNode.cpp.s
-.PHONY : includes/Nodes/NestedIdentifierAccessNode.cpp.s
-
 includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
 .PHONY : includes/Nodes/Node.o
 
@@ -1230,9 +1206,6 @@ help:
 	@echo "... includes/Nodes/Control_Flow/WhileNode.o"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.i"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.s"
-	@echo "... includes/Nodes/NestedIdentifierAccessNode.o"
-	@echo "... includes/Nodes/NestedIdentifierAccessNode.i"
-	@echo "... includes/Nodes/NestedIdentifierAccessNode.s"
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"

@@ -13,8 +13,9 @@ public:
     string toString() override;
     string fName, fTxt;
     Token<string> * varNameTok;
+    Node * toGetIdentifierFrom;
     vector<BaseToken*> identifiers;
-    VarAccessNode(Token<string> * varNameTok, vector<BaseToken*> identifiers);
+    VarAccessNode(Token<string> * varNameTok, vector<BaseToken*> identifiers, Node * toGetIdentifierFrom);
 };
 
 

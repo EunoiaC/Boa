@@ -144,7 +144,28 @@ RuntimeResult *StringFunction<int>::execute_slice(Context *execCtx) {
     return res->success((new String<string>(toSlice.substr(startIndex, endIndex-startIndex), start->fName, start->fTxt))->setPos(start->posStart, end->posEnd, start->line));
 }
 
-template<>
+template <>
+RuntimeResult *StringFunction<int>::execute_indexOf(Context *execCtx) {
+    BaseValue * toFind = execCtx->symbolTable->get("toFind");
+    if(toFind->type != T_STRING){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                toFind->posStart,
+                toFind->posEnd,
+                toFind->line,
+                toFind->fName,
+                toFind->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
+    size_t pos = value->getValue().find(((String<string>*)toFind)->getValue());
+    if(pos == string::npos){
+        return (new RuntimeResult())->success(new Number<double>(-1, "", ""));
+    }
+    return (new RuntimeResult())->success(new Number<double>(pos, "", ""));
+}
+
+template <>
 StringFunction<int>::StringFunction(String<string>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -152,6 +173,7 @@ StringFunction<int>::StringFunction(String<string>* value, string name, vector<s
     funcMap["execute_split"] = &StringFunction<int>::execute_split;
     funcMap["execute_slice"] = &StringFunction<int>::execute_slice;
     funcMap["execute_join"] = &StringFunction<int>::execute_join;
+    funcMap["execute_indexOf"] = &StringFunction<int>::execute_indexOf;
     this->defaultArgs = defaultArgs;
 }
 

@@ -873,11 +873,11 @@ ParseResult *Parser::call() {
 }
 
 ParseResult *Parser::power() {
-    return binOp({POWER, DOT}, &Parser::call, &Parser::factor);
+    return binOp({POWER, DOT, GET}, &Parser::call, &Parser::factor);
 }
 
 ParseResult *Parser::term() {
-    return binOp({MULTIPLY, DIVIDE, MOD, GET}, &Parser::factor, &Parser::factor);
+    return binOp({MULTIPLY, DIVIDE, MOD}, &Parser::factor, &Parser::factor);
 }
 
 ParseResult *Parser::compExpr() {

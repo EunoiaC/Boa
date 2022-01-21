@@ -27,6 +27,9 @@ String<string>::String(string value, string f, string txt) : Value<string>(value
                                                       defaultArgs, "",
                                                       ""));
 
+    symbolTable->set("indexOf", new StringFunction<int>(this, "indexOf", {"toFind"},
+                                                     defaultArgs, "",
+                                                     ""));
 }
 
 template<>

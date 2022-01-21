@@ -23,6 +23,7 @@ public:
     RuntimeResult * execute_pop(Context * execCtx);
     RuntimeResult * execute_append(Context * execCtx);
     RuntimeResult * execute_slice(Context * execCtx);
+    RuntimeResult * execute_indexOf(Context * execCtx);
 
     string toString() override;
 };

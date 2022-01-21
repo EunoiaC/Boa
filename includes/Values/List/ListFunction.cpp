@@ -3,6 +3,7 @@
 //
 
 #include "ListFunction.h"
+#include <algorithm>
 
 template <>
 RuntimeResult *ListFunction<int>::execute_slice(Context *execCtx) {
@@ -149,6 +150,24 @@ RuntimeResult *ListFunction<int>::execute_append(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *ListFunction<int>::execute_indexOf(Context *execCtx) {
+    struct compare
+    {
+        BaseValue* key;
+        explicit compare(BaseValue* const &i): key(i) {}
+
+        bool operator()(BaseValue* const &i) {
+            return (((Number<double>* ) i->compEquals(key))->getValue() == 1);
+        }
+    };
+
+    BaseValue * key = execCtx->symbolTable->get("key");
+    auto itr = find_if(value->elements.begin(), value->elements.end(), compare(key));
+    return (new RuntimeResult())->success(
+            new Number<double>(itr != value->elements.end() ? distance(value->elements.begin(), itr) : -1, "", ""));
+}
+
+template<>
 ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -156,6 +175,7 @@ ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, v
     funcMap["execute_pop"] = &ListFunction<int>::execute_pop;
     funcMap["execute_append"] = &ListFunction<int>::execute_append;
     funcMap["execute_slice"] = &ListFunction<int>::execute_slice;
+    funcMap["execute_indexOf"] = &ListFunction<int>::execute_indexOf;
     this->defaultArgs = defaultArgs;
 }
 

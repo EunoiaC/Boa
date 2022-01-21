@@ -26,6 +26,10 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
                                                       defaultArgs, "",
                                                       ""));
     defaultArgs.clear();
+
+    symbolTable->set("indexOf", new ListFunction<int>(this, "indexOf", {"key"},
+                                                    defaultArgs, "",
+                                                    ""));
 }
 
 template<>

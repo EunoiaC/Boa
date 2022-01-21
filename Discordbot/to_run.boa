@@ -1,3 +1,20 @@
 running = true
 
-print("imagine gay")
+op problem() do{
+    b=true
+    bacteria=2022
+    virus=1
+    moves=0
+    while b do {
+        if bacteria>0 do {
+            print(bacteria-virus)
+            bacteria=2*(bacteria-virus)
+            print(bacteria)
+            virus=2*virus
+            moves=moves+1
+        } else do break
+    }
+    return moves
+}
+
+print(problem())

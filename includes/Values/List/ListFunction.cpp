@@ -186,5 +186,5 @@ ListFunction<int> *ListFunction<int>::copy() {
 
 template<>
 string ListFunction<int>::toString() {
-    return "<StringFunction: " + name + ">";
+    return "<ListFunction: " + name + ">";
 }

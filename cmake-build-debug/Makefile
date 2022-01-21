@@ -1065,29 +1065,53 @@ includes/Values/Map.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.s
 .PHONY : includes/Values/Map.cpp.s
 
-includes/Values/Number.o: includes/Values/Number.cpp.o
-.PHONY : includes/Values/Number.o
+includes/Values/Number/Number.o: includes/Values/Number/Number.cpp.o
+.PHONY : includes/Values/Number/Number.o
 
 # target to build an object file
-includes/Values/Number.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.o
-.PHONY : includes/Values/Number.cpp.o
+includes/Values/Number/Number.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o
+.PHONY : includes/Values/Number/Number.cpp.o
 
-includes/Values/Number.i: includes/Values/Number.cpp.i
-.PHONY : includes/Values/Number.i
+includes/Values/Number/Number.i: includes/Values/Number/Number.cpp.i
+.PHONY : includes/Values/Number/Number.i
 
 # target to preprocess a source file
-includes/Values/Number.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.i
-.PHONY : includes/Values/Number.cpp.i
+includes/Values/Number/Number.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.i
+.PHONY : includes/Values/Number/Number.cpp.i
 
-includes/Values/Number.s: includes/Values/Number.cpp.s
-.PHONY : includes/Values/Number.s
+includes/Values/Number/Number.s: includes/Values/Number/Number.cpp.s
+.PHONY : includes/Values/Number/Number.s
 
 # target to generate assembly for a file
-includes/Values/Number.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number.cpp.s
-.PHONY : includes/Values/Number.cpp.s
+includes/Values/Number/Number.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.s
+.PHONY : includes/Values/Number/Number.cpp.s
+
+includes/Values/Number/NumberFunction.o: includes/Values/Number/NumberFunction.cpp.o
+.PHONY : includes/Values/Number/NumberFunction.o
+
+# target to build an object file
+includes/Values/Number/NumberFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o
+.PHONY : includes/Values/Number/NumberFunction.cpp.o
+
+includes/Values/Number/NumberFunction.i: includes/Values/Number/NumberFunction.cpp.i
+.PHONY : includes/Values/Number/NumberFunction.i
+
+# target to preprocess a source file
+includes/Values/Number/NumberFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.i
+.PHONY : includes/Values/Number/NumberFunction.cpp.i
+
+includes/Values/Number/NumberFunction.s: includes/Values/Number/NumberFunction.cpp.s
+.PHONY : includes/Values/Number/NumberFunction.s
+
+# target to generate assembly for a file
+includes/Values/Number/NumberFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s
+.PHONY : includes/Values/Number/NumberFunction.cpp.s
 
 includes/Values/String/String.o: includes/Values/String/String.cpp.o
 .PHONY : includes/Values/String/String.o
@@ -1287,9 +1311,12 @@ help:
 	@echo "... includes/Values/Map.o"
 	@echo "... includes/Values/Map.i"
 	@echo "... includes/Values/Map.s"
-	@echo "... includes/Values/Number.o"
-	@echo "... includes/Values/Number.i"
-	@echo "... includes/Values/Number.s"
+	@echo "... includes/Values/Number/Number.o"
+	@echo "... includes/Values/Number/Number.i"
+	@echo "... includes/Values/Number/Number.s"
+	@echo "... includes/Values/Number/NumberFunction.o"
+	@echo "... includes/Values/Number/NumberFunction.i"
+	@echo "... includes/Values/Number/NumberFunction.s"
 	@echo "... includes/Values/String/String.o"
 	@echo "... includes/Values/String/String.i"
 	@echo "... includes/Values/String/String.s"

@@ -3,14 +3,24 @@
 //
 
 #include "Number.h"
-#include "String/String.h"
+#include "../String/String.h"
 #include <math.h>
+#include "NumberFunction.h"
 
 
 template<>
 Number<double>::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {
     numValue = value;
     rtError = nullptr;
+
+    map<string, BaseValue *> defaultArgs;
+
+    symbolTable->set("floor", new NumberFunction<int>(this, "floor", {},
+                                                      defaultArgs, "",
+                                                      ""));
+    symbolTable->set("ceil", new NumberFunction<int>(this, "ceil", {},
+                                                      defaultArgs, "",
+                                                      ""));
 }
 
 template<>

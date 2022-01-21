@@ -5,7 +5,7 @@
 #ifndef BOA_LIST_H
 #define BOA_LIST_H
 
-#include "../Number.h" //Idk why the number class but its some weird compilation stuff
+#include "../Number/Number.h" //Idk why the number class but its some weird compilation stuff
 #include "../String/String.h"
 
 template<typename T> class List : public Value<T> {

@@ -317,10 +317,16 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.cpp">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.h">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.cpp">

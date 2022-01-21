@@ -4,7 +4,7 @@
 #ifndef BOA_STRING_H
 #define BOA_STRING_H
 
-#include "../Number.h"
+#include "../Number/Number.h"
 
 template<typename T> class String : public Value<T> {
 public:

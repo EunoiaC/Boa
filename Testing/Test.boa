@@ -1,4 +1,0 @@
-x = "lmao".split().append("lmao")
-
-
-print(x ? 4)

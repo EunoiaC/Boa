@@ -5,7 +5,7 @@
 #ifndef BOA_BASEFUNCTION_H
 #define BOA_BASEFUNCTION_H
 
-#include "../Number.h"
+#include "../Number/Number.h"
 
 template<typename T> class BaseFunction : public Value<T> {
 public:

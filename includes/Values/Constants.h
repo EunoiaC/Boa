@@ -5,7 +5,7 @@
 #ifndef BOA_CONSTANTS_H
 #define BOA_CONSTANTS_H
 
-#include "Number.h"
+#include "Number/Number.h"
 #include "Functions/BuiltInFunction.h"
 #include <string>
 #include <cmath>

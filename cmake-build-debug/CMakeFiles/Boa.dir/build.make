@@ -157,18 +157,18 @@ CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.cpp -o CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.s
 
-CMakeFiles/Boa.dir/includes/Values/Number.cpp.o: CMakeFiles/Boa.dir/flags.make
-CMakeFiles/Boa.dir/includes/Values/Number.cpp.o: ../includes/Values/Number.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Boa.dir/includes/Values/Number.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/Number.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp
+CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o: ../includes/Values/Number/Number.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.cpp
 
-CMakeFiles/Boa.dir/includes/Values/Number.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/Number.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp > CMakeFiles/Boa.dir/includes/Values/Number.cpp.i
+CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.cpp > CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.i
 
-CMakeFiles/Boa.dir/includes/Values/Number.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Number.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number.cpp -o CMakeFiles/Boa.dir/includes/Values/Number.cpp.s
+CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.cpp -o CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.s
 
 CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o: CMakeFiles/Boa.dir/flags.make
 CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o: ../includes/Nodes/CallNode.cpp
@@ -625,6 +625,19 @@ CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o: ../includes/Values/Number/NumberFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.cpp > CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -634,7 +647,7 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Context/Context.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Errors/Error.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/Number.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.o" \
@@ -669,7 +682,8 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/RunInterface.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -681,7 +695,7 @@ Boa: CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Context/Context.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Errors/Error.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.o
-Boa: CMakeFiles/Boa.dir/includes/Values/Number.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.o
@@ -717,9 +731,10 @@ Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

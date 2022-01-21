@@ -7,7 +7,7 @@
 
 #include "../Values/BaseValues/Value.h"
 #include "../Values/String/String.h"
-#include "../Values/Number.h"
+#include "../Values/Number/Number.h"
 #include "BaseToken.h"
 
 using namespace std;

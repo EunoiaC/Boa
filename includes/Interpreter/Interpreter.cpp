@@ -238,11 +238,11 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     BaseValue *value = nullptr;
     string varName;
 
-    if(node->varNameTok){
+    if (node->toGetIdentifierFrom){
+        value = result->reg(visit(node->toGetIdentifierFrom, c));
+    } else {
        varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
        value = c->symbolTable->get(varName);
-    } else {
-        value = result->reg(visit(node->toGetIdentifierFrom, c));
     }
 
     if (!value) {
@@ -256,6 +256,11 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                 c
         ));
     }
+
+    if(node->toGetIdentifierFrom && node->varNameTok){
+        value = value->getFromSymbolTable(((Token<string> *) node->varNameTok)->getValueObject()->getValue());
+    }
+
     string prevType = value->type;
     for (auto &id : node->identifiers){
         string idName = ((Token<string> *) id)->getValueObject()->getValue();

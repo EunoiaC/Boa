@@ -23,6 +23,7 @@ public:
 
     RuntimeResult * execute_split(Context * execCtx);
     RuntimeResult * execute_slice(Context * execCtx);
+    RuntimeResult * execute_join(Context * execCtx);
 
     string toString() override;
 };

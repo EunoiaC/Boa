@@ -1,5 +1,4 @@
 running = true
 
-import "Boa Libs/math.boa"
-"The second argument is optional, and is accuracy"
-print(sqrt(100000000, 200))
+nums = for i = 0 to 10 do i
+print(", ".join(nums))

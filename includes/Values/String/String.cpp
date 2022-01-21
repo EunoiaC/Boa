@@ -23,6 +23,10 @@ String<string>::String(string value, string f, string txt) : Value<string>(value
                                                       ""));
     defaultArgs.clear();
 
+    symbolTable->set("join", new StringFunction<int>(this, "join", {"toJoin"},
+                                                      defaultArgs, "",
+                                                      ""));
+
 }
 
 template<>

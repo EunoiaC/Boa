@@ -27,7 +27,6 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
 
     BaseValue *value = res->reg(interpreter->visit(body, execCtx));
     if (res->shouldReturn() && res->funcReturnValue == nullptr) {
-        res->error->fTxt = lines[res->error->line];
         return res;
     }
     // If auto returning with a oneliner, return the value

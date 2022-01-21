@@ -4,6 +4,37 @@
 
 #include "StringFunction.h"
 
+template<>
+RuntimeResult *StringFunction<int>::execute_join(Context *execCtx) {
+    auto *res = new RuntimeResult();
+
+    BaseValue *val = execCtx->symbolTable->get("toJoin");
+    if(val->type != T_LIST){
+        return res->failure(new RuntimeError(
+                val->posStart,
+                val->posEnd,
+                val->line,
+                val->fName,
+                val->fTxt,
+                "Expected a LIST",
+                execCtx
+        ));
+    }
+
+    List<vector<BaseValue*>> * toJoin = ((List<vector<BaseValue*>>*) val);
+    string separator = value->copy()->getValue();
+    string result = "";
+
+    for(int i = 0; i < toJoin->elements.size(); i++){
+        if(i != 0){
+            result += separator;
+        }
+        result += toJoin->elements[i]->toString();
+    }
+
+    return res->success(new String<string>(result, "", ""));
+}
+
 template <>
 RuntimeResult *StringFunction<int>::execute_split(Context *execCtx) {
     auto *res = new RuntimeResult();
@@ -120,6 +151,7 @@ StringFunction<int>::StringFunction(String<string>* value, string name, vector<s
     this->value = value;
     funcMap["execute_split"] = &StringFunction<int>::execute_split;
     funcMap["execute_slice"] = &StringFunction<int>::execute_slice;
+    funcMap["execute_join"] = &StringFunction<int>::execute_join;
     this->defaultArgs = defaultArgs;
 }
 

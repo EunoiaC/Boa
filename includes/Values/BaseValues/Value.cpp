@@ -12,6 +12,14 @@ Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue
 }
 
 template<class valueType>
+Value<valueType>::~Value<valueType>() {
+    delete symbolTable;
+    delete rtError;
+    delete ctx;
+    cout << "Value destructor called" << endl;
+}
+
+template<class valueType>
 BaseValue *Value<valueType>::getFromSymbolTable(string name) {
     return symbolTable->get(name);
 }

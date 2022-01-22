@@ -3,6 +3,7 @@
 //
 
 #include "BaseToken.h"
+#include <iostream>
 
 
 BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
@@ -12,6 +13,10 @@ BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
     posStart = start_pos;
     posEnd = end_pos;
     line = line_num;
+}
+
+BaseToken::~BaseToken() {
+    cout << "BaseToken destructor called: " + type << endl;
 }
 
 string BaseToken::getType() {

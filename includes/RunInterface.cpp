@@ -56,8 +56,10 @@ void RunInterface::run(string fileName) {
     RunResult run = readFile(fileName);
     if (run.second) {
         cout << run.second->toString() << endl;
+        delete run.second;
     } else {
         clock_t stop = clock();
         cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
+        delete run.first;
     }
 }

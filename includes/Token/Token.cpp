@@ -11,6 +11,12 @@ Token<tokType>::Token(string t, tokType v, int start_pos, int end_pos, int line_
     value = new Value<tokType>(v, t, fName, fTxt);
 }
 
+template<class tokType>
+Token<tokType>::~Token() {
+    cout << "Deleting Token " + type << endl;
+    delete value;
+}
+
 template<> Token<string>::Token(string t, string v, int start_pos, int end_pos, int line_num) : BaseToken(t, start_pos, end_pos, line_num) {
     type = t;
     value = new String<string>(v, fName, fTxt);

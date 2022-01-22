@@ -29,6 +29,7 @@ public:
     SymbolTable *symbolTable;
 
     Value(valueType v, string t, string f, string txt);
+    ~Value();
 
     BaseValue * getFromSymbolTable(string name) override;
 

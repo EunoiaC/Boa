@@ -79,6 +79,7 @@ private:
     Value<valueClass> *value;
 public:
     Token(string t, valueClass value, int start_pos, int end_pos, int line_num);
+    ~Token();
 
     /**
      * @tparam valueClass

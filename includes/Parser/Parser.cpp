@@ -846,11 +846,13 @@ ParseResult *Parser::call() {
     }
 
     if (currentToken->getType() == L_PAREN) {
+        delete currentToken;
         res->regAdvancement();
         advance();
         vector<Node *> args;
 
         if (currentToken->getType() == R_PAREN) {
+            delete currentToken;
             res->regAdvancement();
             advance();
         } else {
@@ -862,6 +864,7 @@ ParseResult *Parser::call() {
                                   "Expected a closing parenthesis, identifier, conditional keyword, 'op', or number."));
             }
             while (currentToken->getType() == COMMA) {
+                delete currentToken;
                 res->regAdvancement();
                 advance();
                 args.push_back(res->reg(expr()));
@@ -873,6 +876,7 @@ ParseResult *Parser::call() {
                                   "InvalidSyntaxError",
                                   "Expected ',' or ')'"));
             }
+            delete currentToken;
             res->regAdvancement();
             advance();
         }
@@ -927,6 +931,7 @@ ParseResult *Parser::statement() {
     Node *_expr = nullptr;
 
     if (currentToken->type == IMPORT) {
+        delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -937,6 +942,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == RETURN) {
+        delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -949,6 +955,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == CONTINUE) {
+        delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -956,6 +963,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == BREAK) {
+        delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -986,6 +994,7 @@ ParseResult *Parser::statements() {
     while (true) {
         int newLineCount = 0;
         while (currentToken->getType() == STOP_EXPR) {
+            delete currentToken;
             res->regAdvancement();
             advance();
             newLineCount++;
@@ -1054,7 +1063,7 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
             }
             return res->success(new VarAccessNode(nullptr, identifiers, left));
         }
-
+        // Don't delete the operator token, it's needed for the next iteration
         res->regAdvancement();
         advance();
 

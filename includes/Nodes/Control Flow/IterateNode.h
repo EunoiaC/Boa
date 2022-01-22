@@ -18,6 +18,7 @@ public:
     string toString() override;
 
     IterateNode(Token<string> *iterNameTok, Node *toIterateThrough, Node *body, bool shouldReturnNull);
+    ~IterateNode();
 };
 
 

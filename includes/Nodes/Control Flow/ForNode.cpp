@@ -25,3 +25,11 @@ string ForNode::toString() {
     str += " do " + body->toString();
     return str;
 }
+
+ForNode::~ForNode() {
+    delete startVal;
+    delete endVal;
+    delete stepVal;
+    delete body;
+    cout << "Deleted ForNode" << endl;
+}

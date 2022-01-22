@@ -16,6 +16,7 @@ public:
     int posStart, posEnd, line;
     string fName, fTxt, msg, errorName;
     Error(int posStart, int posEnd, int line, string fName, string fTxt, string errorName, string msg);
+    ~Error(){};
     virtual string toString();
     string getArrows();
 };

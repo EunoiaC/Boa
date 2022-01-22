@@ -35,12 +35,14 @@ RuntimeResult *Interpreter::visit(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
-    IterateNode *node = (IterateNode *) n;
-    RuntimeResult *res = new RuntimeResult();
+    auto *node = (IterateNode *) n;
+    auto *res = new RuntimeResult();
     vector<BaseValue *> elements;
 
     BaseValue *toIterateThrough = res->reg(visit(node->toIterateThrough, c));
     if (res->shouldReturn()) return res;
+
+    delete node->toIterateThrough;
 
     if (toIterateThrough->type == T_LIST) {
         for (auto *val: ((List<vector<BaseValue *>> *) toIterateThrough)->elements) {
@@ -57,9 +59,9 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
             if (res->shouldReturn()) return res;
         }
     } else if (toIterateThrough->type == T_MAP) {
-        Map<map<BaseValue *, BaseValue *>> *dict = (Map<map<BaseValue *, BaseValue *>> *) toIterateThrough;
+        auto *dict = (Map<map<BaseValue *, BaseValue *>> *) toIterateThrough;
         for (auto it: dict->dict) {
-            List<vector<BaseValue *>> *kv = new List<vector<BaseValue *>>({it.first, it.second}, "", "");
+            auto *kv = new List<vector<BaseValue *>>({it.first, it.second}, "", "");
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 kv);
             elements.push_back(res->reg(visit(node->body, c)));
@@ -82,6 +84,10 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
     if (node->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[node->line]);
     }
+
+
+    //delete node->iterNameTok;
+    delete node;
     return res->success(val);
 }
 
@@ -141,6 +147,8 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     if (forNode->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[n->line]);
     }
+
+    delete forNode;
     return res->success(val);
 }
 

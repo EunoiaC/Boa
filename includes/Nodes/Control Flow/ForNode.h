@@ -15,6 +15,7 @@ public:
     bool shouldReturnNull;
     string toString() override;
     ForNode(Token<string> *varNameTok, Node *startVal, Node *endVal, Node *stepVal, Node *body, bool shouldReturnNull);
+    ~ForNode();
 };
 
 

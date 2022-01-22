@@ -16,6 +16,12 @@ IterateNode::IterateNode(Token<string> *iterNameTok, Node *toIterateThrough, Nod
     posEnd = body->posEnd;
 }
 
+IterateNode::~IterateNode() {
+    delete body;
+    delete toIterateThrough;
+    cout << "Deleting iterate node" << endl;
+}
+
 string IterateNode::toString() {
     string str = "(IterateNode: " + iterNameTok->getValueObject()->getValue() + " in " + toIterateThrough->toString() + " " + body->toString() + ")";
     return str;

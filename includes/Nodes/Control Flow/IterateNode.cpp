@@ -19,7 +19,6 @@ IterateNode::IterateNode(Token<string> *iterNameTok, Node *toIterateThrough, Nod
 IterateNode::~IterateNode() {
     delete body;
     delete toIterateThrough;
-    cout << "Deleting iterate node" << endl;
 }
 
 string IterateNode::toString() {

@@ -16,7 +16,6 @@ BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
 }
 
 BaseToken::~BaseToken() {
-    cout << "BaseToken destructor called: " + type << endl;
 }
 
 string BaseToken::getType() {

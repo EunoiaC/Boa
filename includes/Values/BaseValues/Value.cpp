@@ -17,7 +17,6 @@ Value<valueType>::~Value<valueType>() {
     delete symbolTable;
     delete rtError;
     delete ctx;
-    cout << "Value destructor called" << endl;
 }
 
 template<class valueType>

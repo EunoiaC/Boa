@@ -9,9 +9,9 @@ op ceaserify(string, shift) do {
         }
         toGet = (alphabet.indexOf(char) + shift) % 26
         res += alphabet ? toGet
-        print(9/2)
     }
 
     return res
 }
-print (ceaserify("blue dogs", 1))
+
+print(ceaserify("hello", 2))

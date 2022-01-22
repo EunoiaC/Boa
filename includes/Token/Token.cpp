@@ -13,7 +13,6 @@ Token<tokType>::Token(string t, tokType v, int start_pos, int end_pos, int line_
 
 template<class tokType>
 Token<tokType>::~Token() {
-    cout << "Deleting Token " + type << endl;
     delete value;
 }
 

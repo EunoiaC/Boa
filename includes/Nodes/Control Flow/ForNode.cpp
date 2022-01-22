@@ -31,5 +31,4 @@ ForNode::~ForNode() {
     delete endVal;
     delete stepVal;
     delete body;
-    cout << "Deleted ForNode" << endl;
 }

@@ -8,6 +8,11 @@ template<>
 Map<map<BaseValue *, BaseValue *>>::Map(map<BaseValue *, BaseValue *> dict, string fName, string fTxt)
         : Value<map<BaseValue *, BaseValue *>>(dict, T_MAP, fName, fTxt) {
     this->dict = dict;
+
+    auto *keys = new List<vector<BaseValue *>>({}, "", "");
+    for(auto const& it: dict) keys->elements.push_back(it.first);
+
+    symbolTable->set("keys", keys);
 }
 
 template<>

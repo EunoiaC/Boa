@@ -851,6 +851,8 @@ ParseResult *Parser::call() {
         advance();
         vector<Node *> args;
 
+        checkNewLines();
+
         if (currentToken->getType() == R_PAREN) {
             delete currentToken;
             res->regAdvancement();
@@ -863,13 +865,16 @@ ParseResult *Parser::call() {
                                   "InvalidSyntaxError",
                                   "Expected a closing parenthesis, identifier, conditional keyword, 'op', or number."));
             }
+            checkNewLines();
             while (currentToken->getType() == COMMA) {
                 delete currentToken;
                 res->regAdvancement();
                 advance();
+                checkNewLines();
                 args.push_back(res->reg(expr()));
                 if (res->error) return res;
             }
+            checkNewLines();
             if (currentToken->getType() != R_PAREN) {
                 return res->failure(
                         new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,

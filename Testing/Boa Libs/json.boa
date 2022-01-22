@@ -1,0 +1,37 @@
+op loads(str) do {
+   char = ""
+   idx = -1
+
+   op advance() do {
+       idx+=1
+       if (idx >= lenOf(str)) do char = null
+       char = str ? idx
+   }
+
+   op makeStr() do {
+       res = ""
+       while char != '"' do {
+           res += char
+           advance()
+       }
+       return res
+   }
+
+   res = {}
+   advance()
+   while char do {
+       if char == '"' do {
+            string = makeStr()
+            advance()
+            if char != ':' do {
+                print("Expected ':' after string")
+                return
+            }
+            advance()
+            if char == '"' do {
+                res += [string, makeStr()]
+            }
+       }
+   }
+}
+

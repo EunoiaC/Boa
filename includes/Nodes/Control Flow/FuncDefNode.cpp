@@ -25,5 +25,5 @@ FuncDefNode::FuncDefNode(Token<string>* funcNameTok, vector<Token<string>*> argN
 }
 
 string FuncDefNode::toString() {
-    return "(FuncDefNode: " + funcNameTok->getValueObject()->getValue() + ")";
+    return "(FuncDefNode: " + funcNameTok->getValueObject()->getValue() + ", " + body->toString() + ")";
 }

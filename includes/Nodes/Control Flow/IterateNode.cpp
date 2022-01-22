@@ -23,6 +23,6 @@ IterateNode::~IterateNode() {
 }
 
 string IterateNode::toString() {
-    string str = "(IterateNode: " + iterNameTok->getValueObject()->getValue() + " in " + toIterateThrough->toString() + " " + body->toString() + ")";
+    string str = "(IterateNode: " + iterNameTok->getValueObject()->getValue() + " in " + toIterateThrough->toString() + ", (Body: " + body->toString() + "))";
     return str;
 }

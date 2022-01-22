@@ -35,8 +35,8 @@ String<string>::String(string value, string f, string txt) : Value<string>(value
 template<>
 BaseValue *String<string>::get(BaseValue *s) {
     if (s->type == T_NUM) {
-        Number<double> *num = (Number<double> *) s;
-        if (num->numValue > strValue.length() - 1) {
+        auto *num = (Number<double> *) s;
+        if (num->numValue >= strValue.length()) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,

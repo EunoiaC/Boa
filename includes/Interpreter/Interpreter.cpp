@@ -41,22 +41,38 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
 
     BaseValue *toIterateThrough = res->reg(visit(node->toIterateThrough, c));
     if (res->shouldReturn()) return res;
-
-    delete node->toIterateThrough;
+    BaseValue * value;
 
     if (toIterateThrough->type == T_LIST) {
         for (auto *val: ((List<vector<BaseValue *>> *) toIterateThrough)->elements) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 val);
-            elements.push_back(res->reg(visit(node->body, c)));
-            if (res->shouldReturn()) return res;
+            value = res->reg(visit(node->body, c));
+            if (res->shouldReturn() && !res->loopContinue && !res->loopBreak) return res;
+
+            if (res->loopContinue) {
+                continue;
+            }
+            if (res->loopBreak) {
+                break;
+            }
+
+            elements.push_back(value);
         }
     } else if (toIterateThrough->type == T_STRING) {
         for (char ch: ((String<string> *) toIterateThrough)->getValue()) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 new String<string>(string(1, ch), "", ""));
-            elements.push_back(res->reg(visit(node->body, c)));
-            if (res->shouldReturn()) return res;
+            value = res->reg(visit(node->body, c));
+            if (res->shouldReturn() && !res->loopContinue && !res->loopBreak) return res;
+
+            if (res->loopContinue) {
+                continue;
+            }
+            if (res->loopBreak) {
+                break;
+            }
+            elements.push_back(value);
         }
     } else if (toIterateThrough->type == T_MAP) {
         auto *dict = (Map<map<BaseValue *, BaseValue *>> *) toIterateThrough;
@@ -64,8 +80,16 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
             auto *kv = new List<vector<BaseValue *>>({it.first, it.second}, "", "");
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 kv);
-            elements.push_back(res->reg(visit(node->body, c)));
-            if (res->shouldReturn()) return res;
+            value = res->reg(visit(node->body, c));
+            if (res->shouldReturn() && !res->loopContinue && !res->loopBreak) return res;
+
+            if (res->loopContinue) {
+                continue;
+            }
+            if (res->loopBreak) {
+                break;
+            }
+            elements.push_back(value);
         }
     } else {
         return res->failure(new RuntimeError(
@@ -86,8 +110,8 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
     }
 
 
-    //delete node->iterNameTok;
-    delete node;
+    //Err here
+    //delete node;
     return res->success(val);
 }
 
@@ -147,7 +171,6 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     if (forNode->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[n->line]);
     }
-
     delete forNode;
     return res->success(val);
 }
@@ -243,7 +266,7 @@ RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     auto *result = new RuntimeResult();
     auto *node = (VarAccessNode *) n;
-    BaseValue *value = nullptr;
+    BaseValue *value;
     string varName;
 
     if (node->toGetIdentifierFrom){
@@ -403,7 +426,6 @@ RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
             node->token->posEnd,
             node->token->line
     );
-    //cout << num->numValue << endl;
     return (new RuntimeResult())->success(num);
 }
 
@@ -475,31 +497,21 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         }
     } else if (left->type == T_STRING) {
         if (((String<string> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((String<string> *) left)->rtError);
-            ((String<string> *) left)->rtError = nullptr;
-            return r;
+            return rtRes->failure(((String<string> *) left)->rtError);
         }
     } else if (left->type == T_FUNC) {
         if (((BaseFunction<int> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((BaseFunction<int> *) left)->rtError);
-            ((BaseFunction<int> *) left)->rtError = nullptr;
-            return r;
+            return rtRes->failure(((BaseFunction<int> *) left)->rtError);
         }
     } else if (left->type == T_LIST) {
         if (((List<vector<BaseValue *>> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((List<vector<BaseValue *>> *) left)->rtError);
-            ((List<vector<BaseValue *>> *) left)->rtError = nullptr;
-            return r;
+            return rtRes->failure(((List<vector<BaseValue *>> *) left)->rtError);
         }
     } else if (left->type == T_MAP) {
         if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
-            RuntimeResult *r = rtRes->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
-            ((Map<map<BaseValue *, BaseValue *>> *) left)->rtError = nullptr;
-            return r;
+            return rtRes->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
         }
     }
-
-    //cout << result->toString() << endl;
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 

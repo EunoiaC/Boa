@@ -50,11 +50,10 @@ RunResult RunInterface::readFile(string filePath) {
     }
     return make_pair(result->value, nullptr);
 }
-
 void RunInterface::run(string fileName) {
     clock_t start = clock();
-    RunResult run = readFile(fileName);
-    if (run.second) {
+    RunResult run = readFile(move(fileName));
+    if (run.second != nullptr) {
         cout << run.second->toString() << endl;
         delete run.second;
     } else {

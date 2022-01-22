@@ -9,11 +9,11 @@
 
 class RuntimeResult {
 public:
-    BaseValue * funcReturnValue;
-    bool loopContinue, loopBreak;
+    BaseValue * funcReturnValue{};
+    bool loopContinue{}, loopBreak{};
     void reset();
-    BaseValue *value;
-    Error *error;
+    BaseValue *value{};
+    Error *error{};
     RuntimeResult();
     BaseValue *reg(RuntimeResult *result);
     RuntimeResult *success(BaseValue *value);

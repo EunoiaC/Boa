@@ -11,7 +11,6 @@
 template<>
 Number<double>::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {
     numValue = value;
-    rtError = nullptr;
 
     map<string, BaseValue *> defaultArgs;
 

@@ -10,6 +10,7 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
         elements, T_LIST, f, txt) {
     this->elements = elements;
     map<string, BaseValue *> defaultArgs;
+    rtError = nullptr;
 
     symbolTable->set("pop", new ListFunction<int>(this, "pop", {"index"},
                                                       defaultArgs, "",

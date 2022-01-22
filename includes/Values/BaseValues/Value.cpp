@@ -9,6 +9,7 @@ Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue
     val = v;
     setContext(nullptr);
     symbolTable = new SymbolTable();
+    rtError = nullptr;
 }
 
 template<class valueType>

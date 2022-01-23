@@ -40,6 +40,7 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("lenOf", lenOf);
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
+    globalSymbolTable->set("eval", eval);
     RunInterface * runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
     return 0;

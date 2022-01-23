@@ -24,6 +24,7 @@ public:
     SymbolTable *globalSymbolTable;
     RunInterface(SymbolTable *symbolTable, string pathRef);
     RunResult readFile(string fileName);
+    RunResult readLine(string fileName);
     void run(string fileName);
 };
 

@@ -239,8 +239,10 @@ RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
         if (res->shouldReturn()) return res;
     }
 
+    string fTxt = lines.size() == 1 ? lines[0] : lines[n->line];
+
     return res->success(
-            (new List<vector<BaseValue *>>(elements, fName, lines[listNode->line]))->setContext(c)->setPos(n->posStart,
+            (new List<vector<BaseValue *>>(elements, fName, fTxt))->setContext(c)->setPos(n->posStart,
                                                                                                            n->posEnd,
                                                                                                            n->line));
 }

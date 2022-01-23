@@ -46,7 +46,7 @@ public:
     BaseToken * reverse(int amnt);
     void updateCurrentTok();
     void checkNewLines();
-    void checkNewLinesTo(string type);
+    bool checkNewLinesTo(string type);
 
     ParseResult * factor();
     ParseResult * term();

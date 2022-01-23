@@ -3,6 +3,7 @@
 //
 
 #include "BuiltInFunction.h"
+#include "../../RunInterface.h"
 
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
@@ -119,6 +120,36 @@ RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    BaseValue *val = execCtx->symbolTable->get("value");
+    if (val->type != T_STRING) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        val->posStart,
+                        val->posEnd,
+                        val->line,
+                        val->fName,
+                        val->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+
+    RunInterface *runInterface = new RunInterface(execCtx->symbolTable, "");
+    RunResult r = runInterface->readLine(((String<string> *) val)->getValue());
+    if (r.second) {
+        cout << r.second->toString() << endl;
+        return (new RuntimeResult())->success(new Number<double>(-1, "", ""));
+    }
+    return (new RuntimeResult())->success(r.first);
+}
+
+template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -129,6 +160,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_toStr"] = &BuiltInFunction<int>::execute_toStr;
     funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
     funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
+    funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
 }
 
 template<>

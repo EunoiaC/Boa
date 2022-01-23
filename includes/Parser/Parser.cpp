@@ -23,15 +23,18 @@ void Parser::checkNewLines() {
 }
 
 // Check new lines till a certain token is found, if not found, it reverses
-void Parser::checkNewLinesTo(string type) {
+bool Parser::checkNewLinesTo(string type) {
     int rev = 0;
+    bool success = true;
     while (currentToken->getType() == STOP_EXPR) {
         advance();
         rev++;
     }
     if (currentToken->getType() != type) {
         reverse(rev);
+        success = false;
     }
+    return success;
 }
 
 BaseToken *Parser::advance() {
@@ -55,6 +58,7 @@ void Parser::updateCurrentTok() {
 }
 
 ParseResult *Parser::parse() {
+    checkNewLines();
     ParseResult *res = statements();
     if(priorityError) return res->failure(priorityError);
     if (!res->error) {
@@ -115,7 +119,9 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        checkNewLinesTo(ELIF);
+        if (!checkNewLinesTo(ELIF)){
+            checkNewLinesTo(ELSE);
+        }
     } else {
         exp = res->reg(statement());
         if (res->error) return res;

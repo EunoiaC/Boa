@@ -1,17 +1,35 @@
-alphabet = "abcdefghijklmnopqrstuvwxyz"
-op ceaserify(string, shift) do {
-    res = ""
+"Boa REPL"
 
-    for char : string do {
-        if char == " " do {
-            res += " "
-            continue
-        }
-        toGet = (alphabet.indexOf(char) + shift) % 26
-        res += alphabet ? toGet
-    }
+print("Welcome to the Boa REPL!")
 
-    return res
+REPL_VERSION = "0.1.0"
+BOA_VERSION = "0.4.1"
+
+op version() do {
+    print("Boa REPL version is " + REPL_VERSION)
+    print("Boa version is " + BOA_VERSION)
 }
 
-print(ceaserify("hello", 2))
+funcMap = {
+    "version": version
+}
+
+while true do {
+    toRun = input(">> ")
+    if toRun == "exit" do {
+        print("Exiting...")
+        break
+    }
+    if (toRun ? 0) + (toRun ? 1) == "--" do {
+        func = toRun.slice(2)
+        if funcMap.keys.indexOf(func) == -1 do {
+            print("Command not found: " + func)
+            continue
+        }
+        (funcMap ? func)()
+        continue
+    }
+    if eval(toRun) == -1 do {
+        print("\nOops! An error! Oh well.")
+    }
+}

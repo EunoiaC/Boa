@@ -20,5 +20,6 @@ BuiltInFunction<int> * toNum = new BuiltInFunction<int>("toNum", {"value"}, {}, 
 BuiltInFunction<int> * lenOf = new BuiltInFunction<int>("lenOf", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, fName, fTxt);
+BuiltInFunction<int> * eval = new BuiltInFunction<int>("eval", {"value"}, {}, fName, fTxt);
 
 #endif //BOA_CONSTANTS_H

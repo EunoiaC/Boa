@@ -14,6 +14,14 @@ SymbolTable::SymbolTable(SymbolTable *parent) {
     this->parent = parent;
 }
 
+string SymbolTable::toString() {
+    string str = "";
+    for (auto &symbol : symbols) {
+        str += symbol.first + " " + symbol.second->toString() + "\n";
+    }
+    return str;
+}
+
 BaseValue *SymbolTable::get(string key) {
     BaseValue * val = nullptr;
     if(symbols.count(key)){

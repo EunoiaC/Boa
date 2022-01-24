@@ -3,10 +3,14 @@
 //
 
 #include "RunInterface.h"
+#include <utility>
 
 RunInterface::RunInterface(SymbolTable *symbolTable, string pathRef) {
-    this->globalSymbolTable = symbolTable;
-    this->pathRef = pathRef;
+    this->globalSymbolTable = *&symbolTable;
+    this->pathRef = move(pathRef);
+    l = nullptr;
+    res = nullptr;
+    p = nullptr;
 }
 
 RunResult RunInterface::readLine(string line) {

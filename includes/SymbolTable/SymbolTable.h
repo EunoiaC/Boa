@@ -15,6 +15,7 @@ public:
     SymbolTable(SymbolTable *parent);
     map<string, BaseValue *> symbols;
     SymbolTable *parent;
+    string toString();
     BaseValue *get(string key);
     void set(string key, BaseValue *value);
     void remove(string key);

@@ -20,16 +20,19 @@ while true do {
         print("Exiting...")
         break
     }
-    if (toRun ? 0) + (toRun ? 1) == "--" do {
-        func = toRun.slice(2)
-        if funcMap.keys.indexOf(func) == -1 do {
-            print("Command not found: " + func)
+    if lenOf(toRun) > 2 do {
+        if (toRun ? 0) + (toRun ? 1) == "--" do {
+            func = toRun.slice(2)
+            if funcMap.keys.indexOf(func) == -1 do {
+                print("Command not found: " + func)
+                continue
+            }
+            (funcMap ? func)()
             continue
         }
-        (funcMap ? func)()
-        continue
     }
-    if eval(toRun) == -1 do {
+    res = eval(toRun)
+    if res == -1 do {
         print("\nOops! An error! Oh well.")
-    }
+    } else do print(res)
 }

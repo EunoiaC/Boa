@@ -34,5 +34,7 @@ while true do {
     res = eval(toRun)
     if res == -1 do {
         print("\nOops! An error! Oh well.")
-    } else do print(res)
+    } else do {
+        if lenOf(res) == 1 do print(res ? 0) else do print(res)
+    }
 }

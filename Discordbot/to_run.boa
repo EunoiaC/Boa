@@ -1,9 +1,4 @@
 running = true
 
-op test(args) do {
-  for arg : args do {
-    print(arg)
-  }
-}
-
-test([1, 2.718, "test", true, -9])
+x = "ur mom"
+print(x)

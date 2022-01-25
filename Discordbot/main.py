@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 import os
+import subprocess
 
 #invite link: https://discord.com/oauth2/authorize?client_id=931006649815167006&permissions=274877908992&scope=bot
 
@@ -21,11 +22,12 @@ async def on_ready():
 async def on_message(message):
     content = message.content
     if content.startswith('!run'):
-
-        text = content[4:len(content)-4]
+        text = content[4:content.rfind('`')-2]
         backTickCount = 0
 
         fTxt = ""
+        args = content[content.rfind('`')+1:len(content)]
+        args = args.split(' ')
 
         for i in range(len(text)):
             if text[i] == '`':
@@ -41,8 +43,16 @@ async def on_message(message):
             tmp.write(fTxt)
             tmp.close()
             print("File written")
-            output = os.popen("boa " + path).read().split('\n')
-            execTime = output[len(output)-2]
+            sub = subprocess.Popen(["boa", path], stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE)
+            for arg in args:
+                print(arg)
+
+            lines = sub.stdout.readlines()
+            output = []
+            for line in lines:
+                output.append(line.decode('utf-8'))
+            print(output)
+            execTime = output[len(output)-1]
 
             if output[0].startswith("Traceback"):
                 error = output[len(output)-4]
@@ -52,8 +62,10 @@ async def on_message(message):
 
             strOut = ""
 
-            for i in range(len(output) - 2):
-                strOut += output[i] + '\n'
+            for i in range(len(output) - 1):
+                strOut += output[i]
+
+            print(strOut)
 
             if strOut.startswith("Traceback"):
                 embed = discord.Embed(

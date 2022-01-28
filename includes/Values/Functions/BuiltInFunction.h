@@ -28,6 +28,7 @@ public:
     RuntimeResult * execute_lenOf(Context * execCtx);
     RuntimeResult * execute_instanceOf(Context * execCtx);
     RuntimeResult * execute_eval(Context * execCtx);
+    RuntimeResult * execute_rename(Context * execCtx);
 
     string toString() override;
 };

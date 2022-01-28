@@ -21,5 +21,6 @@ BuiltInFunction<int> * lenOf = new BuiltInFunction<int>("lenOf", {"value"}, {}, 
 BuiltInFunction<int> * toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * eval = new BuiltInFunction<int>("eval", {"value"}, {}, fName, fTxt);
+BuiltInFunction<int> * _rename = new BuiltInFunction<int>("rename", {"oldName", "newName"}, {}, fName, fTxt);
 
 #endif //BOA_CONSTANTS_H

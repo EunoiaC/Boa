@@ -41,6 +41,7 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("toStr", toStr);
     globalSymbolTable->set("typeOf", instanceOf);
     globalSymbolTable->set("eval", eval);
+    globalSymbolTable->set("rename", _rename);
     RunInterface * runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
     return 0;

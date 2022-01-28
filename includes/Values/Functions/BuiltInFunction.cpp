@@ -156,6 +156,70 @@ RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    BaseValue *oldName = execCtx->symbolTable->get("oldName");
+    if (oldName->type != T_STRING) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        oldName->posStart,
+                        oldName->posEnd,
+                        oldName->line,
+                        oldName->fName,
+                        oldName->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+
+    BaseValue *newName = execCtx->symbolTable->get("newName");
+    if (newName->type != T_STRING) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        newName->posStart,
+                        newName->posEnd,
+                        newName->line,
+                        newName->fName,
+                        newName->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+
+    BaseValue * valToTransfer = execCtx->symbolTable->get(oldName->toString());
+
+    if (valToTransfer == nullptr) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        oldName->posStart,
+                        oldName->posEnd,
+                        oldName->line,
+                        oldName->fName,
+                        oldName->fTxt,
+                        "Variable doesn't exist",
+                        execCtx
+                )
+        );
+    }
+
+    SymbolTable * mainSym = execCtx->symbolTable;
+
+    while (mainSym->parent) {
+        mainSym = mainSym->parent;
+    }
+
+    mainSym->set(newName->toString(), valToTransfer->copy());
+    mainSym->remove(oldName->toString());
+
+    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
+}
+
+template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -167,6 +231,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
     funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
     funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
+    funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
 }
 
 template<>

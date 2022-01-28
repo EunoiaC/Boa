@@ -38,5 +38,12 @@ void SymbolTable::set(string key, BaseValue *value) {
 }
 
 void SymbolTable::remove(string key) {
-    delete symbols[key];
+    SymbolTable * toRemoveFrom = nullptr;
+    if(symbols.count(key)){
+        toRemoveFrom = this;
+    }
+    if (toRemoveFrom == nullptr && parent) {
+        toRemoveFrom = parent;
+    }
+    toRemoveFrom->symbols.erase(key);
 }

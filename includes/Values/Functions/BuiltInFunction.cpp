@@ -220,6 +220,30 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    auto * sym = new Map<map<BaseValue *, BaseValue *>>({}, "", "");
+
+    SymbolTable * mainSym = execCtx->symbolTable;
+    while (mainSym->parent) {
+        mainSym = mainSym->parent;
+    }
+
+    for(auto &it : mainSym->symbols) {
+        auto * key = new String<string>(it.first, "", "");
+        BaseValue * val = it.second->copy();
+
+        sym->plusEquals(new List<vector<BaseValue *>>({key, val}, "", ""));
+    }
+
+
+    return (new RuntimeResult())->success(sym);
+}
+
+template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -232,6 +256,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
     funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
     funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
+    funcMap["execute_getSymbolTable"] = &BuiltInFunction<int>::execute_getSymbolTable;
 }
 
 template<>

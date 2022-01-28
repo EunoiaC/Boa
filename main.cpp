@@ -31,6 +31,7 @@ int main(int argc, char** argv) {
         filePath = filePath.substr(filePath.find_last_of("/\\") + 1);
         pathRef += "/";
     }
+
     globalSymbolTable->set("null", new Number<double>(0, "", ""));
     globalSymbolTable->set("true", new Number<double>(1, "", ""));
     globalSymbolTable->set("false", new Number<double>(0, "", ""));
@@ -42,6 +43,8 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("typeOf", instanceOf);
     globalSymbolTable->set("eval", eval);
     globalSymbolTable->set("rename", _rename);
+    globalSymbolTable->set("getSymbolTable", getSymbolTable);
+
     RunInterface * runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
     return 0;

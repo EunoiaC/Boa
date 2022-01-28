@@ -268,10 +268,6 @@ Interpreter/Interpreter.h
 ../Errors/Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.cpp
-SymbolTable.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
 map
 -

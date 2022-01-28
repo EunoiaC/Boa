@@ -10,8 +10,16 @@ op version() do {
     print("Boa version is " + BOA_VERSION)
 }
 
+op symbols() do {
+    symbols = getSymbolTable()
+    for symbol : symbols do {
+        print(symbol)
+    }
+}
+
 funcMap = {
-    "version": version
+    "version": version,
+    "symbols": symbols
 }
 
 while true do {

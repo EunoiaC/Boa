@@ -22,5 +22,7 @@ BuiltInFunction<int> * toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, 
 BuiltInFunction<int> * instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * eval = new BuiltInFunction<int>("eval", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * _rename = new BuiltInFunction<int>("rename", {"oldName", "newName"}, {}, fName, fTxt);
+BuiltInFunction<int> * getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, fName, fTxt);
+
 
 #endif //BOA_CONSTANTS_H

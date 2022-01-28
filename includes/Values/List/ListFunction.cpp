@@ -149,22 +149,55 @@ RuntimeResult *ListFunction<int>::execute_append(Context *execCtx) {
     return res->success(value);
 }
 
+struct compare
+{
+    BaseValue* key;
+    explicit compare(BaseValue* const &i): key(i) {}
+
+    bool operator()(BaseValue* const &i) {
+        return (((Number<double>* ) i->compEquals(key))->getValue() == 1);
+    }
+};
+
 template<>
 RuntimeResult *ListFunction<int>::execute_indexOf(Context *execCtx) {
-    struct compare
-    {
-        BaseValue* key;
-        explicit compare(BaseValue* const &i): key(i) {}
-
-        bool operator()(BaseValue* const &i) {
-            return (((Number<double>* ) i->compEquals(key))->getValue() == 1);
-        }
-    };
-
     BaseValue * key = execCtx->symbolTable->get("key");
     auto itr = find_if(value->elements.begin(), value->elements.end(), compare(key));
     return (new RuntimeResult())->success(
             new Number<double>(itr != value->elements.end() ? distance(value->elements.begin(), itr) : -1, "", ""));
+}
+
+template<>
+RuntimeResult *ListFunction<int>::execute_set(Context *execCtx) {
+    BaseValue * idx = execCtx->symbolTable->get("idx");
+    BaseValue * val = execCtx->symbolTable->get("val");
+    if(idx->type != T_NUM){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                idx->posStart,
+                idx->posEnd,
+                idx->line,
+                idx->fName,
+                idx->fTxt,
+                "Expected a NUMBER",
+                execCtx
+        ));
+    }
+
+    int idxVal = ((Number<double>*) idx)->getValue();
+    if(idxVal < 0 || idxVal >= value->elements.size()){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                idx->posStart,
+                idx->posEnd,
+                idx->line,
+                idx->fName,
+                idx->fTxt,
+                "Index out of range",
+                execCtx
+        ));
+    }
+
+    value->elements[idxVal] = val;
+    return (new RuntimeResult())->success(value);
 }
 
 template<>
@@ -176,6 +209,7 @@ ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, v
     funcMap["execute_append"] = &ListFunction<int>::execute_append;
     funcMap["execute_slice"] = &ListFunction<int>::execute_slice;
     funcMap["execute_indexOf"] = &ListFunction<int>::execute_indexOf;
+    funcMap["execute_set"] = &ListFunction<int>::execute_set;
     this->defaultArgs = defaultArgs;
 }
 

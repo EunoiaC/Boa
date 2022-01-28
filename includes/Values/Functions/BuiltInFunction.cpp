@@ -140,7 +140,13 @@ RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
         );
     }
 
-    auto *runInterface = new RunInterface(execCtx->symbolTable->parent, "");
+    SymbolTable *symToUse = execCtx->symbolTable;
+
+    while(symToUse->parent) {
+        symToUse = symToUse->parent;
+    }
+
+    auto *runInterface = new RunInterface(symToUse, "");
     RunResult r = runInterface->readLine(((String<string> *) val)->getValue());
     if (r.second) {
         cout << r.second->toString() << endl;

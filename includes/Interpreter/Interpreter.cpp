@@ -171,13 +171,13 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
     if (forNode->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[n->line]);
     }
-    delete forNode;
+
     return res->success(val);
 }
 
 RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
-    WhileNode *whileNode = (WhileNode *) n;
+    auto *res = new RuntimeResult();
+    auto *whileNode = (WhileNode *) n;
     vector<BaseValue *> elements;
 
     BaseValue *val;

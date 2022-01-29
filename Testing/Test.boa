@@ -1,3 +1,41 @@
-random = __random__
+"Hangman"
 
-print(random.choose(for i = 0 to 100 do i))
+words = [
+    "bus",
+    "car",
+    "cat",
+    "dog",
+    "elephant",
+    "fish",
+    "giraffe"
+]
+
+word = __random__.choose(words)
+print(word)
+tries = 0
+guesses = []
+
+underscores = for i = 0 to lenOf(word) - 1 do "_"
+while tries <= 6 do {
+    guess = input("Guess a letter: ")
+
+    if guesses.indexOf(guess) != -1 do {
+        print("You already guessed that letter!")
+        continue
+    }
+
+    guesses.append(guess)
+    if word.indexOf(guess) == -1 do { 
+        tries += 1
+        print("oops, wrong guess")
+    } else do {
+        print("You guessed correctly!")
+        for i = 0 to lenOf(word) - 1 do {
+            if word ? i == guess do {
+                (underscores ? i) = (word ? i)
+            }
+        }
+    }
+
+    print("".join(underscores))
+}

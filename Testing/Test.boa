@@ -1,5 +1,4 @@
-print("err")
-x = {"l" : 1,
-     "m" : 2,
-     "n" : 3}
-print(x)
+"test syntax errors"
+list = [1, 2,3,
+        4, 5, 6]
+print(list)

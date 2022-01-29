@@ -704,10 +704,10 @@ ParseResult *Parser::listExpr() {
     } else {
         elements.push_back(res->reg(expr()));
         if (res->error) {
-            return res->failure(
-                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                              "InvalidSyntaxError",
-                              "Expected a ']', identifier, conditional keyword, 'op', or number."));
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError",
+                                      "Expected a ',' or ']'");
+            return res->failure(priorityError);
         }
         while (currentToken->getType() == COMMA) {
             res->regAdvancement();
@@ -886,6 +886,7 @@ ParseResult *Parser::call() {
             }
             bool success = checkNewLinesTo(R_PAREN);
             if (!success) {
+                if(!(currentToken->getType() == STOP_EXPR)) reverse(1);
                 priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
                                           lines[currentToken->line],
                                           "InvalidSyntaxError",

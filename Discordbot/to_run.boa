@@ -1,3 +1,5 @@
 running = true
 
-print('Rishb is bery bad and is trash')
+random = __random__
+print(random.randrange(0, 20))
+print(random.choose([12, 13, "ur", "mom"]))

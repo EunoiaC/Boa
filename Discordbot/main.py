@@ -52,6 +52,7 @@ async def on_message(message):
             for line in lines:
                 output.append(line.decode('utf-8'))
             print(output)
+            print(output)
             execTime = output[len(output)-1]
 
             if output[0].startswith("Traceback"):

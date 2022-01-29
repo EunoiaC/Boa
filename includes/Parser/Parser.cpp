@@ -60,7 +60,7 @@ void Parser::updateCurrentTok() {
 ParseResult *Parser::parse() {
     checkNewLines();
     ParseResult *res = statements();
-    if(priorityError) return res->failure(priorityError);
+    if (priorityError) return res->failure(priorityError);
     if (!res->error) {
         if (currentToken->getType() != END_OF_FILE && currentToken->getType() != STOP_EXPR) {
             return res->failure(
@@ -88,8 +88,8 @@ ParseResult *Parser::ifExpr() {
     if (res->error) return res;
 
     if (currentToken->getType() != DO) {
-        priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                   "InvalidSyntaxError", "Expected 'do'");
+        priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected 'do'");
         return res->failure(priorityError);
     }
     delete currentToken;
@@ -119,7 +119,7 @@ ParseResult *Parser::ifExpr() {
         res->regAdvancement();
         advance();
 
-        if (!checkNewLinesTo(ELIF)){
+        if (!checkNewLinesTo(ELIF)) {
             checkNewLinesTo(ELSE);
         }
     } else {
@@ -137,8 +137,8 @@ ParseResult *Parser::ifExpr() {
         if (res->error) return res;
 
         if (currentToken->getType() != DO) {
-            priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                       "InvalidSyntaxError", "Expected 'do'");
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'do'");
             return res->failure(priorityError);
         }
 
@@ -182,8 +182,8 @@ ParseResult *Parser::ifExpr() {
         advance();
 
         if (currentToken->getType() != DO) {
-            priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                       "InvalidSyntaxError", "Expected 'do'");
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'do'");
             return res->failure(
                     priorityError);
         }
@@ -261,8 +261,8 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
     if (res->error) return res;
 
     if (currentToken->getType() != DO) {
-        priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                   "InvalidSyntaxError", "Expected 'do'");
+        priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected 'do'");
         return res->failure(
                 priorityError);
     }
@@ -365,8 +365,8 @@ ParseResult *Parser::forExpr() {
     }
 
     if (currentToken->getType() != DO) {
-        priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                   "InvalidSyntaxError", "Expected 'do'");
+        priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected 'do'");
         return res->failure(
                 priorityError);
     }
@@ -421,8 +421,8 @@ ParseResult *Parser::whileExpr() {
     if (res->error) return res;
 
     if (currentToken->getType() != DO) {
-        priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                   "InvalidSyntaxError", "Expected 'do' or 'chgby'");
+        priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected 'do' or 'chgby'");
         return res->failure(
                 priorityError);
     }
@@ -490,10 +490,10 @@ ParseResult *Parser::funcDef() {
     advance();
     vector<Token<string> *> argNames;
     bool defaultArgs = false;
-    map<string, Node*> defaultArgValues;
+    map<string, Node *> defaultArgValues;
 
     if (currentToken->getType() == IDENTIFIER) {
-        Token<string> * argName = (Token<string> *) currentToken;
+        Token<string> *argName = (Token<string> *) currentToken;
         argNames.push_back(argName);
 
         res->regAdvancement();
@@ -588,8 +588,8 @@ ParseResult *Parser::funcDef() {
         // Single line function
         return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, returnNode, true));
     } else {
-        priorityError  = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                   "InvalidSyntaxError", "Expected 'do'");
+        priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected 'do'");
         return res->failure(
                 priorityError);
     }
@@ -775,29 +775,31 @@ ParseResult *Parser::atom() {
         advance();
         string type = currentToken->getType();
         //If the token is equal, we assign a new variable to the node
-        vector<BaseToken*> identifiers;
+        vector<BaseToken *> identifiers;
         if (type == EQUAL) {
             res->regAdvancement();
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
-        } else if(type == DOT){
+        } else if (type == DOT) {
             res->regAdvancement();
             advance();
-            if(currentToken->getType() != IDENTIFIER){
-                return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                              "InvalidSyntaxError", "Expected an identifier"));
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
             }
             identifiers.push_back(currentToken);
             res->regAdvancement();
             advance();
-            while(currentToken->getType() == DOT){
+            while (currentToken->getType() == DOT) {
                 res->regAdvancement();
                 advance();
-                if(currentToken->getType() != IDENTIFIER){
-                    return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                                  "InvalidSyntaxError", "Expected an identifier"));
+                if (currentToken->getType() != IDENTIFIER) {
+                    return res->failure(
+                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected an identifier"));
                 }
                 identifiers.push_back(currentToken);
                 res->regAdvancement();
@@ -843,7 +845,7 @@ ParseResult *Parser::call() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
     Node *_atom;
-    if(!toCall) {
+    if (!toCall) {
         _atom = res->reg(atom());
         if (res->error) return res;
     } else {
@@ -880,12 +882,13 @@ ParseResult *Parser::call() {
                 args.push_back(res->reg(expr()));
                 if (res->error) return res;
             }
-            checkNewLines();
-            if (currentToken->getType() != R_PAREN) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError",
-                                  "Expected ',' or ')'"));
+            bool success = checkNewLinesTo(R_PAREN);
+            if (!success) {
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
+                                          currLine,
+                                          "InvalidSyntaxError",
+                                          "Expected ',' or ')'");
+                return res->failure(priorityError);
             }
             delete currentToken;
             res->regAdvancement();
@@ -1046,29 +1049,31 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
 
     while (find(ops.begin(), ops.end(), currentToken->getType()) != ops.end()) {
         BaseToken *opTok = currentToken;
-        if(opTok->getType() == DOT){
-            vector<BaseToken*> identifiers;
+        if (opTok->getType() == DOT) {
+            vector<BaseToken *> identifiers;
             res->regAdvancement();
             advance();
-            if(currentToken->getType() != IDENTIFIER){
-                return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                              "InvalidSyntaxError", "Expected an identifier"));
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
             }
             identifiers.push_back(currentToken);
             res->regAdvancement();
             advance();
-            while(currentToken->getType() == DOT){
+            while (currentToken->getType() == DOT) {
                 res->regAdvancement();
                 advance();
-                if(currentToken->getType() != IDENTIFIER){
-                    return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                                  "InvalidSyntaxError", "Expected an identifier"));
+                if (currentToken->getType() != IDENTIFIER) {
+                    return res->failure(
+                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected an identifier"));
                 }
                 identifiers.push_back(currentToken);
                 res->regAdvancement();
                 advance();
             }
-            if(currentToken->getType() == L_PAREN){
+            if (currentToken->getType() == L_PAREN) {
                 toCall = new VarAccessNode(nullptr, identifiers, left);
                 return call();
             }

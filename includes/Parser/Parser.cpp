@@ -45,6 +45,7 @@ BaseToken *Parser::advance() {
 
 BaseToken *Parser::reverse(int amnt) {
     tokIdx -= amnt;
+    reversing = true;
     updateCurrentTok();
     return currentToken;
 }
@@ -52,8 +53,15 @@ BaseToken *Parser::reverse(int amnt) {
 void Parser::updateCurrentTok() {
     if (tokIdx >= 0 && tokIdx < tokens.size()) {
         currentToken = tokens[tokIdx];
-        if (currentToken->getType() == STOP_EXPR) line++;
-        currLine = line < lines.size() ? lines[line] : lines[currentToken->line];
+        if (currentToken->getType() == STOP_EXPR) {
+            if(reversing) {
+                line--;
+                reversing = false;
+            } else {
+                line++;
+            }
+        }
+        currLine = currentToken->line < lines.size() ? lines[currentToken->line] : lines[line];
     }
 }
 
@@ -660,15 +668,12 @@ ParseResult *Parser::mapExpr() {
 
             map[key] = value;
         }
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
-        if (currentToken->getType() != R_CURLY_BRACKET) {
-            return res->failure(
-                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                              "InvalidSyntaxError",
-                              "Expected ',' or '}'"));
+        bool success = checkNewLinesTo(R_CURLY_BRACKET);
+        if (!success) {
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError",
+                                      "Expected ',' or '}'");
+            return res->failure(priorityError);
         }
         res->regAdvancement();
         advance();
@@ -713,15 +718,12 @@ ParseResult *Parser::listExpr() {
             elements.push_back(res->reg(expr()));
             if (res->error) return res;
         }
-        while (currentToken->getType() == STOP_EXPR) {
-            res->regAdvancement();
-            advance();
-        }
-        if (currentToken->getType() != R_BRACKET) {
-            return res->failure(
-                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                              "InvalidSyntaxError",
-                              "Expected ',' or ']'"));
+        bool success = checkNewLinesTo(R_BRACKET);
+        if (!success){
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, lines[currentToken->line],
+                                      "InvalidSyntaxError",
+                                      "Expected ',' or ']'");
+            return res->failure(priorityError);
         }
         res->regAdvancement();
         advance();
@@ -884,10 +886,10 @@ ParseResult *Parser::call() {
             }
             bool success = checkNewLinesTo(R_PAREN);
             if (!success) {
-                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
-                                          currLine,
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
+                                          lines[currentToken->line],
                                           "InvalidSyntaxError",
-                                          "Expected ',' or ')'");
+                                          "Expected a  ',' or ')'");
                 return res->failure(priorityError);
             }
             delete currentToken;

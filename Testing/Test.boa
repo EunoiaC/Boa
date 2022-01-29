@@ -1,3 +1,5 @@
-rename("__random__", "random")
-print(random.choose([12, 13, "ur", "mom"]))
-print(random.choose([12, 13, "ur", "mom"]))
+print("err")
+x = {"l" : 1,
+     "m" : 2,
+     "n" : 3}
+print(x)

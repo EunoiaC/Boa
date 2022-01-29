@@ -40,6 +40,7 @@ public:
     int line;
     Error * priorityError;
     Node * toCall;
+    bool reversing = false;
 
     BaseToken * currentToken;
     BaseToken * advance();

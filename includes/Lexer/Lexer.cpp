@@ -13,7 +13,7 @@ Lexer::Lexer(string fileText, string fileName, vector<string> lines) {
     this->lines = lines;
     charIdx = -1;
     charLineIdx = -1;
-    lineIdx = 0; //0 is first line
+    lineIdx = 0;
     advance();
 }
 
@@ -245,6 +245,6 @@ vector<BaseToken *> Lexer::makeTokens() {
 
         }
     }
-    toks.push_back(new BaseToken(END_OF_FILE, charIdx, charIdx, lineIdx - 1)); //-1 since the last line is empty
+    toks.push_back(new BaseToken(END_OF_FILE, charLineIdx, charLineIdx, lineIdx - 1)); //-1 since the last line is empty
     return toks;
 }

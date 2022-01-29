@@ -1,4 +1,17 @@
-"test syntax errors"
-list = [1, 2,3,
-        4, 5, 6]
-print(list)
+"password generator"
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+numbers = "0123456789"
+special_characters = "!@#$%^&*()_+"
+
+rename("__random__", "random")
+
+op makePassword(len) do {
+    password = ""
+    allThings = (alphabet + numbers + special_characters).split("")
+    while lenOf(password) < len do {
+        password += random.choose(allThings)
+    }
+    return password
+}
+
+print(makePassword(10))

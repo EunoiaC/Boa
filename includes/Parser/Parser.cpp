@@ -430,7 +430,7 @@ ParseResult *Parser::whileExpr() {
 
     if (currentToken->getType() != DO) {
         priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected 'do' or 'chgby'");
+                                  "InvalidSyntaxError", "Expected 'do'");
         return res->failure(
                 priorityError);
     }

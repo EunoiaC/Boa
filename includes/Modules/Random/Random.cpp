@@ -16,6 +16,11 @@ Random<int>::Random(string f, string txt) : Value<int>(0, "RANDOM", std::move(f)
 }
 
 template<>
+BaseValue * Random<int>::copy() {
+    return new Random<int>(*this);
+}
+
+template<>
 string Random<int>::toString() {
     return "<Module: random>";
 }

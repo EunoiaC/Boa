@@ -10,6 +10,7 @@
 template<typename T> class Random : public Value<T> {
 public:
     Random<int>(string f, string txt);
+    BaseValue * copy() override;
     string toString() override;
 };
 

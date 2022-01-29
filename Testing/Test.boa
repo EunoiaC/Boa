@@ -10,7 +10,9 @@ words = [
     "giraffe"
 ]
 
-word = __random__.choose(words)
+rename("__random__", "random")
+
+word = random.choose(words)
 print(word)
 tries = 0
 guesses = []

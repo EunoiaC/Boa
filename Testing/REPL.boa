@@ -1,0 +1,48 @@
+"Boa REPL"
+
+print("Welcome to the Boa REPL!")
+
+REPL_VERSION = "0.1.0"
+BOA_VERSION = "0.4.1"
+
+op version() do {
+    print("Boa REPL version is " + REPL_VERSION)
+    print("Boa version is " + BOA_VERSION)
+}
+
+op symbols() do {
+    symbols = getSymbolTable()
+    for symbol : symbols do {
+        print(symbol)
+    }
+}
+
+funcMap = {
+    "version": version,
+    "symbols": symbols
+}
+
+while true do {
+    toRun = input(">> ")
+    if toRun == "exit" do {
+        print("Exiting...")
+        break
+    }
+    if lenOf(toRun) > 2 do {
+        if (toRun ? 0) + (toRun ? 1) == "--" do {
+            func = toRun.slice(2)
+            if funcMap.keys.indexOf(func) == -1 do {
+                print("Command not found: " + func)
+                continue
+            }
+            (funcMap ? func)()
+            continue
+        }
+    }
+    res = eval(toRun)
+    if res == -1 do {
+        print("\nOops! An error! Oh well.")
+    } else do {
+        if lenOf(res) == 1 do print(res ? 0) else do print(res)
+    }
+}

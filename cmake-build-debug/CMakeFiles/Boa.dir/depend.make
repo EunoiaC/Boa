@@ -76,6 +76,35 @@ CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Random/Random.cpp \
+ ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Random/RandomFunction.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number/Number.h
+CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Random/RandomFunction.cpp \
+ ../includes/Modules/Random/RandomFunction.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -593,6 +622,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ForNode.h \

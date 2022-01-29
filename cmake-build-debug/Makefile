@@ -249,6 +249,54 @@ includes/Lexer/Lexer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.s
 .PHONY : includes/Lexer/Lexer.cpp.s
 
+includes/Modules/Random/Random.o: includes/Modules/Random/Random.cpp.o
+.PHONY : includes/Modules/Random/Random.o
+
+# target to build an object file
+includes/Modules/Random/Random.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o
+.PHONY : includes/Modules/Random/Random.cpp.o
+
+includes/Modules/Random/Random.i: includes/Modules/Random/Random.cpp.i
+.PHONY : includes/Modules/Random/Random.i
+
+# target to preprocess a source file
+includes/Modules/Random/Random.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.i
+.PHONY : includes/Modules/Random/Random.cpp.i
+
+includes/Modules/Random/Random.s: includes/Modules/Random/Random.cpp.s
+.PHONY : includes/Modules/Random/Random.s
+
+# target to generate assembly for a file
+includes/Modules/Random/Random.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.s
+.PHONY : includes/Modules/Random/Random.cpp.s
+
+includes/Modules/Random/RandomFunction.o: includes/Modules/Random/RandomFunction.cpp.o
+.PHONY : includes/Modules/Random/RandomFunction.o
+
+# target to build an object file
+includes/Modules/Random/RandomFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o
+.PHONY : includes/Modules/Random/RandomFunction.cpp.o
+
+includes/Modules/Random/RandomFunction.i: includes/Modules/Random/RandomFunction.cpp.i
+.PHONY : includes/Modules/Random/RandomFunction.i
+
+# target to preprocess a source file
+includes/Modules/Random/RandomFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.i
+.PHONY : includes/Modules/Random/RandomFunction.cpp.i
+
+includes/Modules/Random/RandomFunction.s: includes/Modules/Random/RandomFunction.cpp.s
+.PHONY : includes/Modules/Random/RandomFunction.s
+
+# target to generate assembly for a file
+includes/Modules/Random/RandomFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.s
+.PHONY : includes/Modules/Random/RandomFunction.cpp.s
+
 includes/Nodes/BinaryOperationNode.o: includes/Nodes/BinaryOperationNode.cpp.o
 .PHONY : includes/Nodes/BinaryOperationNode.o
 
@@ -1209,6 +1257,12 @@ help:
 	@echo "... includes/Lexer/Lexer.o"
 	@echo "... includes/Lexer/Lexer.i"
 	@echo "... includes/Lexer/Lexer.s"
+	@echo "... includes/Modules/Random/Random.o"
+	@echo "... includes/Modules/Random/Random.i"
+	@echo "... includes/Modules/Random/Random.s"
+	@echo "... includes/Modules/Random/RandomFunction.o"
+	@echo "... includes/Modules/Random/RandomFunction.i"
+	@echo "... includes/Modules/Random/RandomFunction.s"
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"

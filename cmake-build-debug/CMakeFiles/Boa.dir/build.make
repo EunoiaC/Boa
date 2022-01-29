@@ -638,6 +638,32 @@ CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/NumberFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: ../includes/Modules/Random/Random.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.cpp > CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.cpp -o CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.s
+
+CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o: ../includes/Modules/Random/RandomFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/RandomFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/RandomFunction.cpp > CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/RandomFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -683,7 +709,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/RunInterface.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -732,9 +760,11 @@ Boa: CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/String/StringFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Number/NumberFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

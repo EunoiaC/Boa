@@ -41,7 +41,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
 
     BaseValue *toIterateThrough = res->reg(visit(node->toIterateThrough, c));
     if (res->shouldReturn()) return res;
-    BaseValue * value;
+    BaseValue *value;
 
     if (toIterateThrough->type == T_LIST) {
         for (auto *val: ((List<vector<BaseValue *>> *) toIterateThrough)->elements) {
@@ -239,12 +239,19 @@ RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
         if (res->shouldReturn()) return res;
     }
 
-    string fTxt = lines.size() == 1 ? lines[0] : lines[n->line];
+    string fTxt;
+
+    if (n->line >= lines.size()) {
+        fTxt = lines[lines.size() - 1];
+
+    } else {
+        fTxt = lines.size() == 1 ? lines[0] : lines[n->line];
+    }
 
     return res->success(
             (new List<vector<BaseValue *>>(elements, fName, fTxt))->setContext(c)->setPos(n->posStart,
-                                                                                                           n->posEnd,
-                                                                                                           n->line));
+                                                                                          n->posEnd,
+                                                                                          n->line));
 }
 
 RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
@@ -271,11 +278,11 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     BaseValue *value;
     string varName;
 
-    if (node->toGetIdentifierFrom){
+    if (node->toGetIdentifierFrom) {
         value = result->reg(visit(node->toGetIdentifierFrom, c));
     } else {
-       varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
-       value = c->symbolTable->get(varName);
+        varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
+        value = c->symbolTable->get(varName);
     }
 
     if (!value) {
@@ -290,12 +297,12 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         ));
     }
 
-    if(node->toGetIdentifierFrom && node->varNameTok){
+    if (node->toGetIdentifierFrom && node->varNameTok) {
         value = value->getFromSymbolTable(((Token<string> *) node->varNameTok)->getValueObject()->getValue());
     }
 
     string prevType = value->type;
-    for (auto &id : node->identifiers){
+    for (auto &id: node->identifiers) {
         string idName = ((Token<string> *) id)->getValueObject()->getValue();
         value = value->getFromSymbolTable(idName);
         if (!value) {
@@ -538,8 +545,8 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
-    ImportNode *node = (ImportNode *) n;
+    auto *res = new RuntimeResult();
+    auto *node = (ImportNode *) n;
 
     BaseValue *toImport = res->reg(visit(node->toImport, c));
     if (res->shouldReturn()) return res;

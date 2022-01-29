@@ -45,6 +45,9 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("rename", _rename);
     globalSymbolTable->set("getSymbolTable", getSymbolTable);
 
+    //Modules
+    globalSymbolTable->set("__random__", _random);
+
     RunInterface * runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
     return 0;

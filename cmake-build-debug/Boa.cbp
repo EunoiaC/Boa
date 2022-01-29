@@ -110,6 +110,18 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/RandomFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/RandomFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

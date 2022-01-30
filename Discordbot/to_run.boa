@@ -54,7 +54,7 @@ op main(str) do {
     }
 }
 
-string = "UR\nMUMS\nGAY"
+string = "NOT\nHARD\nENOUGH\nDADDY\nGROANS"
 for i : string.split("\n") do {
     main(i)
     print("\n")

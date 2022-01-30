@@ -938,9 +938,14 @@ ParseResult *Parser::indexExpr() {
     if(indices.size() > 0){
         IndexNode * index = new IndexNode(_atom, indices);
         index->line = currentToken->line;
+        if(currentToken->getType() == L_PAREN){
+            toCall = index;
+            return call();
+        }
         return res->success(index);
     }
 
+    delete _atom;
     reverse(tokIdx - currIdx);
 
     return power();

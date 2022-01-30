@@ -29,13 +29,13 @@ while true do {
         break
     }
     if lenOf(toRun) > 2 do {
-        if (toRun ? 0) + (toRun ? 1) == "--" do {
+        if toRun.slice(0,2) == "--" do {
             func = toRun.slice(2)
             if funcMap.keys.indexOf(func) == -1 do {
                 print("Command not found: " + func)
                 continue
             }
-            (funcMap ? func)()
+            funcMap[func]()
             continue
         }
     }

@@ -465,6 +465,30 @@ includes/Nodes/Control_Flow/WhileNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.s
 .PHONY : includes/Nodes/Control_Flow/WhileNode.cpp.s
 
+includes/Nodes/IndexNode.o: includes/Nodes/IndexNode.cpp.o
+.PHONY : includes/Nodes/IndexNode.o
+
+# target to build an object file
+includes/Nodes/IndexNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o
+.PHONY : includes/Nodes/IndexNode.cpp.o
+
+includes/Nodes/IndexNode.i: includes/Nodes/IndexNode.cpp.i
+.PHONY : includes/Nodes/IndexNode.i
+
+# target to preprocess a source file
+includes/Nodes/IndexNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.i
+.PHONY : includes/Nodes/IndexNode.cpp.i
+
+includes/Nodes/IndexNode.s: includes/Nodes/IndexNode.cpp.s
+.PHONY : includes/Nodes/IndexNode.s
+
+# target to generate assembly for a file
+includes/Nodes/IndexNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.s
+.PHONY : includes/Nodes/IndexNode.cpp.s
+
 includes/Nodes/Node.o: includes/Nodes/Node.cpp.o
 .PHONY : includes/Nodes/Node.o
 
@@ -1284,6 +1308,9 @@ help:
 	@echo "... includes/Nodes/Control_Flow/WhileNode.o"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.i"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.s"
+	@echo "... includes/Nodes/IndexNode.o"
+	@echo "... includes/Nodes/IndexNode.i"
+	@echo "... includes/Nodes/IndexNode.s"
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"

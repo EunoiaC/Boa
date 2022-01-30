@@ -76,7 +76,7 @@ async def on_message(message):
                 )
                 embed.add_field(
                     name="Output",
-                    value=strOut,
+                    value="```" + strOut + "```",
                     inline=False
                 )
             else:
@@ -87,7 +87,7 @@ async def on_message(message):
                 )
                 embed.add_field(
                     name="Output",
-                    value=strOut,
+                    value="```" + strOut + "```",
                     inline=False
                 )
             await message.channel.send(embed=embed, reference=message)

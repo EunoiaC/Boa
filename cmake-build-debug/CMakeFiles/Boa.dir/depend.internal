@@ -33,6 +33,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h
@@ -182,6 +183,10 @@ CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
@@ -308,6 +313,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h
@@ -345,6 +351,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h
@@ -444,6 +451,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h
@@ -630,6 +638,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h

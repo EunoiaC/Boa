@@ -17,7 +17,6 @@ Parser::Parser(vector<BaseToken *> tokens, string fName, vector<string> lines) {
 
 void Parser::checkNewLines() {
     while (currentToken->getType() == STOP_EXPR) {
-        delete currentToken;
         advance();
     }
 }
@@ -88,7 +87,7 @@ ParseResult *Parser::ifExpr() {
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'if'"));
     }
-    delete currentToken;
+    // delete currentToken;
     res->regAdvancement();
     advance();
 
@@ -100,7 +99,7 @@ ParseResult *Parser::ifExpr() {
                                   "InvalidSyntaxError", "Expected 'do'");
         return res->failure(priorityError);
     }
-    delete currentToken;
+    // delete currentToken;
     res->regAdvancement();
     advance();
 
@@ -108,7 +107,7 @@ ParseResult *Parser::ifExpr() {
 
     Node *exp;
     if (currentToken->getType() == L_CURLY_BRACKET) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -123,7 +122,7 @@ ParseResult *Parser::ifExpr() {
                               "InvalidSyntaxError", "Expected '}'"));
         }
 
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -137,7 +136,7 @@ ParseResult *Parser::ifExpr() {
     cases.push_back(make_tuple(condition, exp));
 
     while (currentToken->getType() == ELIF) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -150,14 +149,14 @@ ParseResult *Parser::ifExpr() {
             return res->failure(priorityError);
         }
 
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
         checkNewLines();
 
         if (currentToken->getType() == L_CURLY_BRACKET) {
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
 
@@ -172,7 +171,7 @@ ParseResult *Parser::ifExpr() {
                                   "InvalidSyntaxError", "Expected '}'"));
             }
 
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
 
@@ -185,7 +184,7 @@ ParseResult *Parser::ifExpr() {
     }
 
     if (currentToken->getType() == ELSE) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -196,14 +195,14 @@ ParseResult *Parser::ifExpr() {
                     priorityError);
         }
 
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
         checkNewLines();
 
         if (currentToken->getType() == L_CURLY_BRACKET) {
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
 
@@ -218,7 +217,7 @@ ParseResult *Parser::ifExpr() {
                                   "InvalidSyntaxError", "Expected '}'"));
             }
 
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
         } else {
@@ -636,10 +635,10 @@ ParseResult *Parser::mapExpr() {
         advance();
         Node *value = res->reg(expr());
         if (res->error) {
-            return res->failure(
-                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                              "InvalidSyntaxError",
-                              "Expected a '}', identifier, conditional keyword, 'op', or number"));
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError",
+                                      "Expected a '}', identifier, conditional keyword, 'op', or value");
+            return res->failure(priorityError);
         }
 
         map[key] = value;
@@ -651,7 +650,12 @@ ParseResult *Parser::mapExpr() {
             checkNewLines();
 
             key = res->reg(expr());
-            if (res->error) return res;
+            if (res->error) {;
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                          "InvalidSyntaxError",
+                                          "Expected an identifier, conditional keyword, 'op', or value");
+                return res->failure(priorityError);
+            }
 
             if (currentToken->getType() != COLON) {
                 return res->failure(
@@ -840,7 +844,7 @@ ParseResult *Parser::factor() {
         if (res->error) return res;
         return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
     }
-    return power();
+    return indexExpr();
 }
 
 ParseResult *Parser::call() {
@@ -856,7 +860,6 @@ ParseResult *Parser::call() {
     }
 
     if (currentToken->getType() == L_PAREN) {
-        delete currentToken;
         res->regAdvancement();
         advance();
         vector<Node *> args;
@@ -864,7 +867,7 @@ ParseResult *Parser::call() {
         checkNewLines();
 
         if (currentToken->getType() == R_PAREN) {
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
         } else {
@@ -877,7 +880,7 @@ ParseResult *Parser::call() {
             }
             checkNewLines();
             while (currentToken->getType() == COMMA) {
-                delete currentToken;
+                // delete currentToken;
                 res->regAdvancement();
                 advance();
                 checkNewLines();
@@ -893,7 +896,7 @@ ParseResult *Parser::call() {
                                           "Expected a  ',' or ')'");
                 return res->failure(priorityError);
             }
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
         }
@@ -902,6 +905,45 @@ ParseResult *Parser::call() {
         return res->success(call);
     }
     return res->success(_atom);
+}
+
+ParseResult *Parser::indexExpr() {
+    ParseResult * res = new ParseResult(nullptr, nullptr);
+
+    int currIdx = tokIdx;
+    Node * _atom = res->reg(atom());
+    if (res->error) return res;
+
+    vector<Node *> indices;
+
+    while(currentToken->getType() == L_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        Node * index = res->reg(expr());
+        if (res->error) return res;
+
+        if(currentToken->getType() != R_BRACKET){
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
+                                      lines[currentToken->line],
+                                      "InvalidSyntaxError",
+                                      "Expected a closing bracket");
+            return res->failure(priorityError);
+        }
+        res->regAdvancement();
+        advance();
+        indices.push_back(index);
+    }
+
+    if(indices.size() > 0){
+        IndexNode * index = new IndexNode(_atom, indices);
+        index->line = currentToken->line;
+        return res->success(index);
+    }
+
+    reverse(tokIdx - currIdx);
+
+    return power();
 }
 
 ParseResult *Parser::power() {
@@ -948,7 +990,7 @@ ParseResult *Parser::statement() {
     Node *_expr = nullptr;
 
     if (currentToken->type == IMPORT) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -959,7 +1001,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == RETURN) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -972,7 +1014,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == CONTINUE) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -980,7 +1022,7 @@ ParseResult *Parser::statement() {
     }
 
     if (currentToken->getType() == BREAK) {
-        delete currentToken;
+        // delete currentToken;
         res->regAdvancement();
         advance();
 
@@ -1011,7 +1053,7 @@ ParseResult *Parser::statements() {
     while (true) {
         int newLineCount = 0;
         while (currentToken->getType() == STOP_EXPR) {
-            delete currentToken;
+            // delete currentToken;
             res->regAdvancement();
             advance();
             newLineCount++;
@@ -1082,7 +1124,7 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
             }
             return res->success(new VarAccessNode(nullptr, identifiers, left));
         }
-        // Don't delete the operator token, it's needed for the next iteration
+        // Don't // delete the operator token, it's needed for the next iteration
         res->regAdvancement();
         advance();
 

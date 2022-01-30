@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "../Nodes/Control Flow/ForNode.h"
+#include "../Nodes/IndexNode.h"
 #include "../Nodes/Control Flow/IterateNode.h"
 #include "../Nodes/Value Nodes/ListNode.h"
 #include "../Nodes/Value Nodes/StringNode.h"
@@ -61,6 +62,7 @@ public:
     ParseResult * call();
     ParseResult * parse();
     ParseResult * listExpr();
+    ParseResult * indexExpr();
     ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();

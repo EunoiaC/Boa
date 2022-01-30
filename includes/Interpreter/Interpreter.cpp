@@ -27,6 +27,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_CONTINUE] = &Interpreter::visitContinueNode;
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
+    funcMap[N_IDX_NODE] = &Interpreter::visitIndexNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -524,6 +525,36 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
 
+}
+
+RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    auto *node = (IndexNode *) n;
+
+    BaseValue *left = res->reg(visit(node->left, c));
+    if (res->shouldReturn()) return res;
+
+    BaseValue * result = nullptr;
+
+    for(auto &i : node->indices) {
+        result = left = left->get(res->reg(visit(i, c)));
+        if (res->shouldReturn()) return res;
+    }
+
+    if (left->type == T_STRING) {
+        if (((String<string> *) left)->rtError) {
+            return res->failure(((String<string> *) left)->rtError);
+        }
+    } else if (left->type == T_LIST) {
+        if (((List<vector<BaseValue *>> *) left)->rtError) {
+            return res->failure(((List<vector<BaseValue *>> *) left)->rtError);
+        }
+    } else if (left->type == T_MAP) {
+        if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
+            return res->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
+        }
+    }
+    return res->success(result->setPos(n->posStart, n->posEnd, n->line));
 }
 
 RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {

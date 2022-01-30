@@ -33,6 +33,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -182,6 +183,10 @@ CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.cpp \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o: \
+ ../includes/Nodes/IndexNode.cpp \
+ ../includes/Nodes/IndexNode.h \
+ ../includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o: \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h
@@ -308,6 +313,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -345,6 +351,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -444,6 +451,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
@@ -630,6 +638,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/Control\ Flow/IfNode.h \
  ../includes/Nodes/Control\ Flow/IterateNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
+ ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \

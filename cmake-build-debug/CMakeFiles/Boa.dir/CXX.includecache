@@ -70,6 +70,12 @@ tuple
 ../Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
+Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+vector
+-
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 string
 -
@@ -149,6 +155,8 @@ vector
 -
 ../Nodes/Control Flow/ForNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
+../Nodes/IndexNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
 ../Nodes/Control Flow/IterateNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
 ../Nodes/Value Nodes/ListNode.h

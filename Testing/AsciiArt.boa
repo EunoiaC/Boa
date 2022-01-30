@@ -48,7 +48,7 @@ op main(str) do {
     lines = ["", "", "", "", ""]
     for i = 0 to lenOf(str) - 1 do {
         for j = 0 to 4 do {
-            lines.set(j, (lines ? j) + ((Data[str] ? i ) ? j) + "░")
+            lines.set(j, lines[j] + Data[str[i]][j] + "░")
         }
     }
     for i : lines do {
@@ -56,7 +56,7 @@ op main(str) do {
     }
 }
 
-string = "YEET"
+string = input("Enter a string: ")
 for i : string.split("\n") do {
     main(i)
     print("\n")

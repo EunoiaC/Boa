@@ -788,29 +788,6 @@ ParseResult *Parser::atom() {
             Node *exp = res->reg(expr());
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
-        } else if (type == DOT) {
-            res->regAdvancement();
-            advance();
-            if (currentToken->getType() != IDENTIFIER) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected an identifier"));
-            }
-            identifiers.push_back(currentToken);
-            res->regAdvancement();
-            advance();
-            while (currentToken->getType() == DOT) {
-                res->regAdvancement();
-                advance();
-                if (currentToken->getType() != IDENTIFIER) {
-                    return res->failure(
-                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected an identifier"));
-                }
-                identifiers.push_back(currentToken);
-                res->regAdvancement();
-                advance();
-            }
         }
         return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == L_PAREN) {
@@ -844,7 +821,7 @@ ParseResult *Parser::factor() {
         if (res->error) return res;
         return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
     }
-    return indexExpr();
+    return getFromValue();
 }
 
 ParseResult *Parser::call() {
@@ -907,7 +884,7 @@ ParseResult *Parser::call() {
     return res->success(_atom);
 }
 
-ParseResult *Parser::indexExpr() {
+ParseResult *Parser::getFromValue() {
     ParseResult * res = new ParseResult(nullptr, nullptr);
 
     int currIdx = tokIdx;
@@ -943,6 +920,37 @@ ParseResult *Parser::indexExpr() {
             return call();
         }
         return res->success(index);
+    }
+
+    if (currentToken->getType() == DOT) {
+        vector<BaseToken *> identifiers;
+        res->regAdvancement();
+        advance();
+        if (currentToken->getType() != IDENTIFIER) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected an identifier"));
+        }
+        identifiers.push_back(currentToken);
+        res->regAdvancement();
+        advance();
+        while (currentToken->getType() == DOT) {
+            res->regAdvancement();
+            advance();
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
+            }
+            identifiers.push_back(currentToken);
+            res->regAdvancement();
+            advance();
+        }
+        if (currentToken->getType() == L_PAREN) {
+            toCall = new VarAccessNode(nullptr, identifiers, _atom);
+            return call();
+        }
+        return res->success(new VarAccessNode(nullptr, identifiers, _atom));
     }
 
     delete _atom;
@@ -1099,36 +1107,6 @@ ParseResult *Parser::binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), 
 
     while (find(ops.begin(), ops.end(), currentToken->getType()) != ops.end()) {
         BaseToken *opTok = currentToken;
-        if (opTok->getType() == DOT) {
-            vector<BaseToken *> identifiers;
-            res->regAdvancement();
-            advance();
-            if (currentToken->getType() != IDENTIFIER) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected an identifier"));
-            }
-            identifiers.push_back(currentToken);
-            res->regAdvancement();
-            advance();
-            while (currentToken->getType() == DOT) {
-                res->regAdvancement();
-                advance();
-                if (currentToken->getType() != IDENTIFIER) {
-                    return res->failure(
-                            new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected an identifier"));
-                }
-                identifiers.push_back(currentToken);
-                res->regAdvancement();
-                advance();
-            }
-            if (currentToken->getType() == L_PAREN) {
-                toCall = new VarAccessNode(nullptr, identifiers, left);
-                return call();
-            }
-            return res->success(new VarAccessNode(nullptr, identifiers, left));
-        }
         // Don't // delete the operator token, it's needed for the next iteration
         res->regAdvancement();
         advance();

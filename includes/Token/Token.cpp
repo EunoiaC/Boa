@@ -48,5 +48,5 @@ template<> Value<string> *Token<string>::getValueObject() {
 
 template<class tokType>
 string Token<tokType>::toString() {
-    return type; // + ":" + value->getValue();
+    return value->toString() + ":" + type + posData();
 }

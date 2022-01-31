@@ -62,7 +62,7 @@ public:
     ParseResult * call();
     ParseResult * parse();
     ParseResult * listExpr();
-    ParseResult * indexExpr();
+    ParseResult * getFromValue();
     ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();

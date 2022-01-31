@@ -1,1 +1,1 @@
-print([12][0], "LOL")
+print((for i = 0 to 10 do "LOL".split())[0][0])

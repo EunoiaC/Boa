@@ -828,12 +828,12 @@ ParseResult *Parser::call() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
     Node *_atom;
-    if (!toCall) {
+    if (!toUse) {
         _atom = res->reg(atom());
         if (res->error) return res;
     } else {
-        _atom = toCall;
-        toCall = nullptr;
+        _atom = toUse;
+        toUse = nullptr;
     }
 
     if (currentToken->getType() == L_PAREN) {
@@ -888,7 +888,7 @@ ParseResult *Parser::getFromValue() {
     ParseResult * res = new ParseResult(nullptr, nullptr);
 
     int currIdx = tokIdx;
-    Node * _atom = res->reg(atom());
+    Node * _atom = toUse ? toUse : res->reg(atom());
     if (res->error) return res;
 
     vector<Node *> indices;
@@ -916,8 +916,11 @@ ParseResult *Parser::getFromValue() {
         IndexNode * index = new IndexNode(_atom, indices);
         index->line = currentToken->line;
         if(currentToken->getType() == L_PAREN){
-            toCall = index;
+            toUse = index;
             return call();
+        } else if(currentToken->getType() == DOT){
+            toUse = index;
+            return getFromValue();
         }
         return res->success(index);
     }
@@ -947,8 +950,11 @@ ParseResult *Parser::getFromValue() {
             advance();
         }
         if (currentToken->getType() == L_PAREN) {
-            toCall = new VarAccessNode(nullptr, identifiers, _atom);
+            toUse = new VarAccessNode(nullptr, identifiers, _atom);
             return call();
+        } else if(currentToken->getType() == L_BRACKET){
+            toUse = new VarAccessNode(nullptr, identifiers, _atom);
+            return getFromValue();
         }
         return res->success(new VarAccessNode(nullptr, identifiers, _atom));
     }

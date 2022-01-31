@@ -1,3 +1,6 @@
 running = true
 
-print("hello world")
+op add(x, y) do return x + y
+op min(x, y) do return x - y
+ops = [add, min]
+print(ops[0](12, 13))

@@ -40,7 +40,7 @@ public:
     int tokIdx;
     int line;
     Error * priorityError;
-    Node * toCall;
+    Node * toUse;
     bool reversing = false;
 
     BaseToken * currentToken;

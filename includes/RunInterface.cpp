@@ -81,9 +81,6 @@ RunResult RunInterface::readFile(string filePath) {
     if (result->error) {
         return make_pair(nullptr, result->error);
     }
-    for (auto &x : v) {
-        delete x;
-    }
     return make_pair(result->value, nullptr);
 }
 

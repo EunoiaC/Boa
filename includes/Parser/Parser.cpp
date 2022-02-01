@@ -821,7 +821,7 @@ ParseResult *Parser::factor() {
         if (res->error) return res;
         return res->success(new UnaryOperationNode((Token<string> *) tok, (NumberNode *) f));
     }
-    return getFromValue();
+    return power();
 }
 
 ParseResult *Parser::call() {
@@ -890,6 +890,11 @@ ParseResult *Parser::getFromValue() {
     int currIdx = tokIdx;
     Node * _atom = toUse ? toUse : res->reg(atom());
     if (res->error) return res;
+    if(toUse) {
+        toUse = nullptr;
+        res->regAdvancement();
+        advance();
+    }
 
     vector<Node *> indices;
 
@@ -959,14 +964,13 @@ ParseResult *Parser::getFromValue() {
         return res->success(new VarAccessNode(nullptr, identifiers, _atom));
     }
 
-    delete _atom;
-    reverse(tokIdx - currIdx);
+    toUse = _atom;
 
-    return power();
+    return call();
 }
 
 ParseResult *Parser::power() {
-    return binOp({POWER, DOT, GET}, &Parser::call, &Parser::factor);
+    return binOp({POWER, DOT, GET}, &Parser::getFromValue, &Parser::factor);
 }
 
 ParseResult *Parser::term() {

@@ -40,7 +40,6 @@ public:
     int tokIdx;
     int line;
     Error * priorityError;
-    Node * toUse;
     bool reversing = false;
 
     BaseToken * currentToken;
@@ -62,7 +61,6 @@ public:
     ParseResult * call();
     ParseResult * parse();
     ParseResult * listExpr();
-    ParseResult * getFromValue();
     ParseResult * mapExpr();
     ParseResult * ifExpr();
     ParseResult * forExpr();

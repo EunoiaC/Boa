@@ -53,7 +53,7 @@ void Parser::updateCurrentTok() {
     if (tokIdx >= 0 && tokIdx < tokens.size()) {
         currentToken = tokens[tokIdx];
         if (currentToken->getType() == STOP_EXPR) {
-            if(reversing) {
+            if (reversing) {
                 line--;
                 reversing = false;
             } else {
@@ -650,8 +650,9 @@ ParseResult *Parser::mapExpr() {
             checkNewLines();
 
             key = res->reg(expr());
-            if (res->error) {;
-                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+            if (res->error) { ;
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
+                                          currLine,
                                           "InvalidSyntaxError",
                                           "Expected an identifier, conditional keyword, 'op', or value");
                 return res->failure(priorityError);
@@ -723,8 +724,9 @@ ParseResult *Parser::listExpr() {
             if (res->error) return res;
         }
         bool success = checkNewLinesTo(R_BRACKET);
-        if (!success){
-            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, lines[currentToken->line],
+        if (!success) {
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
+                                      lines[currentToken->line],
                                       "InvalidSyntaxError",
                                       "Expected ',' or ']'");
             return res->failure(priorityError);
@@ -828,13 +830,63 @@ ParseResult *Parser::call() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
     Node *_atom;
-    if (!toUse) {
-        _atom = res->reg(atom());
+    _atom = res->reg(atom());
+    if (res->error) return res;
+
+    vector<Node *> indices;
+
+    while(currentToken->getType() == L_BRACKET){
+        res->regAdvancement();
+        advance();
+
+        Node * index = res->reg(expr());
         if (res->error) return res;
-    } else {
-        _atom = toUse;
-        toUse = nullptr;
+
+        if(currentToken->getType() != R_BRACKET){
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
+                                      lines[currentToken->line],
+                                      "InvalidSyntaxError",
+                                      "Expected a closing bracket");
+            return res->failure(priorityError);
+        }
+        res->regAdvancement();
+        advance();
+        indices.push_back(index);
     }
+
+    if(indices.size() > 0){
+        IndexNode * index = new IndexNode(_atom, indices);
+        index->line = currentToken->line;
+        _atom = index;
+    }
+
+    if (currentToken->getType() == DOT) {
+        vector<BaseToken *> identifiers;
+        res->regAdvancement();
+        advance();
+        if (currentToken->getType() != IDENTIFIER) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected an identifier"));
+        }
+        identifiers.push_back(currentToken);
+        res->regAdvancement();
+        advance();
+        while (currentToken->getType() == DOT) {
+            res->regAdvancement();
+            advance();
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
+            }
+            identifiers.push_back(currentToken);
+            res->regAdvancement();
+            advance();
+        }
+        _atom = new VarAccessNode(nullptr, identifiers, _atom);
+    }
+
 
     if (currentToken->getType() == L_PAREN) {
         res->regAdvancement();
@@ -866,8 +918,8 @@ ParseResult *Parser::call() {
             }
             bool success = checkNewLinesTo(R_PAREN);
             if (!success) {
-                if(!(currentToken->getType() == STOP_EXPR)) reverse(1);
-                priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
+                if (!(currentToken->getType() == STOP_EXPR)) reverse(1);
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
                                           lines[currentToken->line],
                                           "InvalidSyntaxError",
                                           "Expected a  ',' or ')'");
@@ -884,93 +936,8 @@ ParseResult *Parser::call() {
     return res->success(_atom);
 }
 
-ParseResult *Parser::getFromValue() {
-    ParseResult * res = new ParseResult(nullptr, nullptr);
-
-    int currIdx = tokIdx;
-    Node * _atom = toUse ? toUse : res->reg(atom());
-    if (res->error) return res;
-    if(toUse) {
-        toUse = nullptr;
-        res->regAdvancement();
-        advance();
-    }
-
-    vector<Node *> indices;
-
-    while(currentToken->getType() == L_BRACKET){
-        res->regAdvancement();
-        advance();
-
-        Node * index = res->reg(expr());
-        if (res->error) return res;
-
-        if(currentToken->getType() != R_BRACKET){
-            priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
-                                      lines[currentToken->line],
-                                      "InvalidSyntaxError",
-                                      "Expected a closing bracket");
-            return res->failure(priorityError);
-        }
-        res->regAdvancement();
-        advance();
-        indices.push_back(index);
-    }
-
-    if(indices.size() > 0){
-        IndexNode * index = new IndexNode(_atom, indices);
-        index->line = currentToken->line;
-        if(currentToken->getType() == L_PAREN){
-            toUse = index;
-            return call();
-        } else if(currentToken->getType() == DOT){
-            toUse = index;
-            return getFromValue();
-        }
-        return res->success(index);
-    }
-
-    if (currentToken->getType() == DOT) {
-        vector<BaseToken *> identifiers;
-        res->regAdvancement();
-        advance();
-        if (currentToken->getType() != IDENTIFIER) {
-            return res->failure(
-                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                              "InvalidSyntaxError", "Expected an identifier"));
-        }
-        identifiers.push_back(currentToken);
-        res->regAdvancement();
-        advance();
-        while (currentToken->getType() == DOT) {
-            res->regAdvancement();
-            advance();
-            if (currentToken->getType() != IDENTIFIER) {
-                return res->failure(
-                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                  "InvalidSyntaxError", "Expected an identifier"));
-            }
-            identifiers.push_back(currentToken);
-            res->regAdvancement();
-            advance();
-        }
-        if (currentToken->getType() == L_PAREN) {
-            toUse = new VarAccessNode(nullptr, identifiers, _atom);
-            return call();
-        } else if(currentToken->getType() == L_BRACKET){
-            toUse = new VarAccessNode(nullptr, identifiers, _atom);
-            return getFromValue();
-        }
-        return res->success(new VarAccessNode(nullptr, identifiers, _atom));
-    }
-
-    toUse = _atom;
-
-    return call();
-}
-
 ParseResult *Parser::power() {
-    return binOp({POWER, DOT, GET}, &Parser::getFromValue, &Parser::factor);
+    return binOp({POWER, DOT, GET}, &Parser::call, &Parser::factor);
 }
 
 ParseResult *Parser::term() {

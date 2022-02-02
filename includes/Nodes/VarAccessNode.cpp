@@ -18,5 +18,5 @@ VarAccessNode::VarAccessNode(Token<string> *varNameTok, vector<BaseToken*> ident
 }
 
 string VarAccessNode::toString() {
-    return "(VarAccessNode: " + varNameTok->getValueObject()->getValue() + ")";
+    return "(VarAccessNode: " + varNameTok->toString() + ")";
 }

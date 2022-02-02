@@ -16,3 +16,16 @@ IndexNode::~IndexNode() {
     }
 }
 
+string IndexNode::toString() {
+    string str = "";
+    str += left->toString();
+    str += "[";
+    for (auto & index : indices) {
+        str += index->toString();
+        str += ",";
+    }
+    str.pop_back();
+    str += "]";
+    return str;
+}
+

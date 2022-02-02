@@ -14,6 +14,7 @@ public:
     Node * left;
     IndexNode(Node *left, vector<Node*> indices);
     ~IndexNode();
+    string toString() override;
 };
 
 

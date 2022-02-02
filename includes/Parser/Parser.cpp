@@ -829,21 +829,20 @@ ParseResult *Parser::factor() {
 ParseResult *Parser::call() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
-    Node *_atom;
-    _atom = res->reg(atom());
+    Node *_atom = res->reg(atom());
     if (res->error) return res;
 
     vector<Node *> indices;
 
-    while(currentToken->getType() == L_BRACKET){
+    while (currentToken->getType() == L_BRACKET) {
         res->regAdvancement();
         advance();
 
-        Node * index = res->reg(expr());
+        Node *index = res->reg(expr());
         if (res->error) return res;
 
-        if(currentToken->getType() != R_BRACKET){
-            priorityError = new Error(currentToken->posStart, currentToken->posEnd , currentToken->line, fName,
+        if (currentToken->getType() != R_BRACKET) {
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
                                       lines[currentToken->line],
                                       "InvalidSyntaxError",
                                       "Expected a closing bracket");
@@ -854,8 +853,8 @@ ParseResult *Parser::call() {
         indices.push_back(index);
     }
 
-    if(indices.size() > 0){
-        IndexNode * index = new IndexNode(_atom, indices);
+    if (indices.size() > 0) {
+        IndexNode *index = new IndexNode(_atom, indices);
         index->line = currentToken->line;
         _atom = index;
     }
@@ -930,6 +929,7 @@ ParseResult *Parser::call() {
             advance();
         }
         CallNode *call = new CallNode(_atom, args);
+
         call->line = currentToken->line;
         return res->success(call);
     }

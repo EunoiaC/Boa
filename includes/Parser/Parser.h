@@ -8,6 +8,7 @@
 #include <vector>
 #include "../Nodes/Control Flow/ForNode.h"
 #include "../Nodes/IndexNode.h"
+#include "../Nodes/Control Flow/ClassDefNode.h"
 #include "../Nodes/Control Flow/IterateNode.h"
 #include "../Nodes/Value Nodes/ListNode.h"
 #include "../Nodes/Value Nodes/StringNode.h"
@@ -68,6 +69,7 @@ public:
     ParseResult * iterExprB(Token<string> * varName);
     ParseResult * whileExpr();
     ParseResult * funcDef();
+    ParseResult * classDef();
     ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 

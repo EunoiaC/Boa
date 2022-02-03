@@ -16,7 +16,7 @@ Data = {
     "C": [Right2, Left__, Left__, Left__, Right2],
     "D": [Left2_, Border, Border, Border, Left2_],
     "E": [Row___, Left__, Row___, Left__, Row___],
-    "F": [Row___, Left__, Row___, Left__, Row___],
+    "F": [Row___, Left__, Row___, Left__, Left__],
     "G": [Row___, Left__, Border, Border, Row___],
     "H": [Border, Border, Row___, Border, Border],
     "I": [Row___, Center, Center, Center, Row___],

@@ -687,6 +687,156 @@ ParseResult *Parser::mapExpr() {
     return res->success(new MapNode(map, posStart, currentToken->posEnd, currentToken->line));
 }
 
+ParseResult *Parser::classDef() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    if (currentToken->getType() != CLASS) {
+        res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'class'"));
+    }
+    delete currentToken;
+
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() != IDENTIFIER) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected an identifier"));
+    }
+    Token<string> *className = dynamic_cast<Token<string> *>(currentToken);
+    res->regAdvancement();
+    advance();
+
+    Token<string> *varNameTok = nullptr;
+    if (currentToken->getType() == IDENTIFIER) {
+        varNameTok = (Token<string> *) currentToken;
+        res->regAdvancement();
+        advance();
+        if (currentToken->getType() != L_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '('"));
+        }
+    } else {
+        if (currentToken->getType() != L_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '(' or an identifer"));
+        }
+    }
+    res->regAdvancement();
+    advance();
+
+    vector<Token<string> *> argNames;
+    bool defaultArgs = false;
+    map<string, Node *> defaultArgValues;
+
+    if (currentToken->getType() == IDENTIFIER) {
+        Token<string> *argName = (Token<string> *) currentToken;
+        argNames.push_back(argName);
+
+        res->regAdvancement();
+        advance();
+
+        if (currentToken->getType() == EQUAL) {
+            defaultArgs = true;
+
+            res->regAdvancement();
+            advance();
+
+            Node *expr_ = res->reg(expr());
+            if (res->error) return res;
+            defaultArgValues[argName->getValueObject()->getValue()] = expr_;
+        }
+
+        while (currentToken->getType() == COMMA) {
+            res->regAdvancement();
+            advance();
+
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
+            }
+
+            argName = (Token<string> *) currentToken;
+            argNames.push_back(argName);
+
+            res->regAdvancement();
+            advance();
+
+            if (currentToken->getType() == EQUAL) {
+                defaultArgs = true;
+
+                res->regAdvancement();
+                advance();
+
+                Node *expr_ = res->reg(expr());
+                if (res->error) return res;
+                defaultArgValues[argName->getValueObject()->getValue()] = expr_;
+            } else if (defaultArgs) {
+                priorityError = new Error(argName->posStart, argName->posEnd, argName->line, fName, currLine,
+                                          "InvalidSyntaxError", "Normal arguments must be before default arguments");
+                return res->failure(
+                        priorityError);
+            }
+        }
+        if (currentToken->getType() != R_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected ',' or ')'"));
+        }
+    } else {
+        if (currentToken->getType() != R_PAREN) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected ',' or ')'"));
+        }
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() != DO) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != L_CURLY_BRACKET) {
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError", "Expected '{'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    checkNewLines();
+
+    vector<Node *> functions;
+    while (currentToken->getType() != R_CURLY_BRACKET) {
+        functions.push_back(res->reg(funcDef()));
+        if (res->error) return res;
+        checkNewLines();
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    ClassDefNode *classDef = new ClassDefNode(className, argNames, defaultArgValues, functions);
+
+    return res->success(classDef);
+}
+
 ParseResult *Parser::listExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node *> elements;
@@ -746,6 +896,10 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
+    } else if (tok->getType() == CLASS) {
+        Node *_classDef = res->reg(classDef());
+        if (res->error) return res;
+        return res->success(_classDef);
     } else if (tok->getType() == L_BRACKET) {
         Node *_listExpr = res->reg(listExpr());
         if (res->error) return res;

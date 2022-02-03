@@ -22,6 +22,7 @@ static const string WHILE = "WHILE";
 static const string CHGBY = "CHANGE_BY";
 static const string TO = "TO";
 static const string OP = "OP";
+static const string CLASS = "CLASS";
 
 static const string RETURN = "RETURN";
 static const string BREAK = "BREAK";

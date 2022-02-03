@@ -345,6 +345,30 @@ includes/Nodes/CallNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.s
 .PHONY : includes/Nodes/CallNode.cpp.s
 
+includes/Nodes/Control_Flow/ClassDefNode.o: includes/Nodes/Control_Flow/ClassDefNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.o
+
+# target to build an object file
+includes/Nodes/Control_Flow/ClassDefNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.cpp.o
+
+includes/Nodes/Control_Flow/ClassDefNode.i: includes/Nodes/Control_Flow/ClassDefNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.i
+
+# target to preprocess a source file
+includes/Nodes/Control_Flow/ClassDefNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.cpp.i
+
+includes/Nodes/Control_Flow/ClassDefNode.s: includes/Nodes/Control_Flow/ClassDefNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Control_Flow/ClassDefNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/ClassDefNode.cpp.s
+
 includes/Nodes/Control_Flow/ForNode.o: includes/Nodes/Control_Flow/ForNode.cpp.o
 .PHONY : includes/Nodes/Control_Flow/ForNode.o
 
@@ -1293,6 +1317,9 @@ help:
 	@echo "... includes/Nodes/CallNode.o"
 	@echo "... includes/Nodes/CallNode.i"
 	@echo "... includes/Nodes/CallNode.s"
+	@echo "... includes/Nodes/Control_Flow/ClassDefNode.o"
+	@echo "... includes/Nodes/Control_Flow/ClassDefNode.i"
+	@echo "... includes/Nodes/Control_Flow/ClassDefNode.s"
 	@echo "... includes/Nodes/Control_Flow/ForNode.o"
 	@echo "... includes/Nodes/Control_Flow/ForNode.i"
 	@echo "... includes/Nodes/Control_Flow/ForNode.s"

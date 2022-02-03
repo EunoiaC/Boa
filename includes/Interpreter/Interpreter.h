@@ -15,6 +15,7 @@
 #include "../Nodes/Control Flow/WhileNode.h"
 #include "../Nodes/Control Flow/IfNode.h"
 #include "../Nodes/Control Flow/FuncDefNode.h"
+#include "../Nodes/Control Flow/ClassDefNode.h"
 #include "../Nodes/Statements/Branching Statements/ReturnNode.h"
 #include "../Nodes/Statements/Branching Statements/BreakNode.h"
 #include "../Nodes/Statements/Branching Statements/ContinueNode.h"
@@ -65,6 +66,7 @@ public:
     RuntimeResult * visitWhileNode(Node * n, Context* c);
 
     RuntimeResult * visitFuncDefNode(Node * n, Context* c);
+    RuntimeResult * visitClassDefNode(Node * n, Context* c);
     RuntimeResult * visitCallNode(Node * n, Context* c);
 };
 

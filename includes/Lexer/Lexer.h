@@ -56,7 +56,8 @@ public:
             {"to",    TO},
             {"chgby", CHGBY},
             {"while", WHILE},
-            {"op",    OP}
+            {"op",    OP},
+            {"class",    CLASS}
     };
     /**
      * Map assigning each possible character a token type

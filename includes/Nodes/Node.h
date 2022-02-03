@@ -23,6 +23,7 @@ static const string N_FOR = "FOR_NODE";
 static const string N_ITER = "ITER_NODE";
 static const string N_WHILE = "WHILE_NODE";
 static const string N_FUNC_DEF = "FUNC_DEF_NODE";
+static const string N_CLASS_DEF = "CLASS_DEF_NODE";
 static const string N_CALL = "CALL_NODE";
 static const string N_RETURN = "RETURN_NODE";
 static const string N_BREAK = "BREAK_NODE";

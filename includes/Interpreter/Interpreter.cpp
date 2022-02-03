@@ -23,6 +23,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_WHILE] = &Interpreter::visitWhileNode;
     funcMap[N_CALL] = &Interpreter::visitCallNode;
     funcMap[N_FUNC_DEF] = &Interpreter::visitFuncDefNode;
+    funcMap[N_CLASS_DEF] = &Interpreter::visitClassDefNode;
     funcMap[N_RETURN] = &Interpreter::visitReturnNode;
     funcMap[N_CONTINUE] = &Interpreter::visitContinueNode;
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
@@ -382,6 +383,34 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         ((Map<map<BaseValue *, BaseValue *>> *) returnVal)->setContext(c);
     }
     return res->success(returnVal);
+}
+
+RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
+    RuntimeResult *res = new RuntimeResult();
+    ClassDefNode *classDefNode = (ClassDefNode *) n;
+
+    vector<Function<int> *> funcs;
+    bool foundConstructor = false;
+
+    for (auto &method: classDefNode->functions) {
+        auto * func = dynamic_cast<Function<int> *const>(res->reg(visit(method, c)));
+        funcs.push_back(func);
+        if (res->shouldReturn()) return res;
+        if(func->name == "init") foundConstructor = true;
+    }
+
+    if (!foundConstructor) {
+        return res->failure(new RuntimeError(
+                classDefNode->classNameTok->posStart,
+                classDefNode->classNameTok->posEnd,
+                classDefNode->classNameTok->line,
+                fName,
+                lines[classDefNode->classNameTok->line],
+                "Class does not have a constructor defined as 'init'",
+                c
+        ));
+    }
+    return res->success(new Number<double>(0, "", ""));
 }
 
 RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {

@@ -53,6 +53,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
 ../Nodes/Control Flow/FuncDefNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
+../Nodes/Control Flow/ClassDefNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
 ../Nodes/Statements/Branching Statements/ReturnNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.h
 ../Nodes/Statements/Branching Statements/BreakNode.h
@@ -107,6 +109,12 @@ Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 vector
 -
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
 ../Node.h
@@ -223,6 +231,8 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
 ../Nodes/IndexNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
+../Nodes/Control Flow/ClassDefNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
 ../Nodes/Control Flow/IterateNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
 ../Nodes/Value Nodes/ListNode.h

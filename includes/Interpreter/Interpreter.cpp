@@ -353,10 +353,10 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     CallNode *callNode = (CallNode *) n;
     vector<BaseValue *> args;
 
-    BaseFunction<int> *valToCall;
+    Value<int> *valToCall;
     BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
     if (res->shouldReturn()) return res;
-    if (b->type != T_FUNC) {
+    if (b->type != T_FUNC && b->type != T_CLASS) {
         return res->failure(new RuntimeError(
                 callNode->posStart,
                 callNode->posEnd,
@@ -368,11 +368,11 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         ));
     }
 
-    valToCall = dynamic_cast<BaseFunction<int> *>(b);
+    valToCall = dynamic_cast<Value<int> *>(b);
 
-    valToCall = dynamic_cast<BaseFunction<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
+    valToCall = dynamic_cast<Value<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
                                                                             callNode->nodeToCall->line));
-    valToCall->callTxt = lines[callNode->line]; //Update the line func is called on
+    //valToCall->callTxt = lines[callNode->line]; //Update the line func is called on
     valToCall->fName = fName;
 
     for (auto argNode: callNode->args) {
@@ -423,12 +423,18 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ClassDefNode *classDefNode = (ClassDefNode *) n;
 
-    vector<Function<int> *> funcs;
+    vector<ClassFunction<int> *> methods;
     bool foundConstructor = false;
+
+    string funcName = classDefNode->classNameTok->getValueObject()->getValue();
+
+    Context *classContext = generateClassContext(funcName);
 
     for (auto &method: classDefNode->functions) {
         auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, c)));
-        funcs.push_back(func);
+        auto *classFunc = new ClassFunction<int>(func->fName, func->fTxt, func->name, func->body, func->argNames,
+                                                 func->defaultArgs, func->lines, func->autoReturn, classContext);
+        methods.push_back(classFunc);
         if (res->shouldReturn()) return res;
         if (func->name == "init") foundConstructor = true;
     }
@@ -444,8 +450,15 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
                 c
         ));
     }
-    //TODO: Implement Class value, and add it's own context to the class
-    Context * classContext = generateClassContext(classDefNode->classNameTok->getValueObject()->getValue());
+
+    map<string, BaseValue *> defaultArgs;
+    for (auto &arg: classDefNode->defaultArgs) {
+        BaseValue *val = res->reg(visit(arg.second, c));
+        if (res->shouldReturn()) return res;
+        defaultArgs[arg.first] = val;
+    }
+
+    c->symbolTable->set(funcName, new Class<int>(classContext, funcName, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods));
 
     return res->success(new Number<double>(0, "", ""));
 }

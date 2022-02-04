@@ -31,6 +31,7 @@
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/CallNode.h"
 #include "../Values/Functions/BuiltInFunction.h"
+#include "../Values/Class/ClassFunction.h"
 #include "../Modules/Random/Random.h"
 #include <string>
 #include <vector>

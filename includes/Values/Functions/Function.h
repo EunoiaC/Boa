@@ -5,12 +5,9 @@
 #ifndef BOA_FUNCTION_H
 #define BOA_FUNCTION_H
 
-#include <vector>
 #include "../../Nodes/Node.h"
 #include "BaseFunction.h"
 #include "../../RuntimeResult/RuntimeResult.h"
-
-using namespace std;
 
 template<typename T> class Function : public BaseFunction<T> {
 public:

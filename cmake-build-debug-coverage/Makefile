@@ -1041,6 +1041,54 @@ includes/Values/Class/Class.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.s
 .PHONY : includes/Values/Class/Class.cpp.s
 
+includes/Values/Class/ClassFunction.o: includes/Values/Class/ClassFunction.cpp.o
+.PHONY : includes/Values/Class/ClassFunction.o
+
+# target to build an object file
+includes/Values/Class/ClassFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
+.PHONY : includes/Values/Class/ClassFunction.cpp.o
+
+includes/Values/Class/ClassFunction.i: includes/Values/Class/ClassFunction.cpp.i
+.PHONY : includes/Values/Class/ClassFunction.i
+
+# target to preprocess a source file
+includes/Values/Class/ClassFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.i
+.PHONY : includes/Values/Class/ClassFunction.cpp.i
+
+includes/Values/Class/ClassFunction.s: includes/Values/Class/ClassFunction.cpp.s
+.PHONY : includes/Values/Class/ClassFunction.s
+
+# target to generate assembly for a file
+includes/Values/Class/ClassFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.s
+.PHONY : includes/Values/Class/ClassFunction.cpp.s
+
+includes/Values/Class/UsableClass.o: includes/Values/Class/UsableClass.cpp.o
+.PHONY : includes/Values/Class/UsableClass.o
+
+# target to build an object file
+includes/Values/Class/UsableClass.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o
+.PHONY : includes/Values/Class/UsableClass.cpp.o
+
+includes/Values/Class/UsableClass.i: includes/Values/Class/UsableClass.cpp.i
+.PHONY : includes/Values/Class/UsableClass.i
+
+# target to preprocess a source file
+includes/Values/Class/UsableClass.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.i
+.PHONY : includes/Values/Class/UsableClass.cpp.i
+
+includes/Values/Class/UsableClass.s: includes/Values/Class/UsableClass.cpp.s
+.PHONY : includes/Values/Class/UsableClass.s
+
+# target to generate assembly for a file
+includes/Values/Class/UsableClass.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.s
+.PHONY : includes/Values/Class/UsableClass.cpp.s
+
 includes/Values/Functions/BaseFunction.o: includes/Values/Functions/BaseFunction.cpp.o
 .PHONY : includes/Values/Functions/BaseFunction.o
 
@@ -1428,6 +1476,12 @@ help:
 	@echo "... includes/Values/Class/Class.o"
 	@echo "... includes/Values/Class/Class.i"
 	@echo "... includes/Values/Class/Class.s"
+	@echo "... includes/Values/Class/ClassFunction.o"
+	@echo "... includes/Values/Class/ClassFunction.i"
+	@echo "... includes/Values/Class/ClassFunction.s"
+	@echo "... includes/Values/Class/UsableClass.o"
+	@echo "... includes/Values/Class/UsableClass.i"
+	@echo "... includes/Values/Class/UsableClass.s"
 	@echo "... includes/Values/Functions/BaseFunction.o"
 	@echo "... includes/Values/Functions/BaseFunction.i"
 	@echo "... includes/Values/Functions/BaseFunction.s"

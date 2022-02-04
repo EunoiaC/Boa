@@ -41,6 +41,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
 ../Values/Map.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+../Values/Class/Class.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
 ../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 ../Nodes/Control Flow/ForNode.h
@@ -81,6 +83,10 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 ../Nodes/CallNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
+../Values/Functions/BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+../Modules/Random/Random.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
 string
 -
 vector
@@ -95,6 +101,10 @@ fstream
 -
 ../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+../../Values/BaseValues/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
 Value Nodes/NumberNode.h
@@ -274,6 +284,12 @@ fstream
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp
+RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+utility
+-
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 Values/BaseValues/BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
@@ -338,9 +354,55 @@ vector
 BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.cpp
+Class.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
+utility
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
+../Number/Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+../Functions/Function.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
+Functions/BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+string
+-
+cmath
+-
+../../includes/Modules/Random/Random.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
+BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+../../RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+BaseFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+../String/String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+../List/List.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
+../Map.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+iostream
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp
+Function.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
+../../Interpreter/Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
 vector
@@ -377,4 +439,20 @@ Functions/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+
+/Users/preetithorat/Documents/GitHub/Boa/main.cpp
+iostream
+-
+string
+-
+vector
+-
+ctime
+-
+cmath
+-
+includes/RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+includes/Values/Constants.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 

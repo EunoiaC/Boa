@@ -26,6 +26,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Interpreter/Interpreter.cpp \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -57,7 +58,9 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
@@ -362,6 +365,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -394,7 +398,9 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
@@ -440,6 +446,21 @@ CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h
+CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.cpp \
+ ../includes/Values/Class/Class.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/Function.h \
+ ../includes/Values/Number/Number.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -463,6 +484,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -494,6 +516,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.cpp \
  ../includes/Values/Functions/BuiltInFunction.h \
@@ -507,6 +530,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -534,7 +558,9 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.cpp \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List/List.h \
@@ -683,6 +709,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Constants.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \

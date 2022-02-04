@@ -38,6 +38,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Token/Token.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/BaseValues/BaseValue.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/BaseValues/Value.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o"

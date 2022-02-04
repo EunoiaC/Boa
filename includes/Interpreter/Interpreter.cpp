@@ -29,6 +29,18 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
     funcMap[N_IDX_NODE] = &Interpreter::visitIndexNode;
+
+    print = new BuiltInFunction<int>("print", {"value"}, {}, "fName", "fTxt");
+    input = new BuiltInFunction<int>("input", {"value"}, {}, "fName", "fTxt");
+    toNum = new BuiltInFunction<int>("toNum", {"value"}, {}, "fName", "fTxt");
+    lenOf = new BuiltInFunction<int>("lenOf", {"value"}, {}, "fName", "fTxt");
+    toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, "fName", "fTxt");
+    instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, "fName", "fTxt");
+    eval = new BuiltInFunction<int>("eval", {"value"}, {}, "fName", "fTxt");
+    _rename = new BuiltInFunction<int>("rename", {"oldName", "newName"}, {}, "fName", "fTxt");
+    getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, "fName", "fTxt");
+    _random = new Random<int>("fName", "fTxt");
+
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -385,6 +397,28 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     return res->success(returnVal);
 }
 
+Context *Interpreter::generateClassContext(string className) {
+    Context *classContext = new Context(std::move(className));
+    classContext->symbolTable = new SymbolTable();
+
+    classContext->symbolTable->set("null", new Number<double>(0, "", ""));
+    classContext->symbolTable->set("true", new Number<double>(1, "", ""));
+    classContext->symbolTable->set("false", new Number<double>(0, "", ""));
+    classContext->symbolTable->set("print", print);
+    classContext->symbolTable->set("input", input);
+    classContext->symbolTable->set("toNum", toNum);
+    classContext->symbolTable->set("lenOf", lenOf);
+    classContext->symbolTable->set("toStr", toStr);
+    classContext->symbolTable->set("typeOf", instanceOf);
+    classContext->symbolTable->set("eval", eval);
+    classContext->symbolTable->set("rename", _rename);
+    classContext->symbolTable->set("getSymbolTable", getSymbolTable);
+    //Modules
+    classContext->symbolTable->set("__random__", _random);
+
+    return classContext;
+}
+
 RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ClassDefNode *classDefNode = (ClassDefNode *) n;
@@ -393,10 +427,10 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     bool foundConstructor = false;
 
     for (auto &method: classDefNode->functions) {
-        auto * func = dynamic_cast<Function<int> *const>(res->reg(visit(method, c)));
+        auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, c)));
         funcs.push_back(func);
         if (res->shouldReturn()) return res;
-        if(func->name == "init") foundConstructor = true;
+        if (func->name == "init") foundConstructor = true;
     }
 
     if (!foundConstructor) {
@@ -406,10 +440,13 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
                 classDefNode->classNameTok->line,
                 fName,
                 lines[classDefNode->classNameTok->line],
-                "Class does not have a constructor defined as 'init'",
+                "Class does not have a constructor defined as 'init', which is required",
                 c
         ));
     }
+    //TODO: Implement Class value, and add it's own context to the class
+    Context * classContext = generateClassContext(classDefNode->classNameTok->getValueObject()->getValue());
+
     return res->success(new Number<double>(0, "", ""));
 }
 
@@ -563,10 +600,10 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
     BaseValue *left = res->reg(visit(node->left, c));
     if (res->shouldReturn()) return res;
 
-    BaseValue * result = left;
+    BaseValue *result = left;
 
-    for(auto &i : node->indices) {
-        BaseValue * idx = res->reg(visit(i, c));
+    for (auto &i: node->indices) {
+        BaseValue *idx = res->reg(visit(i, c));
         if (res->shouldReturn()) return res;
 
         result = result->get(idx);

@@ -14,6 +14,7 @@
 static const string T_STRING = "STRING";
 static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
+static const string T_CLASS = "CLASS";
 static const string T_LIST = "LIST";
 static const string T_MAP = "MAP";
 

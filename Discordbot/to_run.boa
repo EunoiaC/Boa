@@ -1,15 +1,14 @@
 running = true
 
 "AltGr+987 = █, ░"
-"3x5 font set"
-Row___ = "███"
-Center = "░█░"
-Border = "█░█"
-Left__ = "█░░"
-Left2_ = "██░"
-Right_ = "░░█"
-Right2 = "░██"
-Nil___ = "░░░"
+Row___="███"
+Center="░█░"
+Border="█░█"
+Left__="█░░"
+Left2_="██░"
+Right_="░░█"
+Right2="░██"
+Nil___="░░░"
 Data = {
     "A": [Center, Border, Row___, Border, Border],
     "B": [Left2_, Border, Left2_, Border, Left2_],
@@ -54,4 +53,4 @@ op main(str) do {
         print(i)
     }
 }
-main("FOUR")
+main("HARDER\nPLEASE\nDADDY")

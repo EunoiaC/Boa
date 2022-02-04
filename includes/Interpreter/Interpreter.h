@@ -9,6 +9,7 @@
 #include "../Values/Functions/Function.h"
 #include "../Values/List/List.h"
 #include "../Values/Map.h"
+#include "../Values/Class/Class.h"
 #include "../RuntimeResult/RuntimeResult.h"
 #include "../Nodes/Control Flow/ForNode.h"
 #include "../Nodes/Control Flow/IterateNode.h"
@@ -29,6 +30,8 @@
 #include "../Nodes/Value Nodes/MapNode.h"
 #include "../Nodes/UnaryOperationNode.h"
 #include "../Nodes/CallNode.h"
+#include "../Values/Functions/BuiltInFunction.h"
+#include "../Modules/Random/Random.h"
 #include <string>
 #include <vector>
 
@@ -36,6 +39,18 @@ using namespace std;
 
 class Interpreter {
 public:
+    Context * generateClassContext(string className);
+    BuiltInFunction<int> * print;
+    BuiltInFunction<int> * input;
+    BuiltInFunction<int> * toNum;
+    BuiltInFunction<int> * lenOf;
+    BuiltInFunction<int> * toStr;
+    BuiltInFunction<int> * instanceOf;
+    BuiltInFunction<int> * eval;
+    BuiltInFunction<int> * _rename;
+    BuiltInFunction<int> * getSymbolTable;
+    Random<int> * _random;
+
     string fName, pathRef;
     vector<string> lines;
     //Change typedef with return type of function

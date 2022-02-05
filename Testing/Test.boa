@@ -1,6 +1,8 @@
-class Person(name="argg", age=12) do {
+class Person(name, age) do {
     op init() do {
         x = 12
     }
     op say() do print("hello")
 }
+
+print(Person.say())

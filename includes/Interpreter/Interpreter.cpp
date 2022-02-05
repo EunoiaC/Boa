@@ -426,15 +426,15 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     vector<ClassFunction<int> *> methods;
     bool foundConstructor = false;
 
-    string funcName = classDefNode->classNameTok->getValueObject()->getValue();
+    string className = classDefNode->classNameTok->getValueObject()->getValue();
 
-    Context *classContext = generateClassContext(funcName);
+    Context *classContext = generateClassContext(className);
 
     for (auto &method: classDefNode->functions) {
         auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, classContext)));
         if (res->shouldReturn()) return res;
         auto *classFunc = new ClassFunction<int>(func->fName, func->fTxt, func->name, func->body, func->argNames,
-                                                 func->defaultArgs, func->lines, func->autoReturn, classContext);
+                                                 func->defaultArgs, func->lines, func->autoReturn, classContext, className);
         methods.push_back(classFunc);
         if (func->name == "init") foundConstructor = true;
     }
@@ -458,7 +458,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    c->symbolTable->set(funcName, new Class<int>(classContext, funcName, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods));
+    c->symbolTable->set(className, new Class<int>(classContext, className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods));
 
     return res->success(new Number<double>(0, "", ""));
 }

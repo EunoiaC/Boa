@@ -1,5 +1,6 @@
-class Person(name, age=12) do {
-    op init() do null
+class Person(name="argg", age=12) do {
+    op init() do {
+        x = 12
+    }
+    op say() do print("hello")
 }
-
-print(Person("YO"))

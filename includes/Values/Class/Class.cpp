@@ -12,6 +12,7 @@ Class<int>::Class(Context *context, string name, string fName, string fTxt, vect
                   map<string, BaseValue *> defaultArgs,
                   vector<ClassFunction<int> *> methods) : Value<int>(-1, T_CLASS, std::move(fName), std::move(fTxt)) {
     classContext = context;
+    ctx = classContext;
     symbolTable = classContext->symbolTable;
     this->methods = std::move(methods);
     this->name = std::move(name);

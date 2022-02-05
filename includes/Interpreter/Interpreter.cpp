@@ -431,11 +431,11 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     Context *classContext = generateClassContext(funcName);
 
     for (auto &method: classDefNode->functions) {
-        auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, c)));
+        auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, classContext)));
+        if (res->shouldReturn()) return res;
         auto *classFunc = new ClassFunction<int>(func->fName, func->fTxt, func->name, func->body, func->argNames,
                                                  func->defaultArgs, func->lines, func->autoReturn, classContext);
         methods.push_back(classFunc);
-        if (res->shouldReturn()) return res;
         if (func->name == "init") foundConstructor = true;
     }
 

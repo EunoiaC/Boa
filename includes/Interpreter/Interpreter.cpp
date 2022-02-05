@@ -327,10 +327,8 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     } else if (value->type == T_STRING) {
         ((String<string> *) value)->setContext(c);
     } else if (value->type == T_FUNC) {
-        auto * func = (BaseFunction<int> *) value;
-        if(func->funcType != CLASS_FUNC) {
-            func->setContext(c);
-        }
+        auto *func = (BaseFunction<int> *) value;
+        func->setContext(c);
     } else if (value->type == T_LIST) {
         ((List<vector<BaseValue *>> *) value)->setContext(c);
     } else if (value->type == T_MAP) {
@@ -362,7 +360,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     valToCall = dynamic_cast<Value<int> *>(b);
 
     valToCall = dynamic_cast<Value<int> *>(valToCall->copy()->setPos(callNode->posStart, callNode->posEnd,
-                                                                            callNode->nodeToCall->line));
+                                                                     callNode->nodeToCall->line));
     valToCall->callTxt = lines[callNode->line]; //Update the line func is called on
     valToCall->fName = fName;
 
@@ -379,10 +377,8 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     } else if (returnVal->type == T_STRING) {
         ((String<string> *) returnVal)->setContext(c);
     } else if (returnVal->type == T_FUNC) {
-        auto * func = (BaseFunction<int> *) returnVal;
-        if(func->funcType != CLASS_FUNC) {
-            func->setContext(c);
-        }
+        auto *func = (BaseFunction<int> *) returnVal;
+        func->setContext(c);
     } else if (returnVal->type == T_LIST) {
         ((List<vector<BaseValue *>> *) returnVal)->setContext(c);
     } else if (returnVal->type == T_MAP) {
@@ -390,7 +386,6 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     }
     return res->success(returnVal);
 }
-
 
 
 RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
@@ -426,7 +421,8 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    auto classObj = new Class<int>(className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods, lines);
+    auto classObj = new Class<int>(className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks,
+                                   defaultArgs, methods, lines);
     classObj->setContext(c);
 
     c->symbolTable->set(className, classObj);

@@ -463,6 +463,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o: \
  ../includes/Values/Class/Class.cpp \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List/List.h \
@@ -513,8 +514,20 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/ClassFunction.h \
  ../includes/Values/Class/UsableClass.cpp \
- ../includes/Values/Class/UsableClass.h
+ ../includes/Values/Class/UsableClass.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number/Number.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

@@ -2,7 +2,11 @@ class Person(name, age) do {
     op init() do {
         x = 12
     }
-    op say() do print("hello")
+    op say() do {
+        print("Hello, I am " + name + " and I am " + age + " years old")
+    }
 }
 
-print(Person.say())
+p = Person("John", 23)
+
+p.say()

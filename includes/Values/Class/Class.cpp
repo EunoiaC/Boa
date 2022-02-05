@@ -3,6 +3,7 @@
 //
 
 #include "Class.h"
+#include "UsableClass.h"
 
 #include <utility>
 
@@ -11,9 +12,8 @@ template<>
 Class<int>::Class(Context *context, string name, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
                   vector<ClassFunction<int> *> methods) : Value<int>(-1, T_CLASS, std::move(fName), std::move(fTxt)) {
-    classContext = context;
-    ctx = classContext;
-    symbolTable = classContext->symbolTable;
+    ctx = context;
+    symbolTable = ctx->symbolTable;
     this->methods = std::move(methods);
     this->name = std::move(name);
     this->constructorArgs = std::move(constructorArgs);
@@ -23,9 +23,9 @@ Class<int>::Class(Context *context, string name, string fName, string fTxt, vect
 
 template<>
 BaseValue *Class<int>::copy() {
-    auto * copy = new Class<int>(classContext, name, fName, fTxt, constructorArgs, defaultArgs, methods);
+    auto * copy = new Class<int>(ctx, name, fName, fTxt, constructorArgs, defaultArgs, methods);
     copy->setPos(posStart, posEnd, line);
-    copy->setContext(classContext);
+    copy->setContext(ctx);
     return copy;
 }
 template<> void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
@@ -109,10 +109,11 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     for (auto &it : constructorArgs) {
         argNames.push_back(it->getValueObject()->getValue());
     }
-
-    res->reg(checkAndPopulateArgs(args, argNames, classContext));
+    res->reg(checkAndPopulateArgs(args, argNames, ctx));
     if (res->shouldReturn()) return res;
-    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
+
+    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, ctx);
+    return (new RuntimeResult())->success(usableClass);
 }
 
 template<>

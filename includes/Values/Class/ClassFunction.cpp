@@ -10,11 +10,11 @@
 
 template<>
 ClassFunction<int>::ClassFunction(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                                  vector<string> lines, bool autoReturn, Context * ctx, string className) : BaseFunction<int>(std::move(name), std::move(argNames), std::move(defaultArgs), std::move(fName), std::move(fTxt)) {
+                                  vector<string> lines, bool autoReturn, Context * context, string className) : BaseFunction<int>(std::move(name), std::move(argNames), std::move(defaultArgs), std::move(fName), std::move(fTxt)) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;
-    this->ctx = ctx;
+    this->classCtx = context;
     this->className = className;
 }
 
@@ -23,10 +23,10 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args) {
     auto *res = new RuntimeResult();
     auto *interpreter = new Interpreter(fName, lines);
 
-    res->reg(checkAndPopulateArgs(args, argNames, ctx));
+    res->reg(checkAndPopulateArgs(args, argNames, classCtx));
     if (res->shouldReturn()) return res;
 
-    BaseValue *value = res->reg(interpreter->visit(body, ctx));
+    BaseValue *value = res->reg(interpreter->visit(body, classCtx));
     if (res->shouldReturn() && res->funcReturnValue == nullptr) {
         return res;
     }
@@ -41,8 +41,7 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args) {
 
 template<>
 ClassFunction<int> *ClassFunction<int>::copy() {
-    ClassFunction<int> *func = new ClassFunction<int>(fName, fTxt, name, body, argNames, defaultArgs, lines, autoReturn, ctx, className);
-    func->setContext(ctx);
+    ClassFunction<int> *func = new ClassFunction<int>(fName, fTxt, name, body, argNames, defaultArgs, lines, autoReturn, classCtx, className);
     func->setPos(posStart, posEnd, line);
     return func;
 }

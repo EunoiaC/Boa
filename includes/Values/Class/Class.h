@@ -14,7 +14,6 @@
 
 template<typename T> class Class : public Value<T> {
 public:
-    Context * classContext;
     string name, fName, fTxt;
     vector<Token<string> *> constructorArgs;
     map<string, BaseValue *> defaultArgs;

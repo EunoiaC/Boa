@@ -21,6 +21,7 @@ static const string T_MAP = "MAP";
 template<class valueType>
 class Value : public BaseValue {
 public:
+    string callTxt;
     /**
      * The value as an instance of the object type
      */

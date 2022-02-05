@@ -2,4 +2,4 @@ class Person(name, age=12) do {
     op init() do null
 }
 
-print(Person())
+print(Person("YO"))

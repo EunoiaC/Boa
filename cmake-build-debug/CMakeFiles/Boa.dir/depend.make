@@ -465,6 +465,8 @@ CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o: \
  ../includes/Values/Class/ClassFunction.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
@@ -510,6 +512,9 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
+ ../includes/Values/Class/UsableClass.cpp \
+ ../includes/Values/Class/UsableClass.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

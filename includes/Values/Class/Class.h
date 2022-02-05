@@ -9,6 +9,8 @@
 #include "../Functions/Function.h"
 #include "ClassFunction.h"
 #include "../../Token/Token.h"
+#include "../Map.h"
+#include "../List/List.h"
 
 template<typename T> class Class : public Value<T> {
 public:
@@ -23,6 +25,9 @@ public:
     string toString() override;
 
     BaseValue * copy() override;
+    RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames);
+    void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
+    RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
 
     Class<T>(Context * context, string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<ClassFunction<int> *> methods);
 };

@@ -371,6 +371,10 @@ ClassFunction.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
 ../../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Map.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+../List/List.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.cpp
 ClassFunction.h

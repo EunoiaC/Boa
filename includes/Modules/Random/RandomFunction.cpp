@@ -83,7 +83,7 @@ RuntimeResult *RandomFunction<int>::execute_choose(Context *execCtx) {
 template<>
 RandomFunction<int>::RandomFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
-                                                                                   fTxt) {
+                                                                                   fTxt, CLASS_FUNC) {
     type = "FUNCTION";
     funcMap["execute_randrange"] = &RandomFunction<int>::execute_randrange;
     funcMap["execute_choose"] = &RandomFunction<int>::execute_choose;

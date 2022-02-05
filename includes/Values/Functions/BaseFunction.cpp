@@ -9,12 +9,13 @@
 #include "../List/List.h"
 #include "../Map.h"
 
-template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt) : Value<int>(0, T_FUNC, fName, fTxt) {
+template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt, string funcType) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;
     this->fTxt = fTxt;
     this->name = move(name);
     this->argNames = move(argNames);
     this->defaultArgs = move(defaultArgs);
+    this->funcType = move(funcType);
 }
 
 template<> Context *BaseFunction<int>::generateNewContext() {
@@ -56,7 +57,7 @@ template<> RuntimeResult *BaseFunction<int>::checkArgs(vector<BaseValue *> args,
 }
 
 template<> BaseFunction<int> *BaseFunction<int>::copy() {
-    BaseFunction<int> * func = new BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt);
+    BaseFunction<int> * func = new BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, funcType);
     func->setPos(posStart, posEnd, line);
     func->setContext(ctx);
     return func;

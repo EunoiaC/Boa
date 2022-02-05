@@ -452,6 +452,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Random/Random.h \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
@@ -465,6 +466,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o: \
  ../includes/Values/Class/ClassFunction.h \
  ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
@@ -517,17 +519,46 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
  ../includes/Errors/RuntimeError.h \
+ ../includes/Interpreter/Interpreter.h \
+ ../includes/Modules/Random/Random.h \
+ ../includes/Nodes/BinaryOperationNode.h \
+ ../includes/Nodes/CallNode.h \
+ ../includes/Nodes/Control\ Flow/ClassDefNode.h \
+ ../includes/Nodes/Control\ Flow/ForNode.h \
+ ../includes/Nodes/Control\ Flow/FuncDefNode.h \
+ ../includes/Nodes/Control\ Flow/IfNode.h \
+ ../includes/Nodes/Control\ Flow/IterateNode.h \
+ ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
+ ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
+ ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
+ ../includes/Nodes/Statements/ImportNode.h \
+ ../includes/Nodes/UnaryOperationNode.h \
+ ../includes/Nodes/Value\ Nodes/ListNode.h \
+ ../includes/Nodes/Value\ Nodes/MapNode.h \
+ ../includes/Nodes/Value\ Nodes/NumberNode.h \
+ ../includes/Nodes/Value\ Nodes/StringNode.h \
+ ../includes/Nodes/VarAccessNode.h \
+ ../includes/Nodes/VarAssignNode.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
  ../includes/Values/Class/UsableClass.cpp \
  ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/Number/Number.h
+ ../includes/Values/Functions/BuiltInFunction.h \
+ ../includes/Values/Functions/Function.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Map.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

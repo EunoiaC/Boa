@@ -9,28 +9,30 @@
 
 
 template<>
-Class<int>::Class(Context *context, string name, string fName, string fTxt, vector<Token<string> *> constructorArgs,
+Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
-                  vector<ClassFunction<int> *> methods) : Value<int>(-1, T_CLASS, std::move(fName), std::move(fTxt)) {
-    ctx = context;
-    symbolTable = ctx->symbolTable;
+                  vector<Node *> methods, vector<string> lines) : Value<int>(-1, T_CLASS, std::move(fName),
+                                                                             std::move(fTxt)) {
     this->methods = std::move(methods);
     this->name = std::move(name);
     this->constructorArgs = std::move(constructorArgs);
     this->defaultArgs = std::move(defaultArgs);
+    this->lines = std::move(lines);
 }
 
 
 template<>
 BaseValue *Class<int>::copy() {
-    auto * copy = new Class<int>(ctx, name, fName, fTxt, constructorArgs, defaultArgs, methods);
+    auto *copy = new Class<int>(name, fName, fTxt, constructorArgs, defaultArgs, methods, lines);
     copy->setPos(posStart, posEnd, line);
     copy->setContext(ctx);
     return copy;
 }
-template<> void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
-                                         Context *context) {
-    for (auto &it : defaultArgs) {
+
+template<>
+void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
+                              Context *context) {
+    for (auto &it: defaultArgs) {
         string argName = it.first;
         BaseValue *argValue = it.second;
         if (argValue->type == T_NUM) {
@@ -39,7 +41,8 @@ template<> void Class<int>::populateArgs(vector<BaseValue *> args, vector<string
             ((String<string> *) argValue)->setContext(context);
         } else if (argValue->type == T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
-        } if (argValue->type == T_MAP) {
+        }
+        if (argValue->type == T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
         }
         context->symbolTable->set(argName, argValue);
@@ -54,14 +57,16 @@ template<> void Class<int>::populateArgs(vector<BaseValue *> args, vector<string
             ((String<string> *) argValue)->setContext(context);
         } else if (argValue->type == T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
-        } if (argValue->type == T_MAP) {
+        }
+        if (argValue->type == T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
         }
         context->symbolTable->set(argName, argValue);
     }
 }
 
-template<> RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> argNames) {
+template<>
+RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> argNames) {
     auto *res = new RuntimeResult();
     if (args.size() > argNames.size()) {
         return res->failure(new RuntimeError(
@@ -91,11 +96,12 @@ template<> RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector
     return res->success(nullptr);
 }
 
-template<> RuntimeResult *Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames,
-                                                           Context *context) {
+template<>
+RuntimeResult *Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames,
+                                                Context *context) {
     RuntimeResult *res = new RuntimeResult();
     res->reg(checkArgs(args, argNames));
-    if(res->shouldReturn()) return res;
+    if (res->shouldReturn()) return res;
     populateArgs(args, argNames, context);
     return res->success(nullptr);
 }
@@ -106,13 +112,15 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     auto *res = new RuntimeResult();
 
     vector<string> argNames;
-    for (auto &it : constructorArgs) {
+    for (auto &it: constructorArgs) {
         argNames.push_back(it->getValueObject()->getValue());
     }
-    res->reg(checkAndPopulateArgs(args, argNames, ctx));
+    Context *context = new Context(name);
+    context->symbolTable = new SymbolTable();
+    res->reg(checkAndPopulateArgs(args, argNames, context));
     if (res->shouldReturn()) return res;
 
-    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, ctx);
+    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, context, lines);
     return (new RuntimeResult())->success(usableClass);
 }
 

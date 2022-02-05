@@ -167,7 +167,7 @@ RuntimeResult *StringFunction<int>::execute_indexOf(Context *execCtx) {
 
 template <>
 StringFunction<int>::StringFunction(String<string>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
-        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
+        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_split"] = &StringFunction<int>::execute_split;

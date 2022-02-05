@@ -29,18 +29,6 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
     funcMap[N_IDX_NODE] = &Interpreter::visitIndexNode;
-
-    print = new BuiltInFunction<int>("print", {"value"}, {}, "fName", "fTxt");
-    input = new BuiltInFunction<int>("input", {"value"}, {}, "fName", "fTxt");
-    toNum = new BuiltInFunction<int>("toNum", {"value"}, {}, "fName", "fTxt");
-    lenOf = new BuiltInFunction<int>("lenOf", {"value"}, {}, "fName", "fTxt");
-    toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, "fName", "fTxt");
-    instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, "fName", "fTxt");
-    eval = new BuiltInFunction<int>("eval", {"value"}, {}, "fName", "fTxt");
-    _rename = new BuiltInFunction<int>("rename", {"oldName", "newName"}, {}, "fName", "fTxt");
-    getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, "fName", "fTxt");
-    _random = new Random<int>("fName", "fTxt");
-
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -339,7 +327,10 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     } else if (value->type == T_STRING) {
         ((String<string> *) value)->setContext(c);
     } else if (value->type == T_FUNC) {
-        ((BaseFunction<int> *) value)->setContext(c);
+        auto * func = (BaseFunction<int> *) value;
+        if(func->funcType != CLASS_FUNC) {
+            func->setContext(c);
+        }
     } else if (value->type == T_LIST) {
         ((List<vector<BaseValue *>> *) value)->setContext(c);
     } else if (value->type == T_MAP) {
@@ -388,7 +379,10 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     } else if (returnVal->type == T_STRING) {
         ((String<string> *) returnVal)->setContext(c);
     } else if (returnVal->type == T_FUNC) {
-        ((BaseFunction<int> *) returnVal)->setContext(c);
+        auto * func = (BaseFunction<int> *) returnVal;
+        if(func->funcType != CLASS_FUNC) {
+            func->setContext(c);
+        }
     } else if (returnVal->type == T_LIST) {
         ((List<vector<BaseValue *>> *) returnVal)->setContext(c);
     } else if (returnVal->type == T_MAP) {
@@ -397,46 +391,20 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     return res->success(returnVal);
 }
 
-Context *Interpreter::generateClassContext(string className) {
-    Context *classContext = new Context(std::move(className));
-    classContext->symbolTable = new SymbolTable();
 
-    classContext->symbolTable->set("null", new Number<double>(0, "", ""));
-    classContext->symbolTable->set("true", new Number<double>(1, "", ""));
-    classContext->symbolTable->set("false", new Number<double>(0, "", ""));
-    classContext->symbolTable->set("print", print);
-    classContext->symbolTable->set("input", input);
-    classContext->symbolTable->set("toNum", toNum);
-    classContext->symbolTable->set("lenOf", lenOf);
-    classContext->symbolTable->set("toStr", toStr);
-    classContext->symbolTable->set("typeOf", instanceOf);
-    classContext->symbolTable->set("eval", eval);
-    classContext->symbolTable->set("rename", _rename);
-    classContext->symbolTable->set("getSymbolTable", getSymbolTable);
-    //Modules
-    classContext->symbolTable->set("__random__", _random);
-
-    return classContext;
-}
 
 RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     RuntimeResult *res = new RuntimeResult();
     ClassDefNode *classDefNode = (ClassDefNode *) n;
 
-    vector<ClassFunction<int> *> methods;
     bool foundConstructor = false;
 
     string className = classDefNode->classNameTok->getValueObject()->getValue();
-
-    Context *classContext = generateClassContext(className);
+    vector<Node *> methods;
 
     for (auto &method: classDefNode->functions) {
-        auto *func = dynamic_cast<Function<int> *const>(res->reg(visit(method, classContext)));
-        if (res->shouldReturn()) return res;
-        auto *classFunc = new ClassFunction<int>(func->fName, func->fTxt, func->name, func->body, func->argNames,
-                                                 func->defaultArgs, func->lines, func->autoReturn, classContext, className);
-        methods.push_back(classFunc);
-        if (func->name == "init") foundConstructor = true;
+        if (((FuncDefNode *) method)->funcNameTok->getValueObject()->getValue() == "init") foundConstructor = true;
+        methods.push_back(method);
     }
 
     if (!foundConstructor) {
@@ -458,9 +426,12 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    c->symbolTable->set(className, new Class<int>(classContext, className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods));
+    auto classObj = new Class<int>(className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks, defaultArgs, methods, lines);
+    classObj->setContext(c);
 
-    return res->success(new Number<double>(0, "", ""));
+    c->symbolTable->set(className, classObj);
+
+    return res->success(classObj);
 }
 
 RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {

@@ -9,12 +9,17 @@
 #include "../../Interpreter/Interpreter.h"
 
 template<>
+string ClassFunction<int>::toString() {
+    return "<Func: " + name + "> defined in class " + className;
+}
+
+template<>
 ClassFunction<int>::ClassFunction(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                                  vector<string> lines, bool autoReturn, Context * context, string className) : BaseFunction<int>(std::move(name), std::move(argNames), std::move(defaultArgs), std::move(fName), std::move(fTxt)) {
+                                  vector<string> lines, bool autoReturn, Context * context, string className) : BaseFunction<int>(std::move(name), std::move(argNames), std::move(defaultArgs), std::move(fName), std::move(fTxt), CLASS_FUNC) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;
-    this->classCtx = context;
+    this->classCtx = new Context(*context);
     this->className = className;
 }
 
@@ -44,9 +49,4 @@ ClassFunction<int> *ClassFunction<int>::copy() {
     ClassFunction<int> *func = new ClassFunction<int>(fName, fTxt, name, body, argNames, defaultArgs, lines, autoReturn, classCtx, className);
     func->setPos(posStart, posEnd, line);
     return func;
-}
-
-template<>
-string ClassFunction<int>::toString() {
-    return "<Func: " + name + "> defined in class " + className;
 }

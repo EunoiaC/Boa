@@ -17,7 +17,7 @@ RuntimeResult *NumberFunction<int>::execute_floor(Context *execCtx) {
 
 template<>
 NumberFunction<int>::NumberFunction(Number<double>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
-        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
+        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_ceil"] = &NumberFunction<int>::execute_ceil;

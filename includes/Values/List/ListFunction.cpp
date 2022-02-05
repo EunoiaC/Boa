@@ -202,7 +202,7 @@ RuntimeResult *ListFunction<int>::execute_set(Context *execCtx) {
 
 template<>
 ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
-        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
+        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_pop"] = &ListFunction<int>::execute_pop;

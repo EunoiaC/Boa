@@ -8,7 +8,7 @@
 
 template<>
 Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
+                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, NORMAL_FUNC) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;

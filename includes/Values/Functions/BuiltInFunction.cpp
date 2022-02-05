@@ -245,7 +245,7 @@ RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
 
 template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
-        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt) {
+        : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, BUILT_IN_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;

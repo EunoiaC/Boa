@@ -17,9 +17,9 @@ public:
     string name, fName, fTxt;
     vector<Token<string> *> constructorArgs;
     map<string, BaseValue *> defaultArgs;
-    vector<ClassFunction<int> *> methods;
-
+    vector<Node *> methods;
     RuntimeResult *execute(vector<BaseValue *> args) override;
+    vector<string> lines;
 
     string toString() override;
 
@@ -28,7 +28,7 @@ public:
     void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
     RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
 
-    Class<T>(Context * context, string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<ClassFunction<int> *> methods);
+    Class<T>(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> methods, vector<string> lines);
 };
 
 

@@ -7,11 +7,26 @@
 
 #include "../../Values/BaseValues/Value.h"
 #include "ClassFunction.h"
+#include "../../Values/Functions/BuiltInFunction.h"
+#include "../../Modules/Random/Random.h"
 
 template<typename T> class UsableClass : public Value<T> {
 public:
+    BuiltInFunction<int> * print;
+    BuiltInFunction<int> * input;
+    BuiltInFunction<int> * toNum;
+    BuiltInFunction<int> * lenOf;
+    BuiltInFunction<int> * toStr;
+    BuiltInFunction<int> * instanceOf;
+    BuiltInFunction<int> * eval;
+    BuiltInFunction<int> * _rename;
+    BuiltInFunction<int> * getSymbolTable;
+    Random<int> * _random;
+    Context * generateClassContext(string name);
+    vector<string> lines;
+
     string className;
-    UsableClass<int>(string f, string txt, string className, vector<ClassFunction<int> *> methods, Context * context);
+    UsableClass<int>(string f, string txt, string className, vector<Node *> methods, Context * c, vector<string> lines);
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;

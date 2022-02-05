@@ -40,18 +40,6 @@ using namespace std;
 
 class Interpreter {
 public:
-    Context * generateClassContext(string className);
-    BuiltInFunction<int> * print;
-    BuiltInFunction<int> * input;
-    BuiltInFunction<int> * toNum;
-    BuiltInFunction<int> * lenOf;
-    BuiltInFunction<int> * toStr;
-    BuiltInFunction<int> * instanceOf;
-    BuiltInFunction<int> * eval;
-    BuiltInFunction<int> * _rename;
-    BuiltInFunction<int> * getSymbolTable;
-    Random<int> * _random;
-
     string fName, pathRef;
     vector<string> lines;
     //Change typedef with return type of function

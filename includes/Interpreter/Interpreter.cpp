@@ -421,7 +421,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    auto classObj = new Class<int>(className, classDefNode->fName, classDefNode->fTxt, classDefNode->argNameToks,
+    auto classObj = new Class<int>(className, fName, lines[classDefNode->line], classDefNode->argNameToks,
                                    defaultArgs, methods, lines);
     classObj->setContext(c);
 
@@ -566,6 +566,10 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     } else if (left->type == T_MAP) {
         if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
             return rtRes->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
+        }
+    } else if (left->type == T_CLASS) {
+        if (((UsableClass<int> *) left)->rtError) {
+            return rtRes->failure(((UsableClass<int> *) left)->rtError);
         }
     }
 

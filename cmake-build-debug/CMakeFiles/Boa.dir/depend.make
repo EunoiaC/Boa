@@ -60,6 +60,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
@@ -401,6 +402,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
@@ -508,6 +510,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.cpp \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
@@ -616,6 +619,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.cpp \
  ../includes/Values/Functions/BuiltInFunction.h \
@@ -659,6 +663,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.cpp \
@@ -811,6 +816,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Class/Class.h \
  ../includes/Values/Class/ClassFunction.h \
+ ../includes/Values/Class/UsableClass.h \
  ../includes/Values/Constants.h \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \

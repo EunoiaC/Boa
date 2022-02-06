@@ -87,6 +87,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 ../Values/Class/ClassFunction.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+../Values/Class/UsableClass.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
 ../Modules/Random/Random.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
 string
@@ -373,6 +375,16 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
+../../Values/BaseValues/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ClassFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+../../Values/Functions/BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+../../Modules/Random/Random.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h

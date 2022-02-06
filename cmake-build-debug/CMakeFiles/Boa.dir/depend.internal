@@ -60,6 +60,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
@@ -401,6 +402,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
@@ -508,6 +510,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
@@ -616,6 +619,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
@@ -659,6 +663,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp
@@ -811,6 +816,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h

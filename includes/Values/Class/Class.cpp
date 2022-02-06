@@ -120,6 +120,9 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     if (res->shouldReturn()) return res;
 
     UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, context, ctx, lines);
+    if(usableClass->rtError) {
+        return res->failure(usableClass->rtError);
+    }
     return (new RuntimeResult())->success(usableClass);
 }
 

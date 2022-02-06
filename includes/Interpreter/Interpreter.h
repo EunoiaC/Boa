@@ -32,6 +32,7 @@
 #include "../Nodes/CallNode.h"
 #include "../Values/Functions/BuiltInFunction.h"
 #include "../Values/Class/ClassFunction.h"
+#include "../Values/Class/UsableClass.h"
 #include "../Modules/Random/Random.h"
 #include <string>
 #include <vector>

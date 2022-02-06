@@ -15,6 +15,9 @@ BaseValue *UsableClass<int>::getFromSymbolTable(string key) {
 template<>
 Context *UsableClass<int>::generateClassContext(string className) {
     Context *classContext = new Context(std::move(className));
+    classContext->fName = fName;
+    classContext->fTxt = fTxt;
+
     classContext->symbolTable = new SymbolTable();
 
     classContext->symbolTable->set("null", new Number<double>(0, "", ""));
@@ -64,7 +67,7 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
         Interpreter * i = new Interpreter(className, lines);
         RuntimeResult * res = new RuntimeResult();
         string funcName = node->funcNameTok->getValueObject()->getValue();
-        Function<int> * v = (Function<int> *) res->reg(i->visit(node, ctx));
+        auto * v = (Function<int> *) res->reg(i->visit(node, ctx));
         if(res->shouldReturn()) {
             rtError = res->error;
             return;
@@ -73,7 +76,10 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
     }
 
     ClassFunction<int> * init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
-    init->execute({});
+    RuntimeResult * res = init->execute({});
+    if(res->shouldReturn()) {
+        rtError = res->error;
+    }
 }
 
 template<>

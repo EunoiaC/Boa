@@ -106,7 +106,6 @@ RuntimeResult *Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector
     return res->success(nullptr);
 }
 
-
 template<>
 RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     auto *res = new RuntimeResult();
@@ -120,7 +119,7 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     res->reg(checkAndPopulateArgs(args, argNames, context));
     if (res->shouldReturn()) return res;
 
-    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, context, lines);
+    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, context, ctx, lines);
     return (new RuntimeResult())->success(usableClass);
 }
 

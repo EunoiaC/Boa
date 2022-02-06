@@ -26,7 +26,7 @@ public:
     vector<string> lines;
 
     string className;
-    UsableClass<int>(string f, string txt, string className, vector<Node *> methods, Context * c, vector<string> lines);
+    UsableClass<int>(string f, string txt, string className, vector<Node *> methods, Context * c, Context * parent, vector<string> lines);
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;

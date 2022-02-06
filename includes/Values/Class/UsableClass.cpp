@@ -36,7 +36,7 @@ Context *UsableClass<int>::generateClassContext(string className) {
 }
 
 template<>
-UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> methods, Context * c, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f), std::move(txt)) {
+UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> methods, Context * c, Context * parent, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f), std::move(txt)) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
 
@@ -53,6 +53,7 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
 
     this->className = std::move(className);
     ctx = generateClassContext(className);
+    ctx->symbolTable->parent = parent->symbolTable;
 
     for (auto &it : c->symbolTable->symbols) {
         ctx->symbolTable->set(it.first, it.second);

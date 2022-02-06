@@ -1,20 +1,21 @@
 running = true
 
-"MAKE VARS"
-
-for x = 0 to 100 chgby 10 do {
-    temp = x
-    rename("temp", "x" + x/10)
+class Person(name, age) do {
+    op init() do null
+    op say() do {
+        print("Hello, I am " + name + " and I am " + age + " years old")
+    }
 }
 
-print(x0)
-print(x1)
-print(x2)
-print(x3)
-print(x4)
-print(x5)
-print(x6)
-print(x7)
-print(x8)
-print(x9)
-print(x10)
+john = Person("John", 23)
+alan = Person("Alan", 21)
+
+john.say()
+alan.say()
+
+op make(arg1, arg2, className) do {
+    return className(arg1, arg2)
+}
+
+x = make("Sam", 9, Person)
+x.say()

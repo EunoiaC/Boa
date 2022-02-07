@@ -821,9 +821,9 @@ ParseResult *Parser::classDef() {
 
     checkNewLines();
 
-    vector<Node *> functions;
+    vector<Node *> members;
     while (currentToken->getType() != R_CURLY_BRACKET) {
-        functions.push_back(res->reg(funcDef()));
+        members.push_back(res->reg(statement()));
         if (res->error) return res;
         checkNewLines();
     }
@@ -832,7 +832,7 @@ ParseResult *Parser::classDef() {
     res->regAdvancement();
     advance();
 
-    ClassDefNode *classDef = new ClassDefNode(className, argNames, defaultArgValues, functions);
+    ClassDefNode *classDef = new ClassDefNode(className, argNames, defaultArgValues, members);
 
     return res->success(classDef);
 }

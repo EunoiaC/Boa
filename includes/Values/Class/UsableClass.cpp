@@ -8,7 +8,7 @@
 
 template<>
 BaseValue *UsableClass<int>::getFromSymbolTable(string key) {
-    BaseValue * v = ctx->symbolTable->get(key);
+    BaseValue *v = ctx->symbolTable->get(key);
     return v;
 }
 
@@ -39,7 +39,9 @@ Context *UsableClass<int>::generateClassContext(string className) {
 }
 
 template<>
-UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> methods, Context * c, Context * parent, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f), std::move(txt)) {
+UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> methods, Context *c,
+                              Context *parent, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
+                                                                                  std::move(txt)) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
 
@@ -58,33 +60,53 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
     ctx = generateClassContext(className);
     ctx->symbolTable->parent = parent->symbolTable;
 
-    for (auto &it : c->symbolTable->symbols) {
+    for (auto &it: c->symbolTable->symbols) {
         ctx->symbolTable->set(it.first, it.second);
     }
 
-    for (auto &method : methods) {
-        FuncDefNode * node = (FuncDefNode *) method;
-        Interpreter * i = new Interpreter(className, lines);
-        RuntimeResult * res = new RuntimeResult();
-        string funcName = node->funcNameTok->getValueObject()->getValue();
-        auto * v = (Function<int> *) res->reg(i->visit(node, ctx));
-        if(res->shouldReturn()) {
-            rtError = res->error;
-            return;
+    Interpreter *i = new Interpreter(className, lines);
+    RuntimeResult *res = new RuntimeResult();
+    for (auto &method: methods) {
+        if (method->type == N_FUNC_DEF) {
+            FuncDefNode *node = (FuncDefNode *) method;
+            string funcName = node->funcNameTok->getValueObject()->getValue();
+            auto *v = (Function<int> *) res->reg(i->visit(node, ctx));
+            if (res->shouldReturn()) {
+                rtError = res->error;
+                return;
+            }
+            ctx->symbolTable->set(funcName, new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames,
+                                                                   v->defaultArgs, v->lines, v->autoReturn, ctx,
+                                                                   className));
+        } else {
+            BaseValue * val = res->reg(i->visit(method, ctx));
+            if (res->shouldReturn()) {
+                rtError = res->error;
+                return;
+            }
+            if (method->type == N_VAR_ASSIGN) {
+                VarAssignNode *node = (VarAssignNode *) method;
+                string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
+                ctx->symbolTable->set(varName, val);
+            } else if (method->type == N_CLASS_DEF){
+                ClassDefNode *node = (ClassDefNode *) method;
+                string className = node->classNameTok->getValueObject()->getValue();
+                ctx->symbolTable->set(className, val);
+            }
         }
-        ctx->symbolTable->set(funcName, new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames, v->defaultArgs, v->lines, v->autoReturn, ctx, className));
+
     }
 
-    ClassFunction<int> * init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
-    RuntimeResult * res = init->execute({});
-    if(res->shouldReturn()) {
+    ClassFunction<int> *init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
+    res->reg(init->execute({}));
+    if (res->shouldReturn()) {
         rtError = res->error;
     }
 }
 
 template<>
-BaseValue * UsableClass<int>::copy() {
-    auto * c = new UsableClass<int>(*this);
+BaseValue *UsableClass<int>::copy() {
+    auto *c = new UsableClass<int>(*this);
     return c;
 }
 

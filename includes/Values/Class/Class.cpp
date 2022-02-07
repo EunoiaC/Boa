@@ -11,9 +11,9 @@
 template<>
 Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
-                  vector<Node *> methods, vector<string> lines) : Value<int>(-1, T_CLASS, std::move(fName),
+                  vector<Node *> members, vector<string> lines) : Value<int>(-1, T_CLASS, std::move(fName),
                                                                              std::move(fTxt)) {
-    this->methods = std::move(methods);
+    this->members = std::move(members);
     this->name = std::move(name);
     this->constructorArgs = std::move(constructorArgs);
     this->defaultArgs = std::move(defaultArgs);
@@ -23,7 +23,7 @@ Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *
 
 template<>
 BaseValue *Class<int>::copy() {
-    auto *copy = new Class<int>(name, fName, fTxt, constructorArgs, defaultArgs, methods, lines);
+    auto *copy = new Class<int>(name, fName, fTxt, constructorArgs, defaultArgs, members, lines);
     copy->setPos(posStart, posEnd, line);
     copy->setContext(ctx);
     return copy;
@@ -119,7 +119,7 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     res->reg(checkAndPopulateArgs(args, argNames, context));
     if (res->shouldReturn()) return res;
 
-    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, methods, context, ctx, lines);
+    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, name, members, context, ctx, lines);
     if(usableClass->rtError) {
         return res->failure(usableClass->rtError);
     }

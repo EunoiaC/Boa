@@ -1,7 +1,18 @@
 class Person(name, age) do {
+    x = 12
     op init() do null
     op say() do {
         print("Hello, I am " + name + " and I am " + age + " years old")
+    }
+    class Nested() do {
+        op init() do {
+            print("I am a nested class")
+        }
+        class DoubleNested() do {
+            op init() do {
+                print("I am a double nested class")
+            }
+        }
     }
 }
 
@@ -10,6 +21,9 @@ alan = Person("Alan", 21)
 
 john.say()
 alan.say()
+
+nested = john.Nested()
+doubleNested = nested.DoubleNested()
 
 op make(arg1, arg2, className) do {
     return className(arg1, arg2)

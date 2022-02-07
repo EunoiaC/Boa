@@ -395,11 +395,13 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     bool foundConstructor = false;
 
     string className = classDefNode->classNameTok->getValueObject()->getValue();
-    vector<Node *> methods;
+    vector<Node *> members;
 
-    for (auto &method: classDefNode->functions) {
-        if (((FuncDefNode *) method)->funcNameTok->getValueObject()->getValue() == "init") foundConstructor = true;
-        methods.push_back(method);
+    for (auto &member: classDefNode->members) {
+        if (member->type == N_FUNC_DEF) {
+            if (((FuncDefNode *) member)->funcNameTok->getValueObject()->getValue() == "init") foundConstructor = true;
+        }
+        members.push_back(member);
     }
 
     if (!foundConstructor) {
@@ -422,7 +424,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     }
 
     auto classObj = new Class<int>(className, fName, lines[classDefNode->line], classDefNode->argNameToks,
-                                   defaultArgs, methods, lines);
+                                   defaultArgs, members, lines);
     classObj->setContext(c);
 
     c->symbolTable->set(className, classObj);

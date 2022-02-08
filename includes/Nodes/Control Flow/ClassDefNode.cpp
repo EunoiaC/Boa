@@ -5,11 +5,12 @@
 #include "ClassDefNode.h"
 
 ClassDefNode::ClassDefNode(Token<string> *classNameTok, vector<Token<string> *> argNameToks,
-                           map<string, Node *> defaultArgs, vector<Node *> members) : Node(N_CLASS_DEF) {
+                           map<string, Node *> defaultArgs, vector<Node *> members, Node * superClass) : Node(N_CLASS_DEF) {
     this->classNameTok = classNameTok;
     this->argNameToks = argNameToks;
     this->defaultArgs = defaultArgs;
     this->members = members;
+    this->superClass = superClass;
 
     posStart = classNameTok->posStart;
     posEnd = members.back()->posEnd;

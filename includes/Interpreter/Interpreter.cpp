@@ -423,8 +423,8 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    auto classObj = new Class<int>(className, fName, lines[classDefNode->line], classDefNode->argNameToks,
-                                   defaultArgs, members, lines);
+    auto classObj = new Class<int>(className, fName, lines[classDefNode->classNameTok->line], classDefNode->argNameToks,
+                                   defaultArgs, members, classDefNode->superClass, lines);
     classObj->setContext(c);
 
     c->symbolTable->set(className, classObj);

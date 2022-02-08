@@ -799,6 +799,29 @@ ParseResult *Parser::classDef() {
     res->regAdvancement();
     advance();
 
+    Node *parentClass = nullptr;
+    if(currentToken->getType() == COLON){
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+
+        int posStart = currentToken->posStart;
+
+        parentClass = res->reg(call());
+        if(res->error) return res;
+
+        int posEnd = currentToken->posEnd;
+
+        parentClass->posStart = posStart;
+        parentClass->posEnd = tokens[tokIdx - 1]->posEnd;
+        parentClass->line = currentToken->line;
+
+        if(parentClass->type != N_CALL){
+            return res->failure(new Error(parentClass->posStart, parentClass->posEnd, parentClass->line, fName, currLine,
+                                          "InvalidSyntaxError", "Expected a class name with constructor args"));
+        }
+    }
+
     if(currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
@@ -832,7 +855,7 @@ ParseResult *Parser::classDef() {
     res->regAdvancement();
     advance();
 
-    ClassDefNode *classDef = new ClassDefNode(className, argNames, defaultArgValues, members);
+    ClassDefNode *classDef = new ClassDefNode(className, argNames, defaultArgValues, members, parentClass);
 
     return res->success(classDef);
 }

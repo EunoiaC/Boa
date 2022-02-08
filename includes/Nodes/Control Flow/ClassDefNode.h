@@ -12,11 +12,12 @@ class ClassDefNode : public Node {
 public:
     vector<Token<string> *> argNameToks;
     vector<Node *> members;
+    Node *superClass;
     map<string, Node*> defaultArgs;
     Node *body;
     Token<string> *classNameTok;
     int posStart, posEnd;
-    ClassDefNode(Token<string> *classNameTok, vector<Token<string> *> argNameToks, map<string, Node*> defaultArgs, vector<Node *> members);
+    ClassDefNode(Token<string> *classNameTok, vector<Token<string> *> argNameToks, map<string, Node*> defaultArgs, vector<Node *> members, Node * superClass);
 };
 
 

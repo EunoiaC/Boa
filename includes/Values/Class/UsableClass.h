@@ -24,9 +24,10 @@ public:
     Random<int> * _random;
     Context * generateClassContext(string name);
     vector<string> lines;
+    map<string, BaseValue *> members;
 
     string className;
-    UsableClass<int>(string f, string txt, string className, vector<Node *> methods, Context * c, Context * parent, vector<string> lines);
+    UsableClass<int>(string f, string txt, string className, vector<Node *> members, Context * c, Context * parent, Node * superClass, vector<string> lines);
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;

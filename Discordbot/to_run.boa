@@ -1,21 +1,14 @@
 running = true
 
-class Person(name, age) do {
+class Person(name, money) do {
     op init() do null
-    op say() do {
-        print("Hello, I am " + name + " and I am " + age + " years old")
+    op printnetworth() do {
+        print("My name is " + name + " and I have $" + money)
     }
 }
 
-john = Person("John", 23)
-alan = Person("Alan", 21)
+john = Person("John", 50000)
+alan = Person("Alan", 35000)
 
-john.say()
-alan.say()
-
-op make(arg1, arg2, className) do {
-    return className(arg1, arg2)
-}
-
-x = make("Sam", 9, Person)
-x.say()
+john.printnetworth()
+alan.printnetworth()

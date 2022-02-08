@@ -18,17 +18,20 @@ public:
     vector<Token<string> *> constructorArgs;
     map<string, BaseValue *> defaultArgs;
     vector<Node *> members;
+    Node * superClass;
     RuntimeResult *execute(vector<BaseValue *> args) override;
     vector<string> lines;
+    Class<int> *parent;
 
     string toString() override;
 
     BaseValue * copy() override;
     RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames);
     void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
+    void setParentClass(Class<int> * parent);
     RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
 
-    Class<T>(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> members, vector<string> lines);
+    Class<T>(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> members, Node * superClass, vector<string> lines);
 };
 
 

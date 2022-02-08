@@ -39,8 +39,8 @@ Context *UsableClass<int>::generateClassContext(string className) {
 }
 
 template<>
-UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> methods, Context *c,
-                              Context *parent, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
+UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> members, Context *c,
+                              Context *parent, Node * super, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
                                                                                   std::move(txt)) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
@@ -66,7 +66,30 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
 
     Interpreter *i = new Interpreter(className, lines);
     RuntimeResult *res = new RuntimeResult();
-    for (auto &method: methods) {
+    if (super) {
+        BaseValue *superClass = res->reg(i->visit(super, ctx));
+        if (res->error) {
+            rtError = res->error;
+            return;
+        }
+        if (superClass->type != T_CLASS) {
+            rtError = new RuntimeError(
+                    superClass->posStart,
+                    superClass->posEnd,
+                    superClass->line,
+                    superClass->fName,
+                    superClass->fTxt,
+                    "Expected a string",
+                    ctx
+            );
+            return;
+        }
+        for (auto &it : ((UsableClass<int> *) superClass)->ctx->symbolTable->symbols) {
+            if(it.first == "init") continue;
+            ctx->symbolTable->set(it.first, it.second);
+        }
+    }
+    for (auto &method: members) {
         if (method->type == N_FUNC_DEF) {
             FuncDefNode *node = (FuncDefNode *) method;
             string funcName = node->funcNameTok->getValueObject()->getValue();
@@ -75,9 +98,11 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
                 rtError = res->error;
                 return;
             }
-            ctx->symbolTable->set(funcName, new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames,
-                                                                   v->defaultArgs, v->lines, v->autoReturn, ctx,
-                                                                   className));
+            ClassFunction<int> * val = new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames,
+                                                              v->defaultArgs, v->lines, v->autoReturn, ctx,
+                                                              className);
+            ctx->symbolTable->set(funcName, val);
+            this->members[funcName] = val;
         } else {
             BaseValue * val = res->reg(i->visit(method, ctx));
             if (res->shouldReturn()) {
@@ -88,10 +113,12 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
                 VarAssignNode *node = (VarAssignNode *) method;
                 string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
                 ctx->symbolTable->set(varName, val);
+                this->members[varName] = val;
             } else if (method->type == N_CLASS_DEF){
                 ClassDefNode *node = (ClassDefNode *) method;
                 string className = node->classNameTok->getValueObject()->getValue();
                 ctx->symbolTable->set(className, val);
+                this->members[className] = val;
             }
         }
 

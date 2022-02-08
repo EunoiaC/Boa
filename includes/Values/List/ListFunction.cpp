@@ -201,6 +201,15 @@ RuntimeResult *ListFunction<int>::execute_set(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
+    auto *copy = value->copy();
+    sort(copy->elements.begin(), copy->elements.end(), [](BaseValue* const &a, BaseValue* const &b) {
+        return ((Number<double>*) a->compLessThan(b))->getValue() == 1;
+    });
+    return (new RuntimeResult())->success(copy);
+}
+
+template<>
 ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -210,6 +219,7 @@ ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, v
     funcMap["execute_slice"] = &ListFunction<int>::execute_slice;
     funcMap["execute_indexOf"] = &ListFunction<int>::execute_indexOf;
     funcMap["execute_set"] = &ListFunction<int>::execute_set;
+    funcMap["execute_sort"] = &ListFunction<int>::execute_sort;
     this->defaultArgs = defaultArgs;
 }
 

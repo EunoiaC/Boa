@@ -13,6 +13,7 @@ Random<int>::Random(string f, string txt) : Value<int>(0, "RANDOM", std::move(f)
 
     symbolTable->set("randrange", new RandomFunction<int>("randrange", {"min", "max"}, defaultArgs, "", ""));
     symbolTable->set("choose", new RandomFunction<int>("choose", {"value"}, defaultArgs, "", ""));
+    symbolTable->set("shuffle", new RandomFunction<int>("shuffle", {"value"}, defaultArgs, "", ""));
 }
 
 template<>

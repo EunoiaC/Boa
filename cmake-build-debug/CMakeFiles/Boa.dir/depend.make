@@ -96,7 +96,9 @@ CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
- ../includes/Values/Number/Number.h
+ ../includes/Values/List/List.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

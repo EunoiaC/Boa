@@ -44,6 +44,7 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("eval", eval);
     globalSymbolTable->set("rename", _rename);
     globalSymbolTable->set("getSymbolTable", getSymbolTable);
+    globalSymbolTable->set("copy", _copy);
 
     //Modules
     globalSymbolTable->set("__random__", _random);

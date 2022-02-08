@@ -3,8 +3,6 @@
 //
 
 #include "RandomFunction.h"
-#include "../../Values/List/List.h"
-#include <random>
 
 template<>
 RuntimeResult *RandomFunction<int>::execute_randrange(Context *execCtx) {
@@ -81,12 +79,48 @@ RuntimeResult *RandomFunction<int>::execute_choose(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *RandomFunction<int>::execute_shuffle(Context *execCtx) {
+    BaseValue * toShuffle = execCtx->symbolTable->get("value");
+    if(toShuffle->type != T_LIST){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                toShuffle->posStart,
+                toShuffle->posEnd,
+                toShuffle->line,
+                toShuffle->fName,
+                toShuffle->fTxt,
+                "Expected a LIST",
+                execCtx
+        ));
+    }
+
+    List<vector<BaseValue *>> * list = ((List<vector<BaseValue *>> *) toShuffle);
+    int size = list->getValue().size();
+    if(size == 0){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                toShuffle->posStart,
+                toShuffle->posEnd,
+                toShuffle->line,
+                toShuffle->fName,
+                toShuffle->fTxt,
+                "List is empty",
+                execCtx
+        ));
+    }
+    random_device rd;
+    auto rng = default_random_engine { rd() };
+    shuffle(begin(list->elements), end(list->elements), rng);
+
+    return (new RuntimeResult())->success(list);
+}
+
+template<>
 RandomFunction<int>::RandomFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
     type = "FUNCTION";
     funcMap["execute_randrange"] = &RandomFunction<int>::execute_randrange;
     funcMap["execute_choose"] = &RandomFunction<int>::execute_choose;
+    funcMap["execute_shuffle"] = &RandomFunction<int>::execute_shuffle;
 }
 
 template<>

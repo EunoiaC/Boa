@@ -96,7 +96,9 @@ CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h

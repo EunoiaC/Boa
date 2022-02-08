@@ -6,6 +6,10 @@
 #define BOA_RANDOMFUNCTION_H
 
 #include "../../Values/Functions/BaseFunction.h"
+#include <algorithm>
+#include <random>
+#include "../../Values/List/List.h"
+#include <random>
 
 template<typename T> class RandomFunction : public BaseFunction<T> {
 public:
@@ -19,6 +23,7 @@ public:
 
     RuntimeResult * execute_randrange(Context * execCtx);
     RuntimeResult * execute_choose(Context * execCtx);
+    RuntimeResult * execute_shuffle(Context * execCtx);
 
     string toString() override;
 };

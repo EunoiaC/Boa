@@ -1,22 +1,6 @@
-class Person(name, age) do {
-    op init() do {
-        x = print("Hello, I am " + name + " and I am " + age + " years old")
-    }
-    op getName() do name
-    op getAge() do age
-}
-
-class Worker(name, age, job) : Person(name, age) do {
-    op init() do {
-        null
-    }
-    op getJob() do job
-}
-
-john = Person("John", 23)
-print(john.getName())
-print(john.getAge())
-alan = Worker("Alan", 21, "developer")
-print(alan.getJob())
-print(alan.getName())
-print(alan.getAge())
+rename("__random__", "r")
+l = for i = 0 to 10 do i
+beforeShuffle = copy(l)
+r.shuffle(l)
+print(beforeShuffle)
+print(l)

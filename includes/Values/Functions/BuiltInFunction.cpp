@@ -244,6 +244,11 @@ RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *BuiltInFunction<int>::execute_copy(Context *execCtx) {
+    return (new RuntimeResult())->success(execCtx->symbolTable->get("value")->copy());
+}
+
+template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, BUILT_IN_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
@@ -254,6 +259,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_toStr"] = &BuiltInFunction<int>::execute_toStr;
     funcMap["execute_lenOf"] = &BuiltInFunction<int>::execute_lenOf;
     funcMap["execute_instanceOf"] = &BuiltInFunction<int>::execute_instanceOf;
+    funcMap["execute_copy"] = &BuiltInFunction<int>::execute_copy;
     funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
     funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
     funcMap["execute_getSymbolTable"] = &BuiltInFunction<int>::execute_getSymbolTable;

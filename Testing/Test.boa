@@ -1,8 +1,8 @@
-op add(x, y) do x + y
-op mul(x, y) do x * y
-op div(x, y) do x / y
-op mod(x, y) do x % y
-op pow(x, y) do x ^ y
-opsList = [add, mul, div, mod, pow]
+op findTrout(x) do {
+    return 80*1.5^(x-1)
+}
 
-print(opsList[4](9, 2))
+while true do {
+    x = findTrout(toNum(input("Weeks: ")))
+    print(x)
+}

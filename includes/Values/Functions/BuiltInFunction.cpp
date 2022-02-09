@@ -107,14 +107,16 @@ RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
     string output;
+    string ftxt = "keyboard input\n";
     for (auto &arg : args) {
         output += arg->toString() + " ";
+        ftxt = arg->fTxt;
     }
 
     string input;
     cout << output;
     getline(cin, input);
-    auto *str = new String<string>(input, "", "");
+    auto *str = new String<string>(input, "", ftxt);
     //cout << str->toString() << endl;
     return (new RuntimeResult())->success(str);
 }

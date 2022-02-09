@@ -399,7 +399,21 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
 
     for (auto &member: classDefNode->members) {
         if (member->type == N_FUNC_DEF) {
-            if (((FuncDefNode *) member)->funcNameTok->getValueObject()->getValue() == "init") foundConstructor = true;
+            FuncDefNode * funcDefNode = (FuncDefNode *) member;
+            if (funcDefNode->funcNameTok->getValueObject()->getValue() == "init") {
+                if(funcDefNode->argNameToks.size() > 0){
+                    return res->failure(new RuntimeError(
+                            funcDefNode->funcNameTok->posStart,
+                            funcDefNode->funcNameTok->posEnd,
+                            funcDefNode->funcNameTok->line,
+                            fName,
+                            lines[funcDefNode->funcNameTok->line],
+                            "init method must not have arguments",
+                            c
+                    ));
+                }
+                foundConstructor = true;
+            }
         }
         members.push_back(member);
     }

@@ -1,6 +1,8 @@
-rename("__random__", "r")
-l = for i = 0 to 10 do i
-beforeShuffle = copy(l)
-r.shuffle(l)
-print(beforeShuffle)
-print(l)
+op add(x, y) do x + y
+op mul(x, y) do x * y
+op div(x, y) do x / y
+op mod(x, y) do x % y
+op pow(x, y) do x ^ y
+opsList = [add, mul, div, mod, pow]
+
+print(opsList[4](9, 2))

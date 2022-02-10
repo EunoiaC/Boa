@@ -29,7 +29,8 @@ static const string N_RETURN = "RETURN_NODE";
 static const string N_BREAK = "BREAK_NODE";
 static const string N_CONTINUE = "CONTINUE_NODE";
 static const string N_IMPORT = "IMPORT_NODE";
-static const string N_IDX_NODE = "INDEX_NODE";
+static const string N_IDX = "INDEX_NODE";
+static const string N_TRY_CATCH= "TRY_CATCH_NODE";
 
 class Node {
 public:

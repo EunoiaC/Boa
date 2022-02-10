@@ -15,6 +15,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/FuncDefNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IfNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"

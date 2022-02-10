@@ -4,7 +4,7 @@
 
 #include "IndexNode.h"
 
-IndexNode::IndexNode(Node *left, vector<Node*> indices) : Node(N_IDX_NODE) {
+IndexNode::IndexNode(Node *left, vector<Node*> indices) : Node(N_IDX) {
     this->left = left;
     this->indices = move(indices);
 }

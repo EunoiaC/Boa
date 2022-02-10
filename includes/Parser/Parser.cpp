@@ -78,6 +78,75 @@ ParseResult *Parser::parse() {
     return res;
 }
 
+ParseResult *Parser::tryExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+
+    if(currentToken->getType() != TRY) {
+        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'tryto'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != DO) {
+        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    checkNewLines();
+
+    Node * tryBody, * catchBody;
+
+    if (currentToken->getType() == L_CURLY_BRACKET){
+
+    } else {
+        tryBody = res->reg(statement());
+        if (res->error) return res;
+    }
+
+    if (currentToken->getType() != CATCH) {
+        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'catch'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != IDENTIFIER) {
+        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected an identifier"));
+    }
+
+    Token<string> *toCatch = dynamic_cast<Token<string> *>(currentToken);
+    res->regAdvancement();
+    advance();
+
+    if (currentToken->getType() != DO) {
+        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError", "Expected 'do'"));
+    }
+
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    if(currentToken->getType() == L_CURLY_BRACKET){
+
+    } else {
+        catchBody = res->reg(statement());
+        if(res->error) return res;
+    }
+
+    return res->success(new TryCatchNode(tryBody, catchBody, toCatch));
+}
+
 ParseResult *Parser::ifExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     Node *elseCase = nullptr;
@@ -189,6 +258,7 @@ ParseResult *Parser::ifExpr() {
         advance();
 
         if (currentToken->getType() != DO) {
+
             priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                       "InvalidSyntaxError", "Expected 'do'");
             return res->failure(
@@ -699,7 +769,7 @@ ParseResult *Parser::classDef() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() != IDENTIFIER) {
+    if (currentToken->getType() != IDENTIFIER) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected an identifier"));
@@ -800,7 +870,7 @@ ParseResult *Parser::classDef() {
     advance();
 
     Node *parentClass = nullptr;
-    if(currentToken->getType() == COLON){
+    if (currentToken->getType() == COLON) {
         delete currentToken;
         res->regAdvancement();
         advance();
@@ -808,7 +878,7 @@ ParseResult *Parser::classDef() {
         int posStart = currentToken->posStart;
 
         parentClass = res->reg(call());
-        if(res->error) return res;
+        if (res->error) return res;
 
         int posEnd = currentToken->posEnd;
 
@@ -816,13 +886,14 @@ ParseResult *Parser::classDef() {
         parentClass->posEnd = tokens[tokIdx - 1]->posEnd;
         parentClass->line = currentToken->line;
 
-        if(parentClass->type != N_CALL){
-            return res->failure(new Error(parentClass->posStart, parentClass->posEnd, parentClass->line, fName, currLine,
-                                          "InvalidSyntaxError", "Expected a class name with constructor args"));
+        if (parentClass->type != N_CALL) {
+            return res->failure(
+                    new Error(parentClass->posStart, parentClass->posEnd, parentClass->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected a class name with constructor args"));
         }
     }
 
-    if(currentToken->getType() != DO) {
+    if (currentToken->getType() != DO) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError", "Expected 'do'"));
@@ -919,6 +990,10 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
+    } else if (tok->getType() == TRY) {
+        Node * _try = res->reg(tryExpr());
+        if (res->error) return res;
+        return res->success(_try);
     } else if (tok->getType() == CLASS) {
         Node *_classDef = res->reg(classDef());
         if (res->error) return res;

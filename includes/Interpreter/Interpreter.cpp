@@ -28,7 +28,8 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_CONTINUE] = &Interpreter::visitContinueNode;
     funcMap[N_BREAK] = &Interpreter::visitBreakNode;
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
-    funcMap[N_IDX_NODE] = &Interpreter::visitIndexNode;
+    funcMap[N_IDX] = &Interpreter::visitIndexNode;
+    funcMap[N_TRY_CATCH] = &Interpreter::visitTryCatchNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -174,6 +175,22 @@ RuntimeResult *Interpreter::visitForNode(Node *n, Context *c) {
         val = new Number<double>(0, fName, lines[n->line]);
     }
 
+    return res->success(val);
+}
+
+RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
+    auto *res = new RuntimeResult();
+    auto *tryCatchNode = (TryCatchNode *) n;
+
+    BaseValue * val = res->reg(visit(tryCatchNode->tryBlock, c));
+    if (res->shouldReturn()){
+        // TODO: Make error value class
+        c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), new String<string>("errr", fName, lines[n->line]));
+        BaseValue * v = res->reg(visit(tryCatchNode->catchBlock, c));
+        res->reset();
+        if (res->shouldReturn()) return res;
+        return res->success(v);
+    }
     return res->success(val);
 }
 

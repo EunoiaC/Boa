@@ -1,8 +1,1 @@
-op findTrout(x) do {
-    return 80*1.5^(x-1)
-}
-
-while true do {
-    x = findTrout(toNum(input("Weeks: ")))
-    print(x)
-}
+try do print(x) catch e do print("y")

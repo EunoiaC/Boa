@@ -465,6 +465,30 @@ includes/Nodes/Control_Flow/IterateNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/IterateNode.cpp.s
 .PHONY : includes/Nodes/Control_Flow/IterateNode.cpp.s
 
+includes/Nodes/Control_Flow/TryCatchNode.o: includes/Nodes/Control_Flow/TryCatchNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.o
+
+# target to build an object file
+includes/Nodes/Control_Flow/TryCatchNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.cpp.o
+
+includes/Nodes/Control_Flow/TryCatchNode.i: includes/Nodes/Control_Flow/TryCatchNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.i
+
+# target to preprocess a source file
+includes/Nodes/Control_Flow/TryCatchNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.cpp.i
+
+includes/Nodes/Control_Flow/TryCatchNode.s: includes/Nodes/Control_Flow/TryCatchNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Control_Flow/TryCatchNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/TryCatchNode.cpp.s
+
 includes/Nodes/Control_Flow/WhileNode.o: includes/Nodes/Control_Flow/WhileNode.cpp.o
 .PHONY : includes/Nodes/Control_Flow/WhileNode.o
 
@@ -1404,6 +1428,9 @@ help:
 	@echo "... includes/Nodes/Control_Flow/IterateNode.o"
 	@echo "... includes/Nodes/Control_Flow/IterateNode.i"
 	@echo "... includes/Nodes/Control_Flow/IterateNode.s"
+	@echo "... includes/Nodes/Control_Flow/TryCatchNode.o"
+	@echo "... includes/Nodes/Control_Flow/TryCatchNode.i"
+	@echo "... includes/Nodes/Control_Flow/TryCatchNode.s"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.o"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.i"
 	@echo "... includes/Nodes/Control_Flow/WhileNode.s"

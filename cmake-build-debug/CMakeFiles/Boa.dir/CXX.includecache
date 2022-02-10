@@ -22,6 +22,14 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
+iostream
+-
+Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+../RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
@@ -49,6 +57,8 @@ Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
 ../Nodes/Control Flow/ClassDefNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+../Nodes/Control Flow/TryCatchNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/TryCatchNode.h
 ../Nodes/Statements/Branching Statements/ReturnNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.h
 ../Nodes/Statements/Branching Statements/BreakNode.h
@@ -87,6 +97,12 @@ string
 -
 vector
 -
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
+iostream
+-
+Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 vector
@@ -147,6 +163,12 @@ tuple
 -
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/TryCatchNode.h
 ../Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
 ../../Token/Token.h
@@ -239,6 +261,8 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.h
 ../Nodes/Control Flow/ClassDefNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+../Nodes/Control Flow/TryCatchNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/TryCatchNode.h
 ../Nodes/Control Flow/IterateNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IterateNode.h
 ../Nodes/Value Nodes/ListNode.h
@@ -279,6 +303,12 @@ fstream
 -
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp
+RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+utility
+-
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 Values/BaseValues/BaseValue.h
@@ -378,6 +408,16 @@ ClassFunction.h
 ../../Modules/Random/Random.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
+Functions/BuiltInFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+string
+-
+cmath
+-
+../../includes/Modules/Random/Random.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
@@ -433,4 +473,20 @@ Functions/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+
+/Users/preetithorat/Documents/GitHub/Boa/main.cpp
+iostream
+-
+string
+-
+vector
+-
+ctime
+-
+cmath
+-
+includes/RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+includes/Values/Constants.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 

@@ -9,6 +9,7 @@
 #include "../Nodes/Control Flow/ForNode.h"
 #include "../Nodes/IndexNode.h"
 #include "../Nodes/Control Flow/ClassDefNode.h"
+#include "../Nodes/Control Flow/TryCatchNode.h"
 #include "../Nodes/Control Flow/IterateNode.h"
 #include "../Nodes/Value Nodes/ListNode.h"
 #include "../Nodes/Value Nodes/StringNode.h"
@@ -64,6 +65,7 @@ public:
     ParseResult * listExpr();
     ParseResult * mapExpr();
     ParseResult * ifExpr();
+    ParseResult * tryExpr();
     ParseResult * forExpr();
     ParseResult * iterExprA();
     ParseResult * iterExprB(Token<string> * varName);

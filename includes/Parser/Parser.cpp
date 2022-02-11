@@ -104,7 +104,23 @@ ParseResult *Parser::tryExpr() {
     Node * tryBody, * catchBody;
 
     if (currentToken->getType() == L_CURLY_BRACKET){
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+        checkNewLines();
 
+        tryBody = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        delete currentToken;
+        res->regAdvancement();
+        advance();
     } else {
         tryBody = res->reg(statement());
         if (res->error) return res;
@@ -138,7 +154,23 @@ ParseResult *Parser::tryExpr() {
     advance();
 
     if(currentToken->getType() == L_CURLY_BRACKET){
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+        checkNewLines();
 
+        catchBody = res->reg(statements());
+        if (res->error) return res;
+
+        if (currentToken->getType() != R_CURLY_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '}'"));
+        }
+
+        delete currentToken;
+        res->regAdvancement();
+        advance();
     } else {
         catchBody = res->reg(statement());
         if(res->error) return res;

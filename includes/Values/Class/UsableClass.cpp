@@ -40,8 +40,8 @@ Context *UsableClass<int>::generateClassContext(string className) {
 
 template<>
 UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> members, Context *c,
-                              Context *parent, Node * super, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
-                                                                                  std::move(txt)) {
+                              Context *parent, Node *super, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
+                                                                                               std::move(txt)) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
 
@@ -84,8 +84,8 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
             );
             return;
         }
-        for (auto &it : ((UsableClass<int> *) superClass)->ctx->symbolTable->symbols) {
-            if(it.first == "init") continue;
+        for (auto &it: ((UsableClass<int> *) superClass)->ctx->symbolTable->symbols) {
+            if (it.first == "init") continue;
             ctx->symbolTable->set(it.first, it.second);
         }
     }
@@ -98,13 +98,13 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
                 rtError = res->error;
                 return;
             }
-            ClassFunction<int> * val = new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames,
-                                                              v->defaultArgs, v->lines, v->autoReturn, ctx,
-                                                              className);
+            ClassFunction<int> *val = new ClassFunction<int>(v->fName, v->fTxt, funcName, v->body, v->argNames,
+                                                             v->defaultArgs, v->lines, v->autoReturn, ctx,
+                                                             className);
             ctx->symbolTable->set(funcName, val);
             this->members[funcName] = val;
         } else {
-            BaseValue * val = res->reg(i->visit(method, ctx));
+            BaseValue *val = res->reg(i->visit(method, ctx));
             if (res->shouldReturn()) {
                 rtError = res->error;
                 return;
@@ -114,7 +114,7 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
                 string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
                 ctx->symbolTable->set(varName, val);
                 this->members[varName] = val;
-            } else if (method->type == N_CLASS_DEF){
+            } else if (method->type == N_CLASS_DEF) {
                 ClassDefNode *node = (ClassDefNode *) method;
                 string className = node->classNameTok->getValueObject()->getValue();
                 ctx->symbolTable->set(className, val);
@@ -125,10 +125,15 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
     }
 
     ClassFunction<int> *init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
-    res->reg(init->execute({}));
-    if (res->shouldReturn()) {
-        rtError = res->error;
+    // Avoid running init for builtin classes
+    if (init) {
+        res->reg(init->execute({}));
+        if (res->shouldReturn()) {
+            rtError = res->error;
+        }
     }
+
+    asString = "<InstantiatedClass: " + this->className + ">";
 }
 
 template<>
@@ -139,5 +144,5 @@ BaseValue *UsableClass<int>::copy() {
 
 template<>
 string UsableClass<int>::toString() {
-    return "<InstantiatedClass: " + className + ">";
+    return asString;
 }

@@ -26,7 +26,7 @@ public:
     vector<string> lines;
     map<string, BaseValue *> members;
 
-    string className;
+    string className, asString;
     UsableClass<int>(string f, string txt, string className, vector<Node *> members, Context * c, Context * parent, Node * superClass, vector<string> lines);
     BaseValue * copy() override;
     string toString() override;

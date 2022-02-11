@@ -184,8 +184,17 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
 
     BaseValue * val = res->reg(visit(tryCatchNode->tryBlock, c));
     if (res->shouldReturn()){
-        // TODO: Make error value class
-        c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), new String<string>("errr", fName, lines[n->line]));
+        Context *ctx = new Context(tryCatchNode->catchName->getValueObject()->getValue());
+        ctx->symbolTable = new SymbolTable();
+        ctx->symbolTable->set("name", new String<string>(res->error->errorName, "", ""));
+        ctx->symbolTable->set("message", new String<string>(res->error->msg, "", ""));
+        ctx->symbolTable->set("line", new Number<double>(res->error->line + 1, "", ""));
+
+        auto *err = new UsableClass<int>(fName, "", res->error->errorName, {}, ctx, c, nullptr, lines);
+        err->asString = res->error->toString();
+
+        c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), err);
+
         BaseValue * v = res->reg(visit(tryCatchNode->catchBlock, c));
         res->reset();
         if (res->shouldReturn()) return res;

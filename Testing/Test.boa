@@ -1,1 +1,6 @@
-try do print(x) catch e do print("y")
+trying do {
+    print(12/0)
+} catch err do {
+    print("Experienced", err.name)
+    print("Continuing...")
+}

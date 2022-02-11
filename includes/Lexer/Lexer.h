@@ -58,7 +58,7 @@ public:
             {"while", WHILE},
             {"op",    OP},
             {"class",    CLASS},
-            {"try",    TRY},
+            {"trying",    TRY},
             {"catch",    CATCH}
     };
     /**

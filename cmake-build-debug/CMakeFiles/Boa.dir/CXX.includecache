@@ -98,12 +98,6 @@ string
 vector
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
-iostream
--
-Lexer.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 vector
 -
@@ -304,12 +298,6 @@ fstream
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp
-RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
-utility
--
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 Values/BaseValues/BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
@@ -408,25 +396,9 @@ ClassFunction.h
 ../../Modules/Random/Random.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
-Functions/BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-string
--
-cmath
--
-../../includes/Modules/Random/Random.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
-BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-../../RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 BaseFunction.h
@@ -473,20 +445,4 @@ Functions/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/main.cpp
-iostream
--
-string
--
-vector
--
-ctime
--
-cmath
--
-includes/RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
-includes/Values/Constants.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 

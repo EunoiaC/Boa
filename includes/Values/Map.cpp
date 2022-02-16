@@ -44,6 +44,7 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) 
             );
         } else {
             dict[list->elements[0]] = list->elements[1];
+            ((List<vector<BaseValue *>> *) symbolTable->get("keys"))->elements.push_back(list->elements[0]);
             return this;
         }
     } else {
@@ -128,7 +129,6 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::subtract(BaseValue *key) {
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::get(BaseValue *key) {
-    //This is the most unoptomized piece of code you will ever see
     for (auto it: dict) {
         if(((Number<double>*) it.first->compEquals(key))->getValue() == 1) {
             return it.second;
@@ -143,6 +143,22 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::get(BaseValue *key) {
             "Key not found in map",
             ctx
     );
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::replace(BaseValue *old, BaseValue *newVal) {
+    bool found = false;
+    for (auto it: dict) {
+        if(((Number<double>*) it.first->compEquals(old))->getValue() == 1) {
+            dict[it.first] = newVal;
+            found = true;
+            break;
+        }
+    }
+    if (!found) {
+        dict[old] = newVal;
+    }
+    return this;
 }
 
 template<>

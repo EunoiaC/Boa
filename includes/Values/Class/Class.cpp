@@ -23,6 +23,11 @@ Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *
 }
 
 template<>
+BaseValue * Class<int>::getFromSymbolTable(string name) {
+    return instantiatedVariables->get(name);
+}
+
+template<>
 void Class<int>::setParentClass(Class<int> *parent) {
     this->parent = parent;
 }

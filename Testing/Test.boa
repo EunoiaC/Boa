@@ -1,6 +1,0 @@
-trying do {
-    print(12/0)
-} catch err do {
-    print("Experienced", err.name)
-    print("Continuing...")
-}

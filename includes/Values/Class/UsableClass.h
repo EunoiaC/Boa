@@ -31,6 +31,7 @@ public:
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;
+    bool isTrue() override;
 };
 
 

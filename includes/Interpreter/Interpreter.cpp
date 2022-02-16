@@ -194,9 +194,9 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         err->asString = res->error->toString();
 
         c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), err);
+        res->reset();
 
         BaseValue * v = res->reg(visit(tryCatchNode->catchBlock, c));
-        res->reset();
         if (res->shouldReturn()) return res;
         return res->success(v);
     }
@@ -329,7 +329,12 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         value = value->getFromSymbolTable(((Token<string> *) node->varNameTok)->getValueObject()->getValue());
     }
 
-    string prevType = value->type;
+    string prevType;
+    if (value->type == CLASS){
+        prevType = ((UsableClass<int> *) value)->className;
+    } else {
+        prevType = value->type;
+    }
     for (auto &id: node->identifiers) {
         string idName = ((Token<string> *) id)->getValueObject()->getValue();
         value = value->getFromSymbolTable(idName);
@@ -344,7 +349,11 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                     c
             ));
         }
-        prevType = value->type;
+        if (value->type == CLASS){
+            prevType = ((UsableClass<int> *) value)->className;
+        } else {
+            prevType = value->type;
+        }
     }
 
     value = value->setPos(node->posStart, node->posEnd, node->line);
@@ -422,6 +431,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
 
     string className = classDefNode->classNameTok->getValueObject()->getValue();
     vector<Node *> members;
+    SymbolTable * instantiatedVars = new SymbolTable();
 
     for (auto &member: classDefNode->members) {
         if (member->type == N_FUNC_DEF) {
@@ -440,6 +450,12 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
                 }
                 foundConstructor = true;
             }
+        }
+        if (member->type == N_VAR_ASSIGN){
+            VarAssignNode * varAccessNode = (VarAssignNode *) member;
+            instantiatedVars->set(((Token<string> *) varAccessNode->varNameTok)->getValueObject()->getValue(),
+                                  res->reg(visit(varAccessNode, c)));
+            if (res->shouldReturn()) return res;
         }
         members.push_back(member);
     }
@@ -466,6 +482,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
     auto classObj = new Class<int>(className, fName, lines[classDefNode->classNameTok->line], classDefNode->argNameToks,
                                    defaultArgs, members, classDefNode->superClass, lines);
     classObj->setContext(c);
+    classObj->instantiatedVariables = instantiatedVars;
 
     c->symbolTable->set(className, classObj);
 
@@ -628,9 +645,43 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
 
     BaseValue *result = left;
 
-    for (auto &i: node->indices) {
-        BaseValue *idx = res->reg(visit(i, c));
+    for (int i = 0; i < node->indices.size(); i++) {
+        BaseValue *idx = res->reg(visit(node->indices[i], c));
         if (res->shouldReturn()) return res;
+
+        if(i + 1 == node->indices.size()){
+            if (node->type == SET_VALUE){
+                if (result->type == T_LIST){
+                    if (idx->type != T_NUM){
+                        return res->failure(new RuntimeError(
+                                idx->posStart,
+                                idx->posEnd,
+                                idx->line,
+                                idx->fName,
+                                idx->fTxt,
+                                "Expected a number",
+                                c
+                        ));
+                    }
+                    ((List<vector<BaseValue *>> *) result)->elements[((Number<double> *) idx)->getValue()] = res->reg(visit(node->newVal, c));
+                    if (res->shouldReturn()) return res;
+                } else if(result->type == T_MAP){
+                    auto *m = ((Map<map<BaseValue *, BaseValue *>> *) result);
+                    m->replace(idx, res->reg(visit(node->newVal, c)));
+                    if (res->shouldReturn()) return res;
+                } else {
+                    return res->failure(new RuntimeError(
+                            idx->posStart,
+                            idx->posEnd,
+                            idx->line,
+                            idx->fName,
+                            idx->fTxt,
+                            "Cannot modify index of type " + result->type,
+                            c
+                    ));
+                }
+            }
+        }
 
         result = result->get(idx);
 

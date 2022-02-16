@@ -1,14 +1,5 @@
 running = true
 
-class Person(name, money) do {
-    op init() do null
-    op printnetworth() do {
-        print("My name is " + name + " and I have $" + money)
-    }
-}
-
-john = Person("John", 50000)
-alan = Person("Alan", 35000)
-
-john.printnetworth()
-alan.printnetworth()
+"single quote highlighting not supported yet"
+print([12, 123, 123, 123213213])
+print(for i = 100 to 1 chgby -1 do i)

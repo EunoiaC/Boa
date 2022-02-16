@@ -4,9 +4,10 @@
 
 #include "IndexNode.h"
 
-IndexNode::IndexNode(Node *left, vector<Node*> indices) : Node(N_IDX) {
+IndexNode::IndexNode(Node *left, vector<Node*> indices, string type) : Node(N_IDX) {
     this->left = left;
     this->indices = move(indices);
+    this->type = type;
 }
 
 IndexNode::~IndexNode() {

@@ -15,6 +15,7 @@
 template<typename T> class Class : public Value<T> {
 public:
     string name, fName, fTxt;
+    SymbolTable * instantiatedVariables;
     vector<Token<string> *> constructorArgs;
     map<string, BaseValue *> defaultArgs;
     vector<Node *> members;
@@ -22,6 +23,7 @@ public:
     RuntimeResult *execute(vector<BaseValue *> args) override;
     vector<string> lines;
     Class<int> *parent;
+    BaseValue * getFromSymbolTable(string name) override;
 
     string toString() override;
 

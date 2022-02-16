@@ -8,11 +8,16 @@
 #include "Node.h"
 #include <vector>
 
+static const string SET_VALUE = "SET_VALUE";
+static const string GET_VALUE = "GET_VALUE";
+
 class IndexNode : public Node {
 public:
     vector<Node*> indices;
     Node * left;
-    IndexNode(Node *left, vector<Node*> indices);
+    string type;
+    Node * newVal;
+    IndexNode(Node *left, vector<Node*> indices, string type);
     ~IndexNode();
     string toString() override;
 };

@@ -137,6 +137,11 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
 }
 
 template<>
+bool UsableClass<int>::isTrue() {
+    return true;
+}
+
+template<>
 BaseValue *UsableClass<int>::copy() {
     auto *c = new UsableClass<int>(*this);
     return c;

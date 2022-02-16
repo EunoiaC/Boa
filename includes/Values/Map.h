@@ -14,6 +14,7 @@ template<typename T> class Map : public Value<T> {
 public:
     map<BaseValue*, BaseValue*> dict;
     Map<T>(map<BaseValue*, BaseValue*> dict, string fName, string fTxt);
+    BaseValue* replace(BaseValue* old, BaseValue* newVal);
     BaseValue* get(BaseValue* key) override;
     BaseValue* add(BaseValue* keyAndVal) override;
     BaseValue* subtract(BaseValue* key) override;

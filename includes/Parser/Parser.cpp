@@ -1138,8 +1138,19 @@ ParseResult *Parser::call() {
     }
 
     if (indices.size() > 0) {
-        IndexNode *index = new IndexNode(_atom, indices);
+        IndexNode *index = new IndexNode(_atom, indices, GET_VALUE);
         index->line = currentToken->line;
+
+        if (currentToken->getType() == EQUAL){
+            delete currentToken;
+            res->regAdvancement();
+            advance();
+            Node *exp = res->reg(expr());
+            if (res->error) return res;
+
+            index->type = SET_VALUE;
+            index->newVal = exp;
+        }
         _atom = index;
     }
 

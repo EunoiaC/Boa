@@ -28,29 +28,6 @@ int Map<map<BaseValue *, BaseValue *>>::getLength() {
     return dict.size();
 }
 
-template<>
-BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) {
-    if (keyAndVal->type == T_LIST) {
-        List<vector<BaseValue *>> *list = (List<vector<BaseValue *>> *) keyAndVal;
-        if (list->elements.size() != 2) {
-            rtError = new RuntimeError(
-                    list->posStart,
-                    list->posEnd,
-                    list->line,
-                    list->fName,
-                    list->fTxt,
-                    "LIST needs 2 elements",
-                    ctx
-            );
-        } else {
-            dict[list->elements[0]] = list->elements[1];
-            ((List<vector<BaseValue *>> *) symbolTable->get("keys"))->elements.push_back(list->elements[0]);
-            return this;
-        }
-    } else {
-        illegalOperation(keyAndVal, T_LIST);
-    }
-}
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::add(BaseValue *keyAndVal) {
@@ -156,9 +133,34 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::replace(BaseValue *old, BaseValue
         }
     }
     if (!found) {
+        ((List<vector<BaseValue *>> *) symbolTable->get("keys"))->elements.push_back(old);
         dict[old] = newVal;
     }
     return this;
+}
+
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) {
+    if (keyAndVal->type == T_LIST) {
+        List<vector<BaseValue *>> *list = (List<vector<BaseValue *>> *) keyAndVal;
+        if (list->elements.size() != 2) {
+            rtError = new RuntimeError(
+                    list->posStart,
+                    list->posEnd,
+                    list->line,
+                    list->fName,
+                    list->fTxt,
+                    "LIST needs 2 elements",
+                    ctx
+            );
+        } else {
+            replace(list->elements[0], list->elements[1]);
+            return this;
+        }
+    } else {
+        illegalOperation(keyAndVal, T_LIST);
+    }
 }
 
 template<>

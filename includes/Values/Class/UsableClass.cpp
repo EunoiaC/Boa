@@ -34,6 +34,7 @@ Context *UsableClass<int>::generateClassContext(string className) {
     classContext->symbolTable->set("getSymbolTable", getSymbolTable);
     //Modules
     classContext->symbolTable->set("__random__", _random);
+    classContext->symbolTable->set("this", this);
 
     return classContext;
 }

@@ -1,0 +1,9 @@
+class Man(name) do {
+    op init() do null
+    op changeName(name) do this.name = name
+}
+
+dude = Man("Henry")
+print(dude.name)
+dude.changeName("Mudd")
+print(dude.name)

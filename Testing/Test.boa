@@ -1,0 +1,11 @@
+class Sort(n) do {
+    op init() do null
+    op compSort(other) do n > other.n
+}
+
+n1 = Sort(1)
+n2 = Sort(2)
+
+l = [n1, n2]
+print(for x : l do x.n)
+print(for x : l.sort() do x.n)

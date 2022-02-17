@@ -13,6 +13,11 @@ Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue
 }
 
 template<class valueType>
+BaseValue *Value<valueType>::compSort(BaseValue *val) {
+    unsupportedOperation(val);
+}
+
+template<class valueType>
 Value<valueType>::~Value<valueType>() {
     delete symbolTable;
     delete rtError;

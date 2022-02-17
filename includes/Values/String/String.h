@@ -37,6 +37,8 @@ public:
 
     BaseValue *compEquals(BaseValue *val) override;
 
+    BaseValue *compSort(BaseValue *val) override;
+
     BaseValue *andedBy(BaseValue *s) override;
 
     BaseValue *oredBy(BaseValue *s) override;

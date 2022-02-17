@@ -144,31 +144,41 @@ bool UsableClass<int>::isTrue() {
 
 template<>
 BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
-    ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThan"));
-    if (sort) {
-        RuntimeResult * res = sort->execute({other});
+    ClassFunction<int> *lt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThan"));
+    if (lt) {
+        RuntimeResult * res = lt->execute({other});
         if (res->error) rtError = res->error;
         return res->value;
     } else {
-        sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compSort"));
-        if (sort) {
-            RuntimeResult * res = sort->execute({other});
-            if (res->error) {
-                rtError = res->error;
-                return nullptr;
-            }
-            return res->value;
-        }
         rtError = new RuntimeError(
                 posStart,
                 posEnd,
                 line,
                 fName,
                 fTxt,
-                "Class " + className + " does not have a 'compSort' or 'compLessThan' method",
+                "Class " + className + " does not have a 'compLessThan' method",
                 ctx
         );
-        return nullptr;
+    }
+}
+
+template<>
+BaseValue *UsableClass<int>::compSort(BaseValue *other) {
+    ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compSort"));
+    if (sort) {
+        RuntimeResult * res = sort->execute({other});
+        if (res->error) rtError = res->error;
+        return res->value;
+    } else {
+        rtError = new RuntimeError(
+                posStart,
+                posEnd,
+                line,
+                fName,
+                fTxt,
+                "Class " + className + " does not have a 'compSort' method",
+                ctx
+        );
     }
 }
 

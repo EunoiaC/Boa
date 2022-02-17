@@ -130,6 +130,12 @@ BaseValue *String<string>::compLessThan(BaseValue *val) {
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
 
+
+template<>
+BaseValue *String<string>::compSort(BaseValue *val) {
+    return compLessThan(val);
+}
+
 template<>
 BaseValue *String<string>::compEquals(BaseValue *val) {
     if (val->type == T_STRING) {

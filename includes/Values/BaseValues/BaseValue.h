@@ -31,6 +31,7 @@ public:
     virtual BaseValue *compLessThanEquals(BaseValue *val);
     virtual BaseValue *compNotEquals(BaseValue *val);
     virtual BaseValue *compEquals(BaseValue *val);
+    virtual BaseValue *compSort(BaseValue *val);
 
     virtual BaseValue* andedBy(BaseValue* s);
     virtual BaseValue* oredBy(BaseValue* s);

@@ -113,6 +113,10 @@ string BaseValue::toString() {
     return type;
 }
 
+BaseValue *BaseValue::compSort(BaseValue *val) {
+    return nullptr;
+}
+
 BaseValue::BaseValue(string t, string f, string txt) {
     type = std::move(t);
     fName = std::move(f);

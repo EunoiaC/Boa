@@ -33,6 +33,7 @@ public:
     BaseValue * getFromSymbolTable(string key) override;
     bool isTrue() override;
     BaseValue * compLessThan(BaseValue * other) override;
+    BaseValue * compSort(BaseValue * other) override;
 };
 
 

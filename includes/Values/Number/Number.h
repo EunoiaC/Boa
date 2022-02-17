@@ -43,6 +43,8 @@ public:
 
     BaseValue *compGreaterThanEquals(BaseValue *val) override;
 
+    BaseValue *compSort(BaseValue *val) override;
+
     BaseValue *compLessThanEquals(BaseValue *val) override;
 
     BaseValue *compNotEquals(BaseValue *val) override;

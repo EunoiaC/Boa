@@ -93,6 +93,12 @@ BaseValue *Number<double>::compLessThan(BaseValue *val) {
 }
 
 template<>
+BaseValue *Number<double>::compSort(BaseValue *val) {
+    return compLessThan(val);
+}
+
+
+template<>
 BaseValue *Number<double>::compEquals(BaseValue *val) {
     if (val->type == T_NUM) {
         return (new Number(numValue == ((Number *) val)->getValue(), fName, fTxt))->setContext(ctx);

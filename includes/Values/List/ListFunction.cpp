@@ -206,7 +206,7 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
     RuntimeResult *res = new RuntimeResult();
     Error * error = nullptr;
     sort(copy->elements.begin(), copy->elements.end(), [&](BaseValue* const &a, BaseValue* const &b) {
-        auto val = (Number<double>*) a->compLessThan(b);
+        auto val = (Number<double>*) a->compSort(b);
         if (a->type == T_NUM) {
             if (((Number<double> *) a)->rtError) {
                 error = ((Number<double> *) a)->rtError;

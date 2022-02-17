@@ -11,8 +11,8 @@
 template<>
 Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
-                  vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, T_CLASS, std::move(fName),
-                                                                             std::move(fTxt)) {
+                  vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, T_CLASS, fName,
+                                                                             fTxt) {
     this->members = std::move(members);
     this->name = std::move(name);
     this->constructorArgs = std::move(constructorArgs);
@@ -20,6 +20,8 @@ Class<int>::Class(string name, string fName, string fTxt, vector<Token<string> *
     this->lines = std::move(lines);
     this->superClass = superClass;
     parent = nullptr;
+    this->fName = std::move(fName);
+    this->fTxt = std::move(fTxt);
 }
 
 template<>

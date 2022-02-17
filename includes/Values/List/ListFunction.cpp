@@ -203,10 +203,45 @@ RuntimeResult *ListFunction<int>::execute_set(Context *execCtx) {
 template<>
 RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
     auto *copy = value->copy();
-    sort(copy->elements.begin(), copy->elements.end(), [](BaseValue* const &a, BaseValue* const &b) {
-        return ((Number<double>*) a->compLessThan(b))->getValue() == 1;
+    RuntimeResult *res = new RuntimeResult();
+    Error * error = nullptr;
+    sort(copy->elements.begin(), copy->elements.end(), [&](BaseValue* const &a, BaseValue* const &b) {
+        auto val = (Number<double>*) a->compLessThan(b);
+        if (a->type == T_NUM) {
+            if (((Number<double> *) a)->rtError) {
+                error = ((Number<double> *) a)->rtError;
+                return false;
+            }
+        } else if (a->type == T_STRING) {
+            if (((String<string> *) a)->rtError) {
+                error = ((String<string> *) a)->rtError;
+                return false;
+            }
+        } else if (a->type == T_FUNC) {
+            if (((BaseFunction<int> *) a)->rtError) {
+                error = ((BaseFunction<int> *) a)->rtError;
+                return false;
+            }
+        } else if (a->type == T_LIST) {
+            if (((List<vector<BaseValue *>> *) a)->rtError) {
+                error = ((List<vector<BaseValue *>> *) left)->rtError;
+                return false;
+            }
+        } else if (a->type == T_MAP) {
+            if (((Map<map<BaseValue *, BaseValue *>> *) a)->rtError) {
+                error = ((Map<map<BaseValue *, BaseValue *>> *) a)->rtError;
+                return false;
+            }
+        } else if (a->type == T_CLASS) {
+            if (((UsableClass<int> *) a)->rtError) {
+                error = ((UsableClass<int> *) a)->rtError;
+                return false;
+            }
+        }
+        return (val)->getValue() == 1;
     });
-    return (new RuntimeResult())->success(copy);
+    if (error) return res->failure(error);
+    return res->success(copy);
 }
 
 template<>

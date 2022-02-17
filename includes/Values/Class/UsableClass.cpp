@@ -41,8 +41,8 @@ Context *UsableClass<int>::generateClassContext(string className) {
 
 template<>
 UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> members, Context *c,
-                              Context *parent, Node *super, vector<string> lines) : Value<int>(0, T_CLASS, std::move(f),
-                                                                                               std::move(txt)) {
+                              Context *parent, Node *super, vector<string> lines) : Value<int>(0, T_CLASS, f,
+                                                                                               txt) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
 
@@ -80,7 +80,7 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
                     superClass->line,
                     superClass->fName,
                     superClass->fTxt,
-                    "Expected a string",
+                    "Expected a class, but got " + superClass->type + " instead.",
                     ctx
             );
             return;
@@ -140,6 +140,36 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
 template<>
 bool UsableClass<int>::isTrue() {
     return true;
+}
+
+template<>
+BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
+    ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThan"));
+    if (sort) {
+        RuntimeResult * res = sort->execute({other});
+        if (res->error) rtError = res->error;
+        return res->value;
+    } else {
+        sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compSort"));
+        if (sort) {
+            RuntimeResult * res = sort->execute({other});
+            if (res->error) {
+                rtError = res->error;
+                return nullptr;
+            }
+            return res->value;
+        }
+        rtError = new RuntimeError(
+                posStart,
+                posEnd,
+                line,
+                fName,
+                fTxt,
+                "Class " + className + " does not have a 'compSort' or 'compLessThan' method",
+                ctx
+        );
+        return nullptr;
+    }
 }
 
 template<>

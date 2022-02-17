@@ -32,6 +32,7 @@ public:
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;
     bool isTrue() override;
+    BaseValue * compLessThan(BaseValue * other) override;
 };
 
 

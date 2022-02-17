@@ -4,6 +4,8 @@ class TodoObject(name, description, priority) do {
     op init() do null
 }
 
+taskList = []
+
 op add() do {
     name = input("Name of the task: ")
     description = input("Description of the task: ")
@@ -22,11 +24,21 @@ op add() do {
             print("Invalid input, please enter a number")
         }
     }
+    taskList.append(TodoObject(name, description, priority))
 }
 
-todoList = []
+op getTasks() do {
+    tmp = taskList.sort()
+    for task : tmp do {
+        print(task.name)
+        print(task.description)
+        print(task.priority)
+    }
+}
+
 commands = {
-    "add": add
+    "add": add,
+    "get": getTasks
 }
 while true do {
     command = input("Enter command: ")

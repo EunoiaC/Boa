@@ -484,7 +484,6 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
                                    defaultArgs, members, classDefNode->superClass, lines);
     classObj->setContext(c);
     classObj->instantiatedVariables = instantiatedVars;
-
     c->symbolTable->set(className, classObj);
 
     return res->success(classObj);

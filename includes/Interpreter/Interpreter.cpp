@@ -183,7 +183,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
     auto *tryCatchNode = (TryCatchNode *) n;
 
     BaseValue * val = res->reg(visit(tryCatchNode->tryBlock, c));
-    if (res->shouldReturn()){
+    if (res->error){
         Context *ctx = new Context(tryCatchNode->catchName->getValueObject()->getValue());
         ctx->symbolTable = new SymbolTable();
         ctx->symbolTable->set("name", new String<string>(res->error->errorName, "", ""));
@@ -200,6 +200,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         if (res->shouldReturn()) return res;
         return res->success(v);
     }
+    if (res->shouldReturn()) return res;
     return res->success(val);
 }
 

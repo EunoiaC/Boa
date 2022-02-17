@@ -1,9 +1,42 @@
-class Man(name) do {
+"to do commandline interface"
+
+class TodoObject(name, description, priority) do {
     op init() do null
-    op changeName(name) do this.name = name
 }
 
-dude = Man("Henry")
-print(dude.name)
-dude.changeName("Mudd")
-print(dude.name)
+op add() do {
+    name = input("Name of the task: ")
+    description = input("Description of the task: ")
+
+    shouldCont = true
+
+    while shouldCont do {
+        trying do{
+            priority = toNum(input("Priority of the task: "))
+            if priority > 10 or priority < 1 do {
+                print("Priority must be between 1 and 10")
+                continue
+            }
+            shouldCont = false
+        } catch err do {
+            print("Invalid input, please enter a number")
+        }
+    }
+}
+
+todoList = []
+commands = {
+    "add": add
+}
+while true do {
+    command = input("Enter command: ")
+    if command == "exit" do {
+        break
+    } else do {
+        if commands.keys.indexOf(command) == -1 do {
+            print("Unknown command")
+        } else do {
+            commands[command]()
+        }
+    }
+}

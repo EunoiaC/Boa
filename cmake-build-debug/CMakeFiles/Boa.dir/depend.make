@@ -705,6 +705,8 @@ CMakeFiles/Boa.dir/includes/Values/List/List.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
@@ -727,6 +729,8 @@ CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \

@@ -18,6 +18,7 @@ Lexer::Lexer(string fileText, string fileName, vector<string> lines) {
 }
 
 void Lexer::advance() {
+    currLine = lines[lineIdx];
     charIdx++;
     charLineIdx++;
     if (charIdx < fTxt.length()) {
@@ -61,7 +62,9 @@ Token<string> *Lexer::makeIdentifier() {
     if (keyWords.find(identifier) != keyWords.end()) {
         type = keyWords.at(identifier);
     }
-    return new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
+    Token<string> *token = new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
+    token->fTxt = currLine;
+    return token;
 }
 
 Token<string> *Lexer::makeString() {
@@ -84,9 +87,21 @@ Token<string> *Lexer::makeString() {
             if (currChar == 'n') {
                 toAdd = '\n';
             }
-                // \t
+            // \t
             else if (currChar == 't') {
                 toAdd = '\t';
+            }
+            // \r
+            else if (currChar == 'r') {
+                toAdd = '\r';
+            }
+            // \b
+            else if (currChar == 'b') {
+                toAdd = '\b';
+            }
+            // \f
+            else if (currChar == 'f') {
+                toAdd = '\f';
             }
         }
         if (currChar == '\n') {

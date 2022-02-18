@@ -190,7 +190,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         ctx->symbolTable->set("message", new String<string>(res->error->msg, "", ""));
         ctx->symbolTable->set("line", new Number<double>(res->error->line + 1, "", ""));
 
-        auto *err = new UsableClass<int>(fName, "", res->error->errorName, {}, ctx, c, nullptr, lines);
+        auto *err = new UsableClass<int>(fName, "", new Token<string>(T_STRING, res->error->errorName, res->error->posStart, res->error->posEnd, res->error->line), {}, ctx, c, nullptr, lines);
         err->asString = res->error->toString();
 
         c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), err);
@@ -480,7 +480,7 @@ RuntimeResult *Interpreter::visitClassDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    auto classObj = new Class<int>(className, fName, lines[classDefNode->classNameTok->line], classDefNode->argNameToks,
+    auto classObj = new Class<int>(classDefNode->classNameTok, fName, lines[classDefNode->classNameTok->line], classDefNode->argNameToks,
                                    defaultArgs, members, classDefNode->superClass, lines);
     classObj->setContext(c);
     classObj->instantiatedVariables = instantiatedVars;

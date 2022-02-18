@@ -40,11 +40,12 @@ Context *UsableClass<int>::generateClassContext(string className) {
 }
 
 template<>
-UsableClass<int>::UsableClass(string f, string txt, string className, vector<Node *> members, Context *c,
+UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok, vector<Node *> members, Context *c,
                               Context *parent, Node *super, vector<string> lines) : Value<int>(0, T_CLASS, f,
                                                                                                txt) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
+    this->classNameTok = classNameTok;
 
     print = new BuiltInFunction<int>("print", {"value"}, {}, "fName", "fTxt");
     input = new BuiltInFunction<int>("input", {"value"}, {}, "fName", "fTxt");
@@ -57,7 +58,7 @@ UsableClass<int>::UsableClass(string f, string txt, string className, vector<Nod
     getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, "fName", "fTxt");
     _random = new Random<int>("fName", "fTxt");
 
-    this->className = std::move(className);
+    this->className = classNameTok->getValueObject()->getValue();
     ctx = generateClassContext(className);
     ctx->symbolTable->parent = parent->symbolTable;
 
@@ -143,6 +144,19 @@ bool UsableClass<int>::isTrue() {
 }
 
 template<>
+Error * UsableClass<int>::funcNotFound(string funcName) {
+    return new RuntimeError(
+            classNameTok->posStart,
+            classNameTok->posEnd,
+            classNameTok->line,
+            fName,
+            classNameTok->fTxt,
+            "Class '" + className + "' doesn't have a method '" + funcName + "'",
+            this->ctx
+    );
+}
+
+template<>
 BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
     ClassFunction<int> *lt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThan"));
     if (lt) {
@@ -150,15 +164,7 @@ BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
         if (res->error) rtError = res->error;
         return res->value;
     } else {
-        rtError = new RuntimeError(
-                posStart,
-                posEnd,
-                line,
-                fName,
-                fTxt,
-                "Class " + className + " does not have a 'compLessThan' method",
-                ctx
-        );
+        rtError = funcNotFound("compLessThan");
     }
 }
 
@@ -170,15 +176,7 @@ BaseValue *UsableClass<int>::compSort(BaseValue *other) {
         if (res->error) rtError = res->error;
         return res->value;
     } else {
-        rtError = new RuntimeError(
-                posStart,
-                posEnd,
-                line,
-                fName,
-                fTxt,
-                "Class " + className + " does not have a 'compSort' method",
-                ctx
-        );
+        rtError = funcNotFound("compSort");
     }
 }
 

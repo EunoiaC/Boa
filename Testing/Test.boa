@@ -7,4 +7,4 @@ n2 = Sort(2)
 
 l = [n1, n2]
 print(for x : l do x.n)
-print(for x : l.sort(op(a, b) do a.n > b.n) do x.n)
+print(for x : l.sort() do x.n)

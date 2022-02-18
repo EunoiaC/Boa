@@ -32,8 +32,8 @@ public:
     void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
     void setParentClass(Class<int> * parent);
     RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
-
-    Class<T>(string name, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> members, Node * superClass, vector<string> lines);
+    Token<string> * classNameTok;
+    Class<T>(Token<string> * classNameTok, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> members, Node * superClass, vector<string> lines);
 };
 
 

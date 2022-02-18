@@ -106,7 +106,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
         ));
     }
 
-    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[node->line]))->setContext(c)->setPos(
+    BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[node->iterNameTok->line]))->setContext(c)->setPos(
             node->posStart, node->posEnd, node->line);
     if (node->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[node->line]);

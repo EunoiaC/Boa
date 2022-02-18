@@ -3,3 +3,5 @@
 ## Add https lib
 ## Just proper error support
 ## Add nested classes
+
+## If any errors with line, just use the token ftxt

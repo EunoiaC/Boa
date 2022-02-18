@@ -32,9 +32,9 @@ template<> RuntimeResult *BaseFunction<int>::checkArgs(vector<BaseValue *> args,
         return res->failure(new RuntimeError(
                 posStart,
                 posEnd,
-                line,
+                args[0]->line,
                 fName,
-                callTxt,
+                args[0]->fTxt,
                 to_string(args.size() - argNames.size()) + " too many args passed into " + name,
                 ctx
         ));

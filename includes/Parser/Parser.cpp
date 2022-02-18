@@ -578,7 +578,7 @@ ParseResult *Parser::funcDef() {
 
     res->regAdvancement();
     advance();
-    Token<string> *varNameTok = nullptr;
+    Token<string> *varNameTok = new Token<string>(T_STRING, "anonymous",currentToken->posStart, currentToken->posEnd, currentToken->line);
     if (currentToken->getType() == IDENTIFIER) {
         varNameTok = (Token<string> *) currentToken;
         res->regAdvancement();
@@ -687,7 +687,6 @@ ParseResult *Parser::funcDef() {
             res->regAdvancement();
             advance();
             // Multiple statements
-
             return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, body, false));
 
         }

@@ -205,8 +205,52 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
     auto *copy = value->copy();
     RuntimeResult *res = new RuntimeResult();
     Error * error = nullptr;
+
+    BaseValue * compareFunc = execCtx->symbolTable->get("func");
+    if(compareFunc->type != T_FUNC){
+        return res->failure(new RuntimeError(
+                compareFunc->posStart,
+                compareFunc->posEnd,
+                compareFunc->line,
+                compareFunc->fName,
+                compareFunc->fTxt,
+                "Expected a FUNCTION",
+                execCtx
+        ));
+    }
+
+    BaseFunction<int> * func = (BaseFunction<int>*) compareFunc;
+    if(func->argNames.size() != 2 && func->getValue() != -10){
+        return res->failure(new RuntimeError(
+                compareFunc->posStart,
+                compareFunc->posEnd,
+                compareFunc->line,
+                compareFunc->fName,
+                compareFunc->fTxt,
+                "Expected a function with 2 parameters",
+                execCtx
+        ));
+    }
+
     sort(copy->elements.begin(), copy->elements.end(), [&](BaseValue* const &a, BaseValue* const &b) {
-        auto val = (Number<double>*) a->compSort(b);
+        Number<double> * val;
+        if (func->getValue() != -10){
+            BaseValue * tmp = func->execute({a, b})->value;
+            if (tmp->type != T_NUM){
+                error = new RuntimeError(
+                        func->posStart,
+                        func->posEnd,
+                        func->line,
+                        func->fName,
+                        func->fTxt,
+                        "Expected return value of type NUMBER",
+                        execCtx
+                );
+            }
+            val = (Number<double>*) tmp;
+        } else {
+            val = (Number<double>*) a->compSort(b);
+        }
         if (a->type == T_NUM) {
             if (((Number<double> *) a)->rtError) {
                 error = ((Number<double> *) a)->rtError;

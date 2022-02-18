@@ -35,9 +35,11 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
     symbolTable->set("set", new ListFunction<int>(this, "set", {"idx", "val"},
                                                       defaultArgs, "",
                                                       ""));
-    symbolTable->set("sort", new ListFunction<int>(this, "sort", {},
+    defaultArgs["func"] = new Value<int>(-10, T_FUNC, fName, fTxt);
+    symbolTable->set("sort", new ListFunction<int>(this, "sort", {"func"},
                                                   defaultArgs, "",
                                                   ""));
+    defaultArgs.clear();
 }
 
 template<>

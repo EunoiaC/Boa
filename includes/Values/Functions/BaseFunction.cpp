@@ -7,7 +7,6 @@
 #include <utility>
 #include "../String/String.h"
 #include "../List/List.h"
-#include "../Class/Class.h"
 #include "../Map.h"
 
 template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt, string funcType) : Value<int>(0, T_FUNC, fName, fTxt) {
@@ -90,10 +89,8 @@ template<> void BaseFunction<int>::populateArgs(vector<BaseValue *> args, vector
             ((String<string> *) argValue)->setContext(context);
         } else if (argValue->type == T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
-        } else if (argValue->type == T_MAP) {
+        } if (argValue->type == T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
-        } else if (argValue->type == T_CLASS) {
-            ((Class<int> *) argValue)->setContext(context);
         }
         context->symbolTable->set(argName, argValue);
     }

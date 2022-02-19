@@ -508,11 +508,11 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    auto *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
+    BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
                                               defaultArgs,
                                               lines,
-                                              node->autoReturn));
-    funcValue->setContext(c)
+                                              node->autoReturn))
+            ->setContext(c)
             ->setPos(node->posStart, node->posEnd, node->line);
 
     if (node->funcNameTok) {

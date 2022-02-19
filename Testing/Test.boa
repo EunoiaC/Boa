@@ -2,13 +2,7 @@ class Sort(n) do {
     op init() do null
 }
 
-n1 = Sort(1)
-n2 = Sort(2)
-n3 = Sort(3)
-n4 = Sort(4)
-
-l = [n1, n4, n3, n2]
+l = for i = 0 to 100 do Sort(i)
 l = __random__.shuffle(l)
 print(for x : l do x.n)
-"Prioritize 3"
-print(for x : l.sort(op(a, b) do if a.n == 3 do true else do a.n > b.n) do x.n)
+print(for x : l.sort(op(a, b) do a.n > b.n) do x.n)

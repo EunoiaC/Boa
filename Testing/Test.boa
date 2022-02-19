@@ -1,12 +1,4 @@
-class Sort(n) do {
-    op init() do null
-}
-
-l = for i = 0 to 100 do Sort(i)
-l = __random__.shuffle(l)
-print(for x : l do x.n)
-print(for x : l.sort(
-    op(a, b) do {
-        return a.n > b.n
-    }
-) do x.n)
+l = for i = 0 to 100 do i
+__random__.shuffle(l)
+print(l)
+print(l.sort(op(a, b) do a < b))

@@ -592,9 +592,13 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h

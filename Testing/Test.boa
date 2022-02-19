@@ -1,12 +1,10 @@
-class Sort(n) do {
-    op init() do null
+"bruh"
+op func2() do {
+    print(9/0)
 }
 
-n1 = Sort(1)
-n2 = Sort(2)
-n3 = Sort(3)
-n4 = Sort(4)
+op func1() do {
+    func2()
+}
 
-l = [n1, n4, n3, n2]
-print(for x : l do x.n)
-print(for x : l.sort(op(a, b) do return a.n > b.n) do x.n)
+func1()

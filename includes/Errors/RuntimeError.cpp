@@ -22,14 +22,13 @@ string RuntimeError::toString() {
 string RuntimeError::generateTraceback() {
     string res;
     int l = line;
-    Context *context = ctx;
+    Context *c = ctx;
     string fileName = fName;
-    while(context){
-        //cout << "File: " << fileName << " Line: " << l << endl;
-        res = "    File " + fileName + ", line " + to_string( l + 1) + ", in " + context->displayName + "\n";
-        fileName = context->fName;
-        l = context->line;
-        context = context->parentCtx;
+    while(c){
+        res += "    File " + fileName + ", line " + to_string( l + 1) + ", in " + c->displayName + "\n";
+        fileName = c->fName;
+        l = c->line;
+        c = c->parentCtx;
     }
     return "Traceback (most recent call last):\n" + res;
 }

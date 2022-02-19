@@ -508,11 +508,11 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
         defaultArgs[arg.first] = val;
     }
 
-    BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
+    auto *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
                                               defaultArgs,
                                               lines,
-                                              node->autoReturn))
-            ->setContext(c)
+                                              node->autoReturn));
+    funcValue->setContext(c)
             ->setPos(node->posStart, node->posEnd, node->line);
 
     if (node->funcNameTok) {
@@ -541,6 +541,7 @@ RuntimeResult *Interpreter::visitNumberNode(Node *n, Context *c) {
             node->token->posEnd,
             node->token->line
     );
+    num->ctx = c;
     return (new RuntimeResult())->success(num);
 }
 
@@ -552,6 +553,7 @@ RuntimeResult *Interpreter::visitStringNode(Node *n, Context *c) {
             node->token->posEnd,
             node->token->line
     );
+    str->ctx = c;
     return (new RuntimeResult())->success(str);
 }
 

@@ -8,8 +8,11 @@
 
 template<>
 BaseValue *UsableClass<int>::getFromSymbolTable(string key) {
-    BaseValue *v = ctx->symbolTable->get(key);
-    return v;
+    BaseValue * val = nullptr;
+    if(ctx->symbolTable->symbols.count(key)){
+        val = ctx->symbolTable->symbols[key];
+    }
+    return val;
 }
 
 template<>

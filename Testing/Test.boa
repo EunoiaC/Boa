@@ -1,4 +1,6 @@
-l = for i = 0 to 100 do i
-__random__.shuffle(l)
+class Test(n) do {
+    op init() do null
+}
+
+l = for i = 0 to 100 do Test(i)
 print(l)
-print(l.sort(op(a, b) do a < b))

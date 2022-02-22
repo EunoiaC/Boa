@@ -3,7 +3,7 @@
 print("Welcome to the Boa REPL!")
 
 REPL_VERSION = "0.1.0"
-BOA_VERSION = "0.4.1"
+BOA_VERSION = "0.8.0"
 
 op version() do {
     print("Boa REPL version is " + REPL_VERSION)

@@ -140,6 +140,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

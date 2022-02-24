@@ -26,6 +26,11 @@ public:
     int getLength() override;
     string toString() override;
     Map<T> * copy() override;
+
+    BaseValue * oredBy(BaseValue * other) override;
+    BaseValue * andedBy(BaseValue * other) override;
+    BaseValue * notted() override;
+    bool isTrue() override;
 };
 
 

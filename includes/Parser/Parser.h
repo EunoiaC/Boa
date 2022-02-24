@@ -57,6 +57,7 @@ public:
     ParseResult * statements();
     ParseResult * expr();
     ParseResult * compExpr();
+    ParseResult * eitherExpr();
     ParseResult * arithExpr();
     ParseResult * atom();
     ParseResult * power();

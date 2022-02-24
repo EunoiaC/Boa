@@ -59,7 +59,8 @@ public:
             {"op",    OP},
             {"class",    CLASS},
             {"trying",    TRY},
-            {"catch",    CATCH}
+            {"catch",    CATCH},
+            {"either", EITHER}
     };
     /**
      * Map assigning each possible character a token type

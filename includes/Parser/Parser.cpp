@@ -1021,7 +1021,11 @@ ParseResult *Parser::atom() {
         res->regAdvancement();
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
-    } else if (tok->getType() == TRY) {
+    } else if (tok->getType() == EITHER) {
+        Node * either = res->reg(eitherExpr());
+        if (res->error) return res;
+        return res->success(either);
+    }else if (tok->getType() == TRY) {
         Node * _try = res->reg(tryExpr());
         if (res->error) return res;
         return res->success(_try);
@@ -1236,6 +1240,37 @@ ParseResult *Parser::power() {
 
 ParseResult *Parser::term() {
     return binOp({MULTIPLY, DIVIDE, MOD}, &Parser::factor, &Parser::factor);
+}
+
+ParseResult *Parser::eitherExpr() {
+    ParseResult *res = new ParseResult(nullptr, nullptr);
+    if (currentToken->getType() != EITHER){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError",
+                          "Expected 'either'"));
+    }
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    Node * first = res->reg(expr());
+    if (res->error) return res;
+    if (currentToken->getType() != OR){
+        return res->failure(
+                new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                          "InvalidSyntaxError",
+                          "Expected 'or'"));
+    }
+    delete currentToken;
+    res->regAdvancement();
+    advance();
+
+    Node * second = res->reg(expr());
+    if (res->error) return res;
+
+    //EitherNode *either = new EitherNode(first, second);
+    //return res->success(either);
 }
 
 ParseResult *Parser::compExpr() {

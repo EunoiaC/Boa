@@ -116,7 +116,7 @@ BaseValue *Number<double>::compNotEquals(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::andedBy(BaseValue *s) {
-    return (new Number<double>(numValue or s->isTrue(), fName, fTxt))->setContext(ctx);
+    return (new Number<double>(numValue and s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 template<>

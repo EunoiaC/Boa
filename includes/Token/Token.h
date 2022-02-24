@@ -45,6 +45,7 @@ static const string MOD = "MOD";
 static const string EQUAL = "EQUAL";
 static const string AND = "AND";
 static const string OR = "OR";
+static const string EITHER = "EITHER";
 static const string NOT = "NOT";
 static const string PLUS_EQUAL = "PLUS_EQUAL";
 static const string PLUS_PLUS = "PLUS_PLUS";

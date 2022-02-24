@@ -152,6 +152,10 @@ CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.o: \
+ ../includes/Nodes/Control\ Flow/EitherNode.cpp \
+ ../includes/Nodes/Control\ Flow/EitherNode.h \
+ ../includes/Nodes/Node.h
 CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ForNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

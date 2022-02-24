@@ -369,6 +369,30 @@ includes/Nodes/Control_Flow/ClassDefNode.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.s
 .PHONY : includes/Nodes/Control_Flow/ClassDefNode.cpp.s
 
+includes/Nodes/Control_Flow/EitherNode.o: includes/Nodes/Control_Flow/EitherNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/EitherNode.o
+
+# target to build an object file
+includes/Nodes/Control_Flow/EitherNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.o
+.PHONY : includes/Nodes/Control_Flow/EitherNode.cpp.o
+
+includes/Nodes/Control_Flow/EitherNode.i: includes/Nodes/Control_Flow/EitherNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/EitherNode.i
+
+# target to preprocess a source file
+includes/Nodes/Control_Flow/EitherNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.i
+.PHONY : includes/Nodes/Control_Flow/EitherNode.cpp.i
+
+includes/Nodes/Control_Flow/EitherNode.s: includes/Nodes/Control_Flow/EitherNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/EitherNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Control_Flow/EitherNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.s
+.PHONY : includes/Nodes/Control_Flow/EitherNode.cpp.s
+
 includes/Nodes/Control_Flow/ForNode.o: includes/Nodes/Control_Flow/ForNode.cpp.o
 .PHONY : includes/Nodes/Control_Flow/ForNode.o
 
@@ -1416,6 +1440,9 @@ help:
 	@echo "... includes/Nodes/Control_Flow/ClassDefNode.o"
 	@echo "... includes/Nodes/Control_Flow/ClassDefNode.i"
 	@echo "... includes/Nodes/Control_Flow/ClassDefNode.s"
+	@echo "... includes/Nodes/Control_Flow/EitherNode.o"
+	@echo "... includes/Nodes/Control_Flow/EitherNode.i"
+	@echo "... includes/Nodes/Control_Flow/EitherNode.s"
 	@echo "... includes/Nodes/Control_Flow/ForNode.o"
 	@echo "... includes/Nodes/Control_Flow/ForNode.i"
 	@echo "... includes/Nodes/Control_Flow/ForNode.s"

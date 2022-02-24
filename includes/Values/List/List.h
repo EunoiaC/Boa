@@ -24,6 +24,11 @@ public:
     string toString() override;
     BaseValue *get(BaseValue *s) override;
     BaseValue *contains(BaseValue *s) override;
+
+    BaseValue * oredBy(BaseValue * other) override;
+    BaseValue * andedBy(BaseValue * other) override;
+    BaseValue * notted() override;
+    bool isTrue() override;
 };
 
 

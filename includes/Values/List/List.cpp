@@ -43,11 +43,31 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
 }
 
 template<>
+BaseValue *List<vector<BaseValue *>>::oredBy(BaseValue *other) {
+    return (new Number<double>(!elements.empty() or other->isTrue(), fName, fTxt))->setContext(ctx);
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::andedBy(BaseValue *other) {
+    return (new Number<double>(!elements.empty() and other->isTrue(), fName, fTxt))->setContext(ctx);
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::notted() {
+    return (new Number<double>(elements.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
+}
+
+template<>
 List<vector<BaseValue *>> *List<vector<BaseValue *>>::copy() {
     List<vector<BaseValue *>> *copy = new List<vector<BaseValue *>>(elements, fName, fTxt);
     copy->setPos(posStart, posEnd, line);
     copy->setContext(ctx);
     return copy;
+}
+
+template<>
+bool List<vector<BaseValue *>>::isTrue() {
+    return elements.size() > 0;
 }
 
 template<typename T>

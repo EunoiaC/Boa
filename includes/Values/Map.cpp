@@ -208,3 +208,23 @@ string Map<T>::toString() {
     str += "}";
     return str;
 }
+
+template<>
+bool Map<map<BaseValue *, BaseValue *>>::isTrue() {
+    return dict.size() > 0;
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::oredBy(BaseValue *other) {
+    return (new Number<double>(!dict.empty() or other->isTrue(), fName, fTxt))->setContext(ctx);
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::andedBy(BaseValue *other) {
+    return (new Number<double>(!dict.empty() and other->isTrue(), fName, fTxt))->setContext(ctx);
+}
+
+template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::notted() {
+    return (new Number<double>(dict.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
+}

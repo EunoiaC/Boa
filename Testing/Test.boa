@@ -1,6 +1,3 @@
-class Test(n) do {
-    op init() do null
-}
-
-l = for i = 0 to 100 do Test(i)
-print(l)
+x = null
+y = 3
+print([] or [90])

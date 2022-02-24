@@ -1,7 +1,6 @@
 class Custom(n) do {
     op init() do null
-    op compSort(b) do a.n > b.n
-    op bruh() do haha
+    op compSort(b) do n > b.n
 }
 
 c1 = Custom(1)

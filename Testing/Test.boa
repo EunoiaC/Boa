@@ -1,3 +1,11 @@
-x = null
-y = 3
-print(either 9 or null)
+class Custom(n) do {
+    op init() do null
+    op compSort(b) do a.n > b.n
+    op bruh() do haha
+}
+
+c1 = Custom(1)
+c2 = Custom(2)
+x = [c1, c2]
+
+print(for i : x.sort() do i.n)

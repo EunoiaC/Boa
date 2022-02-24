@@ -163,11 +163,95 @@ template<>
 BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
     ClassFunction<int> *lt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThan"));
     if (lt) {
+        if (lt->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    classNameTok->posStart,
+                    classNameTok->posEnd,
+                    classNameTok->line,
+                    classNameTok->fName,
+                    classNameTok->fTxt,
+                    "Class '" + className + "' doesn't have a method 'compLessThan' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
         RuntimeResult * res = lt->execute({other});
         if (res->error) rtError = res->error;
-        return res->value;
+        return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
         rtError = funcNotFound("compLessThan");
+    }
+}
+
+template<>
+BaseValue *UsableClass<int>::compGreaterThan(BaseValue *other) {
+    ClassFunction<int> *gt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compGreaterThan"));
+    if (gt) {
+        if (gt->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    classNameTok->posStart,
+                    classNameTok->posEnd,
+                    classNameTok->line,
+                    classNameTok->fName,
+                    classNameTok->fTxt,
+                    "Class '" + className + "' doesn't have a method 'compGreaterThan' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
+        RuntimeResult * res = gt->execute({other});
+        if (res->error) rtError = res->error;
+        return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
+    } else {
+        rtError = funcNotFound("compGreaterThan");
+    }
+}
+
+template<>
+BaseValue *UsableClass<int>::compLessThanEquals(BaseValue *other) {
+    ClassFunction<int> *lte = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compLessThanEquals"));
+    if (lte) {
+        if (lte->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    classNameTok->posStart,
+                    classNameTok->posEnd,
+                    classNameTok->line,
+                    classNameTok->fName,
+                    classNameTok->fTxt,
+                    "Class '" + className + "' doesn't have a method 'compLessThanEquals' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
+        RuntimeResult * res = lte->execute({other});
+        if (res->error) rtError = res->error;
+        return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
+    } else {
+        rtError = funcNotFound("compLessThanEquals");
+    }
+}
+
+template<>
+BaseValue *UsableClass<int>::compGreaterThanEquals(BaseValue *other) {
+    ClassFunction<int> *gte = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compGreaterThanEquals"));
+    if (gte) {
+        if (gte->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    classNameTok->posStart,
+                    classNameTok->posEnd,
+                    classNameTok->line,
+                    classNameTok->fName,
+                    classNameTok->fTxt,
+                    "Class '" + className + "' doesn't have a method 'compGreaterThanEquals' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
+        RuntimeResult * res = gte->execute({other});
+        if (res->error) rtError = res->error;
+        return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
+    } else {
+        rtError = funcNotFound("compGreaterThanEquals");
     }
 }
 
@@ -175,6 +259,18 @@ template<>
 BaseValue *UsableClass<int>::compSort(BaseValue *other) {
     ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compSort"));
     if (sort) {
+        if (sort->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    sort->posStart,
+                    sort->posEnd,
+                    sort->line,
+                    sort->fName,
+                    sort->fTxt,
+                    "Class '" + className + "' doesn't have a method 'sort' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
         RuntimeResult * res = sort->execute({other});
         if (res->error) rtError = res->error;
         return res->value;

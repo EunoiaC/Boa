@@ -34,8 +34,14 @@ public:
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;
+
     bool isTrue() override;
+
     BaseValue * compLessThan(BaseValue * other) override;
+    BaseValue * compGreaterThan(BaseValue * other) override;
+    BaseValue * compLessThanEquals(BaseValue * other) override;
+    BaseValue * compGreaterThanEquals(BaseValue * other) override;
+
     BaseValue * compSort(BaseValue * other) override;
 };
 

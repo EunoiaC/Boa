@@ -1254,8 +1254,9 @@ ParseResult *Parser::eitherExpr() {
     res->regAdvancement();
     advance();
 
-    Node * first = res->reg(expr());
+    Node * first = res->reg(arithExpr());
     if (res->error) return res;
+
     if (currentToken->getType() != OR){
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
@@ -1266,11 +1267,11 @@ ParseResult *Parser::eitherExpr() {
     res->regAdvancement();
     advance();
 
-    Node * second = res->reg(expr());
+    Node * second = res->reg(arithExpr());
     if (res->error) return res;
 
-    //EitherNode *either = new EitherNode(first, second);
-    //return res->success(either);
+    EitherNode *either = new EitherNode(first, second);
+    return res->success(either);
 }
 
 ParseResult *Parser::compExpr() {

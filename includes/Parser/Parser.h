@@ -7,6 +7,7 @@
 
 #include <vector>
 #include "../Nodes/Control Flow/ForNode.h"
+#include "../Nodes/Control Flow/EitherNode.h"
 #include "../Nodes/IndexNode.h"
 #include "../Nodes/Control Flow/ClassDefNode.h"
 #include "../Nodes/Control Flow/TryCatchNode.h"

@@ -30,6 +30,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_IMPORT] = &Interpreter::visitImportNode;
     funcMap[N_IDX] = &Interpreter::visitIndexNode;
     funcMap[N_TRY_CATCH] = &Interpreter::visitTryCatchNode;
+    funcMap[N_EITHER] = &Interpreter::visitEitherNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -236,9 +237,26 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     return res->success(val);
 }
 
+RuntimeResult *Interpreter::visitEitherNode(Node *n, Context *c) {
+    auto *res = new RuntimeResult();
+    auto *eitherNode = (EitherNode *) n;
+
+    BaseValue *val = res->reg(visit(eitherNode->first, c));
+    if (res->shouldReturn()) return res;
+
+    if (val->isTrue()) {
+        return res->success(val);
+    }
+
+    val = res->reg(visit(eitherNode->second, c));
+    if (res->shouldReturn()) return res;
+
+    return res->success(val);
+}
+
 RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
-    IfNode *node = (IfNode *) n;
+    auto *res = new RuntimeResult();
+    auto *node = (IfNode *) n;
     for (auto &ifCase: node->cases) {
         BaseValue *condValue = res->reg(visit(get<0>(ifCase), c));
         Node *expr = get<1>(ifCase);

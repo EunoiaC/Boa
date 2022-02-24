@@ -30,6 +30,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -354,6 +355,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -395,6 +397,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -508,6 +511,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -553,6 +557,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -616,6 +621,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -665,6 +671,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h
@@ -833,6 +840,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/EitherNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ForNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/FuncDefNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/IfNode.h

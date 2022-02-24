@@ -15,6 +15,7 @@
 #include "../Nodes/Control Flow/IterateNode.h"
 #include "../Nodes/Control Flow/WhileNode.h"
 #include "../Nodes/Control Flow/IfNode.h"
+#include "../Nodes/Control Flow/EitherNode.h"
 #include "../Nodes/Control Flow/FuncDefNode.h"
 #include "../Nodes/Control Flow/ClassDefNode.h"
 #include "../Nodes/Control Flow/TryCatchNode.h"
@@ -67,6 +68,7 @@ public:
     RuntimeResult * visitVarAccessNode(Node * n, Context* c);
 
     RuntimeResult * visitIfNode(Node * n, Context* c);
+    RuntimeResult * visitEitherNode(Node * n, Context* c);
     RuntimeResult * visitForNode(Node * n, Context* c);
     RuntimeResult * visitIterateNode(Node * n, Context* c);
     RuntimeResult * visitWhileNode(Node * n, Context* c);

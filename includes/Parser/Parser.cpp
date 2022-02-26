@@ -1078,6 +1078,20 @@ ParseResult *Parser::atom() {
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp));
         }
+        while (currentToken->getType() == DOT) {
+            res->regAdvancement();
+            advance();
+            if (currentToken->getType() != IDENTIFIER) {
+                priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
+                                          lines[currentToken->line],
+                                          "InvalidSyntaxError",
+                                          "Expected an identifier");
+                return res->failure(priorityError);
+            }
+            identifiers.push_back(currentToken);
+            res->regAdvancement();
+            advance();
+        }
         return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == L_PAREN) {
         res->regAdvancement();
@@ -1228,7 +1242,7 @@ ParseResult *Parser::call() {
         }
         CallNode *call = new CallNode(_atom, args);
 
-        call->line = currentToken->line;
+        call->line = call->nodeToCall->line;
         return res->success(call);
     }
     return res->success(_atom);

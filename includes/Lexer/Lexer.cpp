@@ -67,6 +67,7 @@ Token<string> *Lexer::makeIdentifier() {
     }
     Token<string> *token = new Token<string>(type, identifier, start, charLineIdx - 1, currLineIdx);
     token->fTxt = currLine;
+    token->line = lineIdx;
     return token;
 }
 

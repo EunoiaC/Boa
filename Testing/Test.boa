@@ -1,13 +1,8 @@
-map = {
-    "key": "value"
+todos = getFile("Coordinates.txt")
+count = 0
+for l : todos.lines do {
+    if l contains "TODO" or l contains "todo" do {
+        count+= 1
+    }
 }
-print(map)
-
-'print(map["key"])'
-'print(map get "key")'
-print(map get "key")
-
-
-arr = ["A", "C", "B"]
-print(arr ? 1)
-print(arr.sort())
+print("There are " + count + " todos")

@@ -8,7 +8,7 @@
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
     string output;
-    for (auto &arg : args) {
+    for (auto &arg: args) {
         output += arg->toString() + " ";
     }
     cout << output << endl;
@@ -21,7 +21,7 @@ RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    BaseValue * val = execCtx->symbolTable->get("value");
+    BaseValue *val = execCtx->symbolTable->get("value");
 
     return (new RuntimeResult())->success(new String<string>(val->type, val->fName, val->fTxt));
 }
@@ -32,7 +32,7 @@ RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    BaseValue * str = execCtx->symbolTable->get("value");
+    BaseValue *str = execCtx->symbolTable->get("value");
     string toStr = str->toString();
     return (new RuntimeResult())->success(new String<string>(toStr, str->fName, str->fTxt));
 }
@@ -108,7 +108,7 @@ template<>
 RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
     string output;
     string ftxt = "keyboard input\n";
-    for (auto &arg : args) {
+    for (auto &arg: args) {
         output += arg->toString() + " ";
         ftxt = arg->fTxt;
     }
@@ -144,7 +144,7 @@ RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
 
     SymbolTable *symToUse = execCtx->symbolTable;
 
-    while(symToUse->parent) {
+    while (symToUse->parent) {
         symToUse = symToUse->parent;
     }
 
@@ -193,7 +193,7 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
         );
     }
 
-    BaseValue * valToTransfer = execCtx->symbolTable->get(oldName->toString());
+    BaseValue *valToTransfer = execCtx->symbolTable->get(oldName->toString());
 
     if (valToTransfer == nullptr) {
         return (new RuntimeResult())->failure(
@@ -209,7 +209,7 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
         );
     }
 
-    SymbolTable * mainSym = execCtx->symbolTable;
+    SymbolTable *mainSym = execCtx->symbolTable;
 
     while (mainSym->parent) {
         mainSym = mainSym->parent;
@@ -227,16 +227,16 @@ RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    auto * sym = new Map<map<BaseValue *, BaseValue *>>({}, "", "");
+    auto *sym = new Map<map<BaseValue *, BaseValue *>>({}, "", "");
 
-    SymbolTable * mainSym = execCtx->symbolTable;
+    SymbolTable *mainSym = execCtx->symbolTable;
     while (mainSym->parent) {
         mainSym = mainSym->parent;
     }
 
-    for(auto &it : mainSym->symbols) {
-        auto * key = new String<string>(it.first, "", "");
-        BaseValue * val = it.second->copy();
+    for (auto &it: mainSym->symbols) {
+        auto *key = new String<string>(it.first, "", "");
+        BaseValue *val = it.second->copy();
 
         sym->plusEquals(new List<vector<BaseValue *>>({key, val}, "", ""));
     }
@@ -260,7 +260,7 @@ RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
 
-    BaseValue * f = execCtx->symbolTable->get("fName");
+    BaseValue *f = execCtx->symbolTable->get("fName");
     if (f->type != T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
@@ -275,53 +275,59 @@ RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
         );
     }
 
-    BaseValue * m = execCtx->symbolTable->get("mode");
-    if (m->type != T_STRING) {
+    auto *fName = (String<string> *) f;
+
+
+    ifstream file(fName->getValue());
+    if (file.fail()) {
+        file = ifstream(ctx->parentFilePath + fName->getValue());
+    }
+    if (file.fail()) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
-                        m->posStart,
-                        m->posEnd,
-                        m->line,
-                        m->fName,
-                        m->fTxt,
-                        "Expected a STRING",
+                        fName->posStart,
+                        fName->posEnd,
+                        fName->line,
+                        fName->fName,
+                        fName->fTxt,
+                        "File doesn't exist",
                         execCtx
                 )
         );
     }
+    stringstream buffer;
+    buffer << file.rdbuf();
+    string fileText = buffer.str();
 
-    auto * fName = (String<string> *) f;
-    auto * mode = (String<string> *) m;
+    //TODO: Make a class object cpp file
 
-    // Read all text from file
-    if (mode->getValue() == "r"){
-        ifstream file(fName->getValue());
-        if (file.fail()){
-            file = ifstream (ctx->parentFilePath + fName->getValue());
-        }
-        if (file.fail()) {
-            return (new RuntimeResult())->failure(
-                    new RuntimeError(
-                            fName->posStart,
-                            fName->posEnd,
-                            fName->line,
-                            fName->fName,
-                            fName->fTxt,
-                            "File doesn't exist",
-                            execCtx
-                    )
-            );
-        }
-        stringstream buffer;
-        buffer << file.rdbuf();
-        string fileText = buffer.str();
+    auto *classNameTok = new Token<string>(T_STRING, fName->getValue(), 0, 0, 0);
+    auto *ctx = new Context(fName->getValue());
+    ctx->symbolTable = new SymbolTable();
+    ctx->symbolTable->set("name", new String<string>(fName->getValue(), "", ""));
+    ctx->symbolTable->set("parent", new String<string>(ctx->parentFilePath, "", ""));
+    ctx->symbolTable->set("text", new String<string>(fileText, "", ""));
 
-        return (new RuntimeResult())->success(new String<string>(fileText, "", ""));
+    stringstream ss(fileText);
+    string l;
+
+    vector<BaseValue *> lines;
+
+    while (getline(ss, l, '\n')) {
+        lines.push_back(new String<string>(l, "", ""));
     }
+
+    ctx->symbolTable->set("lines", new List<vector<BaseValue *>>(lines, "", ""));
+
+    auto *fileObj = new UsableClass<int>("", "", classNameTok, {}, ctx,
+                                         execCtx, nullptr, {});
+
+    return (new RuntimeResult())->success(fileObj);
 }
 
 template<>
-BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
+BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
+                                      string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, BUILT_IN_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
 

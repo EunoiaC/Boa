@@ -45,7 +45,7 @@ int main(int argc, char** argv) {
     globalSymbolTable->set("rename", _rename);
     globalSymbolTable->set("getSymbolTable", getSymbolTable);
     globalSymbolTable->set("copy", _copy);
-    globalSymbolTable->set("readFile", readFile);
+    globalSymbolTable->set("getFile", readFile);
 
     //Modules
     globalSymbolTable->set("__random__", _random);

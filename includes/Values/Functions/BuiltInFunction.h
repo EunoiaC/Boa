@@ -9,8 +9,9 @@
 #include "../String/String.h"
 #include "../List/List.h"
 #include "../Map.h"
-#include <iostream>
+#include <sstream>
 
+using namespace std;
 template<typename T> class BuiltInFunction : public BaseFunction<T> {
 public:
     typedef RuntimeResult * (BuiltInFunction<int>::*FnPtr)(Context * execCtx);
@@ -21,6 +22,7 @@ public:
     RuntimeResult * execute(vector<BaseValue*> args) override;
     BuiltInFunction<int> *copy() override;
 
+    RuntimeResult * execute_readFile(Context * execCtx);
     RuntimeResult * execute_print(Context * execCtx);
     RuntimeResult * execute_input(Context * execCtx);
     RuntimeResult * execute_toNum(Context * execCtx);

@@ -1,2 +1,5 @@
 x = either null or null or 4
 print(x)
+print(either 3 or x)
+
+print(readFile("REPL.boa", "r"))

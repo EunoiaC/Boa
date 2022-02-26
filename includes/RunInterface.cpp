@@ -35,6 +35,7 @@ RunResult RunInterface::readLine(string line) {
     i->pathRef = pathRef;
     auto *ctx = new Context("<program>");
     ctx->symbolTable = globalSymbolTable;
+    ctx->parentFilePath = i->pathRef;
     RuntimeResult *result = i->visit(res->node, ctx);
     if (result->error) {
         return make_pair(nullptr, result->error);
@@ -77,6 +78,7 @@ RunResult RunInterface::readFile(string filePath) {
     i->pathRef = pathRef;
     auto *ctx = new Context("<program>");
     ctx->symbolTable = globalSymbolTable;
+    ctx->parentFilePath = i->pathRef;
     RuntimeResult *result = i->visit(res->node, ctx);
     if (result->error) {
         return make_pair(nullptr, result->error);

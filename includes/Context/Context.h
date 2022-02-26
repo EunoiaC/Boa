@@ -11,7 +11,7 @@ using namespace std;
 
 class Context {
 public:
-    string displayName, fName, fTxt;
+    string displayName, fName, fTxt, parentFilePath;
     Context *parentCtx;
     int parentEntry, line;
     SymbolTable *symbolTable;

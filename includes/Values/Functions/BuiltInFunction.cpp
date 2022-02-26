@@ -247,7 +247,77 @@ RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
 
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_copy(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
     return (new RuntimeResult())->success(execCtx->symbolTable->get("value")->copy());
+}
+
+template<>
+RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    BaseValue * f = execCtx->symbolTable->get("fName");
+    if (f->type != T_STRING) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        f->posStart,
+                        f->posEnd,
+                        f->line,
+                        f->fName,
+                        f->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+
+    BaseValue * m = execCtx->symbolTable->get("mode");
+    if (m->type != T_STRING) {
+        return (new RuntimeResult())->failure(
+                new RuntimeError(
+                        m->posStart,
+                        m->posEnd,
+                        m->line,
+                        m->fName,
+                        m->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                )
+        );
+    }
+
+    auto * fName = (String<string> *) f;
+    auto * mode = (String<string> *) m;
+
+    // Read all text from file
+    if (mode->getValue() == "r"){
+        ifstream file(fName->getValue());
+        if (file.fail()){
+            file = ifstream (ctx->parentFilePath + fName->getValue());
+        }
+        if (file.fail()) {
+            return (new RuntimeResult())->failure(
+                    new RuntimeError(
+                            fName->posStart,
+                            fName->posEnd,
+                            fName->line,
+                            fName->fName,
+                            fName->fTxt,
+                            "File doesn't exist",
+                            execCtx
+                    )
+            );
+        }
+        stringstream buffer;
+        buffer << file.rdbuf();
+        string fileText = buffer.str();
+
+        return (new RuntimeResult())->success(new String<string>(fileText, "", ""));
+    }
 }
 
 template<>
@@ -264,6 +334,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_copy"] = &BuiltInFunction<int>::execute_copy;
     funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
     funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
+    funcMap["execute_readFile"] = &BuiltInFunction<int>::execute_readFile;
     funcMap["execute_getSymbolTable"] = &BuiltInFunction<int>::execute_getSymbolTable;
 }
 

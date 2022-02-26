@@ -21,4 +21,5 @@ Context *Context::setParentEntry(int parentEntry, string fName, string fTxt, int
 
 Context *Context::setParentCtx(Context *parentCtx) {
     this->parentCtx = parentCtx;
+    this->parentFilePath = parentCtx->parentFilePath;
 }

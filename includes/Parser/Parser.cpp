@@ -1254,8 +1254,11 @@ ParseResult *Parser::eitherExpr() {
     res->regAdvancement();
     advance();
 
-    Node * first = res->reg(arithExpr());
+    Node * curr = res->reg(arithExpr());
     if (res->error) return res;
+
+    vector<Node *> cases;
+    cases.push_back(curr);
 
     if (currentToken->getType() != OR){
         return res->failure(
@@ -1263,14 +1266,18 @@ ParseResult *Parser::eitherExpr() {
                           "InvalidSyntaxError",
                           "Expected 'or'"));
     }
-    delete currentToken;
-    res->regAdvancement();
-    advance();
 
-    Node * second = res->reg(arithExpr());
-    if (res->error) return res;
+    while(currentToken->getType() == OR){
+        delete currentToken;
+        res->regAdvancement();
+        advance();
 
-    EitherNode *either = new EitherNode(first, second);
+        curr = res->reg(arithExpr());
+        if (res->error) return res;
+        cases.push_back(curr);
+    }
+
+    EitherNode *either = new EitherNode(cases);
     return res->success(either);
 }
 

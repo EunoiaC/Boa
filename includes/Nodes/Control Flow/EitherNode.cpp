@@ -4,7 +4,6 @@
 
 #include "EitherNode.h"
 
-EitherNode::EitherNode(Node *first, Node *second) : Node(N_EITHER) {
-    this->first = first;
-    this->second = second;
+EitherNode::EitherNode(vector<Node *> nodes) : Node(N_EITHER) {
+    this->nodes = nodes;
 }

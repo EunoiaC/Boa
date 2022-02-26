@@ -241,17 +241,14 @@ RuntimeResult *Interpreter::visitEitherNode(Node *n, Context *c) {
     auto *res = new RuntimeResult();
     auto *eitherNode = (EitherNode *) n;
 
-    BaseValue *val = res->reg(visit(eitherNode->first, c));
-    if (res->shouldReturn()) return res;
-
-    if (val->isTrue()) {
-        return res->success(val);
+    for (auto &node : eitherNode->nodes) {
+        BaseValue *val = res->reg(visit(node, c));
+        if (res->shouldReturn()) return res;
+        if (val->isTrue()) {
+            return res->success(val);
+        }
     }
-
-    val = res->reg(visit(eitherNode->second, c));
-    if (res->shouldReturn()) return res;
-
-    return res->success(val);
+    return res->success((new Number<double>(0, fName, ""))->setContext(c));
 }
 
 RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {

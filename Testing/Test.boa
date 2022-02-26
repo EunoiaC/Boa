@@ -1,10 +1,2 @@
-class Custom(n) do {
-    op init() do null
-    op compSort(b) do n > b.n
-}
-
-c1 = Custom(1)
-c2 = Custom(2)
-x = [c1, c2]
-
-print(for i : x.sort() do i.n)
+x = either null or null or 4
+print(x)

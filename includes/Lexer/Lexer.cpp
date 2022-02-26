@@ -24,7 +24,10 @@ void Lexer::advance() {
     if (charIdx < fTxt.length()) {
         currChar = fTxt.at(charIdx);
         if (currChar == '\n') {
-            lineIdx++;
+            if (lineIdx < lines.size() - 1) {
+                lineIdx++;
+                charLineIdx = 0;
+            }
         }
     } else {
         currChar = '\0';

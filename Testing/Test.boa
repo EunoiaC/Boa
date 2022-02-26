@@ -1,5 +1,13 @@
-x = either null or null or 4
-print(x)
-print(either 3 or x)
+map = {
+    "key": "value"
+}
+print(map)
 
-print(readFile("REPL.boa", "r"))
+'print(map["key"])'
+'print(map get "key")'
+print(map get "key")
+
+
+arr = ["A", "C", "B"]
+print(arr ? 1)
+print(arr.sort())

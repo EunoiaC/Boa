@@ -1,8 +1,8 @@
-todos = getFile("Coordinates.txt")
-count = 0
-for l : todos.lines do {
-    if l contains "TODO" or l contains "todo" do {
-        count+= 1
-    }
+class C(l) do {
+    op init() do null
+    op makeNested() do nested = C(l + 1)
 }
-print("There are " + count + " todos")
+
+c = C(3)
+c.makeNested()
+print(c.nested.l)

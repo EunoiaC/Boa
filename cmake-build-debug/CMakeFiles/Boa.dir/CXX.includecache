@@ -22,6 +22,14 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.cpp
+iostream
+-
+Interpreter.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+../RunInterface.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
@@ -403,12 +411,6 @@ ClassFunction.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
-BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-../../RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 BaseFunction.h

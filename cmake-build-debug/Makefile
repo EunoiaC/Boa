@@ -1137,6 +1137,54 @@ includes/Values/Class/UsableClass.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.s
 .PHONY : includes/Values/Class/UsableClass.cpp.s
 
+includes/Values/File/File.o: includes/Values/File/File.cpp.o
+.PHONY : includes/Values/File/File.o
+
+# target to build an object file
+includes/Values/File/File.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o
+.PHONY : includes/Values/File/File.cpp.o
+
+includes/Values/File/File.i: includes/Values/File/File.cpp.i
+.PHONY : includes/Values/File/File.i
+
+# target to preprocess a source file
+includes/Values/File/File.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/File.cpp.i
+.PHONY : includes/Values/File/File.cpp.i
+
+includes/Values/File/File.s: includes/Values/File/File.cpp.s
+.PHONY : includes/Values/File/File.s
+
+# target to generate assembly for a file
+includes/Values/File/File.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/File.cpp.s
+.PHONY : includes/Values/File/File.cpp.s
+
+includes/Values/File/FileFunction.o: includes/Values/File/FileFunction.cpp.o
+.PHONY : includes/Values/File/FileFunction.o
+
+# target to build an object file
+includes/Values/File/FileFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o
+.PHONY : includes/Values/File/FileFunction.cpp.o
+
+includes/Values/File/FileFunction.i: includes/Values/File/FileFunction.cpp.i
+.PHONY : includes/Values/File/FileFunction.i
+
+# target to preprocess a source file
+includes/Values/File/FileFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.i
+.PHONY : includes/Values/File/FileFunction.cpp.i
+
+includes/Values/File/FileFunction.s: includes/Values/File/FileFunction.cpp.s
+.PHONY : includes/Values/File/FileFunction.s
+
+# target to generate assembly for a file
+includes/Values/File/FileFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.s
+.PHONY : includes/Values/File/FileFunction.cpp.s
+
 includes/Values/Functions/BaseFunction.o: includes/Values/Functions/BaseFunction.cpp.o
 .PHONY : includes/Values/Functions/BaseFunction.o
 
@@ -1536,6 +1584,12 @@ help:
 	@echo "... includes/Values/Class/UsableClass.o"
 	@echo "... includes/Values/Class/UsableClass.i"
 	@echo "... includes/Values/Class/UsableClass.s"
+	@echo "... includes/Values/File/File.o"
+	@echo "... includes/Values/File/File.i"
+	@echo "... includes/Values/File/File.s"
+	@echo "... includes/Values/File/FileFunction.o"
+	@echo "... includes/Values/File/FileFunction.i"
+	@echo "... includes/Values/File/FileFunction.s"
 	@echo "... includes/Values/Functions/BaseFunction.o"
 	@echo "... includes/Values/Functions/BaseFunction.i"
 	@echo "... includes/Values/Functions/BaseFunction.s"

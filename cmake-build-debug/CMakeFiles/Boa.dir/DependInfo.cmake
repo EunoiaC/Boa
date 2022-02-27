@@ -50,6 +50,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/FileFunction.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o"

@@ -1,8 +1,2 @@
-class C(l) do {
-    op init() do null
-    op makeNested() do nested = C(l + 1)
-}
-
-c = C(3)
-c.makeNested()
-print(c.nested.l)
+x = getFile("REPL.boa")
+print(x.fileName)

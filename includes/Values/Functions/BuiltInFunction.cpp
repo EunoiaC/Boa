@@ -277,50 +277,7 @@ RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
 
     auto *fName = (String<string> *) f;
 
-
-    ifstream file(fName->getValue());
-    if (file.fail()) {
-        file = ifstream(ctx->parentFilePath + fName->getValue());
-    }
-    if (file.fail()) {
-        return (new RuntimeResult())->failure(
-                new RuntimeError(
-                        fName->posStart,
-                        fName->posEnd,
-                        fName->line,
-                        fName->fName,
-                        fName->fTxt,
-                        "File doesn't exist",
-                        execCtx
-                )
-        );
-    }
-    stringstream buffer;
-    buffer << file.rdbuf();
-    string fileText = buffer.str();
-
-    //TODO: Make a class object cpp file
-
-    auto *classNameTok = new Token<string>(T_STRING, fName->getValue(), 0, 0, 0);
-    auto *ctx = new Context(fName->getValue());
-    ctx->symbolTable = new SymbolTable();
-    ctx->symbolTable->set("name", new String<string>(fName->getValue(), "", ""));
-    ctx->symbolTable->set("parent", new String<string>(ctx->parentFilePath, "", ""));
-    ctx->symbolTable->set("text", new String<string>(fileText, "", ""));
-
-    stringstream ss(fileText);
-    string l;
-
-    vector<BaseValue *> lines;
-
-    while (getline(ss, l, '\n')) {
-        lines.push_back(new String<string>(l, "", ""));
-    }
-
-    ctx->symbolTable->set("lines", new List<vector<BaseValue *>>(lines, "", ""));
-
-    auto *fileObj = new UsableClass<int>("", "", classNameTok, {}, ctx,
-                                         execCtx, nullptr, {});
+    auto *fileObj = new File<int>(fName, new String<string>(ctx->parentFilePath, "", ""));
 
     return (new RuntimeResult())->success(fileObj);
 }

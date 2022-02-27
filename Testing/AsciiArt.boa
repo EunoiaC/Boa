@@ -41,6 +41,9 @@ Data = {
     ",": [Nil___, Nil___, Nil___, Center, Left__],
     "?": [Row___, Right_, Left2_, Nil___, Left__],
     "'": [Center, Center, Nil___, Nil___, Nil___],
+    "!": [Center, Center, Center, Nil___, Center],
+    ":": [Nil___, Center, Nil___, Center, Nil___],
+    ")": [Left2_, Right_, Right_, Right_, Left2_],
     " ": ["░", "░", "░", "░", "░"]
 }
 

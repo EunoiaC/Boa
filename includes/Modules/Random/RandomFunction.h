@@ -9,7 +9,6 @@
 #include <algorithm>
 #include <random>
 #include "../../Values/List/List.h"
-#include <random>
 
 template<typename T> class RandomFunction : public BaseFunction<T> {
 public:

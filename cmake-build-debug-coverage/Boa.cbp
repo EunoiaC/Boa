@@ -335,6 +335,18 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/FileFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/FileFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.cpp">
 			<Option target="Boa"/>
 		</Unit>

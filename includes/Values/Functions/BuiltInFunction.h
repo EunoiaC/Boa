@@ -9,6 +9,7 @@
 #include "../String/String.h"
 #include "../List/List.h"
 #include "../Map.h"
+#include "../File/File.h"
 #include <sstream>
 
 using namespace std;

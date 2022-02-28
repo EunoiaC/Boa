@@ -34,6 +34,7 @@ public:
     ~Value();
 
     BaseValue * getFromSymbolTable(string name) override;
+    void setInSymbolTable(string name, BaseValue * newObj) override;
 
     virtual /**
      * @return The value of the valueType

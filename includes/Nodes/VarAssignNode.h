@@ -13,7 +13,8 @@ public:
     BaseToken *varNameTok;
     int posStart, posEnd, line;
     string fName, fTxt;
-    VarAssignNode(BaseToken *varNameTok, Node *valueNode);
+    vector<BaseToken *> parents;
+    VarAssignNode(BaseToken *varNameTok, Node *valueNode, vector<BaseToken *> parents);
     string toString() override;
 };
 

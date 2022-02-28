@@ -34,6 +34,7 @@ public:
     BaseValue * copy() override;
     string toString() override;
     BaseValue * getFromSymbolTable(string key) override;
+    void setInSymbolTable(string key, BaseValue * newObj) override;
 
     bool isTrue() override;
 

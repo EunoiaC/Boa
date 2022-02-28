@@ -12,6 +12,7 @@ public:
     BaseValue(string t, string f, string txt);
 
     virtual BaseValue * getFromSymbolTable(string key);
+    virtual void setInSymbolTable(string key, BaseValue * value);
 
     string type;
     string fName, fTxt;

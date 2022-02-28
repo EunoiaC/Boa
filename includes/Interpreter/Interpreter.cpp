@@ -542,6 +542,27 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     string varName = ((Token<string> *) node->varNameTok)->getValueObject()->getValue();
     BaseValue *value = result->reg(visit(node->valueNode, c));
     if (result->shouldReturn()) return result;
+    if (!node->parents.empty()){
+        BaseValue * toSet = c->symbolTable->get(varName);
+        for (int i = 0; i < node->parents.size() - 1; i++){
+            auto * parentName = (Token<string> *) node->parents[i];
+            toSet = toSet->getFromSymbolTable(parentName->getValueObject()->getValue());
+            if (toSet == nullptr){
+                return result->failure(new RuntimeError(
+                        node->posStart,
+                        node->posEnd,
+                        node->line,
+                        fName,
+                        lines[node->line],
+                        "Parent " + parentName->getValueObject()->getValue() + " does not exist",
+                        c
+                ));
+            }
+        }
+        auto * lastParentName = (Token<string> *) node->parents.back();
+        toSet->setInSymbolTable(lastParentName->getValueObject()->getValue(), value);
+        return result->success(value);
+    }
     c->symbolTable->set(varName, value);
     return result->success(value);
 }

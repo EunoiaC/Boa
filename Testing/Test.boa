@@ -1,2 +1,1 @@
-x = getFile("REPL.boa")
-print(x.fileName)
+op

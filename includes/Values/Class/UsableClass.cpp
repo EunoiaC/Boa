@@ -16,6 +16,11 @@ BaseValue *UsableClass<int>::getFromSymbolTable(string key) {
 }
 
 template<>
+void UsableClass<int>::setInSymbolTable(string key, BaseValue *newObj) {
+    ctx->symbolTable->set(key, newObj);
+}
+
+template<>
 Context *UsableClass<int>::generateClassContext(string className) {
     Context *classContext = new Context(std::move(className));
     classContext->fName = fName;

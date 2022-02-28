@@ -25,6 +25,11 @@ Value<valueType>::~Value<valueType>() {
 }
 
 template<class valueType>
+void Value<valueType>::setInSymbolTable(string name, BaseValue *newObj) {
+    symbolTable->set(name, newObj);
+}
+
+template<class valueType>
 BaseValue *Value<valueType>::getFromSymbolTable(string name) {
     return symbolTable->get(name);
 }

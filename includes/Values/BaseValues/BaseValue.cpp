@@ -11,6 +11,9 @@ BaseValue *BaseValue::setPos(int start, int end, int line) {
     return this;
 }
 
+void BaseValue::setInSymbolTable(string key, BaseValue *value) {
+}
+
 BaseValue *BaseValue::getFromSymbolTable(string key) {
     return nullptr;
 }

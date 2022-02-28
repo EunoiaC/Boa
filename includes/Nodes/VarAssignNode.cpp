@@ -4,7 +4,7 @@
 
 #include "VarAssignNode.h"
 
-VarAssignNode::VarAssignNode(BaseToken *varNameTok, Node *valueNode) : Node(N_VAR_ASSIGN) {
+VarAssignNode::VarAssignNode(BaseToken *varNameTok, Node *valueNode, vector<BaseToken *> parents) : Node(N_VAR_ASSIGN) {
     this->varNameTok = varNameTok;
     this->valueNode = valueNode;
     posStart = valueNode->posStart;
@@ -12,6 +12,7 @@ VarAssignNode::VarAssignNode(BaseToken *varNameTok, Node *valueNode) : Node(N_VA
     fName = varNameTok->fName;
     fTxt = varNameTok->fTxt;
     line = valueNode->line;
+    this->parents = parents;
 }
 
 string VarAssignNode::toString() {

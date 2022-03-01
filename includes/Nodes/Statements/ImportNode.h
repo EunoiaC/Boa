@@ -7,12 +7,14 @@
 
 
 #include "../Node.h"
+#include "../../Token/Token.h"
 
 class ImportNode : public Node {
 public:
     Node * toImport;
+    Token<string> * specific;
     int posStart, posEnd, line;
-    ImportNode(Node *toImport, int posStart, int posEnd, int line);
+    ImportNode(Node *toImport, Token<string> * specific, int posStart, int posEnd, int line);
 };
 
 

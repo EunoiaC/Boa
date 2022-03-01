@@ -1335,10 +1335,29 @@ ParseResult *Parser::statement() {
         res->regAdvancement();
         advance();
 
+        Token<string> *tok = nullptr;
+
+        if (currentToken->getType() == IDENTIFIER){
+            tok = dynamic_cast<Token<string> *>(currentToken);
+            res->regAdvancement();
+            advance();
+
+            if (currentToken->getType() != FROM){
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError",
+                                  "Expected 'from'"));
+            }
+
+            delete currentToken;
+            res->regAdvancement();
+            advance();
+        }
+
         _expr = res->reg(expr());
         if (res->error) return res;
 
-        return res->success(new ImportNode(_expr, posStart, currentToken->posEnd, currentToken->line));
+        return res->success(new ImportNode(_expr, tok, posStart, currentToken->posEnd, currentToken->line));
     }
 
     if (currentToken->getType() == RETURN) {

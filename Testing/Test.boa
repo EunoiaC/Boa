@@ -1,1 +1,3 @@
-op
+import sqrt from "Boa Libs/math.boa"
+print(sqrt)
+print(4^0.5)

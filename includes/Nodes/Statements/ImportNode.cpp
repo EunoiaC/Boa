@@ -4,9 +4,10 @@
 
 #include "ImportNode.h"
 
-ImportNode::ImportNode(Node *toImport, int posStart, int posEnd, int line)  : Node(N_IMPORT){
+ImportNode::ImportNode(Node *toImport, Token<string> * specific, int posStart, int posEnd, int line)  : Node(N_IMPORT){
     this->toImport = toImport;
     this->posStart = posStart;
     this->posEnd = posEnd;
     this->line = line;
+    this->specific = specific;
 }

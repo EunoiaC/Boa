@@ -780,7 +780,7 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
 
     string tempPathRef = pathRef;
 
-    if (moduleName->getValue().find(tempPathRef) != std::string::npos) {
+    if (moduleName->getValue().find(tempPathRef) != string::npos) {
         tempPathRef = "";
     }
 
@@ -800,9 +800,20 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
     }
     infile.close();
 
-    auto *ri = new RunInterface(c->symbolTable, tempPathRef); //Set a pathref if known
+    SymbolTable * sym = c->symbolTable;
+
+    if (node->specific){
+        sym = new SymbolTable(c->symbolTable);
+    }
+
+    auto *ri = new RunInterface(sym, tempPathRef); //Set a pathref if known
     RunResult r;
     r = ri->readFile(moduleName->getValue());
+
+    if (node->specific){
+        c->symbolTable->set(node->specific->getValueObject()->getValue(), sym->get(node->specific->getValueObject()->getValue()));
+        delete sym;
+    }
 
     if (r.second) {
         return res->failure(r.second);

@@ -250,9 +250,21 @@ CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.cpp \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h
 CMakeFiles/Boa.dir/includes/Nodes/Statements/ImportNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/ImportNode.cpp \
- ../includes/Nodes/Statements/ImportNode.h
+ ../includes/Nodes/Statements/ImportNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/UnaryOperationNode.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

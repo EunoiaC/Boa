@@ -205,6 +205,8 @@ string
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.h
 ../Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/UnaryOperationNode.h
 Node.h

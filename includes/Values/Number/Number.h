@@ -18,7 +18,6 @@ public:
     double getValue() override;
 
     BaseValue *add(BaseValue *s) override;
-    BaseValue *set(BaseValue *s) override;
 
     Number *plusEquals(BaseValue *s) override;
     Number *minusEquals(BaseValue *s) override;

@@ -169,17 +169,8 @@ BaseValue *Number<double>::add(BaseValue *s) {
         return dynamic_cast<Number *>((new Number<double>(numValue + ((Number *) s)->getValue(), fName,
                                                           fTxt))->setContext(
                 ctx));
-    } else if (s->type == T_STRING) {
-        return (new String<string>(toString() + ((String<string> *) s)->getValue(), fName, fTxt))->setContext(
-                ctx);
     }
     illegalOperation(s);
-}
-
-template<>
-BaseValue *Number<double>::set(BaseValue *s) {
-    numValue = ((Number *) s)->getValue();
-    return this;
 }
 
 template<>

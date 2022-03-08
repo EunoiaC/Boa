@@ -12,7 +12,6 @@ public:
     String<T>(string value, string f, string txt);
     string getValue() override;
 
-    BaseValue * set(BaseValue * s) override;
 
     BaseValue * add(BaseValue * s) override;
     BaseValue * plusEquals(BaseValue * s) override;

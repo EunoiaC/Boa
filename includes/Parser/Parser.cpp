@@ -1321,7 +1321,7 @@ ParseResult *Parser::compExpr() {
 }
 
 ParseResult *Parser::arithExpr() {
-    return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL, EQUAL}, &Parser::term, &Parser::term);
+    return binOp({PLUS, MINUS, PLUS_EQUAL, MINUS_EQUAL}, &Parser::term, &Parser::term);
 }
 
 ParseResult *Parser::statement() {

@@ -153,12 +153,6 @@ BaseValue *String<string>::compNotEquals(BaseValue *val) {
 }
 
 template<>
-BaseValue *String<string>::set(BaseValue *val) {
-    strValue = ((String<string> *) val)->getValue();
-    return this;
-}
-
-template<>
 BaseValue *String<string>::andedBy(BaseValue *s) {
     return (new Number<double>(!strValue.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
 }

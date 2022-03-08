@@ -94,11 +94,6 @@ BaseValue *Value<valueType>::subtract(BaseValue * other) {
 }
 
 template<class valueType>
-BaseValue *Value<valueType>::set(BaseValue * other) {
-    unsupportedOperation(other);
-}
-
-template<class valueType>
 BaseValue *Value<valueType>::multiply(BaseValue *other) {
     unsupportedOperation(other);
 }

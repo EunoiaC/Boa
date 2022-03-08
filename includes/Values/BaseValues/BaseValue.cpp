@@ -92,10 +92,6 @@ BaseValue *BaseValue::andedBy(BaseValue *s) {
     return nullptr;
 }
 
-BaseValue *BaseValue::set(BaseValue *s) {
-    return nullptr;
-}
-
 BaseValue *BaseValue::oredBy(BaseValue *s) {
     return nullptr;
 }

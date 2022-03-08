@@ -605,8 +605,6 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
         result = left->add(right);
     } else if (node->opTok->type == MINUS) {
         result = left->subtract(right);
-    } else if (node->opTok->type == EQUAL) {
-        result = left->set(right);
     } else if (node->opTok->type == MULTIPLY) {
         result = left->multiply(right);
     } else if (node->opTok->type == DIVIDE) {

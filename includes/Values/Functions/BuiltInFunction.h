@@ -24,6 +24,7 @@ public:
     BuiltInFunction<int> *copy() override;
 
     RuntimeResult * execute_readFile(Context * execCtx);
+    RuntimeResult * execute_clear(Context * execCtx);
     RuntimeResult * execute_print(Context * execCtx);
     RuntimeResult * execute_input(Context * execCtx);
     RuntimeResult * execute_toNum(Context * execCtx);

@@ -49,6 +49,7 @@ int main(int argc, char **argv) {
     globalSymbolTable->set("getSymbolTable", getSymbolTable);
     globalSymbolTable->set("copy", _copy);
     globalSymbolTable->set("getFile", readFile);
+    globalSymbolTable->set("clear", clear);
 
     RunInterface *runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);

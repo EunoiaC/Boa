@@ -1,0 +1,42 @@
+import "random"
+
+f = getFile("words.txt")
+words = f.readLines()
+
+word = random.choose(words)
+letters = word.split()
+alphabet = "abcdefghijklmnopqrstuvwxyz".split()
+
+tries = 0
+
+while tries < 5 do {
+    guess = input("Guess the word: ")
+    if lenOf(guess) != 5 do {
+        print("The guess must be 5 letters long")
+        continue
+    }
+    if words.indexOf(guess) == -1 do {
+        print("Word not in word list")
+        continue
+    }
+    if guess == word do {
+        print("You win!")
+        break
+    } else do {
+        tries += 1
+        guess = guess.split()
+        out = ""
+        for i = 0 to 4 do {
+            if guess[i] == letters[i] do {
+                out += guess[i]
+            } else do {
+                out += "_"
+                if alphabet.indexOf(guess[i]) != -1 and letters.indexOf(guess[i]) == -1 do alphabet.pop(alphabet.indexOf(guess[i]))
+            }
+        }
+        print(out)
+        print(" ".join(alphabet))
+    }
+}
+
+if(tries == 5) do print("The word was", word)

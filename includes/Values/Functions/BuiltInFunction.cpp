@@ -5,6 +5,7 @@
 #include "BuiltInFunction.h"
 #include "../../RunInterface.h"
 
+
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
     string output;
@@ -283,6 +284,16 @@ RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *BuiltInFunction<int>::execute_clear(Context *execCtx) {
+    auto *res = new RuntimeResult();
+    res->reg(checkArgs(args, argNames));
+    if (res->error) return res;
+
+    system("clear");
+    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
+}
+
+template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                       string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, BUILT_IN_FUNC) {
@@ -299,6 +310,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
     funcMap["execute_readFile"] = &BuiltInFunction<int>::execute_readFile;
     funcMap["execute_getSymbolTable"] = &BuiltInFunction<int>::execute_getSymbolTable;
+    funcMap["execute_clear"] = &BuiltInFunction<int>::execute_clear;
 }
 
 template<>

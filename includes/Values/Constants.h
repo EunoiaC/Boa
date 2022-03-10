@@ -24,7 +24,6 @@ BuiltInFunction<int> * _rename = new BuiltInFunction<int>("rename", {"oldName", 
 BuiltInFunction<int> * getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, fName, fTxt);
 BuiltInFunction<int> * _copy = new BuiltInFunction<int>("copy", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * readFile = new BuiltInFunction<int>("readFile", {"fName"}, {}, fName, fTxt);
-Random<int> * _random = new Random<int>(fName, fTxt);
 
 
 #endif //BOA_CONSTANTS_H

@@ -775,6 +775,12 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
     }
 
     auto *moduleName = (String<string> *) toImport;
+    SymbolTable * sym = c->symbolTable;
+
+    if (stdlib.count(moduleName->getValue()) > 0) {
+        sym->set(moduleName->getValue(), stdlib[moduleName->getValue()]);
+        return res->success(new Number<double>(0, "", ""));
+    }
 
     string tempPathRef = pathRef;
 
@@ -797,8 +803,6 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         ));
     }
     infile.close();
-
-    SymbolTable * sym = c->symbolTable;
 
     if (node->specific){
         sym = new SymbolTable(c->symbolTable);

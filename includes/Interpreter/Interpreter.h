@@ -48,6 +48,9 @@ public:
     //Change typedef with return type of function
     typedef RuntimeResult * (Interpreter::*FnPtr)(Node* n, Context* c);
     map<string, FnPtr> funcMap;
+    map<string, BaseValue *> stdlib = {
+            {"random", new Random<int>("fName", "fTxt")}
+    };
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);
 

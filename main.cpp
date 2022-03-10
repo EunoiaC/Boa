@@ -50,9 +50,6 @@ int main(int argc, char **argv) {
     globalSymbolTable->set("copy", _copy);
     globalSymbolTable->set("getFile", readFile);
 
-    //Modules
-    globalSymbolTable->set("__random__", _random);
-
     RunInterface *runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
     return 0;

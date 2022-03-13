@@ -297,6 +297,54 @@ includes/Modules/Random/RandomFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.s
 .PHONY : includes/Modules/Random/RandomFunction.cpp.s
 
+includes/Modules/Requests/Requests.o: includes/Modules/Requests/Requests.cpp.o
+.PHONY : includes/Modules/Requests/Requests.o
+
+# target to build an object file
+includes/Modules/Requests/Requests.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o
+.PHONY : includes/Modules/Requests/Requests.cpp.o
+
+includes/Modules/Requests/Requests.i: includes/Modules/Requests/Requests.cpp.i
+.PHONY : includes/Modules/Requests/Requests.i
+
+# target to preprocess a source file
+includes/Modules/Requests/Requests.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.i
+.PHONY : includes/Modules/Requests/Requests.cpp.i
+
+includes/Modules/Requests/Requests.s: includes/Modules/Requests/Requests.cpp.s
+.PHONY : includes/Modules/Requests/Requests.s
+
+# target to generate assembly for a file
+includes/Modules/Requests/Requests.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.s
+.PHONY : includes/Modules/Requests/Requests.cpp.s
+
+includes/Modules/Requests/RequestsFunction.o: includes/Modules/Requests/RequestsFunction.cpp.o
+.PHONY : includes/Modules/Requests/RequestsFunction.o
+
+# target to build an object file
+includes/Modules/Requests/RequestsFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
+.PHONY : includes/Modules/Requests/RequestsFunction.cpp.o
+
+includes/Modules/Requests/RequestsFunction.i: includes/Modules/Requests/RequestsFunction.cpp.i
+.PHONY : includes/Modules/Requests/RequestsFunction.i
+
+# target to preprocess a source file
+includes/Modules/Requests/RequestsFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.i
+.PHONY : includes/Modules/Requests/RequestsFunction.cpp.i
+
+includes/Modules/Requests/RequestsFunction.s: includes/Modules/Requests/RequestsFunction.cpp.s
+.PHONY : includes/Modules/Requests/RequestsFunction.s
+
+# target to generate assembly for a file
+includes/Modules/Requests/RequestsFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s
+.PHONY : includes/Modules/Requests/RequestsFunction.cpp.s
+
 includes/Nodes/BinaryOperationNode.o: includes/Nodes/BinaryOperationNode.cpp.o
 .PHONY : includes/Nodes/BinaryOperationNode.o
 
@@ -1479,6 +1527,12 @@ help:
 	@echo "... includes/Modules/Random/RandomFunction.o"
 	@echo "... includes/Modules/Random/RandomFunction.i"
 	@echo "... includes/Modules/Random/RandomFunction.s"
+	@echo "... includes/Modules/Requests/Requests.o"
+	@echo "... includes/Modules/Requests/Requests.i"
+	@echo "... includes/Modules/Requests/Requests.s"
+	@echo "... includes/Modules/Requests/RequestsFunction.o"
+	@echo "... includes/Modules/Requests/RequestsFunction.i"
+	@echo "... includes/Modules/Requests/RequestsFunction.s"
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"

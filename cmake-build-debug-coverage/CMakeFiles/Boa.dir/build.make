@@ -781,6 +781,32 @@ CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/FileFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o: ../includes/Modules/Requests/Requests.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.cpp > CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.cpp -o CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.s
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o: ../includes/Modules/Requests/RequestsFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.cpp > CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -837,7 +863,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -897,9 +925,11 @@ Boa: CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/TryCatchNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/EitherNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug-coverage/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

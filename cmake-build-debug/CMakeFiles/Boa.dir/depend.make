@@ -27,6 +27,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -123,10 +124,15 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Modules/Requests/Requests.cpp \
  ../includes/Modules/Requests/Requests.h \
+ ../includes/Modules/Requests/RequestsFunction.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
- ../includes/Values/BaseValues/Value.h
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \
@@ -431,6 +437,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -547,6 +554,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -594,6 +602,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -691,6 +700,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -742,6 +752,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \
@@ -914,6 +925,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Interpreter/Interpreter.h \
  ../includes/Lexer/Lexer.h \
  ../includes/Modules/Random/Random.h \
+ ../includes/Modules/Requests/Requests.h \
  ../includes/Nodes/BinaryOperationNode.h \
  ../includes/Nodes/CallNode.h \
  ../includes/Nodes/Control\ Flow/ClassDefNode.h \

@@ -38,6 +38,7 @@
 #include "../Modules/Random/Random.h"
 #include <string>
 #include <vector>
+#include "../Modules/Requests/Requests.h"
 
 using namespace std;
 
@@ -49,7 +50,8 @@ public:
     typedef RuntimeResult * (Interpreter::*FnPtr)(Node* n, Context* c);
     map<string, FnPtr> funcMap;
     map<string, BaseValue *> stdlib = {
-            {"random", new Random<int>("fName", "fTxt")}
+            {"random", new Random<int>("fName", "fTxt")},
+            {"requests", new Requests<int>()}
     };
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);

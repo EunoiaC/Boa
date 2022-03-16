@@ -27,6 +27,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -123,10 +124,15 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
@@ -431,6 +437,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -547,6 +554,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -594,6 +602,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -691,6 +700,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -742,6 +752,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h
@@ -914,6 +925,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/CallNode.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/ClassDefNode.h

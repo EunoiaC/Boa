@@ -42,7 +42,7 @@ public:
             {"or",    OR},
             {"not",   NOT},
             {"contains",    CONTAINS},
-            {"get",    GET},
+            //{"get",    GET},
             {"return",    RETURN},
             {"continue",   CONTINUE},
             {"break",    BREAK},

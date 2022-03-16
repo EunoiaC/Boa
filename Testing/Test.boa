@@ -1,26 +1,10 @@
-progress = 0
-
-op wait() do {
-    for i = 0 to 20000 do null
-    progress += 2
-    if progress == 102 do break
+import "requests"
+import "Boa Libs/json.boa"
+url = input("URL: ")
+response = ""
+try do {
+    response = requests.get(url)
+} catch ignored do {
+    print("Error getting from:", url)
 }
-
-op formatPrint(s) do {
-    print(s + " " + ("-" * progress) + ">" + (" " * (100 - progress)) + progress + "%")
-}
-
-while true do {
-    clear()
-    formatPrint("|")
-    wait()
-    clear()
-    formatPrint("/")
-    wait()
-    clear()
-    formatPrint("-")
-    wait()
-    clear()
-    formatPrint("\\")
-    wait()
-}
+print(response)

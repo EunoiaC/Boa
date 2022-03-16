@@ -3,10 +3,13 @@
 //
 
 #include "Requests.h"
+#include "RequestsFunction.h"
 
 template<>
 Requests<int>::Requests() : Value<int>(0, "REQUESTS", "", "") {
-    //symbolTable->set()
+    map<string, BaseValue *> defaultArgs;
+
+    symbolTable->set("get", new RequestsFunction<int>("get", {"url"}, defaultArgs, "", ""));
 }
 
 template<>

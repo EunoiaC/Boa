@@ -1,37 +1,43 @@
-op loads(str) do {
-   char = ""
-   idx = -1
-
-   op advance() do {
-       idx+=1
-       if (idx >= lenOf(str)) do char = null
-       char = str ? idx
-   }
-
-   op makeStr() do {
-       res = ""
-       while char != '"' do {
-           res += char
-           advance()
-       }
-       return res
-   }
-
-   res = {}
-   advance()
-   while char do {
-       if char == '"' do {
-            string = makeStr()
+class JsonLoader(str) do {
+    op advance() do {
+        currCharIndex += 1
+        currChar = str[currCharIndex]
+        if currChar == ' ' do {
             advance()
-            if char != ':' do {
-                print("Expected ':' after string")
-                return
-            }
+        }
+    }
+    op init() do {
+        currChar = ""
+        currCharIndex = -1
+        advance()
+    }
+    op makeString() do {
+        result = ""
+        while (currChar != '"') do {
+            result += currChar
             advance()
-            if char == '"' do {
-                res += [string, makeStr()]
+        }
+        return result
+    }
+    op toMap() do {
+        init()
+        if currChar != "{" do {
+            return null
+        }
+        advance()
+        map = {}
+        while currChar != "}" do {
+            key = ""
+            if currChar == '"' do {
+                advance()
+                key = makeString()
+                advance()
+                if currChar != ":" do {
+                    return null
+                }
+                advance()
             }
-       }
-   }
+            print(key)
+        }
+    }
 }
-

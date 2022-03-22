@@ -13,6 +13,7 @@
 
 template<typename T> class UsableClass : public Value<T> {
 public:
+    string *memAddress;
     BuiltInFunction<int> * print;
     BuiltInFunction<int> * input;
     BuiltInFunction<int> * toNum;
@@ -42,6 +43,7 @@ public:
     BaseValue * compGreaterThan(BaseValue * other) override;
     BaseValue * compLessThanEquals(BaseValue * other) override;
     BaseValue * compGreaterThanEquals(BaseValue * other) override;
+    BaseValue * compEquals(BaseValue * other) override;
 
     BaseValue * compSort(BaseValue * other) override;
 };

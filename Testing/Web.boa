@@ -1,0 +1,10 @@
+import "requests"
+import "Boa Libs/json.boa"
+url = input("URL: ")
+response = ""
+try do {
+    response = requests.get(url)
+} catch ignored do {
+    print("Error getting from:", url)
+}
+print(response)

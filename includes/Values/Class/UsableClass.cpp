@@ -143,6 +143,7 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
         }
     }
 
+    memAddress = (string *) this;
     asString = "<InstantiatedClass: " + this->className + ">";
 }
 
@@ -185,6 +186,36 @@ BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
         rtError = funcNotFound("compLessThan");
+    }
+}
+
+template<>
+BaseValue *UsableClass<int>::compEquals(BaseValue *other) {
+    ClassFunction<int> *gt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compEquals"));
+    if (gt) {
+        if (gt->argNames.size() != 1){
+            rtError = new RuntimeError(
+                    classNameTok->posStart,
+                    classNameTok->posEnd,
+                    classNameTok->line,
+                    classNameTok->fName,
+                    classNameTok->fTxt,
+                    "Class '" + className + "' doesn't have a method 'compEquals' with just one arg",
+                    ctx
+            );
+            return nullptr;
+        }
+        RuntimeResult * res = gt->execute({other});
+        if (res->error) rtError = res->error;
+        return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
+    } else {
+        if (other->type == T_CLASS){
+            UsableClass<int> *otherClass = (UsableClass<int> *) other;
+            if (otherClass->memAddress == memAddress){
+                return new Number<double>(1, "", "");
+            }
+        }
+        return new Number<double>(0, "", "");
     }
 }
 

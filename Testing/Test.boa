@@ -1,10 +1,12 @@
-import "requests"
-import "Boa Libs/json.boa"
-url = input("URL: ")
-response = ""
-try do {
-    response = requests.get(url)
-} catch ignored do {
-    print("Error getting from:", url)
+class Simple(smn) do {
+    op init() do {
+        null
+    }
 }
-print(response)
+
+x = Simple(3)
+dict = {
+    x: "xasdsad"
+}
+
+print(dict[x])

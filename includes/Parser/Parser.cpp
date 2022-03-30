@@ -60,7 +60,7 @@ void Parser::updateCurrentTok() {
                 line++;
             }
         }
-        currLine = currentToken->line < lines.size() ? lines[currentToken->line] : lines[line];
+        //currLine = currentToken->line < lines.size() ? lines[currentToken->line] : lines[line];
     }
 }
 

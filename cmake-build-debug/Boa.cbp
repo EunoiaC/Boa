@@ -110,6 +110,18 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/Json.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/Json.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/JsonFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/JsonFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.cpp">
 			<Option target="Boa"/>
 		</Unit>

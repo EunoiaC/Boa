@@ -29,6 +29,8 @@ Interpreter.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../RunInterface.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
+filesystem
+-
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 ../Values/Number/Number.h
@@ -316,12 +318,6 @@ fstream
 ParseResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Parser/ParseResult.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.cpp
-RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
-utility
--
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 Values/BaseValues/BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
@@ -386,14 +382,6 @@ vector
 BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.cpp
-Class.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
-UsableClass.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
-utility
--
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/Class.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
@@ -408,14 +396,6 @@ ClassFunction.h
 ../List/List.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.cpp
-ClassFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
-utility
--
-../../Interpreter/Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
 vector
 -
@@ -425,14 +405,6 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.cpp
-UsableClass.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
-utility
--
-../../Interpreter/Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
 ../../Values/BaseValues/Value.h
@@ -446,16 +418,6 @@ ClassFunction.h
 ../../Token/Token.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
-Functions/BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-string
--
-cmath
--
-../../includes/Modules/Random/Random.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.h
 ../BaseValues/Value.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
@@ -465,12 +427,6 @@ cmath
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.cpp
-BuiltInFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
-../../RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
 BaseFunction.h
@@ -486,12 +442,6 @@ BaseFunction.h
 sstream
 -
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.cpp
-Function.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
-../../Interpreter/Interpreter.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
 ../../Nodes/Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
@@ -500,35 +450,11 @@ BaseFunction.h
 ../../RuntimeResult/RuntimeResult.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.cpp
-List.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
-ListFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
-
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
 ../String/String.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.cpp
-ListFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
-algorithm
--
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
-../Functions/BaseFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
-../String/String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-../List/List.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
-../Map.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
-../Class/UsableClass.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
 Number/Number.h
@@ -549,16 +475,4 @@ Functions/Function.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 ../Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/main.cpp
-string
--
-vector
--
-ctime
--
-includes/RunInterface.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/RunInterface.h
-includes/Values/Constants.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h
 

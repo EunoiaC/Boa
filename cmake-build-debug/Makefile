@@ -249,6 +249,54 @@ includes/Lexer/Lexer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.s
 .PHONY : includes/Lexer/Lexer.cpp.s
 
+includes/Modules/Json/Json.o: includes/Modules/Json/Json.cpp.o
+.PHONY : includes/Modules/Json/Json.o
+
+# target to build an object file
+includes/Modules/Json/Json.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o
+.PHONY : includes/Modules/Json/Json.cpp.o
+
+includes/Modules/Json/Json.i: includes/Modules/Json/Json.cpp.i
+.PHONY : includes/Modules/Json/Json.i
+
+# target to preprocess a source file
+includes/Modules/Json/Json.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.i
+.PHONY : includes/Modules/Json/Json.cpp.i
+
+includes/Modules/Json/Json.s: includes/Modules/Json/Json.cpp.s
+.PHONY : includes/Modules/Json/Json.s
+
+# target to generate assembly for a file
+includes/Modules/Json/Json.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.s
+.PHONY : includes/Modules/Json/Json.cpp.s
+
+includes/Modules/Json/JsonFunction.o: includes/Modules/Json/JsonFunction.cpp.o
+.PHONY : includes/Modules/Json/JsonFunction.o
+
+# target to build an object file
+includes/Modules/Json/JsonFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
+.PHONY : includes/Modules/Json/JsonFunction.cpp.o
+
+includes/Modules/Json/JsonFunction.i: includes/Modules/Json/JsonFunction.cpp.i
+.PHONY : includes/Modules/Json/JsonFunction.i
+
+# target to preprocess a source file
+includes/Modules/Json/JsonFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.i
+.PHONY : includes/Modules/Json/JsonFunction.cpp.i
+
+includes/Modules/Json/JsonFunction.s: includes/Modules/Json/JsonFunction.cpp.s
+.PHONY : includes/Modules/Json/JsonFunction.s
+
+# target to generate assembly for a file
+includes/Modules/Json/JsonFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.s
+.PHONY : includes/Modules/Json/JsonFunction.cpp.s
+
 includes/Modules/Random/Random.o: includes/Modules/Random/Random.cpp.o
 .PHONY : includes/Modules/Random/Random.o
 
@@ -1521,6 +1569,12 @@ help:
 	@echo "... includes/Lexer/Lexer.o"
 	@echo "... includes/Lexer/Lexer.i"
 	@echo "... includes/Lexer/Lexer.s"
+	@echo "... includes/Modules/Json/Json.o"
+	@echo "... includes/Modules/Json/Json.i"
+	@echo "... includes/Modules/Json/Json.s"
+	@echo "... includes/Modules/Json/JsonFunction.o"
+	@echo "... includes/Modules/Json/JsonFunction.i"
+	@echo "... includes/Modules/Json/JsonFunction.s"
 	@echo "... includes/Modules/Random/Random.o"
 	@echo "... includes/Modules/Random/Random.i"
 	@echo "... includes/Modules/Random/Random.s"

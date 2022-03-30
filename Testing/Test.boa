@@ -1,12 +1,3 @@
-class Simple(smn) do {
-    op init() do {
-        null
-    }
-}
+import "/Users/preetithorat/Documents/GitHub/Boa/Testing/Boa Libs/math.boa"
 
-x = Simple(3)
-dict = {
-    x: "xasdsad"
-}
-
-print(dict[x])
+print(sqrt(4))

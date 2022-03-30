@@ -807,6 +807,32 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o: ../includes/Modules/Json/Json.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/Json.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/Json.cpp > CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/Json.cpp -o CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.s
+
+CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o: ../includes/Modules/Json/JsonFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/JsonFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/JsonFunction.cpp > CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Json/JsonFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -865,7 +891,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -927,9 +955,11 @@ Boa: CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/File/FileFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_60) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

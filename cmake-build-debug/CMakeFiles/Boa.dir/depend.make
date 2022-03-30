@@ -87,6 +87,29 @@ CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o: \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Json/Json.cpp \
+ ../includes/Modules/Json/Json.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.h
+CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Json/JsonFunction.cpp \
+ ../includes/Modules/Json/JsonFunction.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number/Number.h
 CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: \
  ../includes/Context/Context.h \
  ../includes/Errors/Error.h \

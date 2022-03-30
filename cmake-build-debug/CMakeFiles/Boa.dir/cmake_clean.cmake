@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Errors/RuntimeError.cpp.o"
   "CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o"
   "CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o"
   "CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o"

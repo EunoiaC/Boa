@@ -5,6 +5,9 @@
 #include <iostream>
 #include "Interpreter.h"
 #include "../RunInterface.h"
+#include <filesystem>
+namespace fs = std::__fs::filesystem;
+
 
 Interpreter::Interpreter(string name, vector<string> l) {
     fName = name;
@@ -782,25 +785,23 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         return res->success(new Number<double>(0, "", ""));
     }
 
-    string tempPathRef = pathRef;
-
-    if (moduleName->getValue().find(tempPathRef) != string::npos) {
-        tempPathRef = "";
-    }
-
-    string fullFilePath = tempPathRef + moduleName->getValue();
+    string fullFilePath = moduleName->getValue();
     // Check if file exists on computer
     ifstream infile(fullFilePath);
     if (!infile.good()) {
-        return res->failure(new RuntimeError(
-                toImport->posStart,
-                toImport->posEnd,
-                toImport->line,
-                toImport->fName,
-                toImport->fTxt,
-                "File not found, make sure to use an absolute or relative path",
-                c
-        ));
+        fullFilePath = pathRef + fullFilePath;
+        infile = ifstream(fullFilePath);
+        if (!infile.good()) {
+            return res->failure(new RuntimeError(
+                    toImport->posStart,
+                    toImport->posEnd,
+                    toImport->line,
+                    toImport->fName,
+                    toImport->fTxt,
+                    "File not found, make sure to use an absolute or relative path",
+                    c
+            ));
+        }
     }
     infile.close();
 
@@ -808,9 +809,9 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         sym = new SymbolTable(c->symbolTable);
     }
 
-    auto *ri = new RunInterface(sym, tempPathRef); //Set a pathref if known
+    auto *ri = new RunInterface(sym, fs::path(fullFilePath).parent_path()); //Set a pathref if known
     RunResult r;
-    r = ri->readFile(moduleName->getValue());
+    r = ri->readFile("/" + fs::path(moduleName->getValue()).filename().string());
 
     if (node->specific){
         c->symbolTable->set(node->specific->getValueObject()->getValue(), sym->get(node->specific->getValueObject()->getValue()));

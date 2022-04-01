@@ -1,3 +1,0 @@
-import "Boa Libs/math.boa"
-
-print(sqrt(4))

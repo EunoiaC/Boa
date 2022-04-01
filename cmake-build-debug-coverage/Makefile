@@ -681,6 +681,30 @@ includes/Nodes/Node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.s
 .PHONY : includes/Nodes/Node.cpp.s
 
+includes/Nodes/Statements/AwaitNode.o: includes/Nodes/Statements/AwaitNode.cpp.o
+.PHONY : includes/Nodes/Statements/AwaitNode.o
+
+# target to build an object file
+includes/Nodes/Statements/AwaitNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o
+.PHONY : includes/Nodes/Statements/AwaitNode.cpp.o
+
+includes/Nodes/Statements/AwaitNode.i: includes/Nodes/Statements/AwaitNode.cpp.i
+.PHONY : includes/Nodes/Statements/AwaitNode.i
+
+# target to preprocess a source file
+includes/Nodes/Statements/AwaitNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.i
+.PHONY : includes/Nodes/Statements/AwaitNode.cpp.i
+
+includes/Nodes/Statements/AwaitNode.s: includes/Nodes/Statements/AwaitNode.cpp.s
+.PHONY : includes/Nodes/Statements/AwaitNode.s
+
+# target to generate assembly for a file
+includes/Nodes/Statements/AwaitNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.s
+.PHONY : includes/Nodes/Statements/AwaitNode.cpp.s
+
 includes/Nodes/Statements/Branching_Statements/BreakNode.o: includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o
 .PHONY : includes/Nodes/Statements/Branching_Statements/BreakNode.o
 
@@ -1623,6 +1647,9 @@ help:
 	@echo "... includes/Nodes/Node.o"
 	@echo "... includes/Nodes/Node.i"
 	@echo "... includes/Nodes/Node.s"
+	@echo "... includes/Nodes/Statements/AwaitNode.o"
+	@echo "... includes/Nodes/Statements/AwaitNode.i"
+	@echo "... includes/Nodes/Statements/AwaitNode.s"
 	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.o"
 	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.i"
 	@echo "... includes/Nodes/Statements/Branching_Statements/BreakNode.s"

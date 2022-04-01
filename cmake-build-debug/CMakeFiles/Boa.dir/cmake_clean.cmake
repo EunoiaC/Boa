@@ -24,6 +24,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o"

@@ -40,6 +40,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -290,6 +291,22 @@ CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o: \
 CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o: \
  ../includes/Nodes/Node.cpp \
  ../includes/Nodes/Node.h
+CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.cpp \
+ ../includes/Nodes/Statements/AwaitNode.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Token/BaseToken.h \
+ ../includes/Token/Token.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o: \
  ../includes/Nodes/Node.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.cpp \
@@ -430,6 +447,7 @@ CMakeFiles/Boa.dir/includes/Parser/Parser.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -473,6 +491,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -589,6 +608,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Nodes/Control\ Flow/TryCatchNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -637,6 +657,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
  ../includes/Nodes/Control\ Flow/TryCatchNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -736,6 +757,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -787,6 +809,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Nodes/Control\ Flow/TryCatchNode.h \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \
@@ -961,6 +984,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Nodes/Control\ Flow/WhileNode.h \
  ../includes/Nodes/IndexNode.h \
  ../includes/Nodes/Node.h \
+ ../includes/Nodes/Statements/AwaitNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/BreakNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ContinueNode.h \
  ../includes/Nodes/Statements/Branching\ Statements/ReturnNode.h \

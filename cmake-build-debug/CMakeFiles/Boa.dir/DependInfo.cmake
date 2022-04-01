@@ -31,6 +31,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Control Flow/WhileNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/WhileNode.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/IndexNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/IndexNode.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Node.cpp.o"
+  "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/BreakNode.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ContinueNode.cpp.o"
   "/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ReturnNode.cpp" "/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles/Boa.dir/includes/Nodes/Statements/Branching_Statements/ReturnNode.cpp.o"

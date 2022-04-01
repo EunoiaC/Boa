@@ -29,6 +29,7 @@ static const string CATCH = "CATCH";
 
 static const string RETURN = "RETURN";
 static const string BREAK = "BREAK";
+static const string AWAIT = "AWAIT";
 static const string IMPORT = "IMPORT";
 static const string FROM = "FROM";
 static const string CONTINUE = "CONTINUE";

@@ -33,6 +33,10 @@ filesystem
 -
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/Interpreter.h
+thread
+-
+future
+-
 ../Values/Number/Number.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
 ../Values/String/String.h
@@ -71,6 +75,8 @@ filesystem
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/ContinueNode.h
 ../Nodes/Statements/ImportNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.h
+../Nodes/Statements/AwaitNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.h
 ../Nodes/VarAccessNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/VarAccessNode.h
 ../Nodes/VarAssignNode.h
@@ -198,6 +204,12 @@ vector
 string
 -
 
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.h
+../Node.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+../../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
 ../../Node.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
@@ -309,6 +321,8 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.h
 ../Nodes/Statements/ImportNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/ImportNode.h
+../Nodes/Statements/AwaitNode.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.h
 ../Nodes/Value Nodes/MapNode.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Value Nodes/MapNode.h
 vector

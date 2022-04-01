@@ -32,6 +32,7 @@ static const string N_IMPORT = "IMPORT_NODE";
 static const string N_IDX = "INDEX_NODE";
 static const string N_TRY_CATCH = "TRY_CATCH_NODE";
 static const string N_EITHER = "EITHER_NODE";
+static const string N_AWAIT = "AWAIT_NODE";
 
 class Node {
 public:

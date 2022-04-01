@@ -4,6 +4,8 @@
 
 #ifndef BOA_INTERPRETER_H
 #define BOA_INTERPRETER_H
+#include <thread>
+#include <future>
 #include "../Values/Number/Number.h"
 #include "../Values/String/String.h"
 #include "../Values/Functions/Function.h"
@@ -23,6 +25,7 @@
 #include "../Nodes/Statements/Branching Statements/BreakNode.h"
 #include "../Nodes/Statements/Branching Statements/ContinueNode.h"
 #include "../Nodes/Statements/ImportNode.h"
+#include "../Nodes/Statements/AwaitNode.h"
 #include "../Nodes/VarAccessNode.h"
 #include "../Nodes/VarAssignNode.h"
 #include "../Nodes/BinaryOperationNode.h"
@@ -60,6 +63,7 @@ public:
     RuntimeResult * visitBreakNode(Node * n, Context* c);
     RuntimeResult * visitContinueNode(Node * n, Context* c);
     RuntimeResult * visitImportNode(Node * n, Context* c);
+    RuntimeResult * visitAwaitNode(Node * n, Context* c);
 
     RuntimeResult * visitNumberNode(Node * n, Context* c);
     RuntimeResult * visitStringNode(Node * n, Context* c);

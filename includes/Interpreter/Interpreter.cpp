@@ -34,6 +34,7 @@ Interpreter::Interpreter(string name, vector<string> l) {
     funcMap[N_IDX] = &Interpreter::visitIndexNode;
     funcMap[N_TRY_CATCH] = &Interpreter::visitTryCatchNode;
     funcMap[N_EITHER] = &Interpreter::visitEitherNode;
+    funcMap[N_AWAIT] = &Interpreter::visitAwaitNode;
 }
 
 RuntimeResult *Interpreter::visit(Node *n, Context *c) {
@@ -756,6 +757,15 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
     if (num->rtError) return rtRes->failure(num->rtError);
 
     return rtRes->success(num->setPos(n->posStart, n->posEnd, n->line));
+}
+
+RuntimeResult *Interpreter::visitAwaitNode(Node *n, Context *c) {
+    auto *res = new RuntimeResult();
+    auto *node = (AwaitNode *) n;
+
+    std::future<RuntimeResult *> result = async(std::launch::async, &Interpreter::visitCallNode, this, node->toCall, c);
+
+    return res->success(new Number<double>(0, "", ""));
 }
 
 RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {

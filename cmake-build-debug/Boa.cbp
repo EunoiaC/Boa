@@ -218,6 +218,12 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/Branching Statements/BreakNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

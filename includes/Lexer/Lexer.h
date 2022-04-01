@@ -61,7 +61,8 @@ public:
             {"class",    CLASS},
             {"try",    TRY},
             {"catch",    CATCH},
-            {"either", EITHER}
+            {"either", EITHER},
+            {"await", AWAIT}
     };
     /**
      * Map assigning each possible character a token type

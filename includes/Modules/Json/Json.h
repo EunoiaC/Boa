@@ -8,6 +8,7 @@
 #include "../../Values/BaseValues/Value.h"
 
 template<typename T> class Json : public Value<T> {
+public:
     Json<int>();
     BaseValue * copy() override;
     string toString() override;

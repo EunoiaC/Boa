@@ -43,6 +43,7 @@
 #include <string>
 #include <vector>
 #include "../Modules/Requests/Requests.h"
+#include "../Modules/Json/Json.h"
 
 using namespace std;
 
@@ -55,7 +56,8 @@ public:
     map<string, FnPtr> funcMap;
     map<string, BaseValue *> stdlib = {
             {"random", new Random<int>("fName", "fTxt")},
-            {"requests", new Requests<int>()}
+            {"requests", new Requests<int>()},
+            {"json", new Json<int>()}
     };
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);

@@ -3,13 +3,39 @@
 //
 
 #include "JsonFunction.h"
+#include "nlohmann/json.hpp"
+
+template<> RuntimeResult *JsonFunction<int>::execute_toMap(Context *execCtx) {
+    auto * res = new RuntimeResult();
+
+    BaseValue * temp = execCtx->symbolTable->get("string");
+    if (temp->type != T_STRING){
+        res->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
+
+    String<string> * jsonStr = (String<string> *) temp;
+    auto parsedObj = nlohmann::json ::parse(jsonStr->getValue());
+
+    for(nlohmann::json::iterator it = parsedObj.begin(); it != parsedObj.end(); ++it) {
+        cout << it.key();
+        cout << it.value();
+    }
+}
 
 template<>
 JsonFunction<int>::JsonFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
     type = "FUNCTION";
-    //funcMap["execute_toMap"] = &JsonFunction<int>::execute_toMap;
+    funcMap["execute_toMap"] = &JsonFunction<int>::execute_toMap;
 }
 
 template<>

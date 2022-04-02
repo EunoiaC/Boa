@@ -6,8 +6,10 @@
 #define BOA_JSONFUNCTION_H
 
 #include "../../Values/Functions/BaseFunction.h"
+#include "../../Values/String/String.h"
 
 template<typename T> class JsonFunction : public BaseFunction<T> {
+public:
     typedef RuntimeResult * (JsonFunction<int>::*FnPtr)(Context * execCtx);
     map<string, FnPtr> funcMap;
     vector<BaseValue *> args;

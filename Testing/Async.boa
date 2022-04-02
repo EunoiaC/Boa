@@ -4,10 +4,8 @@ op long() do {
 }
 
 f = await long()
-while true do {
+while !f.isReady() do {
     print("Waiting")
-    if (f.isReady()) do {
-        print(f.get())
-        break
-    }
 }
+
+print(f.get())

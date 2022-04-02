@@ -21,6 +21,7 @@ public:
     FutureFunction<int> *copy() override;
 
     RuntimeResult * execute_get(Context * execCtx);
+    RuntimeResult * execute_isReady(Context *execCtx);
 
     string toString() override;
 };

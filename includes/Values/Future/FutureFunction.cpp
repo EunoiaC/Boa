@@ -3,6 +3,23 @@
 //
 
 #include "FutureFunction.h"
+#include <chrono>
+
+template <>
+RuntimeResult *FutureFunction<int>::execute_isReady(Context *execCtx) {
+    auto * res = new RuntimeResult();
+    const auto fs = value->promise.wait_for(chrono::seconds(0));
+
+    if (fs == future_status::deferred) {
+        return res->success(new Number<double>(-1, "", ""));
+    } else if (fs == future_status::ready) {
+        return res->success(new Number<double>(1, "", ""));
+    } else if (fs == future_status::timeout) {
+        return res->success(new Number<double>(0, "", ""));
+    } else {
+        return res->success(new Number<double>(-1, "", ""));
+    }
+}
 
 template <>
 RuntimeResult *FutureFunction<int>::execute_get(Context *execCtx) {
@@ -15,6 +32,7 @@ FutureFunction<int>::FutureFunction(Future<shared_future<RuntimeResult *>> * val
     type = "FUNCTION"; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_get"] = &FutureFunction<int>::execute_get;
+    funcMap["execute_isReady"] = &FutureFunction<int>::execute_isReady;
     this->defaultArgs = defaultArgs;
 }
 

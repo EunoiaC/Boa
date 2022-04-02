@@ -1,26 +1,13 @@
-op getFromDb(val) do {
+op long() do {
     for i = 0 to 100000 do i
-    print("DB: " + val)
-}
-op getFromFile(val) do {
-    for i = 0 to 100000 do i
-    print("File: " + val)
+    return 3
 }
 
-await getFromDb("Hello")
-getFromFile("Hello")
-
-# A longer async example:
-
-op getFromDb(val) do {
-    for i = 0 to 1000000 do i
-    print("DB: " + val)
+f = await long()
+while true do {
+    print("Waiting")
+    if (f.isReady()) do {
+        print(f.get())
+        break
+    }
 }
-op getFromFile(val) do {
-    for i = 0 to 1000000 do i
-    print("File: " + val)
-}
-
-future = await getFromDb("Hello")
-getFromFile("Hello")
-future.get() # May need to call future.get() for longer methods

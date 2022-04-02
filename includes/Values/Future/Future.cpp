@@ -13,6 +13,9 @@ Future<shared_future<RuntimeResult *>>::Future(shared_future<RuntimeResult *> va
     symbolTable->set("get", new FutureFunction<int>(this, "get", {},
                                                   defaultArgs, "",
                                                   ""));
+    symbolTable->set("isReady", new FutureFunction<int>(this, "isReady", {},
+                                                    defaultArgs, "",
+                                                    ""));
 }
 
 template<>

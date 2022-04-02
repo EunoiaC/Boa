@@ -1377,6 +1377,54 @@ includes/Values/Functions/Function.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.s
 .PHONY : includes/Values/Functions/Function.cpp.s
 
+includes/Values/Future/Future.o: includes/Values/Future/Future.cpp.o
+.PHONY : includes/Values/Future/Future.o
+
+# target to build an object file
+includes/Values/Future/Future.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o
+.PHONY : includes/Values/Future/Future.cpp.o
+
+includes/Values/Future/Future.i: includes/Values/Future/Future.cpp.i
+.PHONY : includes/Values/Future/Future.i
+
+# target to preprocess a source file
+includes/Values/Future/Future.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.i
+.PHONY : includes/Values/Future/Future.cpp.i
+
+includes/Values/Future/Future.s: includes/Values/Future/Future.cpp.s
+.PHONY : includes/Values/Future/Future.s
+
+# target to generate assembly for a file
+includes/Values/Future/Future.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.s
+.PHONY : includes/Values/Future/Future.cpp.s
+
+includes/Values/Future/FutureFunction.o: includes/Values/Future/FutureFunction.cpp.o
+.PHONY : includes/Values/Future/FutureFunction.o
+
+# target to build an object file
+includes/Values/Future/FutureFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o
+.PHONY : includes/Values/Future/FutureFunction.cpp.o
+
+includes/Values/Future/FutureFunction.i: includes/Values/Future/FutureFunction.cpp.i
+.PHONY : includes/Values/Future/FutureFunction.i
+
+# target to preprocess a source file
+includes/Values/Future/FutureFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.i
+.PHONY : includes/Values/Future/FutureFunction.cpp.i
+
+includes/Values/Future/FutureFunction.s: includes/Values/Future/FutureFunction.cpp.s
+.PHONY : includes/Values/Future/FutureFunction.s
+
+# target to generate assembly for a file
+includes/Values/Future/FutureFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s
+.PHONY : includes/Values/Future/FutureFunction.cpp.s
+
 includes/Values/List/List.o: includes/Values/List/List.cpp.o
 .PHONY : includes/Values/List/List.o
 
@@ -1734,6 +1782,12 @@ help:
 	@echo "... includes/Values/Functions/Function.o"
 	@echo "... includes/Values/Functions/Function.i"
 	@echo "... includes/Values/Functions/Function.s"
+	@echo "... includes/Values/Future/Future.o"
+	@echo "... includes/Values/Future/Future.i"
+	@echo "... includes/Values/Future/Future.s"
+	@echo "... includes/Values/Future/FutureFunction.o"
+	@echo "... includes/Values/Future/FutureFunction.i"
+	@echo "... includes/Values/Future/FutureFunction.s"
 	@echo "... includes/Values/List/List.o"
 	@echo "... includes/Values/List/List.i"
 	@echo "... includes/Values/List/List.s"

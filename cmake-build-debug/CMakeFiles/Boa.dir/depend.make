@@ -69,6 +69,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
@@ -521,6 +522,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
@@ -635,6 +637,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
@@ -684,6 +687,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
@@ -787,6 +791,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o: \
  ../includes/Values/Functions/BuiltInFunction.cpp \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
@@ -836,8 +841,41 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.cpp \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Future/Future.cpp \
+ ../includes/Values/Future/Future.h \
+ ../includes/Values/Future/FutureFunction.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Future/Future.h \
+ ../includes/Values/Future/FutureFunction.cpp \
+ ../includes/Values/Future/FutureFunction.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/List/List.cpp.o: \
@@ -1014,6 +1052,7 @@ CMakeFiles/Boa.dir/main.cpp.o: \
  ../includes/Values/Functions/BaseFunction.h \
  ../includes/Values/Functions/BuiltInFunction.h \
  ../includes/Values/Functions/Function.h \
+ ../includes/Values/Future/Future.h \
  ../includes/Values/List/List.h \
  ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \

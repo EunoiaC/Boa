@@ -388,6 +388,8 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         ((List<vector<BaseValue *>> *) value)->setContext(c);
     } else if (value->type == T_MAP) {
         ((Map<map<BaseValue *, BaseValue *>> *) value)->setContext(c);
+    } else if (value->type == T_FUTURE) {
+        ((Future<shared_future<RuntimeResult *>> *) value)->setContext(c);
     }
     return result->success(value);
 }
@@ -437,6 +439,8 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         ((List<vector<BaseValue *>> *) returnVal)->setContext(c);
     } else if (returnVal->type == T_MAP) {
         ((Map<map<BaseValue *, BaseValue *>> *) returnVal)->setContext(c);
+    } else if (returnVal->type == T_FUTURE) {
+        ((Future<shared_future<RuntimeResult *>> *) returnVal)->setContext(c);
     }
     return res->success(returnVal);
 }
@@ -763,9 +767,10 @@ RuntimeResult *Interpreter::visitAwaitNode(Node *n, Context *c) {
     auto *res = new RuntimeResult();
     auto *node = (AwaitNode *) n;
 
-    std::future<RuntimeResult *> result = async(std::launch::async, &Interpreter::visitCallNode, this, node->toCall, c);
+    shared_future<RuntimeResult *> result = async(launch::async, &Interpreter::visitCallNode, this, node->toCall, c).share();
+    auto * fut = new Future<shared_future<RuntimeResult *>>(result, node->fName, node->fTxt);
 
-    return res->success(new Number<double>(0, "", ""));
+    return res->success(fut);
 }
 
 RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {

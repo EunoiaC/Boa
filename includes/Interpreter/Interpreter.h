@@ -7,6 +7,7 @@
 #include <thread>
 #include <future>
 #include "../Values/Number/Number.h"
+#include "../Values/Future/Future.h"
 #include "../Values/String/String.h"
 #include "../Values/Functions/Function.h"
 #include "../Values/List/List.h"
@@ -89,4 +90,4 @@ public:
 };
 
 
-#endif //BOA_INTERPR
+#endif //BOA_INTERPRETER_H

@@ -87,14 +87,11 @@ RunResult RunInterface::readFile(string filePath) {
 }
 
 void RunInterface::run(string fileName) {
-    clock_t start = clock();
     RunResult run = readFile(move(fileName));
     if (run.second != nullptr) {
         cout << run.second->toString() << endl;
         delete run.second;
     } else {
-        clock_t stop = clock();
-        cout << "Execution time: " << (stop - start) / (double) CLOCKS_PER_SEC << " seconds" << endl;
         delete run.first;
     }
 }

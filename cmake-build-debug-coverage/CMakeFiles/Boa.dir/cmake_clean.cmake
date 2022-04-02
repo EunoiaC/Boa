@@ -53,6 +53,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/List/List.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Values/Map.cpp.o"

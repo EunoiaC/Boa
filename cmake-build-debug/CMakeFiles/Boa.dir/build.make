@@ -846,6 +846,32 @@ CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Statements/AwaitNode.cpp -o CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.s
 
+CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o: ../includes/Values/Future/Future.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Building CXX object CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.cpp
+
+CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.cpp > CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.i
+
+CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.cpp -o CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.s
+
+CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o: ../includes/Values/Future/FutureFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_62) "Building CXX object CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/FutureFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/FutureFunction.cpp > CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/FutureFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -907,7 +933,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o"
+"CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -972,9 +1000,11 @@ Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_61) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

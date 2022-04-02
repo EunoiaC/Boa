@@ -12,6 +12,7 @@
 #include "BaseValue.h"
 
 static const string T_STRING = "STRING";
+static const string T_FUTURE = "FUTURE";
 static const string T_NUM = "NUMBER";
 static const string T_FUNC = "FUNCTION";
 static const string T_CLASS = "CLASS";

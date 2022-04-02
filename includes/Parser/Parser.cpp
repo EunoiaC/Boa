@@ -1360,22 +1360,6 @@ ParseResult *Parser::statement() {
         return res->success(new ImportNode(_expr, tok, posStart, currentToken->posEnd, currentToken->line));
     }
 
-    if (currentToken->getType() == AWAIT) {
-        delete currentToken;
-        res->regAdvancement();
-        advance();
-
-        _expr = res->reg(call());
-        if (res->error) {
-            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError",
-                                      "Expected a function call");
-            return res->failure(priorityError);
-        }
-
-        return res->success(new AwaitNode(_expr, posStart, currentToken->posEnd, currentToken->line));
-    }
-
     if (currentToken->getType() == RETURN) {
         delete currentToken;
         res->regAdvancement();
@@ -1454,6 +1438,25 @@ ParseResult *Parser::statements() {
 
 ParseResult *Parser::expr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
+
+    // Prioritize awaits
+    if (currentToken->getType() == AWAIT) {
+        int posStart = currentToken->posStart;
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+
+        Node * _expr = res->reg(call());
+        if (res->error) {
+            priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                      "InvalidSyntaxError",
+                                      "Expected a function call");
+            return res->failure(priorityError);
+        }
+
+        return res->success(new AwaitNode(_expr, posStart, currentToken->posEnd, currentToken->line));
+    }
+
     Node *node = res->reg(binOp({AND, OR}, &Parser::compExpr, &Parser::compExpr));
     if (res->error)
         return res->failure(

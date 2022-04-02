@@ -4,9 +4,9 @@ class A(var) do {
 }
 
 a = A(2)
-class B(val, a) : A(val) do {
+class B(val, a_) : A(val) do {
     op init() do null
-    op get_a() do a
+    op get_a() do a_
 }
 
 b = B(3, a)

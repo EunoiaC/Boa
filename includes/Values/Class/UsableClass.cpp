@@ -28,22 +28,6 @@ Context *UsableClass<int>::generateClassContext(string className) {
 
     classContext->symbolTable = new SymbolTable();
 
-    classContext->symbolTable->set("null", new Number<double>(0, "", ""));
-    classContext->symbolTable->set("true", new Number<double>(1, "", ""));
-    classContext->symbolTable->set("false", new Number<double>(0, "", ""));
-    classContext->symbolTable->set("print", print);
-    classContext->symbolTable->set("input", input);
-    classContext->symbolTable->set("toNum", toNum);
-    classContext->symbolTable->set("lenOf", lenOf);
-    classContext->symbolTable->set("toStr", toStr);
-    classContext->symbolTable->set("typeOf", instanceOf);
-    classContext->symbolTable->set("eval", eval);
-    classContext->symbolTable->set("rename", _rename);
-    classContext->symbolTable->set("getSymbolTable", getSymbolTable);
-    //Modules
-    classContext->symbolTable->set("__random__", _random);
-    classContext->symbolTable->set("this", this);
-
     return classContext;
 }
 
@@ -54,17 +38,6 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
     this->classNameTok = classNameTok;
-
-    print = new BuiltInFunction<int>("print", {"value"}, {}, "fName", "fTxt");
-    input = new BuiltInFunction<int>("input", {"value"}, {}, "fName", "fTxt");
-    toNum = new BuiltInFunction<int>("toNum", {"value"}, {}, "fName", "fTxt");
-    lenOf = new BuiltInFunction<int>("lenOf", {"value"}, {}, "fName", "fTxt");
-    toStr = new BuiltInFunction<int>("toStr", {"value"}, {}, "fName", "fTxt");
-    instanceOf = new BuiltInFunction<int>("instanceOf", {"value"}, {}, "fName", "fTxt");
-    eval = new BuiltInFunction<int>("eval", {"value"}, {}, "fName", "fTxt");
-    _rename = new BuiltInFunction<int>("rename", {"oldName", "newName"}, {}, "fName", "fTxt");
-    getSymbolTable = new BuiltInFunction<int>("getSymbolTable", {}, {}, "fName", "fTxt");
-    _random = new Random<int>("fName", "fTxt");
 
     this->className = classNameTok->getValueObject()->getValue();
     ctx = generateClassContext(className);
@@ -145,6 +118,7 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
 
     memAddress = (string *) this;
     asString = "<InstantiatedClass: " + this->className + ">";
+    ctx->symbolTable->set("this", this);
 }
 
 template<>

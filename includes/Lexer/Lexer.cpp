@@ -224,6 +224,11 @@ vector<BaseToken *> Lexer::makeTokens() {
             }
             toks.push_back(charToToken.find(currChar)->second);
             advance();
+        } else if (currChar == '#') {
+            while (currChar != '\n') {
+                advance();
+            }
+            advance();
         } else if (currChar == '!') {
             toks.push_back(makeNotEquals());
         } else if (currChar == '<') {

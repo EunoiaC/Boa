@@ -1,0 +1,16 @@
+class A(var) do {
+    op init() do null
+    op p() do print(var)
+}
+
+a = A(2)
+class B(val, a) : A(val) do {
+    op init() do null
+    op get_a() do a
+}
+
+b = B(3, a)
+
+_a = b.get_a()
+b.p()
+_a.p()

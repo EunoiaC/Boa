@@ -1,7 +1,13 @@
-import "json"
 import "requests"
 
-js = requests.get("https://v2.jokeapi.dev/joke/Any")
+d = requests.makeSocket(8080)
 
-map = json.toMap(js)
-print(map["flags"])
+# start the server
+d.init()
+d.bind()
+
+# listen for max 1 connection
+d.listen(1)
+
+# Block until a connection is made
+d.accept()

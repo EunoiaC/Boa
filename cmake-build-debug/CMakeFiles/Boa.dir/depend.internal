@@ -166,6 +166,7 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Requests.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
@@ -180,12 +181,45 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o

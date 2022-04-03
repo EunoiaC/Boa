@@ -80,11 +80,30 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
+    BaseValue * temp = execCtx->symbolTable->get("port");
+    if (temp->type != T_NUM){
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a NUMBER",
+                execCtx
+        ));
+    }
+
+    return (new RuntimeResult())->success(new Socket<int>(dynamic_cast<Number<double> *>(temp)));
+}
+
+template<>
 RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
     type = "FUNCTION";
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;
+    funcMap["execute_makeSocket"] = &RequestsFunction<int>::execute_makeSocket;
 }
 
 template<>

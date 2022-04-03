@@ -8,6 +8,7 @@
 #include "../../Values/Functions/BaseFunction.h"
 #include "../../Values/String/String.h"
 #include "curl/curl.h"
+#include "Socket/Socket.h"
 
 template<typename T> class RequestsFunction : public BaseFunction<T> {
 public:
@@ -20,6 +21,7 @@ public:
     RequestsFunction<int> *copy() override;
 
     RuntimeResult * execute_get(Context * execCtx);
+    RuntimeResult * execute_makeSocket(Context * execCtx);
 
     string toString() override;
 };

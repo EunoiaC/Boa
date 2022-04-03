@@ -166,6 +166,7 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o: \
  ../includes/Modules/Requests/Requests.cpp \
  ../includes/Modules/Requests/Requests.h \
  ../includes/Modules/Requests/RequestsFunction.h \
+ ../includes/Modules/Requests/Socket/Socket.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
@@ -180,12 +181,45 @@ CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o: \
  ../includes/Errors/RuntimeError.h \
  ../includes/Modules/Requests/RequestsFunction.cpp \
  ../includes/Modules/Requests/RequestsFunction.h \
+ ../includes/Modules/Requests/Socket/Socket.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Requests/Socket/Socket.cpp \
+ ../includes/Modules/Requests/Socket/Socket.h \
+ ../includes/Modules/Requests/Socket/SocketFunction.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Number/Number.h \
+ ../includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o: \
+ ../includes/Context/Context.h \
+ ../includes/Errors/Error.h \
+ ../includes/Errors/RuntimeError.h \
+ ../includes/Modules/Requests/Socket/Socket.h \
+ ../includes/Modules/Requests/Socket/SocketFunction.cpp \
+ ../includes/Modules/Requests/Socket/SocketFunction.h \
+ ../includes/RuntimeResult/RuntimeResult.h \
+ ../includes/SymbolTable/SymbolTable.h \
+ ../includes/Values/BaseValues/BaseValue.h \
+ ../includes/Values/BaseValues/Value.cpp \
+ ../includes/Values/BaseValues/Value.h \
+ ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/List/List.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o: \

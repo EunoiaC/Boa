@@ -146,6 +146,18 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/RequestsFunction.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

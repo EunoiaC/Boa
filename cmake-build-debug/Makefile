@@ -393,6 +393,54 @@ includes/Modules/Requests/RequestsFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.s
 .PHONY : includes/Modules/Requests/RequestsFunction.cpp.s
 
+includes/Modules/Requests/Socket/Socket.o: includes/Modules/Requests/Socket/Socket.cpp.o
+.PHONY : includes/Modules/Requests/Socket/Socket.o
+
+# target to build an object file
+includes/Modules/Requests/Socket/Socket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o
+.PHONY : includes/Modules/Requests/Socket/Socket.cpp.o
+
+includes/Modules/Requests/Socket/Socket.i: includes/Modules/Requests/Socket/Socket.cpp.i
+.PHONY : includes/Modules/Requests/Socket/Socket.i
+
+# target to preprocess a source file
+includes/Modules/Requests/Socket/Socket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.i
+.PHONY : includes/Modules/Requests/Socket/Socket.cpp.i
+
+includes/Modules/Requests/Socket/Socket.s: includes/Modules/Requests/Socket/Socket.cpp.s
+.PHONY : includes/Modules/Requests/Socket/Socket.s
+
+# target to generate assembly for a file
+includes/Modules/Requests/Socket/Socket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.s
+.PHONY : includes/Modules/Requests/Socket/Socket.cpp.s
+
+includes/Modules/Requests/Socket/SocketFunction.o: includes/Modules/Requests/Socket/SocketFunction.cpp.o
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.o
+
+# target to build an object file
+includes/Modules/Requests/Socket/SocketFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.cpp.o
+
+includes/Modules/Requests/Socket/SocketFunction.i: includes/Modules/Requests/Socket/SocketFunction.cpp.i
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.i
+
+# target to preprocess a source file
+includes/Modules/Requests/Socket/SocketFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.i
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.cpp.i
+
+includes/Modules/Requests/Socket/SocketFunction.s: includes/Modules/Requests/Socket/SocketFunction.cpp.s
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.s
+
+# target to generate assembly for a file
+includes/Modules/Requests/Socket/SocketFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.s
+.PHONY : includes/Modules/Requests/Socket/SocketFunction.cpp.s
+
 includes/Nodes/BinaryOperationNode.o: includes/Nodes/BinaryOperationNode.cpp.o
 .PHONY : includes/Nodes/BinaryOperationNode.o
 
@@ -1659,6 +1707,12 @@ help:
 	@echo "... includes/Modules/Requests/RequestsFunction.o"
 	@echo "... includes/Modules/Requests/RequestsFunction.i"
 	@echo "... includes/Modules/Requests/RequestsFunction.s"
+	@echo "... includes/Modules/Requests/Socket/Socket.o"
+	@echo "... includes/Modules/Requests/Socket/Socket.i"
+	@echo "... includes/Modules/Requests/Socket/Socket.s"
+	@echo "... includes/Modules/Requests/Socket/SocketFunction.o"
+	@echo "... includes/Modules/Requests/Socket/SocketFunction.i"
+	@echo "... includes/Modules/Requests/Socket/SocketFunction.s"
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"

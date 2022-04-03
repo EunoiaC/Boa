@@ -872,6 +872,32 @@ CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/FutureFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o: ../includes/Modules/Requests/Socket/Socket.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.cpp > CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.cpp -o CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.s
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o: ../includes/Modules/Requests/Socket/SocketFunction.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_64) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp > CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -935,7 +961,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -1002,9 +1030,11 @@ Boa: CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Nodes/Statements/AwaitNode.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_63) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_65) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

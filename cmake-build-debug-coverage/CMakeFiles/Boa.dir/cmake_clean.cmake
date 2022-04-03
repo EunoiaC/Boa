@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/Boa.dir/includes/Modules/Random/RandomFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Modules/Requests/Requests.cpp.o"
   "CMakeFiles/Boa.dir/includes/Modules/Requests/RequestsFunction.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o"
+  "CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/BinaryOperationNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/CallNode.cpp.o"
   "CMakeFiles/Boa.dir/includes/Nodes/Control_Flow/ClassDefNode.cpp.o"

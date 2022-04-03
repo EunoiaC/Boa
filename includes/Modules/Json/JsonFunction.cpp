@@ -21,13 +21,48 @@ template<> RuntimeResult *JsonFunction<int>::execute_toMap(Context *execCtx) {
         ));
     }
 
-    String<string> * jsonStr = (String<string> *) temp;
-    auto parsedObj = nlohmann::json ::parse(jsonStr->getValue());
-
-    for(nlohmann::json::iterator it = parsedObj.begin(); it != parsedObj.end(); ++it) {
-        cout << it.key();
-        cout << it.value();
+    auto * jsonStr = (String<string> *) temp;
+    nlohmann::json parsedObj;
+    try{
+        parsedObj = nlohmann::json::parse(jsonStr->getValue());
+    } catch (nlohmann::detail::parse_error &e) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                jsonStr->posStart,
+                jsonStr->posEnd,
+                jsonStr->line,
+                jsonStr->fName,
+                jsonStr->fTxt,
+                e.what(),
+                execCtx
+        ));
     }
+
+    String<string> * key;
+    map<BaseValue *, BaseValue *> m;
+    for(nlohmann::json::iterator it = parsedObj.begin(); it != parsedObj.end(); ++it) {
+        key = new String<string>(it.key(), "", "");
+
+        string typeName = it.value().type_name();
+        if(typeName == "boolean") {
+            m[key] = new Number<double>(it.value() == true ? 1 : 0, "", "");
+        } else if(typeName == "number"){
+            m[key] = new Number<double>(it.value(), "", "");
+        } else if(typeName == "string") {
+            m[key] = new String<string>(it.value(), "", "");
+        } else if (typeName == "object"){
+            nlohmann::json temp = it.value();
+            Context * c = new Context("temp");
+            c->symbolTable = new SymbolTable();
+            c->symbolTable->set("string", new String<string>(temp.dump(), "", ""));
+
+            BaseValue * b = res->reg(execute_toMap(c));
+            if (res->shouldReturn()) return res;
+
+            m[key] = b;
+        }
+    }
+
+    return res->success(new Map<map<BaseValue *, BaseValue *>>(m, "", ""));
 }
 
 template<>

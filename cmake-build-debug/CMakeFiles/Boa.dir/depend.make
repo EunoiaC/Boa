@@ -97,12 +97,16 @@ CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o: \
  ../includes/Modules/Json/Json.cpp \
  ../includes/Modules/Json/Json.h \
  ../includes/Modules/Json/JsonFunction.h \
+ ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/Function.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o: \
@@ -112,12 +116,16 @@ CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o: \
  ../includes/Modules/Json/JsonFunction.cpp \
  ../includes/Modules/Json/JsonFunction.h \
  ../includes/Modules/Json/nlohmann/json.hpp \
+ ../includes/Nodes/Node.h \
  ../includes/RuntimeResult/RuntimeResult.h \
  ../includes/SymbolTable/SymbolTable.h \
  ../includes/Values/BaseValues/BaseValue.h \
  ../includes/Values/BaseValues/Value.cpp \
  ../includes/Values/BaseValues/Value.h \
  ../includes/Values/Functions/BaseFunction.h \
+ ../includes/Values/Functions/Function.h \
+ ../includes/Values/List/List.h \
+ ../includes/Values/Map.h \
  ../includes/Values/Number/Number.h \
  ../includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o: \

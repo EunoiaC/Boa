@@ -7,6 +7,7 @@
 
 #include "../../Values/Functions/BaseFunction.h"
 #include "../../Values/String/String.h"
+#include "../../Values/Map.h"
 
 template<typename T> class JsonFunction : public BaseFunction<T> {
 public:

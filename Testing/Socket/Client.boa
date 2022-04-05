@@ -1,0 +1,7 @@
+import "requests"
+# /Users/preetithorat/Documents/GitHub/Boa/Testing/Socket/Client.boa
+
+d = requests.connect(1600)
+d.setBufferSize(1024)
+
+z = d.receive()

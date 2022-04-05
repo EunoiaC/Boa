@@ -23,11 +23,11 @@ public:
     SocketFunction<int> *copy() override;
 
     RuntimeResult * execute_setBufferSize(Context * execCtx);
-    RuntimeResult * execute_init(Context * execCtx);
     RuntimeResult * execute_bind(Context * execCtx);
-    RuntimeResult * execute_listen(Context * execCtx);
-    RuntimeResult * execute_accept(Context * execCtx);
     RuntimeResult * execute_send(Context * execCtx);
+    RuntimeResult * execute_receive(Context * execCtx);
+    RuntimeResult * execute_accept(Context * execCtx);
+    RuntimeResult * execute_close(Context * execCtx);
 
     string toString() override;
 };

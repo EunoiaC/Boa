@@ -12,11 +12,12 @@ Socket<int>::Socket(Number<double> *port) : Value<int>(0, "SOCKET", "", "") {
     map<string, BaseValue *> defaultArgs;
 
     symbolTable->set("setBufferSize", new SocketFunction<int>(this, "setBufferSize", {"bufferSize"}, defaultArgs, "", ""));
-    symbolTable->set("init", new SocketFunction<int>(this, "init", {}, defaultArgs, "", ""));
     symbolTable->set("bind", new SocketFunction<int>(this, "bind", {}, defaultArgs, "", ""));
-    symbolTable->set("listen", new SocketFunction<int>(this, "listen", {"maxConnections"}, defaultArgs, "", ""));
-    symbolTable->set("accept", new SocketFunction<int>(this, "accept", {}, defaultArgs, "", ""));
-    symbolTable->set("send", new SocketFunction<int>(this, "send", {"message"}, defaultArgs, "", ""));
+    symbolTable->set("accept", new SocketFunction<int>(this, "accept", {"maxConnections"}, defaultArgs, "", ""));
+    symbolTable->set("send", new SocketFunction<int>(this, "send", {"ip", "port", "message"}, defaultArgs, "", ""));
+    symbolTable->set("receive", new SocketFunction<int>(this, "receive", {}, defaultArgs, "", ""));
+    symbolTable->set("close", new SocketFunction<int>(this, "close", {}, defaultArgs, "", ""));
+    symbolTable->set("port", port);
 }
 
 template<>

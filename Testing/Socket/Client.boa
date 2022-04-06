@@ -1,7 +1,9 @@
 import "requests"
 # /Users/preetithorat/Documents/GitHub/Boa/Testing/Socket/Client.boa
 
-d = requests.connect(1600)
+d = requests.makeSocket(8080)
 d.setBufferSize(1024)
 
-z = d.receive()
+d.connect("127.0.0.1")
+d.send("hiyaaaa")
+d.close()

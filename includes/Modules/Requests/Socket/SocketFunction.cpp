@@ -61,7 +61,7 @@ RuntimeResult *SocketFunction<int>::execute_bind(Context *execCtx) {
 
     sockObj->address.sin_family = AF_INET;
     sockObj->address.sin_addr.s_addr = INADDR_ANY;
-    sockObj->address.sin_port = htons( sockObj->port->getValue() );
+    sockObj->address.sin_port = htons(sockObj->port->getValue());
 
     // Forcefully attaching socket to the port 8080
     if (::bind(server_fd, (struct sockaddr *)&sockObj->address,
@@ -132,19 +132,49 @@ RuntimeResult *SocketFunction<int>::execute_accept(Context *execCtx) {
 template<>
 RuntimeResult *SocketFunction<int>::execute_send(Context *execCtx) {
     auto *res = new RuntimeResult();
+    BaseValue * temp = execCtx->symbolTable->get("message");
+    if (temp->type != T_STRING){
+        return res->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
 
+    string msg = ((String<string> *) temp)->getValue();
+
+    send(sockObj->new_socket, msg.c_str(), strlen(msg.c_str()), 0);
 
     return res->success(new Number<double>(0, "", ""));
+}
+
+bool invalidChar (char c)
+{
+    return !(c>=0 && c <128);
 }
 
 template<>
 RuntimeResult *SocketFunction<int>::execute_receive(Context *execCtx) {
     auto *res = new RuntimeResult();
+    if (sockObj->bufferSize == nullptr){
+        return res->failure(new RuntimeError(
+                sockObj->posStart,
+                sockObj->posEnd,
+                sockObj->line,
+                sockObj->fName,
+                sockObj->fTxt,
+                "Buffersize not set",
+                execCtx
+        ));
+    }
     char buffer[(unsigned long) sockObj->bufferSize->getValue()];
 
-    if (sockObj->t == Socket<int>::SERVER) {
-        ::read(sockObj->new_socket, buffer, sockObj->bufferSize->getValue());
-    }
+    ::read(sockObj->new_socket, buffer, (int) sockObj->bufferSize->getValue());
+    string msg = buffer;
 
     return res->success(new String<string>(buffer, "", ""));
 }
@@ -158,11 +188,80 @@ RuntimeResult *SocketFunction<int>::execute_close(Context *execCtx) {
         if (sockObj->new_socket != 0) {
             ::close(sockObj->new_socket);
         }
+    } else {
+        ::close(sockObj->new_socket);
     }
 
     return res->success(new Number<double>(0, "", ""));
 }
 
+template<>
+RuntimeResult *SocketFunction<int>::execute_connect(Context *execCtx) {
+    auto *res = new RuntimeResult();
+
+    BaseValue * addr = execCtx->symbolTable->get("address");
+    if (addr->type != T_STRING){
+        return res->failure(new RuntimeError(
+                addr->posStart,
+                addr->posEnd,
+                addr->line,
+                addr->fName,
+                addr->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
+
+    string address = ((String<string> *) addr)->getValue();
+    int sock;
+
+    if ((sock = ::socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    {
+        return res->failure(new RuntimeError(
+                sockObj->posStart,
+                sockObj->posEnd,
+                sockObj->line,
+                sockObj->fName,
+                sockObj->fTxt,
+                "Socket creation failed",
+                execCtx
+        ));
+    }
+
+    sockObj->address.sin_family = AF_INET;
+    sockObj->address.sin_port = htons(sockObj->port->getValue());
+
+    // Convert IPv4 and IPv6 addresses from text to binary form
+    if(inet_pton(AF_INET, address.c_str(), &sockObj->address.sin_addr)<=0)
+    {
+        return res->failure(new RuntimeError(
+                sockObj->posStart,
+                sockObj->posEnd,
+                sockObj->line,
+                sockObj->fName,
+                sockObj->fTxt,
+                "Invalid address/ Address not supported",
+                execCtx
+        ));
+    }
+
+    if (connect(sock, (struct sockaddr *)&sockObj->address, sizeof(sockObj->address)) < 0)
+    {
+        return res->failure(new RuntimeError(
+                sockObj->posStart,
+                sockObj->posEnd,
+                sockObj->line,
+                sockObj->fName,
+                sockObj->fTxt,
+                "Connection Failed",
+                execCtx
+        ));
+    }
+
+    sockObj->new_socket = sock;
+
+    return res->success(new Number<double>(0, "", ""));
+}
 
 template<>
 SocketFunction<int>::SocketFunction(Socket<int> *sockObj, string name, vector<string> argNames,
@@ -177,6 +276,7 @@ SocketFunction<int>::SocketFunction(Socket<int> *sockObj, string name, vector<st
     funcMap["execute_send"] = &SocketFunction<int>::execute_send;
     funcMap["execute_receive"] = &SocketFunction<int>::execute_receive;
     funcMap["execute_close"] = &SocketFunction<int>::execute_close;
+    funcMap["execute_connect"] = &SocketFunction<int>::execute_connect;
 }
 
 template<>

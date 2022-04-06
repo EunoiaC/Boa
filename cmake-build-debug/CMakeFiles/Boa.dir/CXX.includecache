@@ -27,15 +27,15 @@ Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
 ../../../Values/String/String.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-unistd.h
--
 stdio.h
 -
 sys/socket.h
 -
-stdlib.h
+arpa/inet.h
 -
-netinet/in.h
+unistd.h
+-
+string.h
 -
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp

@@ -6,11 +6,11 @@
 #define BOA_SOCKET_H
 #include "../../../Values/BaseValues/Value.h"
 #include "../../../Values/String/String.h"
-#include <unistd.h>
 #include <stdio.h>
 #include <sys/socket.h>
-#include <stdlib.h>
-#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <unistd.h>
+#include <string.h>
 
 template <typename T> class Socket : public Value<T> {
 public:

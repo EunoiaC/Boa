@@ -28,6 +28,7 @@ public:
     RuntimeResult * execute_receive(Context * execCtx);
     RuntimeResult * execute_accept(Context * execCtx);
     RuntimeResult * execute_close(Context * execCtx);
+    RuntimeResult * execute_connect(Context * execCtx);
 
     string toString() override;
 };

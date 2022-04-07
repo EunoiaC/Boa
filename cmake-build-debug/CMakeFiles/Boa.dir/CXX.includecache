@@ -22,37 +22,21 @@ string
 Error.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
-../../../Values/BaseValues/Value.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
-../../../Values/String/String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-stdio.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.cpp
+iostream
 -
-sys/socket.h
--
-arpa/inet.h
--
-unistd.h
--
-string.h
--
+Lexer.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
 
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.cpp
-SocketFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h
-../../../Values/Functions/BaseFunction.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Lexer/Lexer.h
+vector
+-
+map
+-
 fstream
 -
-sstream
--
-../../../Values/List/List.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
-Socket.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/Socket.h
+../Token/Token.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
 ../Values/BaseValues/BaseValue.h
@@ -67,6 +51,20 @@ map
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 string
 -
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+string
+-
+
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+../Values/BaseValues/Value.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+../Values/String/String.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+../Values/Number/Number.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+BaseToken.h
+/Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
 string
@@ -89,16 +87,6 @@ vector
 /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
 BaseValue.h
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
-../Number/Number.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
-../Number/Number.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
-../String/String.h
-/Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 
 /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
 ../../Errors/RuntimeError.h

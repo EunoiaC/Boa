@@ -1,19 +1,2 @@
-import "requests"
-# /Users/preetithorat/Documents/GitHub/Boa/Testing/Socket/Server.boa
-
-d = requests.makeSocket(8080)
-d.setBufferSize(1024)
-
-d.bind()
-
-print("Server started")
-print("Waiting for connections...")
-
-d.accept(1)
-
-print("Connected to client")
-x = d.receive()
-print("Received: " + x)
-
-d.close()
-
+print("main") # prints "main"
+print(true) # prints 1

@@ -1,9 +1,9 @@
 import "requests"
 # /Users/preetithorat/Documents/GitHub/Boa/Testing/Socket/Client.boa
 
-d = requests.makeSocket(8080)
-d.setBufferSize(1024)
+sock = requests.makeSocket(8080)
+sock.setBufferSize(1024)
 
-d.connect("127.0.0.1")
-d.send(input("Enter the message: "))
-d.close()
+sock.connect("127.0.0.1") # connect to localhost
+sock.send(input("Enter the message: "))
+sock.close()

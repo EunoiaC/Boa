@@ -228,7 +228,6 @@ vector<BaseToken *> Lexer::makeTokens() {
             while (currChar != '\n') {
                 advance();
             }
-            advance();
         } else if (currChar == '!') {
             toks.push_back(makeNotEquals());
         } else if (currChar == '<') {

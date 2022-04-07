@@ -5,5 +5,5 @@ d = requests.makeSocket(8080)
 d.setBufferSize(1024)
 
 d.connect("127.0.0.1")
-d.send("hiyaaaa")
+d.send(input("Enter the message: "))
 d.close()

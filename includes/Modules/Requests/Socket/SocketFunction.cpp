@@ -173,8 +173,8 @@ RuntimeResult *SocketFunction<int>::execute_receive(Context *execCtx) {
     }
     char buffer[(unsigned long) sockObj->bufferSize->getValue()];
 
-    ::read(sockObj->new_socket, buffer, (int) sockObj->bufferSize->getValue());
-    string msg = buffer;
+    int size = ::read(sockObj->new_socket, buffer, (int) sockObj->bufferSize->getValue());
+    buffer[size] = '\0';
 
     return res->success(new String<string>(buffer, "", ""));
 }

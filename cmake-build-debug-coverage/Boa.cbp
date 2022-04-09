@@ -431,10 +431,16 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.cpp">
 			<Option target="Boa"/>
 		</Unit>
-		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h">
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.h">
 			<Option target="Boa"/>
 		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.cpp">

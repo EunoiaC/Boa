@@ -307,17 +307,27 @@ RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
     map<BaseValue *, BaseValue *> dict;
     MapNode *mapNode = (MapNode *) n;
 
+    auto *keys = new List<vector<BaseValue *>>({}, "", "");
+    auto *values = new List<vector<BaseValue *>>({}, "", "");
+
     for (auto element: mapNode->dict) {
         BaseValue *key = res->reg(visit(element.first, c));
         if (res->shouldReturn()) return res;
         BaseValue *value = res->reg(visit(element.second, c));
         if (res->shouldReturn()) return res;
         dict[key] = value;
+        keys->elements.push_back(key);
+        values->elements.push_back(value);
     }
 
-    return res->success(
-            (new Map<map<BaseValue *, BaseValue *>>(dict, fName, lines[mapNode->line]))->setContext(c)->setPos(
-                    n->posStart, n->posEnd, n->line));
+    auto * m = new Map<map<BaseValue *, BaseValue *>>(dict, fName, lines[mapNode->line]);
+    m->setContext(c)->setPos(
+            n->posStart, n->posEnd, n->line);
+
+    m->symbolTable->set("keys", keys);
+    m->symbolTable->set("values", values);
+
+    return res->success(m);
 }
 
 RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {

@@ -23,7 +23,7 @@ public:
     RuntimeResult * execute(vector<BaseValue*> args) override;
     FileFunction<int> *copy() override;
 
-    RuntimeResult * execute_readAsString(Context * execCtx);
+    RuntimeResult * execute_read(Context * execCtx);
     RuntimeResult * execute_readLines(Context * execCtx);
 
     string toString() override;

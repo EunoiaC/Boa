@@ -8,7 +8,7 @@
 #include "../Functions/BaseFunction.h"
 #include "../String/String.h"
 #include "../List/List.h"
-#include "../Map.h"
+#include "../Map/Map.h"
 #include "../Class/UsableClass.h"
 
 template<typename T> class ListFunction : public BaseFunction<T> {

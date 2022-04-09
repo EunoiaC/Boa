@@ -7,7 +7,7 @@
 #include <utility>
 #include "../String/String.h"
 #include "../List/List.h"
-#include "../Map.h"
+#include "../Map/Map.h"
 
 template<> BaseFunction<int>::BaseFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt, string funcType) : Value<int>(0, T_FUNC, fName, fTxt) {
     this->fName = fName;

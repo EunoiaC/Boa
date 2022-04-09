@@ -1,42 +1,56 @@
-import "random"
-
 f = getFile("words.txt")
 words = f.readLines()
+alphabetMap = {
+    "a": 0,
+    "b": 0,
+    "c": 0,
+    "d": 0,
+    "e": 0,
+    "f": 0,
+    "g": 0,
+    "h": 0,
+    "i": 0,
+    "j": 0,
+    "k": 0,
+    "l": 0,
+    "m": 0,
+    "n": 0,
+    "o": 0,
+    "p": 0,
+    "q": 0,
+    "r": 0,
+    "s": 0,
+    "t": 0,
+    "u": 0,
+    "v": 0,
+    "w": 0,
+    "x": 0,
+    "y": 0,
+    "z": 0
+}
 
-word = random.choose(words)
-letters = word.split()
-alphabet = "abcdefghijklmnopqrstuvwxyz".split()
-
-tries = 0
-
-while tries < 5 do {
-    guess = input("Guess the word: ")
-    if lenOf(guess) != 5 do {
-        print("The guess must be 5 letters long")
-        continue
-    }
-    if words.indexOf(guess) == -1 do {
-        print("Word not in word list")
-        continue
-    }
-    if guess == word do {
-        print("You win!")
-        break
-    } else do {
-        tries += 1
-        guess = guess.split()
-        out = ""
-        for i = 0 to 4 do {
-            if guess[i] == letters[i] do {
-                out += guess[i]
-            } else do {
-                out += "_"
-                if alphabet.indexOf(guess[i]) != -1 and letters.indexOf(guess[i]) == -1 do alphabet.pop(alphabet.indexOf(guess[i]))
-            }
-        }
-        print(out)
-        print(" ".join(alphabet))
+for word : words do {
+    for char : word do {
+        alphabetMap[char] += 1
     }
 }
 
-if(tries == 5) do print("The word was", word)
+values = alphabetMap.values
+keys = alphabetMap.keys
+
+print(alphabetMap)
+
+n = 5 # number of top values to print
+
+for i = 0 to n - 1 do {
+    max = 0
+    maxKey = ""
+    for key : keys do {
+        if alphabetMap[key] > max do {
+            max = alphabetMap[key]
+            maxKey = key
+        }
+    }
+    print(maxKey)
+    alphabetMap[maxKey] = 0
+}

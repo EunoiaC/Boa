@@ -1521,29 +1521,53 @@ includes/Values/List/ListFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.s
 .PHONY : includes/Values/List/ListFunction.cpp.s
 
-includes/Values/Map.o: includes/Values/Map.cpp.o
-.PHONY : includes/Values/Map.o
+includes/Values/Map/Map.o: includes/Values/Map/Map.cpp.o
+.PHONY : includes/Values/Map/Map.o
 
 # target to build an object file
-includes/Values/Map.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.o
-.PHONY : includes/Values/Map.cpp.o
+includes/Values/Map/Map.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/Map.cpp.o
+.PHONY : includes/Values/Map/Map.cpp.o
 
-includes/Values/Map.i: includes/Values/Map.cpp.i
-.PHONY : includes/Values/Map.i
+includes/Values/Map/Map.i: includes/Values/Map/Map.cpp.i
+.PHONY : includes/Values/Map/Map.i
 
 # target to preprocess a source file
-includes/Values/Map.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.i
-.PHONY : includes/Values/Map.cpp.i
+includes/Values/Map/Map.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/Map.cpp.i
+.PHONY : includes/Values/Map/Map.cpp.i
 
-includes/Values/Map.s: includes/Values/Map.cpp.s
-.PHONY : includes/Values/Map.s
+includes/Values/Map/Map.s: includes/Values/Map/Map.cpp.s
+.PHONY : includes/Values/Map/Map.s
 
 # target to generate assembly for a file
-includes/Values/Map.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map.cpp.s
-.PHONY : includes/Values/Map.cpp.s
+includes/Values/Map/Map.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/Map.cpp.s
+.PHONY : includes/Values/Map/Map.cpp.s
+
+includes/Values/Map/MapFunction.o: includes/Values/Map/MapFunction.cpp.o
+.PHONY : includes/Values/Map/MapFunction.o
+
+# target to build an object file
+includes/Values/Map/MapFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.o
+.PHONY : includes/Values/Map/MapFunction.cpp.o
+
+includes/Values/Map/MapFunction.i: includes/Values/Map/MapFunction.cpp.i
+.PHONY : includes/Values/Map/MapFunction.i
+
+# target to preprocess a source file
+includes/Values/Map/MapFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.i
+.PHONY : includes/Values/Map/MapFunction.cpp.i
+
+includes/Values/Map/MapFunction.s: includes/Values/Map/MapFunction.cpp.s
+.PHONY : includes/Values/Map/MapFunction.s
+
+# target to generate assembly for a file
+includes/Values/Map/MapFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.s
+.PHONY : includes/Values/Map/MapFunction.cpp.s
 
 includes/Values/Number/Number.o: includes/Values/Number/Number.cpp.o
 .PHONY : includes/Values/Number/Number.o
@@ -1848,9 +1872,12 @@ help:
 	@echo "... includes/Values/List/ListFunction.o"
 	@echo "... includes/Values/List/ListFunction.i"
 	@echo "... includes/Values/List/ListFunction.s"
-	@echo "... includes/Values/Map.o"
-	@echo "... includes/Values/Map.i"
-	@echo "... includes/Values/Map.s"
+	@echo "... includes/Values/Map/Map.o"
+	@echo "... includes/Values/Map/Map.i"
+	@echo "... includes/Values/Map/Map.s"
+	@echo "... includes/Values/Map/MapFunction.o"
+	@echo "... includes/Values/Map/MapFunction.i"
+	@echo "... includes/Values/Map/MapFunction.s"
 	@echo "... includes/Values/Number/Number.o"
 	@echo "... includes/Values/Number/Number.i"
 	@echo "... includes/Values/Number/Number.s"

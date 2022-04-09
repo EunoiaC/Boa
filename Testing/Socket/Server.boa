@@ -1,5 +1,6 @@
-import "requests"
 # /Users/preetithorat/Documents/GitHub/Boa/Testing/Socket/Server.boa
+import "requests"
+import "random"
 
 sock = requests.makeSocket(8080)
 sock.setBufferSize(1024)
@@ -12,8 +13,20 @@ print("Waiting for connections...")
 sock.accept(1)
 
 print("Connected to client")
-x = sock.receive()
-print("Received: " + x)
+while true do {
+    msg = sock.receive()
+    if msg == "exit" do {
+       sock.close()
+       break
+    }
+    if msg contains "aadi" do {
+        cs = "I know I can face anything because I have you. You were cool way before hipsters were cool. You’re my support system. I am so proud of your generous heart. You are a well-mannered kid. You’re more helpful than you realize. You’re an excellent partner. When you’re not afraid to be yourself is when you’re most incredible. You are making a difference. You have the best ideas.".split(".")
+        sock.send("Aadi, " + random.choose(cs))
+    } else do{
+        print("Received: " + msg)
+        sock.send(input("Enter a message: "))
+    }
+}
 
 sock.close()
 

@@ -4,6 +4,7 @@
 
 #include "RequestsFunction.h"
 #include <curl/curl.h>
+#include <errno.h>
 
 
 size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data) {

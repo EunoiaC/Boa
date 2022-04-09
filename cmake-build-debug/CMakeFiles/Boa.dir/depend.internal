@@ -72,7 +72,7 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Lexer/Lexer.cpp.o
@@ -106,7 +106,7 @@ CMakeFiles/Boa.dir/includes/Modules/Json/Json.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
@@ -125,7 +125,7 @@ CMakeFiles/Boa.dir/includes/Modules/Json/JsonFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Modules/Random/Random.cpp.o
@@ -575,7 +575,7 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/RuntimeResult/RuntimeResult.cpp.o
@@ -640,7 +640,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/Class.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
@@ -691,7 +691,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/ClassFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o
@@ -742,7 +742,7 @@ CMakeFiles/Boa.dir/includes/Values/Class/UsableClass.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/File/File.cpp.o
@@ -791,7 +791,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BaseFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
@@ -847,7 +847,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/BuiltInFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
@@ -898,7 +898,7 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Future/Future.cpp.o
@@ -955,7 +955,7 @@ CMakeFiles/Boa.dir/includes/Values/List/List.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o
@@ -980,24 +980,57 @@ CMakeFiles/Boa.dir/includes/Values/List/ListFunction.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/ListFunction.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
-CMakeFiles/Boa.dir/includes/Values/Map.cpp.o
+CMakeFiles/Boa.dir/includes/Values/Map/Map.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.cpp
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
+CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.o
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Context/Context.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/Error.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Errors/RuntimeError.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Random/Random.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/Node.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/RuntimeResult/RuntimeResult.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/SymbolTable/SymbolTable.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/BaseToken.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Token/Token.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/BaseValue.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/BaseValues/Value.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/ClassFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Class/UsableClass.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/File/File.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BaseFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.cpp
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
 CMakeFiles/Boa.dir/includes/Values/Number/Number.cpp.o
@@ -1110,7 +1143,7 @@ CMakeFiles/Boa.dir/main.cpp.o
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/Function.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Future/Future.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/List/List.h
- /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map.h
+ /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/Map.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Number/Number.h
  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/String/String.h
  /Users/preetithorat/Documents/GitHub/Boa/main.cpp

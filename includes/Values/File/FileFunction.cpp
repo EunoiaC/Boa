@@ -39,7 +39,7 @@ RuntimeResult *FileFunction<int>::execute_readLines(Context *execCtx) {
 }
 
 template<>
-RuntimeResult *FileFunction<int>::execute_readAsString(Context *execCtx) {
+RuntimeResult *FileFunction<int>::execute_read(Context *execCtx) {
     String<string> *fileName = fileObj->fileName;
     ifstream file(fileName->getValue());
     if (file.fail()) {
@@ -72,7 +72,7 @@ FileFunction<int>::FileFunction(File<int> *fileObj, string name, vector<string> 
     this->fileObj = fileObj;
     type = "FUNCTION";
     funcMap["execute_readLines"] = &FileFunction<int>::execute_readLines;
-    funcMap["execute_readAsString"] = &FileFunction<int>::execute_readAsString;
+    funcMap["execute_read"] = &FileFunction<int>::execute_read;
 }
 
 template<>

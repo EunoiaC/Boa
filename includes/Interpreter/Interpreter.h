@@ -11,7 +11,7 @@
 #include "../Values/String/String.h"
 #include "../Values/Functions/Function.h"
 #include "../Values/List/List.h"
-#include "../Values/Map.h"
+#include "../Values/Map/Map.h"
 #include "../Values/Class/Class.h"
 #include "../RuntimeResult/RuntimeResult.h"
 #include "../Nodes/Control Flow/ForNode.h"

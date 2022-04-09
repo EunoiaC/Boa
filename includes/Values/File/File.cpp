@@ -11,7 +11,7 @@ File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<
     this->parentPath = parentPath;
     symbolTable->set("fileName", fileName);
     symbolTable->set("parentPath", parentPath);
-    symbolTable->set("readAsString", new FileFunction<int>(this, "readAsString", {},
+    symbolTable->set("read", new FileFunction<int>(this, "read", {},
                                                              {}, "", ""));
     symbolTable->set("readLines", new FileFunction<int>(this, "readLines", {},
                                                              {}, "", ""));

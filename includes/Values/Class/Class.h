@@ -9,7 +9,7 @@
 #include "../Functions/Function.h"
 #include "ClassFunction.h"
 #include "../../Token/Token.h"
-#include "../Map.h"
+#include "../Map/Map.h"
 #include "../List/List.h"
 
 template<typename T> class Class : public Value<T> {

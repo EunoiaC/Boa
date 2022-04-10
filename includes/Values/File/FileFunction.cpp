@@ -32,6 +32,18 @@ RuntimeResult *FileFunction<int>::execute_read(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *FileFunction<int>::execute_write(Context *execCtx) {
+    fstream temp = fstream(fileObj->parentPath->getValue() + fileObj->fileName->getValue(), ios::app);
+
+    BaseValue *toAdd = execCtx->symbolTable->get("toAdd");
+    temp << toAdd->toString();
+
+    temp.close();
+
+    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
+}
+
+template<>
 RuntimeResult *FileFunction<int>::execute_close(Context *execCtx) {
     fileObj->file.close();
     return (new RuntimeResult())->success(new Number<double>(0, "", ""));
@@ -46,6 +58,7 @@ FileFunction<int>::FileFunction(File<int> *fileObj, string name, vector<string> 
     type = "FUNCTION";
     funcMap["execute_readLines"] = &FileFunction<int>::execute_readLines;
     funcMap["execute_read"] = &FileFunction<int>::execute_read;
+    funcMap["execute_write"] = &FileFunction<int>::execute_write;
     funcMap["execute_close"] = &FileFunction<int>::execute_close;
 }
 

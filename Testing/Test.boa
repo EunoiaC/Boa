@@ -1,4 +1,0 @@
-f = getFile("../main.cpp")
-print(f.readLines())
-print(f.read())
-f.close()

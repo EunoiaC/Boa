@@ -7,9 +7,11 @@
 
 #include "../BaseValues/Value.h"
 #include "../String/String.h"
+#include <fstream>
 
 template<typename T> class File : public Value<T> {
 public:
+    fstream file;
     String<string> * fileName, * parentPath;
     File<int>(String<string> * fileName, String<string> * parentPath);
     BaseValue * copy() override;

@@ -15,6 +15,26 @@ File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<
                                                              {}, "", ""));
     symbolTable->set("readLines", new FileFunction<int>(this, "readLines", {},
                                                              {}, "", ""));
+    symbolTable->set("readLines", new FileFunction<int>(this, "readLines", {},
+                                                        {}, "", ""));
+    symbolTable->set("close", new FileFunction<int>(this, "close", {},
+                                                        {}, "", ""));
+
+    file = fstream(fileName->getValue());
+    if (file.fail()) {
+        file = fstream(ctx->parentFilePath + fileName->getValue());
+    }
+    if (file.fail()) {
+        rtError = new RuntimeError(
+                        fileName->posStart,
+                        fileName->posEnd,
+                        fileName->line,
+                        fileName->fName,
+                        fileName->fTxt,
+                        "File doesn't exist",
+                        ctx
+               );
+    }
 }
 
 template<>

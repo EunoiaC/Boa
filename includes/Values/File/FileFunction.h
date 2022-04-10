@@ -25,6 +25,7 @@ public:
 
     RuntimeResult * execute_read(Context * execCtx);
     RuntimeResult * execute_readLines(Context * execCtx);
+    RuntimeResult * execute_close(Context * execCtx);
 
     string toString() override;
 };

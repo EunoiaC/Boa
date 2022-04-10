@@ -6,62 +6,35 @@
 
 template<>
 RuntimeResult *FileFunction<int>::execute_readLines(Context *execCtx) {
-    String<string> *fileName = fileObj->fileName;
-    ifstream file(fileName->getValue());
-    if (file.fail()) {
-        file = ifstream(ctx->parentFilePath + fileName->getValue());
-    }
-    if (file.fail()) {
-        return (new RuntimeResult())->failure(
-                new RuntimeError(
-                        fileName->posStart,
-                        fileName->posEnd,
-                        fileName->line,
-                        fileName->fName,
-                        fileName->fTxt,
-                        "File doesn't exist",
-                        execCtx
-                )
-        );
-    }
+    fileObj->file.clear();
+    fileObj->file.seekg(0);
+
     vector<BaseValue *> lines;
     string str;
     // Read the next line from File until it reaches the end.
-    while (getline(file, str)) {
+    while (getline(fileObj->file, str)) {
         // Line contains string of length > 0 then save it in vector
         if (str.size() > 0)
             lines.push_back(new String<string>(str, "", ""));
     }
-    //Close The File
-    file.close();
-
     return (new RuntimeResult())->success(new List<vector<BaseValue *>>(lines, "", ""));
 }
 
 template<>
 RuntimeResult *FileFunction<int>::execute_read(Context *execCtx) {
-    String<string> *fileName = fileObj->fileName;
-    ifstream file(fileName->getValue());
-    if (file.fail()) {
-        file = ifstream(ctx->parentFilePath + fileName->getValue());
-    }
-    if (file.fail()) {
-        return (new RuntimeResult())->failure(
-                new RuntimeError(
-                        fileName->posStart,
-                        fileName->posEnd,
-                        fileName->line,
-                        fileName->fName,
-                        fileName->fTxt,
-                        "File doesn't exist",
-                        execCtx
-                )
-        );
-    }
+    fileObj->file.clear();
+    fileObj->file.seekg(0);
+
     stringstream buffer;
-    buffer << file.rdbuf();
+    buffer << fileObj->file.rdbuf();
     string fileText = buffer.str();
     return (new RuntimeResult())->success(new String<string>(fileText, "", ""));
+}
+
+template<>
+RuntimeResult *FileFunction<int>::execute_close(Context *execCtx) {
+    fileObj->file.close();
+    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
 }
 
 template<>
@@ -73,6 +46,7 @@ FileFunction<int>::FileFunction(File<int> *fileObj, string name, vector<string> 
     type = "FUNCTION";
     funcMap["execute_readLines"] = &FileFunction<int>::execute_readLines;
     funcMap["execute_read"] = &FileFunction<int>::execute_read;
+    funcMap["execute_close"] = &FileFunction<int>::execute_close;
 }
 
 template<>

@@ -26,7 +26,7 @@ File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<
 
     file = fstream(fileName->getValue());
     if (file.fail()) {
-        file = fstream(ctx->parentFilePath + fileName->getValue());
+        file = fstream(parentPath->getValue() + fileName->getValue());
     }
     if (file.fail()) {
         rtError = new RuntimeError(

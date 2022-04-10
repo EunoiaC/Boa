@@ -13,9 +13,7 @@ RuntimeResult *FileFunction<int>::execute_readLines(Context *execCtx) {
     string str;
     // Read the next line from File until it reaches the end.
     while (getline(fileObj->file, str)) {
-        // Line contains string of length > 0 then save it in vector
-        if (str.size() > 0)
-            lines.push_back(new String<string>(str, "", ""));
+        lines.push_back(new String<string>(str, "", ""));
     }
     return (new RuntimeResult())->success(new List<vector<BaseValue *>>(lines, "", ""));
 }
@@ -64,7 +62,7 @@ RuntimeResult *FileFunction<int>::execute_writeLines(Context *execCtx) {
     temp.close();
 
     fstream toWrite = fstream(fileObj->parentPath->getValue() + fileObj->fileName->getValue(), ios::app);
-    for (auto &i : list->getValue()) {
+    for (auto &i : list->elements) {
         toWrite << i->toString() << endl;
     }
 

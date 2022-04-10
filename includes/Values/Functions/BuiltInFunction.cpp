@@ -256,7 +256,7 @@ RuntimeResult *BuiltInFunction<int>::execute_copy(Context *execCtx) {
 }
 
 template<>
-RuntimeResult *BuiltInFunction<int>::execute_readFile(Context *execCtx) {
+RuntimeResult *BuiltInFunction<int>::execute_getFile(Context *execCtx) {
     auto *res = new RuntimeResult();
     res->reg(checkArgs(args, argNames));
     if (res->error) return res;
@@ -308,7 +308,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
     funcMap["execute_copy"] = &BuiltInFunction<int>::execute_copy;
     funcMap["execute_eval"] = &BuiltInFunction<int>::execute_eval;
     funcMap["execute_rename"] = &BuiltInFunction<int>::execute_rename;
-    funcMap["execute_readFile"] = &BuiltInFunction<int>::execute_readFile;
+    funcMap["execute_getFile"] = &BuiltInFunction<int>::execute_getFile;
     funcMap["execute_getSymbolTable"] = &BuiltInFunction<int>::execute_getSymbolTable;
     funcMap["execute_clear"] = &BuiltInFunction<int>::execute_clear;
 }

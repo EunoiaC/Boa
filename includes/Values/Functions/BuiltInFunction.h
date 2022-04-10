@@ -23,7 +23,7 @@ public:
     RuntimeResult * execute(vector<BaseValue*> args) override;
     BuiltInFunction<int> *copy() override;
 
-    RuntimeResult * execute_readFile(Context * execCtx);
+    RuntimeResult * execute_getFile(Context * execCtx);
     RuntimeResult * execute_clear(Context * execCtx);
     RuntimeResult * execute_print(Context * execCtx);
     RuntimeResult * execute_input(Context * execCtx);

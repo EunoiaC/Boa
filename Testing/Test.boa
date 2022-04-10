@@ -1,5 +1,5 @@
-f = getFile("../Testing/Test.boa")
-print(f.readLines())
-print(f.read())
-f.writeLines("Hello World")
+f = getFile("Repl.boa")
+lines = copy(f.readLines())
+lines[3] = "abhhbkbj"
+f.writeLines(lines)
 f.close()

@@ -44,6 +44,34 @@ RuntimeResult *FileFunction<int>::execute_write(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *FileFunction<int>::execute_writeLines(Context *execCtx) {
+    auto * res = new RuntimeResult();
+    BaseValue * l = execCtx->symbolTable->get("list");
+    if (l->type != T_LIST) {
+        return res->failure(new RuntimeError(
+                l->posStart,
+                l->posEnd,
+                l->line,
+                l->fName,
+                l->fTxt,
+                "Expected a LIST",
+                execCtx
+        ));
+    }
+
+    List<vector<BaseValue *>> * list = dynamic_cast<List<vector<BaseValue *>> *>(l);
+    ofstream temp = ofstream(fileObj->parentPath->getValue() + fileObj->fileName->getValue(), ios::out | ios::trunc);
+    temp.close();
+
+    fstream toWrite = fstream(fileObj->parentPath->getValue() + fileObj->fileName->getValue(), ios::app);
+    for (auto &i : list->getValue()) {
+        toWrite << i->toString() << endl;
+    }
+
+    return res->success(new Number<double>(0, "", ""));
+}
+
+template<>
 RuntimeResult *FileFunction<int>::execute_close(Context *execCtx) {
     fileObj->file.close();
     return (new RuntimeResult())->success(new Number<double>(0, "", ""));
@@ -59,6 +87,7 @@ FileFunction<int>::FileFunction(File<int> *fileObj, string name, vector<string> 
     funcMap["execute_readLines"] = &FileFunction<int>::execute_readLines;
     funcMap["execute_read"] = &FileFunction<int>::execute_read;
     funcMap["execute_write"] = &FileFunction<int>::execute_write;
+    funcMap["execute_writeLines"] = &FileFunction<int>::execute_writeLines;
     funcMap["execute_close"] = &FileFunction<int>::execute_close;
 }
 

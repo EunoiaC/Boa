@@ -1,0 +1,5 @@
+f = getFile("../Testing/Test.boa")
+print(f.readLines())
+print(f.read())
+f.writeLines("Hello World")
+f.close()

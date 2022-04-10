@@ -19,6 +19,8 @@ File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<
                                                         {}, "", ""));
     symbolTable->set("write", new FileFunction<int>(this, "write", {"toAdd"},
                                                         {}, "", ""));
+    symbolTable->set("writeLines", new FileFunction<int>(this, "writeLines", {"list"},
+                                                    {}, "", ""));
     symbolTable->set("close", new FileFunction<int>(this, "close", {},
                                                         {}, "", ""));
 

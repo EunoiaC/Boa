@@ -1,0 +1,27 @@
+import "time"
+
+class Timer() do {
+    op init() do {
+        seconds = 0
+        stop = true
+    }
+
+    op start() do {
+        stop = false
+        while stop == false do {
+            seconds += 1
+            time.sleepSec(1)
+        }
+    }
+
+    op stop() do {
+        stop = true
+    }
+}
+
+
+t = Timer()
+await t.start()
+time.sleepSec(5)
+await t.stop()
+print(t.seconds)

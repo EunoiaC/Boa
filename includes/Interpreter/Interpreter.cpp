@@ -367,7 +367,13 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
 
     string prevType;
     if (value->type == CLASS){
-        prevType = ((UsableClass<int> *) value)->className;
+        // Check if it's instantiated class or a structure
+        auto * temp = dynamic_cast<UsableClass<int> *>(value);
+        if (temp){
+            prevType = temp->className;
+        } else{
+            prevType = ((Class<int> *) value)->name;
+        }
     } else {
         prevType = value->type;
     }

@@ -79,14 +79,15 @@ private:
     /**
      * @tparam valueClass can be any object type that is supported
      */
+public:
+    Token(string t, valueClass value, int start_pos, int end_pos, int line_num);
+    ~Token();
+
     /**
      * A value of the token if the token type is a supported object type
      * @tparam valueClass
      */
     Value<valueClass> *value;
-public:
-    Token(string t, valueClass value, int start_pos, int end_pos, int line_num);
-    ~Token();
 
     /**
      * @tparam valueClass

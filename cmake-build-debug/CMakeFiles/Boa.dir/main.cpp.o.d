@@ -553,6 +553,8 @@ CMakeFiles/Boa.dir/main.cpp.o: \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Requests/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/Json.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/../../Values/BaseValues/Value.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/Time.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Constants.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/BuiltInFunction.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX12.3.sdk/usr/include/c++/v1/cmath \

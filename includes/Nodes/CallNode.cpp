@@ -20,6 +20,13 @@ CallNode::CallNode(Node *nodeToCall, vector<Node *> args) : Node(N_CALL){
     }
 }
 
+CallNode::~CallNode(){
+    delete nodeToCall;
+    for(int i = 0; i < args.size(); i++){
+        delete args[i];
+    }
+}
+
 string CallNode::toString() {
     return "(CallNode: " + nodeToCall->toString() + ")";
 }

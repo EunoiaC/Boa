@@ -13,6 +13,7 @@ public:
     vector<Node *> args;
     int posStart, posEnd;
     CallNode(Node * nodeToCall, vector<Node*> args);
+    ~CallNode();
     string toString() override;
 };
 

@@ -15,6 +15,7 @@ public:
     int posStart, posEnd, line;
     map<Node*, Node*> dict;
     MapNode(map<Node*, Node*> dict, int posStart, int posEnd, int line);
+    ~MapNode();
     string toString() override;
 };
 

@@ -14,6 +14,7 @@ public:
     vector<Node *> elements;
     string toString() override;
     ListNode(vector<Node *> elements, int posStart, int posEnd, int line);
+    ~ListNode();
 };
 
 

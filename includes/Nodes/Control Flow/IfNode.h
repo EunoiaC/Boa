@@ -14,6 +14,7 @@ public:
     int posStart, posEnd;
     vector<tuple<Node *, Node *>> cases;
     IfNode(vector<tuple<Node *, Node *>> cases, Node * elseCase);
+    ~IfNode();
     string toString() override;
 };
 

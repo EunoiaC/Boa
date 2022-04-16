@@ -979,6 +979,34 @@ CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Map/MapFunction.cpp -o CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.s
 
+CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o: ../includes/Modules/Time/Time.cpp
+CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o: CMakeFiles/Boa.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o -MF CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o.d -o CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/Time.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/Time.cpp > CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/Time.cpp -o CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.s
+
+CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o: CMakeFiles/Boa.dir/flags.make
+CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o: ../includes/Modules/Time/TimeFunction.cpp
+CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o: CMakeFiles/Boa.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_67) "Building CXX object CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o -MF CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o.d -o CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o -c /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/TimeFunction.cpp
+
+CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/TimeFunction.cpp > CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.i
+
+CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/TimeFunction.cpp -o CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.s
+
 # Object files for target Boa
 Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/main.cpp.o" \
@@ -1045,7 +1073,9 @@ Boa_OBJECTS = \
 "CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o" \
 "CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o" \
-"CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.o"
+"CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o" \
+"CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o"
 
 # External object files for target Boa
 Boa_EXTERNAL_OBJECTS =
@@ -1115,9 +1145,11 @@ Boa: CMakeFiles/Boa.dir/includes/Values/Future/FutureFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/Socket.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/includes/Values/Map/MapFunction.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o
+Boa: CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o
 Boa: CMakeFiles/Boa.dir/build.make
 Boa: CMakeFiles/Boa.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_66) "Linking CXX executable Boa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_68) "Linking CXX executable Boa"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Boa.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

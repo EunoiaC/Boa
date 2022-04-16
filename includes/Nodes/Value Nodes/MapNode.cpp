@@ -11,6 +11,13 @@ MapNode::MapNode(map<Node *, Node *> dict, int posStart, int posEnd, int line) :
     this->line = line;
 }
 
+MapNode::~MapNode() {
+    for (auto & it : dict) {
+        delete it.first;
+        delete it.second;
+    }
+}
+
 string MapNode::toString() {
     string str;
     str += "MapNode: ";

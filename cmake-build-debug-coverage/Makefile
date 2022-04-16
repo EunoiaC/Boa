@@ -441,6 +441,54 @@ includes/Modules/Requests/Socket/SocketFunction.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Requests/Socket/SocketFunction.cpp.s
 .PHONY : includes/Modules/Requests/Socket/SocketFunction.cpp.s
 
+includes/Modules/Time/Time.o: includes/Modules/Time/Time.cpp.o
+.PHONY : includes/Modules/Time/Time.o
+
+# target to build an object file
+includes/Modules/Time/Time.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.o
+.PHONY : includes/Modules/Time/Time.cpp.o
+
+includes/Modules/Time/Time.i: includes/Modules/Time/Time.cpp.i
+.PHONY : includes/Modules/Time/Time.i
+
+# target to preprocess a source file
+includes/Modules/Time/Time.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.i
+.PHONY : includes/Modules/Time/Time.cpp.i
+
+includes/Modules/Time/Time.s: includes/Modules/Time/Time.cpp.s
+.PHONY : includes/Modules/Time/Time.s
+
+# target to generate assembly for a file
+includes/Modules/Time/Time.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/Time.cpp.s
+.PHONY : includes/Modules/Time/Time.cpp.s
+
+includes/Modules/Time/TimeFunction.o: includes/Modules/Time/TimeFunction.cpp.o
+.PHONY : includes/Modules/Time/TimeFunction.o
+
+# target to build an object file
+includes/Modules/Time/TimeFunction.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.o
+.PHONY : includes/Modules/Time/TimeFunction.cpp.o
+
+includes/Modules/Time/TimeFunction.i: includes/Modules/Time/TimeFunction.cpp.i
+.PHONY : includes/Modules/Time/TimeFunction.i
+
+# target to preprocess a source file
+includes/Modules/Time/TimeFunction.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.i
+.PHONY : includes/Modules/Time/TimeFunction.cpp.i
+
+includes/Modules/Time/TimeFunction.s: includes/Modules/Time/TimeFunction.cpp.s
+.PHONY : includes/Modules/Time/TimeFunction.s
+
+# target to generate assembly for a file
+includes/Modules/Time/TimeFunction.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Boa.dir/build.make CMakeFiles/Boa.dir/includes/Modules/Time/TimeFunction.cpp.s
+.PHONY : includes/Modules/Time/TimeFunction.cpp.s
+
 includes/Nodes/BinaryOperationNode.o: includes/Nodes/BinaryOperationNode.cpp.o
 .PHONY : includes/Nodes/BinaryOperationNode.o
 
@@ -1737,6 +1785,12 @@ help:
 	@echo "... includes/Modules/Requests/Socket/SocketFunction.o"
 	@echo "... includes/Modules/Requests/Socket/SocketFunction.i"
 	@echo "... includes/Modules/Requests/Socket/SocketFunction.s"
+	@echo "... includes/Modules/Time/Time.o"
+	@echo "... includes/Modules/Time/Time.i"
+	@echo "... includes/Modules/Time/Time.s"
+	@echo "... includes/Modules/Time/TimeFunction.o"
+	@echo "... includes/Modules/Time/TimeFunction.i"
+	@echo "... includes/Modules/Time/TimeFunction.s"
 	@echo "... includes/Nodes/BinaryOperationNode.o"
 	@echo "... includes/Nodes/BinaryOperationNode.i"
 	@echo "... includes/Nodes/BinaryOperationNode.s"

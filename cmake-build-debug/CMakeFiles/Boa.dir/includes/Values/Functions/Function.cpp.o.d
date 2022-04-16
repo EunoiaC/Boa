@@ -523,4 +523,6 @@ CMakeFiles/Boa.dir/includes/Values/Functions/Function.cpp.o: \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Requests/Requests.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Requests/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Json/Json.h \
-  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Json/../../Values/BaseValues/Value.h
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Json/../../Values/BaseValues/Value.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Time/Time.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Values/Functions/../../Interpreter/../Modules/Time/../../Values/BaseValues/Value.h

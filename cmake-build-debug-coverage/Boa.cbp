@@ -158,6 +158,18 @@
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Requests/Socket/SocketFunction.h">
 			<Option target="Boa"/>
 		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/Time.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/Time.h">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/TimeFunction.cpp">
+			<Option target="Boa"/>
+		</Unit>
+		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Modules/Time/TimeFunction.h">
+			<Option target="Boa"/>
+		</Unit>
 		<Unit filename="/Users/preetithorat/Documents/GitHub/Boa/includes/Nodes/BinaryOperationNode.cpp">
 			<Option target="Boa"/>
 		</Unit>

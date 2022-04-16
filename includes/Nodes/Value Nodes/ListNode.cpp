@@ -11,6 +11,9 @@ ListNode::ListNode(vector<Node *> elements, int posStart, int posEnd, int line) 
     this->line = line;
 }
 
+ListNode::~ListNode() {
+}
+
 string ListNode::toString() {
     string str = "";
     for (int i = 0; i < elements.size(); i++) {

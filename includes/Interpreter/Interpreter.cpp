@@ -111,6 +111,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
         ));
     }
 
+    delete toIterateThrough;
     BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[node->iterNameTok->line]))->setContext(c)->setPos(
             node->posStart, node->posEnd, node->line);
     if (node->shouldReturnNull) {
@@ -206,6 +207,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         return res->success(v);
     }
     if (res->shouldReturn()) return res;
+    delete tryCatchNode;
     return res->success(val);
 }
 
@@ -238,6 +240,7 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     if (whileNode->shouldReturnNull) {
         val = new Number<double>(0, fName, "");
     }
+    delete whileNode;
     return res->success(val);
 }
 
@@ -252,6 +255,7 @@ RuntimeResult *Interpreter::visitEitherNode(Node *n, Context *c) {
             return res->success(val);
         }
     }
+    delete eitherNode;
     return res->success((new Number<double>(0, fName, ""))->setContext(c));
 }
 
@@ -327,6 +331,8 @@ RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
     m->symbolTable->set("keys", keys);
     m->symbolTable->set("values", values);
 
+    delete mapNode;
+
     return res->success(m);
 }
 
@@ -401,6 +407,9 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     } else if (value->type == T_FUTURE) {
         ((Future<shared_future<RuntimeResult *>> *) value)->setContext(c);
     }
+
+    delete node->toGetIdentifierFrom;
+
     return result->success(value);
 }
 

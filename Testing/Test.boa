@@ -1,6 +1,8 @@
-class A(arg) do {
-    op init() do null
-    op repr() do "A: " + arg
+x = 0
+while x < 10 do {
+    x += 1
+    for i = 0 to 10 do {
+        y = either null or 13
+        print(x + y)
+    }
 }
-
-print(A(1, 2))

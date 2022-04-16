@@ -523,6 +523,8 @@ CMakeFiles/Boa.dir/includes/Interpreter/Interpreter.cpp.o: \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Requests/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/Json.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/../../Values/BaseValues/Value.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/Time.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../RunInterface.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Values/BaseValues/BaseValue.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Errors/Error.h \

@@ -29,6 +29,8 @@ string ForNode::toString() {
 ForNode::~ForNode() {
     delete startVal;
     delete endVal;
-    delete stepVal;
+    if (stepVal) {
+        delete stepVal;
+    }
     delete body;
 }

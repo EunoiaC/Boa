@@ -552,4 +552,6 @@ CMakeFiles/Boa.dir/includes/RunInterface.cpp.o: \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Requests/Requests.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Requests/../../Values/BaseValues/Value.h \
   /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/Json.h \
-  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/../../Values/BaseValues/Value.h
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Json/../../Values/BaseValues/Value.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/Time.h \
+  /Users/preetithorat/Documents/GitHub/Boa/includes/Interpreter/../Modules/Time/../../Values/BaseValues/Value.h

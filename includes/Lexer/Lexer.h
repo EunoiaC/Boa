@@ -36,6 +36,7 @@ private:
 public:
     Error * error;
     Lexer(string fileText, string fileName, vector<string> lines);
+    ~Lexer();
 
     map<string, string> keyWords = {
             {"and",   AND},

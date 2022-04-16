@@ -17,6 +17,15 @@ Lexer::Lexer(string fileText, string fileName, vector<string> lines) {
     advance();
 }
 
+Lexer::~Lexer() {
+    if (error != nullptr) {
+        delete error;
+    }
+    for (auto &p : charToToken) {
+        delete p.second;
+    }
+}
+
 void Lexer::advance() {
     currLine = lines[lineIdx];
     charIdx++;

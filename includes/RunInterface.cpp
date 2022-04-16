@@ -24,6 +24,7 @@ RunResult RunInterface::readLine(string line) {
     if (v.empty()) {
         return make_pair(nullptr, l->error);
     }
+    delete l;
     p = new Parser(v, fileName, lines);
     res = p->parse();
     if (res->error) {
@@ -67,6 +68,9 @@ RunResult RunInterface::readFile(string filePath) {
     if (v.empty()) {
         return make_pair(nullptr, l->error);
     }
+
+    delete l;
+
     p = new Parser(v, fileName, lines);
     res = p->parse();
     if (res->error) {
@@ -74,6 +78,7 @@ RunResult RunInterface::readFile(string filePath) {
     } else {
         //cout << "AST: " + res->node->toString() << endl;
     }
+
     auto *i = new Interpreter(fileName, lines);
     i->pathRef = pathRef;
     auto *ctx = new Context("<program>");

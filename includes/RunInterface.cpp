@@ -69,7 +69,7 @@ RunResult RunInterface::readFile(string filePath) {
         return make_pair(nullptr, l->error);
     }
 
-    delete l;
+    //delete l;
 
     p = new Parser(v, fileName, lines);
     res = p->parse();

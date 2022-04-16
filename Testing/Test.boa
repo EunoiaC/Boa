@@ -1,27 +1,26 @@
-import "time"
+class Pair(k, v) do {
+    op init() do null
+}
 
-class Timer() do {
+class Map() do {
     op init() do {
-        seconds = 0
-        stop = true
+        pairs = []
     }
 
-    op start() do {
-        stop = false
-        while stop == false do {
-            seconds += 1
-            time.sleepSec(1)
+    op put(key, value) do {
+        pairs.append(Pair(key, value))
+    }
+
+    op get(key) do {
+        for pair : pairs do {
+            if pair.k == key do {
+                return pair.v
+            }
         }
-    }
-
-    op stop() do {
-        stop = true
+        return null
     }
 }
 
-
-t = Timer()
-await t.start()
-time.sleepSec(5)
-await t.stop()
-print(t.seconds)
+m = Map()
+m.put(1, "one")
+print(m.get(1))

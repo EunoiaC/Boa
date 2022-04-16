@@ -19,5 +19,5 @@ BaseValue * Json<int>::copy() {
 
 template<>
 string Json<int>::toString() {
-    return "<Module: random>";
+    return "<Module: json>";
 }

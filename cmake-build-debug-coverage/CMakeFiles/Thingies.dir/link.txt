@@ -1,1 +1,0 @@
-/Library/Developer/CommandLineTools/usr/bin/c++ -fprofile-instr-generate -fcoverage-mapping -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/Thingies.dir/includes/Token/Token.cpp.o CMakeFiles/Thingies.dir/includes/Values/Value.cpp.o -o Thingies 

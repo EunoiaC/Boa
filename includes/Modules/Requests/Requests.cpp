@@ -20,5 +20,5 @@ BaseValue *Requests<int>::copy() {
 
 template<>
 string Requests<int>::toString() {
-    return "<Module: random>";
+    return "<Module: requests>";
 }

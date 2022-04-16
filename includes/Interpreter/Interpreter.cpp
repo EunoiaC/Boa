@@ -436,6 +436,11 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     }
 
     BaseValue *returnVal = res->reg(valToCall->execute(args));
+    if (res->error) {
+        Error * e = res->error;
+        e->fTxt = callNode->fTxt;
+        return res->failure(e);
+    }
     if (res->shouldReturn()) return res;
     returnVal = returnVal->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line);
     if (returnVal->type == T_NUM) {

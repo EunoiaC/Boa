@@ -3,18 +3,20 @@
 //
 
 #include "CallNode.h"
+#include "VarAccessNode.h"
 
 CallNode::CallNode(Node *nodeToCall, vector<Node *> args) : Node(N_CALL){
     this->nodeToCall = nodeToCall;
     this->args = args;
 
-    posStart = nodeToCall->posStart;
+    posStart = ((VarAccessNode *) nodeToCall)->posStart;
+    fTxt = ((VarAccessNode *) nodeToCall)->fTxt;
 
     if(args.size() > 0){
         posEnd = args[args.size() - 1]->posEnd;
     }
     else{
-        posEnd = nodeToCall->posEnd;
+        posEnd = ((VarAccessNode *) nodeToCall)->posEnd;
     }
 }
 

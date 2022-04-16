@@ -13,7 +13,7 @@ VarAccessNode::VarAccessNode(Token<string> *varNameTok, vector<BaseToken*> ident
     posStart = varNameTok ? varNameTok->posStart : toGetIdentifierFrom->posStart;
     posEnd = varNameTok ?varNameTok->posEnd : toGetIdentifierFrom->posEnd;
     fName = varNameTok ? varNameTok->fName : toGetIdentifierFrom->fName;
-    fTxt = varNameTok? varNameTok->fTxt : toGetIdentifierFrom->fTxt;
+    fTxt = (varNameTok ? varNameTok->fTxt : toGetIdentifierFrom->fTxt);
     line = varNameTok ? varNameTok->line : toGetIdentifierFrom->line;
 }
 

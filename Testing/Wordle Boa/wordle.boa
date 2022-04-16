@@ -40,7 +40,7 @@ keys = alphabetMap.keys
 
 print(alphabetMap)
 
-n = 5 # number of top values to print
+n = 6 # number of top values to print
 
 for i = 0 to n - 1 do {
     max = 0

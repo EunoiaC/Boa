@@ -1,5 +1,6 @@
-f = getFile("Repl.boa")
-lines = copy(f.readLines())
-lines[3] = "abhhbkbj"
-f.writeLines(lines)
-f.close()
+class A(arg) do {
+    op init() do null
+    op repr() do "A: " + arg
+}
+
+print(A(1, 2))

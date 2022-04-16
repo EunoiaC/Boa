@@ -18,11 +18,11 @@ Class<int>::Class(Token<string> * classNameTok, string fName, string fTxt, vecto
     this->name = classNameTok->getValueObject()->getValue();
     this->constructorArgs = std::move(constructorArgs);
     this->defaultArgs = std::move(defaultArgs);
-    this->lines = std::move(lines);
+    this->lines = lines;
     this->superClass = superClass;
     parent = nullptr;
-    this->fName = std::move(fName);
-    this->fTxt = std::move(fTxt);
+    this->fName = fName;
+    this->fTxt = fTxt;
 }
 
 template<>
@@ -88,7 +88,7 @@ RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> ar
                 posEnd,
                 line,
                 fName,
-                callTxt,
+                fTxt,
                 to_string(args.size() - argNames.size()) + " too many args passed into " + name,
                 ctx
         ));
@@ -102,7 +102,7 @@ RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> ar
                 posEnd,
                 line,
                 fName,
-                callTxt,
+                fTxt,
                 to_string(normalArgCount - args.size()) + " too few args passed into " + name,
                 ctx
         ));

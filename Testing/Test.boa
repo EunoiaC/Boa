@@ -19,8 +19,24 @@ class Map() do {
         }
         return null
     }
+
+    op toString() do {
+        s = "{\n"
+        for pair : pairs do {
+            s += ("\t" + toStr(pair.k) + ": " + toStr(pair.v) + "\n")
+        }
+        s += "}"
+        return s
+    }
 }
 
 m = Map()
 m.put(1, "one")
+m.put(2, "two")
+m.put(3, "three")
+
 print(m.get(1))
+print(m.get(2))
+print(m.get(3))
+
+print(m.toString())

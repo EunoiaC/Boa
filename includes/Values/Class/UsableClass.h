@@ -34,6 +34,7 @@ public:
     BaseValue * compLessThanEquals(BaseValue * other) override;
     BaseValue * compGreaterThanEquals(BaseValue * other) override;
     BaseValue * compEquals(BaseValue * other) override;
+    BaseValue * compNotEquals(BaseValue * other) override;
 
     BaseValue * compSort(BaseValue * other) override;
 };

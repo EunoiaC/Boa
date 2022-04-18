@@ -1,42 +1,28 @@
-class Pair(k, v) do {
-    op init() do null
-}
-
-class Map() do {
+class Node(data) do {
     op init() do {
-        pairs = []
+        next = null
     }
 
-    op put(key, value) do {
-        pairs.append(Pair(key, value))
-    }
-
-    op get(key) do {
-        for pair : pairs do {
-            if pair.k == key do {
-                return pair.v
-            }
+    op add(n) do {
+        if (next == null) do {
+            next = n
+        } else do {
+            next.add(n)
         }
-        return null
     }
 
-    op toString() do {
-        s = "{\n"
-        for pair : pairs do {
-            s += ("\t" + toStr(pair.k) + ": " + toStr(pair.v) + "\n")
+    op _print() do {
+        if (next) do {
+            next._print()
         }
-        s += "}"
-        return s
+        print(data)
     }
 }
 
-m = Map()
-m.put(1, "one")
-m.put(2, "two")
-m.put(3, "three")
+n = Node(1)
+n.add(Node(2))
+n.add(Node(3))
+n.add(Node(4))
+n.add(Node(5))
 
-print(m.get(1))
-print(m.get(2))
-print(m.get(3))
-
-print(m.toString())
+n._print()

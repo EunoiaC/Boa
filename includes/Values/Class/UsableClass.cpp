@@ -194,6 +194,12 @@ BaseValue *UsableClass<int>::compEquals(BaseValue *other) {
 }
 
 template<>
+BaseValue *UsableClass<int>::compNotEquals(BaseValue *other) {
+    Number<double> *res = (Number<double> *) compEquals(other);
+    return new Number<double>(res->getValue() == 1 ? 0 : 1, "", "");
+}
+
+template<>
 BaseValue *UsableClass<int>::compGreaterThan(BaseValue *other) {
     ClassFunction<int> *gt = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("compGreaterThan"));
     if (gt) {

@@ -1,0 +1,25 @@
+class StringFormatter() do {
+    op init() do {
+        list = []
+        str = ""
+    }
+
+    op setString(s) do str = s
+
+    op setVariables(l) do list = l
+
+    # Look for each '{}' in the string and replace it with the corresponding
+    # value in the list.
+    op format() do {
+        res = str
+        for i = 0 to lenOf(list) - 1 do {
+            res = res.replace("{}", list[i])
+        }
+        return res
+    }
+}
+
+s = StringFormatter()
+s.setString("Hello {}{}{}")
+s.setVariables(["World", "!", "!"])
+print(s.format())

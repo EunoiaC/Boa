@@ -30,6 +30,10 @@ String<string>::String(string value, string f, string txt) : Value<string>(value
     symbolTable->set("indexOf", new StringFunction<int>(this, "indexOf", {"toFind"},
                                                      defaultArgs, "",
                                                      ""));
+
+    symbolTable->set("replace", new StringFunction<int>(this, "replace", {"toFind", "toReplace"},
+                                                        defaultArgs, "",
+                                                        ""));
 }
 
 template<>

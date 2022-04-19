@@ -25,6 +25,7 @@ public:
     RuntimeResult * execute_slice(Context * execCtx);
     RuntimeResult * execute_join(Context * execCtx);
     RuntimeResult * execute_indexOf(Context * execCtx);
+    RuntimeResult * execute_replace(Context * execCtx);
 
     string toString() override;
 };

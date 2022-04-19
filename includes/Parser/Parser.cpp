@@ -666,7 +666,14 @@ ParseResult *Parser::funcDef() {
     res->regAdvancement();
     advance();
 
+    if(currentToken->getType() == INFIX){
+        infixFuncs.push_back(varNameTok->getValueObject()->getValue());
+        res->regAdvancement();
+        advance();
+    }
+
     if (currentToken->getType() == DO) {
+        delete currentToken;
         res->regAdvancement();
         advance();
         checkNewLines();
@@ -1132,6 +1139,25 @@ ParseResult *Parser::call() {
 
     Node *_atom = res->reg(atom());
     if (res->error) return res;
+
+    if (currentToken->getType() == IDENTIFIER){
+        Token<string> *infixFunc = ((Token<string> *) currentToken);
+
+        if (find(infixFuncs.begin(), infixFuncs.end(), infixFunc->getValueObject()->getValue()) != infixFuncs.end()) {
+            res->regAdvancement();
+            advance();
+
+            Node * ato = res->reg(atom());
+            if (res->error) return res;
+
+            _atom = new VarAccessNode(nullptr, {infixFunc}, _atom);
+            return res->success(new CallNode(_atom, {ato}));
+        } else {
+            priorityError = new Error(infixFunc->posStart, infixFunc->posEnd, infixFunc->line, fName,
+                                      currLine, "InvalidSyntaxError", "Expected an infix function or operator");
+            return res->failure(priorityError);
+        }
+    }
 
     vector<Node *> indices;
 

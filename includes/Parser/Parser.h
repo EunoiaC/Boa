@@ -38,6 +38,7 @@ public:
     string fName;
     string currLine;
     vector<string> lines;
+    vector<string> infixFuncs;
     ifstream file;
     Parser(vector<BaseToken *> tokens, string fName, vector<string> lines);
     vector<BaseToken *> tokens;

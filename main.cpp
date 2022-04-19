@@ -16,8 +16,7 @@ using namespace std;
 SymbolTable *globalSymbolTable = new SymbolTable();
 
 int main(int argc, char **argv) {
-    string filePath = "Test.boa";
-    string pathRef = "/Users/preetithorat/Documents/GitHub/Boa/Testing/";
+    string filePath, pathRef;
     if (argc > 1) {
         filePath = argv[1];
         const size_t last_slash_idx = filePath.rfind('/');

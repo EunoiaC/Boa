@@ -1154,7 +1154,7 @@ ParseResult *Parser::call() {
             return res->success(new CallNode(_atom, {ato}));
         } else {
             priorityError = new Error(infixFunc->posStart, infixFunc->posEnd, infixFunc->line, fName,
-                                      currLine, "InvalidSyntaxError", "Expected an infix function or operator");
+                                      currLine, "InvalidSyntaxError", "Expected an infix function, operator, comparison, or '('");
             return res->failure(priorityError);
         }
     }

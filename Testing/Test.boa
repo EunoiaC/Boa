@@ -1,25 +1,19 @@
-class StringFormatter() do {
-    op init() do {
-        list = []
-        str = ""
+class Bread(type) do {
+    op init() do butter = null
+    op putButter(butter) do {
+        this.butter = butter
     }
-
-    op setString(s) do str = s
-
-    op setVariables(l) do list = l
-
-    # Look for each '{}' in the string and replace it with the corresponding
-    # value in the list.
-    op format() do {
-        res = str
-        for i = 0 to lenOf(list) - 1 do {
-            res = res.replace("{}", list[i])
-        }
-        return res
+    op has(btr) infix do {
+        return btr == butter
     }
 }
 
-s = StringFormatter()
-s.setString("Hello {}{}{}")
-s.setVariables(["World", "!", "!"])
-print(s.format())
+class Butter(type) do {
+    op init() do null
+}
+
+bread = Bread("Rye")
+butter = Butter("Cheddar")
+
+bread.putButter(butter)
+print(bread has butter)

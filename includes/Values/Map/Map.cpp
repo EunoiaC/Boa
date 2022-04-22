@@ -14,6 +14,9 @@ Map<map<BaseValue *, BaseValue *>>::Map(map<BaseValue *, BaseValue *> dict, stri
     symbolTable->set("sortByValue", new MapFunction<int>(this, "sortByValue", {},
                                                   defaultArgs, "",
                                                   ""));
+    symbolTable->set("getKeys", new MapFunction<int>(this, "getKeys", {},
+                                                         defaultArgs, "",
+                                                         ""));
 }
 
 template<>
@@ -134,7 +137,6 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::replace(BaseValue *old, BaseValue
         }
     }
     if (!found) {
-        ((List<vector<BaseValue *>> *) symbolTable->get("keys"))->elements.push_back(old);
         dict[old] = newVal;
     }
     return this;

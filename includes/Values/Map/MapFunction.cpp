@@ -3,6 +3,7 @@
 //
 
 #include "MapFunction.h"
+#include <ranges>
 
 template<typename A, typename B>
 pair<B,A> flip_pair(const pair<A,B> &p)
@@ -35,11 +36,26 @@ RuntimeResult *MapFunction<int>::execute_sortByValue(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *MapFunction<int>::execute_getKeys(Context *execCtx) {
+    auto * res = new RuntimeResult();
+
+    vector<BaseValue *> keys;
+
+    transform(
+            value->dict.begin(),
+            value->dict.end(),
+            std::back_inserter(keys),
+            [](const auto &pair){return pair.first;});
+    return res->success(new List<vector<BaseValue*>>(keys, "", ""));
+}
+
+template<>
 MapFunction<int>::MapFunction(Map<map<BaseValue *, BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     type = "FUNCTION"; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_sortByValue"] = &MapFunction<int>::execute_sortByValue;
+    funcMap["execute_getKeys"] = &MapFunction<int>::execute_getKeys;
     this->defaultArgs = defaultArgs;
 }
 

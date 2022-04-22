@@ -31,6 +31,7 @@ public:
     MapFunction<int> *copy() override;
 
     RuntimeResult * execute_sortByValue(Context * execCtx);
+    RuntimeResult * execute_getKeys(Context * execCtx);
 
     string toString() override;
 };

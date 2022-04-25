@@ -7,6 +7,7 @@
 
 #include "../../Values/Functions/BaseFunction.h"
 #include "../../Values/String/String.h"
+#include "../../Values/Map/Map.h"
 #include "curl/curl.h"
 #include "Socket/Socket.h"
 
@@ -21,6 +22,7 @@ public:
     RequestsFunction<int> *copy() override;
 
     RuntimeResult * execute_get(Context * execCtx);
+    RuntimeResult * execute_post(Context * execCtx);
     RuntimeResult * execute_makeSocket(Context * execCtx);
 
     string toString() override;

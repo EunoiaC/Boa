@@ -10,6 +10,7 @@ Requests<int>::Requests() : Value<int>(0, "REQUESTS", "", "") {
     map<string, BaseValue *> defaultArgs;
 
     symbolTable->set("get", new RequestsFunction<int>("get", {"url"}, defaultArgs, "", ""));
+    symbolTable->set("post", new RequestsFunction<int>("post", {"url", "data", "headers"}, defaultArgs, "", ""));
     symbolTable->set("makeSocket", new RequestsFunction<int>("makeSocket", {"port"}, defaultArgs, "", ""));
 }
 

@@ -6,7 +6,6 @@
 #include <curl/curl.h>
 #include <errno.h>
 
-
 size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data) {
     data->append((char*) ptr, size * nmemb);
     return size * nmemb;
@@ -82,6 +81,102 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
+    BaseValue *url = execCtx->symbolTable->get("url");
+    if (url->type != T_STRING) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                url->posStart,
+                url->posEnd,
+                url->line,
+                url->fName,
+                url->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
+    BaseValue *temp = execCtx->symbolTable->get("data");
+    if (temp->type != T_MAP) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a MAP",
+                execCtx
+        ));
+    }
+
+    BaseValue * temp2 = execCtx->symbolTable->get("headers");
+    if (temp2->type != T_MAP) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp2->posStart,
+                temp2->posEnd,
+                temp2->line,
+                temp2->fName,
+                temp2->fTxt,
+                "Expected a MAP",
+                execCtx
+        ));
+    }
+
+    string urlStr = ((String<string> *) url)->getValue();
+    auto *data = (Map<map<BaseValue *, BaseValue *>> *) temp;
+    auto *headers = (Map<map<BaseValue *, BaseValue *>> *) temp2;
+
+    CURL *curl;
+    CURLcode res;
+    string responseString;
+
+    curl = curl_easy_init();
+    if(curl) {
+        struct curl_slist *chunk = NULL;
+
+        for (auto &header : headers->getValue()) {
+            string header_string = header.first->toString() + ": " + header.second->toString();
+            chunk = curl_slist_append(chunk, header_string.c_str());
+        }
+
+        /* set our custom set of headers */
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+        // Set data
+        for(auto &data_pair : data->getValue()) {
+            string key = data_pair.first->toString();
+            string value = data_pair.second->toString();
+            string data_string = key + "=" + value;
+            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data_string.c_str());
+        }
+
+        curl_easy_setopt(curl, CURLOPT_URL, urlStr.c_str());
+        curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
+
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeFunction);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &responseString);
+
+        res = curl_easy_perform(curl);
+        /* Check for errors */
+        if(res != CURLE_OK){
+            return (new RuntimeResult())->failure(new RuntimeError(
+                    url->posStart,
+                    url->posEnd,
+                    url->line,
+                    url->fName,
+                    url->fTxt,
+                    "Failed to initialize curl in the requests module",
+                    execCtx
+            ));
+        }
+
+        /* always cleanup */
+        curl_easy_cleanup(curl);
+
+        /* free the custom headers */
+        curl_slist_free_all(chunk);
+    }
+    return (new RuntimeResult())->success(new String<string>(responseString, "", ""));
+}
+
+template<>
 RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
     BaseValue * temp = execCtx->symbolTable->get("port");
     if (temp->type != T_NUM){
@@ -106,6 +201,7 @@ RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, ma
     type = "FUNCTION";
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;
     funcMap["execute_makeSocket"] = &RequestsFunction<int>::execute_makeSocket;
+    funcMap["execute_post"] = &RequestsFunction<int>::execute_post;
 }
 
 template<>

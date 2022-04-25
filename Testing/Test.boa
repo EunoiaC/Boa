@@ -1,37 +1,14 @@
-# Mock database in boa
-class User(name, email, password) do {
-    op init() do null
-    op getName() do name
-    op getEmail() do email
-    op getPassword() do password
-    op toString() do "User(name=" + name + ", email=" + email + ", password=" + password + ")"
+import "requests"
+
+channelID = null
+authorization = null
+content = null
+
+payload = {
+    "content": content
+}
+header = {
+    "authorization": authorization
 }
 
-class Database(name) do {
-    op init() do {
-        users = {}
-    }
-    op getName() do name
-    op addUser(usr) do users[usr.getName()] = usr
-    op getUsers() do users
-}
-
-db = Database("Users")
-
-#Add users
-henry = User("Henry", "henryhen@gmail.com", "g7h8i9")
-db.addUser(henry)
-charles = User("Charles", "charlie@gmail.com", "h8i9j0")
-db.addUser(charles)
-bob = User("Bob", "bobby@gmail.com", "a1b2c3")
-db.addUser(bob)
-alice = User("Alice", "alice@gmail.com", "d4e5f6")
-db.addUser(alice)
-
-users = db.getUsers()
-userNames = ((db.getUsers()).getKeys()).sort(
-    op(a, b) do a < b
-)
-for name : userNames do {
-    print(users[name].toString())
-}
+res = requests.post("https://discord.com/api/v9/channels/" + channelID + "/messages", payload, header)

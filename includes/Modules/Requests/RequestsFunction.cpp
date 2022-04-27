@@ -95,17 +95,6 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
         ));
     }
     BaseValue *temp = execCtx->symbolTable->get("data");
-    if (temp->type != T_MAP) {
-        return (new RuntimeResult())->failure(new RuntimeError(
-                temp->posStart,
-                temp->posEnd,
-                temp->line,
-                temp->fName,
-                temp->fTxt,
-                "Expected a MAP",
-                execCtx
-        ));
-    }
 
     BaseValue * temp2 = execCtx->symbolTable->get("headers");
     if (temp2->type != T_MAP) {
@@ -120,9 +109,22 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
         ));
     }
 
+    BaseValue * temp3 = execCtx->symbolTable->get("type");
+    if (temp3->type != T_STRING) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp3->posStart,
+                temp3->posEnd,
+                temp3->line,
+                temp3->fName,
+                temp3->fTxt,
+                "Expected a STRING",
+                execCtx
+        ));
+    }
+
     string urlStr = ((String<string> *) url)->getValue();
-    auto *data = (Map<map<BaseValue *, BaseValue *>> *) temp;
     auto *headers = (Map<map<BaseValue *, BaseValue *>> *) temp2;
+    string type = ((String<string> *) temp3)->getValue();
 
     CURL *curl;
     CURLcode res;
@@ -137,15 +139,50 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
             chunk = curl_slist_append(chunk, header_string.c_str());
         }
 
+        // Set data
+        if(type == "json") {
+            if(temp->type != T_STRING) {
+                return (new RuntimeResult())->failure(new RuntimeError(
+                        temp->posStart,
+                        temp->posEnd,
+                        temp->line,
+                        temp->fName,
+                        temp->fTxt,
+                        "Expected a STRING",
+                        execCtx
+                ));
+            }
+            auto *data = (String<string> *) temp;
+            // Add content type
+            chunk = curl_slist_append(chunk, "Content-Type: application/json");
+
+            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data->getValue().c_str());
+            curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data->getValue().length());
+        } else {
+            if(temp->type != T_MAP) {
+                return (new RuntimeResult())->failure(new RuntimeError(
+                        temp->posStart,
+                        temp->posEnd,
+                        temp->line,
+                        temp->fName,
+                        temp->fTxt,
+                        "Expected a MAP",
+                        execCtx
+                ));
+            }
+            auto *data = (Map<map<BaseValue *, BaseValue *>> *) temp;
+            for(auto &data_pair : data->getValue()) {
+                string key = data_pair.first->toString();
+                string value = data_pair.second->toString();
+                string data_string = key + "=" + value;
+                curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data_string.c_str());
+                curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data_string.length());
+
+            }
+        }
+
         /* set our custom set of headers */
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
-        // Set data
-        for(auto &data_pair : data->getValue()) {
-            string key = data_pair.first->toString();
-            string value = data_pair.second->toString();
-            string data_string = key + "=" + value;
-            curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data_string.c_str());
-        }
 
         curl_easy_setopt(curl, CURLOPT_URL, urlStr.c_str());
         curl_easy_setopt(curl, CURLOPT_VERBOSE, 1L);
@@ -198,6 +235,7 @@ template<>
 RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
+    this->defaultArgs = defaultArgs;
     type = "FUNCTION";
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;
     funcMap["execute_makeSocket"] = &RequestsFunction<int>::execute_makeSocket;

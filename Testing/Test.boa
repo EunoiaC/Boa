@@ -2,17 +2,13 @@ import "requests"
 import "json"
 
 botToken = "ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.VEYbi6dPn_u1xx8B6hyvYlz-7So"
-url = "http://ptsv2.com/t/jjgg9-1651113237/post"
+requestUrl = "https://discord.com/api/v9/channels/821477742955724860/messages"
+
+payload = {"content": "Hello World loll"}
 
 headers = {
-    'Authorization': 'Bot ' + botToken
+    "authorization": "NTc2OTk0MDk5MjI0MjQ4MzYw.Yl5Hfw.bQXITPxY5OAJlUe5b7hMNQbmvf0"
 }
 
-data = {
-    'content': 'Hello World!',
-    'username': 'testbot',
-    'avatar_url': 'https://images-ext-1.discordapp.net/external/JpyzxW2wMRG2874gSTdNTpC_q9AHl8x8V4SMmtRtlVk/https/cdn.discordapp.com/avatars/413629115578207744/c8c9c5f8b8d8a8f9c8f9f8f8c8c8c8c8.png?width=80&height=80'
-}
-
-res = requests.post(url, data, {})
-print(res)
+r = requests.post(requestUrl, payload, headers)
+print(r)

@@ -5,6 +5,7 @@
 #include "RequestsFunction.h"
 #include <curl/curl.h>
 #include <errno.h>
+#include <WebKit/W
 
 size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string *data) {
     data->append((char *) ptr, size * nmemb);

@@ -9,7 +9,9 @@ template<>
 Requests<int>::Requests() : Value<int>(0, "REQUESTS", "", "") {
     map<string, BaseValue *> defaultArgs;
 
-    symbolTable->set("get", new RequestsFunction<int>("get", {"url"}, defaultArgs, "", ""));
+    defaultArgs["headers"] = new Map<map<BaseValue *, BaseValue *>>({}, "", "");
+    symbolTable->set("get", new RequestsFunction<int>("get", {"url", "headers"}, defaultArgs, "", ""));
+    defaultArgs.clear();
 
     defaultArgs["type"] = new Value<string>("", T_STRING, "", "");
     symbolTable->set("post", new RequestsFunction<int>("post", {"url", "data", "headers", "type"}, defaultArgs, "", ""));

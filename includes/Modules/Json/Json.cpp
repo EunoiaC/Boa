@@ -9,7 +9,7 @@ template<>
 Json<int>::Json() : Value<int>(0, "JSON", "", "") {
     map<string, BaseValue *> defaultArgs;
 
-    symbolTable->set("toMap", new JsonFunction<int>("toMap", {"string"}, defaultArgs, "", ""));
+    symbolTable->set("loads", new JsonFunction<int>("loads", {"string"}, defaultArgs, "", ""));
 }
 
 template<>

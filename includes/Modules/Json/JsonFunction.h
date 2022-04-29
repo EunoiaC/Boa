@@ -19,7 +19,7 @@ public:
     RuntimeResult * execute(vector<BaseValue*> args) override;
     JsonFunction<int> *copy() override;
 
-    RuntimeResult * execute_toMap(Context * execCtx);
+    RuntimeResult * execute_loads(Context * execCtx);
 
     string toString() override;
 };

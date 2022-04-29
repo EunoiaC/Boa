@@ -6,15 +6,15 @@
 #include <curl/curl.h>
 #include <errno.h>
 
-size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string* data) {
-    data->append((char*) ptr, size * nmemb);
+size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string *data) {
+    data->append((char *) ptr, size * nmemb);
     return size * nmemb;
 }
 
 template<>
 RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
-    BaseValue * url = execCtx->symbolTable->get("url");
-    if (url->type != T_STRING){
+    BaseValue *url = execCtx->symbolTable->get("url");
+    if (url->type != T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 url->posStart,
                 url->posEnd,
@@ -22,6 +22,19 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
                 url->fName,
                 url->fTxt,
                 "Expected a STRING",
+                execCtx
+        ));
+    }
+
+    BaseValue *temp2 = execCtx->symbolTable->get("headers");
+    if (temp2->type != T_MAP) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp2->posStart,
+                temp2->posEnd,
+                temp2->line,
+                temp2->fName,
+                temp2->fTxt,
+                "Expected a MAP",
                 execCtx
         ));
     }
@@ -36,13 +49,23 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
         curl_easy_setopt(curl, CURLOPT_MAXREDIRS, 50L);
         curl_easy_setopt(curl, CURLOPT_TCP_KEEPALIVE, 1L);
 
+        auto *headers = (Map<map<BaseValue *, BaseValue *>> *) temp2;
+        struct curl_slist *chunk = NULL;
+
+        for (auto &header: headers->getValue()) {
+            string header_string = header.first->toString() + ": " + header.second->toString();
+            chunk = curl_slist_append(chunk, header_string.c_str());
+        }
+
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
+
         std::string response_string;
         std::string header_string;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writeFunction);
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response_string);
         curl_easy_setopt(curl, CURLOPT_HEADERDATA, &header_string);
 
-        char* _url;
+        char *_url;
         long response_code;
         double elapsed;
         curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &response_code);
@@ -77,7 +100,7 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
                     "Failed to initialize curl in the requests module",
                     execCtx
             )
-            );
+    );
 }
 
 template<>
@@ -96,7 +119,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     }
     BaseValue *temp = execCtx->symbolTable->get("data");
 
-    BaseValue * temp2 = execCtx->symbolTable->get("headers");
+    BaseValue *temp2 = execCtx->symbolTable->get("headers");
     if (temp2->type != T_MAP) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp2->posStart,
@@ -109,7 +132,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
         ));
     }
 
-    BaseValue * temp3 = execCtx->symbolTable->get("type");
+    BaseValue *temp3 = execCtx->symbolTable->get("type");
     if (temp3->type != T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp3->posStart,
@@ -131,17 +154,17 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     string responseString;
 
     curl = curl_easy_init();
-    if(curl) {
+    if (curl) {
         struct curl_slist *chunk = NULL;
 
-        for (auto &header : headers->getValue()) {
+        for (auto &header: headers->getValue()) {
             string header_string = header.first->toString() + ": " + header.second->toString();
             chunk = curl_slist_append(chunk, header_string.c_str());
         }
 
         // Set data
-        if(type == "json") {
-            if(temp->type != T_STRING) {
+        if (type == "json") {
+            if (temp->type != T_STRING) {
                 return (new RuntimeResult())->failure(new RuntimeError(
                         temp->posStart,
                         temp->posEnd,
@@ -159,7 +182,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data->getValue().c_str());
             curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data->getValue().size());
         } else {
-            if(temp->type != T_MAP) {
+            if (temp->type != T_MAP) {
                 return (new RuntimeResult())->failure(new RuntimeError(
                         temp->posStart,
                         temp->posEnd,
@@ -171,7 +194,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
                 ));
             }
             auto *data = (Map<map<BaseValue *, BaseValue *>> *) temp;
-            for(auto &data_pair : data->getValue()) {
+            for (auto &data_pair: data->getValue()) {
                 string key = data_pair.first->toString();
                 string value = data_pair.second->toString();
                 string data_string = key + "=" + value;
@@ -191,7 +214,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
 
         res = curl_easy_perform(curl);
         /* Check for errors */
-        if(res != CURLE_OK){
+        if (res != CURLE_OK) {
             return (new RuntimeResult())->failure(new RuntimeError(
                     url->posStart,
                     url->posEnd,
@@ -214,8 +237,8 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
 
 template<>
 RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
-    BaseValue * temp = execCtx->symbolTable->get("port");
-    if (temp->type != T_NUM){
+    BaseValue *temp = execCtx->symbolTable->get("port");
+    if (temp->type != T_NUM) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -232,8 +255,9 @@ RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
 
 template<>
 RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                                    string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
-                                                                                   fTxt, CLASS_FUNC) {
+                                        string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
+                                                                                       fName,
+                                                                                       fTxt, CLASS_FUNC) {
     this->defaultArgs = defaultArgs;
     type = "FUNCTION";
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;

@@ -2,13 +2,16 @@ import "requests"
 import "json"
 
 botToken = "ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.VEYbi6dPn_u1xx8B6hyvYlz-7So"
-requestUrl = "https://discord.com/api/v9/channels/821477742955724860/messages"
+requestUrl = "https://discord.com/api/v9/channels/821477742955724860/messages?limit=1"
 
-payload = {"content": "Hello World loll"}
+msg = "Hello World"
+payload = {"content": msg}
 
 headers = {
     "authorization": "NTc2OTk0MDk5MjI0MjQ4MzYw.Yl5Hfw.bQXITPxY5OAJlUe5b7hMNQbmvf0"
 }
 
-r = requests.post(requestUrl, payload, headers)
-print(r)
+r = requests.get(requestUrl, headers)
+data = json.loads(r)
+
+print(data)

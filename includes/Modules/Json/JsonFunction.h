@@ -20,6 +20,7 @@ public:
     JsonFunction<int> *copy() override;
 
     RuntimeResult * execute_loads(Context * execCtx);
+    RuntimeResult * execute_dumps(Context * execCtx);
 
     string toString() override;
 };

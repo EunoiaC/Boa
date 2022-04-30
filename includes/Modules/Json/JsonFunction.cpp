@@ -83,12 +83,51 @@ template<> RuntimeResult *JsonFunction<int>::execute_loads(Context *execCtx) {
     return res->success(new Map<map<BaseValue *, BaseValue *>>(m, "", ""));
 }
 
+template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
+    auto * res = new RuntimeResult();
+
+    BaseValue * temp = execCtx->symbolTable->get("value");
+    if (temp->type != T_MAP && temp->type != T_LIST){
+        res->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a MAP or LIST",
+                execCtx
+        ));
+    }
+
+    nlohmann::json jsonObj;
+    if (temp->type == T_MAP){
+        auto * m = (Map<map<BaseValue *, BaseValue *>> *) temp;
+        for (auto &kv : m->val) {
+            if (kv.second->type == T_MAP){
+                auto * c = new Context("temp");
+                c->symbolTable = new SymbolTable();
+                c->symbolTable->set("value", kv.second);
+
+                BaseValue * b = res->reg(execute_dumps(c));
+                if (res->shouldReturn()) return res;
+
+                jsonObj[kv.first->toString()] = nlohmann::json::parse(b->toString());
+            } else {
+                jsonObj[kv.first->toString()] = kv.second->toString();
+            }
+        }
+    }
+
+    return res->success(new String<string>(jsonObj.dump(), "", ""));
+}
+
 template<>
 JsonFunction<int>::JsonFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
     type = "FUNCTION";
     funcMap["execute_loads"] = &JsonFunction<int>::execute_loads;
+    funcMap["execute_dumps"] = &JsonFunction<int>::execute_dumps;
 }
 
 template<>

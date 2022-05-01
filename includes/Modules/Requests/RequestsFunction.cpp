@@ -175,8 +175,6 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
                 ));
             }
             auto *data = (String<string> *) temp;
-            // Add content type
-            chunk = curl_slist_append(chunk, "Content-Type: application/json");
 
             curl_easy_setopt(curl, CURLOPT_POSTFIELDS, data->getValue().c_str());
             curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, data->getValue().size());

@@ -1,14 +1,20 @@
 import "requests"
 import "json"
 
-payload = {
-    "username": "admin",
-    "password": "admin123",
-    "remember": "true",
-    "object": {
-        "name": "test",
-        "description": "test"
-    }
+botToken = "ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.VEYbi6dPn_u1xx8B6hyvYlz-7So"
+requestUrl = "https://discord.com/api/v9/channels/821477742955724860/messages"
+getUrl = requestUrl + "?limit=1"
+
+msg = "Hello World bro"
+
+headers = {
+    "authorization": "NTc2OTk0MDk5MjI0MjQ4MzYw.Yl5Hfw.bQXITPxY5OAJlUe5b7hMNQbmvf0",
+    "content-type": "application/x-www-form-urlencoded"
 }
 
-print(json.dumps(payload))
+payload = {
+    "content": msg
+}
+
+r = requests.post(requestUrl, json.dumps(payload), headers, "json")
+print(r)

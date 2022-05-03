@@ -1,6 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
 project(Boa)
-
 set(CMAKE_CXX_STANDARD 14)
 set(
         SOURCE_FILES
@@ -41,6 +40,9 @@ set(
         includes/Modules/Requests/Websocket/Websocket.cpp includes/Modules/Requests/Websocket/Websocket.h includes/Modules/Requests/Websocket/WebsocketFunction.cpp includes/Modules/Requests/Websocket/WebsocketFunction.h
 )
 
+set(OPENSSL_ROOT_DIR /usr/local/opt/openssl/lib)
+find_package(OpenSSL REQUIRED)
+
 # Add Boost
 set(Boost_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}/boost)
 find_package(Boost REQUIRED)
@@ -53,4 +55,4 @@ add_executable(
         ${SOURCE_FILES}
 )
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES})
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL)

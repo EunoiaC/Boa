@@ -9,8 +9,8 @@
 using namespace std;
 
 /**
- * Run the program:
- gcc -std=c++11 main.cpp includes/Token/BaseToken.cpp includes/Token/BaseToken.h includes/Values/BaseValue.cpp includes/Values/BaseValue.h includes/Values/String.cpp includes/Values/String.h includes/Values/Function.cpp includes/Values/Function.h includes/Nodes/StringNode.cpp includes/Nodes/StringNode.h includes/Nodes/ListNode.cpp includes/Nodes/ListNode.h includes/Values/List.cpp includes/Values/List.h
+ * Build the program:
+ * /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug --target Boa -- -j -v  6
 **/
 
 SymbolTable *globalSymbolTable = new SymbolTable();

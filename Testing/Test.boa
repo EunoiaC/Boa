@@ -2,3 +2,4 @@ import "requests"
 import "json"
 
 r = requests.makeWebsocket("ws://socketsbay.com/wss/v2/2/demo")
+print(r)

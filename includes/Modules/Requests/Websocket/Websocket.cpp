@@ -10,7 +10,9 @@ Websocket<int>::Websocket(String<string> *url) : Value<int>(0, "WEBSOCKET", "", 
     map<string, BaseValue *> defaultArgs;
     this->url = url;
 
-    ws = WebSocket::from_url(url->getValue());
+    boost::asio::io_context io_context;
+    boost::asio::ssl::context ssl_context(boost::asio::ssl::context::tls);
+    ssl_socket sock(io_context, ssl_context);
 
     symbolTable->set("send", new WebsocketFunction<int>(this, "send", {"message"}, defaultArgs, "", ""));
     symbolTable->set("isClosed", new WebsocketFunction<int>(this, "isClosed", {}, defaultArgs, "", ""));

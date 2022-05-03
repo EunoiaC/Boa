@@ -269,6 +269,7 @@ SocketFunction<int>::SocketFunction(Socket<int> *sockObj, string name, vector<st
                                 string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                fTxt, CLASS_FUNC) {
     this->sockObj = sockObj;
+    this->defaultArgs = defaultArgs;
     type = "FUNCTION";
     funcMap["execute_setBufferSize"] = &SocketFunction<int>::execute_setBufferSize;
     funcMap["execute_bind"] = &SocketFunction<int>::execute_bind;

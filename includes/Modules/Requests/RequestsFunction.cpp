@@ -251,6 +251,24 @@ RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *RequestsFunction<int>::execute_makeWebsocket(Context *execCtx) {
+    BaseValue *temp = execCtx->symbolTable->get("url");
+    if (temp->type != T_STRING) {
+        return (new RuntimeResult())->failure(new RuntimeError(
+                temp->posStart,
+                temp->posEnd,
+                temp->line,
+                temp->fName,
+                temp->fTxt,
+                "Expected a NUMBER",
+                execCtx
+        ));
+    }
+
+    return (new RuntimeResult())->success(new Websocket<int>(dynamic_cast<String<string> *>(temp)));
+}
+
+template<>
 RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                         string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
                                                                                        fName,
@@ -259,6 +277,7 @@ RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, ma
     type = "FUNCTION";
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;
     funcMap["execute_makeSocket"] = &RequestsFunction<int>::execute_makeSocket;
+    funcMap["execute_makeWebsocket"] = &RequestsFunction<int>::execute_makeWebsocket;
     funcMap["execute_post"] = &RequestsFunction<int>::execute_post;
 }
 

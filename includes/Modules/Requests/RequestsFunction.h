@@ -10,6 +10,7 @@
 #include "../../Values/Map/Map.h"
 #include "curl/curl.h"
 #include "Socket/Socket.h"
+#include "Websocket/Websocket.h"
 
 template<typename T> class RequestsFunction : public BaseFunction<T> {
 public:
@@ -24,6 +25,7 @@ public:
     RuntimeResult * execute_get(Context * execCtx);
     RuntimeResult * execute_post(Context * execCtx);
     RuntimeResult * execute_makeSocket(Context * execCtx);
+    RuntimeResult * execute_makeWebsocket(Context * execCtx);
 
     string toString() override;
 };

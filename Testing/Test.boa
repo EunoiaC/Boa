@@ -1,14 +1,4 @@
 import "requests"
 import "json"
 
-complexJsonObject = {
-    "name": "John",
-    "age": 30,
-    "cars": [
-        "Ford",
-        "BMW",
-        "Fiat"
-    ]
-}
-
-print(json.dumps(complexJsonObject))
+r = requests.makeWebsocket("ws://socketsbay.com/wss/v2/2/demo")

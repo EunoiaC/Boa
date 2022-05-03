@@ -21,16 +21,6 @@ RuntimeResult *WebsocketFunction<int>::execute_send(Context *execCtx) {
     }
 
     auto * msg = (String<string> *) temp;
-    websockObj->ws->send(msg->getValue());
-    return res->success(new Number<double>(0, "", ""));
-}
-
-template<>
-RuntimeResult *WebsocketFunction<int>::execute_isClosed(Context *execCtx) {
-    auto *res = new RuntimeResult();
-    if (websockObj->ws->getReadyState() == WebSocket::CLOSED) {
-        return res->success(new Number<double>(1, "", ""));
-    }
     return res->success(new Number<double>(0, "", ""));
 }
 
@@ -44,7 +34,6 @@ WebsocketFunction<int>::WebsocketFunction(Websocket<int> *websockObj, string nam
     this->defaultArgs = defaultArgs;
     type = "FUNCTION";
     funcMap["execute_send"] = &WebsocketFunction<int>::execute_send;
-    funcMap["execute_isClosed"] = &WebsocketFunction<int>::execute_isClosed;
 }
 
 template<>

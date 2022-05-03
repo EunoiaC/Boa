@@ -15,7 +15,6 @@ Websocket<int>::Websocket(String<string> *url) : Value<int>(0, "WEBSOCKET", "", 
     ssl_socket sock(io_context, ssl_context);
 
     symbolTable->set("send", new WebsocketFunction<int>(this, "send", {"message"}, defaultArgs, "", ""));
-    symbolTable->set("isClosed", new WebsocketFunction<int>(this, "isClosed", {}, defaultArgs, "", ""));
 }
 
 template<>

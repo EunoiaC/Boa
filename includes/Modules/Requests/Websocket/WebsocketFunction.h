@@ -24,7 +24,6 @@ public:
     WebsocketFunction<int> *copy() override;
 
     RuntimeResult * execute_send(Context * execCtx);
-    RuntimeResult * execute_isClosed(Context * execCtx);
 
     string toString() override;
 };

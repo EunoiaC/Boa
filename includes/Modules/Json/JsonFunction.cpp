@@ -103,7 +103,7 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
     if (temp->type == T_MAP){
         auto * m = (Map<map<BaseValue *, BaseValue *>> *) temp;
         for (auto &kv : m->val) {
-            if (kv.second->type == T_MAP){
+            if (kv.second->type == T_MAP || kv.second->type == T_LIST){
                 auto * c = new Context("temp");
                 c->symbolTable = new SymbolTable();
                 c->symbolTable->set("value", kv.second);
@@ -114,6 +114,22 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                 jsonObj[kv.first->toString()] = nlohmann::json::parse(b->toString());
             } else {
                 jsonObj[kv.first->toString()] = kv.second->toString();
+            }
+        }
+    } else if (temp->type == T_LIST){
+        auto * l = (List<vector<BaseValue *>> *) temp;
+        for (auto &v : l->val) {
+            if (v->type == T_MAP || v->type == T_LIST){
+                auto * c = new Context("temp");
+                c->symbolTable = new SymbolTable();
+                c->symbolTable->set("value", v);
+
+                BaseValue * b = res->reg(execute_dumps(c));
+                if (res->shouldReturn()) return res;
+
+                jsonObj.push_back(nlohmann::json::parse(b->toString()));
+            } else {
+                jsonObj.push_back(v->toString());
             }
         }
     }

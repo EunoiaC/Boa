@@ -12,10 +12,10 @@ MapNode::MapNode(map<Node *, Node *> dict, int posStart, int posEnd, int line) :
 }
 
 MapNode::~MapNode() {
-    for (auto & it : dict) {
-        delete it.first;
-        delete it.second;
-    }
+//    for (auto & it : dict) {
+//        delete it.first;
+//        delete it.second;
+//    }
 }
 
 string MapNode::toString() {

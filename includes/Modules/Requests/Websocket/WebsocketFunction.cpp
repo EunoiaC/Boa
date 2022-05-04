@@ -21,7 +21,12 @@ RuntimeResult *WebsocketFunction<int>::execute_send(Context *execCtx) {
     }
 
     auto * msg = (String<string> *) temp;
-    return res->success(new Number<double>(0, "", ""));
+    websocket_outgoing_message out_msg;
+    out_msg.set_utf8_message(msg->getValue().c_str());
+
+    websockObj->client.send(out_msg).wait();
+
+    return res->success(new String<string>("", "", ""));
 }
 
 template<>

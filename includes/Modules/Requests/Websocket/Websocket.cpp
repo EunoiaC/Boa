@@ -10,9 +10,7 @@ Websocket<int>::Websocket(String<string> *url) : Value<int>(0, "WEBSOCKET", "", 
     map<string, BaseValue *> defaultArgs;
     this->url = url;
 
-    boost::asio::io_context io_context;
-    boost::asio::ssl::context ssl_context(boost::asio::ssl::context::tls);
-    ssl_socket sock(io_context, ssl_context);
+    client.connect(url->getValue()).wait();
 
     symbolTable->set("send", new WebsocketFunction<int>(this, "send", {"message"}, defaultArgs, "", ""));
 }

@@ -8,7 +8,7 @@
 #include "../../Values/Functions/BaseFunction.h"
 #include "../../Values/String/String.h"
 #include "../../Values/Map/Map.h"
-#include "curl/curl.h"
+#include <curl/curl.h>
 #include "Socket/Socket.h"
 #include "Websocket/Websocket.h"
 

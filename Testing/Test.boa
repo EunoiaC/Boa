@@ -1,5 +1,6 @@
 import "requests"
 import "json"
 
-r = requests.makeWebsocket("ws://socketsbay.com/wss/v2/2/demo")
+r = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
+r.send("uwu")
 print(r)

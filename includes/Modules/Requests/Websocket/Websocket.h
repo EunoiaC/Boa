@@ -6,13 +6,13 @@
 #define BOA_WEBSOCKET_H
 #include "../../../Values/String/String.h"
 
-#include <boost/asio.hpp>
-#include <boost/asio/ssl.hpp>
+#include <cpprest/ws_client.h>
 
-using ssl_socket = boost::asio::ssl::stream<boost::asio::ip::tcp::socket>;
-
+using namespace web;
+using namespace web::websockets::client;
 template <typename T> class Websocket : public Value<T> {
 public:
+    websocket_client client;
     String<string> * url;
     Websocket<int>(String<string> * url);
     BaseValue * copy() override;

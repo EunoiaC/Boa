@@ -747,6 +747,17 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
             }
         }
 
+        if (result == nullptr) {
+            return res->failure(new RuntimeError(
+                    idx->posStart,
+                    idx->posEnd,
+                    idx->line,
+                    idx->fName,
+                    idx->fTxt,
+                    "Cannot index into null",
+                    c
+            ));
+        }
         result = result->get(idx);
 
         if (left->type == T_STRING) {

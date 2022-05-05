@@ -13,8 +13,14 @@ using namespace web::websockets::client;
 template <typename T> class Websocket : public Value<T> {
 public:
     websocket_client client;
+    websocket_callback_client callbackClient;
+    enum type {
+            CALLBACK,
+            NORMAL
+    };
+    type sockType;
     String<string> * url;
-    Websocket<int>(String<string> * url);
+    Websocket<int>(String<string> * url, type t);
     BaseValue * copy() override;
     string toString() override;
 };

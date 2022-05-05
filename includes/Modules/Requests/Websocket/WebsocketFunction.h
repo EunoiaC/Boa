@@ -9,6 +9,7 @@
 #include "../../../Values/Functions/BaseFunction.h"
 #include <fstream>
 #include "../../../Values/List/List.h"
+#include "../../../Values/Functions/Function.h"
 #include "Websocket.h"
 
 template<typename T> class WebsocketFunction : public BaseFunction<T> {
@@ -23,6 +24,9 @@ public:
     WebsocketFunction<int> *copy() override;
 
     RuntimeResult * execute_send(Context * execCtx);
+    RuntimeResult * execute_receive(Context * execCtx);
+    RuntimeResult * execute_setMessageHandler(Context * execCtx);
+    RuntimeResult * execute_close(Context * execCtx);
 
     string toString() override;
 };

@@ -265,22 +265,7 @@ RuntimeResult *RequestsFunction<int>::execute_makeWebsocket(Context *execCtx) {
         ));
     }
 
-    BaseValue *temp2 = execCtx->symbolTable->get("type");
-    if (temp2->type != T_STRING) {
-        return (new RuntimeResult())->failure(new RuntimeError(
-                temp2->posStart,
-                temp2->posEnd,
-                temp2->line,
-                temp2->fName,
-                temp2->fTxt,
-                "Expected a STRING",
-                execCtx
-        ));
-    }
-
-    string type = dynamic_cast<String<string> *>(temp2)->getValue();
-
-    Websocket<int> * sock = new Websocket<int>(dynamic_cast<String<string> *>(temp), type == "callback" ? Websocket<int>::type::CALLBACK : Websocket<int>::type::NORMAL);
+    Websocket<int> * sock = new Websocket<int>(dynamic_cast<String<string> *>(temp));
 
     return (new RuntimeResult())->success(sock);
 }

@@ -7,7 +7,6 @@ op sendJsonReq(ws, req) do {
 }
 
 ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
-heartbeatInterval = (json.loads(ws.receive()))["d"]["heartbeat_interval"]
 print("Heartbeat interval: " + heartbeatInterval)
 
 token = "NTc2OTk0MDk5MjI0MjQ4MzYw.YlTY-w.FmHG6fN3nhkd_Q43buK0b3hn5AU"
@@ -25,12 +24,6 @@ payload = {
     }
 }
 sendJsonReq(ws, payload)
-
-for i = 0 to 10 do {
-    event = ws.receive()
-    print(event)
-    time.sleepSec(1)
-}
 
 ws.close()
 

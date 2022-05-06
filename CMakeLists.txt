@@ -52,9 +52,14 @@ find_package(Boost REQUIRED)
 # Curl stuff
 set(CURL_LIBRARY "-lcurl")
 find_package(CURL REQUIRED)
+
+# ixwebsocket in /usr/local/include/ixwebsocket
+#set(ixwebsocket_INCLUDE_DIRS /usr/local/include/ixwebsocket)
+#find_package(ixwebsocket REQUIRED)
+
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}
 )
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL cpprestsdk::cpprest)
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES})

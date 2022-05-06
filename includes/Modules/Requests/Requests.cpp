@@ -18,10 +18,7 @@ Requests<int>::Requests() : Value<int>(0, "REQUESTS", "", "") {
     defaultArgs.clear();
 
     symbolTable->set("makeSocket", new RequestsFunction<int>("makeSocket", {"port"}, defaultArgs, "", ""));
-
-    defaultArgs["type"] = new String<string>("", "", "");
-    symbolTable->set("makeWebsocket", new RequestsFunction<int>("makeWebsocket", {"url", "type"}, defaultArgs, "", ""));
-    defaultArgs.clear();
+    symbolTable->set("makeWebsocket", new RequestsFunction<int>("makeWebsocket", {"url"}, defaultArgs, "", ""));
 }
 
 template<>

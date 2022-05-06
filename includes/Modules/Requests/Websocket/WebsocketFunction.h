@@ -24,7 +24,6 @@ public:
     WebsocketFunction<int> *copy() override;
 
     RuntimeResult * execute_send(Context * execCtx);
-    RuntimeResult * execute_receive(Context * execCtx);
     RuntimeResult * execute_setMessageHandler(Context * execCtx);
     RuntimeResult * execute_close(Context * execCtx);
 

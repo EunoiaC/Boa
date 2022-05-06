@@ -23,59 +23,14 @@ RuntimeResult *WebsocketFunction<int>::execute_send(Context *execCtx) {
     }
 
     auto * msg = (String<string> *) temp;
-    websocket_outgoing_message out_msg;
-    out_msg.set_utf8_message(msg->getValue().c_str());
-
-    if (websockObj->sockType == Websocket<int>::type::NORMAL) {
-        websockObj->client.send(out_msg).wait();
-    } else {
-        websockObj->callbackClient.send(out_msg).wait();
-    }
+    websockObj->webSocket.send(msg->getValue());
 
     return res->success(new Number<double>(0, "", ""));
 }
 
 template<>
-RuntimeResult *WebsocketFunction<int>::execute_receive(Context *execCtx) {
-    auto *res = new RuntimeResult();
-
-    if (websockObj->sockType != Websocket<int>::type::NORMAL){
-        return res->failure(new RuntimeError(
-                0,
-                0,
-                0,
-                "",
-                "",
-                "Websocket type cannot receive",
-                execCtx
-        ));
-    }
-
-    string bod;
-    websockObj->client.receive().then([](websocket_incoming_message in_msg) {
-        return in_msg.extract_string();
-    }).then([&](string body) {
-        bod = std::move(body);
-    }).wait();
-
-    return res->success(new String<string>(bod, "", ""));
-}
-
-template<>
 RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCtx) {
     auto *res = new RuntimeResult();
-
-    if (websockObj->sockType != Websocket<int>::type::CALLBACK){
-        return res->failure(new RuntimeError(
-                0,
-                0,
-                0,
-                "",
-                "",
-                "Expected a CALLBACK websocket",
-                execCtx
-        ));
-    }
 
     BaseValue *temp = execCtx->symbolTable->get("messageHandler");
     if (temp->type != T_FUNC) {
@@ -103,11 +58,6 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
         ));
     }
 
-    websockObj->callbackClient.set_message_handler([&](websocket_incoming_message in_msg) {
-        res->reg(func->execute({new String<string>(in_msg.extract_string().get(), "", "")}));
-        if (res->shouldReturn()) return res;
-    });
-
     return res->success(new Number<double>(0, "", ""));
 }
 
@@ -115,11 +65,7 @@ template<>
 RuntimeResult *WebsocketFunction<int>::execute_close(Context *execCtx) {
     auto *res = new RuntimeResult();
 
-    if (websockObj->sockType == Websocket<int>::type::NORMAL){
-        websockObj->client.close();
-    } else {
-        websockObj->callbackClient.close();
-    }
+    websockObj->webSocket.close();
 
     return res->success(new Number<double>(0, "", ""));
 }
@@ -135,7 +81,6 @@ WebsocketFunction<int>::WebsocketFunction(Websocket<int> *websockObj, string nam
     type = "FUNCTION";
     funcMap["execute_close"] = &WebsocketFunction<int>::execute_close;
     funcMap["execute_send"] = &WebsocketFunction<int>::execute_send;
-    funcMap["execute_receive"] = &WebsocketFunction<int>::execute_receive;
     funcMap["execute_setMessageHandler"] = &WebsocketFunction<int>::execute_setMessageHandler;
 }
 

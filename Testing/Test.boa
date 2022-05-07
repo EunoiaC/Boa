@@ -6,9 +6,8 @@ op sendJsonReq(ws, req) do {
     ws.send(json.dumps(req))
 }
 
-globalMsg = ""
 op msgHandler(msg) do {
-    globalMsg = msg
+    print(msg)
 }
 
 ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
@@ -32,8 +31,5 @@ payload = {
 ws.start()
 
 while true do {
-    if globalMsg != "" do {
-        print(globalMsg)
-        globalMsg = ""
-    }
+    print("Sending payload")
 }

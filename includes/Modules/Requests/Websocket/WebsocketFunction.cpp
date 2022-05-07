@@ -58,10 +58,11 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
         ));
     }
 
-    string body;
     websockObj->webSocket.setOnMessageCallback([&](const ix::WebSocketMessagePtr &msg) {
        if (msg->type == ix::WebSocketMessageType::Message) {
-           body = msg->str;
+           cout << "Message received: " << msg->str << endl;
+           res->reg(func->execute({new String<string>(msg->str, "", "")}));
+           if (res->shouldReturn()) return res;
        } else if (msg->type == ix::WebSocketMessageType::Open) {
            std::cout << "Connection established" << std::endl;
            std::cout << "> " << std::flush;
@@ -71,9 +72,6 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
            std::cout << "> " << std::flush;
        }
     });
-
-    res->reg(func->execute({new String<string>(body, "", "")}));
-    if (res->shouldReturn()) return res;
 
     return res->success(new Number<double>(0, "", ""));
 }

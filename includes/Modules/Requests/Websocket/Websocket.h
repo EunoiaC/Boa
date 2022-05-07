@@ -5,10 +5,12 @@
 #ifndef BOA_WEBSOCKET_H
 #define BOA_WEBSOCKET_H
 #include "../../../Values/String/String.h"
+#include "../../../Values/Functions/Function.h"
 #include <ixwebsocket/IXWebSocket.h>
 
 template <typename T> class Websocket : public Value<T> {
 public:
+    Function<int> * msgCallbackFunc;
     ix::WebSocket webSocket;
     String<string> * url;
     Websocket<int>(String<string> * url);

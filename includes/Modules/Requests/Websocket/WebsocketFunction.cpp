@@ -58,18 +58,23 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
         ));
     }
 
+    websockObj->msgCallbackFunc = func;
+
     websockObj->webSocket.setOnMessageCallback([&](const ix::WebSocketMessagePtr &msg) {
        if (msg->type == ix::WebSocketMessageType::Message) {
-           cout << "Message received: " << msg->str << endl;
-           res->reg(func->execute({new String<string>(msg->str, "", "")}));
-           if (res->shouldReturn()) return res;
+           RuntimeResult * r = websockObj->msgCallbackFunc->execute({new String<string>(msg->str, "", "")});
+           if (r->shouldReturn()) return r;
        } else if (msg->type == ix::WebSocketMessageType::Open) {
-           std::cout << "Connection established" << std::endl;
-           std::cout << "> " << std::flush;
        } else if (msg->type == ix::WebSocketMessageType::Error) {
-           // Maybe SSL is not configured properly
-           std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
-           std::cout << "> " << std::flush;
+           return res->failure(new RuntimeError(
+                   temp->posStart,
+                   temp->posEnd,
+                   temp->line,
+                   temp->fName,
+                   temp->fTxt,
+                   msg->errorInfo.reason,
+                   execCtx
+           ));
        }
     });
 

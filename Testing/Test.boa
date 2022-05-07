@@ -2,12 +2,17 @@ import "requests"
 import "json"
 import "time"
 
-op sendJsonReq(ws, req) do {
-    ws.send(json.dumps(req))
+heartbeat = null
+op msgHandler(msg) do {
+    msg = json.loads(msg)
+    if heartbeat == null do {
+        heartbeat = msg["d"]["heartbeat_interval"]
+        print("heartbeat interval: " + heartbeat)
+    }
 }
 
-op msgHandler(msg) do {
-    print(msg)
+op sendJsonReq(ws, req) do {
+    ws.send(json.dumps(req))
 }
 
 ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
@@ -30,6 +35,5 @@ payload = {
 
 ws.start()
 
-while true do {
-    print("Sending payload")
-}
+# Keep alive
+while true do null

@@ -6,10 +6,15 @@ op sendJsonReq(ws, req) do {
     ws.send(json.dumps(req))
 }
 
-ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
-print("Heartbeat interval: " + heartbeatInterval)
+globalMsg = ""
+op msgHandler(msg) do {
+    globalMsg = msg
+}
 
+ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
 token = "NTc2OTk0MDk5MjI0MjQ4MzYw.YlTY-w.FmHG6fN3nhkd_Q43buK0b3hn5AU"
+
+ws.setMessageHandler(msgHandler)
 
 payload = {
     "op": 2,
@@ -23,7 +28,12 @@ payload = {
         }
     }
 }
-sendJsonReq(ws, payload)
 
-ws.close()
+ws.start()
 
+while true do {
+    if globalMsg != "" do {
+        print(globalMsg)
+        globalMsg = ""
+    }
+}

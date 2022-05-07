@@ -17,10 +17,7 @@ IfNode::IfNode(vector<tuple<Node *, Node *>> cases, Node *elseCase) : Node(N_IF)
 }
 
 IfNode::~IfNode() {
-    for(auto &casePair : cases){
-        delete get<0>(casePair);
-        delete get<1>(casePair);
-    }
+
 }
 
 string IfNode::toString() {

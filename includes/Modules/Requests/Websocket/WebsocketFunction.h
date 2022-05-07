@@ -26,6 +26,7 @@ public:
     RuntimeResult * execute_send(Context * execCtx);
     RuntimeResult * execute_setMessageHandler(Context * execCtx);
     RuntimeResult * execute_close(Context * execCtx);
+    RuntimeResult * execute_start(Context * execCtx);
 
     string toString() override;
 };

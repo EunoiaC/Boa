@@ -11,9 +11,9 @@ Websocket<int>::Websocket(String<string> *url) : Value<int>(0, "WEBSOCKET", "", 
     this->url = url;
 
     webSocket.setUrl(url->getValue());
-    webSocket.start();
 
     symbolTable->set("send", new WebsocketFunction<int>(this, "send", {"message"}, defaultArgs, "", ""));
+    symbolTable->set("start", new WebsocketFunction<int>(this, "start", {}, defaultArgs, "", ""));
     symbolTable->set("close", new WebsocketFunction<int>(this, "close", {}, defaultArgs, "", ""));
     symbolTable->set("setMessageHandler", new WebsocketFunction<int>(this, "setMessageHandler", {"messageHandler"}, defaultArgs, "", ""));
 }

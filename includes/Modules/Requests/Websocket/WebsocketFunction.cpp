@@ -22,7 +22,7 @@ RuntimeResult *WebsocketFunction<int>::execute_send(Context *execCtx) {
         ));
     }
 
-    auto * msg = (String<string> *) temp;
+    auto *msg = (String<string> *) temp;
     websockObj->webSocket.send(msg->getValue());
 
     return res->success(new Number<double>(0, "", ""));
@@ -46,7 +46,7 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
     }
 
     auto *func = (Function<int> *) temp;
-    if (func->argNames.size() != 1){
+    if (func->argNames.size() != 1) {
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -58,6 +58,23 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
         ));
     }
 
+    string body;
+    websockObj->webSocket.setOnMessageCallback([&](const ix::WebSocketMessagePtr &msg) {
+       if (msg->type == ix::WebSocketMessageType::Message) {
+           body = msg->str;
+       } else if (msg->type == ix::WebSocketMessageType::Open) {
+           std::cout << "Connection established" << std::endl;
+           std::cout << "> " << std::flush;
+       } else if (msg->type == ix::WebSocketMessageType::Error) {
+           // Maybe SSL is not configured properly
+           std::cout << "Connection error: " << msg->errorInfo.reason << std::endl;
+           std::cout << "> " << std::flush;
+       }
+    });
+
+    res->reg(func->execute({new String<string>(body, "", "")}));
+    if (res->shouldReturn()) return res;
+
     return res->success(new Number<double>(0, "", ""));
 }
 
@@ -66,6 +83,15 @@ RuntimeResult *WebsocketFunction<int>::execute_close(Context *execCtx) {
     auto *res = new RuntimeResult();
 
     websockObj->webSocket.close();
+
+    return res->success(new Number<double>(0, "", ""));
+}
+
+template<>
+RuntimeResult *WebsocketFunction<int>::execute_start(Context *execCtx) {
+    auto *res = new RuntimeResult();
+
+    websockObj->webSocket.start();
 
     return res->success(new Number<double>(0, "", ""));
 }
@@ -81,6 +107,7 @@ WebsocketFunction<int>::WebsocketFunction(Websocket<int> *websockObj, string nam
     type = "FUNCTION";
     funcMap["execute_close"] = &WebsocketFunction<int>::execute_close;
     funcMap["execute_send"] = &WebsocketFunction<int>::execute_send;
+    funcMap["execute_start"] = &WebsocketFunction<int>::execute_start;
     funcMap["execute_setMessageHandler"] = &WebsocketFunction<int>::execute_setMessageHandler;
 }
 

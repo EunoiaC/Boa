@@ -1,7 +1,31 @@
-globalVar = "global"
-op changeVar() uses[globalVar] do {
-    globalVar = "local"
+import "requests"
+import "json"
+ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
+
+token = "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc"
+
+connected = false
+op messageHandler(msg) uses[connected] do {
+    res = json.loads(msg)
+    _op = res["op"]
+    print("Called: " + _op)
+
+    # Check the ops
+    if _op == 10 do {
+        heartbeat = res["d"]["heartbeat_interval"]
+        if not connected do {
+            connected = true
+            heartbeat_p = '{{"op": 1}, {"d":null}}'
+            ws.send(heartbeat_p)
+            print("Connected")
+        }
+    } elif _op == 0 do {
+        print("Received op 0")
+    }
 }
-changeVar()
-print(globalVar)
-# Should print "local"
+
+ws.setMessageHandler(messageHandler)
+
+ws.start()
+
+while true do null

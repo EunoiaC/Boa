@@ -3,7 +3,7 @@ map = {
     "one": 1,
     "two": 2,
     "three": 3,
-    "four": 4,
+    "four": 4.27,
     "object": {
         "a": 1,
         "b": 2,
@@ -11,13 +11,11 @@ map = {
         "nesty": {
             "a": 1,
             "b": 2,
-            "c": 3
+            "c": 3.89
         }
     },
-    "array": [1, 2, 3, 4, "five"]
+    "array": [1.77, 2, 3, 4, "five"]
 }
 
-print(json.dumps(map))
-print(json.dumps(map))
 print(json.dumps(map))
 print(json.loads(json.dumps(map)))

@@ -120,7 +120,12 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                         jsonObj[kv.first->toString()] = nullptr;
                     }
                 } else if (kv.second->type == T_NUM){
-                    jsonObj[kv.first->toString()] = ((Number<double> *) kv.second)->getValue();
+                    double num = ((Number<double> *) kv.second)->getValue();
+                    if (num == (int) num) {
+                        jsonObj[kv.first->toString()] = (int) num;
+                    } else {
+                        jsonObj[kv.first->toString()] = num;
+                    }
                 } else jsonObj[kv.first->toString()] = kv.second->toString();
             }
         }
@@ -142,7 +147,12 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                         jsonObj.push_back(nullptr);
                     }
                 } else if (v->type == T_NUM){
-                    jsonObj.push_back(((Number<double> *) v)->getValue());
+                    double num = ((Number<double> *) v)->getValue();
+                    if (num == (int) num) {
+                        jsonObj.push_back((int) num);
+                    } else {
+                        jsonObj.push_back(num);
+                    }
                 } else jsonObj.push_back(v->toString());
             }
         }

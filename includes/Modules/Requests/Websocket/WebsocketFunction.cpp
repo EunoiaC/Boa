@@ -66,6 +66,7 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
            if (r->shouldReturn()) return r;
        } else if (msg->type == ix::WebSocketMessageType::Open) {
        } else if (msg->type == ix::WebSocketMessageType::Error) {
+           cout << "Error: " << msg->errorInfo.reason << endl;
            return res->failure(new RuntimeError(
                    temp->posStart,
                    temp->posEnd,

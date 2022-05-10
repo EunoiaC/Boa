@@ -51,6 +51,8 @@ template<> RuntimeResult *JsonFunction<int>::execute_loads(Context *execCtx) {
                 m[key] = new Number<double>(it.value(), "", "");
             } else if(typeName == "string") {
                 m[key] = new String<string>(it.value(), "", "");
+            } else if (typeName == "null") {
+                m[key] = new Number<double>(0, "", "");
             } else if (typeName == "object"){
                 nlohmann::json temp = it.value();
                 auto * c = new Context("temp");
@@ -113,7 +115,11 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
 
                 jsonObj[kv.first->toString()] = nlohmann::json::parse(b->toString());
             } else {
-                jsonObj[kv.first->toString()] = kv.second->toString();
+                if (kv.second->type == T_STRING){
+                    if (kv.second->toString() == jsonNull) {
+                        jsonObj[kv.first->toString()] = nullptr;
+                    }
+                } else jsonObj[kv.first->toString()] = kv.second->toString();
             }
         }
     } else if (temp->type == T_LIST){

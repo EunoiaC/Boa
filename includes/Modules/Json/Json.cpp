@@ -11,6 +11,7 @@ Json<int>::Json() : Value<int>(0, "JSON", "", "") {
 
     symbolTable->set("loads", new JsonFunction<int>("loads", {"string"}, defaultArgs, "", ""));
     symbolTable->set("dumps", new JsonFunction<int>("dumps", {"value"}, defaultArgs, "", ""));
+    symbolTable->set("NULL", new String<string>(jsonNull, "", ""));
 }
 
 template<>

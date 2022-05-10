@@ -553,6 +553,7 @@ RuntimeResult *Interpreter::visitFuncDefNode(Node *n, Context *c) {
 
     BaseValue *funcValue = (new Function<int>(fName, lines[node->funcNameTok->line], funcName, bodyNode, argNames,
                                               defaultArgs,
+                                              node->uses,
                                               lines,
                                               node->autoReturn))
             ->setContext(c)

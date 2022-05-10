@@ -25,6 +25,7 @@ static const string OP = "OP";
 static const string CLASS = "CLASS";
 
 static const string INFIX = "INFIX";
+static const string USES = "USES";
 
 static const string TRY = "TRY";
 static const string CATCH = "CATCH";

@@ -13,6 +13,7 @@ class FuncDefNode : public Node {
 public:
     vector<Token<string> *> argNameToks;
     map<string, Node*> defaultArgs;
+    vector<string> uses;
     Node *body;
     Token<string> *funcNameTok;
     int posStart, posEnd;
@@ -20,7 +21,7 @@ public:
 
     string toString() override;
 
-    FuncDefNode(Token<string> *funcNameTok, vector<Token<string> *> argNameToks, map<string, Node*> defaultArgs, Node *body, bool autoReturn);
+    FuncDefNode(Token<string> *funcNameTok, vector<Token<string> *> argNameToks, map<string, Node*> defaultArgs, vector<string> uses, Node *body, bool autoReturn);
 };
 
 

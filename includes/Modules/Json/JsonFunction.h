@@ -9,6 +9,8 @@
 #include "../../Values/String/String.h"
 #include "../../Values/Map/Map.h"
 
+static const string jsonNull = "BOA_JSON_NULL";
+
 template<typename T> class JsonFunction : public BaseFunction<T> {
 public:
     typedef RuntimeResult * (JsonFunction<int>::*FnPtr)(Context * execCtx);

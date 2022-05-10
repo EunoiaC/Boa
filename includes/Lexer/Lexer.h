@@ -64,7 +64,8 @@ public:
             {"catch",    CATCH},
             {"either", EITHER},
             {"await", AWAIT},
-            {"infix", INFIX}
+            {"infix", INFIX},
+            {"uses", USES}
     };
     /**
      * Map assigning each possible character a token type

@@ -8,10 +8,11 @@
 
 template<>
 Function<int>::Function(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                        vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, NORMAL_FUNC) {
+                        vector<string> uses, vector<string> lines, bool autoReturn) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, NORMAL_FUNC) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;
+    this->uses = uses;
 }
 
 template<>
@@ -34,12 +35,13 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
         // Look for a return statement, otherwise return null
         retVal = res->funcReturnValue ? res->funcReturnValue : new Number<double>(0, "", "");
     }
+
     return res->success(retVal);
 }
 
 template<>
 Function<int> *Function<int>::copy() {
-    Function<int> *func = new Function<int>(fName, fTxt, name, body, argNames, defaultArgs, lines, autoReturn);
+    Function<int> *func = new Function<int>(fName, fTxt, name, body, argNames, defaultArgs, uses, lines, autoReturn);
     func->setContext(ctx);
     func->setPos(posStart, posEnd, line);
     return func;

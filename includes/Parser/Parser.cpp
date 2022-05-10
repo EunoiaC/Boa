@@ -81,7 +81,7 @@ ParseResult *Parser::parse() {
 ParseResult *Parser::tryExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
 
-    if(currentToken->getType() != TRY) {
+    if (currentToken->getType() != TRY) {
         return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                       "InvalidSyntaxError", "Expected 'tryto'"));
     }
@@ -101,9 +101,9 @@ ParseResult *Parser::tryExpr() {
 
     checkNewLines();
 
-    Node * tryBody, * catchBody;
+    Node *tryBody, *catchBody;
 
-    if (currentToken->getType() == L_CURLY_BRACKET){
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         delete currentToken;
         res->regAdvancement();
         advance();
@@ -153,7 +153,7 @@ ParseResult *Parser::tryExpr() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() == L_CURLY_BRACKET){
+    if (currentToken->getType() == L_CURLY_BRACKET) {
         delete currentToken;
         res->regAdvancement();
         advance();
@@ -173,7 +173,7 @@ ParseResult *Parser::tryExpr() {
         advance();
     } else {
         catchBody = res->reg(statement());
-        if(res->error) return res;
+        if (res->error) return res;
     }
 
     return res->success(new TryCatchNode(tryBody, catchBody, toCatch));
@@ -578,7 +578,8 @@ ParseResult *Parser::funcDef() {
 
     res->regAdvancement();
     advance();
-    Token<string> *varNameTok = new Token<string>(T_STRING, "anonymous",currentToken->posStart, currentToken->posEnd, currentToken->line);
+    Token<string> *varNameTok = new Token<string>(T_STRING, "anonymous", currentToken->posStart, currentToken->posEnd,
+                                                  currentToken->line);
     if (currentToken->getType() == IDENTIFIER) {
         varNameTok = (Token<string> *) currentToken;
         res->regAdvancement();
@@ -666,8 +667,58 @@ ParseResult *Parser::funcDef() {
     res->regAdvancement();
     advance();
 
-    if(currentToken->getType() == INFIX){
+    if (currentToken->getType() == INFIX) {
         infixFuncs.push_back(varNameTok->getValueObject()->getValue());
+        res->regAdvancement();
+        advance();
+    }
+
+    vector<string> uses;
+
+    if (currentToken->getType() == USES) {
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+
+        if (currentToken->getType() != L_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected '['"));
+        }
+        delete currentToken;
+        res->regAdvancement();
+        advance();
+
+        if (currentToken->getType() != IDENTIFIER) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected an identifier"));
+        }
+        uses.push_back(((Token<string> *) currentToken)->getValueObject()->getValue());
+        res->regAdvancement();
+        advance();
+
+        while (currentToken->getType() == COMMA) {
+            delete currentToken;
+            res->regAdvancement();
+            advance();
+
+            if (currentToken->getType() != IDENTIFIER) {
+                return res->failure(
+                        new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                  "InvalidSyntaxError", "Expected an identifier"));
+            }
+            uses.push_back(((Token<string> *) currentToken)->getValueObject()->getValue());
+            res->regAdvancement();
+            advance();
+        }
+
+        if (currentToken->getType() != R_BRACKET) {
+            return res->failure(
+                    new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                              "InvalidSyntaxError", "Expected ']'"));
+        }
+        delete currentToken;
         res->regAdvancement();
         advance();
     }
@@ -694,14 +745,14 @@ ParseResult *Parser::funcDef() {
             res->regAdvancement();
             advance();
             // Multiple statements
-            return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, body, false));
+            return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, uses, body, false));
 
         }
 
         Node *returnNode = res->reg(statement());
         if (res->error) return res;
         // Single line function
-        return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, returnNode, true));
+        return res->success(new FuncDefNode(varNameTok, argNames, defaultArgValues, uses, returnNode, true));
     } else {
         priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                   "InvalidSyntaxError", "Expected 'do'");
@@ -1029,11 +1080,11 @@ ParseResult *Parser::atom() {
         advance();
         return res->success(new NumberNode((Token<double> *) tok));
     } else if (tok->getType() == EITHER) {
-        Node * either = res->reg(eitherExpr());
+        Node *either = res->reg(eitherExpr());
         if (res->error) return res;
         return res->success(either);
-    }else if (tok->getType() == TRY) {
-        Node * _try = res->reg(tryExpr());
+    } else if (tok->getType() == TRY) {
+        Node *_try = res->reg(tryExpr());
         if (res->error) return res;
         return res->success(_try);
     } else if (tok->getType() == CLASS) {
@@ -1140,21 +1191,22 @@ ParseResult *Parser::call() {
     Node *_atom = res->reg(atom());
     if (res->error) return res;
 
-    if (currentToken->getType() == IDENTIFIER){
+    if (currentToken->getType() == IDENTIFIER) {
         Token<string> *infixFunc = ((Token<string> *) currentToken);
 
         if (find(infixFuncs.begin(), infixFuncs.end(), infixFunc->getValueObject()->getValue()) != infixFuncs.end()) {
             res->regAdvancement();
             advance();
 
-            Node * ato = res->reg(atom());
+            Node *ato = res->reg(atom());
             if (res->error) return res;
 
             _atom = new VarAccessNode(nullptr, {infixFunc}, _atom);
             return res->success(new CallNode(_atom, {ato}));
         } else {
             priorityError = new Error(infixFunc->posStart, infixFunc->posEnd, infixFunc->line, fName,
-                                      currLine, "InvalidSyntaxError", "Expected an infix function, operator, comparison, or '('");
+                                      currLine, "InvalidSyntaxError",
+                                      "Expected an infix function, operator, comparison, or '('");
             return res->failure(priorityError);
         }
     }
@@ -1184,7 +1236,7 @@ ParseResult *Parser::call() {
         IndexNode *index = new IndexNode(_atom, indices, GET_VALUE);
         index->line = currentToken->line;
 
-        if (currentToken->getType() == EQUAL){
+        if (currentToken->getType() == EQUAL) {
             delete currentToken;
             res->regAdvancement();
             advance();
@@ -1284,7 +1336,7 @@ ParseResult *Parser::term() {
 
 ParseResult *Parser::eitherExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
-    if (currentToken->getType() != EITHER){
+    if (currentToken->getType() != EITHER) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError",
@@ -1294,20 +1346,20 @@ ParseResult *Parser::eitherExpr() {
     res->regAdvancement();
     advance();
 
-    Node * curr = res->reg(arithExpr());
+    Node *curr = res->reg(arithExpr());
     if (res->error) return res;
 
     vector<Node *> cases;
     cases.push_back(curr);
 
-    if (currentToken->getType() != OR){
+    if (currentToken->getType() != OR) {
         return res->failure(
                 new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                           "InvalidSyntaxError",
                           "Expected 'or'"));
     }
 
-    while(currentToken->getType() == OR){
+    while (currentToken->getType() == OR) {
         delete currentToken;
         res->regAdvancement();
         advance();
@@ -1363,12 +1415,12 @@ ParseResult *Parser::statement() {
 
         Token<string> *tok = nullptr;
 
-        if (currentToken->getType() == IDENTIFIER){
+        if (currentToken->getType() == IDENTIFIER) {
             tok = dynamic_cast<Token<string> *>(currentToken);
             res->regAdvancement();
             advance();
 
-            if (currentToken->getType() != FROM){
+            if (currentToken->getType() != FROM) {
                 return res->failure(
                         new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                   "InvalidSyntaxError",
@@ -1472,7 +1524,7 @@ ParseResult *Parser::expr() {
         res->regAdvancement();
         advance();
 
-        Node * _expr = res->reg(call());
+        Node *_expr = res->reg(call());
         if (res->error) {
             priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                       "InvalidSyntaxError",

@@ -1,39 +1,7 @@
-import "requests"
-import "json"
-import "time"
-
-heartbeat = null
-op msgHandler(msg) do {
-    msg = json.loads(msg)
-    if heartbeat == null do {
-        heartbeat = msg["d"]["heartbeat_interval"]
-        print("heartbeat interval: " + heartbeat)
-    }
+globalVar = "global"
+op changeVar() uses[globalVar] do {
+    globalVar = "local"
 }
-
-op sendJsonReq(ws, req) do {
-    ws.send(json.dumps(req))
-}
-
-ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
-token = "NTc2OTk0MDk5MjI0MjQ4MzYw.YlTY-w.FmHG6fN3nhkd_Q43buK0b3hn5AU"
-
-ws.setMessageHandler(msgHandler)
-
-payload = {
-    "op": 2,
-    "d": {
-        "token": token,
-        "intents": 513,
-        "properties": {
-            "$os": "linux",
-            "$browser": "chrome",
-            "$device": "pc"
-        }
-    }
-}
-
-ws.start()
-
-# Keep alive
-while true do null
+changeVar()
+print(globalVar)
+# Should print "local"

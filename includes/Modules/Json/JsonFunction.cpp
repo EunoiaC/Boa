@@ -118,7 +118,7 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                 if (kv.second->type == T_STRING){
                     if (kv.second->toString() == jsonNull) {
                         jsonObj[kv.first->toString()] = nullptr;
-                    }
+                    } else jsonObj[kv.first->toString()] = kv.second->toString();
                 } else if (kv.second->type == T_NUM){
                     double num = ((Number<double> *) kv.second)->getValue();
                     if (num == (int) num) {
@@ -145,7 +145,7 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                 if (v->type == T_STRING){
                     if (v->toString() == jsonNull) {
                         jsonObj.push_back(nullptr);
-                    }
+                    } else jsonObj.push_back(v->toString());
                 } else if (v->type == T_NUM){
                     double num = ((Number<double> *) v)->getValue();
                     if (num == (int) num) {

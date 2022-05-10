@@ -36,6 +36,15 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
         retVal = res->funcReturnValue ? res->funcReturnValue : new Number<double>(0, "", "");
     }
 
+    for (auto &use : uses) {
+        BaseValue *val = execCtx->symbolTable->get(use);
+        if (!val) {
+            // Add warn that the use is not used
+            continue;
+        }
+        execCtx->symbolTable->parent->set(use, val);
+    }
+
     return res->success(retVal);
 }
 

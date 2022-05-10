@@ -1,31 +1,23 @@
-import "requests"
 import "json"
-ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
-
-token = "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc"
-
-connected = false
-op messageHandler(msg) uses[connected] do {
-    res = json.loads(msg)
-    _op = res["op"]
-    print("Called: " + _op)
-
-    # Check the ops
-    if _op == 10 do {
-        heartbeat = res["d"]["heartbeat_interval"]
-        if not connected do {
-            connected = true
-            heartbeat_p = '{{"op": 1}, {"d":null}}'
-            ws.send(heartbeat_p)
-            print("Connected")
+map = {
+    "one": 1,
+    "two": 2,
+    "three": 3,
+    "four": 4,
+    "object": {
+        "a": 1,
+        "b": 2,
+        "c": 3,
+        "nesty": {
+            "a": 1,
+            "b": 2,
+            "c": 3
         }
-    } elif _op == 0 do {
-        print("Received op 0")
-    }
+    },
+    "array": [1, 2, 3, 4, "five"]
 }
 
-ws.setMessageHandler(messageHandler)
-
-ws.start()
-
-while true do null
+print(json.dumps(map))
+print(json.dumps(map))
+print(json.dumps(map))
+print(json.loads(json.dumps(map)))

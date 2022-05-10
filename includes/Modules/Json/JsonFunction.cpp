@@ -119,6 +119,8 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                     if (kv.second->toString() == jsonNull) {
                         jsonObj[kv.first->toString()] = nullptr;
                     }
+                } else if (kv.second->type == T_NUM){
+                    jsonObj[kv.first->toString()] = ((Number<double> *) kv.second)->getValue();
                 } else jsonObj[kv.first->toString()] = kv.second->toString();
             }
         }
@@ -135,7 +137,13 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
 
                 jsonObj.push_back(nlohmann::json::parse(b->toString()));
             } else {
-                jsonObj.push_back(v->toString());
+                if (v->type == T_STRING){
+                    if (v->toString() == jsonNull) {
+                        jsonObj.push_back(nullptr);
+                    }
+                } else if (v->type == T_NUM){
+                    jsonObj.push_back(((Number<double> *) v)->getValue());
+                } else jsonObj.push_back(v->toString());
             }
         }
     }

@@ -18,9 +18,6 @@ Lexer::Lexer(string fileText, string fileName, vector<string> lines) {
 }
 
 Lexer::~Lexer() {
-    if (error != nullptr) {
-        delete error;
-    }
     for (auto &p : charToToken) {
         delete p.second;
     }

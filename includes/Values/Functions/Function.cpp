@@ -45,6 +45,13 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
         execCtx->symbolTable->parent->set(use, val);
     }
 
+    for (auto &var : execCtx->symbolTable->symbols) {
+        if (count(uses.begin(), uses.end(), var.first) || count(argNames.begin(), argNames.end(), var.first)) {
+            continue;
+        }
+        delete var.second;
+    }
+
     return res->success(retVal);
 }
 

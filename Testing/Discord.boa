@@ -5,10 +5,14 @@ ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
 token = "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc"
 
 connected = false
-op messageHandler(msg) uses[connected] do {
+heartbeat = -1
+lastS = -1
+op messageHandler(msg) uses[connected, heartbeat, lastS] do {
     res = json.loads(msg)
+    if typeOf(res["s"]) == "NUMBER" do {
+        lastS = res["s"]
+    }
     _op = res["op"]
-    print("Called: " + _op)
 
     # Check the ops
     if _op == 10 do {
@@ -23,28 +27,43 @@ op messageHandler(msg) uses[connected] do {
             print("Connected")
         }
 
-        id = {
-            "op": 2,
-            "d": {
-                "token": "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc",
-                "properties": {
-                    "$os": "linux",
-                    "$browser": "chrome",
-                    "$device": "pc"
-                },
-                "intents": 513
-            }
-        }
-        print(json.dumps(id))
-        ws.send(json.dumps(id))
-
+        sendId()
     } elif _op == 0 do {
-        print("Received op 0")
+        t = res["t"]
+        if t == "READY" do {
+            print(res["d"])
+        } elif t == "MESSAGE_CREATE" do {
+            print(res["d"])
+        }
     }
+}
+
+op sendId() do {
+    id = {
+        "op": 2,
+        "d": {
+            "token": token,
+            "properties": {
+                "$os": "linux",
+                "$browser": "chrome",
+                "$device": "pc"
+            },
+            "intents": 513
+        }
+    }
+    ws.send(json.dumps(id))
 }
 
 ws.setMessageHandler(messageHandler)
 
 ws.start()
 
-while true do null
+count = 0
+while true do {
+    count += 200
+    if connected and heartbeat != -1 and count >= heartbeat do {
+        count = 0
+        p = '{"op": 1, "d": ' + lastS + '}'
+        ws.send(p)
+    }
+}

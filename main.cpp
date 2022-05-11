@@ -51,6 +51,7 @@ int main(int argc, char **argv) {
 
     RunInterface *runInterface = new RunInterface(globalSymbolTable, pathRef);
     runInterface->run(filePath);
+    delete runInterface;
     return 0;
 }
 

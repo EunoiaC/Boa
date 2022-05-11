@@ -13,6 +13,12 @@ RunInterface::RunInterface(SymbolTable *symbolTable, string pathRef) {
     p = nullptr;
 }
 
+RunInterface::~RunInterface() {
+    delete l;
+    delete res;
+    delete p;
+}
+
 RunResult RunInterface::readLine(string line) {
     //Reading file
     string fileText = line + "\n";
@@ -86,8 +92,10 @@ RunResult RunInterface::readFile(string filePath) {
     ctx->parentFilePath = i->pathRef;
     RuntimeResult *result = i->visit(res->node, ctx);
     if (result->error) {
+        delete i;
         return make_pair(nullptr, result->error);
     }
+    delete i;
     return make_pair(result->value, nullptr);
 }
 

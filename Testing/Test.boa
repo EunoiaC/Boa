@@ -5,10 +5,14 @@ ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
 token = "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc"
 
 connected = false
-op messageHandler(msg) uses[connected] do {
+heartbeat = -1
+lastS = -1
+op messageHandler(msg) uses[connected, heartbeat, lastS] do {
     res = json.loads(msg)
+    if typeOf(res["s"]) == "NUMBER" do {
+        lastS = res["s"]
+    }
     _op = res["op"]
-    print("Called: " + _op)
 
     # Check the ops
     if _op == 10 do {
@@ -24,6 +28,13 @@ op messageHandler(msg) uses[connected] do {
         }
 
         sendId()
+    } elif _op == 0 do {
+        t = res["t"]
+        if t == "READY" do {
+            print(res["d"])
+        } elif t == "MESSAGE_CREATE" do {
+            print(res["d"])
+        }
     }
 }
 
@@ -47,4 +58,12 @@ ws.setMessageHandler(messageHandler)
 
 ws.start()
 
-while true do null
+count = 0
+while true do {
+    count += 200
+    if connected and heartbeat != -1 and count >= heartbeat do {
+        count = 0
+        p = '{"op": 1, "d": ' + lastS + '}'
+        ws.send(p)
+    }
+}

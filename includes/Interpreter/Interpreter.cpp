@@ -405,7 +405,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
         ((Future<shared_future<RuntimeResult *>> *) value)->setContext(c);
     }
 
-    delete node->toGetIdentifierFrom;
+    //delete node->toGetIdentifierFrom;
 
     return result->success(value);
 }

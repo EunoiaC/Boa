@@ -857,7 +857,7 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
         sym = new SymbolTable(c->symbolTable);
     }
 
-    auto *ri = new RunInterface(sym, fs::path(fullFilePath).parent_path()); //Set a pathref if known
+    auto *ri = new RunInterface(sym, fs::path(fullFilePath).parent_path().string() + "/"); //Set a pathref if known
     RunResult r;
     r = ri->readFile("/" + fs::path(moduleName->getValue()).filename().string());
 

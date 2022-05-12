@@ -322,7 +322,7 @@ RuntimeResult *Interpreter::visitMapNode(Node *n, Context *c) {
     auto * m = new Map<map<BaseValue *, BaseValue *>>(dict, fName, lines[mapNode->line]);
     m->setContext(c)->setPos(
             n->posStart, n->posEnd, n->line);
-    delete mapNode;
+    //delete mapNode;
 
     return res->success(m);
 }

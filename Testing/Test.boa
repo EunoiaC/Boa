@@ -33,7 +33,7 @@ op messageHandler(msg) uses[connected, heartbeat, lastS] do {
         if t == "READY" do {
             print(res["d"])
         } elif t == "MESSAGE_CREATE" do {
-            print(res["d"])
+            print(res["d"]["content"])
         }
     }
 }

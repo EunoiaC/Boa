@@ -45,6 +45,10 @@ find_package(OpenSSL REQUIRED)
 
 find_package(cpprestsdk REQUIRED)
 
+include(FetchContent)
+FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/whoshuu/cpr.git GIT_TAG c8d33915dbd88ad6c92b258869b03aba06587ff9) # the commit hash for 1.5.0
+FetchContent_MakeAvailable(cpr)
+
 # Add Boost
 set(Boost_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}/boost)
 find_package(Boost REQUIRED)
@@ -62,4 +66,4 @@ add_executable(
         ${SOURCE_FILES}
 )
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES})
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr::cpr)

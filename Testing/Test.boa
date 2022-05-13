@@ -1,5 +1,5 @@
 import "requests"
 import "json"
-# Leave out https
-r = requests.post("ptsv2.com/t/waoco-1652405449/post", '{"your_name": "your_value"}', {}, "json")
+# Joke request
+r = requests.get("https://icanhazdadjoke.com/",{"Accept": "application/json"})
 print(r)

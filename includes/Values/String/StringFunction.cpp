@@ -54,7 +54,7 @@ RuntimeResult *StringFunction<int>::execute_split(Context *execCtx) {
 
     vector<BaseValue *> splitString;
     string sep = ((String<string>*)separator)->getValue();
-    string strValue = value->copy()->getValue();
+    string strValue = value->strValue;
 
     if(sep.empty()){
         vector<char> v(strValue.begin(), strValue.end());
@@ -65,7 +65,7 @@ RuntimeResult *StringFunction<int>::execute_split(Context *execCtx) {
     }
 
     size_t pos_start = 0, pos_end, delim_len = sep.length();
-    string token;;
+    string token;
 
     while ((pos_end = strValue.find (sep, pos_start)) != string::npos) {
         token = strValue.substr (pos_start, pos_end - pos_start);

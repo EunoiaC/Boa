@@ -73,7 +73,8 @@ BaseValue *String<string>::contains(BaseValue *val) {
 
 template<>
 BaseValue *String<string>::add(BaseValue *s) {
-    return (new String<string>(strValue + s->toString(), s->fName, s->fTxt))->setContext(ctx);
+    string str = strValue + s->toString();
+    return (new String<string>(str, s->fName, s->fTxt))->setContext(ctx);
 }
 
 template<>

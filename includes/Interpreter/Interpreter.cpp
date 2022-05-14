@@ -111,16 +111,12 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
         ));
     }
 
-    delete toIterateThrough;
     BaseValue *val = (new List<vector<BaseValue *>>(elements, fName, lines[node->iterNameTok->line]))->setContext(c)->setPos(
             node->posStart, node->posEnd, node->line);
     if (node->shouldReturnNull) {
         val = new Number<double>(0, fName, lines[node->line]);
     }
 
-
-    //Err here
-    //delete node;
     return res->success(val);
 }
 
@@ -207,7 +203,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         return res->success(v);
     }
     if (res->shouldReturn()) return res;
-    delete tryCatchNode;
+    //delete tryCatchNode;
     return res->success(val);
 }
 
@@ -240,7 +236,7 @@ RuntimeResult *Interpreter::visitWhileNode(Node *n, Context *c) {
     if (whileNode->shouldReturnNull) {
         val = new Number<double>(0, fName, "");
     }
-    delete whileNode;
+    //delete whileNode;
     return res->success(val);
 }
 
@@ -255,7 +251,7 @@ RuntimeResult *Interpreter::visitEitherNode(Node *n, Context *c) {
             return res->success(val);
         }
     }
-    delete eitherNode;
+    //delete eitherNode;
     return res->success((new Number<double>(0, fName, ""))->setContext(c));
 }
 
@@ -282,9 +278,9 @@ RuntimeResult *Interpreter::visitIfNode(Node *n, Context *c) {
 }
 
 RuntimeResult *Interpreter::visitListNode(Node *n, Context *c) {
-    RuntimeResult *res = new RuntimeResult();
+    auto *res = new RuntimeResult();
     vector<BaseValue *> elements;
-    ListNode *listNode = (ListNode *) n;
+    auto *listNode = (ListNode *) n;
 
     for (auto element: listNode->elements) {
         elements.push_back(res->reg(visit(element, c)));

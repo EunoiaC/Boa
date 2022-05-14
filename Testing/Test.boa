@@ -1,5 +1,9 @@
-import "requests"
-import "json"
-# Joke request
-r = requests.get("https://icanhazdadjoke.com/",{"Accept": "application/json"})
-print(r)
+list = [1, 2, "ddd", true, {}, [], null, "undefined"]
+
+op join(args) do {
+    print(" ".join(args))
+}
+
+while true do {
+    join(list)
+}

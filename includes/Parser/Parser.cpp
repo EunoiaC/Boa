@@ -382,10 +382,12 @@ ParseResult *Parser::iterExprB(Token<string> *iterName) {
     checkNewLines();
 
     if (currentToken->getType() == L_CURLY_BRACKET) {
+        delete currentToken;
         res->regAdvancement();
         advance();
 
         while (currentToken->getType() == STOP_EXPR) {
+            delete currentToken;
             res->regAdvancement();
             advance();
         }

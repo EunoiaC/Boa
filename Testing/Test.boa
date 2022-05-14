@@ -1,9 +1,5 @@
-list = [1, 2, "ddd", true, {}, [], null, "undefined"]
-
-op join(args) do {
-    print(" ".join(args))
-}
-
-while true do {
-    join(list)
-}
+msg = "1 7 2 3"
+args = msg.split(" ")
+res = ""
+for arg : args do res = res + 9
+print(res)

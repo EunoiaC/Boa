@@ -694,7 +694,6 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     }
 
     return rtRes->success(result->setPos(n->posStart, n->posEnd, n->line));
-
 }
 
 RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {

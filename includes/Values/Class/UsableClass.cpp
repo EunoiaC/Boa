@@ -22,7 +22,7 @@ void UsableClass<int>::setInSymbolTable(string key, BaseValue *newObj) {
 
 template<>
 Context *UsableClass<int>::generateClassContext(string className) {
-    Context *classContext = new Context(std::move(className));
+    Context *classContext = new Context(className);
     classContext->fName = fName;
     classContext->fTxt = fTxt;
 

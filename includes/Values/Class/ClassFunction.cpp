@@ -15,7 +15,7 @@ string ClassFunction<int>::toString() {
 
 template<>
 ClassFunction<int>::ClassFunction(string fName, string fTxt, string name, Node *body, vector<string> argNames, map<string, BaseValue *> defaultArgs,
-                                  vector<string> lines, bool autoReturn, Context * context, string className) : BaseFunction<int>(std::move(name), std::move(argNames), std::move(defaultArgs), std::move(fName), std::move(fTxt), CLASS_FUNC) {
+                                  vector<string> lines, bool autoReturn, Context * context, string className) : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
     this->autoReturn = autoReturn;
     this->lines = lines;
     this->body = body;

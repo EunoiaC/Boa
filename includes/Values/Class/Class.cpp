@@ -13,11 +13,11 @@ Class<int>::Class(Token<string> * classNameTok, string fName, string fTxt, vecto
                   map<string, BaseValue *> defaultArgs,
                   vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, T_CLASS, fName,
                                                                              fTxt) {
-    this->members = std::move(members);
+    this->members = members;
     this->classNameTok = classNameTok;
     this->name = classNameTok->getValueObject()->getValue();
-    this->constructorArgs = std::move(constructorArgs);
-    this->defaultArgs = std::move(defaultArgs);
+    this->constructorArgs = constructorArgs;
+    this->defaultArgs = defaultArgs;
     this->lines = lines;
     this->superClass = superClass;
     parent = nullptr;

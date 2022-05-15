@@ -117,7 +117,7 @@ BaseValue *BaseValue::compSort(BaseValue *val) {
 }
 
 BaseValue::BaseValue(string t, string f, string txt) {
-    type = std::move(t);
-    fName = std::move(f);
-    fTxt = std::move(txt);
+    type = t;
+    fName = f;
+    fTxt = txt;
 }

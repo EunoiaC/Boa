@@ -23,7 +23,7 @@ Requests<int>::Requests() : Value<int>(0, "REQUESTS", "", "") {
 
 template<>
 BaseValue *Requests<int>::copy() {
-    return new Requests<int>(*this);
+    return new Requests<int>();
 }
 
 template<>

@@ -1,5 +1,9 @@
-msg = "1 7 2 3"
-args = msg.split(" ")
-res = ""
-for arg : args do res = res + 9
-print(res)
+x = 3
+op chg(y) do {
+    # += or -= have to have a parenthesis around the expression, otherwise it only takes the first factor
+    y -= (7 - 4 * 2)
+}
+
+print(x)
+chg(x)
+print(x)

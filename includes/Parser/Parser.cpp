@@ -1132,6 +1132,7 @@ ParseResult *Parser::atom() {
         //If the token is equal, we assign a new variable to the node
         vector<BaseToken *> identifiers;
         while (currentToken->getType() == DOT) {
+            delete currentToken;
             res->regAdvancement();
             advance();
             if (currentToken->getType() != IDENTIFIER) {
@@ -1146,11 +1147,16 @@ ParseResult *Parser::atom() {
             advance();
         }
         if (currentToken->getType() == EQUAL) {
+            delete currentToken;
             res->regAdvancement();
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
-            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers));
+            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, NEW_VALUE));
+        }
+        if (currentToken->getType() == TO) {
+            delete currentToken;
+
         }
         return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == L_PAREN) {

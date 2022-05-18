@@ -18,7 +18,7 @@ Random<int>::Random(string f, string txt) : Value<int>(0, "RANDOM", f, txt) {
 
 template<>
 BaseValue * Random<int>::copy() {
-    return new Random<int>(*this);
+    return new Random<int>(fName, fTxt);
 }
 
 template<>

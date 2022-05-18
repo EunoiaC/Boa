@@ -16,7 +16,7 @@ Json<int>::Json() : Value<int>(0, "JSON", "", "") {
 
 template<>
 BaseValue * Json<int>::copy() {
-    return new Json<int>(*this);
+    return new Json<int>();
 }
 
 template<>

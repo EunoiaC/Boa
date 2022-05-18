@@ -15,7 +15,7 @@ Time<int>::Time() : Value<int>(0, "TIME", "", "") {
 
 template<>
 BaseValue * Time<int>::copy() {
-    return new Time<int>(*this);
+    return new Time<int>();
 }
 
 template<>

@@ -589,7 +589,11 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
         toSet->setInSymbolTable(lastParentName->getValueObject()->getValue(), value);
         return result->success(value);
     }
-    c->symbolTable->set(varName, value);
+    if (node->assType == NEW_VALUE){
+        c->symbolTable->set(varName, value);
+    } else {
+        //c->symbolTable->get(varName).to(value);
+    }
     return result->success(value);
 }
 

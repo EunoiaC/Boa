@@ -116,7 +116,7 @@ BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
             );
         } else {
             List<vector<BaseValue *>> *newList = copy();
-            newList->elements.erase(newList->elements.begin() + (int) num->numValue);
+            newList->elements.erase(newList->elements.begin() + (int) num->getValue());
             return newList;
         }
     } else {
@@ -128,7 +128,7 @@ template<>
 BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
     if (s->type == T_NUM) {
         Number<double> *num = (Number<double> *) s;
-        if (num->numValue > elements.size() - 1 or num->numValue < 0) {
+        if (num->getValue() > elements.size() - 1 or num->getValue() < 0) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -139,8 +139,7 @@ BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
                     ctx
             );
         } else {
-            BaseValue *val = elements[(int) num->numValue];
-            // String is SOOOOOOOO special it just HAS TO HAVE something WEIRD ABOUT IT and have a custom return value
+            BaseValue *val = elements[(int) num->getValue()];
             if (val->type == T_STRING) {
                 auto *str = (String<string> *) val;
                 return str;
@@ -172,6 +171,12 @@ int List<vector<BaseValue *>>::getLength() {
 template<>
 BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
     elements.push_back(other);
+    return this;
+}
+
+template<>
+BaseValue *List<vector<BaseValue *>>::to(BaseValue *other) {
+    elements = ((List<vector<BaseValue *>> *) other)->elements;
     return this;
 }
 
@@ -212,7 +217,7 @@ BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
                     ctx
             );
         } else {
-            elements.erase(elements.begin() + (int) num->numValue);
+            elements.erase(elements.begin() + (int) num->getValue());
             return this;
         }
     } else {

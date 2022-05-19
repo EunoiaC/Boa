@@ -36,6 +36,11 @@ BaseValue *BaseValue::minusEquals(BaseValue *other) {
     return nullptr;
 }
 
+
+BaseValue *BaseValue::to(BaseValue *other) {
+    return nullptr;
+}
+
 BaseValue *BaseValue::get(BaseValue *val) {
     return nullptr;
 }

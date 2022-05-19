@@ -53,6 +53,7 @@ public:
     BaseValue *divide(BaseValue * other) override;
     BaseValue *plusEquals(BaseValue * other) override;
     BaseValue *minusEquals(BaseValue * other) override;
+    BaseValue *to(BaseValue * other) override;
     BaseValue* power(BaseValue* s) override;
     BaseValue* mod(BaseValue* s) override;
 

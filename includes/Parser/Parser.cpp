@@ -1152,11 +1152,15 @@ ParseResult *Parser::atom() {
             advance();
             Node *exp = res->reg(expr());
             if (res->error) return res;
-            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, NEW_VALUE));
+            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, REASSIGN_VAR));
         }
         if (currentToken->getType() == TO) {
             delete currentToken;
-
+            res->regAdvancement();
+            advance();
+            Node *exp = res->reg(expr());
+            if (res->error) return res;
+            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, NEW_VALUE));
         }
         return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == L_PAREN) {

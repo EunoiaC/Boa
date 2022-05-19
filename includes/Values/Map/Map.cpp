@@ -167,6 +167,16 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) 
 }
 
 template<>
+BaseValue *Map<map<BaseValue *, BaseValue *>>::to(BaseValue *val) {
+    if (val->type == T_MAP) {
+        this->dict = ((Map<map<BaseValue *, BaseValue *>> *) val)->dict;
+        return this;
+    } else {
+        illegalOperation(val);
+    }
+}
+
+template<>
 Number<double> *Map<map<BaseValue *, BaseValue *>>::keyExists(BaseValue *key) {
     for (auto it: dict) {
         if(((Number<double>*) it.first->compEquals(key))->getValue() == 1) {

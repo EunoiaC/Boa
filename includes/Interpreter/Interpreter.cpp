@@ -589,10 +589,36 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
         toSet->setInSymbolTable(lastParentName->getValueObject()->getValue(), value);
         return result->success(value);
     }
-    if (node->assType == NEW_VALUE){
+    if (node->assType == REASSIGN_VAR){
         c->symbolTable->set(varName, value);
     } else {
-        //c->symbolTable->get(varName).to(value);
+        BaseValue * t = c->symbolTable->get(varName);
+        t->to(value);
+        if (t->type == T_NUM) {
+            if (((Number<double> *) t)->rtError) {
+                return result->failure(((Number<double> *) t)->rtError);
+            }
+        } else if (t->type == T_STRING) {
+            if (((String<string> *) t)->rtError) {
+                return result->failure(((String<string> *) t)->rtError);
+            }
+        } else if (t->type == T_FUNC) {
+            if (((BaseFunction<int> *) t)->rtError) {
+                return result->failure(((BaseFunction<int> *) t)->rtError);
+            }
+        } else if (t->type == T_LIST) {
+            if (((List<vector<BaseValue *>> *) t)->rtError) {
+                return result->failure(((List<vector<BaseValue *>> *) t)->rtError);
+            }
+        } else if (t->type == T_MAP) {
+            if (((Map<map<BaseValue *, BaseValue *>> *) t)->rtError) {
+                return result->failure(((Map<map<BaseValue *, BaseValue *>> *) t)->rtError);
+            }
+        } else if (t->type == T_CLASS) {
+            if (((UsableClass<int> *) t)->rtError) {
+                return result->failure(((UsableClass<int> *) t)->rtError);
+            }
+        }
     }
     return result->success(value);
 }

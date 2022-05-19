@@ -10,7 +10,7 @@
 // Used when assigning to a different type or declaring in a scope
 static const string NEW_VALUE = "NEW_VALUE";
 // Used when reassigning the value of the variable, like in a statically typed language.
-static const string REASSIGN_VALUE = "REASSIGN_VALUE";
+static const string REASSIGN_VAR = "REASSIGN_VAR";
 
 class VarAssignNode : public Node{
 public:

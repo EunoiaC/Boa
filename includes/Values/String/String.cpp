@@ -8,7 +8,6 @@
 
 template<>
 String<string>::String(string value, string f, string txt) : Value<string>(value, T_STRING, f, txt) {
-    strValue = value;
     map<string, BaseValue *> defaultArgs;
 
     defaultArgs["separator"] = new Value<string>("", T_STRING, fName, fTxt);
@@ -40,7 +39,7 @@ template<>
 BaseValue *String<string>::get(BaseValue *s) {
     if (s->type == T_NUM) {
         auto *num = (Number<double> *) s;
-        if (num->numValue >= strValue.length()) {
+        if (num->getValue() >= val.length()) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -51,7 +50,7 @@ BaseValue *String<string>::get(BaseValue *s) {
                     ctx
             );
         } else {
-            return (new String<string>(strValue.substr(num->numValue, 1), s->fName, s->fTxt))->setContext(ctx);
+            return (new String<string>(val.substr(num->getValue(), 1), s->fName, s->fTxt))->setContext(ctx);
         }
     } else {
         illegalOperation(s);
@@ -59,9 +58,15 @@ BaseValue *String<string>::get(BaseValue *s) {
 }
 
 template<>
+BaseValue *String<string>::to(BaseValue *s) {
+    val = s->toString();
+    return this;
+}
+
+template<>
 BaseValue *String<string>::contains(BaseValue *val) {
     if (val->type == T_STRING) {
-        if (strValue.find(((String<string> *) val)->strValue) != string::npos) {
+        if (this->val.find(((String<string> *) val)->val) != string::npos) {
             return new Number<double>(1, fName, fTxt);
         } else {
             return new Number<double>(0, fName, fTxt);
@@ -73,7 +78,7 @@ BaseValue *String<string>::contains(BaseValue *val) {
 
 template<>
 BaseValue *String<string>::add(BaseValue *s) {
-    string str = strValue + s->toString();
+    string str = val + s->toString();
     return (new String<string>(str, s->fName, s->fTxt))->setContext(ctx);
 }
 
@@ -96,7 +101,7 @@ BaseValue *String<string>::plusEquals(BaseValue *s) {
         String *str = (String *) s;
         fName = s->fName;
         fTxt = s->fTxt;
-        strValue += str->getValue();
+        val += str->getValue();
         val += str->getValue();
         return this;
     }
@@ -106,7 +111,7 @@ BaseValue *String<string>::plusEquals(BaseValue *s) {
 template<>
 BaseValue *String<string>::compGreaterThanEquals(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue >= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val >= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
@@ -114,7 +119,7 @@ BaseValue *String<string>::compGreaterThanEquals(BaseValue *val) {
 template<>
 BaseValue *String<string>::compLessThanEquals(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue <= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val <= ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
@@ -122,7 +127,7 @@ BaseValue *String<string>::compLessThanEquals(BaseValue *val) {
 template<>
 BaseValue *String<string>::compGreaterThan(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue > ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val > ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
@@ -130,7 +135,7 @@ BaseValue *String<string>::compGreaterThan(BaseValue *val) {
 template<>
 BaseValue *String<string>::compLessThan(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue < ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val < ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
@@ -144,7 +149,7 @@ BaseValue *String<string>::compSort(BaseValue *val) {
 template<>
 BaseValue *String<string>::compEquals(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue == ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val == ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
 }
@@ -152,24 +157,24 @@ BaseValue *String<string>::compEquals(BaseValue *val) {
 template<>
 BaseValue *String<string>::compNotEquals(BaseValue *val) {
     if (val->type == T_STRING) {
-        return (new Number<double>(strValue != ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
+        return (new Number<double>(this->val != ((String *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(1, fName, fTxt))->setContext(ctx);
 }
 
 template<>
 BaseValue *String<string>::andedBy(BaseValue *s) {
-    return (new Number<double>(!strValue.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
+    return (new Number<double>(!val.empty() and s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 template<>
 BaseValue *String<string>::oredBy(BaseValue *s) {
-    return (new Number<double>(!strValue.empty() or s->isTrue(), fName, fTxt))->setContext(ctx);
+    return (new Number<double>(!val.empty() or s->isTrue(), fName, fTxt))->setContext(ctx);
 }
 
 template<>
 BaseValue *String<string>::notted() {
-    return (new Number<double>(strValue.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
+    return (new Number<double>(val.empty() ? 1 : 0, fName, fTxt))->setContext(ctx);
 }
 
 template<>
@@ -178,7 +183,7 @@ BaseValue *String<string>::multiply(BaseValue *s) {
         Number<double> *num = (Number<double> *) s;
         string res = "";
         for (int i = 0; i < num->getValue(); i++) {
-            res += strValue;
+            res += val;
         }
         return (new String<string>(res, s->fName, s->fTxt))->setContext(ctx);
     }
@@ -187,16 +192,15 @@ BaseValue *String<string>::multiply(BaseValue *s) {
 
 template<>
 bool String<string>::isTrue() {
-    return strValue.length() > 0;
+    return val.length() > 0;
 }
-
 
 template<typename T>
 string String<T>::getValue() {
-    return strValue;
+    return this->val;
 }
 
 template<>
 string String<string>::toString() {
-    return strValue;
+    return val;
 }

@@ -1,9 +1,11 @@
-x = 3
-op chg(y) do {
-    # += or -= have to have a parenthesis around the expression, otherwise it only takes the first factor
-    y -= (7 - 4 * 2)
+import "time"
+x = 0
+op countDown() do {
+    time.sleep(0.01)
+    x += 0.01
 }
-
-print(x)
-chg(x)
+await countDown()
+y = [2, 3]
+y to [4, 5]
+print(y)
 print(x)

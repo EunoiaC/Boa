@@ -11,7 +11,6 @@
 template<typename T> class Number : public Value<T> {
 public:
     Context *ctx;
-    double numValue;
 
     Number<T>(double value, string f, string txt);
 
@@ -21,6 +20,7 @@ public:
 
     Number *plusEquals(BaseValue *s) override;
     Number *minusEquals(BaseValue *s) override;
+    Number *to(BaseValue *s) override;
 
     Number *subtract(BaseValue *s) override;
 

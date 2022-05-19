@@ -20,6 +20,7 @@ public:
     BaseValue* subtract(BaseValue* key) override;
     BaseValue* plusEquals(BaseValue* key) override;
     BaseValue* minusEquals(BaseValue* key) override;
+    BaseValue* to(BaseValue* other) override;
     BaseValue* compEquals(BaseValue* other) override;
     BaseValue* compNotEquals(BaseValue* other) override;
     Number<double>* keyExists(BaseValue* key);

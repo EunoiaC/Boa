@@ -8,7 +8,6 @@
 
 template<typename T> class String : public Value<T> {
 public:
-    T strValue;
     String<T>(string value, string f, string txt);
     string getValue() override;
 
@@ -43,6 +42,8 @@ public:
     BaseValue *oredBy(BaseValue *s) override;
 
     BaseValue *get(BaseValue *s) override;
+
+    BaseValue *to(BaseValue *s) override;
 };
 
 

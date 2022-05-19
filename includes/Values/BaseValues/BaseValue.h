@@ -43,6 +43,7 @@ public:
 
     virtual BaseValue *plusEquals(BaseValue * other);
     virtual BaseValue *minusEquals(BaseValue * other);
+    virtual BaseValue *to(BaseValue *val);
 
     virtual BaseValue* add(BaseValue* s);
     virtual BaseValue* subtract(BaseValue* s);

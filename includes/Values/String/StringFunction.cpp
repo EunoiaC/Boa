@@ -54,7 +54,7 @@ RuntimeResult *StringFunction<int>::execute_split(Context *execCtx) {
 
     vector<BaseValue *> splitString;
     string sep = ((String<string>*)separator)->getValue();
-    string strValue = value->strValue;
+    string strValue = value->getValue();
 
     if(sep.empty()){
         vector<char> v(strValue.begin(), strValue.end());

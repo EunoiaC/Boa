@@ -1,11 +1,10 @@
-import "time"
-x = 0
-op countDown() do {
-    time.sleep(0.01)
-    x += 0.01
+list = [1,2,3,4,5,6,7,8,9,10]
+op reverseList(l) do {
+    res = []
+    for i = lenOf(l) - 1 to 0 chgby -1 do {
+        res += l[i]
+    }
+    l to "res"
 }
-await countDown()
-y = [2, 3]
-y to [4, 5]
-print(y)
-print(x)
+reverseList(list)
+print(list)

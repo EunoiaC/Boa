@@ -176,8 +176,12 @@ BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::to(BaseValue *other) {
-    elements = ((List<vector<BaseValue *>> *) other)->elements;
-    return this;
+    if (other->type == T_LIST) {
+        elements = ((List<vector<BaseValue *>> *) other)->elements;
+        return this;
+    } else {
+        illegalOperation(other);
+    }
 }
 
 template<>

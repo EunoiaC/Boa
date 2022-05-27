@@ -11,6 +11,7 @@
 #include "../Token/Token.h"
 
 using namespace std;
+using TOK_TYPE = BaseToken::TOK_TYPE;
 
 class Lexer {
 private:
@@ -38,34 +39,34 @@ public:
     Lexer(string fileText, string fileName, vector<string> lines);
     ~Lexer();
 
-    map<string, string> keyWords = {
-            {"and",   AND},
-            {"or",    OR},
-            {"not",   NOT},
-            {"contains",    CONTAINS},
+    map<string, TOK_TYPE> keyWords = {
+            {"and",   TOK_TYPE::AND},
+            {"or",    TOK_TYPE::OR},
+            {"not",   TOK_TYPE::NOT},
+            {"contains",    TOK_TYPE::CONTAINS},
             //{"get",    GET},
-            {"return",    RETURN},
-            {"continue",   CONTINUE},
-            {"break",    BREAK},
-            {"import",    IMPORT},
-            {"from", FROM},
-            {"if",    IF},
-            {"else",  ELSE},
-            {"do",    DO},
-            {"elif",  ELIF},
-            {"for",   FOR},
-            {"iter",   ITER},
-            {"to",    TO},
-            {"chgby", CHGBY},
-            {"while", WHILE},
-            {"op",    OP},
-            {"class",    CLASS},
-            {"try",    TRY},
-            {"catch",    CATCH},
-            {"either", EITHER},
-            {"await", AWAIT},
-            {"infix", INFIX},
-            {"uses", USES}
+            {"return",    TOK_TYPE::RETURN},
+            {"continue",   TOK_TYPE::CONTINUE},
+            {"break",    TOK_TYPE::BREAK},
+            {"import",    TOK_TYPE::IMPORT},
+            {"from", TOK_TYPE::FROM},
+            {"if",    TOK_TYPE::IF},
+            {"else",  TOK_TYPE::ELSE},
+            {"do",    TOK_TYPE::DO},
+            {"elif",  TOK_TYPE::ELIF},
+            {"for",   TOK_TYPE::FOR},
+            {"iter",   TOK_TYPE::ITER},
+            {"to",    TOK_TYPE::TO},
+            {"chgby", TOK_TYPE::CHGBY},
+            {"while", TOK_TYPE::WHILE},
+            {"op",    TOK_TYPE::OP},
+            {"class",    TOK_TYPE::CLASS},
+            {"try",    TOK_TYPE::TRY},
+            {"catch",    TOK_TYPE::CATCH},
+            {"either", TOK_TYPE::EITHER},
+            {"await", TOK_TYPE::AWAIT},
+            {"infix", TOK_TYPE::INFIX},
+            {"uses", TOK_TYPE::USES}
     };
     /**
      * Map assigning each possible character a token type

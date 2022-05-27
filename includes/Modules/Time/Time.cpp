@@ -6,7 +6,7 @@
 #include "TimeFunction.h"
 
 template<>
-Time<int>::Time() : Value<int>(0, "TIME", "", "") {
+Time<int>::Time() : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     map<string, BaseValue *> defaultArgs;
 
     symbolTable->set("sleepMs", new TimeFunction<int>("sleepMs", {"time"}, defaultArgs, "", ""));

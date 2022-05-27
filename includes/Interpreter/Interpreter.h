@@ -47,6 +47,7 @@
 #include "../Modules/Time/Time.h"
 
 using namespace std;
+using TOK_TYPE = BaseToken::TOK_TYPE;
 
 class Interpreter {
 public:

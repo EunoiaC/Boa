@@ -33,7 +33,7 @@ Context *UsableClass<int>::generateClassContext(string className) {
 
 template<>
 UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok, vector<Node *> members, Context *c,
-                              Context *parent, Node *super, vector<string> lines) : Value<int>(0, T_CLASS, f,
+                              Context *parent, Node *super, vector<string> lines) : Value<int>(0, TOK_TYPE::T_CLASS, f,
                                                                                                txt) {
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
@@ -55,14 +55,14 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
             rtError = res->error;
             return;
         }
-        if (superClass->type != T_CLASS) {
+        if (superClass->type != TOK_TYPE::T_CLASS) {
             rtError = new RuntimeError(
                     superClass->posStart,
                     superClass->posEnd,
                     superClass->line,
                     superClass->fName,
                     superClass->fTxt,
-                    "Expected a class, but got " + superClass->type + " instead.",
+                    "Expected a class, but got " + VAL_TYPES[superClass->type] + " instead.",
                     ctx
             );
             return;
@@ -183,7 +183,7 @@ BaseValue *UsableClass<int>::compEquals(BaseValue *other) {
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
-        if (other->type == T_CLASS){
+        if (other->type == TOK_TYPE::T_CLASS){
             UsableClass<int> *otherClass = (UsableClass<int> *) other;
             if (otherClass->memAddress == memAddress){
                 return new Number<double>(1, "", "");

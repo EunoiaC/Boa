@@ -6,7 +6,7 @@
 #include <iostream>
 
 
-BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
+BaseToken::BaseToken(TOK_TYPE t, int start_pos, int end_pos, int line_num) {
     type = t;
     this->fName = fName;
     this->fTxt = fTxt;
@@ -18,7 +18,7 @@ BaseToken::BaseToken(string t, int start_pos, int end_pos, int line_num) {
 BaseToken::~BaseToken() {
 }
 
-string BaseToken::getType() {
+BaseToken::TOK_TYPE BaseToken::getType() {
     return type;
 }
 
@@ -27,5 +27,5 @@ string BaseToken::posData(){
 }
 
 string BaseToken::toString() {
-    return type + posData();
+    return to_string(type) + posData();
 }

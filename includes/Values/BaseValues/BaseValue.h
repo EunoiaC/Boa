@@ -5,16 +5,29 @@
 #ifndef BOA_BASEVALUE_H
 #define BOA_BASEVALUE_H
 #include <string>
+#include <map>
+#include "../../Token/BaseToken.h"
 using namespace std;
+using TOK_TYPE = BaseToken::TOK_TYPE;
 
 class BaseValue {
 public:
-    BaseValue(string t, string f, string txt);
+    map<TOK_TYPE, string> VAL_TYPES = {
+            {TOK_TYPE::T_NUM, "T_NUM"},
+            {TOK_TYPE::T_FUNC, "T_FUNC"},
+            {TOK_TYPE::T_LIST, "T_LIST"},
+            {TOK_TYPE::T_MAP, "T_MAP"},
+            {TOK_TYPE::T_STRING, "T_STRING"},
+            {TOK_TYPE ::T_CLASS, "T_CLASS"},
+            {TOK_TYPE ::T_FUTURE, "T_FUTURE"}
+    };
+
+    BaseValue(TOK_TYPE t, string f, string txt);
 
     virtual BaseValue * getFromSymbolTable(string key);
     virtual void setInSymbolTable(string key, BaseValue * value);
 
-    string type;
+    TOK_TYPE type;
     string fName, fTxt;
     int posStart, posEnd, line;
 

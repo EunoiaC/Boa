@@ -7,7 +7,7 @@
 
 template<>
 List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string txt) : Value<vector<BaseValue *>>(
-        elements, T_LIST, f, txt) {
+        elements, TOK_TYPE::T_LIST, f, txt) {
     this->elements = elements;
     map<string, BaseValue *> defaultArgs;
     rtError = nullptr;
@@ -22,7 +22,7 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
                                                       ""));
     defaultArgs.clear();
 
-    defaultArgs["endIdx"] = new Value<double>(-1, T_NUM, fName, fTxt);
+    defaultArgs["endIdx"] = new Value<double>(-1, TOK_TYPE::T_NUM, fName, fTxt);
     symbolTable->set("slice", new ListFunction<int>(this, "slice", {"startIdx", "endIdx"},
                                                       defaultArgs, "",
                                                       ""));
@@ -35,7 +35,7 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
     symbolTable->set("set", new ListFunction<int>(this, "set", {"idx", "val"},
                                                       defaultArgs, "",
                                                       ""));
-    defaultArgs["func"] = new Value<int>(-10, T_FUNC, fName, fTxt);
+    defaultArgs["func"] = new Value<int>(-10, TOK_TYPE::T_FUNC, fName, fTxt);
     symbolTable->set("sort", new ListFunction<int>(this, "sort", {"func"},
                                                   defaultArgs, "",
                                                   ""));
@@ -102,7 +102,7 @@ BaseValue *List<vector<BaseValue *>>::contains(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
-    if (other->type == T_NUM) {
+    if (other->type == TOK_TYPE::T_NUM) {
         Number<double> *num = (Number<double> *) other;
         if (num->getValue() > elements.size() - 1) {
             rtError = new RuntimeError(
@@ -120,13 +120,13 @@ BaseValue *List<vector<BaseValue *>>::subtract(BaseValue *other) {
             return newList;
         }
     } else {
-        illegalOperation(other, T_NUM);
+        illegalOperation(other, VAL_TYPES[TOK_TYPE::T_NUM]);
     }
 }
 
 template<>
 BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         Number<double> *num = (Number<double> *) s;
         if (num->getValue() > elements.size() - 1 or num->getValue() < 0) {
             rtError = new RuntimeError(
@@ -140,7 +140,7 @@ BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
             );
         } else {
             BaseValue *val = elements[(int) num->getValue()];
-            if (val->type == T_STRING) {
+            if (val->type == TOK_TYPE::T_STRING) {
                 auto *str = (String<string> *) val;
                 return str;
             }
@@ -153,7 +153,7 @@ BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
-    if (other->type == T_LIST) {
+    if (other->type == TOK_TYPE::T_LIST) {
         List<vector<BaseValue *>> *otherList = (List<vector<BaseValue *>> *) other;
         List<vector<BaseValue *>> *newList = copy();
         newList->elements = elements;
@@ -176,7 +176,7 @@ BaseValue *List<vector<BaseValue *>>::plusEquals(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::to(BaseValue *other) {
-    if (other->type == T_LIST) {
+    if (other->type == TOK_TYPE::T_LIST) {
         elements = ((List<vector<BaseValue *>> *) other)->elements;
         return this;
     } else {
@@ -186,7 +186,7 @@ BaseValue *List<vector<BaseValue *>>::to(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::compEquals(BaseValue *other) {
-    if (other->type == T_LIST) {
+    if (other->type == TOK_TYPE::T_LIST) {
         auto *otherList = (List<vector<BaseValue *>> *) other;
         if (elements.size() == otherList->elements.size()) {
             for (int i = 0; i < elements.size(); i++) {
@@ -208,7 +208,7 @@ BaseValue *List<vector<BaseValue *>>::compNotEquals(BaseValue *other) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
-    if (other->type == T_NUM) {
+    if (other->type == TOK_TYPE::T_NUM) {
         Number<double> *num = (Number<double> *) other;
         if (num->getValue() > elements.size() - 1) {
             rtError = new RuntimeError(
@@ -225,7 +225,7 @@ BaseValue *List<vector<BaseValue *>>::minusEquals(BaseValue *other) {
             return this;
         }
     } else {
-        illegalOperation(other, T_NUM);
+        illegalOperation(other, VAL_TYPES[TOK_TYPE::T_NUM]);
     }
     return this;
 }

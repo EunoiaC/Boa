@@ -6,7 +6,7 @@
 #include "WebsocketFunction.h"
 
 template<>
-Websocket<int>::Websocket(String<string> *url) : Value<int>(0, "WEBSOCKET", "", "") {
+Websocket<int>::Websocket(String<string> *url) : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     map<string, BaseValue *> defaultArgs;
     this->url = url;
 

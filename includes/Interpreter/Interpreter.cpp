@@ -51,7 +51,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
     if (res->shouldReturn()) return res;
     BaseValue *value;
 
-    if (toIterateThrough->type == T_LIST) {
+    if (toIterateThrough->type == TOK_TYPE::T_LIST) {
         for (auto *val: ((List<vector<BaseValue *>> *) toIterateThrough)->elements) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 val);
@@ -67,7 +67,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
 
             elements.push_back(value);
         }
-    } else if (toIterateThrough->type == T_STRING) {
+    } else if (toIterateThrough->type == TOK_TYPE::T_STRING) {
         for (char ch: ((String<string> *) toIterateThrough)->getValue()) {
             c->symbolTable->set(node->iterNameTok->getValueObject()->getValue(),
                                 new String<string>(string(1, ch), "", ""));
@@ -82,7 +82,7 @@ RuntimeResult *Interpreter::visitIterateNode(Node *n, Context *c) {
             }
             elements.push_back(value);
         }
-    } else if (toIterateThrough->type == T_MAP) {
+    } else if (toIterateThrough->type == TOK_TYPE::T_MAP) {
         auto *dict = (Map<map<BaseValue *, BaseValue *>> *) toIterateThrough;
         for (auto it: dict->dict) {
             auto *kv = new List<vector<BaseValue *>>({it.first, it.second}, "", "");
@@ -192,7 +192,7 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         ctx->symbolTable->set("message", new String<string>(res->error->msg, "", ""));
         ctx->symbolTable->set("line", new Number<double>(res->error->line + 1, "", ""));
 
-        auto *err = new UsableClass<int>(fName, "", new Token<string>(T_STRING, res->error->errorName, res->error->posStart, res->error->posEnd, res->error->line), {}, ctx, c, nullptr, lines);
+        auto *err = new UsableClass<int>(fName, "", new Token<string>(TOK_TYPE::T_STRING, res->error->errorName, res->error->posStart, res->error->posEnd, res->error->line), {}, ctx, c, nullptr, lines);
         err->asString = res->error->toString();
 
         c->symbolTable->set(tryCatchNode->catchName->getValueObject()->getValue(), err);
@@ -353,7 +353,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     }
 
     string prevType;
-    if (value->type == CLASS){
+    if (value->type == TOK_TYPE::CLASS){
         // Check if it's instantiated class or a structure
         auto * temp = dynamic_cast<UsableClass<int> *>(value);
         if (temp){
@@ -378,7 +378,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                     c
             ));
         }
-        if (value->type == CLASS){
+        if (value->type == TOK_TYPE::CLASS){
             prevType = ((UsableClass<int> *) value)->className;
         } else {
             prevType = value->type;
@@ -386,18 +386,18 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     }
 
     value = value->setPos(node->posStart, node->posEnd, node->line);
-    if (value->type == T_NUM) {
+    if (value->type == TOK_TYPE::T_NUM) {
         ((Number<double> *) value)->setContext(c);
-    } else if (value->type == T_STRING) {
+    } else if (value->type == TOK_TYPE::T_STRING) {
         ((String<string> *) value)->setContext(c);
-    } else if (value->type == T_FUNC) {
+    } else if (value->type == TOK_TYPE::T_FUNC) {
         auto *func = (BaseFunction<int> *) value;
         func->setContext(c);
-    } else if (value->type == T_LIST) {
+    } else if (value->type == TOK_TYPE::T_LIST) {
         ((List<vector<BaseValue *>> *) value)->setContext(c);
-    } else if (value->type == T_MAP) {
+    } else if (value->type == TOK_TYPE::T_MAP) {
         ((Map<map<BaseValue *, BaseValue *>> *) value)->setContext(c);
-    } else if (value->type == T_FUTURE) {
+    } else if (value->type == TOK_TYPE::T_FUTURE) {
         ((Future<shared_future<RuntimeResult *>> *) value)->setContext(c);
     }
 
@@ -414,7 +414,7 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     Value<int> *valToCall;
     BaseValue *b = res->reg(visit(callNode->nodeToCall, c));
     if (res->shouldReturn()) return res;
-    if (b->type != T_FUNC && b->type != T_CLASS) {
+    if (b->type != TOK_TYPE::T_FUNC && b->type != TOK_TYPE::T_CLASS) {
         return res->failure(new RuntimeError(
                 callNode->posStart,
                 callNode->posEnd,
@@ -445,18 +445,18 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
     }
     if (res->shouldReturn()) return res;
     returnVal = returnVal->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line);
-    if (returnVal->type == T_NUM) {
+    if (returnVal->type == TOK_TYPE::T_NUM) {
         ((Number<double> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_STRING) {
+    } else if (returnVal->type == TOK_TYPE::T_STRING) {
         ((String<string> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_FUNC) {
+    } else if (returnVal->type == TOK_TYPE::T_FUNC) {
         auto *func = (BaseFunction<int> *) returnVal;
         func->setContext(c);
-    } else if (returnVal->type == T_LIST) {
+    } else if (returnVal->type == TOK_TYPE::T_LIST) {
         ((List<vector<BaseValue *>> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_MAP) {
+    } else if (returnVal->type == TOK_TYPE::T_MAP) {
         ((Map<map<BaseValue *, BaseValue *>> *) returnVal)->setContext(c);
-    } else if (returnVal->type == T_FUTURE) {
+    } else if (returnVal->type == TOK_TYPE::T_FUTURE) {
         ((Future<shared_future<RuntimeResult *>> *) returnVal)->setContext(c);
     }
     return res->success(returnVal);
@@ -594,27 +594,27 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     } else {
         BaseValue * t = c->symbolTable->get(varName);
         t->to(value);
-        if (t->type == T_NUM) {
+        if (t->type == TOK_TYPE::T_NUM) {
             if (((Number<double> *) t)->rtError) {
                 return result->failure(((Number<double> *) t)->rtError);
             }
-        } else if (t->type == T_STRING) {
+        } else if (t->type == TOK_TYPE::T_STRING) {
             if (((String<string> *) t)->rtError) {
                 return result->failure(((String<string> *) t)->rtError);
             }
-        } else if (t->type == T_FUNC) {
+        } else if (t->type == TOK_TYPE::T_FUNC) {
             if (((BaseFunction<int> *) t)->rtError) {
                 return result->failure(((BaseFunction<int> *) t)->rtError);
             }
-        } else if (t->type == T_LIST) {
+        } else if (t->type == TOK_TYPE::T_LIST) {
             if (((List<vector<BaseValue *>> *) t)->rtError) {
                 return result->failure(((List<vector<BaseValue *>> *) t)->rtError);
             }
-        } else if (t->type == T_MAP) {
+        } else if (t->type == TOK_TYPE::T_MAP) {
             if (((Map<map<BaseValue *, BaseValue *>> *) t)->rtError) {
                 return result->failure(((Map<map<BaseValue *, BaseValue *>> *) t)->rtError);
             }
-        } else if (t->type == T_CLASS) {
+        } else if (t->type == TOK_TYPE::T_CLASS) {
             if (((UsableClass<int> *) t)->rtError) {
                 return result->failure(((UsableClass<int> *) t)->rtError);
             }
@@ -657,67 +657,67 @@ RuntimeResult *Interpreter::visitBinOpNode(Node *n, Context *c) {
     if (rtRes->shouldReturn()) return rtRes;
     BaseValue *result = new BaseValue(left->type, fName, lines[node->opTok->line]);
 
-    if (node->opTok->type == PLUS) {
+    if (node->opTok->type == TOK_TYPE::PLUS) {
         result = left->add(right);
-    } else if (node->opTok->type == MINUS) {
+    } else if (node->opTok->type == TOK_TYPE::MINUS) {
         result = left->subtract(right);
-    } else if (node->opTok->type == MULTIPLY) {
+    } else if (node->opTok->type == TOK_TYPE::MULTIPLY) {
         result = left->multiply(right);
-    } else if (node->opTok->type == DIVIDE) {
+    } else if (node->opTok->type == TOK_TYPE::DIVIDE) {
         result = left->divide(right);
-    } else if (node->opTok->type == POWER) {
+    } else if (node->opTok->type == TOK_TYPE::POWER) {
         result = left->power(right);
-    } else if (node->opTok->type == MOD) {
+    } else if (node->opTok->type == TOK_TYPE::MOD) {
         result = left->mod(right);
-    } else if (node->opTok->getType() == GREATER_THAN) {
+    } else if (node->opTok->getType() == TOK_TYPE::GREATER_THAN) {
         result = left->compGreaterThan(right);
-    } else if (node->opTok->getType() == GREATER_THAN_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::GREATER_THAN_EQUAL) {
         result = left->compGreaterThanEquals(right);
-    } else if (node->opTok->getType() == LESS_THAN) {
+    } else if (node->opTok->getType() == TOK_TYPE::LESS_THAN) {
         result = left->compLessThan(right);
-    } else if (node->opTok->getType() == LESS_THAN_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::LESS_THAN_EQUAL) {
         result = left->compLessThanEquals(right);
-    } else if (node->opTok->getType() == NOT_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::NOT_EQUAL) {
         result = left->compNotEquals(right);
-    } else if (node->opTok->getType() == EQUAL_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::EQUAL_EQUAL) {
         result = left->compEquals(right);
-    } else if (node->opTok->getType() == PLUS_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::PLUS_EQUAL) {
         result = left->plusEquals(right);
-    } else if (node->opTok->getType() == MINUS_EQUAL) {
+    } else if (node->opTok->getType() == TOK_TYPE::MINUS_EQUAL) {
         result = left->minusEquals(right);
-    } else if (node->opTok->getType() == AND) {
+    } else if (node->opTok->getType() == TOK_TYPE::AND) {
         result = left->andedBy(right);
-    } else if (node->opTok->getType() == OR) {
+    } else if (node->opTok->getType() == TOK_TYPE::OR) {
         result = left->oredBy(right);
-    } else if (node->opTok->getType() == GET) {
+    } else if (node->opTok->getType() == TOK_TYPE::GET) {
         result = left->get(right);
-    } else if (node->opTok->getType() == CONTAINS) {
+    } else if (node->opTok->getType() == TOK_TYPE::CONTAINS) {
         result = left->contains(right);
     }
     //TODO: Update this area for any errors
-    if (left->type == T_NUM) {
+    if (left->type == TOK_TYPE::T_NUM) {
         if (((Number<double> *) left)->rtError) {
             RuntimeResult *r = rtRes->failure(((Number<double> *) left)->rtError);
             ((Number<double> *) left)->rtError = nullptr;
             return r;
         }
-    } else if (left->type == T_STRING) {
+    } else if (left->type == TOK_TYPE::T_STRING) {
         if (((String<string> *) left)->rtError) {
             return rtRes->failure(((String<string> *) left)->rtError);
         }
-    } else if (left->type == T_FUNC) {
+    } else if (left->type == TOK_TYPE::T_FUNC) {
         if (((BaseFunction<int> *) left)->rtError) {
             return rtRes->failure(((BaseFunction<int> *) left)->rtError);
         }
-    } else if (left->type == T_LIST) {
+    } else if (left->type == TOK_TYPE::T_LIST) {
         if (((List<vector<BaseValue *>> *) left)->rtError) {
             return rtRes->failure(((List<vector<BaseValue *>> *) left)->rtError);
         }
-    } else if (left->type == T_MAP) {
+    } else if (left->type == TOK_TYPE::T_MAP) {
         if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
             return rtRes->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
         }
-    } else if (left->type == T_CLASS) {
+    } else if (left->type == TOK_TYPE::T_CLASS) {
         if (((UsableClass<int> *) left)->rtError) {
             return rtRes->failure(((UsableClass<int> *) left)->rtError);
         }
@@ -741,8 +741,8 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
 
         if(i + 1 == node->indices.size()){
             if (node->type == SET_VALUE){
-                if (result->type == T_LIST){
-                    if (idx->type != T_NUM){
+                if (result->type == TOK_TYPE::T_LIST){
+                    if (idx->type != TOK_TYPE::T_NUM){
                         return res->failure(new RuntimeError(
                                 idx->posStart,
                                 idx->posEnd,
@@ -755,7 +755,7 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
                     }
                     ((List<vector<BaseValue *>> *) result)->elements[((Number<double> *) idx)->getValue()] = res->reg(visit(node->newVal, c));
                     if (res->shouldReturn()) return res;
-                } else if(result->type == T_MAP){
+                } else if(result->type == TOK_TYPE::T_MAP){
                     auto *m = ((Map<map<BaseValue *, BaseValue *>> *) result);
                     m->replace(idx, res->reg(visit(node->newVal, c)));
                     if (res->shouldReturn()) return res;
@@ -786,15 +786,15 @@ RuntimeResult *Interpreter::visitIndexNode(Node *n, Context *c) {
         }
         result = result->get(idx);
 
-        if (left->type == T_STRING) {
+        if (left->type == TOK_TYPE::T_STRING) {
             if (((String<string> *) left)->rtError) {
                 return res->failure(((String<string> *) left)->rtError);
             }
-        } else if (left->type == T_LIST) {
+        } else if (left->type == TOK_TYPE::T_LIST) {
             if (((List<vector<BaseValue *>> *) left)->rtError) {
                 return res->failure(((List<vector<BaseValue *>> *) left)->rtError);
             }
-        } else if (left->type == T_MAP) {
+        } else if (left->type == TOK_TYPE::T_MAP) {
             if (((Map<map<BaseValue *, BaseValue *>> *) left)->rtError) {
                 return res->failure(((Map<map<BaseValue *, BaseValue *>> *) left)->rtError);
             }
@@ -810,9 +810,9 @@ RuntimeResult *Interpreter::visitUnaryOpNode(Node *n, Context *c) {
 
     if (rtRes->shouldReturn()) return rtRes;
 
-    if (opNode->op->type == MINUS) {
+    if (opNode->op->type == TOK_TYPE::MINUS) {
         num = num->multiply(new Number<double>(-1, num->fName, num->fTxt));
-    } else if (opNode->op->type == NOT) {
+    } else if (opNode->op->type == TOK_TYPE::NOT) {
         num = dynamic_cast<Number<double> *>(num->notted());
     }
 
@@ -838,7 +838,7 @@ RuntimeResult *Interpreter::visitImportNode(Node *n, Context *c) {
     BaseValue *toImport = res->reg(visit(node->toImport, c));
     if (res->shouldReturn()) return res;
 
-    if (toImport->type != T_STRING) {
+    if (toImport->type != TOK_TYPE::T_STRING) {
         return res->failure(new RuntimeError(
                 toImport->posStart,
                 toImport->posEnd,

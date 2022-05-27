@@ -45,7 +45,7 @@ template<>
 RuntimeResult *FileFunction<int>::execute_writeLines(Context *execCtx) {
     auto * res = new RuntimeResult();
     BaseValue * l = execCtx->symbolTable->get("list");
-    if (l->type != T_LIST) {
+    if (l->type != TOK_TYPE::T_LIST) {
         return res->failure(new RuntimeError(
                 l->posStart,
                 l->posEnd,
@@ -81,7 +81,7 @@ FileFunction<int>::FileFunction(File<int> *fileObj, string name, vector<string> 
                                 string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                fTxt, CLASS_FUNC) {
     this->fileObj = fileObj;
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_readLines"] = &FileFunction<int>::execute_readLines;
     funcMap["execute_read"] = &FileFunction<int>::execute_read;
     funcMap["execute_write"] = &FileFunction<int>::execute_write;

@@ -24,7 +24,7 @@ RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
 
     BaseValue *val = execCtx->symbolTable->get("value");
 
-    return (new RuntimeResult())->success(new String<string>(val->type, val->fName, val->fTxt));
+    return (new RuntimeResult())->success(new String<string>(VAL_TYPES[val->type], val->fName, val->fTxt));
 }
 
 template<>
@@ -46,7 +46,7 @@ RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
 
     BaseValue *val = execCtx->symbolTable->get("value");
 
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -72,7 +72,7 @@ RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
-    if (val->type != T_STRING) {
+    if (val->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -129,7 +129,7 @@ RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
-    if (val->type != T_STRING) {
+    if (val->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         val->posStart,
@@ -165,7 +165,7 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
     if (res->error) return res;
 
     BaseValue *oldName = execCtx->symbolTable->get("oldName");
-    if (oldName->type != T_STRING) {
+    if (oldName->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         oldName->posStart,
@@ -180,7 +180,7 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
     }
 
     BaseValue *newName = execCtx->symbolTable->get("newName");
-    if (newName->type != T_STRING) {
+    if (newName->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         newName->posStart,
@@ -262,7 +262,7 @@ RuntimeResult *BuiltInFunction<int>::execute_getFile(Context *execCtx) {
     if (res->error) return res;
 
     BaseValue *f = execCtx->symbolTable->get("fName");
-    if (f->type != T_STRING) {
+    if (f->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(
                 new RuntimeError(
                         f->posStart,
@@ -297,7 +297,7 @@ template<>
 BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                       string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, BUILT_IN_FUNC) {
-    type = "FUNCTION"; // It doesnt work w/out this idk why
+    type = TOK_TYPE::T_FUNC; // It doesnt work w/out this idk why
 
     funcMap["execute_print"] = &BuiltInFunction<int>::execute_print;
     funcMap["execute_input"] = &BuiltInFunction<int>::execute_input;

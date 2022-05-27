@@ -29,7 +29,7 @@ RuntimeResult *FutureFunction<int>::execute_get(Context *execCtx) {
 template <>
 FutureFunction<int>::FutureFunction(Future<shared_future<RuntimeResult *>> * value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
-    type = "FUNCTION"; // It doesnt work w/out this idk why
+    type = TOK_TYPE::T_FUNC; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_get"] = &FutureFunction<int>::execute_get;
     funcMap["execute_isReady"] = &FutureFunction<int>::execute_isReady;

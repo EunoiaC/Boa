@@ -8,7 +8,7 @@ template<>
 RuntimeResult *RandomFunction<int>::execute_randrange(Context *execCtx) {
     BaseValue * min = execCtx->symbolTable->get("min");
     BaseValue * max = execCtx->symbolTable->get("max");
-    if(min->type != T_NUM){
+    if(min->type != TOK_TYPE::T_NUM){
         return (new RuntimeResult())->failure(new RuntimeError(
                 min->posStart,
                 min->posEnd,
@@ -20,7 +20,7 @@ RuntimeResult *RandomFunction<int>::execute_randrange(Context *execCtx) {
         ));
     }
 
-    if(max->type != T_NUM){
+    if(max->type != TOK_TYPE::T_NUM){
         return (new RuntimeResult())->failure(new RuntimeError(
                 max->posStart,
                 max->posEnd,
@@ -45,7 +45,7 @@ RuntimeResult *RandomFunction<int>::execute_randrange(Context *execCtx) {
 template<>
 RuntimeResult *RandomFunction<int>::execute_choose(Context *execCtx) {
     BaseValue * toChoose = execCtx->symbolTable->get("value");
-    if(toChoose->type != T_LIST){
+    if(toChoose->type != TOK_TYPE::T_LIST){
         return (new RuntimeResult())->failure(new RuntimeError(
                 toChoose->posStart,
                 toChoose->posEnd,
@@ -81,7 +81,7 @@ RuntimeResult *RandomFunction<int>::execute_choose(Context *execCtx) {
 template<>
 RuntimeResult *RandomFunction<int>::execute_shuffle(Context *execCtx) {
     BaseValue * toShuffle = execCtx->symbolTable->get("value");
-    if(toShuffle->type != T_LIST){
+    if(toShuffle->type != TOK_TYPE::T_LIST){
         return (new RuntimeResult())->failure(new RuntimeError(
                 toShuffle->posStart,
                 toShuffle->posEnd,
@@ -117,7 +117,7 @@ template<>
 RandomFunction<int>::RandomFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
-    type = "FUNCTION";
+    type = BaseToken::T_FUNC;
     funcMap["execute_randrange"] = &RandomFunction<int>::execute_randrange;
     funcMap["execute_choose"] = &RandomFunction<int>::execute_choose;
     funcMap["execute_shuffle"] = &RandomFunction<int>::execute_shuffle;

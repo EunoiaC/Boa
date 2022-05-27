@@ -9,7 +9,7 @@ RuntimeResult *StringFunction<int>::execute_join(Context *execCtx) {
     auto *res = new RuntimeResult();
 
     BaseValue *val = execCtx->symbolTable->get("toJoin");
-    if(val->type != T_LIST){
+    if(val->type != TOK_TYPE::T_LIST){
         return res->failure(new RuntimeError(
                 val->posStart,
                 val->posEnd,
@@ -40,7 +40,7 @@ RuntimeResult *StringFunction<int>::execute_split(Context *execCtx) {
     auto *res = new RuntimeResult();
 
     BaseValue * separator = execCtx->symbolTable->get("separator");
-    if(separator->type != T_STRING){
+    if(separator->type != TOK_TYPE::T_STRING){
         return res->failure(new RuntimeError(
                 separator->posStart,
                 separator->posEnd,
@@ -86,7 +86,7 @@ RuntimeResult *StringFunction<int>::execute_slice(Context *execCtx) {
 
     string toSlice = value->copy()->getValue();
 
-    if(start->type != T_NUM){
+    if(start->type != TOK_TYPE::T_NUM){
         return res->failure(new RuntimeError(
                 start->posStart,
                 start->posEnd,
@@ -98,7 +98,7 @@ RuntimeResult *StringFunction<int>::execute_slice(Context *execCtx) {
         ));
     }
 
-    if(end->type != T_NUM) {
+    if(end->type != TOK_TYPE::T_NUM) {
         return res->failure(new RuntimeError(
                 end->posStart,
                 end->posEnd,
@@ -147,7 +147,7 @@ RuntimeResult *StringFunction<int>::execute_slice(Context *execCtx) {
 template <>
 RuntimeResult *StringFunction<int>::execute_indexOf(Context *execCtx) {
     BaseValue * toFind = execCtx->symbolTable->get("toFind");
-    if(toFind->type != T_STRING){
+    if(toFind->type != TOK_TYPE::T_STRING){
         return (new RuntimeResult())->failure(new RuntimeError(
                 toFind->posStart,
                 toFind->posEnd,
@@ -177,7 +177,7 @@ template <>
 RuntimeResult *StringFunction<int>::execute_replace(Context *execCtx) {
     BaseValue * toFind = execCtx->symbolTable->get("toFind");
     BaseValue * toReplace = execCtx->symbolTable->get("toReplace");
-    if(toFind->type != T_STRING){
+    if(toFind->type != TOK_TYPE::T_STRING){
         return (new RuntimeResult())->failure(new RuntimeError(
                 toFind->posStart,
                 toFind->posEnd,
@@ -188,7 +188,7 @@ RuntimeResult *StringFunction<int>::execute_replace(Context *execCtx) {
                 execCtx
         ));
     }
-    if(toReplace->type != T_STRING){
+    if(toReplace->type != TOK_TYPE::T_STRING){
         return (new RuntimeResult())->failure(new RuntimeError(
                 toReplace->posStart,
                 toReplace->posEnd,
@@ -210,7 +210,7 @@ RuntimeResult *StringFunction<int>::execute_replace(Context *execCtx) {
 template <>
 StringFunction<int>::StringFunction(String<string>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
-    type = "FUNCTION"; // It doesnt work w/out this idk why
+    type = TOK_TYPE::T_FUNC; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_split"] = &StringFunction<int>::execute_split;
     funcMap["execute_slice"] = &StringFunction<int>::execute_slice;

@@ -13,5 +13,5 @@ UnaryOperationNode::UnaryOperationNode(Token<string> * op, Node *node) : Node(N_
 }
 
 string UnaryOperationNode::toString() {
-    return "(" + op->type + ", " + node->toString() + ")";
+    return "(" + to_string(op->type) + ", " + node->toString() + ")";
 }

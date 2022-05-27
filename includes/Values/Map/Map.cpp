@@ -7,7 +7,7 @@
 
 template<>
 Map<map<BaseValue *, BaseValue *>>::Map(map<BaseValue *, BaseValue *> dict, string fName, string fTxt)
-        : Value<map<BaseValue *, BaseValue *>>(dict, T_MAP, fName, fTxt) {
+        : Value<map<BaseValue *, BaseValue *>>(dict, TOK_TYPE::T_MAP, fName, fTxt) {
     this->dict = dict;
 
     map<string, BaseValue *> defaultArgs;
@@ -35,7 +35,7 @@ int Map<map<BaseValue *, BaseValue *>>::getLength() {
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::add(BaseValue *keyAndVal) {
-    if (keyAndVal->type == T_LIST) {
+    if (keyAndVal->type == TOK_TYPE::T_LIST) {
         List<vector<BaseValue *>> *list = (List<vector<BaseValue *>> *) keyAndVal;
         if (list->elements.size() != 2) {
             rtError = new RuntimeError(
@@ -53,14 +53,14 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::add(BaseValue *keyAndVal) {
             return m;
         }
     } else {
-        illegalOperation(keyAndVal, T_LIST);
+        illegalOperation(keyAndVal, VAL_TYPES[TOK_TYPE::T_LIST]);
     }
 }
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::minusEquals(BaseValue *key) {
     Map<map<BaseValue *, BaseValue *>> *_copy = this;
-    if (key->type == T_LIST) {
+    if (key->type == TOK_TYPE::T_LIST) {
         List<vector<BaseValue *>> *list = (List<vector<BaseValue *>> *) key;
         for (auto it: _copy->dict) {
             if (((List<vector<BaseValue *>> *) it.first)->val == list->val) {
@@ -68,7 +68,7 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::minusEquals(BaseValue *key) {
                 break;
             }
         }
-    } else if (key->type == T_NUM) {
+    } else if (key->type == TOK_TYPE::T_NUM) {
         Number<double> *num = (Number<double> *) key;
         for (auto it: _copy->dict) {
             if (((Number<double> *) it.first)->val == num->val) {
@@ -76,7 +76,7 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::minusEquals(BaseValue *key) {
                 break;
             }
         }
-    } else if (key->type == T_STRING) {
+    } else if (key->type == TOK_TYPE::T_STRING) {
         String<string> *val = (String<string> *) key;
         for (auto it: _copy->dict) {
             if (((String<string> *) it.first)->val == val->val) {
@@ -84,7 +84,7 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::minusEquals(BaseValue *key) {
                 break;
             }
         }
-    } else if (key->type == T_MAP) {
+    } else if (key->type == TOK_TYPE::T_MAP) {
         Map<map<BaseValue *, BaseValue *>> *val = (Map<map<BaseValue *, BaseValue *>> *) key;
         for (auto it: _copy->dict) {
             if (((Map<map<BaseValue *, BaseValue *>> *) it.first)->val == val->val) {
@@ -145,7 +145,7 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::replace(BaseValue *old, BaseValue
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) {
-    if (keyAndVal->type == T_LIST) {
+    if (keyAndVal->type == TOK_TYPE::T_LIST) {
         List<vector<BaseValue *>> *list = (List<vector<BaseValue *>> *) keyAndVal;
         if (list->elements.size() != 2) {
             rtError = new RuntimeError(
@@ -162,13 +162,13 @@ BaseValue *Map<map<BaseValue *, BaseValue *>>::plusEquals(BaseValue *keyAndVal) 
             return this;
         }
     } else {
-        illegalOperation(keyAndVal, T_LIST);
+        illegalOperation(keyAndVal, VAL_TYPES[TOK_TYPE::T_LIST]);
     }
 }
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::to(BaseValue *val) {
-    if (val->type == T_MAP) {
+    if (val->type == TOK_TYPE::T_MAP) {
         this->dict = ((Map<map<BaseValue *, BaseValue *>> *) val)->dict;
         return this;
     } else {
@@ -188,7 +188,7 @@ Number<double> *Map<map<BaseValue *, BaseValue *>>::keyExists(BaseValue *key) {
 
 template<>
 BaseValue *Map<map<BaseValue *, BaseValue *>>::compEquals(BaseValue *other) {
-    if(other->type == T_MAP){
+    if(other->type == TOK_TYPE::T_MAP){
         Map<map<BaseValue *, BaseValue *>> *otherMap = (Map<map<BaseValue *, BaseValue *>> *) other;
         if(dict.size() != otherMap->dict.size()) {
             return new Number<double>(0, "", "");

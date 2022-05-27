@@ -52,7 +52,7 @@ RuntimeResult *MapFunction<int>::execute_getKeys(Context *execCtx) {
 template<>
 MapFunction<int>::MapFunction(Map<map<BaseValue *, BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
-    type = "FUNCTION"; // It doesnt work w/out this idk why
+    type = TOK_TYPE::T_FUNC; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_sortByValue"] = &MapFunction<int>::execute_sortByValue;
     funcMap["execute_getKeys"] = &MapFunction<int>::execute_getKeys;

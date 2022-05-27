@@ -14,7 +14,7 @@ RuntimeResult *ListFunction<int>::execute_slice(Context *execCtx) {
 
     vector<BaseValue *> toSlice = value->copy()->getValue();
 
-    if(start->type != T_NUM){
+    if(start->type != TOK_TYPE::T_NUM){
         return res->failure(new RuntimeError(
                 start->posStart,
                 start->posEnd,
@@ -26,7 +26,7 @@ RuntimeResult *ListFunction<int>::execute_slice(Context *execCtx) {
         ));
     }
 
-    if(end->type != T_NUM) {
+    if(end->type != TOK_TYPE::T_NUM) {
         return res->failure(new RuntimeError(
                 end->posStart,
                 end->posEnd,
@@ -79,7 +79,7 @@ RuntimeResult *ListFunction<int>::execute_pop(Context *execCtx) {
     auto *res = new RuntimeResult();
 
     BaseValue *index = execCtx->symbolTable->get("index");
-    if(index->type != T_NUM) {
+    if(index->type != TOK_TYPE::T_NUM) {
         return res->failure(new RuntimeError(
                 index->posStart,
                 index->posEnd,
@@ -115,7 +115,7 @@ RuntimeResult *ListFunction<int>::execute_append(Context *execCtx) {
 
     BaseValue * pos = execCtx->symbolTable->get("pos");
 
-    if(pos->type != T_NUM) {
+    if(pos->type != TOK_TYPE::T_NUM) {
         return res->failure(new RuntimeError(
                 pos->posStart,
                 pos->posEnd,
@@ -171,7 +171,7 @@ template<>
 RuntimeResult *ListFunction<int>::execute_set(Context *execCtx) {
     BaseValue * idx = execCtx->symbolTable->get("idx");
     BaseValue * val = execCtx->symbolTable->get("val");
-    if(idx->type != T_NUM){
+    if(idx->type != TOK_TYPE::T_NUM){
         return (new RuntimeResult())->failure(new RuntimeError(
                 idx->posStart,
                 idx->posEnd,
@@ -207,7 +207,7 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
     Error * error = nullptr;
 
     BaseValue * compareFunc = execCtx->symbolTable->get("func");
-    if(compareFunc->type != T_FUNC){
+    if(compareFunc->type != TOK_TYPE::T_FUNC){
         return res->failure(new RuntimeError(
                 compareFunc->posStart,
                 compareFunc->posEnd,
@@ -241,7 +241,7 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
                 return false;
             }
             BaseValue * tmp = r->value;
-            if (tmp->type != T_NUM){
+            if (tmp->type != TOK_TYPE::T_NUM){
                 error = new RuntimeError(
                         func->posStart,
                         func->posEnd,
@@ -256,37 +256,38 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
         } else {
             val = (Number<double>*) a->compSort(b);
         }
-        if (a->type == T_NUM) {
+        if (a->type == TOK_TYPE::T_NUM) {
             if (((Number<double> *) a)->rtError) {
                 error = ((Number<double> *) a)->rtError;
                 return false;
             }
-        } else if (a->type == T_STRING) {
+        } else if (a->type == TOK_TYPE::T_STRING) {
             if (((String<string> *) a)->rtError) {
                 error = ((String<string> *) a)->rtError;
                 return false;
             }
-        } else if (a->type == T_FUNC) {
+        } else if (a->type == TOK_TYPE::T_FUNC) {
             if (((BaseFunction<int> *) a)->rtError) {
                 error = ((BaseFunction<int> *) a)->rtError;
                 return false;
             }
-        } else if (a->type == T_LIST) {
+        } else if (a->type == TOK_TYPE::T_LIST) {
             if (((List<vector<BaseValue *>> *) a)->rtError) {
                 error = ((List<vector<BaseValue *>> *) left)->rtError;
                 return false;
             }
-        } else if (a->type == T_MAP) {
+        } else if (a->type == TOK_TYPE::T_MAP) {
             if (((Map<map<BaseValue *, BaseValue *>> *) a)->rtError) {
                 error = ((Map<map<BaseValue *, BaseValue *>> *) a)->rtError;
                 return false;
             }
-        } else if (a->type == T_CLASS) {
+        } else if (a->type == TOK_TYPE::T_CLASS) {
             if (((UsableClass<int> *) a)->rtError) {
                 error = ((UsableClass<int> *) a)->rtError;
                 return false;
             }
         }
+        // TODO: Update this area
         return (val)->getValue() == 1;
     });
     if (error) return res->failure(error);
@@ -296,7 +297,7 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
 template<>
 ListFunction<int>::ListFunction(List<vector<BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt)
         : BaseFunction<int>(name, argNames, defaultArgs, fName, fTxt, CLASS_FUNC) {
-    type = "FUNCTION"; // It doesnt work w/out this idk why
+    type = TOK_TYPE::T_FUNC; // It doesnt work w/out this idk why
     this->value = value;
     funcMap["execute_pop"] = &ListFunction<int>::execute_pop;
     funcMap["execute_append"] = &ListFunction<int>::execute_append;

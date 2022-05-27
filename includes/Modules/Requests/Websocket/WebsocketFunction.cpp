@@ -10,7 +10,7 @@ template<>
 RuntimeResult *WebsocketFunction<int>::execute_send(Context *execCtx) {
     auto *res = new RuntimeResult();
     BaseValue *temp = execCtx->symbolTable->get("message");
-    if (temp->type != T_STRING) {
+    if (temp->type != TOK_TYPE::T_STRING) {
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -33,7 +33,7 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
     auto *res = new RuntimeResult();
 
     BaseValue *temp = execCtx->symbolTable->get("messageHandler");
-    if (temp->type != T_FUNC) {
+    if (temp->type != TOK_TYPE::T_FUNC) {
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -108,7 +108,7 @@ WebsocketFunction<int>::WebsocketFunction(Websocket<int> *websockObj, string nam
                                                                                          fTxt, CLASS_FUNC) {
     this->websockObj = websockObj;
     this->defaultArgs = defaultArgs;
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_close"] = &WebsocketFunction<int>::execute_close;
     funcMap["execute_send"] = &WebsocketFunction<int>::execute_send;
     funcMap["execute_start"] = &WebsocketFunction<int>::execute_start;

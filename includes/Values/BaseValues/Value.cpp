@@ -5,7 +5,7 @@
 #include "Value.h"
 
 template<class valueType>
-Value<valueType>::Value(valueType v, string t, string f, string txt) : BaseValue(t, f, txt) {
+Value<valueType>::Value(valueType v, TOK_TYPE t, string f, string txt) : BaseValue(t, f, txt) {
     val = v;
     setContext(nullptr);
     symbolTable = new SymbolTable();
@@ -85,7 +85,7 @@ void Value<valueType>::illegalOperation(BaseValue *other, string type) {
 template<class valueType>
 void Value<valueType>::unsupportedOperation(BaseValue *other) {
     if (!other) other = this;
-    rtError = new RuntimeError(posStart, other->posEnd, line, other->fName, other->fTxt, "Type " + type + " does not allow this operation.", ctx);
+    rtError = new RuntimeError(posStart, other->posEnd, line, other->fName, other->fTxt, "Type " + to_string(type) + " does not allow this operation.", ctx);
 }
 
 template<class valueType>

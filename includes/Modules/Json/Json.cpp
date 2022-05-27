@@ -6,7 +6,7 @@
 #include "JsonFunction.h"
 
 template<>
-Json<int>::Json() : Value<int>(0, "JSON", "", "") {
+Json<int>::Json() : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     map<string, BaseValue *> defaultArgs;
 
     symbolTable->set("loads", new JsonFunction<int>("loads", {"string"}, defaultArgs, "", ""));

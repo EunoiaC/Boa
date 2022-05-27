@@ -6,7 +6,7 @@
 #include "FileFunction.h"
 
 template<>
-File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<int>(0, "FILE", "", "") {
+File<int>::File(String<string> * fileName, String<string> * parentPath) : Value<int>(0, TOK_TYPE::T_FILE, "", "") {
     this->fileName = fileName;
     this->parentPath = parentPath;
     symbolTable->set("fileName", fileName);

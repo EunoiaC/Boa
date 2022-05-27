@@ -114,14 +114,14 @@ bool BaseValue::isTrue() {
 }
 
 string BaseValue::toString() {
-    return type;
+    return to_string(type);
 }
 
 BaseValue *BaseValue::compSort(BaseValue *val) {
     return nullptr;
 }
 
-BaseValue::BaseValue(string t, string f, string txt) {
+BaseValue::BaseValue(TOK_TYPE t, string f, string txt) {
     type = t;
     fName = f;
     fTxt = txt;

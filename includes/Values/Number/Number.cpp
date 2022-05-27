@@ -9,7 +9,7 @@
 
 
 template<>
-Number<double>::Number(double value, string f, string txt) : Value<double>(value, T_NUM, f, txt) {
+Number<double>::Number(double value, string f, string txt) : Value<double>(value, TOK_TYPE::T_NUM, f, txt) {
     this->val = value;
 
     map<string, BaseValue *> defaultArgs;
@@ -38,7 +38,7 @@ Number<double> *Number<double>::copy() {
 template<>
 Number<double> *Number<double>::divide(BaseValue *s) {
     Number<double> *output;
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         auto *num = (Number<double> *) s;
         if (num->getValue() == 0) {
             //cout << "Error: Division by zero" << endl;
@@ -62,7 +62,7 @@ Number<double> *Number<double>::divide(BaseValue *s) {
 
 template<>
 BaseValue *Number<double>::compGreaterThanEquals(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number<double>(this->val >= ((Number *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
@@ -70,7 +70,7 @@ BaseValue *Number<double>::compGreaterThanEquals(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::compLessThanEquals(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number<double>(this->val <= ((Number<double> *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
@@ -78,7 +78,7 @@ BaseValue *Number<double>::compLessThanEquals(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::compGreaterThan(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number<double>(this->val > ((Number<double> *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
@@ -86,7 +86,7 @@ BaseValue *Number<double>::compGreaterThan(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::compLessThan(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number(this->val < ((Number *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
@@ -100,7 +100,7 @@ BaseValue *Number<double>::compSort(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::compEquals(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number(this->val == ((Number *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(0, fName, fTxt))->setContext(ctx);
@@ -108,7 +108,7 @@ BaseValue *Number<double>::compEquals(BaseValue *val) {
 
 template<>
 BaseValue *Number<double>::compNotEquals(BaseValue *val) {
-    if (val->type == T_NUM) {
+    if (val->type == TOK_TYPE::T_NUM) {
         return (new Number<double>(this->val != ((Number *) val)->getValue(), fName, fTxt))->setContext(ctx);
     }
     return (new Number<double>(1, fName, fTxt))->setContext(ctx);
@@ -131,7 +131,7 @@ BaseValue *Number<double>::notted() {
 
 template<>
 Number<double> *Number<double>::multiply(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         return dynamic_cast<Number<double> *>((new Number<double>(this->val * ((Number *) s)->getValue(), fName,
                                                                   fTxt))->setContext(
                 ctx));
@@ -165,7 +165,7 @@ bool Number<double>::isTrue() {
 
 template<>
 BaseValue *Number<double>::add(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         return dynamic_cast<Number *>((new Number<double>(this->val + ((Number *) s)->getValue(), fName,
                                                           fTxt))->setContext(
                 ctx));
@@ -175,7 +175,7 @@ BaseValue *Number<double>::add(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::plusEquals(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         this->val += ((Number *) s)->getValue();
         return this;
     }
@@ -184,7 +184,7 @@ Number<double> *Number<double>::plusEquals(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::to(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         this->val = ((Number *) s)->getValue();
         return this;
     }
@@ -193,7 +193,7 @@ Number<double> *Number<double>::to(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::minusEquals(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         this->val -= ((Number *) s)->getValue();
         return this;
     }
@@ -202,7 +202,7 @@ Number<double> *Number<double>::minusEquals(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::subtract(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         return dynamic_cast<Number *>((new Number<double>(this->val - ((Number *) s)->getValue(), fName,
                                                           fTxt))->setContext(
                 ctx));
@@ -212,7 +212,7 @@ Number<double> *Number<double>::subtract(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::power(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         return dynamic_cast<Number *>((new Number<double>(pow(this->val, ((Number *) s)->getValue()), fName,
                                                           fTxt))->setContext(
                 ctx));
@@ -222,7 +222,7 @@ Number<double> *Number<double>::power(BaseValue *s) {
 
 template<>
 Number<double> *Number<double>::mod(BaseValue *s) {
-    if (s->type == T_NUM) {
+    if (s->type == TOK_TYPE::T_NUM) {
         return dynamic_cast<Number *>((new Number<double>(fmod(this->val, ((Number *) s)->getValue()), fName,
                                                           fTxt))->setContext(
                 ctx));

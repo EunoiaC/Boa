@@ -14,7 +14,7 @@ size_t writeFunction(void *ptr, size_t size, size_t nmemb, std::string *data) {
 template<>
 RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
     BaseValue *url = execCtx->symbolTable->get("url");
-    if (url->type != T_STRING) {
+    if (url->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 url->posStart,
                 url->posEnd,
@@ -27,7 +27,7 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
     }
 
     BaseValue *temp2 = execCtx->symbolTable->get("headers");
-    if (temp2->type != T_MAP) {
+    if (temp2->type != TOK_TYPE::T_MAP) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp2->posStart,
                 temp2->posEnd,
@@ -54,7 +54,7 @@ RuntimeResult *RequestsFunction<int>::execute_get(Context *execCtx) {
 template<>
 RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     BaseValue *url = execCtx->symbolTable->get("url");
-    if (url->type != T_STRING) {
+    if (url->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 url->posStart,
                 url->posEnd,
@@ -68,7 +68,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     BaseValue *temp = execCtx->symbolTable->get("data");
 
     BaseValue *temp2 = execCtx->symbolTable->get("headers");
-    if (temp2->type != T_MAP) {
+    if (temp2->type != TOK_TYPE::T_MAP) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp2->posStart,
                 temp2->posEnd,
@@ -81,7 +81,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     }
 
     BaseValue *temp3 = execCtx->symbolTable->get("type");
-    if (temp3->type != T_STRING) {
+    if (temp3->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp3->posStart,
                 temp3->posEnd,
@@ -109,7 +109,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
     s.SetHeader(headers2);
     s.SetVerifySsl(false);
     if (type == "json"){
-        if (temp->type != T_STRING) {
+        if (temp->type != TOK_TYPE::T_STRING) {
             return (new RuntimeResult())->failure(new RuntimeError(
                     temp->posStart,
                     temp->posEnd,
@@ -122,7 +122,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
         }
         s.SetBody(cpr::Body{((String<string> *) temp)->getValue()});
     } else {
-        if (temp->type != T_MAP){
+        if (temp->type != TOK_TYPE::T_MAP){
             return (new RuntimeResult())->failure(new RuntimeError(
                     temp->posStart,
                     temp->posEnd,
@@ -150,7 +150,7 @@ RuntimeResult *RequestsFunction<int>::execute_post(Context *execCtx) {
 template<>
 RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
     BaseValue *temp = execCtx->symbolTable->get("port");
-    if (temp->type != T_NUM) {
+    if (temp->type != TOK_TYPE::T_NUM) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -168,7 +168,7 @@ RuntimeResult *RequestsFunction<int>::execute_makeSocket(Context *execCtx) {
 template<>
 RuntimeResult *RequestsFunction<int>::execute_makeWebsocket(Context *execCtx) {
     BaseValue *temp = execCtx->symbolTable->get("url");
-    if (temp->type != T_STRING) {
+    if (temp->type != TOK_TYPE::T_STRING) {
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -191,7 +191,7 @@ RequestsFunction<int>::RequestsFunction(string name, vector<string> argNames, ma
                                                                                        fName,
                                                                                        fTxt, CLASS_FUNC) {
     this->defaultArgs = defaultArgs;
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_get"] = &RequestsFunction<int>::execute_get;
     funcMap["execute_makeSocket"] = &RequestsFunction<int>::execute_makeSocket;
     funcMap["execute_makeWebsocket"] = &RequestsFunction<int>::execute_makeWebsocket;

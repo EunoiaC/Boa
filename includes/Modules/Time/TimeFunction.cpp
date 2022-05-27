@@ -10,7 +10,7 @@ template<>
 RuntimeResult *TimeFunction<int>::execute_waitMs(Context *execCtx) {
     auto * res = new RuntimeResult();
     BaseValue *temp = execCtx->symbolTable->get("time");
-    if(temp->type != T_NUM){
+    if(temp->type != TOK_TYPE::T_NUM){
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -32,7 +32,7 @@ template<>
 RuntimeResult *TimeFunction<int>::execute_waitSec(Context *execCtx) {
     auto * res = new RuntimeResult();
     BaseValue *temp = execCtx->symbolTable->get("time");
-    if(temp->type != T_NUM){
+    if(temp->type != TOK_TYPE::T_NUM){
         return (new RuntimeResult())->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -54,7 +54,7 @@ template<>
 TimeFunction<int>::TimeFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_sleepMs"] = &TimeFunction<int>::execute_waitMs;
     funcMap["execute_sleepSec"] = &TimeFunction<int>::execute_waitSec;
 }

@@ -6,7 +6,7 @@
 #include "SocketFunction.h"
 
 template<>
-Socket<int>::Socket(Number<double> *port) : Value<int>(0, "SOCKET", "", "") {
+Socket<int>::Socket(Number<double> *port) : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     this->port = port;
 
     map<string, BaseValue *> defaultArgs;

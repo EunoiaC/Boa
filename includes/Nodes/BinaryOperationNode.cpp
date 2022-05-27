@@ -29,5 +29,5 @@ string BinaryOperationNode::toString() {
     string leftval, rightval;
     leftval = left->toString();
     rightval = right->toString();
-    return "(" + leftval + " " + this->opTok->type + " " + rightval + ")";
+    return "(" + leftval + " " + to_string(this->opTok->type) + " " + rightval + ")";
 }

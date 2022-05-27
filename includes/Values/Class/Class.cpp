@@ -11,7 +11,7 @@
 template<>
 Class<int>::Class(Token<string> * classNameTok, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
-                  vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, T_CLASS, fName,
+                  vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, TOK_TYPE::T_CLASS, fName,
                                                                              fTxt) {
     this->members = members;
     this->classNameTok = classNameTok;
@@ -49,32 +49,34 @@ void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
     for (auto &it: defaultArgs) {
         string argName = it.first;
         BaseValue *argValue = it.second;
-        if (argValue->type == T_NUM) {
+        if (argValue->type == TOK_TYPE::T_NUM) {
             ((Number<double> *) argValue)->setContext(context);
-        } else if (argValue->type == T_STRING) {
+        } else if (argValue->type == TOK_TYPE::T_STRING) {
             ((String<string> *) argValue)->setContext(context);
-        } else if (argValue->type == T_LIST) {
+        } else if (argValue->type == TOK_TYPE::T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
         }
-        if (argValue->type == T_MAP) {
+        if (argValue->type == TOK_TYPE::T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
         }
+        // TODO: Update this area
         context->symbolTable->set(argName, argValue);
     }
 
     for (int i = 0; i < args.size(); i++) {
         string argName = argNames[i];
         BaseValue *argValue = args[i];
-        if (argValue->type == T_NUM) {
+        if (argValue->type == TOK_TYPE::T_NUM) {
             ((Number<double> *) argValue)->setContext(context);
-        } else if (argValue->type == T_STRING) {
+        } else if (argValue->type == TOK_TYPE::T_STRING) {
             ((String<string> *) argValue)->setContext(context);
-        } else if (argValue->type == T_LIST) {
+        } else if (argValue->type == TOK_TYPE::T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
         }
-        if (argValue->type == T_MAP) {
+        if (argValue->type == TOK_TYPE::T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
         }
+        //TODO: Update this area
         context->symbolTable->set(argName, argValue);
     }
 }

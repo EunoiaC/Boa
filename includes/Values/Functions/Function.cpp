@@ -49,7 +49,7 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
         if (count(uses.begin(), uses.end(), var.first) || count(argNames.begin(), argNames.end(), var.first)) {
             continue;
         }
-        delete var.second;
+        //delete var.second;
     }
 
     return res->success(retVal);

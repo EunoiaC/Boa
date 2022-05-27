@@ -39,22 +39,22 @@ void Lexer::advance() {
         currChar = '\0';
     }
     charToToken = {
-            {';',  new BaseToken(STOP_EXPR, charLineIdx, charLineIdx, lineIdx)},
-            {',',  new BaseToken(COMMA, charLineIdx, charLineIdx, lineIdx)},
-            {'.',  new BaseToken(DOT, charLineIdx, charLineIdx, lineIdx)},
-            {'*',  new BaseToken(MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
-            {'/',  new BaseToken(DIVIDE, charLineIdx, charLineIdx, lineIdx)},
-            {'^',  new BaseToken(POWER, charLineIdx, charLineIdx, lineIdx)},
-            {'%',  new BaseToken(MOD, charLineIdx, charLineIdx, lineIdx)},
-            {'?',  new BaseToken(GET, charLineIdx, charLineIdx, lineIdx)},
-            {'(',  new BaseToken(L_PAREN, charLineIdx, charLineIdx, lineIdx)},
-            {')',  new BaseToken(R_PAREN, charLineIdx, charLineIdx, lineIdx)},
-            {'[',  new BaseToken(L_BRACKET, charLineIdx, charLineIdx, lineIdx)},
-            {']',  new BaseToken(R_BRACKET, charLineIdx, charLineIdx, lineIdx)},
-            {'{',  new BaseToken(L_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
-            {'}',  new BaseToken(R_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
-            {':',  new BaseToken(COLON, charLineIdx, charLineIdx, lineIdx)},
-            {'\n', new BaseToken(STOP_EXPR, charLineIdx, charLineIdx,
+            {';',  new BaseToken(TOK_TYPE::STOP_EXPR, charLineIdx, charLineIdx, lineIdx)},
+            {',',  new BaseToken(TOK_TYPE::COMMA, charLineIdx, charLineIdx, lineIdx)},
+            {'.',  new BaseToken(TOK_TYPE::DOT, charLineIdx, charLineIdx, lineIdx)},
+            {'*',  new BaseToken(TOK_TYPE::MULTIPLY, charLineIdx, charLineIdx, lineIdx)},
+            {'/',  new BaseToken(TOK_TYPE::DIVIDE, charLineIdx, charLineIdx, lineIdx)},
+            {'^',  new BaseToken(TOK_TYPE::POWER, charLineIdx, charLineIdx, lineIdx)},
+            {'%',  new BaseToken(TOK_TYPE::MOD, charLineIdx, charLineIdx, lineIdx)},
+            {'?',  new BaseToken(TOK_TYPE::GET, charLineIdx, charLineIdx, lineIdx)},
+            {'(',  new BaseToken(TOK_TYPE::L_PAREN, charLineIdx, charLineIdx, lineIdx)},
+            {')',  new BaseToken(TOK_TYPE::R_PAREN, charLineIdx, charLineIdx, lineIdx)},
+            {'[',  new BaseToken(TOK_TYPE::L_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {']',  new BaseToken(TOK_TYPE::R_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {'{',  new BaseToken(TOK_TYPE::L_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {'}',  new BaseToken(TOK_TYPE::R_CURLY_BRACKET, charLineIdx, charLineIdx, lineIdx)},
+            {':',  new BaseToken(TOK_TYPE::COLON, charLineIdx, charLineIdx, lineIdx)},
+            {'\n', new BaseToken(TOK_TYPE::STOP_EXPR, charLineIdx, charLineIdx,
                                  lineIdx - 1)}//-1 because the lineIdx is incremented after the newline
     };
 }
@@ -67,7 +67,7 @@ Token<string> *Lexer::makeIdentifier() {
         identifier += currChar;
         advance();
     }
-    string type = IDENTIFIER;
+    TOK_TYPE type = TOK_TYPE::IDENTIFIER;
     if (keyWords.find(identifier) != keyWords.end()) {
         type = keyWords.at(identifier);
     }
@@ -131,7 +131,7 @@ Token<string> *Lexer::makeString() {
         advance();
     }
     advance(); //advance past the stop char
-    return new Token<string>(T_STRING, str, start, charLineIdx - 1, currLineIdx);
+    return new Token<string>(TOK_TYPE::T_STRING, str, start, charLineIdx - 1, currLineIdx);
 }
 
 Token<double> *Lexer::makeNumber() {
@@ -142,7 +142,7 @@ Token<double> *Lexer::makeNumber() {
         number += currChar;
         advance();
     }
-    return new Token<double>(T_NUM, stod(number), start, charLineIdx - 1, currLineIdx);
+    return new Token<double>(TOK_TYPE::T_NUM, stod(number), start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::minusOperation() {
@@ -151,12 +151,12 @@ Token<string> *Lexer::minusOperation() {
     advance();
     if (currChar == '=') {
         advance();
-        return new Token<string>(MINUS_EQUAL, "-=", start, charLineIdx - 1, currLineIdx);
+        return new Token<string>(TOK_TYPE::MINUS_EQUAL, "-=", start, charLineIdx - 1, currLineIdx);
     } else if (currChar == '-') {
         advance();
-        return new Token<string>(MINUS_MINUS, "--", start, charLineIdx - 1, currLineIdx);
+        return new Token<string>(TOK_TYPE::MINUS_MINUS, "--", start, charLineIdx - 1, currLineIdx);
     }
-    return new Token<string>(MINUS, "-", start, start, currLineIdx);
+    return new Token<string>(TOK_TYPE::MINUS, "-", start, start, currLineIdx);
 }
 
 Token<string> *Lexer::makeNotEquals() {
@@ -165,46 +165,46 @@ Token<string> *Lexer::makeNotEquals() {
     advance();
     if (currChar == '=') {
         advance();
-        return new Token<string>(NOT_EQUAL, "!=", start, charLineIdx - 1, currLineIdx);
+        return new Token<string>(TOK_TYPE::NOT_EQUAL, "!=", start, charLineIdx - 1, currLineIdx);
     }
-    return new Token<string>(NOT, "!", start, charLineIdx - 1, currLineIdx);
+    return new Token<string>(TOK_TYPE::NOT, "!", start, charLineIdx - 1, currLineIdx);
 
 }
 
 Token<string> *Lexer::makeEquals() {
     int start = charLineIdx;
     int currLineIdx = lineIdx;
-    string type = EQUAL;
+    TOK_TYPE type = TOK_TYPE::EQUAL;
     advance();
     if (currChar == '=') {
         advance();
-        type = EQUAL_EQUAL;
+        type = TOK_TYPE::EQUAL_EQUAL;
     }
-    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
+    return new Token<string>(type, to_string(type), start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::makeLessThan() {
     int start = charLineIdx;
     int currLineIdx = lineIdx;
-    string type = LESS_THAN;
+    TOK_TYPE type = TOK_TYPE::LESS_THAN;
     advance();
     if (currChar == '=') {
         advance();
-        type = LESS_THAN_EQUAL;
+        type = TOK_TYPE::LESS_THAN_EQUAL;
     }
-    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
+    return new Token<string>(type, to_string(type), start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::makeGreaterThan() {
     int start = charLineIdx;
     int currLineIdx = lineIdx;
-    string type = GREATER_THAN;
+    TOK_TYPE type = TOK_TYPE::GREATER_THAN;
     advance();
     if (currChar == '=') {
         advance();
-        type = GREATER_THAN_EQUAL;
+        type = TOK_TYPE::GREATER_THAN_EQUAL;
     }
-    return new Token<string>(type, type, start, charLineIdx - 1, currLineIdx);
+    return new Token<string>(type, to_string(type), start, charLineIdx - 1, currLineIdx);
 }
 
 Token<string> *Lexer::plusOperation() {
@@ -213,12 +213,12 @@ Token<string> *Lexer::plusOperation() {
     advance();
     if (currChar == '=') {
         advance();
-        return new Token<string>(PLUS_EQUAL, "+=", start, charLineIdx - 1, currLineIdx);
+        return new Token<string>(TOK_TYPE::PLUS_EQUAL, "+=", start, charLineIdx - 1, currLineIdx);
     } else if (currChar == '+') {
         advance();
-        return new Token<string>(PLUS_PLUS, "++", start, charLineIdx - 1, currLineIdx);
+        return new Token<string>(TOK_TYPE::PLUS_PLUS, "++", start, charLineIdx - 1, currLineIdx);
     }
-    return new Token<string>(PLUS, "+", start, start, currLineIdx);
+    return new Token<string>(TOK_TYPE::PLUS, "+", start, start, currLineIdx);
 }
 
 vector<BaseToken *> Lexer::makeTokens() {
@@ -274,6 +274,6 @@ vector<BaseToken *> Lexer::makeTokens() {
 
         }
     }
-    toks.push_back(new BaseToken(END_OF_FILE, charLineIdx, charLineIdx, lineIdx - 1)); //-1 since the last line is empty
+    toks.push_back(new BaseToken(TOK_TYPE::END_OF_FILE, charLineIdx, charLineIdx, lineIdx - 1)); //-1 since the last line is empty
     return toks;
 }

@@ -8,7 +8,7 @@
 #include "RandomFunction.h"
 
 template<>
-Random<int>::Random(string f, string txt) : Value<int>(0, "RANDOM", f, txt) {
+Random<int>::Random(string f, string txt) : Value<int>(0, TOK_TYPE::CLASS, f, txt) {
     map<string, BaseValue *> defaultArgs;
 
     symbolTable->set("randrange", new RandomFunction<int>("randrange", {"min", "max"}, defaultArgs, "", ""));

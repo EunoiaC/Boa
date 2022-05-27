@@ -52,7 +52,7 @@ public:
     BaseToken * reverse(int amnt);
     void updateCurrentTok();
     void checkNewLines();
-    bool checkNewLinesTo(string type);
+    bool checkNewLinesTo(TOK_TYPE type);
 
     ParseResult * factor();
     ParseResult * term();
@@ -76,7 +76,7 @@ public:
     ParseResult * whileExpr();
     ParseResult * funcDef();
     ParseResult * classDef();
-    ParseResult * binOp(vector<string> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
+    ParseResult * binOp(vector<TOK_TYPE> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 
 

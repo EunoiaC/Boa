@@ -9,7 +9,7 @@ template<> RuntimeResult *JsonFunction<int>::execute_loads(Context *execCtx) {
     auto * res = new RuntimeResult();
 
     BaseValue * temp = execCtx->symbolTable->get("string");
-    if (temp->type != T_STRING){
+    if (temp->type != TOK_TYPE::T_STRING){
         res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -89,7 +89,7 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
     auto * res = new RuntimeResult();
 
     BaseValue * temp = execCtx->symbolTable->get("value");
-    if (temp->type != T_MAP && temp->type != T_LIST){
+    if (temp->type != TOK_TYPE::T_MAP && temp->type != TOK_TYPE::T_LIST){
         res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -102,10 +102,10 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
     }
 
     nlohmann::json jsonObj;
-    if (temp->type == T_MAP){
+    if (temp->type == TOK_TYPE::T_MAP){
         auto * m = (Map<map<BaseValue *, BaseValue *>> *) temp;
         for (auto &kv : m->val) {
-            if (kv.second->type == T_MAP || kv.second->type == T_LIST){
+            if (kv.second->type == TOK_TYPE::T_MAP || kv.second->type == TOK_TYPE::T_LIST){
                 auto * c = new Context("temp");
                 c->symbolTable = new SymbolTable();
                 c->symbolTable->set("value", kv.second);
@@ -115,11 +115,11 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
 
                 jsonObj[kv.first->toString()] = nlohmann::json::parse(b->toString());
             } else {
-                if (kv.second->type == T_STRING){
+                if (kv.second->type == TOK_TYPE::T_STRING){
                     if (kv.second->toString() == jsonNull) {
                         jsonObj[kv.first->toString()] = nullptr;
                     } else jsonObj[kv.first->toString()] = kv.second->toString();
-                } else if (kv.second->type == T_NUM){
+                } else if (kv.second->type == TOK_TYPE::T_NUM){
                     double num = ((Number<double> *) kv.second)->getValue();
                     if (num == (int) num) {
                         jsonObj[kv.first->toString()] = (int) num;
@@ -129,10 +129,10 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
                 } else jsonObj[kv.first->toString()] = kv.second->toString();
             }
         }
-    } else if (temp->type == T_LIST){
+    } else if (temp->type == TOK_TYPE::T_LIST){
         auto * l = (List<vector<BaseValue *>> *) temp;
         for (auto &v : l->val) {
-            if (v->type == T_MAP || v->type == T_LIST){
+            if (v->type == TOK_TYPE::T_MAP || v->type == TOK_TYPE::T_LIST){
                 auto * c = new Context("temp");
                 c->symbolTable = new SymbolTable();
                 c->symbolTable->set("value", v);
@@ -142,11 +142,11 @@ template<> RuntimeResult *JsonFunction<int>::execute_dumps(Context *execCtx) {
 
                 jsonObj.push_back(nlohmann::json::parse(b->toString()));
             } else {
-                if (v->type == T_STRING){
+                if (v->type == TOK_TYPE::T_STRING){
                     if (v->toString() == jsonNull) {
                         jsonObj.push_back(nullptr);
                     } else jsonObj.push_back(v->toString());
-                } else if (v->type == T_NUM){
+                } else if (v->type == TOK_TYPE::T_NUM){
                     double num = ((Number<double> *) v)->getValue();
                     if (num == (int) num) {
                         jsonObj.push_back((int) num);
@@ -165,7 +165,7 @@ template<>
 JsonFunction<int>::JsonFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_loads"] = &JsonFunction<int>::execute_loads;
     funcMap["execute_dumps"] = &JsonFunction<int>::execute_dumps;
 }

@@ -7,7 +7,7 @@
 #include <sstream>
 
 template <>
-Future<shared_future<RuntimeResult *>>::Future(shared_future<RuntimeResult *> value, string f, string txt) : Value<shared_future<RuntimeResult *>>(value, T_FUTURE, f, txt) {
+Future<shared_future<RuntimeResult *>>::Future(shared_future<RuntimeResult *> value, string f, string txt) : Value<shared_future<RuntimeResult *>>(value, TOK_TYPE::T_FUTURE, f, txt) {
     promise = value;
     map<string, BaseValue *> defaultArgs;
     symbolTable->set("get", new FutureFunction<int>(this, "get", {},

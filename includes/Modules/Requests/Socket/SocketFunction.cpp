@@ -9,7 +9,7 @@ RuntimeResult *SocketFunction<int>::execute_setBufferSize(Context *execCtx) {
     BaseValue * temp = execCtx->symbolTable->get("bufferSize");
     RuntimeResult * res = new RuntimeResult();
 
-    if (temp->type != T_NUM){
+    if (temp->type != TOK_TYPE::T_NUM){
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -87,7 +87,7 @@ template<>
 RuntimeResult *SocketFunction<int>::execute_accept(Context *execCtx) {
     auto *res = new RuntimeResult();
     BaseValue * temp = execCtx->symbolTable->get("maxConnections");
-    if (temp->type != T_NUM){
+    if (temp->type != TOK_TYPE::T_NUM){
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -133,7 +133,7 @@ template<>
 RuntimeResult *SocketFunction<int>::execute_send(Context *execCtx) {
     auto *res = new RuntimeResult();
     BaseValue * temp = execCtx->symbolTable->get("message");
-    if (temp->type != T_STRING){
+    if (temp->type != TOK_TYPE::T_STRING){
         return res->failure(new RuntimeError(
                 temp->posStart,
                 temp->posEnd,
@@ -200,7 +200,7 @@ RuntimeResult *SocketFunction<int>::execute_connect(Context *execCtx) {
     auto *res = new RuntimeResult();
 
     BaseValue * addr = execCtx->symbolTable->get("address");
-    if (addr->type != T_STRING){
+    if (addr->type != TOK_TYPE::T_STRING){
         return res->failure(new RuntimeError(
                 addr->posStart,
                 addr->posEnd,
@@ -270,7 +270,7 @@ SocketFunction<int>::SocketFunction(Socket<int> *sockObj, string name, vector<st
                                                                                fTxt, CLASS_FUNC) {
     this->sockObj = sockObj;
     this->defaultArgs = defaultArgs;
-    type = "FUNCTION";
+    type = TOK_TYPE::T_FUNC;
     funcMap["execute_setBufferSize"] = &SocketFunction<int>::execute_setBufferSize;
     funcMap["execute_bind"] = &SocketFunction<int>::execute_bind;
     funcMap["execute_accept"] = &SocketFunction<int>::execute_accept;

@@ -83,16 +83,22 @@ ParseResult *Parser::tryExpr() {
 
     if (currentToken->getType() != TOK_TYPE::TRY) {
         return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected 'tryto'"));
+                                      "InvalidSyntaxError", "Expected 'try'"));
     }
 
     delete currentToken;
     res->regAdvancement();
     advance();
 
+    Node * resource = nullptr;
+
     if (currentToken->getType() != TOK_TYPE::DO) {
-        return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
-                                      "InvalidSyntaxError", "Expected 'do'"));
+        resource = res->reg(expr());
+        if (res->error) return res;
+        if (currentToken->getType() != TOK_TYPE::DO){
+            return res->failure(new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
+                                          "InvalidSyntaxError", "Expected 'do'"));
+        }
     }
 
     delete currentToken;
@@ -101,7 +107,8 @@ ParseResult *Parser::tryExpr() {
 
     checkNewLines();
 
-    Node *tryBody, *catchBody;
+    ListNode * tryBody;
+    Node * catchBody;
 
     if (currentToken->getType() == TOK_TYPE::L_CURLY_BRACKET) {
         delete currentToken;
@@ -109,7 +116,7 @@ ParseResult *Parser::tryExpr() {
         advance();
         checkNewLines();
 
-        tryBody = res->reg(statements());
+        tryBody = dynamic_cast<ListNode *>(res->reg(statements()));
         if (res->error) return res;
 
         if (currentToken->getType() != TOK_TYPE::R_CURLY_BRACKET) {
@@ -122,7 +129,7 @@ ParseResult *Parser::tryExpr() {
         res->regAdvancement();
         advance();
     } else {
-        tryBody = res->reg(statement());
+        tryBody = dynamic_cast<ListNode *>(res->reg(statement()));
         if (res->error) return res;
     }
 
@@ -174,6 +181,10 @@ ParseResult *Parser::tryExpr() {
     } else {
         catchBody = res->reg(statement());
         if (res->error) return res;
+    }
+
+    if (resource) {
+        tryBody->elements.insert(tryBody->elements.begin(), resource);
     }
 
     return res->success(new TryCatchNode(tryBody, catchBody, toCatch));

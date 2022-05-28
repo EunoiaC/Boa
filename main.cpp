@@ -13,6 +13,8 @@ using namespace std;
  * /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug --target Boa -- -j -v  6
 **/
 
+// TODO: Fix errors that do to_string(enum)
+
 SymbolTable *globalSymbolTable = new SymbolTable();
 
 int main(int argc, char **argv) {

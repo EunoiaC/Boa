@@ -1,5 +1,4 @@
-try i = 12 do {
-    print(i)
-} catch e do {
-    print("err")
+# Bogo sort
+op isSorted() do {
+
 }

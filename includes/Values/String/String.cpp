@@ -55,6 +55,7 @@ BaseValue *String<string>::get(BaseValue *s) {
     } else {
         illegalOperation(s);
     }
+    return nullptr;
 }
 
 template<>

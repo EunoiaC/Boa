@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20)
 project(Boa)
 set(CMAKE_CXX_STANDARD 14)
+# O2 and O3 work
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(
         SOURCE_FILES
         includes/Token/Token.cpp includes/Token/Token.h

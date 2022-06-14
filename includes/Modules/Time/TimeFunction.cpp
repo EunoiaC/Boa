@@ -51,12 +51,18 @@ RuntimeResult *TimeFunction<int>::execute_waitSec(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *TimeFunction<int>::execute_currTime(Context *execCtx) {
+    return (new RuntimeResult())->success(new TimeValue<int>(time(0)));
+}
+
+template<>
 TimeFunction<int>::TimeFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
     type = TOK_TYPE::T_FUNC;
     funcMap["execute_sleepMs"] = &TimeFunction<int>::execute_waitMs;
     funcMap["execute_sleepSec"] = &TimeFunction<int>::execute_waitSec;
+    funcMap["execute_currTime"] = &TimeFunction<int>::execute_currTime;
 }
 
 template<>

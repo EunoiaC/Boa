@@ -1,4 +1,5 @@
-# Bogo sort
-op isSorted() do {
-
-}
+import "time"
+start = time.currTime()
+time.sleepSec(5)
+end = time.currTime()
+print((end - start).sec)

@@ -11,6 +11,7 @@ Time<int>::Time() : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
 
     symbolTable->set("sleepMs", new TimeFunction<int>("sleepMs", {"time"}, defaultArgs, "", ""));
     symbolTable->set("sleepSec", new TimeFunction<int>("sleepSec", {"time"}, defaultArgs, "", ""));
+    symbolTable->set("currTime", new TimeFunction<int>("currTime", {}, defaultArgs, "", ""));
 }
 
 template<>

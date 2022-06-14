@@ -8,6 +8,7 @@
 
 #include "../../Values/Functions/BaseFunction.h"
 #include "../../Values/List/List.h"
+#include "TimeValue/TimeValue.h"
 
 template<typename T> class TimeFunction : public BaseFunction<T> {
 public:
@@ -21,6 +22,7 @@ public:
 
     RuntimeResult * execute_waitMs(Context * execCtx);
     RuntimeResult * execute_waitSec(Context * execCtx);
+    RuntimeResult * execute_currTime(Context * execCtx);
 
     string toString() override;
 };

@@ -39,7 +39,7 @@ template<>
 BaseValue *String<string>::get(BaseValue *s) {
     if (s->type == TOK_TYPE::T_NUM) {
         auto *num = (Number<double> *) s;
-        if (num->getValue() >= val.length()) {
+        if (num->getValue() >= val.length() || num->getValue() < 0) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,
@@ -55,7 +55,6 @@ BaseValue *String<string>::get(BaseValue *s) {
     } else {
         illegalOperation(s);
     }
-    return nullptr;
 }
 
 template<>

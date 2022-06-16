@@ -303,5 +303,11 @@ BaseValue *UsableClass<int>::copy() {
 
 template<>
 string UsableClass<int>::toString() {
+    ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("toString"));
+    if (sort) {
+        RuntimeResult * res = sort->execute({});
+        if (res->error) rtError = res->error;
+        return res->value->toString();
+    }
     return asString;
 }

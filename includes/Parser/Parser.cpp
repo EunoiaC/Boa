@@ -1146,7 +1146,7 @@ ParseResult *Parser::atom() {
             delete currentToken;
             res->regAdvancement();
             advance();
-            if (currentToken->getType()  != TOK_TYPE::  IDENTIFIER) {
+            if (currentToken->getType()  != TOK_TYPE::IDENTIFIER) {
                 priorityError = new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName,
                                           lines[currentToken->line],
                                           "InvalidSyntaxError",
@@ -1165,14 +1165,18 @@ ParseResult *Parser::atom() {
             if (res->error) return res;
             return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, REASSIGN_VAR));
         }
-        if (currentToken->getType() == TOK_TYPE::TO) {
-            delete currentToken;
-            res->regAdvancement();
-            advance();
-            Node *exp = res->reg(expr());
-            if (res->error) return res;
-            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, NEW_VALUE));
-        }
+        //TODO: Use something that's not a too keyword
+        //TODO: Use chgby to do:
+        //      x chgby 5
+        //      x chgby -7
+//        if (currentToken->getType() == TOK_TYPE::TO) {
+//            delete currentToken;
+//            res->regAdvancement();
+//            advance();
+//            Node *exp = res->reg(expr());
+//            if (res->error) return res;
+//            return res->success(new VarAssignNode((Token<string> *) tok, exp, identifiers, NEW_VALUE));
+//        }
         return res->success(new VarAccessNode((Token<string> *) tok, identifiers, nullptr));
     } else if (tok->getType() == TOK_TYPE::L_PAREN) {
         res->regAdvancement();

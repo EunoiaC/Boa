@@ -52,6 +52,22 @@ int main(int argc, char **argv) {
     globalSymbolTable->set("clear", clear);
 
     RunInterface *runInterface = new RunInterface(globalSymbolTable, pathRef);
+    if (argc == 1) {
+        cout << ">>> ";
+        string line;
+        while (getline(cin, line)) {
+            if (line == "exit") {
+                return 15;
+            }
+            auto result = runInterface->readLine(line);
+            if (result.second != nullptr) {
+                cout << result.second->toString() << endl;
+            } else {
+                cout << result.first->toString() << endl;
+            }
+            cout << ">>> ";
+        }
+    }
     runInterface->run(filePath);
     delete runInterface;
     return 0;

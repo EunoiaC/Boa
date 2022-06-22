@@ -1,0 +1,29 @@
+//
+// Created by Preeti Thorat on 6/22/22.
+//
+
+#ifndef BOA_GUIFUNCTION_H
+#define BOA_GUIFUNCTION_H
+
+#include "../../Values/Functions/BaseFunction.h"
+#include <fstream>
+#include "../../Values/List/List.h"
+#include "../../Values/Functions/Function.h"
+#include "Window/Window.h"
+
+template<typename T> class GUIFunction : public BaseFunction<T> {
+public:
+    typedef RuntimeResult * (GUIFunction<int>::*FnPtr)(Context * execCtx);
+    map<string, FnPtr> funcMap;
+    vector<BaseValue *> args;
+    map<string, BaseValue *> defaultArgs;
+    GUIFunction<T>(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
+    RuntimeResult * execute(vector<BaseValue*> args) override;
+    GUIFunction<int> *copy() override;
+
+    RuntimeResult * execute_makeWindow(Context * execCtx);
+
+    string toString() override;
+};
+
+#endif //BOA_GUIFUNCTION_H

@@ -45,6 +45,7 @@
 #include "../Modules/Requests/Requests.h"
 #include "../Modules/Json/Json.h"
 #include "../Modules/Time/Time.h"
+#include "../Modules/GUI/GUI.h"
 
 using namespace std;
 using TOK_TYPE = BaseToken::TOK_TYPE;
@@ -60,7 +61,8 @@ public:
             {"random", new Random<int>("fName", "fTxt")},
             {"requests", new Requests<int>()},
             {"json", new Json<int>()},
-            {"time", new Time<int>()}
+            {"time", new Time<int>()},
+            {"gui", new GUI<int>()}
     };
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);

@@ -1,5 +1,3 @@
-import "time"
-start = time.currTime()
-for i = 0 to 100000 do x = i % 2
-end = time.currTime()
-print("Time: " + (end - start).sec)
+import "gui"
+win = gui.makeWindow()
+win.start()

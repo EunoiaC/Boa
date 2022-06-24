@@ -203,7 +203,6 @@ RuntimeResult *Interpreter::visitTryCatchNode(Node *n, Context *c) {
         return res->success(v);
     }
     if (res->shouldReturn()) return res;
-    //delete tryCatchNode;
     return res->success(val);
 }
 

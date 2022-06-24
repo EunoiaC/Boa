@@ -6,10 +6,6 @@
 
 template<>
 RuntimeResult *WindowFunction<int>::execute_start(Context *execCtx) {
-    while(!glfwWindowShouldClose(winObj->window)) {
-        glfwSwapBuffers(winObj->window);
-        glfwPollEvents();
-    }
 
     return (new RuntimeResult())->success(new Number<double>(0, "", ""));
 }

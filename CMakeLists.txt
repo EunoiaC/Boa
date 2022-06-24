@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 set(
         SOURCE_FILES
+        "Extern Libs/glad.c"
         includes/Token/Token.cpp includes/Token/Token.h
         includes/Values/BaseValues/Value.cpp
         includes/Values/BaseValues/Value.h
@@ -42,6 +43,21 @@ set(
         includes/Modules/Requests/Websocket/Websocket.cpp includes/Modules/Requests/Websocket/Websocket.h includes/Modules/Requests/Websocket/WebsocketFunction.cpp includes/Modules/Requests/Websocket/WebsocketFunction.h
         includes/Modules/GUI/GUI.cpp includes/Modules/GUI/GUI.h includes/Modules/Time/TimeValue/TimeValue.cpp includes/Modules/Time/TimeValue/TimeValue.h includes/Modules/GUI/Window/Window.cpp includes/Modules/GUI/Window/Window.h includes/Modules/GUI/Window/WindowFunction.cpp includes/Modules/GUI/Window/WindowFunction.h includes/Modules/GUI/GUIFunction.cpp includes/Modules/GUI/GUIFunction.h)
 
+set(
+        IMGUI
+        "Extern Libs/ImGui/imconfig.h"
+        "Extern Libs/ImGui/imstb_truetype.h"
+        "Extern Libs/ImGui/imstb_textedit.h"
+        "Extern Libs/ImGui/imstb_rectpack.h"
+        "Extern Libs/ImGui/imgui_widgets.cpp"
+        "Extern Libs/ImGui/imgui_tables.cpp"
+        "Extern Libs/ImGui/imgui_internal.h"
+        "Extern Libs/ImGui/imgui_draw.cpp"
+        "Extern Libs/ImGui/imgui_demo.cpp"
+        "Extern Libs/ImGui/imgui.h"
+        "Extern Libs/ImGui/imgui.cpp"
+        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h")
+
 set(OPENSSL_ROOT_DIR /usr/local/opt/openssl/lib)
 find_package(OpenSSL REQUIRED)
 
@@ -64,10 +80,11 @@ find_package(CURL REQUIRED)
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}
+        ${IMGUI}
 )
 
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa  ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr)
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr)
 if (APPLE)
     target_link_libraries(Boa "-framework OpenGL")
 endif()

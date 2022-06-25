@@ -94,17 +94,9 @@ RuntimeResult *RandomFunction<int>::execute_shuffle(Context *execCtx) {
     }
 
     List<vector<BaseValue *>> * list = ((List<vector<BaseValue *>> *) toShuffle);
-    int size = list->getValue().size();
+    int size = list->elements.size();
     if(size == 0){
-        return (new RuntimeResult())->failure(new RuntimeError(
-                toShuffle->posStart,
-                toShuffle->posEnd,
-                toShuffle->line,
-                toShuffle->fName,
-                toShuffle->fTxt,
-                "List is empty",
-                execCtx
-        ));
+        return (new RuntimeResult())->success(list);
     }
     random_device rd;
     auto rng = default_random_engine { rd() };

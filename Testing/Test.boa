@@ -1,5 +1,20 @@
-import "gui"
-win = gui.makeWindow(400, 400, "Hello World")
-win.fontPath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Fonts/arialn/Arialn.ttf"
-win.fontSize = 16
-win.start()
+# Random password generator
+import "random"
+
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+special_characters = "!@#$%^&*()_+"
+numbers = "1234567890"
+
+charList = (alphabet + special_characters + numbers).split()
+
+op genRandomPass(len) do {
+    random.shuffle(charList)
+    password = []
+    for i = 0 to len do {
+        password.append(charList[i])
+    }
+    random.shuffle(password)
+    return "".join(password)
+}
+
+print(genRandomPass(toNum(input("How many characters do you want in your password? "))))

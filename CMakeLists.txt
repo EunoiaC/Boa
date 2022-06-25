@@ -56,7 +56,7 @@ set(
         "Extern Libs/ImGui/imgui_demo.cpp"
         "Extern Libs/ImGui/imgui.h"
         "Extern Libs/ImGui/imgui.cpp"
-        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h")
+        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h" includes/Modules/GUI/Window/UseImGui.cpp includes/Modules/GUI/Window/UseImGui.h)
 
 set(OPENSSL_ROOT_DIR /usr/local/opt/openssl/lib)
 find_package(OpenSSL REQUIRED)

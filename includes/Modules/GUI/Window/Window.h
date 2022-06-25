@@ -11,6 +11,7 @@
 #include <GLFW/glfw3.h>
 #include "../../../../Extern Libs/ImGui/imgui_impl_glfw.h"
 #include "../../../../Extern Libs/ImGui/imgui_impl_opengl3.h"
+#include "UseImGui.h"
 
 template<typename T>
 class Window : public Value<T> {

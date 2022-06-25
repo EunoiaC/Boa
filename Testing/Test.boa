@@ -1,2 +1,5 @@
 import "gui"
-win = gui.makeWindow(200, 200, "Hello World")
+win = gui.makeWindow(400, 400, "Hello World")
+win.fontPath = "/Users/preetithorat/Documents/GitHub/Boa/Testing/Fonts/arialn/Arialn.ttf"
+win.fontSize = 16
+win.start()

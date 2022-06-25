@@ -5,15 +5,10 @@
 #include "Window.h"
 #include "WindowFunction.h"
 
-static void framebuffer_size_callback(GLFWwindow *window, int width, int height)
-{
-    glViewport(0, 0, width, height);
-}
-
-void teardown(GLFWwindow *window)
-{
-    if (window != NULL) { glfwDestroyWindow(window); }
-    glfwTerminate();
+void error_callback(int error, const char* msg) {
+    std::string s;
+    s = " [" + std::to_string(error) + "] " + msg + '\n';
+    std::cerr << s << std::endl;
 }
 
 template<>
@@ -24,107 +19,28 @@ Window<int>::Window(Number<double> * width, Number<double> * height, String<stri
     this->title = title;
 
     symbolTable->set("start", new WindowFunction<int>(this, "start", {}, defaultArgs, "", ""));
+    symbolTable->set("fontPath", nullptr);
+    symbolTable->set("fontSize", nullptr);
 
     // Setup window
-    if (!glfwInit()){
+    if (!glfwInit())
+        cout << "Failed to initialize GLFW" << endl;
 
-    }
-
-    if (!glfwInit()){
-    }
-
-    // setup GLFW window
-
-    glfwWindowHint(GLFW_DOUBLEBUFFER , 1);
-    glfwWindowHint(GLFW_DEPTH_BITS, 24);
-    glfwWindowHint(GLFW_STENCIL_BITS, 8);
-
-    glfwWindowHint(
-            GLFW_OPENGL_PROFILE,
-            GLFW_OPENGL_CORE_PROFILE
-    );
-
-    std::string glsl_version = "";
-#ifdef __APPLE__
-    // GL 3.2 + GLSL 150
-    glsl_version = "#version 150";
-    glfwWindowHint( // required on Mac OS
-            GLFW_OPENGL_FORWARD_COMPAT,
-            GL_TRUE
-    );
+    glfwSetErrorCallback(error_callback);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-#elif __linux__
-    // GL 3.2 + GLSL 150
-    glsl_version = "#version 150";
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-#elif _WIN32
-    // GL 3.0 + GLSL 130
-    glsl_version = "#version 130";
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
-#endif
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
 
-    float highDPIscaleFactor = 1.0;
-#ifdef _WIN32
-    // if it's a HighDPI monitor, try to scale everything
-    GLFWmonitor *monitor = glfwGetPrimaryMonitor();
-    float xscale, yscale;
-    glfwGetMonitorContentScale(monitor, &xscale, &yscale);
-    if (xscale > 1 || yscale > 1)
-    {
-        highDPIscaleFactor = xscale;
-        glfwWindowHint(GLFW_SCALE_TO_MONITOR, GLFW_TRUE);
-    }
-#elif __APPLE__
-    // to prevent 1200x800 from becoming 2400x1600
-    glfwWindowHint(GLFW_COCOA_RETINA_FRAMEBUFFER, GLFW_FALSE);
-#endif
-
-    window = glfwCreateWindow(
-            width->getValue(),
-            height->getValue(),
-            title->getValue().c_str(),
-            NULL,
-            NULL
-    );
-    if (!window)
-    {
-        teardown(NULL);
-    }
-    // watch window resizing
-    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
+    // Create window with graphics context
+    window = glfwCreateWindow(width->getValue(), height->getValue(), title->getValue().c_str(), NULL, NULL);
+    if (window == NULL)
+        cout << "Failed to create GLFW window" << endl;
     glfwMakeContextCurrent(window);
-    // VSync
-    glfwSwapInterval(1);
+    glfwSwapInterval(1); // Enable vsync
 
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
-    {
-        teardown(window);
-    }
-
-    int actualWindowWidth, actualWindowHeight;
-    glfwGetWindowSize(window, &actualWindowWidth, &actualWindowHeight);
-    glViewport(0, 0, actualWindowWidth, actualWindowHeight);
-
-    ImGui::CreateContext();
-    ImGuiIO &io = ImGui::GetIO();
-
-    ImGui_ImplGlfw_InitForOpenGL(window, true);
-    ImGui_ImplOpenGL3_Init(glsl_version.c_str());
-
-    ImGui::StyleColorsDark();
-
-    // --- rendering loop
-    while (!glfwWindowShouldClose(window))
-    {
-        // Swap buffers
-        glfwSwapBuffers(window);
-        glfwPollEvents();
-    }
-
-    teardown(window);
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))  // tie window context to glad's opengl funcs
+        cout << "Failed to initialize GLAD" << endl;
 }
 
 template<>

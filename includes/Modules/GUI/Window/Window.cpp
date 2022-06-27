@@ -11,10 +11,6 @@ void error_callback(int error, const char* msg) {
     std::cerr << s << std::endl;
 }
 
-void sayHello() {
-    std::cout << "Hello World!" << std::endl;
-}
-
 template<>
 Window<int>::Window(Number<double> * width, Number<double> * height, String<string> * title) : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     map < string, BaseValue * > defaultArgs;
@@ -23,14 +19,8 @@ Window<int>::Window(Number<double> * width, Number<double> * height, String<stri
     this->title = title;
 
     symbolTable->set("start", new WindowFunction<int>(this, "start", {}, defaultArgs, "", ""));
-    symbolTable->set("fontPath", nullptr);
-    symbolTable->set("fontSize", nullptr);
 
-    init((char *) title->getValue().c_str());
-    button(".b") -text("Say Hello") -command(sayHello);
-    pack(".b") -padx(20) -pady(6);
-
-    runEventLoop();
+    window = new Fl_Window(width->getValue(), height->getValue(), title->getValue().c_str());
 }
 
 template<>

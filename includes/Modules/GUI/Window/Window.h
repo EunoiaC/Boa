@@ -6,15 +6,16 @@
 
 #include "../../../Values/String/String.h"
 #include "../../../Values/Number/Number.h"
-#include "../../../../Extern Libs/cpptk/cpptk.h"
-
-using namespace Tk;
+#include <FL/Fl.H>
+#include <FL/Fl_Window.H>
+#include <FL/Fl_Box.H>
 
 template<typename T>
 class Window : public Value<T> {
 public:
     Number<double> *width, *height;
     String<string> *title;
+    Fl_Window *window;
 
     Window<int>(Number<double> *width, Number<double> *height, String<string> *title);
 

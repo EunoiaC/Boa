@@ -42,11 +42,11 @@ set(
         includes/Modules/Requests/Requests.cpp includes/Modules/Requests/Requests.h includes/Modules/Requests/RequestsFunction.cpp includes/Modules/Requests/RequestsFunction.h includes/Modules/Json/Json.cpp includes/Modules/Json/Json.h includes/Modules/Json/JsonFunction.cpp includes/Modules/Json/JsonFunction.h includes/Nodes/Statements/AwaitNode.cpp includes/Nodes/Statements/AwaitNode.h includes/Values/Future/Future.cpp includes/Values/Future/Future.h includes/Values/Future/FutureFunction.cpp includes/Values/Future/FutureFunction.h includes/Modules/Requests/Socket/Socket.cpp includes/Modules/Requests/Socket/Socket.h includes/Modules/Requests/Socket/SocketFunction.cpp includes/Modules/Requests/Socket/SocketFunction.h includes/Values/Map/MapFunction.cpp includes/Values/Map/MapFunction.h includes/Modules/Time/Time.cpp includes/Modules/Time/Time.h includes/Modules/Time/TimeFunction.cpp includes/Modules/Time/TimeFunction.h
         includes/Modules/Requests/Websocket/Websocket.cpp includes/Modules/Requests/Websocket/Websocket.h includes/Modules/Requests/Websocket/WebsocketFunction.cpp includes/Modules/Requests/Websocket/WebsocketFunction.h
         includes/Modules/GUI/GUI.cpp includes/Modules/GUI/GUI.h includes/Modules/Time/TimeValue/TimeValue.cpp includes/Modules/Time/TimeValue/TimeValue.h includes/Modules/GUI/Window/Window.cpp includes/Modules/GUI/Window/Window.h includes/Modules/GUI/Window/WindowFunction.cpp includes/Modules/GUI/Window/WindowFunction.h includes/Modules/GUI/GUIFunction.cpp includes/Modules/GUI/GUIFunction.h
-        "Extern Libs/cpptk/cpptk.cc" "Extern Libs/cpptk/cpptk.h"
+        #[["Extern Libs/cpptk/cpptk.cc" "Extern Libs/cpptk/cpptk.h"
         "Extern Libs/cpptk/base/cpptkbase.cc"
         "Extern Libs/cpptk/base/cpptkbase.h"
         "Extern Libs/cpptk/cpptkconstants.x"
-        "Extern Libs/cpptk/cpptkoptions.x"
+        "Extern Libs/cpptk/cpptkoptions.x"]]
 )
 
 #set(
@@ -90,7 +90,7 @@ add_executable(
 )
 
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib)
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr #[[/usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib]] /usr/local/Cellar/fltk/1.3.8/lib/libfltk.1.3.dylib)
 if (APPLE)
     target_link_libraries(Boa "-framework OpenGL")
 endif()

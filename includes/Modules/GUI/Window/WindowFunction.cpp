@@ -7,6 +7,9 @@
 
 template<>
 RuntimeResult *WindowFunction<int>::execute_start(Context *execCtx) {
+    winObj->window->end();
+    winObj->window->show();
+    Fl::run();
     return (new RuntimeResult())->success(new Number<double>(0, "", ""));
 }
 

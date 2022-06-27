@@ -1,2 +1,3 @@
 import "gui"
 win = gui.makeWindow(500, 500, "Hello World")
+win.start()

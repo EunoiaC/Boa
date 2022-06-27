@@ -41,22 +41,28 @@ set(
         includes/Values/Constants.h includes/Values/Functions/BaseFunction.cpp includes/Values/Functions/BaseFunction.h includes/Values/Functions/BuiltInFunction.cpp includes/Values/Functions/BuiltInFunction.h "includes/Nodes/Control Flow/IterateNode.cpp" "includes/Nodes/Control Flow/IterateNode.h" "includes/Nodes/Statements/Branching Statements/ReturnNode.cpp" "includes/Nodes/Statements/Branching Statements/ReturnNode.h" "includes/Nodes/Statements/Branching Statements/ContinueNode.cpp" "includes/Nodes/Statements/Branching Statements/ContinueNode.h" "includes/Nodes/Statements/Branching Statements/BreakNode.cpp" "includes/Nodes/Statements/Branching Statements/BreakNode.h" includes/Nodes/Statements/ImportNode.cpp includes/Nodes/Statements/ImportNode.h includes/RunInterface.cpp includes/RunInterface.h includes/Values/String/StringFunction.cpp includes/Values/String/StringFunction.h includes/Values/List/ListFunction.cpp includes/Values/List/ListFunction.h includes/Values/Number/NumberFunction.cpp includes/Values/Number/NumberFunction.h includes/Modules/Random/Random.cpp includes/Modules/Random/Random.h includes/Modules/Random/RandomFunction.cpp includes/Modules/Random/RandomFunction.h includes/Nodes/IndexNode.cpp includes/Nodes/IndexNode.h "includes/Nodes/Control Flow/ClassDefNode.cpp" "includes/Nodes/Control Flow/ClassDefNode.h" includes/Values/Class/Class.cpp includes/Values/Class/Class.h includes/Values/Class/ClassFunction.cpp includes/Values/Class/ClassFunction.h includes/Values/Class/UsableClass.cpp includes/Values/Class/UsableClass.h "includes/Nodes/Control Flow/TryCatchNode.cpp" "includes/Nodes/Control Flow/TryCatchNode.h" "includes/Nodes/Control Flow/EitherNode.cpp" "includes/Nodes/Control Flow/EitherNode.h" includes/Values/File/File.cpp includes/Values/File/File.h includes/Values/File/FileFunction.cpp includes/Values/File/FileFunction.h
         includes/Modules/Requests/Requests.cpp includes/Modules/Requests/Requests.h includes/Modules/Requests/RequestsFunction.cpp includes/Modules/Requests/RequestsFunction.h includes/Modules/Json/Json.cpp includes/Modules/Json/Json.h includes/Modules/Json/JsonFunction.cpp includes/Modules/Json/JsonFunction.h includes/Nodes/Statements/AwaitNode.cpp includes/Nodes/Statements/AwaitNode.h includes/Values/Future/Future.cpp includes/Values/Future/Future.h includes/Values/Future/FutureFunction.cpp includes/Values/Future/FutureFunction.h includes/Modules/Requests/Socket/Socket.cpp includes/Modules/Requests/Socket/Socket.h includes/Modules/Requests/Socket/SocketFunction.cpp includes/Modules/Requests/Socket/SocketFunction.h includes/Values/Map/MapFunction.cpp includes/Values/Map/MapFunction.h includes/Modules/Time/Time.cpp includes/Modules/Time/Time.h includes/Modules/Time/TimeFunction.cpp includes/Modules/Time/TimeFunction.h
         includes/Modules/Requests/Websocket/Websocket.cpp includes/Modules/Requests/Websocket/Websocket.h includes/Modules/Requests/Websocket/WebsocketFunction.cpp includes/Modules/Requests/Websocket/WebsocketFunction.h
-        includes/Modules/GUI/GUI.cpp includes/Modules/GUI/GUI.h includes/Modules/Time/TimeValue/TimeValue.cpp includes/Modules/Time/TimeValue/TimeValue.h includes/Modules/GUI/Window/Window.cpp includes/Modules/GUI/Window/Window.h includes/Modules/GUI/Window/WindowFunction.cpp includes/Modules/GUI/Window/WindowFunction.h includes/Modules/GUI/GUIFunction.cpp includes/Modules/GUI/GUIFunction.h)
+        includes/Modules/GUI/GUI.cpp includes/Modules/GUI/GUI.h includes/Modules/Time/TimeValue/TimeValue.cpp includes/Modules/Time/TimeValue/TimeValue.h includes/Modules/GUI/Window/Window.cpp includes/Modules/GUI/Window/Window.h includes/Modules/GUI/Window/WindowFunction.cpp includes/Modules/GUI/Window/WindowFunction.h includes/Modules/GUI/GUIFunction.cpp includes/Modules/GUI/GUIFunction.h
+        "Extern Libs/cpptk/cpptk.cc" "Extern Libs/cpptk/cpptk.h"
+        "Extern Libs/cpptk/base/cpptkbase.cc"
+        "Extern Libs/cpptk/base/cpptkbase.h"
+        "Extern Libs/cpptk/cpptkconstants.x"
+        "Extern Libs/cpptk/cpptkoptions.x"
+)
 
-set(
-        IMGUI
-        "Extern Libs/ImGui/imconfig.h"
-        "Extern Libs/ImGui/imstb_truetype.h"
-        "Extern Libs/ImGui/imstb_textedit.h"
-        "Extern Libs/ImGui/imstb_rectpack.h"
-        "Extern Libs/ImGui/imgui_widgets.cpp"
-        "Extern Libs/ImGui/imgui_tables.cpp"
-        "Extern Libs/ImGui/imgui_internal.h"
-        "Extern Libs/ImGui/imgui_draw.cpp"
-        "Extern Libs/ImGui/imgui_demo.cpp"
-        "Extern Libs/ImGui/imgui.h"
-        "Extern Libs/ImGui/imgui.cpp"
-        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h" includes/Modules/GUI/Window/UseImGui.cpp includes/Modules/GUI/Window/UseImGui.h)
+#set(
+#        IMGUI
+#        "Extern Libs/ImGui/imconfig.h"
+#        "Extern Libs/ImGui/imstb_truetype.h"
+#        "Extern Libs/ImGui/imstb_textedit.h"
+#        "Extern Libs/ImGui/imstb_rectpack.h"
+#        "Extern Libs/ImGui/imgui_widgets.cpp"
+#        "Extern Libs/ImGui/imgui_tables.cpp"
+#        "Extern Libs/ImGui/imgui_internal.h"
+#        "Extern Libs/ImGui/imgui_draw.cpp"
+#        "Extern Libs/ImGui/imgui_demo.cpp"
+#        "Extern Libs/ImGui/imgui.h"
+#        "Extern Libs/ImGui/imgui.cpp"
+#        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h" includes/Modules/GUI/Window/UseImGui.cpp includes/Modules/GUI/Window/UseImGui.h)
 
 set(OPENSSL_ROOT_DIR /usr/local/opt/openssl/lib)
 find_package(OpenSSL REQUIRED)
@@ -80,11 +86,11 @@ find_package(CURL REQUIRED)
 add_executable(
         Boa main.cpp
         ${SOURCE_FILES}
-        ${IMGUI}
+        #${IMGUI}
 )
 
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr)
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib)
 if (APPLE)
     target_link_libraries(Boa "-framework OpenGL")
 endif()

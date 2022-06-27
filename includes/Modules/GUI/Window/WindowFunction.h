@@ -10,7 +10,6 @@
 #include "../../../Values/List/List.h"
 #include "../../../Values/Functions/Function.h"
 #include "Window.h"
-#include "UseImGui.h"
 
 template<typename T> class WindowFunction : public BaseFunction<T> {
 public:

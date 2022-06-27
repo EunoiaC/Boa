@@ -11,6 +11,10 @@ void error_callback(int error, const char* msg) {
     std::cerr << s << std::endl;
 }
 
+void sayHello() {
+    std::cout << "Hello World!" << std::endl;
+}
+
 template<>
 Window<int>::Window(Number<double> * width, Number<double> * height, String<string> * title) : Value<int>(0, TOK_TYPE::T_CLASS, "", "") {
     map < string, BaseValue * > defaultArgs;
@@ -22,25 +26,11 @@ Window<int>::Window(Number<double> * width, Number<double> * height, String<stri
     symbolTable->set("fontPath", nullptr);
     symbolTable->set("fontSize", nullptr);
 
-    // Setup window
-    if (!glfwInit())
-        cout << "Failed to initialize GLFW" << endl;
+    init((char *) title->getValue().c_str());
+    button(".b") -text("Say Hello") -command(sayHello);
+    pack(".b") -padx(20) -pady(6);
 
-    glfwSetErrorCallback(error_callback);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);  // 3.2+ only
-    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);            // 3.0+ only
-
-    // Create window with graphics context
-    window = glfwCreateWindow(width->getValue(), height->getValue(), title->getValue().c_str(), NULL, NULL);
-    if (window == NULL)
-        cout << "Failed to create GLFW window" << endl;
-    glfwMakeContextCurrent(window);
-    glfwSwapInterval(1); // Enable vsync
-
-    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))  // tie window context to glad's opengl funcs
-        cout << "Failed to initialize GLAD" << endl;
+    runEventLoop();
 }
 
 template<>

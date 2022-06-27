@@ -6,12 +6,9 @@
 
 #include "../../../Values/String/String.h"
 #include "../../../Values/Number/Number.h"
-#include "../../../../Extern Libs/ImGui/imgui.h"
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
-#include "../../../../Extern Libs/ImGui/imgui_impl_glfw.h"
-#include "../../../../Extern Libs/ImGui/imgui_impl_opengl3.h"
-#include "UseImGui.h"
+#include "../../../../Extern Libs/cpptk/cpptk.h"
+
+using namespace Tk;
 
 template<typename T>
 class Window : public Value<T> {
@@ -19,7 +16,6 @@ public:
     Number<double> *width, *height;
     String<string> *title;
 
-    GLFWwindow *window;
     Window<int>(Number<double> *width, Number<double> *height, String<string> *title);
 
     BaseValue *copy() override;

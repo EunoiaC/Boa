@@ -110,7 +110,7 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
     ClassFunction<int> *init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
     // Avoid running init for builtin classes
     if (init) {
-        res->reg(init->execute({}));
+        res->reg(init->execute({}, {}));
         if (res->shouldReturn()) {
             rtError = res->error;
         }
@@ -155,7 +155,7 @@ BaseValue *UsableClass<int>::compLessThan(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = lt->execute({other});
+        RuntimeResult * res = lt->execute({other}, {});
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
@@ -179,7 +179,7 @@ BaseValue *UsableClass<int>::compEquals(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = gt->execute({other});
+        RuntimeResult * res = gt->execute({other}, {});
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
@@ -215,7 +215,7 @@ BaseValue *UsableClass<int>::compGreaterThan(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = gt->execute({other});
+        RuntimeResult * res = gt->execute({other}, {});
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
@@ -239,7 +239,7 @@ BaseValue *UsableClass<int>::compLessThanEquals(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = lte->execute({other});
+        RuntimeResult * res = lte->execute({other}, {});
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
@@ -263,7 +263,7 @@ BaseValue *UsableClass<int>::compGreaterThanEquals(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = gte->execute({other});
+        RuntimeResult * res = gte->execute({other}, {});
         if (res->error) rtError = res->error;
         return (new Number<double>(res->value->isTrue(), "", ""))->setContext(ctx);
     } else {
@@ -287,7 +287,7 @@ BaseValue *UsableClass<int>::compSort(BaseValue *other) {
             );
             return nullptr;
         }
-        RuntimeResult * res = sort->execute({other});
+        RuntimeResult * res = sort->execute({other}, {});
         if (res->error) rtError = res->error;
         return res->value;
     } else {
@@ -305,7 +305,7 @@ template<>
 string UsableClass<int>::toString() {
     ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("toString"));
     if (sort) {
-        RuntimeResult * res = sort->execute({});
+        RuntimeResult * res = sort->execute({}, {});
         if (res->error) rtError = res->error;
         return res->value->toString();
     }

@@ -20,7 +20,7 @@ Window<int>::Window(Number<double> * width, Number<double> * height, String<stri
 
     symbolTable->set("start", new WindowFunction<int>(this, "start", {}, defaultArgs, "", ""));
 
-    window = new Fl_Window(width->getValue(), height->getValue(), title->getValue().c_str());
+    window = new Fl_Window(width->getValue(), height->getValue(), title->val.c_str());
 }
 
 template<>

@@ -22,7 +22,7 @@ public:
     ClassFunction<T>(string fName, string fTxt, string name, Node *body, vector<string> argNames,
                      map<string, BaseValue *> defaultArgs, vector<string> lines, bool autoReturn, Context *context, string className);
 
-    RuntimeResult *execute(vector<BaseValue *> args) override;
+    RuntimeResult *execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) override;
 
     ClassFunction<int> *copy() override;
 

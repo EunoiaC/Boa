@@ -24,10 +24,14 @@ ClassFunction<int>::ClassFunction(string fName, string fTxt, string name, Node *
 }
 
 template<>
-RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     auto *res = new RuntimeResult();
     auto *interpreter = new Interpreter(fName, lines);
 
+    for (auto &it: kwargs) {
+        args.push_back(it.second);
+        classCtx->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, classCtx));
     if (res->shouldReturn()) return res;
 

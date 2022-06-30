@@ -1,3 +1,10 @@
-import "gui"
-win = gui.makeWindow(500, 500, "Hello World")
-win.start()
+class A() do {
+    op init() do null
+    op something(arg1, arg2, kwarg1, kwarg2) do {
+        print(arg1, arg2, kwarg1, kwarg2)
+    }
+}
+
+a = A()
+
+a.something(1, 2, kwarg2:3, kwarg1:4)

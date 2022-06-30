@@ -123,7 +123,7 @@ RuntimeResult *Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector
 }
 
 template<>
-RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *Class<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     auto *res = new RuntimeResult();
 
     vector<string> argNames;
@@ -134,6 +134,9 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args) {
     context->symbolTable = new SymbolTable();
     res->reg(checkAndPopulateArgs(args, argNames, context));
     if (res->shouldReturn()) return res;
+    for (auto &it: kwargs) {
+        context->symbolTable->set(it.first, it.second);
+    }
 
     UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, classNameTok, members, context, ctx, superClass, lines);
     if(usableClass->rtError) {

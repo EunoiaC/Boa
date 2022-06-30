@@ -62,7 +62,7 @@ RuntimeResult *WebsocketFunction<int>::execute_setMessageHandler(Context *execCt
 
     websockObj->webSocket.setOnMessageCallback([&](const ix::WebSocketMessagePtr &msg) {
        if (msg->type == ix::WebSocketMessageType::Message) {
-           RuntimeResult * r = websockObj->msgCallbackFunc->execute({new String<string>(msg->str, "", "")});
+           RuntimeResult * r = websockObj->msgCallbackFunc->execute({new String<string>(msg->str, "", "")}, {});
            if (r->shouldReturn()) return r;
        } else if (msg->type == ix::WebSocketMessageType::Open) {
        } else if (msg->type == ix::WebSocketMessageType::Error) {

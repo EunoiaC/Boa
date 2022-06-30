@@ -14,6 +14,9 @@ using namespace std;
 **/
 
 // TODO: Fix errors that do to_string(enum)
+/* TODO: Populate args in func using varname: value
+ * add(num1: 12, num2: 13)
+*/
 
 SymbolTable *globalSymbolTable = new SymbolTable();
 

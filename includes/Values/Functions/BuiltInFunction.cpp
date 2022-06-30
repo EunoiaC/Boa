@@ -314,7 +314,7 @@ BuiltInFunction<int>::BuiltInFunction(string name, vector<string> argNames, map<
 }
 
 template<>
-RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     RuntimeResult *res = new RuntimeResult();
     Context *execCtx = generateNewContext();
 
@@ -322,6 +322,9 @@ RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args) {
 
     populateArgs(args, argNames, execCtx);
     this->args = args;
+    for (auto &it: kwargs) {
+        execCtx->symbolTable->set(it.first, it.second);
+    }
 
     BaseValue *returnVal = res->reg((this->*funcMap[methodName])(execCtx));
     if (res->shouldReturn()) return res;

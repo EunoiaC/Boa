@@ -66,6 +66,11 @@ valueType Value<valueType>::getValue() {
 }
 
 template<class valueType>
+RuntimeResult *Value<valueType>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
+    rtError = new RuntimeError(posStart, args.size() > 0 ? args[args.size() - 1]->posEnd : posEnd, line, fName, fTxt, "Cannot call this identifier", ctx);
+}
+
+template<class valueType>
 RuntimeResult *Value<valueType>::execute(vector<BaseValue *> args) {
     rtError = new RuntimeError(posStart, args.size() > 0 ? args[args.size() - 1]->posEnd : posEnd, line, fName, fTxt, "Cannot call this identifier", ctx);
 }

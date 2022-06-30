@@ -9,7 +9,7 @@
 #include <fstream>
 #include "../../Values/List/List.h"
 #include "../../Values/Functions/Function.h"
-#include "Window/Window.h"
+#include "FLTK wrappers/Window/Window.h"
 
 template<typename T> class GUIFunction : public BaseFunction<T> {
 public:

@@ -16,12 +16,16 @@ Function<int>::Function(string fName, string fTxt, string name, Node *body, vect
 }
 
 template<>
-RuntimeResult *Function<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *Function<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     auto *res = new RuntimeResult();
     auto *interpreter = new Interpreter(fName, lines);
 
     Context *execCtx = generateNewContext();
 
+    for (auto &it: kwargs) {
+        args.push_back(it.second);
+        execCtx->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, execCtx));
     if (res->shouldReturn()) return res;
 

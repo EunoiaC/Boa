@@ -47,6 +47,7 @@ public:
 
     virtual BaseValue *setContext(Context *c);
 
+    virtual RuntimeResult *execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs = {});
     virtual RuntimeResult *execute(vector<BaseValue *> args);
 
     //Overrides methods to give unsupportedOperation RTError

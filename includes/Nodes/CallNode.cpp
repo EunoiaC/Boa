@@ -5,9 +5,10 @@
 #include "CallNode.h"
 #include "VarAccessNode.h"
 
-CallNode::CallNode(Node *nodeToCall, vector<Node *> args) : Node(N_CALL){
+CallNode::CallNode(Node *nodeToCall, vector<Node *> args, map<VarAccessNode *, Node *> kwargs) : Node(N_CALL){
     this->nodeToCall = nodeToCall;
     this->args = args;
+    this->kwargs = kwargs;
 
     posStart = ((VarAccessNode *) nodeToCall)->posStart;
     fTxt = ((VarAccessNode *) nodeToCall)->fTxt;

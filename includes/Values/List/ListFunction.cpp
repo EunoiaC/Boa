@@ -235,7 +235,7 @@ RuntimeResult *ListFunction<int>::execute_sort(Context *execCtx) {
     sort(copy->elements.begin(), copy->elements.end(), [&](BaseValue* const &a, BaseValue* const &b) {
         Number<double> * val;
         if (func->getValue() != -10){
-            RuntimeResult * r = func->execute({a, b});
+            RuntimeResult * r = func->execute({a, b}, {});
             if (r->error) {
                 error = r->error;
                 return false;

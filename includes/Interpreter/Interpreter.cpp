@@ -436,7 +436,15 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         if (res->shouldReturn()) return res;
     }
 
-    BaseValue *returnVal = res->reg(valToCall->execute(args));
+    map<string, BaseValue *> kwargs;
+    for (auto kwarg: callNode->kwargs) {
+        string key = kwarg.first->varNameTok->getValueObject()->getValue();
+        BaseValue *value = res->reg(visit(kwarg.second, c));
+        if (res->shouldReturn()) return res;
+        kwargs[key] = value;
+    }
+
+    BaseValue *returnVal = res->reg(valToCall->execute(args, kwargs));
     if (res->error) {
         Error * e = res->error;
         e->fTxt = callNode->fTxt;

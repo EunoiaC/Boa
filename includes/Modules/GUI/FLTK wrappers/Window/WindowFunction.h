@@ -5,10 +5,10 @@
 #ifndef BOA_WINDOWFUNCTION_H
 #define BOA_WINDOWFUNCTION_H
 
-#include "../../../Values/Functions/BaseFunction.h"
+#include "../../../../Values/Functions/BaseFunction.h"
 #include <fstream>
-#include "../../../Values/List/List.h"
-#include "../../../Values/Functions/Function.h"
+#include "../../../../Values/List/List.h"
+#include "../../../../Values/Functions/Function.h"
 #include "Window.h"
 
 template<typename T> class WindowFunction : public BaseFunction<T> {

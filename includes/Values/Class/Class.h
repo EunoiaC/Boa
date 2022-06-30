@@ -20,7 +20,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     vector<Node *> members;
     Node * superClass;
-    RuntimeResult *execute(vector<BaseValue *> args) override;
+    RuntimeResult *execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) override;
     vector<string> lines;
     Class<int> *parent;
     BaseValue * getFromSymbolTable(string name) override;

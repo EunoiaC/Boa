@@ -4,8 +4,8 @@
 #ifndef BOA_WINDOW_H
 #define BOA_WINDOW_H
 
-#include "../../../Values/String/String.h"
-#include "../../../Values/Number/Number.h"
+#include "../../../../Values/String/String.h"
+#include "../../../../Values/Number/Number.h"
 #include <FL/Fl.H>
 #include <FL/Fl_Window.H>
 #include <FL/Fl_Box.H>

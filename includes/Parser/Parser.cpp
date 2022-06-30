@@ -1308,6 +1308,7 @@ ParseResult *Parser::call() {
         res->regAdvancement();
         advance();
         vector<Node *> args;
+        map<VarAccessNode *, Node *> kwargs;
 
         checkNewLines();
 
@@ -1316,12 +1317,27 @@ ParseResult *Parser::call() {
             res->regAdvancement();
             advance();
         } else {
-            args.push_back(res->reg(expr()));
+            Node * exp;
+            exp = res->reg(expr());
             if (res->error) {
                 return res->failure(
                         new Error(currentToken->posStart, currentToken->posEnd, currentToken->line, fName, currLine,
                                   "InvalidSyntaxError",
                                   "Expected a closing parenthesis, identifier, conditional keyword, 'op', or number."));
+            }
+            if (exp->type == N_VAR_ACCESS) {
+                if (currentToken->getType() == TOK_TYPE::COLON) {
+                    delete currentToken;
+                    res->regAdvancement();
+                    advance();
+                    Node * val = res->reg(expr());
+                    if (res->error) return res;
+                    kwargs[(VarAccessNode *) exp] = val;
+                } else {
+                    args.push_back(exp);
+                }
+            } else {
+                args.push_back(exp);
             }
             checkNewLines();
             while (currentToken->getType() == TOK_TYPE::COMMA) {
@@ -1329,8 +1345,22 @@ ParseResult *Parser::call() {
                 res->regAdvancement();
                 advance();
                 checkNewLines();
-                args.push_back(res->reg(expr()));
+                exp = res->reg(expr());
                 if (res->error) return res;
+                if (exp->type == N_VAR_ACCESS) {
+                    if (currentToken->getType() == TOK_TYPE::COLON) {
+                        delete currentToken;
+                        res->regAdvancement();
+                        advance();
+                        Node * val = res->reg(expr());
+                        if (res->error) return res;
+                        kwargs[(VarAccessNode *) exp] = val;
+                    } else {
+                        args.push_back(exp);
+                    }
+                } else {
+                    args.push_back(exp);
+                }
             }
             bool success = checkNewLinesTo(TOK_TYPE::R_PAREN);
             if (!success) {
@@ -1345,7 +1375,7 @@ ParseResult *Parser::call() {
             res->regAdvancement();
             advance();
         }
-        CallNode *call = new CallNode(_atom, args);
+        CallNode *call = new CallNode(_atom, args, kwargs);
 
         call->line = call->nodeToCall->line;
         return res->success(call);

@@ -17,7 +17,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Future<shared_future<RuntimeResult *>> * value;
     FutureFunction<T>(Future<shared_future<RuntimeResult *>> * value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     FutureFunction<int> *copy() override;
 
     RuntimeResult * execute_get(Context * execCtx);

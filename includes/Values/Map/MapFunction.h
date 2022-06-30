@@ -27,7 +27,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Map<map<BaseValue *, BaseValue *>> * value;
     MapFunction<T>(Map<map<BaseValue*, BaseValue *>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     MapFunction<int> *copy() override;
 
     RuntimeResult * execute_sortByValue(Context * execCtx);

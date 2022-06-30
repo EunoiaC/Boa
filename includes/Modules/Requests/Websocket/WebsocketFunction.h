@@ -20,7 +20,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Websocket<int> * websockObj;
     WebsocketFunction<T>(Websocket<int> * sockObj, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     WebsocketFunction<int> *copy() override;
 
     RuntimeResult * execute_send(Context * execCtx);

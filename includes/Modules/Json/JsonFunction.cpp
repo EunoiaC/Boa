@@ -171,12 +171,16 @@ JsonFunction<int>::JsonFunction(string name, vector<string> argNames, map<string
 }
 
 template<>
-RuntimeResult *JsonFunction<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *JsonFunction<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     auto *res = new RuntimeResult();
     Context *execCtx = generateNewContext();
 
     string methodName = "execute_" + name;
 
+    for (auto &it: kwargs) {
+        args.push_back(it.second);
+        execCtx->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, execCtx));
     if (res->error) return res;
     this->args = args;

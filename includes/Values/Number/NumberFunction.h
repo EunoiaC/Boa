@@ -15,7 +15,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Number<double>* value;
     NumberFunction<T>(Number<double>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     NumberFunction<int> *copy() override;
 
     RuntimeResult * execute_ceil(Context * execCtx);

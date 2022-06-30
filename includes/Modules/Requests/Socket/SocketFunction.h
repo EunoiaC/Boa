@@ -19,7 +19,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Socket<int> * sockObj;
     SocketFunction<T>(Socket<int> * sockObj, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     SocketFunction<int> *copy() override;
 
     RuntimeResult * execute_setBufferSize(Context * execCtx);

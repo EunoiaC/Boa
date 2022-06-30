@@ -19,7 +19,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     List<vector<BaseValue*>>* value;
     ListFunction<T>(List<vector<BaseValue*>>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     ListFunction<int> *copy() override;
 
     RuntimeResult * execute_pop(Context * execCtx);

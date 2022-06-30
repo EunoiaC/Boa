@@ -19,7 +19,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     Window<int> * winObj;
     WindowFunction<T>(Window<int> * winObj, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     WindowFunction<int> *copy() override;
 
     RuntimeResult * execute_start(Context * execCtx);

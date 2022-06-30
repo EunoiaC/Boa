@@ -18,7 +18,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     String<string>* value;
     StringFunction<T>(String<string>* value, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     StringFunction<int> *copy() override;
 
     RuntimeResult * execute_split(Context * execCtx);

@@ -20,7 +20,7 @@ public:
     map<string, BaseValue *> defaultArgs;
     File<int> * fileObj;
     FileFunction<T>(File<int> * fileObj, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     FileFunction<int> *copy() override;
 
     RuntimeResult * execute_read(Context * execCtx);

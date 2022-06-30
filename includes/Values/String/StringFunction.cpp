@@ -221,12 +221,16 @@ StringFunction<int>::StringFunction(String<string>* value, string name, vector<s
 }
 
 template<>
-RuntimeResult *StringFunction<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *StringFunction<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     RuntimeResult *res = new RuntimeResult();
     Context *execCtx = generateNewContext();
 
     string methodName = "execute_" + name;
 
+    for (auto &it: kwargs) {
+        args.push_back(it.second);
+        execCtx->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, execCtx));
     if (res->error) return res;
     this->args = args;

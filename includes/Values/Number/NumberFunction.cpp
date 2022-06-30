@@ -26,12 +26,16 @@ NumberFunction<int>::NumberFunction(Number<double>* value, string name, vector<s
 }
 
 template<>
-RuntimeResult *NumberFunction<int>::execute(vector<BaseValue *> args) {
+RuntimeResult *NumberFunction<int>::execute(vector<BaseValue *> args, map<string, BaseValue *> kwargs) {
     RuntimeResult *res = new RuntimeResult();
     Context *execCtx = generateNewContext();
 
     string methodName = "execute_" + name;
 
+    for (auto &it: kwargs) {
+        args.push_back(it.second);
+        execCtx->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, execCtx));
     if (res->error) return res;
     this->args = args;

@@ -80,6 +80,18 @@ RuntimeResult *GUIFunction<int>::execute(vector<BaseValue *> args, map<string, B
     string methodName = "execute_" + name;
 
     for (auto &it: kwargs) {
+        // Check if the keyword argument is a valid argument
+        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
+            return res->failure(new RuntimeError(
+                    posStart,
+                    posEnd,
+                    line,
+                    fName,
+                    fTxt,
+                    "Invalid keyword argument " + it.first + " passed into " + name,
+                    ctx
+            ));
+        }
         args.push_back(it.second);
         execCtx->symbolTable->set(it.first, it.second);
     }

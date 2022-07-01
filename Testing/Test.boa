@@ -1,13 +1,14 @@
-import "time"
+class SomeClass(a, b, c) do {
+    op init() do {
+        print(a)
+        print(b)
+        print(c)
+    }
 
-op long() do {
-    time.sleepSec(time: 5)
-    return 3
+    op someFunc(kwarg) do {
+        print(kwarg)
+    }
 }
 
-f = await long()
-while not f.isReady() do {
-    print("Waiting")
-}
-
-print(f.get())
+s = SomeClass(12, c:14, b:13)
+s.someFunc(kwarg1:15)

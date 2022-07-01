@@ -132,6 +132,22 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args, map<string, BaseVal
     }
     Context *context = new Context(name);
     context->symbolTable = new SymbolTable();
+    for (auto &it: kwargs) {
+        // Check if the keyword argument is a valid argument
+        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
+            return res->failure(new RuntimeError(
+                    posStart,
+                    posEnd,
+                    line,
+                    fName,
+                    fTxt,
+                    "Invalid keyword argument " + it.first + " passed into " + name,
+                    ctx
+            ));
+        }
+        args.push_back(it.second);
+        context->symbolTable->set(it.first, it.second);
+    }
     res->reg(checkAndPopulateArgs(args, argNames, context));
     if (res->shouldReturn()) return res;
     for (auto &it: kwargs) {

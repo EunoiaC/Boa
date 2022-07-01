@@ -323,6 +323,18 @@ RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args, map<strin
     populateArgs(args, argNames, execCtx);
     this->args = args;
     for (auto &it: kwargs) {
+        // Check if the keyword argument is a valid argument
+        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
+            return res->failure(new RuntimeError(
+                    posStart,
+                    posEnd,
+                    line,
+                    fName,
+                    fTxt,
+                    "Invalid keyword argument " + it.first + " passed into " + name,
+                    ctx
+            ));
+        }
         execCtx->symbolTable->set(it.first, it.second);
     }
 

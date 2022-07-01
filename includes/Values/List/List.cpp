@@ -153,12 +153,12 @@ BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
 
 template<>
 BaseValue *List<vector<BaseValue *>>::multiply(BaseValue *other) {
-    if (other->type == TOK_TYPE::T_LIST) {
-        List<vector<BaseValue *>> *otherList = (List<vector<BaseValue *>> *) other;
-        List<vector<BaseValue *>> *newList = copy();
-        newList->elements = elements;
-        newList->elements.insert(newList->elements.end(), otherList->elements.begin(), otherList->elements.end());
-        return newList;
+    if (other->type == TOK_TYPE::T_NUM) {
+        vector<BaseValue *> copyElems;
+        for (int i = 0; i < ((Number<double> *) other)->getValue(); i++) {
+            copyElems.insert(copyElems.end(), elements.begin(), elements.end());
+        }
+        return new List<vector<BaseValue *>>(copyElems, fName, fTxt);
     }
     illegalOperation(other);
 }

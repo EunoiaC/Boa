@@ -1,14 +1,10 @@
-class SomeClass(a, b, c) do {
+class Matrix(dims, fill) do {
     op init() do {
-        print(a)
-        print(b)
-        print(c)
-    }
-
-    op someFunc(kwarg) do {
-        print(kwarg)
+        rows = dims[0]
+        cols = dims[1]
+        A = for i = 0 to rows-1 do [fill] * cols
     }
 }
 
-s = SomeClass(12, c:14, b:13)
-s.someFunc(kwarg1:15)
+A = Matrix(dims: [3,3], fill: 1.0)
+print(A.A)

@@ -1,0 +1,13 @@
+import "time"
+
+op long() do {
+    time.sleepSec(time: 5)
+    return 3
+}
+
+f = await long()
+while not f.isReady() do {
+    print("Waiting")
+}
+
+print(f.get())

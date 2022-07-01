@@ -17,7 +17,7 @@ public:
     vector<BaseValue *> args;
     map<string, BaseValue *> defaultArgs;
     TimeFunction<T>(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
-    RuntimeResult * execute(vector<BaseValue*> args) override;
+    RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     TimeFunction<int> *copy() override;
 
     RuntimeResult * execute_waitMs(Context * execCtx);

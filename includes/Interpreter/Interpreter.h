@@ -46,6 +46,7 @@
 #include "../Modules/Json/Json.h"
 #include "../Modules/Time/Time.h"
 #include "../Modules/GUI/GUI.h"
+#include "../Modules/SQLite/SQLite3.h"
 
 using namespace std;
 using TOK_TYPE = BaseToken::TOK_TYPE;
@@ -62,7 +63,8 @@ public:
             {"requests", new Requests<int>()},
             {"json", new Json<int>()},
             {"time", new Time<int>()},
-            {"gui", new GUI<int>()}
+            {"gui", new GUI<int>()},
+            {"sqlite3", new SQLite3<int>()}
     };
     Interpreter(string name, vector<string> l);
     RuntimeResult * visit(Node * n, Context * c);

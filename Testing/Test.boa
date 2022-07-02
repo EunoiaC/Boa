@@ -1,10 +1,12 @@
-class Matrix(dims, fill) do {
-    op init() do {
-        rows = dims[0]
-        cols = dims[1]
-        A = for i = 0 to rows-1 do [fill] * cols
-    }
-}
+import "sqlite3"
+import "/Users/preetithorat/Documents/BoaEnvironment/CLIify.boa"
 
-A = Matrix(dims: [3,3], fill: 1.0)
-print(A.A)
+db = sqlite3.open("lolapalooza.db")
+db.setCallback(op(names, vals) do {
+    for i = 0 to lenOf(names) - 1 do {
+        print(names[i] + " = " + vals[i])
+    }
+    print()
+})
+sql = "SELECT * from COMPANY"
+db.exec(sql)

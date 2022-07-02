@@ -47,7 +47,7 @@ set(
         "Extern Libs/cpptk/base/cpptkbase.h"
         "Extern Libs/cpptk/cpptkconstants.x"
         "Extern Libs/cpptk/cpptkoptions.x"]]
-)
+        includes/Modules/SQLite/SQLite3.cpp includes/Modules/SQLite/SQLite3.h includes/Modules/SQLite/SQLite3Function.cpp includes/Modules/SQLite/SQLite3Function.h includes/Modules/SQLite/Database/SQLiteDB.cpp includes/Modules/SQLite/Database/SQLiteDB.h includes/Modules/SQLite/Database/SQLiteDBFunction.cpp includes/Modules/SQLite/Database/SQLiteDBFunction.h)
 
 #set(
 #        IMGUI
@@ -79,6 +79,9 @@ find_package(Boost REQUIRED)
 set(CURL_LIBRARY "-lcurl")
 find_package(CURL REQUIRED)
 
+# Add SQLite
+find_package(SQLite3 REQUIRED)
+
 # ixwebsocket in /usr/local/include/ixwebsocket
 #set(ixwebsocket_INCLUDE_DIRS /usr/local/include/ixwebsocket)
 #find_package(ixwebsocket REQUIRED)
@@ -90,7 +93,7 @@ add_executable(
 )
 
 include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr #[[/usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib]] /usr/local/Cellar/fltk/1.3.8/lib/libfltk.1.3.dylib)
+target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr #[[/usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib]] /usr/local/Cellar/fltk/1.3.8/lib/libfltk.1.3.dylib sqlite3)
 if (APPLE)
     target_link_libraries(Boa "-framework OpenGL")
 endif()

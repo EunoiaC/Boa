@@ -352,16 +352,16 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
     }
 
     string prevType;
-    if (value->type == TOK_TYPE::CLASS){
+    if (value->type == TOK_TYPE::T_CLASS){
         // Check if it's instantiated class or a structure
         auto * temp = dynamic_cast<UsableClass<int> *>(value);
         if (temp){
             prevType = temp->className;
-        } else{
+        } else {
             prevType = ((Class<int> *) value)->name;
         }
     } else {
-        prevType = value->type;
+        prevType = value->VAL_TYPES[value->type];
     }
     for (auto &id: node->identifiers) {
         string idName = ((Token<string> *) id)->getValueObject()->getValue();
@@ -377,7 +377,7 @@ RuntimeResult *Interpreter::visitVarAccessNode(Node *n, Context *c) {
                     c
             ));
         }
-        if (value->type == TOK_TYPE::CLASS){
+        if (value->type == TOK_TYPE::T_CLASS){
             prevType = ((UsableClass<int> *) value)->className;
         } else {
             prevType = value->type;

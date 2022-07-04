@@ -71,9 +71,8 @@ BaseValue *String<string>::contains(BaseValue *val) {
         } else {
             return new Number<double>(0, fName, fTxt);
         }
-    } else {
-        illegalOperation(val);
     }
+    return new Number<double>(0, fName, fTxt);
 }
 
 template<>

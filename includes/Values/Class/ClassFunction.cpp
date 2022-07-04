@@ -8,6 +8,11 @@
 
 #include "../../Interpreter/Interpreter.h"
 
+/* TODO: Make an execCtx with the parentCtx and symboltable the class ctx.
+ * Check if the funcName is init(), if so execute that in the classCtx, if the funcName is not init(),
+ * then execute the funcName in the execCtx
+*/
+
 template<>
 string ClassFunction<int>::toString() {
     return "<Func: " + name + "> defined in class " + className;
@@ -20,6 +25,7 @@ ClassFunction<int>::ClassFunction(string fName, string fTxt, string name, Node *
     this->lines = lines;
     this->body = body;
     this->classCtx = new Context(*context);
+    this->ctx = classCtx;
     this->className = className;
 }
 
@@ -44,12 +50,25 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string,
         args.push_back(it.second);
         classCtx->symbolTable->set(it.first, it.second);
     }
-    res->reg(checkAndPopulateArgs(args, argNames, classCtx));
-    if (res->shouldReturn()) return res;
 
-    BaseValue *value = res->reg(interpreter->visit(body, classCtx));
-    if (res->shouldReturn() && res->funcReturnValue == nullptr) {
-        return res;
+    BaseValue *value;
+    if (name == "init") {
+        res->reg(checkAndPopulateArgs(args, argNames, classCtx));
+        if (res->shouldReturn()) return res;
+
+        value = res->reg(interpreter->visit(body, classCtx));
+        if (res->shouldReturn() && res->funcReturnValue == nullptr) {
+            return res;
+        }
+    } else {
+        Context *execCtx = generateNewContext();
+        res->reg(checkAndPopulateArgs(args, argNames, execCtx));
+        if (res->shouldReturn()) return res;
+
+        value = res->reg(interpreter->visit(body, execCtx));
+        if (res->shouldReturn() && res->funcReturnValue == nullptr) {
+            return res;
+        }
     }
     // If auto returning with a oneliner, return the value
     BaseValue * retVal = (autoReturn ? value : nullptr);

@@ -38,13 +38,17 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
     map<string, BaseValue *> defaultArgs;
     this->lines = lines;
     this->classNameTok = classNameTok;
+    this->mainCtx = c;
+    this->parentCtx = parent;
+    this->super = super;
+    this->nodeMems = members;
 
     this->className = classNameTok->getValueObject()->getValue();
     ctx = generateClassContext(className);
     ctx->symbolTable->parent = parent->symbolTable;
 
     for (auto &it: c->symbolTable->symbols) {
-        ctx->symbolTable->set(it.first, it.second);
+        ctx->symbolTable->symbols[it.first] = it.second;
     }
 
     Interpreter *i = new Interpreter(className, lines);
@@ -104,8 +108,9 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
                 this->members[className] = val;
             }
         }
-
     }
+
+    ctx->symbolTable->set("this", this);
 
     ClassFunction<int> *init = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("init"));
     // Avoid running init for builtin classes
@@ -118,7 +123,6 @@ UsableClass<int>::UsableClass(string f, string txt, Token<string> * classNameTok
 
     memAddress = (string *) this;
     asString = "<InstantiatedClass: " + this->className + ">";
-    ctx->symbolTable->set("this", this);
 }
 
 template<>
@@ -297,16 +301,20 @@ BaseValue *UsableClass<int>::compSort(BaseValue *other) {
 
 template<>
 BaseValue *UsableClass<int>::copy() {
-    auto *c = new UsableClass<int>(*this);
+    auto *c = new UsableClass<int>(fName, fTxt, classNameTok, nodeMems, mainCtx, parentCtx, super, lines);
     return c;
 }
 
 template<>
 string UsableClass<int>::toString() {
-    ClassFunction<int> *sort = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("toString"));
-    if (sort) {
-        RuntimeResult * res = sort->execute({}, {});
-        if (res->error) rtError = res->error;
+    ClassFunction<int> *toStr = dynamic_cast<ClassFunction<int> *>(getFromSymbolTable("toString"));
+    if (toStr) {
+        RuntimeResult * res = toStr->execute({}, {});
+        if (res->error) {
+            rtError = res->error;
+            cout << rtError->toString() << endl;
+            return asString;
+        }
         return res->value->toString();
     }
     return asString;

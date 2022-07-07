@@ -9,10 +9,11 @@
 
 
 template<>
-Class<int>::Class(Token<string> * classNameTok, string fName, string fTxt, vector<Token<string> *> constructorArgs,
+Class<int>::Class(Token<string> *classNameTok, string fName, string fTxt, vector<Token<string> *> constructorArgs,
                   map<string, BaseValue *> defaultArgs,
-                  vector<Node *> members, Node * superClass, vector<string> lines) : Value<int>(-1, TOK_TYPE::T_CLASS, fName,
-                                                                             fTxt) {
+                  vector<Node *> members, Node *superClass, vector<string> lines) : Value<int>(-1, TOK_TYPE::T_CLASS,
+                                                                                               fName,
+                                                                                               fTxt) {
     this->members = members;
     this->classNameTok = classNameTok;
     this->name = classNameTok->getValueObject()->getValue();
@@ -26,7 +27,7 @@ Class<int>::Class(Token<string> * classNameTok, string fName, string fTxt, vecto
 }
 
 template<>
-BaseValue * Class<int>::getFromSymbolTable(string name) {
+BaseValue *Class<int>::getFromSymbolTable(string name) {
     return instantiatedVariables->get(name);
 }
 
@@ -44,7 +45,7 @@ BaseValue *Class<int>::copy() {
 }
 
 template<>
-void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
+void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs,
                               Context *context) {
     for (auto &it: defaultArgs) {
         string argName = it.first;
@@ -55,11 +56,16 @@ void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
             ((String<string> *) argValue)->setContext(context);
         } else if (argValue->type == TOK_TYPE::T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
-        }
-        if (argValue->type == TOK_TYPE::T_MAP) {
+        } else if (argValue->type == TOK_TYPE::T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_FUNC) {
+            ((Function<int> *) argValue)->setContext(context);
         }
-        // TODO: Update this area
+
+        if (argValue->type != TOK_TYPE::T_CLASS) {
+            argValue = argValue->copy();
+        }
+
         context->symbolTable->set(argName, argValue);
     }
 
@@ -72,40 +78,59 @@ void Class<int>::populateArgs(vector<BaseValue *> args, vector<string> argNames,
             ((String<string> *) argValue)->setContext(context);
         } else if (argValue->type == TOK_TYPE::T_LIST) {
             ((List<vector<BaseValue *>> *) argValue)->setContext(context);
-        }
-        if (argValue->type == TOK_TYPE::T_MAP) {
+        } else if (argValue->type == TOK_TYPE::T_MAP) {
             ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_FUNC) {
+            ((Function<int> *) argValue)->setContext(context);
         }
         //TODO: Update this area
+        context->symbolTable->set(argName, argValue);
+    }
+
+    for (auto &it: kwargs) {
+        string argName = it.first;
+        BaseValue *argValue = it.second;
+        if (argValue->type == TOK_TYPE::T_NUM) {
+            ((Number<double> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_STRING) {
+            ((String<string> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_LIST) {
+            ((List<vector<BaseValue *>> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_MAP) {
+            ((Map<map<BaseValue *, BaseValue *>> *) argValue)->setContext(context);
+        } else if (argValue->type == TOK_TYPE::T_FUNC) {
+            ((Function<int> *) argValue)->setContext(context);
+        }
         context->symbolTable->set(argName, argValue);
     }
 }
 
 template<>
-RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> argNames) {
+RuntimeResult *
+Class<int>::checkArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs) {
     auto *res = new RuntimeResult();
-    if (args.size() > argNames.size()) {
+    if (args.size() + kwargs.size() > argNames.size()) {
         return res->failure(new RuntimeError(
                 posStart,
                 posEnd,
                 line,
                 fName,
                 fTxt,
-                to_string(args.size() - argNames.size()) + " too many args passed into " + name,
+                to_string(args.size() + kwargs.size() - argNames.size()) + " too many args passed into " + name,
                 ctx
         ));
     }
 
     int normalArgCount = argNames.size() - defaultArgs.size();
 
-    if (args.size() < normalArgCount) {
+    if (args.size() + kwargs.size() < normalArgCount) {
         return res->failure(new RuntimeError(
                 posStart,
                 posEnd,
                 line,
                 fName,
                 fTxt,
-                to_string(normalArgCount - args.size()) + " too few args passed into " + name,
+                to_string(normalArgCount - args.size() - kwargs.size()) + " too few args passed into " + name,
                 ctx
         ));
     }
@@ -113,12 +138,13 @@ RuntimeResult *Class<int>::checkArgs(vector<BaseValue *> args, vector<string> ar
 }
 
 template<>
-RuntimeResult *Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames,
-                                                Context *context) {
+RuntimeResult *
+Class<int>::checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs,
+                                 Context *context) {
     RuntimeResult *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->shouldReturn()) return res;
-    populateArgs(args, argNames, context);
+    populateArgs(args, argNames, kwargs, context);
     return res->success(nullptr);
 }
 
@@ -132,33 +158,16 @@ RuntimeResult *Class<int>::execute(vector<BaseValue *> args, map<string, BaseVal
     }
     Context *context = new Context(name);
     context->symbolTable = new SymbolTable();
-    for (auto &it: kwargs) {
-        // Check if the keyword argument is a valid argument
-        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
-            return res->failure(new RuntimeError(
-                    posStart,
-                    posEnd,
-                    line,
-                    fName,
-                    fTxt,
-                    "Invalid keyword argument " + it.first + " passed into " + name,
-                    ctx
-            ));
-        }
-        args.push_back(it.second);
-        context->symbolTable->set(it.first, it.second);
-    }
-    res->reg(checkAndPopulateArgs(args, argNames, context));
-    if (res->shouldReturn()) return res;
-    for (auto &it: kwargs) {
-        context->symbolTable->set(it.first, it.second);
-    }
 
-    UsableClass<int> *usableClass = new UsableClass<int>(fName, fTxt, classNameTok, members, context, ctx, superClass, lines);
-    if(usableClass->rtError) {
+    res->reg(checkAndPopulateArgs(args, argNames, kwargs, context));
+    if (res->shouldReturn()) return res;
+
+    auto *usableClass = new UsableClass<int>(fName, fTxt, classNameTok, members, context, ctx, superClass,
+                                                         lines);
+    if (usableClass->rtError) {
         return res->failure(usableClass->rtError);
     }
-    return (new RuntimeResult())->success(usableClass);
+    return res->success(usableClass);
 }
 
 template<>

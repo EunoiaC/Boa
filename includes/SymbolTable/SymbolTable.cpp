@@ -34,11 +34,6 @@ BaseValue *SymbolTable::get(string key) {
 }
 
 void SymbolTable::set(string key, BaseValue *value) {
-    // Check if the key exists in the parent table
-    if (parent && parent->get(key) != nullptr) {
-        parent->set(key, value);
-        return;
-    }
     symbols[key] = value;
 }
 

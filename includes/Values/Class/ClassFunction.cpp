@@ -34,6 +34,7 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string,
     auto *res = new RuntimeResult();
     auto *interpreter = new Interpreter(fName, lines);
 
+    // TODO: Fix kwargs
     for (auto &it: kwargs) {
         // Check if the keyword argument is a valid argument
         if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
@@ -53,7 +54,7 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string,
 
     BaseValue *value;
     if (name == "init") {
-        res->reg(checkAndPopulateArgs(args, argNames, classCtx));
+        res->reg(checkAndPopulateArgs(args, kwargs, argNames, classCtx));
         if (res->shouldReturn()) return res;
 
         value = res->reg(interpreter->visit(body, classCtx));
@@ -62,7 +63,7 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string,
         }
     } else {
         Context *execCtx = generateNewContext();
-        res->reg(checkAndPopulateArgs(args, argNames, execCtx));
+        res->reg(checkAndPopulateArgs(args, kwargs, argNames, execCtx));
         if (res->shouldReturn()) return res;
 
         value = res->reg(interpreter->visit(body, execCtx));
@@ -77,6 +78,11 @@ RuntimeResult *ClassFunction<int>::execute(vector<BaseValue *> args, map<string,
         retVal = res->funcReturnValue ? res->funcReturnValue : new Number<double>(0, "", "");
     }
     return res->success(retVal);
+}
+
+template<>
+BaseValue * ClassFunction<int>::setContext(Context *context) {
+    return this;
 }
 
 template<>

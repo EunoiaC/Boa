@@ -19,10 +19,18 @@ RuntimeResult *BuiltInFunction<int>::execute_print(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
+
+    if (val->type == TOK_TYPE::T_CLASS) {
+        auto *classVal = dynamic_cast<UsableClass<int> *>(val);
+        if (classVal) {
+            return (new RuntimeResult())->success(new String<string>(classVal->className, val->fName, val->fTxt));
+        }
+        return (new RuntimeResult())->success(new String<string>(((Class<int> *)val)->name, val->fName, val->fTxt));
+    }
 
     return (new RuntimeResult())->success(new String<string>(VAL_TYPES[val->type], val->fName, val->fTxt));
 }
@@ -30,7 +38,7 @@ RuntimeResult *BuiltInFunction<int>::execute_instanceOf(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *str = execCtx->symbolTable->get("value");
@@ -41,7 +49,7 @@ RuntimeResult *BuiltInFunction<int>::execute_toStr(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
@@ -68,7 +76,7 @@ RuntimeResult *BuiltInFunction<int>::execute_lenOf(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_toNum(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
@@ -125,7 +133,7 @@ RuntimeResult *BuiltInFunction<int>::execute_input(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *val = execCtx->symbolTable->get("value");
@@ -161,7 +169,7 @@ RuntimeResult *BuiltInFunction<int>::execute_eval(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *oldName = execCtx->symbolTable->get("oldName");
@@ -225,7 +233,7 @@ RuntimeResult *BuiltInFunction<int>::execute_rename(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     auto *sym = new Map<map<BaseValue *, BaseValue *>>({}, "", "");
@@ -249,7 +257,7 @@ RuntimeResult *BuiltInFunction<int>::execute_getSymbolTable(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_copy(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     return (new RuntimeResult())->success(execCtx->symbolTable->get("value")->copy());
@@ -258,7 +266,7 @@ RuntimeResult *BuiltInFunction<int>::execute_copy(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_getFile(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     BaseValue *f = execCtx->symbolTable->get("fName");
@@ -286,7 +294,7 @@ RuntimeResult *BuiltInFunction<int>::execute_getFile(Context *execCtx) {
 template<>
 RuntimeResult *BuiltInFunction<int>::execute_clear(Context *execCtx) {
     auto *res = new RuntimeResult();
-    res->reg(checkArgs(args, argNames));
+    res->reg(checkArgs(args, argNames, kwargs));
     if (res->error) return res;
 
     system("clear");
@@ -320,23 +328,9 @@ RuntimeResult *BuiltInFunction<int>::execute(vector<BaseValue *> args, map<strin
 
     string methodName = "execute_" + name;
 
-    populateArgs(args, argNames, execCtx);
+    populateArgs(args, argNames, kwargs, execCtx);
     this->args = args;
-    for (auto &it: kwargs) {
-        // Check if the keyword argument is a valid argument
-        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
-            return res->failure(new RuntimeError(
-                    posStart,
-                    posEnd,
-                    line,
-                    fName,
-                    fTxt,
-                    "Invalid keyword argument " + it.first + " passed into " + name,
-                    ctx
-            ));
-        }
-        execCtx->symbolTable->set(it.first, it.second);
-    }
+    this->kwargs = kwargs;
 
     BaseValue *returnVal = res->reg((this->*funcMap[methodName])(execCtx));
     if (res->shouldReturn()) return res;

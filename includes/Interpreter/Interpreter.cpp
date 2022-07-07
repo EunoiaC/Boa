@@ -451,7 +451,11 @@ RuntimeResult *Interpreter::visitCallNode(Node *n, Context *c) {
         return res->failure(e);
     }
     if (res->shouldReturn()) return res;
-    returnVal = returnVal->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line);
+    if (returnVal->type == TOK_TYPE::T_CLASS) {
+        returnVal = returnVal->setPos(callNode->posStart, callNode->posEnd, callNode->line);
+    } else {
+        returnVal = returnVal->copy()->setPos(callNode->posStart, callNode->posEnd, callNode->line);
+    }
     if (returnVal->type == TOK_TYPE::T_NUM) {
         ((Number<double> *) returnVal)->setContext(c);
     } else if (returnVal->type == TOK_TYPE::T_STRING) {
@@ -577,6 +581,17 @@ RuntimeResult *Interpreter::visitVarAssignNode(Node *n, Context *c) {
     if (result->shouldReturn()) return result;
     if (!node->parents.empty()){
         BaseValue * toSet = c->symbolTable->get(varName);
+        if (toSet == nullptr){
+            return result->failure(new RuntimeError(
+                    node->posStart,
+                    node->posEnd,
+                    node->line,
+                    fName,
+                    lines[node->line],
+                    "Variable '" + varName + "' is not defined",
+                    c
+            ));
+        }
         for (int i = 0; i < node->parents.size() - 1; i++){
             auto * parentName = (Token<string> *) node->parents[i];
             toSet = toSet->getFromSymbolTable(parentName->getValueObject()->getValue());

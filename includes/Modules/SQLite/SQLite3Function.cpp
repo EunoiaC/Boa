@@ -83,7 +83,7 @@ RuntimeResult *SQLite3Function<int>::execute(vector<BaseValue *> args, map<strin
         args.push_back(it.second);
         execCtx->symbolTable->set(it.first, it.second);
     }
-    res->reg(checkAndPopulateArgs(args, argNames, execCtx));
+    res->reg(checkAndPopulateArgs(args, kwargs, argNames, execCtx));
     if (res->error) return res;
     this->args = args;
 

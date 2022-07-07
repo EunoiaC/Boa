@@ -128,7 +128,7 @@ template<>
 BaseValue *List<vector<BaseValue *>>::get(BaseValue *s) {
     if (s->type == TOK_TYPE::T_NUM) {
         Number<double> *num = (Number<double> *) s;
-        if (num->getValue() > elements.size() - 1 or num->getValue() < 0) {
+        if (num->getValue() >= elements.size() || num->getValue() < 0) {
             rtError = new RuntimeError(
                     num->posStart,
                     num->posEnd,

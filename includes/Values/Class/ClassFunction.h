@@ -26,6 +26,7 @@ public:
 
     ClassFunction<int> *copy() override;
 
+    BaseValue * setContext(Context *context) override;
     string toString() override;
 };
 

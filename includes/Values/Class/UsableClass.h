@@ -14,11 +14,13 @@
 template<typename T> class UsableClass : public Value<T> {
 public:
     string *memAddress;
-    Context * generateClassContext(string name);
+    Context * generateClassContext(string name), * mainCtx, * parentCtx;
     vector<string> lines;
     map<string, BaseValue *> members;
+    vector<Node *> nodeMems;
     Token<string> * classNameTok;
     Error * funcNotFound(string funcName);
+    Node * super;
 
     string className, asString;
     UsableClass<int>(string f, string txt, Token<string> * classNameTok, vector<Node *> members, Context * c, Context * parent, Node * superClass, vector<string> lines);

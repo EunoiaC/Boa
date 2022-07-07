@@ -1,50 +1,7 @@
-# SQLite recipe database
-import "sqlite3"
-import "/Users/preetithorat/Documents/BoaEnvironment/CLIify.boa"
-
-class Recipe(foodName, ingredients, directions, time) do {
-    op init() do null
-    op sqlString() do {
-        return "INSERT INTO recipes (foodName, ingredients, directions, time) VALUES ('" + foodName + "', '" + ingredients + "', '" + directions + "', '" + time + "');"
-    }
+op fun(x, list=[]) do{
+    list.append(x)
+    print(list)
 }
 
-db = sqlite3.open("recipes.db")
-db.setCallback(op(names, vars) do {
-    for i = 0 to lenOf(names) - 1 do {
-        print(names[i] + ": " + vars[i])
-    }
-})
-# Make the recipe table if it doesn't exist
-db.exec("CREATE TABLE IF NOT EXISTS recipes (foodName TEXT, ingredients TEXT, directions TEXT, time TEXT);")
-
-class RecipeCLI() do {
-    op init() do {
-        cli_methods = {
-            "add": add,
-            "get": get
-        }
-
-        cli_options = {}
-    }
-
-    op add(args) do {
-        if lenOf(args) == 4 do {
-            recipe = Recipe(args[0], args[1], args[2], args[3])
-            db.exec(recipe.sqlString())
-        } else do {
-            print("Usage: add <foodName> <ingredients> <directions> <time>")
-        }
-    }
-    op get(args) do {
-        if lenOf(args) == 0 do {
-            print("Please specify a recipe name.")
-            return
-        }
-        recipeName = args[0]
-        db.exec("SELECT * FROM recipes WHERE foodName = '" + recipeName + "';")
-    }
-}
-
-cli = CLIify(RecipeCLI)
-cli.run(args[0], args.slice(1))
+fun(12)
+fun(13)

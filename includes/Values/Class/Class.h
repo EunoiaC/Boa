@@ -28,10 +28,10 @@ public:
     string toString() override;
 
     BaseValue * copy() override;
-    RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames);
-    void populateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
+    RuntimeResult * checkArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs);
+    void populateArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs, Context * context);
     void setParentClass(Class<int> * parent);
-    RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, Context * context);
+    RuntimeResult * checkAndPopulateArgs(vector<BaseValue *> args, vector<string> argNames, map<string, BaseValue *> kwargs, Context * context);
     Token<string> * classNameTok;
     Class<T>(Token<string> * classNameTok, string fName, string fTxt, vector<Token<string> *> constructorArgs, map<string, BaseValue *> defaultArgs, vector<Node *> members, Node * superClass, vector<string> lines);
 };

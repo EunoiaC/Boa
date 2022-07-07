@@ -22,23 +22,7 @@ RuntimeResult *Function<int>::execute(vector<BaseValue *> args, map<string, Base
 
     Context *execCtx = generateNewContext();
 
-    for (auto &it: kwargs) {
-        // Check if the keyword argument is a valid argument
-        if (find(argNames.begin(), argNames.end(), it.first) == argNames.end()) {
-            return res->failure(new RuntimeError(
-                    posStart,
-                    posEnd,
-                    line,
-                    fName,
-                    fTxt,
-                    "Invalid keyword argument " + it.first + " passed into " + name,
-                    ctx
-            ));
-        }
-        args.push_back(it.second);
-        execCtx->symbolTable->set(it.first, it.second);
-    }
-    res->reg(checkAndPopulateArgs(args, argNames, execCtx));
+    res->reg(checkAndPopulateArgs(args, kwargs, argNames, execCtx));
     if (res->shouldReturn()) return res;
 
     BaseValue *value = res->reg(interpreter->visit(body, execCtx));

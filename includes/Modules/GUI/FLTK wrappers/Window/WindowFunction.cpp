@@ -4,6 +4,29 @@
 
 #include "WindowFunction.h"
 
+template<>
+RuntimeResult *WindowFunction<int>::execute_add(Context *execCtx) {
+    RuntimeResult *res = new RuntimeResult();
+    BaseValue * widget = execCtx->symbolTable->get("widget");
+    auto * textObj = dynamic_cast<Text<int> *>(widget);
+    auto * inObj = dynamic_cast<TextInput<int> *>(widget);
+    if (textObj) {
+        winObj->window->add(textObj->display);
+    } else if (inObj) {
+        winObj->window->add(inObj->input);
+    } else {
+        return res->failure(new RuntimeError(
+                widget->posStart,
+                widget->posEnd,
+                widget->line,
+                widget->fName,
+                widget->fTxt,
+                "Method not implemented",
+                execCtx
+        ));
+    }
+    return res->success(new Number<double>(0, "", ""));
+}
 
 template<>
 RuntimeResult *WindowFunction<int>::execute_start(Context *execCtx) {
@@ -14,9 +37,9 @@ RuntimeResult *WindowFunction<int>::execute_start(Context *execCtx) {
 }
 
 template<>
-WindowFunction<int>::WindowFunction(Window<int> *winObj, string name, vector<string> argNames,
-                                          map<string, BaseValue *> defaultArgs,
-                                          string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
+WindowFunction<int>::WindowFunction(WindowObj<int> *winObj, string name, vector<string> argNames,
+                                    map<string, BaseValue *> defaultArgs,
+                                    string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
                                                                                          fName,
                                                                                          fTxt, CLASS_FUNC) {
     this->winObj = winObj;
@@ -24,6 +47,7 @@ WindowFunction<int>::WindowFunction(Window<int> *winObj, string name, vector<str
     type = TOK_TYPE::T_FUNC;
 
     funcMap["execute_start"] = &WindowFunction<int>::execute_start;
+    funcMap["execute_add"] = &WindowFunction<int>::execute_add;
 }
 
 template<>

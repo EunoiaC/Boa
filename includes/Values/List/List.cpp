@@ -22,7 +22,7 @@ List<vector<BaseValue *>>::List(vector<BaseValue *> elements, string f, string t
                                                       ""));
     defaultArgs.clear();
 
-    defaultArgs["endIdx"] = new Value<double>(-1, TOK_TYPE::T_NUM, fName, fTxt);
+    defaultArgs["endIdx"] = new Number<double>(-1, fName, fTxt);
     symbolTable->set("slice", new ListFunction<int>(this, "slice", {"startIdx", "endIdx"},
                                                       defaultArgs, "",
                                                       ""));

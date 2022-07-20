@@ -78,7 +78,8 @@ public:
         T_CLASS = 60,
         T_LIST = 61,
         T_MAP = 62,
-        T_FILE = 63
+        T_FILE = 63,
+        NAMESPACE = 64
     };
 
     BaseToken(TOK_TYPE t, int start_pos, int end_pos, int line_num);

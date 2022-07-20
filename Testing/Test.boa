@@ -1,7 +1,17 @@
-op fun(x, list=[]) do{
-    list.append(x)
-    print(list)
-}
+import "gui"
 
-fun(12)
-fun(13)
+window = gui.makeWindow(640, 480, "Hello World")
+window.color(gui.WHITE)
+text = gui.makeText(50, 30, "Input:", 20, 15)
+inp = gui.makeTextInput(565, 30, 70, 10)
+submit = gui.makeButton(565, 30, "Submit", 70, 40)
+
+# Add an output below the input
+output = gui.makeText(565, 60, "Output:", 20, 85)
+
+# Submit callback
+submit.setCallback(op() do {
+    output.setText("Output: " + inp.getValue())
+})
+
+window.start()

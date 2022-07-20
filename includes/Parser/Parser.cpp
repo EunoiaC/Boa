@@ -1033,6 +1033,10 @@ ParseResult *Parser::classDef() {
     return res->success(classDef);
 }
 
+ParseResult *Parser::namespaceDef() {
+
+}
+
 ParseResult *Parser::listExpr() {
     ParseResult *res = new ParseResult(nullptr, nullptr);
     vector<Node *> elements;
@@ -1104,6 +1108,10 @@ ParseResult *Parser::atom() {
         Node *_classDef = res->reg(classDef());
         if (res->error) return res;
         return res->success(_classDef);
+    } else if (tok->getType() == TOK_TYPE::NAMESPACE) {
+        Node * nsDef = res->reg(namespaceDef());
+        if (res->error) return res;
+        return res->success(nsDef);
     } else if (tok->getType() == TOK_TYPE::L_BRACKET) {
         Node *_listExpr = res->reg(listExpr());
         if (res->error) return res;

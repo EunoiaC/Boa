@@ -76,6 +76,7 @@ public:
     ParseResult * whileExpr();
     ParseResult * funcDef();
     ParseResult * classDef();
+    ParseResult * namespaceDef();
     ParseResult * binOp(vector<TOK_TYPE> ops, ParseResult *(Parser::*funcA)(), ParseResult *(Parser::*funcB)());
 };
 

@@ -29,4 +29,6 @@ window.add(txt2)
 window.add(max)
 window.add(generate)
 
-window.start()
+window.end()
+window.show()
+gui.start()

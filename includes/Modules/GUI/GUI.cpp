@@ -12,25 +12,27 @@ GUI<int>::GUI() : Value<int>(0, TOK_TYPE::CLASS, "f", "txt") {
     defaultArgs["width"] = new Number<double>(640, "", "");
     defaultArgs["height"] = new Number<double>(480, "", "");
     defaultArgs["title"] = new String<string>("Window", "", "");
-    symbolTable->set("makeWindow", new GUIFunction<int>("makeWindow", {"width", "height", "title"}, defaultArgs, "", ""));
+    symbolTable->set("makeWindow", new GUIFunction<int>(this, "makeWindow", {"width", "height", "title"}, defaultArgs, "", ""));
     defaultArgs.clear();
 
     defaultArgs["X"] = new Number<double>(0, "", "");
     defaultArgs["Y"] = new Number<double>(0, "", "");
-    symbolTable->set("makeText", new GUIFunction<int>("makeText", {"width", "height", "text", "X", "Y"}, defaultArgs, "", ""));
-    defaultArgs.clear();
-
-    defaultArgs["X"] = new Number<double>(0, "", "");
-    defaultArgs["Y"] = new Number<double>(0, "", "");
-    defaultArgs["text"] = new String<string>("", "", "");
-    symbolTable->set("makeTextInput", new GUIFunction<int>("makeTextInput", {"width", "height", "X", "Y", "text"}, defaultArgs, "", ""));
+    symbolTable->set("makeText", new GUIFunction<int>(this, "makeText", {"width", "height", "text", "X", "Y"}, defaultArgs, "", ""));
     defaultArgs.clear();
 
     defaultArgs["X"] = new Number<double>(0, "", "");
     defaultArgs["Y"] = new Number<double>(0, "", "");
     defaultArgs["text"] = new String<string>("", "", "");
-    symbolTable->set("makeButton", new GUIFunction<int>("makeButton", {"width", "height", "text", "X", "Y"}, defaultArgs, "", ""));
+    symbolTable->set("makeTextInput", new GUIFunction<int>(this, "makeTextInput", {"width", "height", "X", "Y", "text"}, defaultArgs, "", ""));
     defaultArgs.clear();
+
+    defaultArgs["X"] = new Number<double>(0, "", "");
+    defaultArgs["Y"] = new Number<double>(0, "", "");
+    defaultArgs["text"] = new String<string>("", "", "");
+    symbolTable->set("makeButton", new GUIFunction<int>(this, "makeButton", {"width", "height", "text", "X", "Y"}, defaultArgs, "", ""));
+    defaultArgs.clear();
+
+    symbolTable->set("start", new GUIFunction<int>(this, "start", {}, defaultArgs, "", ""));
 
     // FLTK Colors
     symbolTable->set("BLACK", new Number<double>(FL_BLACK, "", ""));

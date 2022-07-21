@@ -13,6 +13,7 @@
 #include "FLTK wrappers/Text/Text.h"
 #include "FLTK wrappers/TextInput/TextInput.h"
 #include "FLTK wrappers/Button/Button.h"
+#include "GUI.h"
 
 template<typename T> class GUIFunction : public BaseFunction<T> {
 public:
@@ -20,7 +21,8 @@ public:
     map<string, FnPtr> funcMap;
     vector<BaseValue *> args;
     map<string, BaseValue *> defaultArgs;
-    GUIFunction<T>(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
+    GUI<int> * gui;
+    GUIFunction<T>(GUI<int> * gui, string name, vector<string> argNames, map<string, BaseValue *> defaultArgs, string fName, string fTxt);
     RuntimeResult * execute(vector<BaseValue*> args, map<string, BaseValue *> kwargs) override;
     GUIFunction<int> *copy() override;
 
@@ -28,6 +30,7 @@ public:
     RuntimeResult * execute_makeText(Context * execCtx);
     RuntimeResult * execute_makeTextInput(Context * execCtx);
     RuntimeResult * execute_makeButton(Context * execCtx);
+    RuntimeResult * execute_start(Context * execCtx);
 
     string toString() override;
 };

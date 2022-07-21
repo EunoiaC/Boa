@@ -18,7 +18,7 @@ WindowObj<int>::WindowObj(Number<double> * width, Number<double> * height, Strin
     this->height = height;
     this->title = title;
 
-    symbolTable->set("start", new WindowFunction<int>(this, "start", {}, defaultArgs, "", ""));
+    symbolTable->set("end", new WindowFunction<int>(this, "end", {}, defaultArgs, "", ""));
     symbolTable->set("add", new WindowFunction<int>(this, "add", {"widget"}, defaultArgs, "", ""));
 
     window = new Fl_Window(width->val, height->val, title->val.c_str());

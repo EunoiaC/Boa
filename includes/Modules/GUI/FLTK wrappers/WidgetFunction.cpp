@@ -124,6 +124,12 @@ RuntimeResult * WidgetFunction<int>::execute_labelColor(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *WidgetFunction<int>::execute_show(Context *execCtx) {
+    widget->widget->show();
+    return (new RuntimeResult())->success(new Number<double>(0, "", ""));
+}
+
+template<>
 WidgetFunction<int>::WidgetFunction(Widget<int> *widget, string name, vector<string> argNames,
                                     map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
@@ -137,6 +143,7 @@ WidgetFunction<int>::WidgetFunction(Widget<int> *widget, string name, vector<str
     funcMap["execute_box"] = &WidgetFunction<int>::execute_box;
     funcMap["execute_setCallback"] = &WidgetFunction<int>::execute_setCallback;
     funcMap["execute_hide"] = &WidgetFunction<int>::execute_hide;
+    funcMap["execute_show"] = &WidgetFunction<int>::execute_show;
     funcMap["execute_redraw"] = &WidgetFunction<int>::execute_redraw;
     funcMap["execute_getValue"] = &WidgetFunction<int>::execute_getValue;
     funcMap["execute_labelColor"] = &WidgetFunction<int>::execute_labelColor;

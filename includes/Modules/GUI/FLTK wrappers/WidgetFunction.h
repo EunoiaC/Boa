@@ -28,6 +28,7 @@ public:
     RuntimeResult * execute_box(Context * execCtx);
     RuntimeResult * execute_setCallback(Context * execCtx);
     RuntimeResult * execute_hide(Context * execCtx);
+    RuntimeResult * execute_show(Context * execCtx);
     RuntimeResult * execute_redraw(Context * execCtx);
     RuntimeResult * execute_getValue(Context * execCtx);
 

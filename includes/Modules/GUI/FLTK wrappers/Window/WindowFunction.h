@@ -25,9 +25,7 @@ public:
     WindowFunction<int> *copy() override;
 
     RuntimeResult * execute_add(Context * execCtx);
-    RuntimeResult * execute_start(Context * execCtx);
-
-    static void fltk_callback(void * win);
+    RuntimeResult * execute_end(Context * execCtx);
 
     string toString() override;
 };

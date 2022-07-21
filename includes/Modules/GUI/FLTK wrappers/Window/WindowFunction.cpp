@@ -20,8 +20,6 @@ RuntimeResult *WindowFunction<int>::execute_add(Context *execCtx) {
                 execCtx
         ));
     }
-    // Add widget to vector for error checking
-    winObj->widgets.push_back(widg);
     // Set the parent so we know what to terminate in case of an error
     widg->parent = winObj;
     // Add widget to the window
@@ -30,24 +28,9 @@ RuntimeResult *WindowFunction<int>::execute_add(Context *execCtx) {
 }
 
 template<>
-void WindowFunction<int>::fltk_callback(void * win) {
-    WindowObj<int> * windowObj = (WindowObj<int> *) win;
-}
-
-template<>
-RuntimeResult *WindowFunction<int>::execute_start(Context *execCtx) {
+RuntimeResult *WindowFunction<int>::execute_end(Context *execCtx) {
     winObj->window->end();
-    winObj->window->show();
-    // For future
-    //Fl::add_idle(fltk_callback, winObj);
-    Fl::run();
-    // After run loop through all widgets and check for errors
-    for (auto *widg : winObj->widgets) {
-        if (widg->rtError) {
-            winObj->window->hide();
-            return (new RuntimeResult())->failure(widg->rtError);
-        }
-    }
+
     return (new RuntimeResult())->success(new Number<double>(0, "", ""));
 }
 
@@ -61,7 +44,7 @@ WindowFunction<int>::WindowFunction(WindowObj<int> *winObj, string name, vector<
     this->defaultArgs = defaultArgs;
     type = TOK_TYPE::T_FUNC;
 
-    funcMap["execute_start"] = &WindowFunction<int>::execute_start;
+    funcMap["execute_end"] = &WindowFunction<int>::execute_end;
     funcMap["execute_add"] = &WindowFunction<int>::execute_add;
 }
 

@@ -15,6 +15,7 @@ public:
     Number<double> *width, *height;
     String<string> *title;
     Fl_Window *window;
+    vector<Widget<int> *> widgets;
 
     WindowObj<int>(Number<double> *width, Number<double> *height, String<string> *title);
 

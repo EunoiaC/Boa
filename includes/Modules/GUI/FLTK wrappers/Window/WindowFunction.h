@@ -27,6 +27,8 @@ public:
     RuntimeResult * execute_add(Context * execCtx);
     RuntimeResult * execute_start(Context * execCtx);
 
+    static void fltk_callback(void * win);
+
     string toString() override;
 };
 

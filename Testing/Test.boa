@@ -1,17 +1,32 @@
 import "gui"
+import "random"
 
-window = gui.makeWindow(640, 480, "Hello World")
-window.color(gui.WHITE)
-text = gui.makeText(50, 30, "Input:", 20, 15)
-inp = gui.makeTextInput(565, 30, 70, 10)
-submit = gui.makeButton(565, 30, "Submit", 70, 40)
+# A random number generator, as a GUI
+window = gui.makeWindow(160, 120, "Random Number Generator")
 
-# Add an output below the input
-output = gui.makeText(565, 60, "Output:", 20, 85)
+txt1 = gui.makeText(70, 30, "Minimum: ", 10, 20)
+min = gui.makeTextInput(70, 20, 80, 20)
 
-# Submit callback
-submit.setCallback(op() do {
-    output.setText("Output: " + inp.getValue())
+txt2 = gui.makeText(80, 30, "Maximum: ", 10, 40)
+max = gui.makeTextInput(70, 20, 80, 40)
+
+generate = gui.makeButton(140, 20, "Generate!", 10, 60)
+out = gui.makeText(70, 30, "", 10, 80)
+
+# Generate callback
+generate.setCallback(op() do {
+    print("Generating random number...")
+    out.setText(toStr(random.randrange(toNum(min.getValue()), toNum(max.getValue()))))
 })
+
+# Styling
+window.color(gui.WHITE)
+
+# Adding
+window.add(txt1)
+window.add(min)
+window.add(txt2)
+window.add(max)
+window.add(generate)
 
 window.start()

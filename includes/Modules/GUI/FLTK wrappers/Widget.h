@@ -17,6 +17,7 @@ public:
     String<string> *text;
     Fl_Widget *widget;
     Function<int> *callback;
+    Widget<int> * parent;
 
     Widget<int>();
 

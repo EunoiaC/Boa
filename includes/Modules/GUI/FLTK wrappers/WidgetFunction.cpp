@@ -39,6 +39,7 @@ RuntimeResult * WidgetFunction<int>::execute_setCallback(Context *execCtx) {
         RuntimeResult *res = widget->callback->execute({}, {});
         if (res->error) {
             widget->rtError = res->error;
+            widget->parent->widget->hide();
         }
     }, widget);
 
@@ -103,6 +104,26 @@ RuntimeResult * WidgetFunction<int>::execute_getValue(Context *execCtx) {
 }
 
 template<>
+RuntimeResult * WidgetFunction<int>::execute_labelColor(Context *execCtx) {
+    RuntimeResult *res = new RuntimeResult();
+    BaseValue * c = execCtx->symbolTable->get("color");
+    if (c->type != TOK_TYPE::T_NUM) {
+        return res->failure(new RuntimeError(
+                c->posStart,
+                c->posEnd,
+                c->line,
+                c->fName,
+                c->fTxt,
+                "Expected a NUMBER",
+                execCtx
+        ));
+    }
+    int color = dynamic_cast<Number<double> *>(c)->val;
+    widget->widget->labelcolor(color);
+    return res->success(new Number<double>(0, "", ""));
+}
+
+template<>
 WidgetFunction<int>::WidgetFunction(Widget<int> *widget, string name, vector<string> argNames,
                                     map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs,
@@ -118,6 +139,7 @@ WidgetFunction<int>::WidgetFunction(Widget<int> *widget, string name, vector<str
     funcMap["execute_hide"] = &WidgetFunction<int>::execute_hide;
     funcMap["execute_redraw"] = &WidgetFunction<int>::execute_redraw;
     funcMap["execute_getValue"] = &WidgetFunction<int>::execute_getValue;
+    funcMap["execute_labelColor"] = &WidgetFunction<int>::execute_labelColor;
 }
 
 template<>

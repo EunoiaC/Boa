@@ -17,6 +17,7 @@ Widget<int>::Widget() : Value<int>(0, TOK_TYPE::CLASS, "f", "txt") {
     symbolTable->set("hide", new WidgetFunction<int>(this, "hide", {}, defaultArgs, "", ""));
     symbolTable->set("redraw", new WidgetFunction<int>(this, "redraw", {}, defaultArgs, "", ""));
     symbolTable->set("getValue", new WidgetFunction<int>(this, "getValue", {}, defaultArgs, "", ""));
+    symbolTable->set("labelColor", new WidgetFunction<int>(this, "labelColor", {"color"}, defaultArgs, "", ""));
 }
 
 template <>

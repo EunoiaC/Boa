@@ -9,6 +9,7 @@
 #include <fstream>
 #include "../../../Values/List/List.h"
 #include "../../../Values/Functions/Function.h"
+#include "Fl/Fl.H"
 #include "Widget.h"
 
 template<typename T> class WidgetFunction : public BaseFunction<T> {
@@ -23,6 +24,7 @@ public:
     WidgetFunction<int> *copy() override;
 
     RuntimeResult * execute_color(Context * execCtx);
+    RuntimeResult * execute_labelColor(Context * execCtx);
     RuntimeResult * execute_box(Context * execCtx);
     RuntimeResult * execute_setCallback(Context * execCtx);
     RuntimeResult * execute_hide(Context * execCtx);

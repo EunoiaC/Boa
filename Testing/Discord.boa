@@ -1,69 +1,145 @@
+# Discord.boa - A Discord API wrapper for Boa
+
 import "requests"
 import "json"
-ws = requests.makeWebsocket("wss://gateway.discord.gg/?v=6&encoding=json")
+import "time"
 
-token = "Bot ODExMzE3MDEwNjQ1OTA5NTg0.YCwb2A.ZBhmsI0U-KQR7LVkWehDEoEEcAc"
+API_VERSION = "10"
+BASE_URL = "https://discord.com/api/v" + API_VERSION
+GATEWAY_URL = "wss://gateway.discord.gg/?v=" + API_VERSION + "&encoding=json"
 
-connected = false
-heartbeat = -1
-lastS = -1
-op messageHandler(msg) uses[connected, heartbeat, lastS] do {
-    res = json.loads(msg)
-    if typeOf(res["s"]) == "NUMBER" do {
-        lastS = res["s"]
+class DiscordClient(token) do {
+    op init() do {
+        this.token = token
+        this.ws = requests.makeWebsocket(GATEWAY_URL)
+        this.heartbeat_interval = -1
+        this.last_heartbeat_time = 0
+        this.last_sequence = null
+        this.session_id = null
+        this.connected = false
+        this.user = null
+        this.guilds = []
+        this.event_handlers = {}
+
+        this.ws.setMessageHandler(this._onMessage)
     }
-    _op = res["op"]
 
-    # Check the ops
-    if _op == 10 do {
-        heartbeat = res["d"]["heartbeat_interval"]
-        if not connected do {
-            connected = true
-            heartbeat_p = {
-                "op": 1,
-                "d": json.NULL
+    op connect() do {
+        print("Connecting to Discord Gateway...")
+        this.ws.start()
+
+        while true do {
+            time.sleepMs(100)  # basic wait to avoid busy-waiting
+            if this.connected and this.heartbeat_interval > 0 do {
+                now = time.nowMillis()
+                if now - this.last_heartbeat_time >= this.heartbeat_interval do {
+                    this._sendHeartbeat()
+                    this.last_heartbeat_time = now
+                }
             }
-            ws.send(json.dumps(heartbeat_p))
-            print("Connected")
+        }
+    }
+
+    op disconnect() do {
+        this.ws.close()
+        this.connected = false
+        print("Disconnected")
+    }
+
+    op on(event, handler) do {
+        this.event_handlers[event] = handler
+        return this
+    }
+
+    op sendMessage(channel_id, content) do {
+        payload = {"content": content}
+        return this._api("POST", "/channels/" + channel_id + "/messages", payload)
+    }
+
+    op _onMessage(msg) uses[this] do {
+        data = json.loads(msg)
+
+        if data contains "s" and typeOf(data["s"]) == "NUMBER" do {
+            this.last_sequence = data["s"]
         }
 
-        sendId()
-    } elif _op == 0 do {
-        t = res["t"]
-        if t == "READY" do {
-            print(res["d"])
-        } elif t == "MESSAGE_CREATE" do {
-            print(res["d"])
+        op_code = data["op"]
+        if op_code == 10 do {
+            if not this.connected do {
+                this.heartbeat_interval = data["d"]["heartbeat_interval"]
+                this._identify()
+                this.last_heartbeat_time = time.nowMillis()
+            }
+
+        } elif op_code == 0 do {
+            this._handleEvent(data["t"], data["d"])
+
+        } elif op_code == 11 do {
+            # Heartbeat ACK (optional log)
+            0
+        }
+    }
+
+    op _identify() do {
+        payload = {
+            "op": 2,
+            "d": {
+                "token": this.token,
+                "intents": 513,
+                "properties": {
+                    "$os": "linux",
+                    "$browser": "boa",
+                    "$device": "boa"
+                }
+            }
+        }
+        this.ws.send(json.dumps(payload))
+    }
+
+    op _sendHeartbeat() do {
+        payload = {"op": 1, "d": this.last_sequence}
+        this.ws.send(json.dumps(payload))
+        # print("Heartbeat sent")
+    }
+
+    op _handleEvent(event, data) do {
+        if event == "READY" do {
+            this.connected = true
+            this.user = data["user"]
+            this.session_id = data["session_id"]
+            print("Connected as " + this.user["username"])
+        }
+
+        if this.event_handlers contains event do {
+            this.event_handlers[event](data)
+        }
+    }
+
+    op _api(method, endpoint, data = null) do {
+        headers = {
+            "Authorization": "Bot " + this.token,
+            "Content-Type": "application/json"
+        }
+        url = BASE_URL + endpoint
+        try do {
+            if method == "GET" do return requests.get(url, headers=headers)
+            if method == "POST" do return requests.post(url, json.dumps(data), headers=headers)
+            if method == "PATCH" do return requests.patch(url, json.dumps(data), headers=headers)
+            if method == "DELETE" do return requests.delete(url, headers=headers)
+        } catch err do {
+            print("API error: " + err)
+            return null
         }
     }
 }
 
-op sendId() do {
-    id = {
-        "op": 2,
-        "d": {
-            "token": token,
-            "properties": {
-                "$os": "linux",
-                "$browser": "chrome",
-                "$device": "pc"
-            },
-            "intents": 513
+# Usage
+op createBot(token) do {
+    bot = DiscordClient(token)
+    bot.on("MESSAGE_CREATE", op(msg) do {
+        if msg["content"].startsWith("!ping") do {
+            bot.sendMessage(msg["channel_id"], "Pong!")
         }
-    }
-    ws.send(json.dumps(id))
-}
-
-ws.setMessageHandler(messageHandler)
-
-ws.start()
-
-count = 0
-while true do {
-    count += 200
-    if connected and heartbeat != -1 and count >= heartbeat do {
-        count = 0
-        p = '{"op": 1, "d": ' + lastS + '}'
-        ws.send(p)
-    }
+    })
+    return bot
 }

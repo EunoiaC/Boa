@@ -13,6 +13,7 @@
 string fName = "<standard inclusion>";
 string fTxt = "Defined in " + fName;
 
+// diff name bc std uses a print function too
 BuiltInFunction<int> * print = new BuiltInFunction<int>("print", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * input = new BuiltInFunction<int>("input", {"value"}, {}, fName, fTxt);
 BuiltInFunction<int> * toNum = new BuiltInFunction<int>("toNum", {"value"}, {}, fName, fTxt);

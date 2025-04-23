@@ -1,0 +1,12 @@
+import "Discord.boa"
+
+token = "ODExMzE3MDEwNjQ1OTA5NTg0.G8VBQ5.y25qpRYA_InmkhFp_sCkvc2dfm0E-JMENwlpHg"
+client = DiscordClient(token)
+client.on("MESSAGE_CREATE", op(message) do {
+    print("Message received:", message)
+    if message["content"].startsWith("!ping") do {
+        client.sendMessage(message["channel_id"], "Pong!")
+    }
+})
+
+client.connect()

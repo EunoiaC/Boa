@@ -1,11 +1,7 @@
 op long() do {
     for i = 0 to 100000 do i
-    return 3
+    print(4)
 }
 
 f = await long()
-while !f.isReady() do {
-    print("Waiting")
-}
-
-print(f.get())
+f = await long()

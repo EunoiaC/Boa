@@ -23,6 +23,7 @@ public:
     RuntimeResult * execute_waitMs(Context * execCtx);
     RuntimeResult * execute_waitSec(Context * execCtx);
     RuntimeResult * execute_currTime(Context * execCtx);
+    RuntimeResult * execute_nowMillis(Context * execCtx);
 
     string toString() override;
 };

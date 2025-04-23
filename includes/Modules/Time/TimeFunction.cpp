@@ -56,6 +56,12 @@ RuntimeResult *TimeFunction<int>::execute_currTime(Context *execCtx) {
 }
 
 template<>
+RuntimeResult *TimeFunction<int>::execute_nowMillis(Context *execCtx) {
+    return (new RuntimeResult())->success(new TimeValue<int>(chrono::duration_cast<chrono::milliseconds>(
+            chrono::system_clock::now().time_since_epoch()).count()));
+}
+
+template<>
 TimeFunction<int>::TimeFunction(string name, vector<string> argNames, map<string, BaseValue *> defaultArgs,
                                     string fName, string fTxt) : BaseFunction<int>(name, argNames, defaultArgs, fName,
                                                                                    fTxt, CLASS_FUNC) {
@@ -63,6 +69,7 @@ TimeFunction<int>::TimeFunction(string name, vector<string> argNames, map<string
     funcMap["execute_sleepMs"] = &TimeFunction<int>::execute_waitMs;
     funcMap["execute_sleepSec"] = &TimeFunction<int>::execute_waitSec;
     funcMap["execute_currTime"] = &TimeFunction<int>::execute_currTime;
+    funcMap["execute_nowMillis"] = &TimeFunction<int>::execute_nowMillis;
 }
 
 template<>

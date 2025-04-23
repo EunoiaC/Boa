@@ -10,7 +10,7 @@ using namespace std;
 
 /**
  * Build the program:
- * /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/preetithorat/Documents/GitHub/Boa/cmake-build-debug --target Boa -- -j -v  6
+ * /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake --build /Users/preetithorat/Documents/GitHub/Boa/cmake-build-release--target Boa -- -j -v  6
 **/
 
 // TODO: Fix errors that do to_string(enum)
@@ -38,7 +38,7 @@ int main(int argc, char **argv) {
     globalSymbolTable->set("null", new Number<double>(0, "", ""));
     globalSymbolTable->set("true", new Number<double>(1, "", ""));
     globalSymbolTable->set("false", new Number<double>(0, "", ""));
-    globalSymbolTable->set("print", print);
+    globalSymbolTable->set("print", ::print);
     globalSymbolTable->set("input", input);
     globalSymbolTable->set("toNum", toNum);
     globalSymbolTable->set("lenOf", lenOf);

@@ -1,8 +1,57 @@
 cmake_minimum_required(VERSION 3.20)
 project(Boa)
-set(CMAKE_CXX_STANDARD 14)
-# O2 and O3 work
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+include(FetchContent)
+
+# ——————————————————————
+# 1) GLAD & CPR via FetchContent
+# ——————————————————————
+FetchContent_Declare(
+        glad
+        GIT_REPOSITORY https://github.com/Dav1dde/glad.git
+        GIT_TAG        v0.1.35
+)
+FetchContent_MakeAvailable(glad)
+
+FetchContent_Declare(
+        cpr
+        GIT_REPOSITORY https://github.com/whoshuu/cpr.git
+        GIT_TAG        db351ffbbadc6c4e9239daaa26e9aefa9f0ec82d
+)
+FetchContent_MakeAvailable(cpr)
+
+# ——————————————————————
+# 2) IXWebSocket via FetchContent
+# ——————————————————————
+# turn off samples/tests so it only builds the core library
+set(IXWEBSOCKET_BUILD_SAMPLES OFF CACHE BOOL "" FORCE)
+set(IXWEBSOCKET_BUILD_EXAMPLE_SERVER OFF CACHE BOOL "" FORCE)
+set(IXWEBSOCKET_BUILD_EXAMPLE_CLIENT OFF CACHE BOOL "" FORCE)
+set(IXWEBSOCKET_BUILD_SSL_TESTS OFF CACHE BOOL "" FORCE)
+set(IXWEBSOCKET_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+
+FetchContent_Declare(
+        ixwebsocket
+        GIT_REPOSITORY https://github.com/machinezone/IXWebSocket.git
+        GIT_TAG        master
+)
+FetchContent_MakeAvailable(ixwebsocket)
+
+# ——————————————————————
+# 3) System libraries
+# ——————————————————————
+find_package(OpenSSL REQUIRED)
+find_package(CURL    REQUIRED)
+find_package(Boost   REQUIRED)
+find_package(SQLite3 REQUIRED)
+find_package(FLTK    REQUIRED)
+include_directories(${FLTK_INCLUDE_DIR})
+
+# ——————————————————————
+# 4) Your sources & executable
+# ——————————————————————
 set(
         SOURCE_FILES
         "Extern Libs/glad.c"
@@ -50,51 +99,25 @@ set(
         includes/Modules/SQLite/SQLite3.cpp includes/Modules/SQLite/SQLite3.h includes/Modules/SQLite/SQLite3Function.cpp includes/Modules/SQLite/SQLite3Function.h includes/Modules/SQLite/Database/SQLiteDB.cpp includes/Modules/SQLite/Database/SQLiteDB.h includes/Modules/SQLite/Database/SQLiteDBFunction.cpp includes/Modules/SQLite/Database/SQLiteDBFunction.h
         "includes/Modules/GUI/FLTK wrappers/Text/Text.cpp" "includes/Modules/GUI/FLTK wrappers/Text/Text.h" "includes/Modules/GUI/FLTK wrappers/TextInput/TextInput.cpp" "includes/Modules/GUI/FLTK wrappers/TextInput/TextInput.h" "includes/Modules/GUI/FLTK wrappers/TextInput/TextInputFunction.cpp" "includes/Modules/GUI/FLTK wrappers/TextInput/TextInputFunction.h" "includes/Modules/GUI/FLTK wrappers/Text/TextFunction.cpp" "includes/Modules/GUI/FLTK wrappers/Text/TextFunction.h" "includes/Modules/GUI/FLTK wrappers/Widget.cpp" "includes/Modules/GUI/FLTK wrappers/Widget.h" "includes/Modules/GUI/FLTK wrappers/WidgetFunction.cpp" "includes/Modules/GUI/FLTK wrappers/WidgetFunction.h" "includes/Modules/GUI/FLTK wrappers/Button/Button.cpp" "includes/Modules/GUI/FLTK wrappers/Button/Button.h")
 
-#set(
-#        IMGUI
-#        "Extern Libs/ImGui/imconfig.h"
-#        "Extern Libs/ImGui/imstb_truetype.h"
-#        "Extern Libs/ImGui/imstb_textedit.h"
-#        "Extern Libs/ImGui/imstb_rectpack.h"
-#        "Extern Libs/ImGui/imgui_widgets.cpp"
-#        "Extern Libs/ImGui/imgui_tables.cpp"
-#        "Extern Libs/ImGui/imgui_internal.h"
-#        "Extern Libs/ImGui/imgui_draw.cpp"
-#        "Extern Libs/ImGui/imgui_demo.cpp"
-#        "Extern Libs/ImGui/imgui.h"
-#        "Extern Libs/ImGui/imgui.cpp"
-#        "Extern Libs/ImGui/imgui_impl_glfw.cpp" "Extern Libs/ImGui/imgui_impl_glfw.h" "Extern Libs/ImGui/imgui_impl_opengl3.cpp" "Extern Libs/ImGui/imgui_impl_opengl3.h" "Extern Libs/ImGui/imgui_impl_opengl3_loader.h" includes/Modules/GUI/Window/UseImGui.cpp includes/Modules/GUI/Window/UseImGui.h)
+add_executable(Boa main.cpp ${SOURCE_FILES})
 
-set(OPENSSL_ROOT_DIR /usr/local/opt/openssl/lib)
-find_package(OpenSSL REQUIRED)
-
-include(FetchContent)
-FetchContent_Declare(cpr GIT_REPOSITORY https://github.com/whoshuu/cpr.git GIT_TAG db351ffbbadc6c4e9239daaa26e9aefa9f0ec82d)
-FetchContent_MakeAvailable(cpr)
-
-# Add Boost
-set(Boost_INCLUDE_DIRS ${Boost_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS}/boost)
-find_package(Boost REQUIRED)
-
-# Curl stuff
-set(CURL_LIBRARY "-lcurl")
-find_package(CURL REQUIRED)
-
-# Add SQLite
-find_package(SQLite3 REQUIRED)
-
-# ixwebsocket in /usr/local/include/ixwebsocket
-#set(ixwebsocket_INCLUDE_DIRS /usr/local/include/ixwebsocket)
-#find_package(ixwebsocket REQUIRED)
-
-add_executable(
-        Boa main.cpp
-        ${SOURCE_FILES}
-        #${IMGUI}
+target_include_directories(Boa PRIVATE
+        ${CURL_INCLUDE_DIR}
+        ${Boost_INCLUDE_DIRS}
 )
 
-include_directories(${CURL_INCLUDE_DIR} ${Boost_INCLUDE_DIRS})
-target_link_libraries(Boa ${CURL_LIBRARIES} OpenSSL::SSL /usr/local/lib/libixwebsocket.11.3.2.dylib /usr/local/Cellar/glfw/3.3.7/lib/libglfw.3.3.dylib ${Boost_LIBRARIES} ${IXWEBSOCKET_LIBRARIES} cpr #[[/usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtcl8.6.dylib /usr/local/Cellar/tcl-tk/8.6.12_1/lib/libtk8.6.dylib]] /usr/local/Cellar/fltk/1.3.8/lib/libfltk.1.3.dylib sqlite3)
-if (APPLE)
-    target_link_libraries(Boa "-framework OpenGL")
+target_link_libraries(Boa PRIVATE
+        OpenSSL::SSL
+        OpenSSL::Crypto
+        CURL::libcurl
+        ${Boost_LIBRARIES}
+        SQLite::SQLite3
+        ${FLTK_LIBRARIES}
+        glad
+        cpr::cpr
+        ixwebsocket::ixwebsocket      # <-- pulls in IXWebSocket
+)
+
+if(APPLE)
+    target_link_libraries(Boa PRIVATE "-framework OpenGL")
 endif()

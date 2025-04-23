@@ -6,6 +6,7 @@
 #include "Interpreter.h"
 #include "../RunInterface.h"
 #include <filesystem>
+#include <functional>
 namespace fs = std::__fs::filesystem;
 
 

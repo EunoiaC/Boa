@@ -1,0 +1,7 @@
+import "time"
+
+now = time.nowMillis()
+for i = 0 to 1000000 do {
+    0
+}
+print("Time taken: " + (time.nowMillis() - now) + "ms")

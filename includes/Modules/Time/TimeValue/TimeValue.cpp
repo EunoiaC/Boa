@@ -15,6 +15,9 @@ TimeValue<int>::TimeValue(time_t tVal) : Value<int>(0, TOK_TYPE::T_CLASS, "", ""
     symbolTable->set("hour", new Number<double>(5+ltm->tm_hour, "", ""));
     symbolTable->set("min", new Number<double>(30+ltm->tm_min, "", ""));
     symbolTable->set("sec", new Number<double>(ltm->tm_sec, "", ""));
+    symbolTable->set("wday", new Number<double>(ltm->tm_wday, "", ""));
+    symbolTable->set("yday", new Number<double>(ltm->tm_yday, "", ""));
+    symbolTable->set("ms", new Number<double>(tVal, "", ""));
 }
 
 template<>

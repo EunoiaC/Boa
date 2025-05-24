@@ -57,8 +57,8 @@ RuntimeResult *TimeFunction<int>::execute_currTime(Context *execCtx) {
 
 template<>
 RuntimeResult *TimeFunction<int>::execute_nowMillis(Context *execCtx) {
-    return (new RuntimeResult())->success(new TimeValue<int>(chrono::duration_cast<chrono::milliseconds>(
-            chrono::system_clock::now().time_since_epoch()).count()));
+    return (new RuntimeResult())->success(new Number<double>(chrono::duration_cast<chrono::milliseconds>(
+            chrono::system_clock::now().time_since_epoch()).count(), "", ""));
 }
 
 template<>

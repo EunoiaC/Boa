@@ -1,0 +1,27 @@
+name = input("Wut is ur name?")
+
+# this is an if statement
+if name == "Aadi" or name == "Mike" or name == "Jan" do {
+    print("U are an amazing person, " + name + "!")
+} else do {
+    print("U are a person, " + name + ".")
+}
+
+# this is a for loop
+for i = 0 to 10 do {
+    print("Hi " + name + ", this is message number " + toStr(i) + ".")
+}
+
+numba = 1 + 2 / 3 * 4 % 5 # there is operator precedence (answer should be 3 + 2/3)
+print("The result of the expression is: " + toStr(numba))
+
+list = [1, 2, 3, 4, 5]
+print(list ? 3) # this gets index numba 3 of the list, which is 4
+
+# this is a function
+op add(a, b) do {
+    return a + b
+}
+
+# this is calling a function
+print("The sum of 5 and 10 is: " + toStr(add(5, 10)))
